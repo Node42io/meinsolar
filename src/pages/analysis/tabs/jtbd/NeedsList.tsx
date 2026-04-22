@@ -399,7 +399,7 @@ export default function NeedsList({ needs, highlightNeed }: NeedsListProps) {
                 </div>
               </div>
 
-              {/* Status badges */}
+              {/* Confidence badges (served/underserved tags removed — redundant with scatter plot zones) */}
               <div
                 style={{
                   display: "flex",
@@ -409,30 +409,6 @@ export default function NeedsList({ needs, highlightNeed }: NeedsListProps) {
                   paddingTop: 2,
                 }}
               >
-                {isOverserved && (
-                  <span
-                    className="badge badge--neutral"
-                    style={{ fontSize: 9, background: "rgba(108,117,125,0.18)", color: "#a0adb8" }}
-                  >
-                    Overserved
-                  </span>
-                )}
-                {isUnderserved && !isOverserved && (
-                  <span
-                    className="badge badge--weak"
-                    style={{ fontSize: 9 }}
-                  >
-                    Underserved
-                  </span>
-                )}
-                {!isUnderserved && !isOverserved && (
-                  <span
-                    className="badge badge--neutral"
-                    style={{ fontSize: 9 }}
-                  >
-                    Served
-                  </span>
-                )}
                 {/* Confidence badge if available from JTBD need cross-ref */}
                 {typeof (need as ODINeed & { confidence?: number }).confidence === "number" &&
                   (need as ODINeed & { confidence?: number }).confidence! >= 0.8 && (
