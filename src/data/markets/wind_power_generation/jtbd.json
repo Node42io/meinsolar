@@ -1,0 +1,1522 @@
+{
+  "id": "JTBD_wind_electric_power_generation_ibisworld",
+  "title": "JTBD — NAICS 221115 Wind Electric Power Generation",
+  "type": "jtbd_analysis",
+  "market_slug": "wind_electric_power_generation_ibisworld",
+  "is_per_market": true,
+  "sections": [
+    {
+      "title": "Phase 1 — Industry Landscape",
+      "content": "### 1.1 CFJ and Output Types\n\n| Field | Value |\n|---|---|\n| CFJ (L7) | Convert kinetic wind energy into grid-compliant, dispatchable electrical energy and inject it into transmission/distribution networks under the governing grid code |\n| Offering level of industry | L7 (Ecosystem) |\n| Process VN applies | YES |\n| Product BOM applies | NO (utility service NAICS) |\n\n**Output types (industry-level):**\n\n| # | Output type | Adoption (DE, 2026) |\n|---|---|---|\n| 1 | Onshore wind-park power (new-build) | Established |\n| 2 | Onshore wind-park power (repowered) | Accelerating (EEG 2023 repower push) |\n| 3 | Offshore wind-park power | Established (scale mismatch for Mein Solar) |\n| 4 | Curtailment-capture dispatch | Emerging — 8 TWh DE wind curtailed 2022 |\n| 5 | Ancillary services (FCR, aFRR, inertia) | Inertia market launches **Jan 2026** with €8–20 k/MW/yr |\n| 6 | Bürgerenergie / citizen-wind output | Established, small-scale |\n\n### 1.2 Segments (by circumstance)\n\n| # | Segment | Circumstance | Alternatives change? |\n|---|---|---|---|\n| S1 | **Onshore IPP — new-build** | Financing a greenfield park, BESS optional add-on | YES |\n| S2 | **Repowering operator** | Aged park, same grid connection, curtailment-heavy site | YES (retrofit vs greenfield economics) |\n| S3 | **Utility wind IPP** | Portfolio player (EnBW, RWE, Vattenfall), EU-tender procurement | YES (in-house EPC often competes) |\n| S4 | **Bürgerenergie / community wind** | Municipal/citizen co-op, low-capex-appetite | YES (turnkey packages, not EPC) |\n| S5 | **Direct-marketing aggregator** | Treats park as trading asset, wants flex layer to sell | YES (VPP integration matters more than hardware) |\n| S6 | **Offshore IPP** | 100+ MW storage scale | YES — **LOW fit for Mein Solar (4.5 MW ref)** |\n\nOffshore (S6) retained for completeness but not addressed by the Mein Solar product class.\n\n### 1.3–1.5 Process VN / BOM / Edges\n\nFull Process VN already constructed in `VN_wind_electric_power_generation_ibisworld.md` (35 units, L7→L4). No Product BOM (service NAICS). Edges not applicable.\n\n---"
+    },
+    {
+      "title": "Phase 2 — Company Enters",
+      "content": "### 2.1 VN Anchor\n\n| Field | Value |\n|---|---|\n| `anchor_type` | PROCESS_VN |\n| `anchor_vn_unit` | **Co-located BESS Storage Asset (EPC-delivered)** |\n| `anchor_level` | **L5** |\n| `parent_vn_unit` | Grid Services & Storage Integration |\n| `parent_level` | L6 (horizontal — L6H-GS) |\n| `rationale` | Product IS a commissioned system, not a sub-component; matches L5 abstraction. Parent L6H-GS defines the job context: \"provide flexibility and grid services to firm wind output\" |\n\n### 2.2 Lens\n\n| Segment | Lens (function verb × segment) |\n|---|---|\n| S1 Onshore new-build IPP | \"What **grid-firming + revenue-stacking** does the greenfield IPP need within the L6H-GS layer?\" |\n| S2 Repowering operator | \"What **curtailment-capture + congestion-relief** does the retrofit operator need?\" |\n| S3 Utility IPP | \"What **contract-wrapped, schedule-certain** flex asset does the procurement desk need?\" |\n| S5 Aggregator | \"What **dispatchable, API-addressable** flex asset does the VPP need?\" |\n\n### 2.3 Product Job\n\n> **Help the Grid Services & Storage Integration layer of a German wind park to firm wind output, capture curtailment energy, and monetize ancillary-service revenue (FCR, aFRR, inertia) under VDE-AR-N 4110/4120 and FGW TR8.**\n\nAbstraction test: PASS. 5+ alternatives from different categories (electrochemical / electromechanical / chemical / software / do-nothing). Not scenario-level.\n\n### 2.4 Alternatives (5 per Core Job)\n\n| # | Alternative | UNSPSC (closest) | Category | Inherent trade-offs |\n|---|---|---|---|---|\n| A1 | **Co-located BESS (EPC-delivered)** — Mein Solar class | custom `BESS EPC Services` | Same category | Fire risk, LFP cycle fade, €250–400/kWh, 40–80 m²/MWh footprint, 6–12 mo cert lead |\n| A2 | Standalone grid-booster BESS | custom `BESS EPC Services` | Same category / different siting | Same as A1; different commercial & grid-connection topology |\n| A3 | Synchronous condenser / flywheel | 26111612 (rotating machine) | Different category / same outcome | No energy arbitrage (inertia-only), rotating-mass O&M, no curtailment capture |\n| A4 | P2X / electrolyzer offtake (curtailment sink) | 26111900 (H₂ gen) | Different approach | H₂ safety regime, needs offtaker, €/MW CAPEX 2–3× BESS, long ramp |\n| A5 | **Do nothing / accept curtailment** | — | Status quo | Zero CAPEX — leaves ~€400 k/MW/yr revenue stack unclaimed; curtailment loss accepted |\n\n(Platform VPP software flagged non-existential → merged under EMS requirement of A1/A2, not competing alternative for the asset slot.)\n\n### 2.5 Scenarios\n\n| Scenario | Activates | Alternative bias |\n|---|---|---|\n| Curtailment-congested feeder | Output type 4 | A1 ≈ A2 > A4 >> A5 |\n| Ancillary-service revenue (FCR/aFRR) | Output type 5 | A1 ≈ A2 > A3 > A5 |\n| Inertia service (Jan 2026 TSO product, €8–20 k/MW/yr) | Output type 5 | A1 ≈ A2 ≈ A3 >> A4 ≈ A5 |\n| PPA-firming during wind lulls | Output type 1 | A1 > A2 >> A5 |\n| Repowering site BESS retrofit | Output type 2 | A1 (co-located, reuse grid conn.) >> A2 |\n\n---"
+    },
+    {
+      "title": "Phase 3 — Needs Derivation",
+      "content": "### 3.0 Stakeholder Roles (Wind+BESS)\n\n| Role | Who |\n|---|---|\n| Job Beneficiary | Wind IPP asset owner (revenue); DSO/TSO (grid stability) |\n| Job Executor | Wind-park operator / O&M team (dispatches BESS) |\n| Job Overseer | IPP asset manager, equity investor, lender |\n| Lifecycle Support | **EPC (Mein Solar role)**, O&M provider, FGW certifier, disposer |\n| Purchase Executor | Developer/IPP CFO |\n| Purchase Influencer | FGW/TÜV certifier, bank lender, insurance, aggregator |\n\n### 3.1 Job Map (Ulwick 8 universal steps) — relevance to EPC product\n\n| # | Step | Relevant to product? | Rationale |\n|---|---|---|---|\n| 1 | DEFINE | **YES** | EPC scopes sizing study + revenue-stack feasibility |\n| 2 | LOCATE | **YES** | EPC identifies MV cabinet, siting, grid-capacity feasibility |\n| 3 | PREPARE | **YES** | Engineering, DSO filing, Baugenehmigung, procurement |\n| 4 | CONFIRM | **YES** | FGW TR3/TR8 certification; VDE-AR-N 4110/4120 witness tests |\n| 5 | EXECUTE | partial | Dispatch is operator-side; EMS handoff is EPC's |\n| 6 | MONITOR | partial | Commissioning monitor scope; lifecycle monitor is O&M |\n| 7 | MODIFY | partial | Firmware/update management during warranty |\n| 8 | CONCLUDE | partial | Annual re-cert, decommissioning handover |\n\n**Relevant step count:** 4 primary + 4 partial → target 15–30 error statements (using `max(15, min(30, 4×4))` ≈ 16–30).\n\n### 3.2 P1+P2 Error Statements (solution-agnostic)\n\nFormat: \"Minimize the likelihood of …\" or \"Increase the ability to …\". One measurable KPI. Scored `importance` / `satisfaction_current` (0–10). `opportunity_score = imp + max(imp – sat, 0)`.\n\n| # | Step | Error type | Statement | Role | Imp | Sat | Opp | Impact | p_rel | Conf |\n|---|---|---|---|---|---|---|---|---|---|---|\n| N1 | DEFINE | ACCURACY | Minimize the likelihood of undersizing BESS capacity by >15% relative to curtailment-capture potential due to incomplete site wind-yield and congestion-hour data | Purchase Executor | 9 | 4 | 14 | reliability | false | 0.85 |\n| N2 | DEFINE | EFFORT | Increase the ability to produce a bankable dispatch-and-revenue model linking curtailment, §19 StromNEV, intraday arbitrage, FCR/aFRR and inertia within a single sizing study | Purchase Executor | 8 | 3 | 13 | cost | false | 0.85 |\n| N3 | DEFINE | DETECTION | Minimize the likelihood of missing the inertia-service revenue track (€8–20 k/MW/yr from Jan 2026) during initial business-case definition | Purchase Influencer | 7 | 3 | 11 | cost | false | 0.80 |\n| N4 | LOCATE | DETECTION | Minimize the likelihood of discovering a DSO MV-capacity blocker after permit milestone, causing >6-month project restart | Executor | 10 | 4 | 16 | time | false | 0.90 |\n| N5 | LOCATE | EFFORT | Increase the ability to secure a buildable 40–80 m²/MWh footprint inside existing wind-park fencing without new land lease or Bebauungsplan change | Executor | 8 | 5 | 11 | time | true | 0.75 |\n| N6 | PREPARE | THROUGHPUT | Minimize the time-to-Ready-to-Build from contract signature to <9 months including Baugenehmigung, DSO acceptance and procurement | Overseer | 9 | 4 | 14 | time | false | 0.85 |\n| N7 | PREPARE | CONSISTENCY | Minimize variability between planned and as-built BoP scope (cable runs, foundations, Feuerwehr access) causing >5% cost overrun | Purchase Executor | 8 | 5 | 11 | cost | false | 0.80 |\n| N8 | PREPARE | ROBUSTNESS | Minimize the likelihood of schedule slip driven by Feuerwehr/VdS fire-protection clearance re-design after permit submission | Lifecycle Support | 8 | 4 | 12 | time | true | 0.75 |\n| N9 | CONFIRM | ACCURACY | Minimize the likelihood of FGW TR8 plant-cert re-submission due to incomplete TR3 unit-cert handover from component vendors | Lifecycle Support | 9 | 4 | 14 | reliability | true | 0.85 |\n| N10 | CONFIRM | ROBUSTNESS | Minimize the likelihood of commissioning holdup caused by firmware-version incompatibility between BMS, PCS and EMS subsystems | Lifecycle Support | 9 | 3 | 15 | time | true | 0.88 |\n| N11 | CONFIRM | RECOVERY | Minimize the time to close VDE-AR-N 4110/4120 witness-test non-conformities to <30 days from finding | Lifecycle Support | 8 | 5 | 11 | time | false | 0.80 |\n| N12 | CONFIRM | ACCURACY | Minimize the likelihood of grid-forming-mode certification gaps that disqualify the asset from the 2026 inertia-service product | Purchase Influencer | 9 | 3 | 15 | cost | true | 0.82 |\n| N13 | EXECUTE | ACCURACY | Minimize the likelihood of missing an aFRR / FCR activation command within the required response window (<30 s / <30 s) | Executor | 9 | 6 | 12 | reliability | false | 0.80 |\n| N14 | EXECUTE | THROUGHPUT | Maximize the share of available curtailment-window MWh captured by the BESS to >90% of DSO-curtailed energy | Beneficiary | 9 | 5 | 13 | cost | false | 0.82 |\n| N15 | EXECUTE | ROBUSTNESS | Minimize the likelihood of PCS trip under grid-fault ride-through conditions specified by VDE-AR-N 4110 | Executor | 10 | 6 | 14 | safety | false | 0.82 |\n| N16 | MONITOR | DETECTION | Minimize the likelihood of undetected capacity fade exceeding warranty threshold prior to annual availability audit | Overseer | 8 | 5 | 11 | reliability | true | 0.78 |\n| N17 | MONITOR | CONSISTENCY | Minimize SoC-reporting drift between BMS, EMS and aggregator to <1% over a 24-h cycle | Executor | 6 | 5 | 7 | reliability | true | 0.70 |\n| N18 | MODIFY | EFFORT | Minimize the operator effort to re-tune EMS dispatch policy when curtailment patterns or intraday spreads shift materially | Executor | 7 | 4 | 10 | skill | false | 0.75 |\n| N19 | MODIFY | ROBUSTNESS | Minimize the likelihood that aging-aware cycling misconfiguration drives degradation exceeding contractual throughput guarantee | Overseer | 8 | 5 | 11 | cost | true | 0.75 |\n| N20 | CONCLUDE | EFFORT | Minimize the effort to execute annual FGW/DSO re-certification audits through a single pre-packaged evidence dossier | Lifecycle Support | 7 | 4 | 10 | time | false | 0.80 |\n| N21 | CONCLUDE | SAFETY | Minimize the likelihood of end-of-life disposal non-compliance with EU Battery Regulation reporting obligations | Lifecycle Support | 8 | 4 | 12 | safety | true | 0.75 |\n\n### 3.3 P3–P5 Bridge Needs\n\n| # | Level | Role | Retrieval → Bridge | Statement | Imp | Sat | Opp | p_rel |\n|---|---|---|---|---|---|---|---|---|\n| N22 | P3 Role | Purchase Executor (IPP CFO) | \"Revenue-additive capital investor, not cost-center procurer\" → What must the EPC enable? | Increase the ability to present the BESS addition as a revenue-accretive asset with committed multi-stream dispatch evidence at investment-committee | 8 | 5 | 11 | false |\n| N23 | P4 Image | Purchase Influencer (FGW certifier) | \"Competent engineer, not audit-finding magnet\" → What must the EPC deliver? | Minimize the likelihood of certifier audit findings that require repeat visits or signal sloppy engineering practice | 7 | 5 | 9 | true |\n| N24 | P5 Emotion | Job Beneficiary (IPP asset owner) — **[hypothesis]** | Avoid fault-event anxiety from multi-vendor finger-pointing → What must the EPC guarantee? | Minimize the time lost to cross-vendor root-cause dispute by ensuring a single EPC counterparty owns fault-tree triage and warranty-wrap resolution | 8 | 3 | 13 | false |\n\n### 3.4 ODI Summary\n\n| Bucket | Needs | % |\n|---|---|---|\n| Total | 24 | 100% |\n| Market-inherent (`product_related=false`) | 15 | 63% |\n| Tech-specific (`product_related=true`) | 9 | 37% |\n| \"Minimize\" | 15 | 63% |\n| \"Increase\" | 9 | 37% |\n| **Underserved** (imp>7 AND sat<5) | **N1, N2, N3, N4, N6, N8, N9, N10, N12, N21, N24** | **11** |\n| Overserved (imp<3 AND sat>7) | none | 0 |\n\n**Top 5 opportunities (highest `opportunity_score`):**\n\n| Rank | # | Need (short) | Opp |\n|---|---|---|---|\n| 1 | N4 | DSO MV-capacity blocker discovered late | **16** |\n| 2 | N10 | Firmware incompatibility commissioning holdup | **15** |\n| 3 | N12 | Grid-forming-mode cert gap → loses inertia revenue | **15** |\n| 4 | N1 | Undersize capacity vs curtailment potential | **14** |\n| 5 | N6 | Time-to-Ready-to-Build >9 months | **14** |\n\n---"
+    },
+    {
+      "title": "Validation Gate",
+      "content": "| # | Check | Status |\n|---|---|---|\n| V1 | Statement format (Minimize/Increase + 1 KPI) | ✅ 24/24 |\n| V2 | `product_related=true` only if need disappears with different tech | ✅ (e.g. N10 firmware drift, N5 m²/MWh, N8 fire-clearance, N21 EU Battery Reg. are LFP/BESS-specific) |\n| V3 | Importance/satisfaction sanity | ✅ (safety N15 imp=10; no uniform patterns) |\n| V4 | Impact category matches KPI | ✅ |\n| V5 | ≥2 needs per relevant step, 60–70 / 30–40 ratio | ✅ (63/37 split) |\n| V6 | Solution-agnostic | ✅ (no \"lithium\", \"Mein Solar\", or vendor names in statements) |\n| V7 | Anchor level matches abstraction | ✅ (L5 system) |\n| V8 | Product job references parent unit | ✅ (\"Grid Services & Storage Integration layer\") |\n\n---"
+    },
+    {
+      "title": "Strategic Takeaways",
+      "content": "1. **Underserved cluster is in Phases DEFINE/LOCATE/CONFIRM** — not in operation. Mein Solar's EPC wrap directly addresses N4, N6, N9, N10 (the single-source differentiator neutralises multi-vendor certification + firmware drift).\n2. **N3/N12 are time-boxed**: inertia-service prequal opens **Jan 2026** — a 2026 go-to-market must include grid-forming PCS firmware + FGW TR3 grid-forming cert in the stack.\n3. **N1/N2 (sizing + bankable revenue-stack model) is an EPC sales-enablement lever**, not just a delivery need — customers hire the EPC that can produce the investment-committee case, not only the builder.\n4. **N24 (single-counterparty fault-wrap)** is the emotional anchor of the single-source differentiator. It is hypothesis-grade; validate via 3–5 IPP interviews.\n5. **Mein Solar's PV-EPC heritage maps cleanly to N5, N6, N7, N8, N11** (civil + MV + Baugenehmigung + witness test) — these are the lowest-risk delivery needs and the highest-satisfaction-lift per €.\n\n---"
+    },
+    {
+      "title": "Sources",
+      "content": "- [NAICS 221115 Wind Electric Power Generation (IBISWorld)](https://www.ibisworld.com/classifications/naics/221115/wind-electric-power-generation/)\n- [Germany to Launch Inertia Service Market in 2026 — New Revenue Stream for Grid-Forming BESS (HSF Kramer)](https://www.hsfkramer.com/notes/energy/2025-posts/germany-to-launch-inertia-service-market-in-2026-new-revenue-stream-for-grid-forming-bess)\n- [Germany's TSOs begin inertia procurement with long-term contracts for grid-forming BESS (Energy-Storage.News)](https://www.energy-storage.news/germanys-tso-begin-inertia-procurement-with-long-term-contracts-for-grid-forming-bess/)\n- [Inertia without the spin — how stabilising the grid will support battery revenues in Germany (Modo Energy)](https://modoenergy.com/research/en/inertia-germany-market-prices-grid-forming-inverters-grid-frequency-stability-november-2025)\n- [The three biggest delays in BESS commissioning (ESS News)](https://www.ess-news.com/2025/11/06/the-three-biggest-delays-in-battery-energy-storage-system-commissioning/)\n- [Why the best way to avoid BESS commissioning delays is to start earlier than you might expect (Energy-Storage.News)](https://www.energy-storage.news/why-the-best-way-to-avoid-bess-commissioning-delays-is-to-start-earlier-than-you-might-expect/)\n- [Revenue potential in the German BESS market (Rabobank)](https://www.rabobank.com/knowledge/d011485293-backup-power-for-europe-part-5-revenue-potential-in-the-german-bess-market)\n- [BESS co-location resurgence in Germany (Timera Energy)](https://timera-energy.com/blog/bess-co-location-resurgence-in-germany/)\n\n---"
+    },
+    {
+      "title": "Structured Data",
+      "content": "```json\n{\n  \"component\": \"jtbd_analysis\",\n  \"naics_code\": \"221115\",\n  \"naics_title\": \"Wind Electric Power Generation\",\n  \"market_name\": \"Wind+BESS Hybrid Parks\",\n  \"product_name\": \"EPC für Großbatteriespeicher\",\n  \"vendor_name\": \"Mein Solar GmbH\",\n\n  \"phase_1\": {\n    \"cfj_statement\": \"Convert kinetic wind energy into grid-compliant, dispatchable electrical energy and inject it into transmission/distribution networks under the governing grid code\",\n    \"industry_offering_level\": \"L7\",\n    \"process_vn_applies\": true,\n    \"product_bom_applies\": false,\n    \"output_types\": [\n      {\"name\": \"Onshore wind-park power (new-build)\", \"adoption\": \"established\"},\n      {\"name\": \"Onshore wind-park power (repowered)\", \"adoption\": \"accelerating\"},\n      {\"name\": \"Offshore wind-park power\", \"adoption\": \"established\", \"note\": \"scale mismatch for Mein Solar\"},\n      {\"name\": \"Curtailment-capture dispatch\", \"adoption\": \"emerging\"},\n      {\"name\": \"Ancillary services (FCR, aFRR, inertia)\", \"adoption\": \"growing\", \"note\": \"inertia market launch Jan 2026\"},\n      {\"name\": \"Bürgerenergie / citizen-wind output\", \"adoption\": \"established\"}\n    ],\n    \"segments\": [\n      {\"id\": \"S1\", \"name\": \"Onshore IPP — new-build\", \"circumstance\": \"Financing greenfield park with optional BESS add-on\"},\n      {\"id\": \"S2\", \"name\": \"Repowering operator\", \"circumstance\": \"Aged park, same grid connection, curtailment-heavy\"},\n      {\"id\": \"S3\", \"name\": \"Utility wind IPP\", \"circumstance\": \"Portfolio player, EU-tender procurement\"},\n      {\"id\": \"S4\", \"name\": \"Bürgerenergie / community wind\", \"circumstance\": \"Municipal/citizen co-op, low capex appetite\"},\n      {\"id\": \"S5\", \"name\": \"Direct-marketing aggregator\", \"circumstance\": \"Treats park as trading asset\"},\n      {\"id\": \"S6\", \"name\": \"Offshore IPP\", \"circumstance\": \"100+ MW scale\", \"fit\": \"LOW — product scale mismatch\"}\n    ]\n  },\n\n  \"phase_2\": {\n    \"anchor\": {\n      \"anchor_type\": \"PROCESS_VN\",\n      \"anchor_vn_unit\": \"Co-located BESS Storage Asset (EPC-delivered)\",\n      \"anchor_level\": \"L5\",\n      \"parent_vn_unit\": \"Grid Services & Storage Integration\",\n      \"parent_level\": \"L6\",\n      \"rationale\": \"Product is a commissioned system at L5. Parent L6H-GS horizontal unit defines the job context.\"\n    },\n    \"product_job_statement\": \"Help the Grid Services & Storage Integration layer of a German wind park to firm wind output, capture curtailment energy, and monetize ancillary-service revenue (FCR, aFRR, inertia) under VDE-AR-N 4110/4120 and FGW TR8\",\n    \"core_job\": \"Firm wind output and capture curtailment and ancillary-service revenue at the wind park\",\n    \"lens_by_segment\": {\n      \"S1\": \"What grid-firming + revenue-stacking does the greenfield IPP need in the L6H-GS layer?\",\n      \"S2\": \"What curtailment-capture + congestion-relief does the retrofit operator need?\",\n      \"S3\": \"What contract-wrapped, schedule-certain flex asset does the procurement desk need?\",\n      \"S5\": \"What dispatchable, API-addressable flex asset does the VPP need?\"\n    },\n    \"alternatives\": [\n      {\"id\": \"A1\", \"name\": \"Co-located BESS (EPC-delivered)\", \"unspsc\": \"custom:BESS EPC Services\", \"category\": \"same_category\", \"trade_offs\": \"LFP cycle fade, €250–400/kWh, 40–80 m²/MWh footprint, 6–12 mo cert lead, fire-risk envelope\"},\n      {\"id\": \"A2\", \"name\": \"Standalone grid-booster BESS (park-adjacent)\", \"unspsc\": \"custom:BESS EPC Services\", \"category\": \"same_category_diff_siting\", \"trade_offs\": \"Same tech stack; different grid-connection and commercial model\"},\n      {\"id\": \"A3\", \"name\": \"Synchronous condenser / flywheel\", \"unspsc\": \"26111612\", \"category\": \"different_category_same_outcome\", \"trade_offs\": \"Inertia-only — no energy arbitrage, no curtailment capture, rotating-mass O&M\"},\n      {\"id\": \"A4\", \"name\": \"P2X / electrolyzer offtake (curtailment sink)\", \"unspsc\": \"26111900\", \"category\": \"different_approach\", \"trade_offs\": \"H2 safety regime, needs offtaker, €/MW CAPEX 2–3× BESS, long ramp\"},\n      {\"id\": \"A5\", \"name\": \"Do nothing / accept curtailment\", \"unspsc\": null, \"category\": \"status_quo\", \"trade_offs\": \"Zero CAPEX; leaves ~€400 k/MW/yr revenue stack unclaimed\"}\n    ],\n    \"scenarios\": [\n      {\"name\": \"Curtailment-congested feeder\", \"activates_output\": \"Curtailment-capture dispatch\", \"alt_bias\": \"A1≈A2 > A4 >> A5\"},\n      {\"name\": \"Ancillary-service revenue (FCR/aFRR)\", \"activates_output\": \"Ancillary services\", \"alt_bias\": \"A1≈A2 > A3 > A5\"},\n      {\"name\": \"Inertia service (Jan 2026, €8–20 k/MW/yr)\", \"activates_output\": \"Ancillary services\", \"alt_bias\": \"A1≈A2≈A3 >> A4≈A5\"},\n      {\"name\": \"PPA-firming during wind lulls\", \"activates_output\": \"Onshore wind-park power\", \"alt_bias\": \"A1 > A2 >> A5\"},\n      {\"name\": \"Repowering site BESS retrofit\", \"activates_output\": \"Repowered wind-park power\", \"alt_bias\": \"A1 (reuse grid conn.) >> A2\"}\n    ]\n  },\n\n  \"phase_3\": {\n    \"stakeholder_roles\": {\n      \"beneficiary\": \"Wind IPP asset owner (revenue); DSO/TSO (grid stability)\",\n      \"executor\": \"Wind-park operator / O&M team\",\n      \"overseer\": \"IPP asset manager, equity investor, lender\",\n      \"lifecycle_support\": \"EPC (Mein Solar role), O&M provider, FGW certifier, disposer\",\n      \"purchase_executor\": \"Developer / IPP CFO\",\n      \"purchase_influencer\": \"FGW/TÜV certifier, bank, insurance, aggregator\"\n    },\n    \"job_map\": [\n      {\"step\": 1, \"name\": \"DEFINE\", \"relevant\": true, \"rationale\": \"EPC scopes sizing study and revenue-stack feasibility\"},\n      {\"step\": 2, \"name\": \"LOCATE\", \"relevant\": true, \"rationale\": \"EPC identifies MV cabinet, siting, grid-capacity feasibility\"},\n      {\"step\": 3, \"name\": \"PREPARE\", \"relevant\": true, \"rationale\": \"Engineering, DSO filing, Baugenehmigung, procurement\"},\n      {\"step\": 4, \"name\": \"CONFIRM\", \"relevant\": true, \"rationale\": \"FGW TR3/TR8 certification and VDE witness tests\"},\n      {\"step\": 5, \"name\": \"EXECUTE\", \"relevant\": true, \"partial\": true, \"rationale\": \"EMS handoff from EPC; operator runs dispatch\"},\n      {\"step\": 6, \"name\": \"MONITOR\", \"relevant\": true, \"partial\": true, \"rationale\": \"Commissioning monitor is EPC scope\"},\n      {\"step\": 7, \"name\": \"MODIFY\", \"relevant\": true, \"partial\": true, \"rationale\": \"Firmware/update management during warranty\"},\n      {\"step\": 8, \"name\": \"CONCLUDE\", \"relevant\": true, \"partial\": true, \"rationale\": \"Annual re-cert and decommissioning handover\"}\n    ],\n    \"error_statements\": [\n      {\"id\": \"N1\", \"step\": 1, \"step_name\": \"DEFINE\", \"error_type\": \"ACCURACY\", \"full_statement\": \"Minimize the likelihood of undersizing BESS capacity by >15% relative to curtailment-capture potential due to incomplete site wind-yield and congestion-hour data\", \"role\": \"purchase_executor\", \"importance\": 9, \"satisfaction_current\": 4, \"opportunity_score\": 14, \"impact_category\": \"reliability\", \"product_related\": false, \"confidence\": 0.85, \"underserved\": true},\n      {\"id\": \"N2\", \"step\": 1, \"step_name\": \"DEFINE\", \"error_type\": \"EFFORT\", \"full_statement\": \"Increase the ability to produce a bankable dispatch-and-revenue model linking curtailment, §19 StromNEV, intraday arbitrage, FCR/aFRR and inertia within a single sizing study\", \"role\": \"purchase_executor\", \"importance\": 8, \"satisfaction_current\": 3, \"opportunity_score\": 13, \"impact_category\": \"cost\", \"product_related\": false, \"confidence\": 0.85, \"underserved\": true},\n      {\"id\": \"N3\", \"step\": 1, \"step_name\": \"DEFINE\", \"error_type\": \"DETECTION\", \"full_statement\": \"Minimize the likelihood of missing the inertia-service revenue track (EUR 8-20 k per MW per year from Jan 2026) during initial business-case definition\", \"role\": \"purchase_influencer\", \"importance\": 7, \"satisfaction_current\": 3, \"opportunity_score\": 11, \"impact_category\": \"cost\", \"product_related\": false, \"confidence\": 0.80, \"underserved\": false},\n      {\"id\": \"N4\", \"step\": 2, \"step_name\": \"LOCATE\", \"error_type\": \"DETECTION\", \"full_statement\": \"Minimize the likelihood of discovering a DSO MV-capacity blocker after permit milestone, causing >6-month project restart\", \"role\": \"executor\", \"importance\": 10, \"satisfaction_current\": 4, \"opportunity_score\": 16, \"impact_category\": \"time\", \"product_related\": false, \"confidence\": 0.90, \"underserved\": true},\n      {\"id\": \"N5\", \"step\": 2, \"step_name\": \"LOCATE\", \"error_type\": \"EFFORT\", \"full_statement\": \"Increase the ability to secure a buildable 40-80 m2 per MWh footprint inside existing wind-park fencing without new land lease or Bebauungsplan change\", \"role\": \"executor\", \"importance\": 8, \"satisfaction_current\": 5, \"opportunity_score\": 11, \"impact_category\": \"time\", \"product_related\": true, \"confidence\": 0.75, \"underserved\": false},\n      {\"id\": \"N6\", \"step\": 3, \"step_name\": \"PREPARE\", \"error_type\": \"THROUGHPUT\", \"full_statement\": \"Minimize the time-to-Ready-to-Build from contract signature to under 9 months including Baugenehmigung, DSO acceptance and procurement\", \"role\": \"overseer\", \"importance\": 9, \"satisfaction_current\": 4, \"opportunity_score\": 14, \"impact_category\": \"time\", \"product_related\": false, \"confidence\": 0.85, \"underserved\": true},\n      {\"id\": \"N7\", \"step\": 3, \"step_name\": \"PREPARE\", \"error_type\": \"CONSISTENCY\", \"full_statement\": \"Minimize variability between planned and as-built BoP scope (cable runs, foundations, Feuerwehr access) causing >5% cost overrun\", \"role\": \"purchase_executor\", \"importance\": 8, \"satisfaction_current\": 5, \"opportunity_score\": 11, \"impact_category\": \"cost\", \"product_related\": false, \"confidence\": 0.80, \"underserved\": false},\n      {\"id\": \"N8\", \"step\": 3, \"step_name\": \"PREPARE\", \"error_type\": \"ROBUSTNESS\", \"full_statement\": \"Minimize the likelihood of schedule slip driven by Feuerwehr/VdS fire-protection clearance re-design after permit submission\", \"role\": \"lifecycle_support\", \"importance\": 8, \"satisfaction_current\": 4, \"opportunity_score\": 12, \"impact_category\": \"time\", \"product_related\": true, \"confidence\": 0.75, \"underserved\": true},\n      {\"id\": \"N9\", \"step\": 4, \"step_name\": \"CONFIRM\", \"error_type\": \"ACCURACY\", \"full_statement\": \"Minimize the likelihood of FGW TR8 plant-cert re-submission due to incomplete TR3 unit-cert handover from component vendors\", \"role\": \"lifecycle_support\", \"importance\": 9, \"satisfaction_current\": 4, \"opportunity_score\": 14, \"impact_category\": \"reliability\", \"product_related\": true, \"confidence\": 0.85, \"underserved\": true},\n      {\"id\": \"N10\", \"step\": 4, \"step_name\": \"CONFIRM\", \"error_type\": \"ROBUSTNESS\", \"full_statement\": \"Minimize the likelihood of commissioning holdup caused by firmware-version incompatibility between BMS, PCS and EMS subsystems\", \"role\": \"lifecycle_support\", \"importance\": 9, \"satisfaction_current\": 3, \"opportunity_score\": 15, \"impact_category\": \"time\", \"product_related\": true, \"confidence\": 0.88, \"underserved\": true},\n      {\"id\": \"N11\", \"step\": 4, \"step_name\": \"CONFIRM\", \"error_type\": \"RECOVERY\", \"full_statement\": \"Minimize the time to close VDE-AR-N 4110/4120 witness-test non-conformities to under 30 days from finding\", \"role\": \"lifecycle_support\", \"importance\": 8, \"satisfaction_current\": 5, \"opportunity_score\": 11, \"impact_category\": \"time\", \"product_related\": false, \"confidence\": 0.80, \"underserved\": false},\n      {\"id\": \"N12\", \"step\": 4, \"step_name\": \"CONFIRM\", \"error_type\": \"ACCURACY\", \"full_statement\": \"Minimize the likelihood of grid-forming-mode certification gaps that disqualify the asset from the 2026 inertia-service product\", \"role\": \"purchase_influencer\", \"importance\": 9, \"satisfaction_current\": 3, \"opportunity_score\": 15, \"impact_category\": \"cost\", \"product_related\": true, \"confidence\": 0.82, \"underserved\": true},\n      {\"id\": \"N13\", \"step\": 5, \"step_name\": \"EXECUTE\", \"error_type\": \"ACCURACY\", \"full_statement\": \"Minimize the likelihood of missing an aFRR or FCR activation command within the required response window (<30 s)\", \"role\": \"executor\", \"importance\": 9, \"satisfaction_current\": 6, \"opportunity_score\": 12, \"impact_category\": \"reliability\", \"product_related\": false, \"confidence\": 0.80, \"underserved\": false},\n      {\"id\": \"N14\", \"step\": 5, \"step_name\": \"EXECUTE\", \"error_type\": \"THROUGHPUT\", \"full_statement\": \"Maximize the share of available curtailment-window MWh captured by the BESS to above 90% of DSO-curtailed energy\", \"role\": \"beneficiary\", \"importance\": 9, \"satisfaction_current\": 5, \"opportunity_score\": 13, \"impact_category\": \"cost\", \"product_related\": false, \"confidence\": 0.82, \"underserved\": false},\n      {\"id\": \"N15\", \"step\": 5, \"step_name\": \"EXECUTE\", \"error_type\": \"ROBUSTNESS\", \"full_statement\": \"Minimize the likelihood of PCS trip under grid-fault ride-through conditions specified by VDE-AR-N 4110\", \"role\": \"executor\", \"importance\": 10, \"satisfaction_current\": 6, \"opportunity_score\": 14, \"impact_category\": \"safety\", \"product_related\": false, \"confidence\": 0.82, \"underserved\": false},\n      {\"id\": \"N16\", \"step\": 6, \"step_name\": \"MONITOR\", \"error_type\": \"DETECTION\", \"full_statement\": \"Minimize the likelihood of undetected capacity fade exceeding warranty threshold prior to annual availability audit\", \"role\": \"overseer\", \"importance\": 8, \"satisfaction_current\": 5, \"opportunity_score\": 11, \"impact_category\": \"reliability\", \"product_related\": true, \"confidence\": 0.78, \"underserved\": false},\n      {\"id\": \"N17\", \"step\": 6, \"step_name\": \"MONITOR\", \"error_type\": \"CONSISTENCY\", \"full_statement\": \"Minimize SoC-reporting drift between BMS, EMS and aggregator to under 1% over a 24-hour cycle\", \"role\": \"executor\", \"importance\": 6, \"satisfaction_current\": 5, \"opportunity_score\": 7, \"impact_category\": \"reliability\", \"product_related\": true, \"confidence\": 0.70, \"underserved\": false},\n      {\"id\": \"N18\", \"step\": 7, \"step_name\": \"MODIFY\", \"error_type\": \"EFFORT\", \"full_statement\": \"Minimize the operator effort to re-tune EMS dispatch policy when curtailment patterns or intraday spreads shift materially\", \"role\": \"executor\", \"importance\": 7, \"satisfaction_current\": 4, \"opportunity_score\": 10, \"impact_category\": \"skill\", \"product_related\": false, \"confidence\": 0.75, \"underserved\": false},\n      {\"id\": \"N19\", \"step\": 7, \"step_name\": \"MODIFY\", \"error_type\": \"ROBUSTNESS\", \"full_statement\": \"Minimize the likelihood that aging-aware cycling misconfiguration drives degradation exceeding contractual throughput guarantee\", \"role\": \"overseer\", \"importance\": 8, \"satisfaction_current\": 5, \"opportunity_score\": 11, \"impact_category\": \"cost\", \"product_related\": true, \"confidence\": 0.75, \"underserved\": false},\n      {\"id\": \"N20\", \"step\": 8, \"step_name\": \"CONCLUDE\", \"error_type\": \"EFFORT\", \"full_statement\": \"Minimize the effort to execute annual FGW/DSO re-certification audits through a single pre-packaged evidence dossier\", \"role\": \"lifecycle_support\", \"importance\": 7, \"satisfaction_current\": 4, \"opportunity_score\": 10, \"impact_category\": \"time\", \"product_related\": false, \"confidence\": 0.80, \"underserved\": false},\n      {\"id\": \"N21\", \"step\": 8, \"step_name\": \"CONCLUDE\", \"error_type\": \"SAFETY\", \"full_statement\": \"Minimize the likelihood of end-of-life disposal non-compliance with EU Battery Regulation reporting obligations\", \"role\": \"lifecycle_support\", \"importance\": 8, \"satisfaction_current\": 4, \"opportunity_score\": 12, \"impact_category\": \"safety\", \"product_related\": true, \"confidence\": 0.75, \"underserved\": true},\n      {\"id\": \"N22\", \"pyramid_level\": \"P3_role\", \"role\": \"purchase_executor\", \"full_statement\": \"Increase the ability to present the BESS addition as a revenue-accretive asset with committed multi-stream dispatch evidence at investment-committee\", \"importance\": 8, \"satisfaction_current\": 5, \"opportunity_score\": 11, \"impact_category\": \"cost\", \"product_related\": false, \"confidence\": 0.70, \"underserved\": false},\n      {\"id\": \"N23\", \"pyramid_level\": \"P4_image\", \"role\": \"purchase_influencer\", \"full_statement\": \"Minimize the likelihood of certifier audit findings that require repeat visits or signal sloppy engineering practice\", \"importance\": 7, \"satisfaction_current\": 5, \"opportunity_score\": 9, \"impact_category\": \"reliability\", \"product_related\": true, \"confidence\": 0.65, \"underserved\": false},\n      {\"id\": \"N24\", \"pyramid_level\": \"P5_emotion\", \"role\": \"beneficiary\", \"full_statement\": \"Minimize the time lost to cross-vendor root-cause dispute by ensuring a single EPC counterparty owns fault-tree triage and warranty-wrap resolution\", \"importance\": 8, \"satisfaction_current\": 3, \"opportunity_score\": 13, \"impact_category\": \"time\", \"product_related\": false, \"confidence\": 0.60, \"hypothesis\": true, \"underserved\": true}\n    ],\n    \"needs_summary\": {\n      \"total\": 24,\n      \"market_inherent_count\": 15,\n      \"technology_specific_count\": 9,\n      \"market_inherent_pct\": 62.5,\n      \"technology_specific_pct\": 37.5,\n      \"minimize_count\": 15,\n      \"increase_count\": 9,\n      \"underserved_count\": 11,\n      \"overserved_count\": 0,\n      \"top_5_opportunity_ids\": [\"N4\", \"N10\", \"N12\", \"N1\", \"N6\"]\n    }\n  },\n\n  \"incumbent_anchors\": [\n    {\"technology_name\": \"In-house EPC (Wind IPP)\", \"anchor_vn_unit\": \"Co-located BESS Storage Asset (EPC-delivered)\", \"anchor_level\": \"L5\", \"rationale\": \"Large IPPs (RWE, EnBW, Vattenfall) often self-perform the BESS EPC on wind sites\"},\n    {\"technology_name\": \"Fluence\", \"anchor_vn_unit\": \"Co-located BESS Storage Asset (EPC-delivered)\", \"anchor_level\": \"L5\", \"rationale\": \"Leading turnkey BESS integrator; strong in wind co-location\"},\n    {\"technology_name\": \"Tesla Megapack turnkey\", \"anchor_vn_unit\": \"Co-located BESS Storage Asset (EPC-delivered)\", \"anchor_level\": \"L5\", \"rationale\": \"Containerized turnkey with optional EPC wrap\"},\n    {\"technology_name\": \"Wärtsilä\", \"anchor_vn_unit\": \"Co-located BESS Storage Asset (EPC-delivered)\", \"anchor_level\": \"L5\", \"rationale\": \"Utility-scale BESS EPC with GEMS EMS\"},\n    {\"technology_name\": \"Siemens Gamesa storage\", \"anchor_vn_unit\": \"Co-located BESS Storage Asset (EPC-delivered)\", \"anchor_level\": \"L5\", \"rationale\": \"Wind-OEM extension into storage\"}\n  ],\n\n  \"validation\": {\n    \"v1_format_compliance\": \"PASS\",\n    \"v2_product_related_classification\": \"PASS\",\n    \"v3_importance_satisfaction_sanity\": \"PASS\",\n    \"v4_impact_category_accuracy\": \"PASS\",\n    \"v5_coverage\": \"PASS\",\n    \"v6_solution_agnostic\": \"PASS\",\n    \"v7_anchor_correctness\": \"PASS\",\n    \"v8_product_job_parent_reference\": \"PASS\"\n  },\n\n  \"yield\": {\n    \"error_statement_count\": 24,\n    \"target_range\": \"15-30\",\n    \"needs_per_relevant_step_min\": 2,\n    \"needs_per_relevant_step_achieved_min\": 2,\n    \"job_map_steps_relevant\": 8,\n    \"market_inherent_ratio_target\": \"60-70%\",\n    \"market_inherent_ratio_achieved\": \"62.5%\",\n    \"minimize_vs_increase_target\": \"~60/40\",\n    \"minimize_vs_increase_achieved\": \"62.5/37.5\"\n  }\n}\n```"
+    }
+  ],
+  "tables": [
+    {
+      "headers": [
+        "Field",
+        "Value"
+      ],
+      "rows": [
+        {
+          "Field": "CFJ (L7)",
+          "Value": "Convert kinetic wind energy into grid-compliant, dispatchable electrical energy and inject it into transmission/distribution networks under the governing grid code"
+        },
+        {
+          "Field": "Offering level of industry",
+          "Value": "L7 (Ecosystem)"
+        },
+        {
+          "Field": "Process VN applies",
+          "Value": "YES"
+        },
+        {
+          "Field": "Product BOM applies",
+          "Value": "NO (utility service NAICS)"
+        }
+      ]
+    },
+    {
+      "headers": [
+        "#",
+        "Output type",
+        "Adoption (DE, 2026)"
+      ],
+      "rows": [
+        {
+          "#": "1",
+          "Output type": "Onshore wind-park power (new-build)",
+          "Adoption (DE, 2026)": "Established"
+        },
+        {
+          "#": "2",
+          "Output type": "Onshore wind-park power (repowered)",
+          "Adoption (DE, 2026)": "Accelerating (EEG 2023 repower push)"
+        },
+        {
+          "#": "3",
+          "Output type": "Offshore wind-park power",
+          "Adoption (DE, 2026)": "Established (scale mismatch for Mein Solar)"
+        },
+        {
+          "#": "4",
+          "Output type": "Curtailment-capture dispatch",
+          "Adoption (DE, 2026)": "Emerging — 8 TWh DE wind curtailed 2022"
+        },
+        {
+          "#": "5",
+          "Output type": "Ancillary services (FCR, aFRR, inertia)",
+          "Adoption (DE, 2026)": "Inertia market launches **Jan 2026** with €8–20 k/MW/yr"
+        },
+        {
+          "#": "6",
+          "Output type": "Bürgerenergie / citizen-wind output",
+          "Adoption (DE, 2026)": "Established, small-scale"
+        }
+      ]
+    },
+    {
+      "headers": [
+        "#",
+        "Segment",
+        "Circumstance",
+        "Alternatives change?"
+      ],
+      "rows": [
+        {
+          "#": "S1",
+          "Segment": "**Onshore IPP — new-build**",
+          "Circumstance": "Financing a greenfield park, BESS optional add-on",
+          "Alternatives change?": "YES"
+        },
+        {
+          "#": "S2",
+          "Segment": "**Repowering operator**",
+          "Circumstance": "Aged park, same grid connection, curtailment-heavy site",
+          "Alternatives change?": "YES (retrofit vs greenfield economics)"
+        },
+        {
+          "#": "S3",
+          "Segment": "**Utility wind IPP**",
+          "Circumstance": "Portfolio player (EnBW, RWE, Vattenfall), EU-tender procurement",
+          "Alternatives change?": "YES (in-house EPC often competes)"
+        },
+        {
+          "#": "S4",
+          "Segment": "**Bürgerenergie / community wind**",
+          "Circumstance": "Municipal/citizen co-op, low-capex-appetite",
+          "Alternatives change?": "YES (turnkey packages, not EPC)"
+        },
+        {
+          "#": "S5",
+          "Segment": "**Direct-marketing aggregator**",
+          "Circumstance": "Treats park as trading asset, wants flex layer to sell",
+          "Alternatives change?": "YES (VPP integration matters more than hardware)"
+        },
+        {
+          "#": "S6",
+          "Segment": "**Offshore IPP**",
+          "Circumstance": "100+ MW storage scale",
+          "Alternatives change?": "YES — **LOW fit for Mein Solar (4.5 MW ref)**"
+        }
+      ]
+    },
+    {
+      "headers": [
+        "Field",
+        "Value"
+      ],
+      "rows": [
+        {
+          "Field": "`anchor_type`",
+          "Value": "PROCESS_VN"
+        },
+        {
+          "Field": "`anchor_vn_unit`",
+          "Value": "**Co-located BESS Storage Asset (EPC-delivered)**"
+        },
+        {
+          "Field": "`anchor_level`",
+          "Value": "**L5**"
+        },
+        {
+          "Field": "`parent_vn_unit`",
+          "Value": "Grid Services & Storage Integration"
+        },
+        {
+          "Field": "`parent_level`",
+          "Value": "L6 (horizontal — L6H-GS)"
+        },
+        {
+          "Field": "`rationale`",
+          "Value": "Product IS a commissioned system, not a sub-component; matches L5 abstraction. Parent L6H-GS defines the job context: \"provide flexibility and grid services to firm wind output\""
+        }
+      ]
+    },
+    {
+      "headers": [
+        "Segment",
+        "Lens (function verb × segment)"
+      ],
+      "rows": [
+        {
+          "Segment": "S1 Onshore new-build IPP",
+          "Lens (function verb × segment)": "\"What **grid-firming + revenue-stacking** does the greenfield IPP need within the L6H-GS layer?\""
+        },
+        {
+          "Segment": "S2 Repowering operator",
+          "Lens (function verb × segment)": "\"What **curtailment-capture + congestion-relief** does the retrofit operator need?\""
+        },
+        {
+          "Segment": "S3 Utility IPP",
+          "Lens (function verb × segment)": "\"What **contract-wrapped, schedule-certain** flex asset does the procurement desk need?\""
+        },
+        {
+          "Segment": "S5 Aggregator",
+          "Lens (function verb × segment)": "\"What **dispatchable, API-addressable** flex asset does the VPP need?\""
+        }
+      ]
+    },
+    {
+      "headers": [
+        "#",
+        "Alternative",
+        "UNSPSC (closest)",
+        "Category",
+        "Inherent trade-offs"
+      ],
+      "rows": [
+        {
+          "#": "A1",
+          "Alternative": "**Co-located BESS (EPC-delivered)** — Mein Solar class",
+          "UNSPSC (closest)": "custom `BESS EPC Services`",
+          "Category": "Same category",
+          "Inherent trade-offs": "Fire risk, LFP cycle fade, €250–400/kWh, 40–80 m²/MWh footprint, 6–12 mo cert lead"
+        },
+        {
+          "#": "A2",
+          "Alternative": "Standalone grid-booster BESS",
+          "UNSPSC (closest)": "custom `BESS EPC Services`",
+          "Category": "Same category / different siting",
+          "Inherent trade-offs": "Same as A1; different commercial & grid-connection topology"
+        },
+        {
+          "#": "A3",
+          "Alternative": "Synchronous condenser / flywheel",
+          "UNSPSC (closest)": "26111612 (rotating machine)",
+          "Category": "Different category / same outcome",
+          "Inherent trade-offs": "No energy arbitrage (inertia-only), rotating-mass O&M, no curtailment capture"
+        },
+        {
+          "#": "A4",
+          "Alternative": "P2X / electrolyzer offtake (curtailment sink)",
+          "UNSPSC (closest)": "26111900 (H₂ gen)",
+          "Category": "Different approach",
+          "Inherent trade-offs": "H₂ safety regime, needs offtaker, €/MW CAPEX 2–3× BESS, long ramp"
+        },
+        {
+          "#": "A5",
+          "Alternative": "**Do nothing / accept curtailment**",
+          "UNSPSC (closest)": "—",
+          "Category": "Status quo",
+          "Inherent trade-offs": "Zero CAPEX — leaves ~€400 k/MW/yr revenue stack unclaimed; curtailment loss accepted"
+        }
+      ]
+    },
+    {
+      "headers": [
+        "Scenario",
+        "Activates",
+        "Alternative bias"
+      ],
+      "rows": [
+        {
+          "Scenario": "Curtailment-congested feeder",
+          "Activates": "Output type 4",
+          "Alternative bias": "A1 ≈ A2 > A4 >> A5"
+        },
+        {
+          "Scenario": "Ancillary-service revenue (FCR/aFRR)",
+          "Activates": "Output type 5",
+          "Alternative bias": "A1 ≈ A2 > A3 > A5"
+        },
+        {
+          "Scenario": "Inertia service (Jan 2026 TSO product, €8–20 k/MW/yr)",
+          "Activates": "Output type 5",
+          "Alternative bias": "A1 ≈ A2 ≈ A3 >> A4 ≈ A5"
+        },
+        {
+          "Scenario": "PPA-firming during wind lulls",
+          "Activates": "Output type 1",
+          "Alternative bias": "A1 > A2 >> A5"
+        },
+        {
+          "Scenario": "Repowering site BESS retrofit",
+          "Activates": "Output type 2",
+          "Alternative bias": "A1 (co-located, reuse grid conn.) >> A2"
+        }
+      ]
+    },
+    {
+      "headers": [
+        "Role",
+        "Who"
+      ],
+      "rows": [
+        {
+          "Role": "Job Beneficiary",
+          "Who": "Wind IPP asset owner (revenue); DSO/TSO (grid stability)"
+        },
+        {
+          "Role": "Job Executor",
+          "Who": "Wind-park operator / O&M team (dispatches BESS)"
+        },
+        {
+          "Role": "Job Overseer",
+          "Who": "IPP asset manager, equity investor, lender"
+        },
+        {
+          "Role": "Lifecycle Support",
+          "Who": "**EPC (Mein Solar role)**, O&M provider, FGW certifier, disposer"
+        },
+        {
+          "Role": "Purchase Executor",
+          "Who": "Developer/IPP CFO"
+        },
+        {
+          "Role": "Purchase Influencer",
+          "Who": "FGW/TÜV certifier, bank lender, insurance, aggregator"
+        }
+      ]
+    },
+    {
+      "headers": [
+        "#",
+        "Step",
+        "Relevant to product?",
+        "Rationale"
+      ],
+      "rows": [
+        {
+          "#": "1",
+          "Step": "DEFINE",
+          "Relevant to product?": "**YES**",
+          "Rationale": "EPC scopes sizing study + revenue-stack feasibility"
+        },
+        {
+          "#": "2",
+          "Step": "LOCATE",
+          "Relevant to product?": "**YES**",
+          "Rationale": "EPC identifies MV cabinet, siting, grid-capacity feasibility"
+        },
+        {
+          "#": "3",
+          "Step": "PREPARE",
+          "Relevant to product?": "**YES**",
+          "Rationale": "Engineering, DSO filing, Baugenehmigung, procurement"
+        },
+        {
+          "#": "4",
+          "Step": "CONFIRM",
+          "Relevant to product?": "**YES**",
+          "Rationale": "FGW TR3/TR8 certification; VDE-AR-N 4110/4120 witness tests"
+        },
+        {
+          "#": "5",
+          "Step": "EXECUTE",
+          "Relevant to product?": "partial",
+          "Rationale": "Dispatch is operator-side; EMS handoff is EPC's"
+        },
+        {
+          "#": "6",
+          "Step": "MONITOR",
+          "Relevant to product?": "partial",
+          "Rationale": "Commissioning monitor scope; lifecycle monitor is O&M"
+        },
+        {
+          "#": "7",
+          "Step": "MODIFY",
+          "Relevant to product?": "partial",
+          "Rationale": "Firmware/update management during warranty"
+        },
+        {
+          "#": "8",
+          "Step": "CONCLUDE",
+          "Relevant to product?": "partial",
+          "Rationale": "Annual re-cert, decommissioning handover"
+        }
+      ]
+    },
+    {
+      "headers": [
+        "#",
+        "Step",
+        "Error type",
+        "Statement",
+        "Role",
+        "Imp",
+        "Sat",
+        "Opp",
+        "Impact",
+        "p_rel",
+        "Conf"
+      ],
+      "rows": [
+        {
+          "#": "N1",
+          "Step": "DEFINE",
+          "Error type": "ACCURACY",
+          "Statement": "Minimize the likelihood of undersizing BESS capacity by >15% relative to curtailment-capture potential due to incomplete site wind-yield and congestion-hour data",
+          "Role": "Purchase Executor",
+          "Imp": "9",
+          "Sat": "4",
+          "Opp": "14",
+          "Impact": "reliability",
+          "p_rel": "false",
+          "Conf": "0.85"
+        },
+        {
+          "#": "N2",
+          "Step": "DEFINE",
+          "Error type": "EFFORT",
+          "Statement": "Increase the ability to produce a bankable dispatch-and-revenue model linking curtailment, §19 StromNEV, intraday arbitrage, FCR/aFRR and inertia within a single sizing study",
+          "Role": "Purchase Executor",
+          "Imp": "8",
+          "Sat": "3",
+          "Opp": "13",
+          "Impact": "cost",
+          "p_rel": "false",
+          "Conf": "0.85"
+        },
+        {
+          "#": "N3",
+          "Step": "DEFINE",
+          "Error type": "DETECTION",
+          "Statement": "Minimize the likelihood of missing the inertia-service revenue track (€8–20 k/MW/yr from Jan 2026) during initial business-case definition",
+          "Role": "Purchase Influencer",
+          "Imp": "7",
+          "Sat": "3",
+          "Opp": "11",
+          "Impact": "cost",
+          "p_rel": "false",
+          "Conf": "0.80"
+        },
+        {
+          "#": "N4",
+          "Step": "LOCATE",
+          "Error type": "DETECTION",
+          "Statement": "Minimize the likelihood of discovering a DSO MV-capacity blocker after permit milestone, causing >6-month project restart",
+          "Role": "Executor",
+          "Imp": "10",
+          "Sat": "4",
+          "Opp": "16",
+          "Impact": "time",
+          "p_rel": "false",
+          "Conf": "0.90"
+        },
+        {
+          "#": "N5",
+          "Step": "LOCATE",
+          "Error type": "EFFORT",
+          "Statement": "Increase the ability to secure a buildable 40–80 m²/MWh footprint inside existing wind-park fencing without new land lease or Bebauungsplan change",
+          "Role": "Executor",
+          "Imp": "8",
+          "Sat": "5",
+          "Opp": "11",
+          "Impact": "time",
+          "p_rel": "true",
+          "Conf": "0.75"
+        },
+        {
+          "#": "N6",
+          "Step": "PREPARE",
+          "Error type": "THROUGHPUT",
+          "Statement": "Minimize the time-to-Ready-to-Build from contract signature to <9 months including Baugenehmigung, DSO acceptance and procurement",
+          "Role": "Overseer",
+          "Imp": "9",
+          "Sat": "4",
+          "Opp": "14",
+          "Impact": "time",
+          "p_rel": "false",
+          "Conf": "0.85"
+        },
+        {
+          "#": "N7",
+          "Step": "PREPARE",
+          "Error type": "CONSISTENCY",
+          "Statement": "Minimize variability between planned and as-built BoP scope (cable runs, foundations, Feuerwehr access) causing >5% cost overrun",
+          "Role": "Purchase Executor",
+          "Imp": "8",
+          "Sat": "5",
+          "Opp": "11",
+          "Impact": "cost",
+          "p_rel": "false",
+          "Conf": "0.80"
+        },
+        {
+          "#": "N8",
+          "Step": "PREPARE",
+          "Error type": "ROBUSTNESS",
+          "Statement": "Minimize the likelihood of schedule slip driven by Feuerwehr/VdS fire-protection clearance re-design after permit submission",
+          "Role": "Lifecycle Support",
+          "Imp": "8",
+          "Sat": "4",
+          "Opp": "12",
+          "Impact": "time",
+          "p_rel": "true",
+          "Conf": "0.75"
+        },
+        {
+          "#": "N9",
+          "Step": "CONFIRM",
+          "Error type": "ACCURACY",
+          "Statement": "Minimize the likelihood of FGW TR8 plant-cert re-submission due to incomplete TR3 unit-cert handover from component vendors",
+          "Role": "Lifecycle Support",
+          "Imp": "9",
+          "Sat": "4",
+          "Opp": "14",
+          "Impact": "reliability",
+          "p_rel": "true",
+          "Conf": "0.85"
+        },
+        {
+          "#": "N10",
+          "Step": "CONFIRM",
+          "Error type": "ROBUSTNESS",
+          "Statement": "Minimize the likelihood of commissioning holdup caused by firmware-version incompatibility between BMS, PCS and EMS subsystems",
+          "Role": "Lifecycle Support",
+          "Imp": "9",
+          "Sat": "3",
+          "Opp": "15",
+          "Impact": "time",
+          "p_rel": "true",
+          "Conf": "0.88"
+        },
+        {
+          "#": "N11",
+          "Step": "CONFIRM",
+          "Error type": "RECOVERY",
+          "Statement": "Minimize the time to close VDE-AR-N 4110/4120 witness-test non-conformities to <30 days from finding",
+          "Role": "Lifecycle Support",
+          "Imp": "8",
+          "Sat": "5",
+          "Opp": "11",
+          "Impact": "time",
+          "p_rel": "false",
+          "Conf": "0.80"
+        },
+        {
+          "#": "N12",
+          "Step": "CONFIRM",
+          "Error type": "ACCURACY",
+          "Statement": "Minimize the likelihood of grid-forming-mode certification gaps that disqualify the asset from the 2026 inertia-service product",
+          "Role": "Purchase Influencer",
+          "Imp": "9",
+          "Sat": "3",
+          "Opp": "15",
+          "Impact": "cost",
+          "p_rel": "true",
+          "Conf": "0.82"
+        },
+        {
+          "#": "N13",
+          "Step": "EXECUTE",
+          "Error type": "ACCURACY",
+          "Statement": "Minimize the likelihood of missing an aFRR / FCR activation command within the required response window (<30 s / <30 s)",
+          "Role": "Executor",
+          "Imp": "9",
+          "Sat": "6",
+          "Opp": "12",
+          "Impact": "reliability",
+          "p_rel": "false",
+          "Conf": "0.80"
+        },
+        {
+          "#": "N14",
+          "Step": "EXECUTE",
+          "Error type": "THROUGHPUT",
+          "Statement": "Maximize the share of available curtailment-window MWh captured by the BESS to >90% of DSO-curtailed energy",
+          "Role": "Beneficiary",
+          "Imp": "9",
+          "Sat": "5",
+          "Opp": "13",
+          "Impact": "cost",
+          "p_rel": "false",
+          "Conf": "0.82"
+        },
+        {
+          "#": "N15",
+          "Step": "EXECUTE",
+          "Error type": "ROBUSTNESS",
+          "Statement": "Minimize the likelihood of PCS trip under grid-fault ride-through conditions specified by VDE-AR-N 4110",
+          "Role": "Executor",
+          "Imp": "10",
+          "Sat": "6",
+          "Opp": "14",
+          "Impact": "safety",
+          "p_rel": "false",
+          "Conf": "0.82"
+        },
+        {
+          "#": "N16",
+          "Step": "MONITOR",
+          "Error type": "DETECTION",
+          "Statement": "Minimize the likelihood of undetected capacity fade exceeding warranty threshold prior to annual availability audit",
+          "Role": "Overseer",
+          "Imp": "8",
+          "Sat": "5",
+          "Opp": "11",
+          "Impact": "reliability",
+          "p_rel": "true",
+          "Conf": "0.78"
+        },
+        {
+          "#": "N17",
+          "Step": "MONITOR",
+          "Error type": "CONSISTENCY",
+          "Statement": "Minimize SoC-reporting drift between BMS, EMS and aggregator to <1% over a 24-h cycle",
+          "Role": "Executor",
+          "Imp": "6",
+          "Sat": "5",
+          "Opp": "7",
+          "Impact": "reliability",
+          "p_rel": "true",
+          "Conf": "0.70"
+        },
+        {
+          "#": "N18",
+          "Step": "MODIFY",
+          "Error type": "EFFORT",
+          "Statement": "Minimize the operator effort to re-tune EMS dispatch policy when curtailment patterns or intraday spreads shift materially",
+          "Role": "Executor",
+          "Imp": "7",
+          "Sat": "4",
+          "Opp": "10",
+          "Impact": "skill",
+          "p_rel": "false",
+          "Conf": "0.75"
+        },
+        {
+          "#": "N19",
+          "Step": "MODIFY",
+          "Error type": "ROBUSTNESS",
+          "Statement": "Minimize the likelihood that aging-aware cycling misconfiguration drives degradation exceeding contractual throughput guarantee",
+          "Role": "Overseer",
+          "Imp": "8",
+          "Sat": "5",
+          "Opp": "11",
+          "Impact": "cost",
+          "p_rel": "true",
+          "Conf": "0.75"
+        },
+        {
+          "#": "N20",
+          "Step": "CONCLUDE",
+          "Error type": "EFFORT",
+          "Statement": "Minimize the effort to execute annual FGW/DSO re-certification audits through a single pre-packaged evidence dossier",
+          "Role": "Lifecycle Support",
+          "Imp": "7",
+          "Sat": "4",
+          "Opp": "10",
+          "Impact": "time",
+          "p_rel": "false",
+          "Conf": "0.80"
+        },
+        {
+          "#": "N21",
+          "Step": "CONCLUDE",
+          "Error type": "SAFETY",
+          "Statement": "Minimize the likelihood of end-of-life disposal non-compliance with EU Battery Regulation reporting obligations",
+          "Role": "Lifecycle Support",
+          "Imp": "8",
+          "Sat": "4",
+          "Opp": "12",
+          "Impact": "safety",
+          "p_rel": "true",
+          "Conf": "0.75"
+        }
+      ]
+    },
+    {
+      "headers": [
+        "#",
+        "Level",
+        "Role",
+        "Retrieval → Bridge",
+        "Statement",
+        "Imp",
+        "Sat",
+        "Opp",
+        "p_rel"
+      ],
+      "rows": [
+        {
+          "#": "N22",
+          "Level": "P3 Role",
+          "Role": "Purchase Executor (IPP CFO)",
+          "Retrieval → Bridge": "\"Revenue-additive capital investor, not cost-center procurer\" → What must the EPC enable?",
+          "Statement": "Increase the ability to present the BESS addition as a revenue-accretive asset with committed multi-stream dispatch evidence at investment-committee",
+          "Imp": "8",
+          "Sat": "5",
+          "Opp": "11",
+          "p_rel": "false"
+        },
+        {
+          "#": "N23",
+          "Level": "P4 Image",
+          "Role": "Purchase Influencer (FGW certifier)",
+          "Retrieval → Bridge": "\"Competent engineer, not audit-finding magnet\" → What must the EPC deliver?",
+          "Statement": "Minimize the likelihood of certifier audit findings that require repeat visits or signal sloppy engineering practice",
+          "Imp": "7",
+          "Sat": "5",
+          "Opp": "9",
+          "p_rel": "true"
+        },
+        {
+          "#": "N24",
+          "Level": "P5 Emotion",
+          "Role": "Job Beneficiary (IPP asset owner) — **[hypothesis]**",
+          "Retrieval → Bridge": "Avoid fault-event anxiety from multi-vendor finger-pointing → What must the EPC guarantee?",
+          "Statement": "Minimize the time lost to cross-vendor root-cause dispute by ensuring a single EPC counterparty owns fault-tree triage and warranty-wrap resolution",
+          "Imp": "8",
+          "Sat": "3",
+          "Opp": "13",
+          "p_rel": "false"
+        }
+      ]
+    },
+    {
+      "headers": [
+        "Bucket",
+        "Needs",
+        "%"
+      ],
+      "rows": [
+        {
+          "Bucket": "Total",
+          "Needs": "24",
+          "%": "100%"
+        },
+        {
+          "Bucket": "Market-inherent (`product_related=false`)",
+          "Needs": "15",
+          "%": "63%"
+        },
+        {
+          "Bucket": "Tech-specific (`product_related=true`)",
+          "Needs": "9",
+          "%": "37%"
+        },
+        {
+          "Bucket": "\"Minimize\"",
+          "Needs": "15",
+          "%": "63%"
+        },
+        {
+          "Bucket": "\"Increase\"",
+          "Needs": "9",
+          "%": "37%"
+        },
+        {
+          "Bucket": "**Underserved** (imp>7 AND sat<5)",
+          "Needs": "**N1, N2, N3, N4, N6, N8, N9, N10, N12, N21, N24**",
+          "%": "**11**"
+        },
+        {
+          "Bucket": "Overserved (imp<3 AND sat>7)",
+          "Needs": "none",
+          "%": "0"
+        }
+      ]
+    },
+    {
+      "headers": [
+        "Rank",
+        "#",
+        "Need (short)",
+        "Opp"
+      ],
+      "rows": [
+        {
+          "Rank": "1",
+          "#": "N4",
+          "Need (short)": "DSO MV-capacity blocker discovered late",
+          "Opp": "**16**"
+        },
+        {
+          "Rank": "2",
+          "#": "N10",
+          "Need (short)": "Firmware incompatibility commissioning holdup",
+          "Opp": "**15**"
+        },
+        {
+          "Rank": "3",
+          "#": "N12",
+          "Need (short)": "Grid-forming-mode cert gap → loses inertia revenue",
+          "Opp": "**15**"
+        },
+        {
+          "Rank": "4",
+          "#": "N1",
+          "Need (short)": "Undersize capacity vs curtailment potential",
+          "Opp": "**14**"
+        },
+        {
+          "Rank": "5",
+          "#": "N6",
+          "Need (short)": "Time-to-Ready-to-Build >9 months",
+          "Opp": "**14**"
+        }
+      ]
+    },
+    {
+      "headers": [
+        "#",
+        "Check",
+        "Status"
+      ],
+      "rows": [
+        {
+          "#": "V1",
+          "Check": "Statement format (Minimize/Increase + 1 KPI)",
+          "Status": "✅ 24/24"
+        },
+        {
+          "#": "V2",
+          "Check": "`product_related=true` only if need disappears with different tech",
+          "Status": "✅ (e.g. N10 firmware drift, N5 m²/MWh, N8 fire-clearance, N21 EU Battery Reg. are LFP/BESS-specific)"
+        },
+        {
+          "#": "V3",
+          "Check": "Importance/satisfaction sanity",
+          "Status": "✅ (safety N15 imp=10; no uniform patterns)"
+        },
+        {
+          "#": "V4",
+          "Check": "Impact category matches KPI",
+          "Status": "✅"
+        },
+        {
+          "#": "V5",
+          "Check": "≥2 needs per relevant step, 60–70 / 30–40 ratio",
+          "Status": "✅ (63/37 split)"
+        },
+        {
+          "#": "V6",
+          "Check": "Solution-agnostic",
+          "Status": "✅ (no \"lithium\", \"Mein Solar\", or vendor names in statements)"
+        },
+        {
+          "#": "V7",
+          "Check": "Anchor level matches abstraction",
+          "Status": "✅ (L5 system)"
+        },
+        {
+          "#": "V8",
+          "Check": "Product job references parent unit",
+          "Status": "✅ (\"Grid Services & Storage Integration layer\")"
+        }
+      ]
+    }
+  ],
+  "entities": [
+    {
+      "component": "jtbd_analysis",
+      "naics_code": "221115",
+      "naics_title": "Wind Electric Power Generation",
+      "market_name": "Wind+BESS Hybrid Parks",
+      "product_name": "EPC für Großbatteriespeicher",
+      "vendor_name": "Mein Solar GmbH",
+      "phase_1": {
+        "cfj_statement": "Convert kinetic wind energy into grid-compliant, dispatchable electrical energy and inject it into transmission/distribution networks under the governing grid code",
+        "industry_offering_level": "L7",
+        "process_vn_applies": true,
+        "product_bom_applies": false,
+        "output_types": [
+          {
+            "name": "Onshore wind-park power (new-build)",
+            "adoption": "established"
+          },
+          {
+            "name": "Onshore wind-park power (repowered)",
+            "adoption": "accelerating"
+          },
+          {
+            "name": "Offshore wind-park power",
+            "adoption": "established",
+            "note": "scale mismatch for Mein Solar"
+          },
+          {
+            "name": "Curtailment-capture dispatch",
+            "adoption": "emerging"
+          },
+          {
+            "name": "Ancillary services (FCR, aFRR, inertia)",
+            "adoption": "growing",
+            "note": "inertia market launch Jan 2026"
+          },
+          {
+            "name": "Bürgerenergie / citizen-wind output",
+            "adoption": "established"
+          }
+        ],
+        "segments": [
+          {
+            "id": "S1",
+            "name": "Onshore IPP — new-build",
+            "circumstance": "Financing greenfield park with optional BESS add-on"
+          },
+          {
+            "id": "S2",
+            "name": "Repowering operator",
+            "circumstance": "Aged park, same grid connection, curtailment-heavy"
+          },
+          {
+            "id": "S3",
+            "name": "Utility wind IPP",
+            "circumstance": "Portfolio player, EU-tender procurement"
+          },
+          {
+            "id": "S4",
+            "name": "Bürgerenergie / community wind",
+            "circumstance": "Municipal/citizen co-op, low capex appetite"
+          },
+          {
+            "id": "S5",
+            "name": "Direct-marketing aggregator",
+            "circumstance": "Treats park as trading asset"
+          },
+          {
+            "id": "S6",
+            "name": "Offshore IPP",
+            "circumstance": "100+ MW scale",
+            "fit": "LOW — product scale mismatch"
+          }
+        ]
+      },
+      "phase_2": {
+        "anchor": {
+          "anchor_type": "PROCESS_VN",
+          "anchor_vn_unit": "Co-located BESS Storage Asset (EPC-delivered)",
+          "anchor_level": "L5",
+          "parent_vn_unit": "Grid Services & Storage Integration",
+          "parent_level": "L6",
+          "rationale": "Product is a commissioned system at L5. Parent L6H-GS horizontal unit defines the job context."
+        },
+        "product_job_statement": "Help the Grid Services & Storage Integration layer of a German wind park to firm wind output, capture curtailment energy, and monetize ancillary-service revenue (FCR, aFRR, inertia) under VDE-AR-N 4110/4120 and FGW TR8",
+        "core_job": "Firm wind output and capture curtailment and ancillary-service revenue at the wind park",
+        "lens_by_segment": {
+          "S1": "What grid-firming + revenue-stacking does the greenfield IPP need in the L6H-GS layer?",
+          "S2": "What curtailment-capture + congestion-relief does the retrofit operator need?",
+          "S3": "What contract-wrapped, schedule-certain flex asset does the procurement desk need?",
+          "S5": "What dispatchable, API-addressable flex asset does the VPP need?"
+        },
+        "alternatives": [
+          {
+            "id": "A1",
+            "name": "Co-located BESS (EPC-delivered)",
+            "unspsc": "custom:BESS EPC Services",
+            "category": "same_category",
+            "trade_offs": "LFP cycle fade, €250–400/kWh, 40–80 m²/MWh footprint, 6–12 mo cert lead, fire-risk envelope"
+          },
+          {
+            "id": "A2",
+            "name": "Standalone grid-booster BESS (park-adjacent)",
+            "unspsc": "custom:BESS EPC Services",
+            "category": "same_category_diff_siting",
+            "trade_offs": "Same tech stack; different grid-connection and commercial model"
+          },
+          {
+            "id": "A3",
+            "name": "Synchronous condenser / flywheel",
+            "unspsc": "26111612",
+            "category": "different_category_same_outcome",
+            "trade_offs": "Inertia-only — no energy arbitrage, no curtailment capture, rotating-mass O&M"
+          },
+          {
+            "id": "A4",
+            "name": "P2X / electrolyzer offtake (curtailment sink)",
+            "unspsc": "26111900",
+            "category": "different_approach",
+            "trade_offs": "H2 safety regime, needs offtaker, €/MW CAPEX 2–3× BESS, long ramp"
+          },
+          {
+            "id": "A5",
+            "name": "Do nothing / accept curtailment",
+            "unspsc": null,
+            "category": "status_quo",
+            "trade_offs": "Zero CAPEX; leaves ~€400 k/MW/yr revenue stack unclaimed"
+          }
+        ],
+        "scenarios": [
+          {
+            "name": "Curtailment-congested feeder",
+            "activates_output": "Curtailment-capture dispatch",
+            "alt_bias": "A1≈A2 > A4 >> A5"
+          },
+          {
+            "name": "Ancillary-service revenue (FCR/aFRR)",
+            "activates_output": "Ancillary services",
+            "alt_bias": "A1≈A2 > A3 > A5"
+          },
+          {
+            "name": "Inertia service (Jan 2026, €8–20 k/MW/yr)",
+            "activates_output": "Ancillary services",
+            "alt_bias": "A1≈A2≈A3 >> A4≈A5"
+          },
+          {
+            "name": "PPA-firming during wind lulls",
+            "activates_output": "Onshore wind-park power",
+            "alt_bias": "A1 > A2 >> A5"
+          },
+          {
+            "name": "Repowering site BESS retrofit",
+            "activates_output": "Repowered wind-park power",
+            "alt_bias": "A1 (reuse grid conn.) >> A2"
+          }
+        ]
+      },
+      "phase_3": {
+        "stakeholder_roles": {
+          "beneficiary": "Wind IPP asset owner (revenue); DSO/TSO (grid stability)",
+          "executor": "Wind-park operator / O&M team",
+          "overseer": "IPP asset manager, equity investor, lender",
+          "lifecycle_support": "EPC (Mein Solar role), O&M provider, FGW certifier, disposer",
+          "purchase_executor": "Developer / IPP CFO",
+          "purchase_influencer": "FGW/TÜV certifier, bank, insurance, aggregator"
+        },
+        "job_map": [
+          {
+            "step": 1,
+            "name": "DEFINE",
+            "relevant": true,
+            "rationale": "EPC scopes sizing study and revenue-stack feasibility"
+          },
+          {
+            "step": 2,
+            "name": "LOCATE",
+            "relevant": true,
+            "rationale": "EPC identifies MV cabinet, siting, grid-capacity feasibility"
+          },
+          {
+            "step": 3,
+            "name": "PREPARE",
+            "relevant": true,
+            "rationale": "Engineering, DSO filing, Baugenehmigung, procurement"
+          },
+          {
+            "step": 4,
+            "name": "CONFIRM",
+            "relevant": true,
+            "rationale": "FGW TR3/TR8 certification and VDE witness tests"
+          },
+          {
+            "step": 5,
+            "name": "EXECUTE",
+            "relevant": true,
+            "partial": true,
+            "rationale": "EMS handoff from EPC; operator runs dispatch"
+          },
+          {
+            "step": 6,
+            "name": "MONITOR",
+            "relevant": true,
+            "partial": true,
+            "rationale": "Commissioning monitor is EPC scope"
+          },
+          {
+            "step": 7,
+            "name": "MODIFY",
+            "relevant": true,
+            "partial": true,
+            "rationale": "Firmware/update management during warranty"
+          },
+          {
+            "step": 8,
+            "name": "CONCLUDE",
+            "relevant": true,
+            "partial": true,
+            "rationale": "Annual re-cert and decommissioning handover"
+          }
+        ],
+        "error_statements": [
+          {
+            "id": "N1",
+            "step": 1,
+            "step_name": "DEFINE",
+            "error_type": "ACCURACY",
+            "full_statement": "Minimize the likelihood of undersizing BESS capacity by >15% relative to curtailment-capture potential due to incomplete site wind-yield and congestion-hour data",
+            "role": "purchase_executor",
+            "importance": 9,
+            "satisfaction_current": 4,
+            "opportunity_score": 14,
+            "impact_category": "reliability",
+            "product_related": false,
+            "confidence": 0.85,
+            "underserved": true,
+            "satisfaction_rationale": "No incumbent offers an integrated sizing tool that combines site-specific wind-yield, congestion-hour data, and BESS capacity optimization in a single study — most IPPs rely on fragmented consultant reports."
+          },
+          {
+            "id": "N2",
+            "step": 1,
+            "step_name": "DEFINE",
+            "error_type": "EFFORT",
+            "full_statement": "Increase the ability to produce a bankable dispatch-and-revenue model linking curtailment, §19 StromNEV, intraday arbitrage, FCR/aFRR and inertia within a single sizing study",
+            "role": "purchase_executor",
+            "importance": 8,
+            "satisfaction_current": 3,
+            "opportunity_score": 13,
+            "impact_category": "cost",
+            "product_related": false,
+            "confidence": 0.85,
+            "underserved": true,
+            "satisfaction_rationale": "Wärtsilä GEMS and Fluence Mosaic ship revenue-stack modeling tools, but a gap remains versus a fully bankable single-study output."
+          },
+          {
+            "id": "N3",
+            "step": 1,
+            "step_name": "DEFINE",
+            "error_type": "DETECTION",
+            "full_statement": "Minimize the likelihood of missing the inertia-service revenue track (EUR 8-20 k per MW per year from Jan 2026) during initial business-case definition",
+            "role": "purchase_influencer",
+            "importance": 7,
+            "satisfaction_current": 3,
+            "opportunity_score": 11,
+            "impact_category": "cost",
+            "product_related": false,
+            "confidence": 0.8,
+            "underserved": false,
+            "satisfaction_rationale": "The January 2026 TSO inertia-service product is too new for most EPC or OEM vendors to include systematically in initial business-case templates, leaving the revenue track easily overlooked."
+          },
+          {
+            "id": "N4",
+            "step": 2,
+            "step_name": "LOCATE",
+            "error_type": "DETECTION",
+            "full_statement": "Minimize the likelihood of discovering a DSO MV-capacity blocker after permit milestone, causing >6-month project restart",
+            "role": "executor",
+            "importance": 10,
+            "satisfaction_current": 4,
+            "opportunity_score": 16,
+            "impact_category": "time",
+            "product_related": false,
+            "confidence": 0.9,
+            "underserved": true,
+            "satisfaction_rationale": "DSO MV-capacity bottlenecks are typically discovered only after Netzanfrage filing, and no incumbent EPC offers a pre-contractual grid-capacity screening that eliminates late-stage surprises."
+          },
+          {
+            "id": "N5",
+            "step": 2,
+            "step_name": "LOCATE",
+            "error_type": "EFFORT",
+            "full_statement": "Increase the ability to secure a buildable 40-80 m2 per MWh footprint inside existing wind-park fencing without new land lease or Bebauungsplan change",
+            "role": "executor",
+            "importance": 8,
+            "satisfaction_current": 5,
+            "opportunity_score": 11,
+            "impact_category": "time",
+            "product_related": true,
+            "confidence": 0.75,
+            "underserved": false,
+            "satisfaction_rationale": "Containerized BESS footprints of 40-80 m2/MWh generally fit within wind-park fencing, though site-specific civil constraints still require individual engineering verification."
+          },
+          {
+            "id": "N6",
+            "step": 3,
+            "step_name": "PREPARE",
+            "error_type": "THROUGHPUT",
+            "full_statement": "Minimize the time-to-Ready-to-Build from contract signature to under 9 months including Baugenehmigung, DSO acceptance and procurement",
+            "role": "overseer",
+            "importance": 9,
+            "satisfaction_current": 4,
+            "opportunity_score": 14,
+            "impact_category": "time",
+            "product_related": false,
+            "confidence": 0.85,
+            "underserved": true,
+            "satisfaction_rationale": "Ready-to-Build timelines of 9-12 months are standard across incumbent EPCs, but DSO acceptance and Baugenehmigung variability make sub-9-month delivery inconsistent."
+          },
+          {
+            "id": "N7",
+            "step": 3,
+            "step_name": "PREPARE",
+            "error_type": "CONSISTENCY",
+            "full_statement": "Minimize variability between planned and as-built BoP scope (cable runs, foundations, Feuerwehr access) causing >5% cost overrun",
+            "role": "purchase_executor",
+            "importance": 8,
+            "satisfaction_current": 5,
+            "opportunity_score": 11,
+            "impact_category": "cost",
+            "product_related": false,
+            "confidence": 0.8,
+            "underserved": false,
+            "satisfaction_rationale": "Balance-of-plant scope variance is a known risk across all EPC models; incumbents mitigate it with standardized container layouts but site-specific civil conditions still cause 3-8% overruns."
+          },
+          {
+            "id": "N8",
+            "step": 3,
+            "step_name": "PREPARE",
+            "error_type": "ROBUSTNESS",
+            "full_statement": "Minimize the likelihood of schedule slip driven by Feuerwehr/VdS fire-protection clearance re-design after permit submission",
+            "role": "lifecycle_support",
+            "importance": 8,
+            "satisfaction_current": 4,
+            "opportunity_score": 12,
+            "impact_category": "time",
+            "product_related": true,
+            "confidence": 0.75,
+            "underserved": true,
+            "satisfaction_rationale": "Feuerwehr and VdS fire-protection clearance for LFP battery systems lacks a standardized fast-track process, and incumbent EPCs frequently encounter redesign loops after initial permit submission."
+          },
+          {
+            "id": "N9",
+            "step": 4,
+            "step_name": "CONFIRM",
+            "error_type": "ACCURACY",
+            "full_statement": "Minimize the likelihood of FGW TR8 plant-cert re-submission due to incomplete TR3 unit-cert handover from component vendors",
+            "role": "lifecycle_support",
+            "importance": 9,
+            "satisfaction_current": 4,
+            "opportunity_score": 14,
+            "impact_category": "reliability",
+            "product_related": true,
+            "confidence": 0.85,
+            "underserved": true,
+            "satisfaction_rationale": "TR3 unit-certification handover from cell and PCS vendors remains a manual, document-heavy process that incumbent EPCs manage through checklists rather than integrated certification workflows."
+          },
+          {
+            "id": "N10",
+            "step": 4,
+            "step_name": "CONFIRM",
+            "error_type": "ROBUSTNESS",
+            "full_statement": "Minimize the likelihood of commissioning holdup caused by firmware-version incompatibility between BMS, PCS and EMS subsystems",
+            "role": "lifecycle_support",
+            "importance": 9,
+            "satisfaction_current": 3,
+            "opportunity_score": 15,
+            "impact_category": "time",
+            "product_related": true,
+            "confidence": 0.88,
+            "underserved": true,
+            "satisfaction_rationale": "Firmware-version compatibility across BMS, PCS, and EMS from different vendors is the most cited commissioning delay in German BESS projects, with no incumbent offering a guaranteed pre-tested integration layer."
+          },
+          {
+            "id": "N11",
+            "step": 4,
+            "step_name": "CONFIRM",
+            "error_type": "RECOVERY",
+            "full_statement": "Minimize the time to close VDE-AR-N 4110/4120 witness-test non-conformities to under 30 days from finding",
+            "role": "lifecycle_support",
+            "importance": 8,
+            "satisfaction_current": 5,
+            "opportunity_score": 11,
+            "impact_category": "time",
+            "product_related": false,
+            "confidence": 0.8,
+            "underserved": false,
+            "satisfaction_rationale": "Incumbent EPCs typically close VDE-AR-N 4110/4120 witness-test non-conformities within 30-60 days, making this need adequately but not excellently served."
+          },
+          {
+            "id": "N12",
+            "step": 4,
+            "step_name": "CONFIRM",
+            "error_type": "ACCURACY",
+            "full_statement": "Minimize the likelihood of grid-forming-mode certification gaps that disqualify the asset from the 2026 inertia-service product",
+            "role": "purchase_influencer",
+            "importance": 9,
+            "satisfaction_current": 3,
+            "opportunity_score": 15,
+            "impact_category": "cost",
+            "product_related": true,
+            "confidence": 0.82,
+            "underserved": true,
+            "satisfaction_rationale": "Fluence and Siemens Gamesa have public grid-forming reference plants, and the certification field is maturing toward the 2026 inertia deadline."
+          },
+          {
+            "id": "N13",
+            "step": 5,
+            "step_name": "EXECUTE",
+            "error_type": "ACCURACY",
+            "full_statement": "Minimize the likelihood of missing an aFRR or FCR activation command within the required response window (<30 s)",
+            "role": "executor",
+            "importance": 9,
+            "satisfaction_current": 6,
+            "opportunity_score": 12,
+            "impact_category": "reliability",
+            "product_related": false,
+            "confidence": 0.8,
+            "underserved": false,
+            "satisfaction_rationale": "Mature aFRR/FCR response capability across incumbents; productized in Wärtsilä GEMS and Fluence Mosaic dispatch platforms."
+          },
+          {
+            "id": "N14",
+            "step": 5,
+            "step_name": "EXECUTE",
+            "error_type": "THROUGHPUT",
+            "full_statement": "Maximize the share of available curtailment-window MWh captured by the BESS to above 90% of DSO-curtailed energy",
+            "role": "beneficiary",
+            "importance": 9,
+            "satisfaction_current": 5,
+            "opportunity_score": 13,
+            "impact_category": "cost",
+            "product_related": false,
+            "confidence": 0.82,
+            "underserved": false,
+            "satisfaction_rationale": "Curtailment-capture strategies are productized at utility scale by Wärtsilä and Fluence, raising the satisfaction baseline."
+          },
+          {
+            "id": "N15",
+            "step": 5,
+            "step_name": "EXECUTE",
+            "error_type": "ROBUSTNESS",
+            "full_statement": "Minimize the likelihood of PCS trip under grid-fault ride-through conditions specified by VDE-AR-N 4110",
+            "role": "executor",
+            "importance": 10,
+            "satisfaction_current": 6,
+            "opportunity_score": 14,
+            "impact_category": "safety",
+            "product_related": false,
+            "confidence": 0.82,
+            "underserved": false,
+            "satisfaction_rationale": "Fluence and Siemens Gamesa reference sites pass VDE-AR-N 4110 fault ride-through reliably, anchoring high incumbent satisfaction."
+          },
+          {
+            "id": "N16",
+            "step": 6,
+            "step_name": "MONITOR",
+            "error_type": "DETECTION",
+            "full_statement": "Minimize the likelihood of undetected capacity fade exceeding warranty threshold prior to annual availability audit",
+            "role": "overseer",
+            "importance": 8,
+            "satisfaction_current": 5,
+            "opportunity_score": 11,
+            "impact_category": "reliability",
+            "product_related": true,
+            "confidence": 0.78,
+            "underserved": false,
+            "satisfaction_rationale": "Capacity-fade monitoring relies on BMS telemetry that most incumbents provide, though early-warning analytics beyond raw SoH readings are still maturing across the industry."
+          },
+          {
+            "id": "N17",
+            "step": 6,
+            "step_name": "MONITOR",
+            "error_type": "CONSISTENCY",
+            "full_statement": "Minimize SoC-reporting drift between BMS, EMS and aggregator to under 1% over a 24-hour cycle",
+            "role": "executor",
+            "importance": 6,
+            "satisfaction_current": 5,
+            "opportunity_score": 7,
+            "impact_category": "reliability",
+            "product_related": true,
+            "confidence": 0.7,
+            "underserved": false,
+            "satisfaction_rationale": "SoC-reporting drift between BMS, EMS, and aggregator systems is a known integration issue; incumbents achieve roughly 1-2% accuracy over 24 hours through periodic recalibration."
+          },
+          {
+            "id": "N18",
+            "step": 7,
+            "step_name": "MODIFY",
+            "error_type": "EFFORT",
+            "full_statement": "Minimize the operator effort to re-tune EMS dispatch policy when curtailment patterns or intraday spreads shift materially",
+            "role": "executor",
+            "importance": 7,
+            "satisfaction_current": 4,
+            "opportunity_score": 10,
+            "impact_category": "skill",
+            "product_related": false,
+            "confidence": 0.75,
+            "underserved": false,
+            "satisfaction_rationale": "Wärtsilä GEMS and Fluence Mosaic ship adaptive retune engines with rolling-horizon solvers, reducing operator re-tuning effort."
+          },
+          {
+            "id": "N19",
+            "step": 7,
+            "step_name": "MODIFY",
+            "error_type": "ROBUSTNESS",
+            "full_statement": "Minimize the likelihood that aging-aware cycling misconfiguration drives degradation exceeding contractual throughput guarantee",
+            "role": "overseer",
+            "importance": 8,
+            "satisfaction_current": 5,
+            "opportunity_score": 11,
+            "impact_category": "cost",
+            "product_related": true,
+            "confidence": 0.75,
+            "underserved": false,
+            "satisfaction_rationale": "Aging-aware cycling configuration is partially automated in incumbent BMS firmware, but contract-specific throughput guarantee parameters still require manual operator tuning."
+          },
+          {
+            "id": "N20",
+            "step": 8,
+            "step_name": "CONCLUDE",
+            "error_type": "EFFORT",
+            "full_statement": "Minimize the effort to execute annual FGW/DSO re-certification audits through a single pre-packaged evidence dossier",
+            "role": "lifecycle_support",
+            "importance": 7,
+            "satisfaction_current": 4,
+            "opportunity_score": 10,
+            "impact_category": "time",
+            "product_related": false,
+            "confidence": 0.8,
+            "underserved": false,
+            "satisfaction_rationale": "Annual FGW/DSO re-certification is handled through standard document packages by incumbent EPCs, though the assembly remains manual and project-specific rather than pre-packaged."
+          },
+          {
+            "id": "N21",
+            "step": 8,
+            "step_name": "CONCLUDE",
+            "error_type": "SAFETY",
+            "full_statement": "Minimize the likelihood of end-of-life disposal non-compliance with EU Battery Regulation reporting obligations",
+            "role": "lifecycle_support",
+            "importance": 8,
+            "satisfaction_current": 4,
+            "opportunity_score": 12,
+            "impact_category": "safety",
+            "product_related": true,
+            "confidence": 0.75,
+            "underserved": true,
+            "satisfaction_rationale": "EU Battery Regulation reporting obligations (effective 2025-2027 rollout) are new enough that no incumbent EPC has yet productized a fully compliant end-of-life documentation workflow."
+          },
+          {
+            "id": "N22",
+            "pyramid_level": "P3_role",
+            "role": "purchase_executor",
+            "full_statement": "Increase the ability to present the BESS addition as a revenue-accretive asset with committed multi-stream dispatch evidence at investment-committee",
+            "importance": 8,
+            "satisfaction_current": 5,
+            "opportunity_score": 11,
+            "impact_category": "cost",
+            "product_related": false,
+            "confidence": 0.7,
+            "underserved": false,
+            "satisfaction_rationale": "Incumbent EPC offers typically provide revenue projections but not a single bankable dispatch-evidence package that investment committees can rely on without supplementary owner-engineer review."
+          },
+          {
+            "id": "N23",
+            "pyramid_level": "P4_image",
+            "role": "purchase_influencer",
+            "full_statement": "Minimize the likelihood of certifier audit findings that require repeat visits or signal sloppy engineering practice",
+            "importance": 7,
+            "satisfaction_current": 5,
+            "opportunity_score": 9,
+            "impact_category": "reliability",
+            "product_related": true,
+            "confidence": 0.65,
+            "underserved": false,
+            "satisfaction_rationale": "Certifier audit re-visits are a known pain point but not a frequent one; incumbents with established FGW relationships manage first-pass approval rates of roughly 70-80%."
+          },
+          {
+            "id": "N24",
+            "pyramid_level": "P5_emotion",
+            "role": "beneficiary",
+            "full_statement": "Minimize the time lost to cross-vendor root-cause dispute by ensuring a single EPC counterparty owns fault-tree triage and warranty-wrap resolution",
+            "importance": 8,
+            "satisfaction_current": 3,
+            "opportunity_score": 13,
+            "impact_category": "time",
+            "product_related": false,
+            "confidence": 0.6,
+            "hypothesis": true,
+            "underserved": true,
+            "satisfaction_rationale": "Multi-vendor BESS projects routinely suffer cross-vendor blame-shifting during fault resolution; single-counterparty EPC wraps exist but are not standard across all incumbent offerings."
+          }
+        ],
+        "needs_summary": {
+          "total": 24,
+          "market_inherent_count": 15,
+          "technology_specific_count": 9,
+          "market_inherent_pct": 62.5,
+          "technology_specific_pct": 37.5,
+          "minimize_count": 15,
+          "increase_count": 9,
+          "underserved_count": 11,
+          "overserved_count": 0,
+          "top_5_opportunity_ids": [
+            "N4",
+            "N10",
+            "N12",
+            "N1",
+            "N6"
+          ]
+        }
+      },
+      "incumbent_anchors": [
+        {
+          "technology_name": "In-house EPC (Wind IPP)",
+          "anchor_vn_unit": "Co-located BESS Storage Asset (EPC-delivered)",
+          "anchor_level": "L5",
+          "rationale": "Large IPPs (RWE, EnBW, Vattenfall) often self-perform the BESS EPC on wind sites"
+        },
+        {
+          "technology_name": "Fluence",
+          "anchor_vn_unit": "Co-located BESS Storage Asset (EPC-delivered)",
+          "anchor_level": "L5",
+          "rationale": "Leading turnkey BESS integrator; strong in wind co-location"
+        },
+        {
+          "technology_name": "Tesla Megapack turnkey",
+          "anchor_vn_unit": "Co-located BESS Storage Asset (EPC-delivered)",
+          "anchor_level": "L5",
+          "rationale": "Containerized turnkey with optional EPC wrap"
+        },
+        {
+          "technology_name": "Wärtsilä",
+          "anchor_vn_unit": "Co-located BESS Storage Asset (EPC-delivered)",
+          "anchor_level": "L5",
+          "rationale": "Utility-scale BESS EPC with GEMS EMS"
+        },
+        {
+          "technology_name": "Siemens Gamesa storage",
+          "anchor_vn_unit": "Co-located BESS Storage Asset (EPC-delivered)",
+          "anchor_level": "L5",
+          "rationale": "Wind-OEM extension into storage"
+        }
+      ],
+      "validation": {
+        "v1_format_compliance": "PASS",
+        "v2_product_related_classification": "PASS",
+        "v3_importance_satisfaction_sanity": "PASS",
+        "v4_impact_category_accuracy": "PASS",
+        "v5_coverage": "PASS",
+        "v6_solution_agnostic": "PASS",
+        "v7_anchor_correctness": "PASS",
+        "v8_product_job_parent_reference": "PASS"
+      },
+      "yield": {
+        "error_statement_count": 24,
+        "target_range": "15-30",
+        "needs_per_relevant_step_min": 2,
+        "needs_per_relevant_step_achieved_min": 2,
+        "job_map_steps_relevant": 8,
+        "market_inherent_ratio_target": "60-70%",
+        "market_inherent_ratio_achieved": "62.5%",
+        "minimize_vs_increase_target": "~60/40",
+        "minimize_vs_increase_achieved": "62.5/37.5"
+      }
+    }
+  ],
+  "has_bom": true,
+  "naics_sector_type": "non_manufacturing"
+}

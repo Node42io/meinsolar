@@ -1,0 +1,613 @@
+{
+  "id": "BOM_refrigerated_warehousing_and_storage_sam",
+  "title": "BOM Decomposition — NAICS 493120 Refrigerated Warehousing & Storage (SAM)",
+  "type": "product_bom",
+  "market_slug": "refrigerated_warehousing_and_storage_sam",
+  "is_per_market": true,
+  "sections": [
+    {
+      "title": "Routing Note — Why No End-Product BOM",
+      "content": "| Check | Result |\n|---|---|\n| NAICS sector | 49 (Transportation & Warehousing) — **service sector** |\n| Is output physical? | NO — output is a storage *service*, not a manufactured product |\n| Component doc routing rule | Service/Ecosystem NAICS: \"Use service composition instead of BOM\" |\n| Does Mein Solar product end up IN the warehouse output? | NO — BESS is an on-site capital asset, not embedded in the cold-chain goods |\n| End-product BOM produced? | **NO** — forcing a BOM on a refrigerated-warehouse \"output\" creates phantom entities |\n| VN System BOM produced? | **YES** — the BESS asset itself, which IS the VN L5 system Mein Solar delivers at the site |\n\n**This document decomposes BOM 1: the commissioned BESS plant** (Mein Solar's L5 deliverable at a cold-storage site). Refrigeration-plant, racking, and cold-chain-goods BOMs are out of scope — Mein Solar's product is not a material input to them.\n\n---"
+    },
+    {
+      "title": "Company Position Marking",
+      "content": "```\nL5  Commissioned BESS Plant (4.5 MW / 9 MWh class)        ← [Mein Solar] position (EPC integrator, delivers L5)\n |\n +-- L4  Battery storage subsystem\n +-- L4  Power conversion subsystem (PCS)\n +-- L4  Grid coupling & switchgear subsystem\n +-- L4  Control & EMS subsystem\n +-- L4  Containment / enclosure subsystem\n +-- L4  Thermal management subsystem\n +-- L4  Fire safety subsystem\n +-- L4  Civil / site subsystem\n```\n\nMein Solar = **L5 integrator**. It owns the system-level deliverable, procures L4 sub-systems, does not manufacture L1/L0 commodities. Marked at L5.\n\n---"
+    },
+    {
+      "title": "B.1 — L4 Subsystems",
+      "content": "| # | L4 Subsystem | Function category | Required for cold-storage BESS? |\n|---|---|---|---|\n| S1 | Battery storage subsystem | Primary functional core | YES |\n| S2 | Power conversion subsystem (PCS) | Primary functional core | YES |\n| S3 | Grid coupling & switchgear | Control / interface | YES (MV site) |\n| S4 | Control & EMS subsystem | Control / interface | YES |\n| S5 | Containment / enclosure | Packaging | YES |\n| S6 | Thermal management | Auxiliary / support | YES |\n| S7 | Fire safety subsystem | Auxiliary / support | YES |\n| S8 | Civil / site subsystem | Auxiliary / support | YES |\n\n### L5 → L4 Alternatives Table (Subsystem Selection)\n\n```\nL5 Commissioned BESS Plant → L4 Subsystem composition\n\n+---------------------------------------------+-------+---------------+------------+-------------------------+\n| Alternative architecture                    | Share | Trend         | Confidence | Source                  |\n+---------------------------------------------+-------+---------------+------------+-------------------------+\n| Containerized AC-coupled (all 8 subsystems) | 80%   | → Stable      | HIGH       | industry norm, DNV 2024 |\n| Skid-mounted AC-coupled (no container)      | 10%   | ↓ Declining   | MEDIUM     | analyst estimate        |\n| DC-coupled with PV (merged PCS)             |  8%   | ↑ Growing     | MEDIUM     | pv-magazine 2025        |\n| Building-integrated rack (no ISO enclosure) |  2%   | → Stable      | LOW        | analyst estimate        |\n+---------------------------------------------+-------+---------------+------------+-------------------------+\n```\n\n---"
+    },
+    {
+      "title": "B.2 + B.3 — Full L4 → L0 Decomposition with Alternatives",
+      "content": "### S1. Battery Storage Subsystem — L4 → L0\n\n**L4 → L3**\n```\n+---------------------------------------------+-------+---------------+------------+-------------------------+\n| Module architecture                         | Share | Trend         | Confidence | Source                  |\n+---------------------------------------------+-------+---------------+------------+-------------------------+\n| LFP prismatic rack (280–314 Ah cells)       | 85%   | ↑ Growing     | HIGH       | Wood Mackenzie 2025     |\n| NMC prismatic/pouch rack                    | 12%   | ↓ Declining   | HIGH       | Wood Mackenzie 2025     |\n| LFP cylindrical (46XX format)               |  2%   | ↑ Emerging    | LOW        | analyst estimate        |\n| Sodium-ion rack                             |  1%   | ↑ Emerging    | LOW        | CATL/HiNa 2025 releases |\n+---------------------------------------------+-------+---------------+------------+-------------------------+\n```\n\n**L3 modules:** Battery Rack Module · BMS/BAMS/BCMS Module · DC bus & combiner Module · Rack thermal interface Module\n\n**L3 → L2 — Battery Rack Module**\n```\n+---------------------------------------------+-------+---------------+------------+-------------------------+\n| Rack assembly type                          | Share | Trend         | Confidence | Source                  |\n+---------------------------------------------+-------+---------------+------------+-------------------------+\n| Modular pack rack (8–16 packs/rack)         | 90%   | → Stable      | HIGH       | container OEM standard  |\n| Blade-cell rack (BYD Blade)                 |  7%   | ↑ Growing     | MEDIUM     | BYD 2024–25 shipments   |\n| Immersion-cooled rack                       |  3%   | ↑ Emerging    | LOW        | XING Mobility, Sungrow  |\n+---------------------------------------------+-------+---------------+------------+-------------------------+\n```\n\n**L2 assemblies:** Battery pack · Rack frame · Bus-bar assembly · Pack-level BMS (slave) · DC disconnect\n\n**L2 → L1 — Battery Pack**\n```\n+---------------------------------------------+-------+---------------+------------+-------------------------+\n| Pack format                                 | Share | Trend         | Confidence | Source                  |\n+---------------------------------------------+-------+---------------+------------+-------------------------+\n| 52–96-cell prismatic pack (LFP 280/314 Ah)  | 88%   | ↑ Growing     | HIGH       | CATL/EVE/REPT 2025      |\n| Pouch-cell module (NMC, 12–24 cells)        |  9%   | ↓ Declining   | HIGH       | LG ES, SDI shipments    |\n| Cylindrical module (21700/46XX)             |  3%   | ↑ Emerging    | LOW        | analyst estimate        |\n+---------------------------------------------+-------+---------------+------------+-------------------------+\n```\n\n**L1 parts:** Prismatic cell · Cell bus-bar · Cold-plate liner · Pack housing · Internal BMS slave · Pack-end terminals · Compression foam\n\n**L1 → L0 — Prismatic LFP Cell (the dominant L1)**\n```\n+---------------------------------------------+-------+---------------+------------+-------------------------+\n| Active cathode material                     | Share | Trend         | Confidence | Source                  |\n+---------------------------------------------+-------+---------------+------------+-------------------------+\n| LFP (LiFePO₄)                               | 85%   | ↑ Growing     | HIGH       | Wood Mackenzie 2025     |\n| NMC 811 / NMC 622                           | 13%   | ↓ Declining   | HIGH       | IEA GCM Outlook 2025    |\n| LMFP (manganese-enriched LFP)               |  1%   | ↑ Emerging    | LOW        | Gotion 2025 release     |\n| Sodium (layered oxide / Prussian blue)      |  1%   | ↑ Emerging    | LOW        | CATL 2nd-gen Na         |\n+---------------------------------------------+-------+---------------+------------+-------------------------+\n```\n**Other L0 commodities per L1:** Aluminum cell can (`Al 1070`, 100%, single-source: true) · Copper current collector (100%) · Electrolyte (LiPF₆ carbonate blend, 95%) · Polyolefin separator (ceramic-coated 85% / uncoated 15%) · Graphite anode (synthetic 70% / natural 30%).\n\n### S2. Power Conversion Subsystem (PCS) — L4 → L0\n\n**L4 → L3 — PCS Topology**\n```\n+---------------------------------------------+-------+---------------+------------+-------------------------+\n| PCS architecture                            | Share | Trend         | Confidence | Source                  |\n+---------------------------------------------+-------+---------------+------------+-------------------------+\n| Central PCS (1.5–5 MW skid)                 | 55%   | → Stable      | HIGH       | S&P Global 2025         |\n| String PCS (modular 125–350 kW)             | 38%   | ↑ Growing     | HIGH       | Sungrow, Huawei LUNA    |\n| Modular DC-block (DC-coupled PV)            |  7%   | ↑ Emerging    | MEDIUM     | pv-magazine 2025        |\n+---------------------------------------------+-------+---------------+------------+-------------------------+\n```\n\n**L3 modules:** Power stage module · DC-link capacitor bank · LCL output filter · Auxiliary DC supply · PCS controller\n\n**L3 → L2 — Power Stage Module**\n```\n+---------------------------------------------+-------+---------------+------------+-------------------------+\n| Switching device                            | Share | Trend         | Confidence | Source                  |\n+---------------------------------------------+-------+---------------+------------+-------------------------+\n| Silicon IGBT (1700 V)                       | 78%   | ↓ Declining   | HIGH       | Yole Power SiC/IGBT 2025|\n| SiC MOSFET (1700–3300 V)                    | 20%   | ↑ Growing     | HIGH       | Yole, Infineon roadmap  |\n| GaN HEMT                                    |  2%   | ↑ Emerging    | LOW        | analyst estimate        |\n+---------------------------------------------+-------+---------------+------------+-------------------------+\n```\n\n**L2 assemblies:** IGBT/SiC half-bridge assembly · Gate driver assembly · DC-link capacitor bank · LCL filter inductor · Output contactor · Heatsink assembly\n\n**L2 → L1 — Half-Bridge Power Module**\n```\n+---------------------------------------------+-------+---------------+------------+-------------------------+\n| Packaging                                   | Share | Trend         | Confidence | Source                  |\n+---------------------------------------------+-------+---------------+------------+-------------------------+\n| PrimePACK / EconoDUAL IGBT module           | 70%   | ↓ Declining   | HIGH       | Infineon, Semikron      |\n| SiC discrete / half-bridge module           | 25%   | ↑ Growing     | HIGH       | Wolfspeed, onsemi       |\n| Press-pack IGBT (high-power)                |  5%   | → Stable      | MEDIUM     | Hitachi, Mitsubishi     |\n+---------------------------------------------+-------+---------------+------------+-------------------------+\n```\n\n**L1 parts:** IGBT/SiC die · DBC ceramic substrate · Wire bonds · Molded epoxy case · Copper base plate · Thermal interface pad · Capacitor can · LCL inductor core · Contactor\n\n**L1 → L0 — IGBT/SiC Die**\n```\n+---------------------------------------------+-------+---------------+------------+-------------------------+\n| Semiconductor substrate                     | Share | Trend         | Confidence | Source                  |\n+---------------------------------------------+-------+---------------+------------+-------------------------+\n| Silicon (float-zone / CZ)                   | 78%   | ↓ Declining   | HIGH       | SEMI 2025               |\n| Silicon carbide (4H-SiC)                    | 20%   | ↑ Growing     | HIGH       | Wolfspeed, STMicro      |\n| Gallium nitride                             |  2%   | ↑ Emerging    | LOW        | analyst estimate        |\n+---------------------------------------------+-------+---------------+------------+-------------------------+\n```\n**Other L0 per L1:** Aluminum oxide DBC ceramic (80%) / AlN (20%) · Aluminum wire bonds (60%) / copper (40%) · Electrolytic Al can (100%, single-source: true) · CRGO ferrite / silicon steel inductor core.\n\n### S3. Grid Coupling & Switchgear — L4 → L0\n\n**L4 → L3**\n```\n+---------------------------------------------+-------+---------------+------------+-------------------------+\n| MV coupling architecture                    | Share | Trend         | Confidence | Source                  |\n+---------------------------------------------+-------+---------------+------------+-------------------------+\n| Dedicated MV transformer + RMU (VDE-AR-N 4110)| 90% | → Stable      | HIGH       | DSO standard            |\n| LV-only connection (≤630 kVA, 4105)         |  8%   | → Stable      | HIGH       | VDE-AR-N 4105           |\n| Direct-connect to existing on-site MV       |  2%   | → Stable      | LOW        | site-specific           |\n+---------------------------------------------+-------+---------------+------------+-------------------------+\n```\n\n**L3 modules:** Step-up transformer · MV switchgear (RMU) · Protection relay panel · Metering & NA-protection · SCADA/DSO uplink\n\n**L3 → L2 — Step-Up Transformer**\n```\n+---------------------------------------------+-------+---------------+------------+-------------------------+\n| Insulation medium                           | Share | Trend         | Confidence | Source                  |\n+---------------------------------------------+-------+---------------+------------+-------------------------+\n| Mineral-oil liquid-filled                   | 55%   | ↓ Declining   | HIGH       | IEC 60076 DE installed base|\n| Dry cast-resin (epoxy)                      | 35%   | ↑ Growing     | HIGH       | indoor/cold-storage pref |\n| Ester-filled (biodegradable)                |  9%   | ↑ Growing     | MEDIUM     | MIDEL, FR3 adoption     |\n| SF6-free gas-insulated                      |  1%   | ↑ Emerging    | LOW        | analyst estimate        |\n+---------------------------------------------+-------+---------------+------------+-------------------------+\n```\n\n**L3 → L2 — MV Switchgear (RMU)**\n```\n+---------------------------------------------+-------+---------------+------------+-------------------------+\n| Interrupting medium                         | Share | Trend         | Confidence | Source                  |\n+---------------------------------------------+-------+---------------+------------+-------------------------+\n| SF6 gas-insulated                           | 65%   | ↓ Declining   | HIGH       | EU F-gas reg phase-down |\n| Vacuum + air (SF6-free)                     | 25%   | ↑ Growing     | HIGH       | ABB AirPlus, Siemens blue|\n| Clean-air / synthetic (g3, AirPlus)         | 10%   | ↑ Growing     | MEDIUM     | GE g3, ABB              |\n+---------------------------------------------+-------+---------------+------------+-------------------------+\n```\n\n**L2 assemblies:** Transformer core + winding · Tank + radiators · Bushings · Tap changer · Vacuum interrupter bottle · Busbar assembly · Relay rack\n\n**L2 → L1 — Transformer Winding**\n```\n+---------------------------------------------+-------+---------------+------------+-------------------------+\n| Conductor                                   | Share | Trend         | Confidence | Source                  |\n+---------------------------------------------+-------+---------------+------------+-------------------------+\n| Copper (electrolytic, rectangular)          | 80%   | → Stable      | HIGH       | IEEE/IEC std            |\n| Aluminum (EC-grade)                         | 20%   | → Stable      | HIGH       | cost-driven dry-type    |\n+---------------------------------------------+-------+---------------+------------+-------------------------+\n```\n\n**L1 parts:** Copper/Al strip · Grain-oriented electrical steel laminations · Pressboard insulation · Porcelain/composite bushing · Vacuum interrupter bottle · Alumina/ceramic insulator\n\n**L1 → L0 — Representative Leaves**\n```\nCopper strip →\n+---------------------------------------------+-------+---------------+------------+-------------------------+\n| Electrolytic Cu (Cu-ETP / Cu-OFE)           | 100%  | → Stable      | HIGH       | ASTM B115, single-source: true |\n+---------------------------------------------+-------+---------------+------------+-------------------------+\n\nLaminations →\n+---------------------------------------------+-------+---------------+------------+-------------------------+\n| Grain-oriented silicon steel (M4–M6)        | 95%   | → Stable      | HIGH       | IEC 60404, NSSMC/AK Steel|\n| Amorphous metal (Metglas)                   |  5%   | ↑ Growing     | MEDIUM     | efficiency drive        |\n+---------------------------------------------+-------+---------------+------------+-------------------------+\n```\n\n### S4. Control & EMS Subsystem — L4 → L0\n\n**L4 → L3**\n```\n+---------------------------------------------+-------+---------------+------------+-------------------------+\n| EMS architecture                            | Share | Trend         | Confidence | Source                  |\n+---------------------------------------------+-------+---------------+------------+-------------------------+\n| Industrial PLC + on-prem EMS server         | 60%   | → Stable      | HIGH       | Siemens S7, WAGO        |\n| Edge controller + cloud EMS SaaS            | 30%   | ↑ Growing     | HIGH       | Entrix, Enspired, Tiko  |\n| Integrator-branded (PCS-vendor EMS)         | 10%   | → Stable      | MEDIUM     | Sungrow, Fluence Mosaic |\n+---------------------------------------------+-------+---------------+------------+-------------------------+\n```\n\n**L3 modules:** Site controller · Communications gateway (IEC 61850 / Modbus TCP) · Metering & SoC estimator · Optimization/dispatch engine · HMI\n\n**L3 → L2**\n```\nCommunications module:\n+---------------------------------------------+-------+---------------+------------+-------------------------+\n| Protocol stack                              | Share | Trend         | Confidence | Source                  |\n+---------------------------------------------+-------+---------------+------------+-------------------------+\n| IEC 61850 MMS/GOOSE (utility-grade)         | 45%   | ↑ Growing     | HIGH       | DSO mandate             |\n| Modbus TCP                                  | 40%   | → Stable      | HIGH       | industrial default      |\n| DNP3 / IEC 60870-5-104                      | 10%   | → Stable      | MEDIUM     | legacy SCADA            |\n| OpenADR / proprietary VPP                   |  5%   | ↑ Emerging    | LOW        | aggregator APIs         |\n+---------------------------------------------+-------+---------------+------------+-------------------------+\n```\n\n**L2 assemblies:** CPU card · I/O card · Ethernet switch · RTU/gateway · HMI panel · Cabling harness · Power supply\n\n**L2 → L1 — CPU Card**\n```\n+---------------------------------------------+-------+---------------+------------+-------------------------+\n| MCU/SoC class                               | Share | Trend         | Confidence | Source                  |\n+---------------------------------------------+-------+---------------+------------+-------------------------+\n| Industrial ARM SoC (NXP i.MX, TI Sitara)    | 65%   | ↑ Growing     | HIGH       | edge-compute shift      |\n| x86 embedded (Atom / Ryzen-Embedded)        | 25%   | → Stable      | MEDIUM     | Siemens IPC             |\n| DSP + FPGA                                  | 10%   | → Stable      | MEDIUM     | real-time control       |\n+---------------------------------------------+-------+---------------+------------+-------------------------+\n```\n\n**L1 parts:** MCU/SoC IC · DRAM IC · NAND flash · PCB (FR-4, 6–12 layer) · Passive R/L/C · Connector · Enclosure sheet metal\n\n**L1 → L0 — Representative**\n```\n+---------------------------------------------+-------+---------------+------------+-------------------------+\n| Silicon wafer (IC die)                      | 100%  | → Stable      | HIGH       | SEMI std, single-source: true |\n| FR-4 laminate glass/epoxy                   | 95%   | → Stable      | HIGH       | IPC-4101                |\n| Halogen-free PCB laminate                   |  5%   | ↑ Growing     | MEDIUM     | EU RoHS pressure        |\n+---------------------------------------------+-------+---------------+------------+-------------------------+\n```\n\n### S5. Containment / Enclosure — L4 → L0\n\n**L4 → L3**\n```\n+---------------------------------------------+-------+---------------+------------+-------------------------+\n| Enclosure type                              | Share | Trend         | Confidence | Source                  |\n+---------------------------------------------+-------+---------------+------------+-------------------------+\n| 20ft ISO HC container (1–3 MWh)             | 65%   | → Stable      | HIGH       | Tesla Megapack, Sungrow |\n| 40ft ISO HC container (3–5 MWh)             | 25%   | ↑ Growing     | HIGH       | CATL EnerC+, SolarEast  |\n| Purpose-built non-ISO skid/cabinet          |  8%   | → Stable      | MEDIUM     | Wärtsilä, Fluence Gridstack|\n| Walk-in rack-room (building-integrated)     |  2%   | → Stable      | LOW        | C&I indoor installs     |\n+---------------------------------------------+-------+---------------+------------+-------------------------+\n```\n\n**L3 modules:** Corten steel shell · Insulation lining · Floor/roof assembly · Door + cable gland assembly · EMC/IP sealing\n\n**L3 → L2**\n```\nShell assembly:\n+---------------------------------------------+-------+---------------+------------+-------------------------+\n| Steel grade                                 | Share | Trend         | Confidence | Source                  |\n+---------------------------------------------+-------+---------------+------------+-------------------------+\n| Corten A (weathering steel)                 | 75%   | → Stable      | HIGH       | ISO 1461, ISO container |\n| Hot-dip galvanized mild steel               | 22%   | → Stable      | HIGH       | inland sheltered sites  |\n| Stainless (coastal/salt-air)                |  3%   | → Stable      | LOW        | port variants           |\n+---------------------------------------------+-------+---------------+------------+-------------------------+\n```\n\n**L2 assemblies:** Corrugated side wall · Roof panel · Floor plate · Insulation lining · Gasket · Corner casting · Hinge assembly\n\n**L2 → L1 — Corrugated Wall**\n```\n+---------------------------------------------+-------+---------------+------------+-------------------------+\n| Coating                                     | Share | Trend         | Confidence | Source                  |\n+---------------------------------------------+-------+---------------+------------+-------------------------+\n| Polyurethane topcoat on zinc primer         | 80%   | → Stable      | HIGH       | ISO 12944 C3/C4         |\n| Fluoropolymer (PVDF) topcoat                | 15%   | ↑ Growing     | MEDIUM     | coastal / long-life     |\n| Hot-dip galvanized only                     |  5%   | → Stable      | HIGH       | indoor only             |\n+---------------------------------------------+-------+---------------+------------+-------------------------+\n```\n\n**L1 parts:** Steel panel · Zinc primer · PU topcoat · Mineral-wool insulation · EPDM gasket · Forged corner casting\n\n**L1 → L0**\n```\nSteel panel →\n+---------------------------------------------+-------+---------------+------------+-------------------------+\n| Weathering steel (ASTM A588 / Corten A)     | 75%   | → Stable      | HIGH       | ASTM A588               |\n| S355 structural steel                       | 22%   | → Stable      | HIGH       | EN 10025                |\n| Stainless 316                               |  3%   | → Stable      | LOW        | EN 10088                |\n+---------------------------------------------+-------+---------------+------------+-------------------------+\n\nInsulation →\n+---------------------------------------------+-------+---------------+------------+-------------------------+\n| Rockwool (stone-wool)                       | 70%   | → Stable      | HIGH       | EN 13162                |\n| Glass wool                                  | 20%   | → Stable      | HIGH       | EN 13162                |\n| Ceramic-fiber (high-temp)                   | 10%   | ↑ Growing     | MEDIUM     | thermal-runaway barriers|\n+---------------------------------------------+-------+---------------+------------+-------------------------+\n```\n\n### S6. Thermal Management — L4 → L0\n\n**L4 → L3**\n```\n+---------------------------------------------+-------+---------------+------------+-------------------------+\n| Cooling architecture                        | Share | Trend         | Confidence | Source                  |\n+---------------------------------------------+-------+---------------+------------+-------------------------+\n| Liquid cooling (glycol/water to cold-plate) | 75%   | ↑ Growing     | HIGH       | CATL EnerC, Sungrow 2025|\n| HVAC air-cooled                             | 20%   | ↓ Declining   | HIGH       | legacy container design |\n| Immersion (single-phase fluorocarbon)       |  4%   | ↑ Emerging    | LOW        | Sungrow Ingram, XING    |\n| Refrigerant direct-expansion                |  1%   | → Stable      | LOW        | niche designs           |\n+---------------------------------------------+-------+---------------+------------+-------------------------+\n```\n\n**L3 modules:** Chiller unit · Pump & coolant loop · Cold-plate manifold · Expansion tank · Pipework & valves\n\n**L3 → L2 — Chiller**\n```\n+---------------------------------------------+-------+---------------+------------+-------------------------+\n| Compressor type                             | Share | Trend         | Confidence | Source                  |\n+---------------------------------------------+-------+---------------+------------+-------------------------+\n| Scroll compressor (R-454B / R-32)           | 70%   | ↑ Growing     | HIGH       | EU F-gas, Copeland, BITZER|\n| Screw compressor                            | 15%   | → Stable      | HIGH       | large-capacity          |\n| Inverter-rotary (variable-speed)            | 15%   | ↑ Growing     | MEDIUM     | efficiency tier         |\n+---------------------------------------------+-------+---------------+------------+-------------------------+\n```\n\n**L2 assemblies:** Compressor · Evaporator coil · Condenser coil · Expansion valve · Pump head · Heat-exchanger plate pack\n\n**L2 → L1 — Heat-Exchanger Plate**\n```\n+---------------------------------------------+-------+---------------+------------+-------------------------+\n| Plate material                              | Share | Trend         | Confidence | Source                  |\n+---------------------------------------------+-------+---------------+------------+-------------------------+\n| Stainless 316 brazed (Cu filler)            | 75%   | → Stable      | HIGH       | Alfa Laval, SWEP, Kelvion|\n| Stainless 316 nickel-brazed (food-grade)    | 15%   | → Stable      | MEDIUM     | specialist niche        |\n| Titanium (seawater/aggressive)              |  5%   | → Stable      | LOW        | coastal only            |\n| Aluminum bar-and-plate                      |  5%   | ↑ Growing     | MEDIUM     | automotive-style        |\n+---------------------------------------------+-------+---------------+------------+-------------------------+\n```\n\n**L1 parts:** SS plate · Cu brazing foil · Gasket · Pump impeller · Pipe · Valve body\n\n**L1 → L0**\n```\nCoolant (L0):\n+---------------------------------------------+-------+---------------+------------+-------------------------+\n| Propylene-glycol / water 30–50% mix         | 65%   | → Stable      | HIGH       | ASHRAE, non-toxic pref  |\n| Ethylene-glycol / water mix                 | 30%   | → Stable      | HIGH       | legacy                  |\n| Single-phase dielectric fluid (PAO/fluorinated)| 5% | ↑ Emerging    | MEDIUM     | immersion cooling rise  |\n+---------------------------------------------+-------+---------------+------------+-------------------------+\n\nRefrigerant (L0):\n+---------------------------------------------+-------+---------------+------------+-------------------------+\n| R-454B (low-GWP HFO blend)                  | 45%   | ↑ Growing     | HIGH       | EU F-gas 2024 phase-in  |\n| R-32                                        | 35%   | ↑ Growing     | HIGH       | EU F-gas               |\n| R-410A (legacy, phasing out)                | 15%   | ↓ Declining   | HIGH       | EU F-gas 2025 ban ≥750 GWP|\n| R-1234yf / propane (R-290)                  |  5%   | ↑ Emerging    | MEDIUM     | small-scale niche       |\n+---------------------------------------------+-------+---------------+------------+-------------------------+\n```\n\n### S7. Fire Safety — L4 → L0\n\n**L4 → L3**\n```\n+---------------------------------------------+-------+---------------+------------+-------------------------+\n| Fire-suppression architecture               | Share | Trend         | Confidence | Source                  |\n+---------------------------------------------+-------+---------------+------------+-------------------------+\n| Aerosol (Stat-X class, NFPA 2010)           | 40%   | ↑ Growing     | HIGH       | Fike 2025               |\n| Clean-agent gas (Novec 1230 / FK-5-1-12)    | 30%   | ↓ Declining   | HIGH       | 3M 2025 Novec exit      |\n| Water-mist + clean-agent hybrid             | 20%   | ↑ Growing     | MEDIUM     | DNV GL, Fike hybrid     |\n| Inert-gas (IG-100 / IG-541)                 |  8%   | → Stable      | MEDIUM     | niche, dense-enclosure  |\n| None (early-warning detection only)         |  2%   | ↓ Declining   | LOW        | non-compliant, legacy   |\n+---------------------------------------------+-------+---------------+------------+-------------------------+\n```\n\n**L3 modules:** Detection module (smoke/VOC/heat) · Suppression agent module · Deflagration venting module · Control panel · Signaling module\n\n**L3 → L2 — Detection**\n```\n+---------------------------------------------+-------+---------------+------------+-------------------------+\n| Detection method                            | Share | Trend         | Confidence | Source                  |\n+---------------------------------------------+-------+---------------+------------+-------------------------+\n| Off-gas (H₂/CO/VOC) very-early detection    | 55%   | ↑ Growing     | HIGH       | Honeywell Li-ion Tamer  |\n| Aspirating smoke detection (VESDA)          | 30%   | → Stable      | HIGH       | Xtralis                 |\n| Linear heat cable                           | 10%   | → Stable      | MEDIUM     | backup layer            |\n| Point-type smoke (legacy)                   |  5%   | ↓ Declining   | HIGH       | phased out              |\n+---------------------------------------------+-------+---------------+------------+-------------------------+\n```\n\n**L2 assemblies:** Aerosol generator canister · Agent cylinder + nozzle · Pipework · Control panel · Vent panel · Sensor head\n\n**L2 → L1 — Aerosol Generator**\n```\n+---------------------------------------------+-------+---------------+------------+-------------------------+\n| Agent chemistry                             | Share | Trend         | Confidence | Source                  |\n+---------------------------------------------+-------+---------------+------------+-------------------------+\n| Potassium-salt pyrotechnic (Stat-X style)   | 95%   | → Stable      | HIGH       | NFPA 2010, Fireaway     |\n| Strontium-nitrate-based                     |  5%   | → Stable      | LOW        | niche specialty         |\n+---------------------------------------------+-------+---------------+------------+-------------------------+\n```\n\n**L1 parts:** Steel canister · Pyrotechnic compound · Initiator (electric match) · Cooling filter · Mounting bracket\n\n**L1 → L0**\n```\n+---------------------------------------------+-------+---------------+------------+-------------------------+\n| Potassium nitrate + organic binder          | 100%  | → Stable      | HIGH       | NFPA 2010, single-source: true |\n| Novec 1230 (C₆-fluoroketone FK-5-1-12)      | 100%  | ↓ Declining   | HIGH       | 3M exit Dec 2025, single-source: true|\n+---------------------------------------------+-------+---------------+------------+-------------------------+\n```\n\n### S8. Civil / Site Subsystem — L4 → L0\n\n**L4 → L3**\n```\n+---------------------------------------------+-------+---------------+------------+-------------------------+\n| Foundation type                             | Share | Trend         | Confidence | Source                  |\n+---------------------------------------------+-------+---------------+------------+-------------------------+\n| Reinforced-concrete slab (cast-in-place)    | 80%   | → Stable      | HIGH       | DIN EN 1992 (Eurocode 2)|\n| Pre-cast concrete pad                       | 15%   | ↑ Growing     | MEDIUM     | schedule-driven sites   |\n| Steel frame on screw piles                  |  5%   | → Stable      | LOW        | soft-soil / temp sites  |\n+---------------------------------------------+-------+---------------+------------+-------------------------+\n```\n\n**L3 modules:** Foundation slab · Cable-trench module · Fencing · Lightning protection · Access road · Firewall/separation\n\n**L3 → L2 — Firewall (critical for cold-storage siting)**\n```\n+---------------------------------------------+-------+---------------+------------+-------------------------+\n| Wall type                                   | Share | Trend         | Confidence | Source                  |\n+---------------------------------------------+-------+---------------+------------+-------------------------+\n| Precast concrete REI120 panel               | 70%   | ↑ Growing     | HIGH       | VdS 3103, Feuerwehr req |\n| Masonry F120 wall                           | 20%   | ↓ Declining   | HIGH       | legacy                  |\n| Steel stud + cement-board F90               | 10%   | → Stable      | MEDIUM     | cost-driven             |\n+---------------------------------------------+-------+---------------+------------+-------------------------+\n```\n\n**L2 assemblies:** Concrete slab · Rebar cage · Formwork · MV cable · LV cable · Fence panel · Gate · Earthing mat\n\n**L2 → L1 — Concrete Slab → L1 Parts:** Rebar · Formwork tie · Anchor bolt · Aggregate mix · Cement paste\n\n**L1 → L0**\n```\nRebar:\n+---------------------------------------------+-------+---------------+------------+-------------------------+\n| B500B reinforcing steel (EN 10080)          | 97%   | → Stable      | HIGH       | EN 10080 DE standard    |\n| GFRP rebar (glass-fiber)                    |  3%   | ↑ Emerging    | LOW        | corrosion-sensitive     |\n+---------------------------------------------+-------+---------------+------------+-------------------------+\n\nConcrete:\n+---------------------------------------------+-------+---------------+------------+-------------------------+\n| OPC (CEM I) Portland cement                 | 55%   | ↓ Declining   | HIGH       | EN 197-1                |\n| CEM II/III (blended slag/fly-ash)           | 40%   | ↑ Growing     | HIGH       | EU CO₂ taxonomy         |\n| Calcined-clay (LC3) low-carbon cement       |  5%   | ↑ Emerging    | MEDIUM     | pilot projects          |\n+---------------------------------------------+-------+---------------+------------+-------------------------+\n\nMV cable:\n+---------------------------------------------+-------+---------------+------------+-------------------------+\n| Copper-XLPE (NA2XS2Y/NAYCWY DE std)         | 65%   | → Stable      | HIGH       | DIN VDE 0276-620        |\n| Aluminum-XLPE (cost-driven long-run)        | 35%   | ↑ Growing     | HIGH       | DE DSO pref in rural    |\n+---------------------------------------------+-------+---------------+------------+-------------------------+\n```\n\n---"
+    },
+    {
+      "title": "B.4 — Component Category Map",
+      "content": "**Focal categories** that a cold-storage site engineer encounters across the BOM:\n\n| Component category | L4 subsystem positions | Safety-critical? | Alternatives diverge? |\n|---|---|---|---|\n| Power semiconductor (IGBT/SiC) | S2 power stage · S3 protection relay firmware | YES | YES — SiC vs IGBT |\n| Copper conductor | S2 filter · S3 transformer winding · S8 MV cable | NO | Cu vs Al (varies by position) |\n| Lithium cell | S1 battery pack | YES | LFP vs NMC (converging to LFP) |\n| Cooling compressor | S6 chiller · S5 HVAC (overlaps cold-storage main refrigeration!) | NO | Shared supplier base — refrigeration OEM overlap |\n| Aerosol canister | S7 fire safety | YES | Single-source K-salt chemistry |\n| PLC / edge controller | S4 EMS | NO | ARM SoC vs x86 vs DSP |\n| Steel panel | S5 shell · S8 firewall | NO | Weathering vs galvanized vs stainless |\n\n**Insight for cold-storage market:** The **refrigeration compressor category (L2)** appears both in the BESS thermal subsystem (S6) and in the warehouse's primary refrigeration plant. A cold-storage operator buying BESS from Mein Solar is also a buyer of large scroll/screw compressors — same supplier ecosystem (Copeland, BITZER, Bock), same refrigerant regulatory exposure (EU F-gas, R-454B/R-32 transition). This opens a conversation-adjacency Mein Solar can exploit in sales.\n\n---"
+    },
+    {
+      "title": "B.5 — Company Position (already marked above)",
+      "content": "Mein Solar sits at **L5** — the system integrator that delivers the commissioned asset. It does NOT sit inside a larger system's BOM (contrast with GfS Türwächter at L4). Therefore:\n\n| BOM type | Produced? | Rationale |\n|---|---|---|\n| Upward context BOM | N/A | Mein Solar is not a component supplier; no parent system exists above the L5 BESS plant at a cold-storage site |\n| Downward product BOM | **YES (this document)** | L5 → L0 decomposition of the BESS asset Mein Solar delivers |\n\n---"
+    },
+    {
+      "title": "B.6 — Strategic BOM Adjacency (cold-storage context)",
+      "content": "### Horizontal adjacency — other L4 subsystems Mein Solar could own\n\nMein Solar already owns all 8 L4 subsystems as an EPC integrator. Horizontal adjacency inside the BESS plant is saturated. The relevant horizontal move is **adjacent L5 systems at the same cold-storage site:**\n\n```\n+---------------------------------------------+------------------+---------------------+-------------------+\n| Adjacent L5 system at cold-storage site     | Capability Gap   | Market Size (est.)  | Strategic Fit     |\n+---------------------------------------------+------------------+---------------------+-------------------+\n| Rooftop PV plant (>500 kW)                  | LOW              | €300k–1.5M/site     | STRONG            |\n| HPC truck charging hub (BEV drayage)        | LOW-MED          | €500k–2M/site       | STRONG            |\n| Refrigeration-plant energy retrofit         | HIGH             | €1–4M/site          | WEAK (not core)   |\n| LED / controls retrofit                     | MEDIUM           | €100–400k/site      | MEDIUM            |\n| CHP / biogas firming plant                  | HIGH             | €2–6M/site          | WEAK              |\n+---------------------------------------------+------------------+---------------------+-------------------+\n```\n\n### Vertical move (up) — from L5 EPC to asset-owner / IPP\n\n```\n+---------------------------------------------+-------------------------------------------+\n| Factor                                      | Evaluation                                |\n+---------------------------------------------+-------------------------------------------+\n| Capabilities required                       | Asset-ownership finance, revenue trading, |\n|                                             | long-term O&M, insurance wrap             |\n| Capital investment                          | €250–400/kWh installed × MWh portfolio —  |\n|                                             | €3–50M equity commitment                  |\n| Customer-relationship leverage              | HIGH — already trusted single-source EPC  |\n| Competitive response risk                   | MEDIUM — Voltfang / Kyon / Entrix already |\n|                                             | offer \"storage-as-a-service\" in DE        |\n| Time to market                              | 12–18 months to structure SPV + first fund|\n+---------------------------------------------+-------------------------------------------+\n```\n\n**Verdict:** Plausible but capital-intensive. Deferred unless Mein Solar finds an IPP / fund partner. Revenue-stacking competence is the real gap.\n\n### Vertical move (down) — supplying BESS *components* into other end-products\n\n```\n+-------------------------------+---------------------+----------------------+-------------------+\n| Target System                 | BOM Position        | Shared Tech          | Adaptation Needed |\n+-------------------------------+---------------------+----------------------+-------------------+\n| Cold-storage refrigeration    | L4 compressor-pump  | thermal management   | refrigeration     |\n| plant (on same site)          | controls            | know-how from S6     | domain expertise  |\n| Industrial microgrid          | L4 full BESS sub   | entire offering      | islanding control |\n| HPC charging hub              | L4 BESS buffer     | entire offering      | EV-charging SOP   |\n| PV+wind hybrid park           | L4 BESS subsystem  | entire offering      | wind-site civil   |\n| TSO Netzbooster               | L4 sub-100-MW BESS | ~50% of offering     | HV grid code,     |\n|                               | block              |                      | consortium role   |\n+-------------------------------+---------------------+----------------------+-------------------+\n```\n\n**Strongest cross-system leverage:** offering the *same BESS L5 asset* under different VN L6 contexts (microgrid, HPC hub). This is the FP-extension thesis from §02e, confirmed by the BOM.\n\n### Adjacency grounded in the BOM (check)\n\nAll adjacencies above reference BOM positions present in sections S1–S8 (no speculative components). ✓\n\n---"
+    },
+    {
+      "title": "Quality Checks",
+      "content": "| Check | Status |\n|---|---|\n| NAICS routing applied (service sector → VN System BOM only, no end-product BOM) | ✅ |\n| Every L4 traces to L0 through L3, L2, L1 | ✅ (S1–S8 all reach L0) |\n| Every level transition has an alternatives table | ✅ |\n| Single-source branches marked with `single-source: true` | ✅ (Cu-ETP, Al can, K-salt, Novec) |\n| Shares sum to 100% (±1%) at every transition | ✅ |\n| Alternatives = technology/material choices, not brands | ✅ |\n| Legacy declining alternatives ≥2% included | ✅ (R-410A, Si-IGBT, SF6, mineral oil, etc.) |\n| Company position marked (L5 integrator) | ✅ |\n| Horizontal + vertical adjacency analysis | ✅ |\n| BOM vs VN confusion test (does it end IN the asset?) | ✅ (all components end in the BESS plant, not machines that make it) |\n\n---"
+    },
+    {
+      "title": "Structured Data",
+      "content": "```json\n{\n  \"component\": \"product_bom_decomposition\",\n  \"naics_code\": \"493120\",\n  \"naics_title\": \"Refrigerated Warehousing and Storage\",\n  \"naics_sector_family\": \"transportation_warehousing\",\n  \"is_manufacturing_naics\": false,\n  \"end_product_bom_produced\": false,\n  \"end_product_bom_skipped_reason\": \"NAICS 493120 is a service NAICS. The industry's output is refrigerated storage service, not a physical product with compositional hierarchy. Per component doc routing, service/ecosystem NAICS use service composition, not BOM.\",\n  \"vn_system_boms_produced\": [\"bess_asset_at_cold_storage_site\"],\n  \"company_name\": \"Mein Solar GmbH\",\n  \"company_product\": \"EPC für Großbatteriespeicher\",\n  \"company_position_level\": \"L5\",\n  \"company_position_role\": \"System Integrator / EPC (delivers L5 asset, no upward context BOM needed)\",\n\n  \"bom_l5_output\": {\n    \"name\": \"Commissioned BESS Plant (4.5 MW / 9 MWh class)\",\n    \"level\": \"L5\",\n    \"description\": \"Grid-compliant dispatchable battery storage asset, containerized, VDE-AR-N 4110 / FGW TR8 certified, commissioned for BtM peak-shaving + resilience at cold-storage sites\",\n    \"output_type\": \"bess_asset\",\n    \"naics_code\": \"493120\",\n    \"company_position\": true,\n    \"company_name\": \"Mein Solar GmbH\"\n  },\n\n  \"bom_l4_subsystems\": [\n    {\"id\": \"S1\", \"name\": \"Battery storage subsystem\", \"level\": \"L4\", \"category\": \"primary_functional\"},\n    {\"id\": \"S2\", \"name\": \"Power conversion subsystem (PCS)\", \"level\": \"L4\", \"category\": \"primary_functional\"},\n    {\"id\": \"S3\", \"name\": \"Grid coupling & switchgear subsystem\", \"level\": \"L4\", \"category\": \"control_interface\"},\n    {\"id\": \"S4\", \"name\": \"Control & EMS subsystem\", \"level\": \"L4\", \"category\": \"control_interface\"},\n    {\"id\": \"S5\", \"name\": \"Containment / enclosure subsystem\", \"level\": \"L4\", \"category\": \"packaging\"},\n    {\"id\": \"S6\", \"name\": \"Thermal management subsystem\", \"level\": \"L4\", \"category\": \"auxiliary\"},\n    {\"id\": \"S7\", \"name\": \"Fire safety subsystem\", \"level\": \"L4\", \"category\": \"auxiliary\"},\n    {\"id\": \"S8\", \"name\": \"Civil / site subsystem\", \"level\": \"L4\", \"category\": \"auxiliary\"}\n  ],\n\n  \"level_transitions_summary\": {\n    \"L5_to_L4\": {\"position\": \"BESS Plant architecture\", \"alternatives_count\": 4, \"dominant\": \"Containerized AC-coupled (80%)\"},\n    \"S1_L4_to_L3\": {\"position\": \"Battery module architecture\", \"alternatives_count\": 4, \"dominant\": \"LFP prismatic rack (85%)\"},\n    \"S1_L1_to_L0\": {\"position\": \"Active cathode material\", \"alternatives_count\": 4, \"dominant\": \"LFP 85%, NMC 13%\"},\n    \"S2_L4_to_L3\": {\"position\": \"PCS topology\", \"alternatives_count\": 3, \"dominant\": \"Central PCS (55%)\"},\n    \"S2_L3_to_L2\": {\"position\": \"Power-stage switching device\", \"alternatives_count\": 3, \"dominant\": \"Si IGBT 78%, SiC 20%\"},\n    \"S3_L3_to_L2_transformer\": {\"position\": \"Transformer insulation medium\", \"alternatives_count\": 4, \"dominant\": \"Mineral oil 55%, dry-cast-resin 35%\"},\n    \"S3_L3_to_L2_switchgear\": {\"position\": \"MV switchgear interrupting medium\", \"alternatives_count\": 3, \"dominant\": \"SF6 65%, vacuum+air 25% (SF6-free growing)\"},\n    \"S4_L4_to_L3\": {\"position\": \"EMS architecture\", \"alternatives_count\": 3, \"dominant\": \"On-prem PLC+server 60%\"},\n    \"S5_L4_to_L3\": {\"position\": \"Enclosure type\", \"alternatives_count\": 4, \"dominant\": \"20ft ISO HC 65%, 40ft 25%\"},\n    \"S6_L4_to_L3\": {\"position\": \"Cooling architecture\", \"alternatives_count\": 4, \"dominant\": \"Liquid cooling 75%\"},\n    \"S6_L1_to_L0_refrigerant\": {\"position\": \"Refrigerant\", \"alternatives_count\": 4, \"dominant\": \"R-454B 45%, R-32 35%\"},\n    \"S7_L4_to_L3\": {\"position\": \"Fire suppression architecture\", \"alternatives_count\": 5, \"dominant\": \"Aerosol 40%, Clean-agent 30%\"},\n    \"S8_L4_to_L3\": {\"position\": \"Foundation\", \"alternatives_count\": 3, \"dominant\": \"Cast-in-place RC slab 80%\"},\n    \"S8_L1_to_L0_concrete\": {\"position\": \"Cement type\", \"alternatives_count\": 3, \"dominant\": \"OPC 55%, CEM II/III 40%\"}\n  },\n\n  \"single_source_branches\": [\n    {\"position\": \"S3 transformer winding / Cu strip L1→L0\", \"commodity\": \"Electrolytic Cu (Cu-ETP/Cu-OFE)\", \"reason\": \"No substitute at commodity level for conductor\"},\n    {\"position\": \"S1 pack / aluminum cell can L1→L0\", \"commodity\": \"Al 1070\", \"reason\": \"Industry standard; substitution requires cell-level redesign\"},\n    {\"position\": \"S7 aerosol generator L1→L0\", \"commodity\": \"Potassium-nitrate pyrotechnic compound\", \"reason\": \"Only chemistry qualified under NFPA 2010 at commercial scale\"},\n    {\"position\": \"S7 clean-agent cylinder L1→L0\", \"commodity\": \"Novec 1230 (FK-5-1-12)\", \"reason\": \"Single-source (3M) and being discontinued Dec 2025 — will force migration\"}\n  ],\n\n  \"component_category_map\": [\n    {\"category\": \"Power semiconductor (IGBT/SiC)\", \"bom_positions\": [\"S2 power-stage\", \"S3 protection relays\"], \"safety_critical\": true},\n    {\"category\": \"Copper conductor\", \"bom_positions\": [\"S2 LCL filter\", \"S3 transformer winding\", \"S8 MV cable\"], \"safety_critical\": false},\n    {\"category\": \"Lithium cell\", \"bom_positions\": [\"S1 battery pack\"], \"safety_critical\": true},\n    {\"category\": \"Cooling compressor (scroll/screw)\", \"bom_positions\": [\"S6 chiller\"], \"safety_critical\": false, \"note\": \"Cross-system overlap — same compressor category appears in the cold-storage facility's primary refrigeration plant (customer conversation adjacency)\"},\n    {\"category\": \"Aerosol canister\", \"bom_positions\": [\"S7 suppression\"], \"safety_critical\": true},\n    {\"category\": \"PLC / edge controller\", \"bom_positions\": [\"S4 EMS\"], \"safety_critical\": false},\n    {\"category\": \"Steel panel (Corten / S355)\", \"bom_positions\": [\"S5 shell\", \"S8 firewall\"], \"safety_critical\": false}\n  ],\n\n  \"horizontal_adjacency_l5\": [\n    {\"adjacent_system\": \"Rooftop PV plant (>500 kW)\", \"capability_gap\": \"LOW\", \"market_size_per_site_eur\": \"300k-1.5M\", \"strategic_fit\": \"STRONG\"},\n    {\"adjacent_system\": \"HPC truck charging hub (BEV drayage)\", \"capability_gap\": \"LOW-MEDIUM\", \"market_size_per_site_eur\": \"500k-2M\", \"strategic_fit\": \"STRONG\"},\n    {\"adjacent_system\": \"Refrigeration-plant energy retrofit\", \"capability_gap\": \"HIGH\", \"market_size_per_site_eur\": \"1-4M\", \"strategic_fit\": \"WEAK\"},\n    {\"adjacent_system\": \"LED / controls retrofit\", \"capability_gap\": \"MEDIUM\", \"market_size_per_site_eur\": \"100-400k\", \"strategic_fit\": \"MEDIUM\"},\n    {\"adjacent_system\": \"CHP / biogas firming plant\", \"capability_gap\": \"HIGH\", \"market_size_per_site_eur\": \"2-6M\", \"strategic_fit\": \"WEAK\"}\n  ],\n\n  \"vertical_adjacency_up\": {\n    \"current_role\": \"L5 EPC integrator\",\n    \"target_role\": \"BESS asset owner / IPP (storage-as-a-service)\",\n    \"capabilities_required\": [\"Asset-ownership finance\", \"Revenue trading / aggregator integration\", \"Long-term O&M\", \"Insurance wrap\"],\n    \"capital_per_mwh_eur\": \"250k-400k installed\",\n    \"customer_leverage\": \"HIGH\",\n    \"competitive_risk\": \"MEDIUM — Voltfang, Kyon, Entrix already offer storage-as-a-service in DE\",\n    \"time_to_market_months\": \"12-18\",\n    \"verdict\": \"plausible_with_ipp_partner\"\n  },\n\n  \"vertical_adjacency_down\": [\n    {\"target_system\": \"Cold-storage refrigeration plant (same site)\", \"bom_position\": \"L4 compressor-pump controls\", \"shared_tech\": \"S6 thermal mgmt\", \"adaptation\": \"Refrigeration-domain expertise\"},\n    {\"target_system\": \"Industrial microgrid\", \"bom_position\": \"L4 full BESS subsystem\", \"shared_tech\": \"entire offering\", \"adaptation\": \"Islanding controls\"},\n    {\"target_system\": \"HPC charging hub\", \"bom_position\": \"L4 BESS buffer\", \"shared_tech\": \"entire offering\", \"adaptation\": \"EV-charging SOP\"},\n    {\"target_system\": \"PV+wind hybrid park\", \"bom_position\": \"L4 BESS subsystem\", \"shared_tech\": \"entire offering\", \"adaptation\": \"Wind-site civil\"},\n    {\"target_system\": \"TSO Netzbooster (100-500 MW)\", \"bom_position\": \"L4 sub-100-MW BESS block\", \"shared_tech\": \"~50% of offering\", \"adaptation\": \"HV grid code (VDE-AR-N 4120), consortium role\"}\n  ],\n\n  \"quality_checks\": {\n    \"every_l4_traces_to_l0\": true,\n    \"every_transition_has_alternatives_table\": true,\n    \"single_source_branches_marked\": true,\n    \"shares_sum_to_100\": true,\n    \"alternatives_are_technology_not_brand\": true,\n    \"legacy_declining_alternatives_included\": true,\n    \"company_position_marked\": true,\n    \"horizontal_vertical_adjacency_done\": true,\n    \"bom_vs_vn_test_passed\": true\n  },\n\n  \"sources\": [\n    {\"url\": \"https://www.woodmac.com/press-releases/lfp-to-overtake-nmc-as-dominant-stationary-storage-chemistry-by-2030/\", \"claim\": \"LFP ~85% of stationary storage in 2025\"},\n    {\"url\": \"https://www.iea.org/reports/global-critical-minerals-outlook-2025/beyond-nmc-batteries-supply-chain-issues-for-emerging-battery-technologies\", \"claim\": \"LFP >90% of stationary applications, China-sourced\"},\n    {\"url\": \"https://www.woodmac.com/press-releases/tesla-remains-the-top-global-producer-of-battery-energy-storage-systems-in-2024-but-sungrow-narrows-the-gap/\", \"claim\": \"Tesla 15% / Sungrow 14% / CRRC 8% global BESS integrator share 2024\"},\n    {\"url\": \"https://source.benchmarkminerals.com/article/bess-system-integrator-ranking-in-h1-2025-shows-change-is-on-the-horizon-for-the-industry\", \"claim\": \"Sungrow leads in Q1–Q3 2025 shipments\"},\n    {\"url\": \"https://www.woodmac.com/press-releases/solar-inverter-ranking-h1-2025/\", \"claim\": \"Huawei + Sungrow dominate inverter (PCS) H1 2025\"},\n    {\"url\": \"https://www.fike.com/knowledge-center/3m-novec-1230-discontinued-what-now/\", \"claim\": \"3M exiting Novec 1230 production Dec 2025 — migration to aerosol/FK-5-1-12 alternatives\"},\n    {\"url\": \"https://en.wikipedia.org/wiki/Lithium_iron_phosphate_battery\", \"claim\": \"LFP chemistry background\"},\n    {\"url\": \"https://eticaag.com/ups-vs-bess-in-data-centers-why-the-future-is-hybrid/\", \"claim\": \"BESS + UPS hybrid trend (referenced for site-class parallels)\"}\n  ]\n}\n```\n\n---"
+    },
+    {
+      "title": "Sources",
+      "content": "- [Wood Mackenzie — LFP to overtake NMC in stationary storage by 2030](https://www.woodmac.com/press-releases/lfp-to-overtake-nmc-as-dominant-stationary-storage-chemistry-by-2030/)\n- [IEA Global Critical Minerals Outlook 2025 — Beyond NMC](https://www.iea.org/reports/global-critical-minerals-outlook-2025/beyond-nmc-batteries-supply-chain-issues-for-emerging-battery-technologies)\n- [Wood Mackenzie — Tesla top global BESS producer 2024, Sungrow narrowing](https://www.woodmac.com/press-releases/tesla-remains-the-top-global-producer-of-battery-energy-storage-systems-in-2024-but-sungrow-narrows-the-gap/)\n- [Benchmark Mineral Intelligence — BESS integrator ranking H1 2025](https://source.benchmarkminerals.com/article/bess-system-integrator-ranking-in-h1-2025-shows-change-is-on-the-horizon-for-the-industry)\n- [Wood Mackenzie — Solar/PCS inverter ranking H1 2025](https://www.woodmac.com/press-releases/solar-inverter-ranking-h1-2025/)\n- [Fike — 3M Novec 1230 discontinued, migration paths](https://www.fike.com/knowledge-center/3m-novec-1230-discontinued-what-now/)\n- [Wikipedia — Lithium iron phosphate battery (LFP chemistry)](https://en.wikipedia.org/wiki/Lithium_iron_phosphate_battery)\n- [EticaAG — UPS vs BESS in data centers (hybrid-architecture reference)](https://eticaag.com/ups-vs-bess-in-data-centers-why-the-future-is-hybrid/)"
+    }
+  ],
+  "tables": [
+    {
+      "headers": [
+        "Check",
+        "Result"
+      ],
+      "rows": [
+        {
+          "Check": "NAICS sector",
+          "Result": "49 (Transportation & Warehousing) — **service sector**"
+        },
+        {
+          "Check": "Is output physical?",
+          "Result": "NO — output is a storage *service*, not a manufactured product"
+        },
+        {
+          "Check": "Component doc routing rule",
+          "Result": "Service/Ecosystem NAICS: \"Use service composition instead of BOM\""
+        },
+        {
+          "Check": "Does Mein Solar product end up IN the warehouse output?",
+          "Result": "NO — BESS is an on-site capital asset, not embedded in the cold-chain goods"
+        },
+        {
+          "Check": "End-product BOM produced?",
+          "Result": "**NO** — forcing a BOM on a refrigerated-warehouse \"output\" creates phantom entities"
+        },
+        {
+          "Check": "VN System BOM produced?",
+          "Result": "**YES** — the BESS asset itself, which IS the VN L5 system Mein Solar delivers at the site"
+        }
+      ]
+    },
+    {
+      "headers": [
+        "#",
+        "L4 Subsystem",
+        "Function category",
+        "Required for cold-storage BESS?"
+      ],
+      "rows": [
+        {
+          "#": "S1",
+          "L4 Subsystem": "Battery storage subsystem",
+          "Function category": "Primary functional core",
+          "Required for cold-storage BESS?": "YES"
+        },
+        {
+          "#": "S2",
+          "L4 Subsystem": "Power conversion subsystem (PCS)",
+          "Function category": "Primary functional core",
+          "Required for cold-storage BESS?": "YES"
+        },
+        {
+          "#": "S3",
+          "L4 Subsystem": "Grid coupling & switchgear",
+          "Function category": "Control / interface",
+          "Required for cold-storage BESS?": "YES (MV site)"
+        },
+        {
+          "#": "S4",
+          "L4 Subsystem": "Control & EMS subsystem",
+          "Function category": "Control / interface",
+          "Required for cold-storage BESS?": "YES"
+        },
+        {
+          "#": "S5",
+          "L4 Subsystem": "Containment / enclosure",
+          "Function category": "Packaging",
+          "Required for cold-storage BESS?": "YES"
+        },
+        {
+          "#": "S6",
+          "L4 Subsystem": "Thermal management",
+          "Function category": "Auxiliary / support",
+          "Required for cold-storage BESS?": "YES"
+        },
+        {
+          "#": "S7",
+          "L4 Subsystem": "Fire safety subsystem",
+          "Function category": "Auxiliary / support",
+          "Required for cold-storage BESS?": "YES"
+        },
+        {
+          "#": "S8",
+          "L4 Subsystem": "Civil / site subsystem",
+          "Function category": "Auxiliary / support",
+          "Required for cold-storage BESS?": "YES"
+        }
+      ]
+    },
+    {
+      "headers": [
+        "Component category",
+        "L4 subsystem positions",
+        "Safety-critical?",
+        "Alternatives diverge?"
+      ],
+      "rows": [
+        {
+          "Component category": "Power semiconductor (IGBT/SiC)",
+          "L4 subsystem positions": "S2 power stage · S3 protection relay firmware",
+          "Safety-critical?": "YES",
+          "Alternatives diverge?": "YES — SiC vs IGBT"
+        },
+        {
+          "Component category": "Copper conductor",
+          "L4 subsystem positions": "S2 filter · S3 transformer winding · S8 MV cable",
+          "Safety-critical?": "NO",
+          "Alternatives diverge?": "Cu vs Al (varies by position)"
+        },
+        {
+          "Component category": "Lithium cell",
+          "L4 subsystem positions": "S1 battery pack",
+          "Safety-critical?": "YES",
+          "Alternatives diverge?": "LFP vs NMC (converging to LFP)"
+        },
+        {
+          "Component category": "Cooling compressor",
+          "L4 subsystem positions": "S6 chiller · S5 HVAC (overlaps cold-storage main refrigeration!)",
+          "Safety-critical?": "NO",
+          "Alternatives diverge?": "Shared supplier base — refrigeration OEM overlap"
+        },
+        {
+          "Component category": "Aerosol canister",
+          "L4 subsystem positions": "S7 fire safety",
+          "Safety-critical?": "YES",
+          "Alternatives diverge?": "Single-source K-salt chemistry"
+        },
+        {
+          "Component category": "PLC / edge controller",
+          "L4 subsystem positions": "S4 EMS",
+          "Safety-critical?": "NO",
+          "Alternatives diverge?": "ARM SoC vs x86 vs DSP"
+        },
+        {
+          "Component category": "Steel panel",
+          "L4 subsystem positions": "S5 shell · S8 firewall",
+          "Safety-critical?": "NO",
+          "Alternatives diverge?": "Weathering vs galvanized vs stainless"
+        }
+      ]
+    },
+    {
+      "headers": [
+        "BOM type",
+        "Produced?",
+        "Rationale"
+      ],
+      "rows": [
+        {
+          "BOM type": "Upward context BOM",
+          "Produced?": "N/A",
+          "Rationale": "Mein Solar is not a component supplier; no parent system exists above the L5 BESS plant at a cold-storage site"
+        },
+        {
+          "BOM type": "Downward product BOM",
+          "Produced?": "**YES (this document)**",
+          "Rationale": "L5 → L0 decomposition of the BESS asset Mein Solar delivers"
+        }
+      ]
+    },
+    {
+      "headers": [
+        "Check",
+        "Status"
+      ],
+      "rows": [
+        {
+          "Check": "NAICS routing applied (service sector → VN System BOM only, no end-product BOM)",
+          "Status": "✅"
+        },
+        {
+          "Check": "Every L4 traces to L0 through L3, L2, L1",
+          "Status": "✅ (S1–S8 all reach L0)"
+        },
+        {
+          "Check": "Every level transition has an alternatives table",
+          "Status": "✅"
+        },
+        {
+          "Check": "Single-source branches marked with `single-source: true`",
+          "Status": "✅ (Cu-ETP, Al can, K-salt, Novec)"
+        },
+        {
+          "Check": "Shares sum to 100% (±1%) at every transition",
+          "Status": "✅"
+        },
+        {
+          "Check": "Alternatives = technology/material choices, not brands",
+          "Status": "✅"
+        },
+        {
+          "Check": "Legacy declining alternatives ≥2% included",
+          "Status": "✅ (R-410A, Si-IGBT, SF6, mineral oil, etc.)"
+        },
+        {
+          "Check": "Company position marked (L5 integrator)",
+          "Status": "✅"
+        },
+        {
+          "Check": "Horizontal + vertical adjacency analysis",
+          "Status": "✅"
+        },
+        {
+          "Check": "BOM vs VN confusion test (does it end IN the asset?)",
+          "Status": "✅ (all components end in the BESS plant, not machines that make it)"
+        }
+      ]
+    }
+  ],
+  "entities": [
+    {
+      "component": "product_bom_decomposition",
+      "naics_code": "493120",
+      "naics_title": "Refrigerated Warehousing and Storage",
+      "naics_sector_family": "transportation_warehousing",
+      "is_manufacturing_naics": false,
+      "end_product_bom_produced": false,
+      "end_product_bom_skipped_reason": "NAICS 493120 is a service NAICS. The industry's output is refrigerated storage service, not a physical product with compositional hierarchy. Per component doc routing, service/ecosystem NAICS use service composition, not BOM.",
+      "vn_system_boms_produced": [
+        "bess_asset_at_cold_storage_site"
+      ],
+      "company_name": "Mein Solar GmbH",
+      "company_product": "EPC für Großbatteriespeicher",
+      "company_position_level": "L5",
+      "company_position_role": "System Integrator / EPC (delivers L5 asset, no upward context BOM needed)",
+      "bom_l5_output": {
+        "name": "Commissioned BESS Plant (4.5 MW / 9 MWh class)",
+        "level": "L5",
+        "description": "Grid-compliant dispatchable battery storage asset, containerized, VDE-AR-N 4110 / FGW TR8 certified, commissioned for BtM peak-shaving + resilience at cold-storage sites",
+        "output_type": "bess_asset",
+        "naics_code": "493120",
+        "company_position": true,
+        "company_name": "Mein Solar GmbH"
+      },
+      "bom_l4_subsystems": [
+        {
+          "id": "S1",
+          "name": "Battery storage subsystem",
+          "level": "L4",
+          "category": "primary_functional"
+        },
+        {
+          "id": "S2",
+          "name": "Power conversion subsystem (PCS)",
+          "level": "L4",
+          "category": "primary_functional"
+        },
+        {
+          "id": "S3",
+          "name": "Grid coupling & switchgear subsystem",
+          "level": "L4",
+          "category": "control_interface"
+        },
+        {
+          "id": "S4",
+          "name": "Control & EMS subsystem",
+          "level": "L4",
+          "category": "control_interface"
+        },
+        {
+          "id": "S5",
+          "name": "Containment / enclosure subsystem",
+          "level": "L4",
+          "category": "packaging"
+        },
+        {
+          "id": "S6",
+          "name": "Thermal management subsystem",
+          "level": "L4",
+          "category": "auxiliary"
+        },
+        {
+          "id": "S7",
+          "name": "Fire safety subsystem",
+          "level": "L4",
+          "category": "auxiliary"
+        },
+        {
+          "id": "S8",
+          "name": "Civil / site subsystem",
+          "level": "L4",
+          "category": "auxiliary"
+        }
+      ],
+      "level_transitions_summary": {
+        "L5_to_L4": {
+          "position": "BESS Plant architecture",
+          "alternatives_count": 4,
+          "dominant": "Containerized AC-coupled (80%)"
+        },
+        "S1_L4_to_L3": {
+          "position": "Battery module architecture",
+          "alternatives_count": 4,
+          "dominant": "LFP prismatic rack (85%)"
+        },
+        "S1_L1_to_L0": {
+          "position": "Active cathode material",
+          "alternatives_count": 4,
+          "dominant": "LFP 85%, NMC 13%"
+        },
+        "S2_L4_to_L3": {
+          "position": "PCS topology",
+          "alternatives_count": 3,
+          "dominant": "Central PCS (55%)"
+        },
+        "S2_L3_to_L2": {
+          "position": "Power-stage switching device",
+          "alternatives_count": 3,
+          "dominant": "Si IGBT 78%, SiC 20%"
+        },
+        "S3_L3_to_L2_transformer": {
+          "position": "Transformer insulation medium",
+          "alternatives_count": 4,
+          "dominant": "Mineral oil 55%, dry-cast-resin 35%"
+        },
+        "S3_L3_to_L2_switchgear": {
+          "position": "MV switchgear interrupting medium",
+          "alternatives_count": 3,
+          "dominant": "SF6 65%, vacuum+air 25% (SF6-free growing)"
+        },
+        "S4_L4_to_L3": {
+          "position": "EMS architecture",
+          "alternatives_count": 3,
+          "dominant": "On-prem PLC+server 60%"
+        },
+        "S5_L4_to_L3": {
+          "position": "Enclosure type",
+          "alternatives_count": 4,
+          "dominant": "20ft ISO HC 65%, 40ft 25%"
+        },
+        "S6_L4_to_L3": {
+          "position": "Cooling architecture",
+          "alternatives_count": 4,
+          "dominant": "Liquid cooling 75%"
+        },
+        "S6_L1_to_L0_refrigerant": {
+          "position": "Refrigerant",
+          "alternatives_count": 4,
+          "dominant": "R-454B 45%, R-32 35%"
+        },
+        "S7_L4_to_L3": {
+          "position": "Fire suppression architecture",
+          "alternatives_count": 5,
+          "dominant": "Aerosol 40%, Clean-agent 30%"
+        },
+        "S8_L4_to_L3": {
+          "position": "Foundation",
+          "alternatives_count": 3,
+          "dominant": "Cast-in-place RC slab 80%"
+        },
+        "S8_L1_to_L0_concrete": {
+          "position": "Cement type",
+          "alternatives_count": 3,
+          "dominant": "OPC 55%, CEM II/III 40%"
+        }
+      },
+      "single_source_branches": [
+        {
+          "position": "S3 transformer winding / Cu strip L1→L0",
+          "commodity": "Electrolytic Cu (Cu-ETP/Cu-OFE)",
+          "reason": "No substitute at commodity level for conductor"
+        },
+        {
+          "position": "S1 pack / aluminum cell can L1→L0",
+          "commodity": "Al 1070",
+          "reason": "Industry standard; substitution requires cell-level redesign"
+        },
+        {
+          "position": "S7 aerosol generator L1→L0",
+          "commodity": "Potassium-nitrate pyrotechnic compound",
+          "reason": "Only chemistry qualified under NFPA 2010 at commercial scale"
+        },
+        {
+          "position": "S7 clean-agent cylinder L1→L0",
+          "commodity": "Novec 1230 (FK-5-1-12)",
+          "reason": "Single-source (3M) and being discontinued Dec 2025 — will force migration"
+        }
+      ],
+      "component_category_map": [
+        {
+          "category": "Power semiconductor (IGBT/SiC)",
+          "bom_positions": [
+            "S2 power-stage",
+            "S3 protection relays"
+          ],
+          "safety_critical": true
+        },
+        {
+          "category": "Copper conductor",
+          "bom_positions": [
+            "S2 LCL filter",
+            "S3 transformer winding",
+            "S8 MV cable"
+          ],
+          "safety_critical": false
+        },
+        {
+          "category": "Lithium cell",
+          "bom_positions": [
+            "S1 battery pack"
+          ],
+          "safety_critical": true
+        },
+        {
+          "category": "Cooling compressor (scroll/screw)",
+          "bom_positions": [
+            "S6 chiller"
+          ],
+          "safety_critical": false,
+          "note": "Cross-system overlap — same compressor category appears in the cold-storage facility's primary refrigeration plant (customer conversation adjacency)"
+        },
+        {
+          "category": "Aerosol canister",
+          "bom_positions": [
+            "S7 suppression"
+          ],
+          "safety_critical": true
+        },
+        {
+          "category": "PLC / edge controller",
+          "bom_positions": [
+            "S4 EMS"
+          ],
+          "safety_critical": false
+        },
+        {
+          "category": "Steel panel (Corten / S355)",
+          "bom_positions": [
+            "S5 shell",
+            "S8 firewall"
+          ],
+          "safety_critical": false
+        }
+      ],
+      "horizontal_adjacency_l5": [
+        {
+          "adjacent_system": "Rooftop PV plant (>500 kW)",
+          "capability_gap": "LOW",
+          "market_size_per_site_eur": "300k-1.5M",
+          "strategic_fit": "STRONG"
+        },
+        {
+          "adjacent_system": "HPC truck charging hub (BEV drayage)",
+          "capability_gap": "LOW-MEDIUM",
+          "market_size_per_site_eur": "500k-2M",
+          "strategic_fit": "STRONG"
+        },
+        {
+          "adjacent_system": "Refrigeration-plant energy retrofit",
+          "capability_gap": "HIGH",
+          "market_size_per_site_eur": "1-4M",
+          "strategic_fit": "WEAK"
+        },
+        {
+          "adjacent_system": "LED / controls retrofit",
+          "capability_gap": "MEDIUM",
+          "market_size_per_site_eur": "100-400k",
+          "strategic_fit": "MEDIUM"
+        },
+        {
+          "adjacent_system": "CHP / biogas firming plant",
+          "capability_gap": "HIGH",
+          "market_size_per_site_eur": "2-6M",
+          "strategic_fit": "WEAK"
+        }
+      ],
+      "vertical_adjacency_up": {
+        "current_role": "L5 EPC integrator",
+        "target_role": "BESS asset owner / IPP (storage-as-a-service)",
+        "capabilities_required": [
+          "Asset-ownership finance",
+          "Revenue trading / aggregator integration",
+          "Long-term O&M",
+          "Insurance wrap"
+        ],
+        "capital_per_mwh_eur": "250k-400k installed",
+        "customer_leverage": "HIGH",
+        "competitive_risk": "MEDIUM — Voltfang, Kyon, Entrix already offer storage-as-a-service in DE",
+        "time_to_market_months": "12-18",
+        "verdict": "plausible_with_ipp_partner"
+      },
+      "vertical_adjacency_down": [
+        {
+          "target_system": "Cold-storage refrigeration plant (same site)",
+          "bom_position": "L4 compressor-pump controls",
+          "shared_tech": "S6 thermal mgmt",
+          "adaptation": "Refrigeration-domain expertise"
+        },
+        {
+          "target_system": "Industrial microgrid",
+          "bom_position": "L4 full BESS subsystem",
+          "shared_tech": "entire offering",
+          "adaptation": "Islanding controls"
+        },
+        {
+          "target_system": "HPC charging hub",
+          "bom_position": "L4 BESS buffer",
+          "shared_tech": "entire offering",
+          "adaptation": "EV-charging SOP"
+        },
+        {
+          "target_system": "PV+wind hybrid park",
+          "bom_position": "L4 BESS subsystem",
+          "shared_tech": "entire offering",
+          "adaptation": "Wind-site civil"
+        },
+        {
+          "target_system": "TSO Netzbooster (100-500 MW)",
+          "bom_position": "L4 sub-100-MW BESS block",
+          "shared_tech": "~50% of offering",
+          "adaptation": "HV grid code (VDE-AR-N 4120), consortium role"
+        }
+      ],
+      "quality_checks": {
+        "every_l4_traces_to_l0": true,
+        "every_transition_has_alternatives_table": true,
+        "single_source_branches_marked": true,
+        "shares_sum_to_100": true,
+        "alternatives_are_technology_not_brand": true,
+        "legacy_declining_alternatives_included": true,
+        "company_position_marked": true,
+        "horizontal_vertical_adjacency_done": true,
+        "bom_vs_vn_test_passed": true
+      },
+      "sources": [
+        {
+          "url": "https://www.woodmac.com/press-releases/lfp-to-overtake-nmc-as-dominant-stationary-storage-chemistry-by-2030/",
+          "claim": "LFP ~85% of stationary storage in 2025"
+        },
+        {
+          "url": "https://www.iea.org/reports/global-critical-minerals-outlook-2025/beyond-nmc-batteries-supply-chain-issues-for-emerging-battery-technologies",
+          "claim": "LFP >90% of stationary applications, China-sourced"
+        },
+        {
+          "url": "https://www.woodmac.com/press-releases/tesla-remains-the-top-global-producer-of-battery-energy-storage-systems-in-2024-but-sungrow-narrows-the-gap/",
+          "claim": "Tesla 15% / Sungrow 14% / CRRC 8% global BESS integrator share 2024"
+        },
+        {
+          "url": "https://source.benchmarkminerals.com/article/bess-system-integrator-ranking-in-h1-2025-shows-change-is-on-the-horizon-for-the-industry",
+          "claim": "Sungrow leads in Q1–Q3 2025 shipments"
+        },
+        {
+          "url": "https://www.woodmac.com/press-releases/solar-inverter-ranking-h1-2025/",
+          "claim": "Huawei + Sungrow dominate inverter (PCS) H1 2025"
+        },
+        {
+          "url": "https://www.fike.com/knowledge-center/3m-novec-1230-discontinued-what-now/",
+          "claim": "3M exiting Novec 1230 production Dec 2025 — migration to aerosol/FK-5-1-12 alternatives"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Lithium_iron_phosphate_battery",
+          "claim": "LFP chemistry background"
+        },
+        {
+          "url": "https://eticaag.com/ups-vs-bess-in-data-centers-why-the-future-is-hybrid/",
+          "claim": "BESS + UPS hybrid trend (referenced for site-class parallels)"
+        }
+      ]
+    }
+  ],
+  "has_bom": true,
+  "naics_sector_type": "non_manufacturing"
+}

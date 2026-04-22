@@ -1,0 +1,866 @@
+{
+  "id": "FIT_other_electric_power_generation_bess_ref",
+  "title": "FIT — NAICS 221118 Other Electric Power Generation (Standalone BESS / IPP)",
+  "type": "feature_market_fit",
+  "market_slug": "other_electric_power_generation_bess_ref",
+  "is_per_market": true,
+  "sections": [
+    {
+      "title": "Step 09 — Technology-Level Feature-Market Fit",
+      "content": "**Rule applied:** 6 technology-scope features × market 221118. Kano baseline = commodity FP (\"deliver operational grid-connected electrical energy storage as turnkey capital project\"). Features delivering the commodity FP are `must_be`; features exceeding it are candidates for `one_dimensional` / `attractive`. Scale 1–10 (10 = best-known today). `overall_fit` = arithmetic mean of 9 dims.\n\n### 09a — Scoring table\n\n| # | Feature | Kano | T | C | Sa | Re | Sk | St | P | Cf | De | overall_fit |\n|---|---|---|---|---|---|---|---|---|---|---|---|---|\n| 1 | Containerized Li-ion BESS Integration | must_be | 5 | 6 | 8 | 9 | 4 | 6 | 5 | 8 | 4 | **6.11** |\n| 2 | Bidirectional Power Conversion System | must_be | 7 | 7 | 6 | 8 | 4 | 6 | 5 | 8 | 5 | **6.22** |\n| 3 | Medium-Voltage Grid Coupling | must_be | 6 | 5 | 9 | 9 | 4 | 6 | 4 | 9 | 3 | **6.11** |\n| 4 | Energy Management System (EMS) | one_dimensional | 8 | 9 | 5 | 7 | 6 | 7 | 7 | 7 | 6 | **6.89** |\n| 5 | Grid-Code Certification Delivery | must_be | 9 | 7 | 10 | 8 | 7 | 9 | 8 | 10 | 5 | **8.11** |\n| 8 | Civil Works & Site Preparation | must_be | 6 | 6 | 8 | 7 | 3 | 5 | 7 | 6 | 2 | **5.56** |\n\nLegend: T=Time · C=Cost · Sa=Safety · Re=Reliability · Sk=Skill · St=Stress · P=Pain · Cf=Confidence · De=Delight\n\n### 09a — Rationale per feature\n\n| # | Kano rationale | Primary ODI drivers |\n|---|---|---|\n| 1 | Commodity FP delivery core — every BESS EPC delivers a container. IPP market takes it for granted. | Reliability (9) LFP BMS contains degradation; Safety (8) NOVEC + compartmentalization; Confidence (8) Grade-A cells + BMS telemetry |\n| 2 | Bidirectional PCS is the literal definition of \"dispatchable\" — must_be for IPP revenue model. | Reliability (8) 4-quadrant ops; Time (7) <100 ms FCR-grade response; Confidence (8) certified FCR/aFRR response |\n| 3 | MV connection is precondition to energization. Absence blocks revenue entirely. | Safety (9) NA-protection prevents fault feed-in; Reliability (9) digital relays; Confidence (9) IEC 61850 interop |\n| 4 | More sophisticated EMS → more revenue stacks (EPEX + FCR + aFRR + §19 StromNEV). Linear revenue lift. | Cost (9) revenue optimization lifts IRR; Time (8) sub-second dispatch; Pain (7) removes manual trade-desk work |\n| 5 | Without FGW TR8 plant cert the asset cannot energize — hard regulatory gate. Need #11/#13 underserved → high delight. | Safety (10) certified protection envelope; Confidence (10) lender/DSO acceptance; Stress (9) removes #11 TR3 gap risk |\n| 8 | Foundation + trenching + fencing — universally required, rarely the deciding factor. | Safety (8) Feuerwehr access; Pain (7) coordinates Baugenehmigung with L6a,L6b |\n\n### 09b — Validation notes\n\n- No feature scores 10 across all dims ✅\n- Safety ≥7 ↔ Confidence ≥7 correlations hold for features 1, 3, 5 ✅\n- Skill scores low (2–7) everywhere — IPP operator does not operate, EPC integrates and hands over. Consistent.\n- Feature 5 (Grid-Code Cert) overall_fit 8.11 correctly dominates — directly addresses the underserved needs #4, #11, #13 (DSO, TR3 dossier, commissioning recovery).\n- Feature 4 (EMS) is `one_dimensional` not `attractive`: IPPs already expect EMS; more capability = more revenue linearly.\n- Feature naming complies with 1.pdf (spec-visible noun phrases, no brand / outcome claims).\n\n---"
+    },
+    {
+      "title": "Step 10 — Product-Related Needs (Burleson Product Jobs)",
+      "content": "**Litmus test:** \"Would this need disappear if a different-mechanism BESS EPC were delivered (same commodity FP, different storage medium)?\" Applied to the 9 product constraints from Step 01. Excludes needs that apply to *any* grid-connected storage EPC (MV capacity, grid-cert lead time — already captured as market needs in Step 06).\n\n### 10a — Constraint → product-related needs\n\n| # | Source constraint | Statement (error-first) | Affected markets | Imp | Sat_cur |\n|---|---|---|---|---|---|\n| PR1 | Li-Ion Thermal Runaway Hazard | Minimize the likelihood of a propagating thermal-runaway event originating in an LFP cell triggering a Feuerwehr-attended incident with container write-off | 221118 | 9.5 | 5.0 |\n| PR2 | Li-Ion Thermal Runaway Hazard | Minimize the likelihood of a NOVEC 1230 / aerosol suppression false-discharge causing unplanned container decommissioning and refill cost | 221118 | 6.5 | 5.5 |\n| PR3 | Fire-Protection Clearance | Minimize the likelihood of a Brandschutzkonzept rework cycle caused by >3 MWh cluster separation walls being missed in the first Feuerwehr review | 221118 | 7.5 | 4.0 |\n| PR4 | Land Footprint and Siting | Minimize the likelihood that the LFP-container footprint (40–80 m²/MWh) plus safety clearances disqualifies a site that would accommodate a higher-density medium (flywheel, solid-state) | 221118 | 6.0 | 5.0 |\n| PR5 | Battery Supply Chain Concentration | Minimize the likelihood of LFP-cell single-country tariff or CRMA compliance exposure exceeding 70% of project CAPEX | 221118 | 7.0 | 4.0 |\n| PR6 | Battery Supply Chain Concentration | Minimize the time to re-qualify an alternate LFP cell supplier (FAT, UN38.3, IEC 62619) when primary supply is disrupted | 221118 | 6.5 | 3.5 |\n| PR7 | Ambient Temperature Envelope | Minimize the likelihood of LFP capacity derating reducing dispatch revenue at ambient <−10 °C or >+40 °C beyond HVAC compensation | 221118 | 7.0 | 5.5 |\n| PR8 | Ambient Temperature Envelope | Minimize the likelihood of HVAC parasitic load exceeding 3% of throughput across the annual temperature envelope | 221118 | 6.0 | 5.0 |\n| PR9 | Round-Trip Energy Losses | Minimize the likelihood that the Li-ion + PCS + aux AC-AC RTE falls below 85% on a 10-year degradation curve (vs. flow-battery 70% or flywheel 90%) | 221118 | 8.0 | 5.5 |\n| PR10 | Round-Trip Energy Losses | Minimize the likelihood of LFP capacity fade (SoH <80% before Year 10) shortening the revenue-generating lifetime relative to the PPA/toll term | 221118 | 8.5 | 5.0 |\n| PR11 | CAPEX Viability Threshold | Minimize the likelihood of installed €/kWh exceeding the €250–400 band that gates the arbitrage / peak-shaving business case | 221118 | 8.0 | 4.5 |\n| PR12 | CAPEX Viability Threshold | Minimize the likelihood of LFP cell-price volatility (±20% YoY) invalidating the EPC offer between FID and procurement lock | 221118 | 7.0 | 4.0 |\n\n### 10a — Litmus test justification\n\n| Constraint | Why product-related (not market) |\n|---|---|\n| Li-Ion Thermal Runaway | Would disappear with flow battery, flywheel, CAES, thermal-to-power — none have propagating cell-level runaway. |\n| Fire-Protection Clearance (Li-ion specifics) | >3 MWh separation-wall rule is Li-ion hazard-class driven. Flow batteries have no VdS-equivalent separation requirement. |\n| Land Footprint 40–80 m²/MWh | LFP energy density specific. Flow battery ~60–120 m²/MWh; flywheel smaller; molten-salt very different. |\n| Battery Supply Chain Concentration | LFP cell concentration in CN — does not exist for vanadium-flow (EU/AU), flywheels (EU/US steel), or TES. |\n| Ambient Temperature | LFP chemistry-specific derating. Flywheels and TES have very different envelopes. |\n| Round-Trip Energy Losses 10–15% | Li-ion RTE regime. Flywheel ~90%, flow ~70%, CAES ~55%. Different-mechanism need would differ. |\n| CAPEX €250–400/kWh | LFP price curve. Flow-battery CAPEX is €400–700/kWh; flywheel €1k+/kWh short-duration. |\n\nExcluded from product-related needs (= market needs, stay in Step 06):\n- MV grid connection capacity (DSO) — applies to all grid-connected storage EPC\n- Grid code certification lead time — applies to all VDE-AR-N 4110 assets regardless of medium\n\n### 10b — Validation\n\n| Check | Status |\n|---|---|\n| Litmus test: needs disappear with non-Li-ion mechanism | ✅ all 12 |\n| Source-constraint traceability: each `source_constraint` exists in Step 07 | ✅ |\n| Completeness: every Li-ion-specific constraint generates ≥1 need | ✅ |\n| No `importance<3 AND satisfaction>7` entries | ✅ |\n| No duplication with Step 06 market needs | ✅ (checked against JTBD_other_electric_power_generation_bess_ref.md) |\n| Causal mechanism stated in every statement | ✅ |\n\n### 10c — Neo4j writes\n\n```\nMERGE (npg:NeutralProductGroup {name:\"Large-Scale Battery Energy Storage System EPC\"})\nMERGE (es:ErrorStatement {statement:<stmt[:120]>, product_related:true})\n  SET es.source_constraint, es.importance, es.satisfaction_current, es.affected_markets\nMERGE (c:Constraint {name:source_constraint})-[:generates_need]->(es)\nMERGE (npg)-[:has_product_need]->(es)\nMERGE (es)-[:applies_to_market]->(m:Market {naics_code:\"221118\"})\n```\n\n---"
+    },
+    {
+      "title": "Step 11 — Vendor Feature-Market Fit",
+      "content": "**Vendor:** Mein Solar GmbH · **Vendor product:** EPC für Großbatteriespeicher\n**Best incumbent for this market:** OEM-led turnkey (Fluence / Tesla Megapack / Sungrow PowerTitan / Wärtsilä) — ~40% DE share (per JTBD A2).\n**Assessed features:** 3 vendor-scope from Step 01 (features 6, 7, 9) + technology-scope features where Mein Solar's implementation differs meaningfully from generic baseline.\n\n### 11a — Vendor vs. incumbent comparison\n\n| Feature | Kano | Vendor | Best Incumbent | Incumbent tech | Advantage |\n|---|---|---|---|---|---|\n| **Single-Source EPC Contract Vehicle** | attractive | **8** | 7 | Fluence turnkey wrap | **parity** (gap ≤1) |\n| **Co-located PV+BESS Hybrid Design** | attractive | **9** | 3 | Fluence (no PV heritage) | **superior** (+6) |\n| **EV-Charging Buffer Configuration** | indifferent | 4 | 4 | ads-tec Energy integrated BESS+HPC | parity |\n| Grid-Code Certification Delivery *(tech-scope, vendor delta)* | must_be | **8** | 7 | Fluence cert team | parity |\n| Containerized Li-ion BESS Integration *(tech-scope, vendor delta)* | must_be | 6 | **9** | Tesla Megapack / Sungrow PowerTitan | **inferior** (−3) |\n| Bidirectional Power Conversion System *(tech-scope, vendor delta)* | must_be | 6 | **9** | SMA Sunny Central Storage / Sungrow SC | **inferior** (−3) |\n\nAdvantage distribution: 1 superior · 3 parity · 2 inferior. Balanced — no vendor-bias inflation.\n\n### 11a — Rationale\n\n| Feature | Specific comparison |\n|---|---|\n| Single-Source EPC Contract | Mein Solar wraps multi-OEM BOM under one legal counterparty + performance bond (kWh throughput + RTE + availability). Fluence / Tesla also single-counterparty but equipment-locked (vendor lock-in penalty = Step 06 need #18). Net: same outcome, lower lock-in. |\n| Co-located PV+BESS Hybrid | Mein Solar's PV-EPC incumbency = one grid connection, one FGW TR8 dossier covering both assets, shared EMS, shared MV switchgear. Fluence / Tesla have no PV heritage — retrofit onto existing PV park needs separate developer. Directly addresses Step 06 need #3 (interface ambiguity) for S3 segment. |\n| EV-Charging Buffer | Not the IPP use case. Indifferent for 221118. Vendor & incumbent both parity at minimal relevance. |\n| Grid-Code Cert Delivery (vendor delta) | Mein Solar native VDE-AR-N 4110 / FGW TR8 DE practice from PV EPC; Fluence runs cert via local subcontractor. Modest vendor edge, within parity band. |\n| Containerized Li-ion BESS Integration (vendor delta) | Mein Solar integrates third-party LFP containers (CATL EnerC, Sungrow PowerTitan, SolarEast). Tesla Megapack / Sungrow PowerTitan are vertically integrated (cell → pack → container) — deeper BMS/BAMS optimization, tighter thermal control. **Vendor is inferior here.** |\n| Bidirectional PCS (vendor delta) | Mein Solar procures PCS (SMA, Sungrow, Ingeteam). OEM incumbents integrate PCS natively with BMS control — faster FCR response, tighter SoC tracking. **Vendor is inferior here.** |\n\n### 11b — Objectivity review\n\n| Check | Result |\n|---|---|\n| Vendor-bias (>70% superior) | ✅ PASS — only 1/6 superior (17%) |\n| Anti-vendor-bias (>70% inferior) | ✅ PASS — 2/6 inferior (33%) |\n| Advantage arithmetic (|vendor − incumbent| > 1 ⇒ superior/inferior) | ✅ PASS |\n| Kano appropriateness: must_be with vendor or incumbent <5 | ✅ PASS (all must_be features have both scores ≥6) |\n| Attractive features require vendor > incumbent | ✅ PV+BESS Hybrid (9 vs 3); Single-Source (8 vs 7 parity — still valid, one attractive can be parity if incumbent caught up) |\n| Rationale specificity (concrete spec comparison) | ✅ PASS — each rationale names OEM product or capability |\n\n### 11c — Neo4j writes\n\n```\nMERGE (p:Product {name:\"EPC für Großbatteriespeicher\", company_name:\"Mein Solar GmbH\"})\nMERGE (f:Feature {name:<feature_name>}) SET f.feature_scope=\"vendor\", f.description\nMERGE (p)-[:has_feature]->(f)\nMERGE (f)-[:kano_for_market {\n  kano_class, vendor_score, best_incumbent_score,\n  best_incumbent_technology, advantage,\n  feature_scope:\"vendor\", rationale\n}]->(m:Market {naics_code:\"221118\"})\n```\n\n---"
+    },
+    {
+      "title": "Summary",
+      "content": "| Layer | Headline | Evidence |\n|---|---|---|\n| Step 09 Tech Fit | **Grid-Code Cert Delivery** (overall_fit 8.11) is the strongest feature in this market; addresses Step 06 underserved need #11 (TR3/TR8 dossier gap, Opp 15). EMS is one_dimensional revenue lift (6.89). | Kano + 9-dim ODI |\n| Step 10 Product-Related Needs | 12 Li-ion-specific needs isolated. Largest gaps: PR10 capacity fade vs PPA term (Imp 8.5, Sat 5.0), PR11 €/kWh CAPEX band (8.0/4.5), PR9 RTE 85% floor (8.0/5.5), PR3 Brandschutz rework (7.5/4.0). | Litmus test vs. flow-battery / flywheel / TES alternatives |\n| Step 11 Vendor Fit | 1 superior (PV+BESS Hybrid), 3 parity (incl. Single-Source EPC), **2 inferior** (Containerized Integration vs. Tesla/Sungrow; PCS vs. SMA/Sungrow native). | Balanced assessment; OEM vertical integration outweighs Mein Solar on sub-system depth |\n\n**Strategic implication:** Mein Solar wins against OEMs when PV+BESS hybrid is the scenario (S3 segment, Solar→BESS retrofits) and when the IPP wants lock-in-free single-source wrapping. Mein Solar loses against Tesla Megapack / Sungrow PowerTitan on pure-play Li-ion container + PCS depth. Vendor-relevance is segmentation-dependent — S3 (Solar/Wind developer extending to storage) is the highest-fit sub-segment inside 221118.\n\n---"
+    },
+    {
+      "title": "Structured Data",
+      "content": "```json\n{\n  \"component\": \"feature_market_fit\",\n  \"naics_code\": \"221118\",\n  \"naics_title\": \"Other Electric Power Generation\",\n  \"market_name\": \"Standalone BESS / Independent Power Producers\",\n  \"product_name\": \"EPC für Großbatteriespeicher\",\n  \"vendor_name\": \"Mein Solar GmbH\",\n  \"technology_class\": \"Large-Scale Battery Energy Storage System EPC\",\n  \"commodity_or_group\": \"Battery Energy Storage System EPC Services\",\n  \"incumbent_anchor\": \"OEM-led turnkey (Fluence / Tesla Megapack / Sungrow PowerTitan / Wärtsilä)\",\n\n  \"step_09_tech_feature_market_fit\": [\n    {\n      \"feature_name\": \"Containerized Li-ion BESS Integration\",\n      \"market_name\": \"Standalone BESS / Independent Power Producers\",\n      \"naics_code\": \"221118\",\n      \"kano_class\": \"must_be\",\n      \"fit_score_time\": 5, \"fit_score_cost\": 6, \"fit_score_safety\": 8, \"fit_score_reliability\": 9, \"fit_score_skill\": 4,\n      \"fit_score_stress\": 6, \"fit_score_pain\": 5, \"fit_score_confidence\": 8, \"fit_score_delight\": 4,\n      \"overall_fit\": 6.11,\n      \"feature_scope\": \"technology\",\n      \"rationale\": \"must_be: every BESS IPP delivers a container. Drivers: Reliability (9) LFP BMS + Grade-A cells; Safety (8) NOVEC + compartmentalization; Confidence (8) BMS telemetry reconciles Step 06 need #22 on SLA evidence.\"\n    },\n    {\n      \"feature_name\": \"Bidirectional Power Conversion System\",\n      \"market_name\": \"Standalone BESS / Independent Power Producers\",\n      \"naics_code\": \"221118\",\n      \"kano_class\": \"must_be\",\n      \"fit_score_time\": 7, \"fit_score_cost\": 7, \"fit_score_safety\": 6, \"fit_score_reliability\": 8, \"fit_score_skill\": 4,\n      \"fit_score_stress\": 6, \"fit_score_pain\": 5, \"fit_score_confidence\": 8, \"fit_score_delight\": 5,\n      \"overall_fit\": 6.22,\n      \"feature_scope\": \"technology\",\n      \"rationale\": \"must_be for dispatchable revenue model. Drivers: Reliability (8) 4-quadrant ops; Time (7) <100 ms FCR-grade response; Cost (7) reactive power = ancillary revenue.\"\n    },\n    {\n      \"feature_name\": \"Medium-Voltage Grid Coupling\",\n      \"market_name\": \"Standalone BESS / Independent Power Producers\",\n      \"naics_code\": \"221118\",\n      \"kano_class\": \"must_be\",\n      \"fit_score_time\": 6, \"fit_score_cost\": 5, \"fit_score_safety\": 9, \"fit_score_reliability\": 9, \"fit_score_skill\": 4,\n      \"fit_score_stress\": 6, \"fit_score_pain\": 4, \"fit_score_confidence\": 9, \"fit_score_delight\": 3,\n      \"overall_fit\": 6.11,\n      \"feature_scope\": \"technology\",\n      \"rationale\": \"must_be: MV connection is precondition to energization. Drivers: Safety (9) NA-protection prevents fault feed-in; Reliability (9) digital relays; Confidence (9) IEC 61850 DSO interop.\"\n    },\n    {\n      \"feature_name\": \"Energy Management System (EMS)\",\n      \"market_name\": \"Standalone BESS / Independent Power Producers\",\n      \"naics_code\": \"221118\",\n      \"kano_class\": \"one_dimensional\",\n      \"fit_score_time\": 8, \"fit_score_cost\": 9, \"fit_score_safety\": 5, \"fit_score_reliability\": 7, \"fit_score_skill\": 6,\n      \"fit_score_stress\": 7, \"fit_score_pain\": 7, \"fit_score_confidence\": 7, \"fit_score_delight\": 6,\n      \"overall_fit\": 6.89,\n      \"feature_scope\": \"technology\",\n      \"rationale\": \"one_dimensional: more sophisticated EMS → linearly more revenue stacks (EPEX + FCR + aFRR + §19 StromNEV). Drivers: Cost (9) IRR lift; Time (8) sub-second dispatch; Pain (7) removes manual trade-desk work.\"\n    },\n    {\n      \"feature_name\": \"Grid-Code Certification Delivery\",\n      \"market_name\": \"Standalone BESS / Independent Power Producers\",\n      \"naics_code\": \"221118\",\n      \"kano_class\": \"must_be\",\n      \"fit_score_time\": 9, \"fit_score_cost\": 7, \"fit_score_safety\": 10, \"fit_score_reliability\": 8, \"fit_score_skill\": 7,\n      \"fit_score_stress\": 9, \"fit_score_pain\": 8, \"fit_score_confidence\": 10, \"fit_score_delight\": 5,\n      \"overall_fit\": 8.11,\n      \"feature_scope\": \"technology\",\n      \"rationale\": \"must_be: VDE-AR-N 4110 plant cert is hard regulatory gate; asset cannot energize without it. Drivers: Safety (10) certified protection envelope; Confidence (10) DSO + lender acceptance; Stress (9) removes Step 06 need #11 (TR3 dossier gap, Opp 15) and #13 (commissioning recovery, Opp 13).\"\n    },\n    {\n      \"feature_name\": \"Civil Works & Site Preparation\",\n      \"market_name\": \"Standalone BESS / Independent Power Producers\",\n      \"naics_code\": \"221118\",\n      \"kano_class\": \"must_be\",\n      \"fit_score_time\": 6, \"fit_score_cost\": 6, \"fit_score_safety\": 8, \"fit_score_reliability\": 7, \"fit_score_skill\": 3,\n      \"fit_score_stress\": 5, \"fit_score_pain\": 7, \"fit_score_confidence\": 6, \"fit_score_delight\": 2,\n      \"overall_fit\": 5.56,\n      \"feature_scope\": \"technology\",\n      \"rationale\": \"must_be but rarely decisive. Drivers: Safety (8) Feuerwehr access + perimeter; Pain (7) coordinates Baugenehmigung with L6a,L6b. Skill (3) — universal trade skill set.\"\n    }\n  ],\n\n  \"step_10_product_related_needs\": [\n    {\n      \"statement\": \"Minimize the likelihood of a propagating thermal-runaway event originating in an LFP cell triggering a Feuerwehr-attended incident with container write-off\",\n      \"source_constraint\": \"Li-Ion Thermal Runaway Hazard\",\n      \"affected_markets\": [\"Standalone BESS / Independent Power Producers\"],\n      \"importance\": 9.5, \"satisfaction_current\": 5.0, \"product_related\": true\n    },\n    {\n      \"statement\": \"Minimize the likelihood of a NOVEC 1230 / aerosol suppression false-discharge causing unplanned container decommissioning and refill cost\",\n      \"source_constraint\": \"Li-Ion Thermal Runaway Hazard\",\n      \"affected_markets\": [\"Standalone BESS / Independent Power Producers\"],\n      \"importance\": 6.5, \"satisfaction_current\": 5.5, \"product_related\": true\n    },\n    {\n      \"statement\": \"Minimize the likelihood of a Brandschutzkonzept rework cycle caused by >3 MWh cluster separation walls being missed in the first Feuerwehr review\",\n      \"source_constraint\": \"Fire-Protection Clearance\",\n      \"affected_markets\": [\"Standalone BESS / Independent Power Producers\"],\n      \"importance\": 7.5, \"satisfaction_current\": 4.0, \"product_related\": true\n    },\n    {\n      \"statement\": \"Minimize the likelihood that the LFP-container footprint (40-80 m2/MWh) plus safety clearances disqualifies a site that would accommodate a higher-density medium\",\n      \"source_constraint\": \"Land Footprint and Siting\",\n      \"affected_markets\": [\"Standalone BESS / Independent Power Producers\"],\n      \"importance\": 6.0, \"satisfaction_current\": 5.0, \"product_related\": true\n    },\n    {\n      \"statement\": \"Minimize the likelihood of LFP-cell single-country tariff or CRMA compliance exposure exceeding 70% of project CAPEX\",\n      \"source_constraint\": \"Battery Supply Chain Concentration\",\n      \"affected_markets\": [\"Standalone BESS / Independent Power Producers\"],\n      \"importance\": 7.0, \"satisfaction_current\": 4.0, \"product_related\": true\n    },\n    {\n      \"statement\": \"Minimize the time to re-qualify an alternate LFP cell supplier (FAT, UN38.3, IEC 62619) when primary supply is disrupted\",\n      \"source_constraint\": \"Battery Supply Chain Concentration\",\n      \"affected_markets\": [\"Standalone BESS / Independent Power Producers\"],\n      \"importance\": 6.5, \"satisfaction_current\": 3.5, \"product_related\": true\n    },\n    {\n      \"statement\": \"Minimize the likelihood of LFP capacity derating reducing dispatch revenue at ambient <-10 C or >+40 C beyond HVAC compensation\",\n      \"source_constraint\": \"Ambient Temperature Envelope\",\n      \"affected_markets\": [\"Standalone BESS / Independent Power Producers\"],\n      \"importance\": 7.0, \"satisfaction_current\": 5.5, \"product_related\": true\n    },\n    {\n      \"statement\": \"Minimize the likelihood of HVAC parasitic load exceeding 3% of throughput across the annual temperature envelope\",\n      \"source_constraint\": \"Ambient Temperature Envelope\",\n      \"affected_markets\": [\"Standalone BESS / Independent Power Producers\"],\n      \"importance\": 6.0, \"satisfaction_current\": 5.0, \"product_related\": true\n    },\n    {\n      \"statement\": \"Minimize the likelihood that the Li-ion + PCS + aux AC-AC RTE falls below 85% on a 10-year degradation curve\",\n      \"source_constraint\": \"Round-Trip Energy Losses\",\n      \"affected_markets\": [\"Standalone BESS / Independent Power Producers\"],\n      \"importance\": 8.0, \"satisfaction_current\": 5.5, \"product_related\": true\n    },\n    {\n      \"statement\": \"Minimize the likelihood of LFP capacity fade (SoH <80% before Year 10) shortening the revenue-generating lifetime relative to the PPA/toll term\",\n      \"source_constraint\": \"Round-Trip Energy Losses\",\n      \"affected_markets\": [\"Standalone BESS / Independent Power Producers\"],\n      \"importance\": 8.5, \"satisfaction_current\": 5.0, \"product_related\": true\n    },\n    {\n      \"statement\": \"Minimize the likelihood of installed EUR/kWh exceeding the 250-400 band that gates the arbitrage / peak-shaving business case\",\n      \"source_constraint\": \"CAPEX Viability Threshold\",\n      \"affected_markets\": [\"Standalone BESS / Independent Power Producers\"],\n      \"importance\": 8.0, \"satisfaction_current\": 4.5, \"product_related\": true\n    },\n    {\n      \"statement\": \"Minimize the likelihood of LFP cell-price volatility (+/-20% YoY) invalidating the EPC offer between FID and procurement lock\",\n      \"source_constraint\": \"CAPEX Viability Threshold\",\n      \"affected_markets\": [\"Standalone BESS / Independent Power Producers\"],\n      \"importance\": 7.0, \"satisfaction_current\": 4.0, \"product_related\": true\n    }\n  ],\n\n  \"step_11_vendor_feature_market_fit\": [\n    {\n      \"feature_name\": \"Single-Source EPC Contract Vehicle\",\n      \"feature_description\": \"Wrap multi-OEM BOM under one legal counterparty with performance bond across kWh throughput, RTE, and availability\",\n      \"market_name\": \"Standalone BESS / Independent Power Producers\",\n      \"naics_code\": \"221118\",\n      \"vendor_score\": 8, \"best_incumbent_score\": 7,\n      \"best_incumbent_technology\": \"OEM-led turnkey (Fluence wrap)\",\n      \"advantage\": \"parity\",\n      \"kano_class\": \"attractive\",\n      \"feature_scope\": \"vendor\",\n      \"rationale\": \"Mein Solar's single-counterparty wrap addresses Step 06 need #3 (interface ambiguity, Opp 15) and #21 (multi-warranty chase, Opp 13). Fluence / Tesla also single-counterparty but equipment-locked (ties to need #18 change-order opacity). Net: same outcome, lower lock-in — but advantage gap <=1 point → parity.\"\n    },\n    {\n      \"feature_name\": \"Co-located PV+BESS Hybrid Design\",\n      \"feature_description\": \"Size PV generator and BESS as one coupled asset with shared grid connection, FGW TR8 dossier, EMS, and MV switchgear\",\n      \"market_name\": \"Standalone BESS / Independent Power Producers\",\n      \"naics_code\": \"221118\",\n      \"vendor_score\": 9, \"best_incumbent_score\": 3,\n      \"best_incumbent_technology\": \"Fluence (no PV heritage)\",\n      \"advantage\": \"superior\",\n      \"kano_class\": \"attractive\",\n      \"feature_scope\": \"vendor\",\n      \"rationale\": \"Mein Solar PV-EPC incumbency enables one grid connection, one FGW TR8 dossier, shared EMS, shared MV switchgear for PV+BESS — directly addresses Step 06 need #3 for S3 segment (Solar/Wind developer extending to storage). Fluence / Tesla Megapack lack PV origination; retrofit onto operational PV park needs separate developer coordination. Clear superior on S3 scenarios.\"\n    },\n    {\n      \"feature_name\": \"EV-Charging Buffer Configuration\",\n      \"feature_description\": \"Size BESS as buffer for HPC stations to avoid costly grid upgrade at site with weak connection\",\n      \"market_name\": \"Standalone BESS / Independent Power Producers\",\n      \"naics_code\": \"221118\",\n      \"vendor_score\": 4, \"best_incumbent_score\": 4,\n      \"best_incumbent_technology\": \"ads-tec Energy integrated BESS+HPC\",\n      \"advantage\": \"parity\",\n      \"kano_class\": \"indifferent\",\n      \"feature_scope\": \"vendor\",\n      \"rationale\": \"IPP market is not HPC hubs — feature irrelevant for 221118 scenarios (Standalone BESS IPP, PV+BESS hybrid, Wind+BESS). Both vendor and incumbent parity at minimal relevance.\"\n    },\n    {\n      \"feature_name\": \"Grid-Code Certification Delivery\",\n      \"feature_description\": \"Produce VDE-AR-N 4110 plant certificate (type B) per FGW TR8 with DSO acceptance\",\n      \"market_name\": \"Standalone BESS / Independent Power Producers\",\n      \"naics_code\": \"221118\",\n      \"vendor_score\": 8, \"best_incumbent_score\": 7,\n      \"best_incumbent_technology\": \"Fluence cert team (via local subcontractor)\",\n      \"advantage\": \"parity\",\n      \"kano_class\": \"must_be\",\n      \"feature_scope\": \"vendor\",\n      \"rationale\": \"Mein Solar native DE practice from PV EPC (direct VDE-AR-N 4110 experience). Fluence runs cert via local subcontractor — slight execution delta but both reach certified outcome. Gap <=1 → parity.\"\n    },\n    {\n      \"feature_name\": \"Containerized Li-ion BESS Integration\",\n      \"feature_description\": \"Integrate LFP battery modules, BMS, HVAC, and fire suppression inside ISO container envelope\",\n      \"market_name\": \"Standalone BESS / Independent Power Producers\",\n      \"naics_code\": \"221118\",\n      \"vendor_score\": 6, \"best_incumbent_score\": 9,\n      \"best_incumbent_technology\": \"Tesla Megapack / Sungrow PowerTitan\",\n      \"advantage\": \"inferior\",\n      \"kano_class\": \"must_be\",\n      \"feature_scope\": \"vendor\",\n      \"rationale\": \"Mein Solar integrates third-party LFP containers (CATL EnerC, Sungrow PowerTitan, SolarEast). Tesla Megapack and Sungrow PowerTitan are vertically integrated (cell to pack to container) — deeper BMS/BAMS optimization, tighter thermal control, factory-tested thermal-runaway propagation containment. Vendor inferior on sub-system depth (-3 points).\"\n    },\n    {\n      \"feature_name\": \"Bidirectional Power Conversion System\",\n      \"feature_description\": \"Convert between DC battery and AC grid via 4-quadrant inverter with reactive power capability\",\n      \"market_name\": \"Standalone BESS / Independent Power Producers\",\n      \"naics_code\": \"221118\",\n      \"vendor_score\": 6, \"best_incumbent_score\": 9,\n      \"best_incumbent_technology\": \"SMA Sunny Central Storage / Sungrow SC\",\n      \"advantage\": \"inferior\",\n      \"kano_class\": \"must_be\",\n      \"feature_scope\": \"vendor\",\n      \"rationale\": \"Mein Solar procures PCS from SMA / Sungrow / Ingeteam — excellent equipment but arm's-length. OEM integrators bundle PCS natively with BMS — faster FCR response (<50 ms vs <100 ms), tighter SoC tracking. Vendor inferior on native integration (-3 points).\"\n    }\n  ],\n\n  \"summary\": {\n    \"tech_fit_strongest_feature\": \"Grid-Code Certification Delivery (overall_fit 8.11)\",\n    \"tech_fit_weakest_feature\": \"Civil Works & Site Preparation (overall_fit 5.56)\",\n    \"product_related_need_count\": 12,\n    \"top_product_related_gaps\": [\n      \"PR10 LFP capacity fade vs PPA term (Imp 8.5, Sat 5.0)\",\n      \"PR11 EUR/kWh CAPEX band gate (Imp 8.0, Sat 4.5)\",\n      \"PR9 10-year AC-AC RTE 85% floor (Imp 8.0, Sat 5.5)\",\n      \"PR3 Brandschutzkonzept rework (Imp 7.5, Sat 4.0)\"\n    ],\n    \"vendor_advantage_distribution\": {\"superior\": 1, \"parity\": 3, \"inferior\": 2},\n    \"vendor_superior_features\": [\"Co-located PV+BESS Hybrid Design\"],\n    \"vendor_inferior_features\": [\"Containerized Li-ion BESS Integration\", \"Bidirectional Power Conversion System\"],\n    \"strategic_implication\": \"Mein Solar wins in S3 (Solar/Wind developer extending to storage) via PV+BESS hybrid differentiator and lock-in-free single-source wrap. Loses against Tesla Megapack / Sungrow PowerTitan on pure-play Li-ion container + PCS depth for S1 (pure-play BESS IPP) / S2 (utility-owned IPP arm) segments.\"\n  },\n\n  \"qa\": {\n    \"step_09_features_scored\": 6,\n    \"step_09_overall_fit_arithmetic_verified\": true,\n    \"step_09_feature_naming_compliance\": \"PASS\",\n    \"step_09_safety_confidence_correlation\": \"PASS (features 1,3,5)\",\n    \"step_10_litmus_test_all_pass\": true,\n    \"step_10_source_constraint_traceability\": \"PASS (all 12 source constraints exist in Step 07)\",\n    \"step_10_no_market_need_duplication\": \"PASS\",\n    \"step_11_vendor_bias_check\": \"PASS (17% superior, 33% inferior)\",\n    \"step_11_advantage_arithmetic_verified\": true,\n    \"step_11_rationale_specificity\": \"PASS (named OEMs per feature)\"\n  }\n}\n```"
+    }
+  ],
+  "tables": [
+    {
+      "headers": [
+        "#",
+        "Feature",
+        "Kano",
+        "T",
+        "C",
+        "Sa",
+        "Re",
+        "Sk",
+        "St",
+        "P",
+        "Cf",
+        "De",
+        "overall_fit"
+      ],
+      "rows": [
+        {
+          "#": "1",
+          "Feature": "Containerized Li-ion BESS Integration",
+          "Kano": "must_be",
+          "T": "5",
+          "C": "6",
+          "Sa": "8",
+          "Re": "9",
+          "Sk": "4",
+          "St": "6",
+          "P": "5",
+          "Cf": "8",
+          "De": "4",
+          "overall_fit": "**6.11**"
+        },
+        {
+          "#": "2",
+          "Feature": "Bidirectional Power Conversion System",
+          "Kano": "must_be",
+          "T": "7",
+          "C": "7",
+          "Sa": "6",
+          "Re": "8",
+          "Sk": "4",
+          "St": "6",
+          "P": "5",
+          "Cf": "8",
+          "De": "5",
+          "overall_fit": "**6.22**"
+        },
+        {
+          "#": "3",
+          "Feature": "Medium-Voltage Grid Coupling",
+          "Kano": "must_be",
+          "T": "6",
+          "C": "5",
+          "Sa": "9",
+          "Re": "9",
+          "Sk": "4",
+          "St": "6",
+          "P": "4",
+          "Cf": "9",
+          "De": "3",
+          "overall_fit": "**6.11**"
+        },
+        {
+          "#": "4",
+          "Feature": "Energy Management System (EMS)",
+          "Kano": "one_dimensional",
+          "T": "8",
+          "C": "9",
+          "Sa": "5",
+          "Re": "7",
+          "Sk": "6",
+          "St": "7",
+          "P": "7",
+          "Cf": "7",
+          "De": "6",
+          "overall_fit": "**6.89**"
+        },
+        {
+          "#": "5",
+          "Feature": "Grid-Code Certification Delivery",
+          "Kano": "must_be",
+          "T": "9",
+          "C": "7",
+          "Sa": "10",
+          "Re": "8",
+          "Sk": "7",
+          "St": "9",
+          "P": "8",
+          "Cf": "10",
+          "De": "5",
+          "overall_fit": "**8.11**"
+        },
+        {
+          "#": "8",
+          "Feature": "Civil Works & Site Preparation",
+          "Kano": "must_be",
+          "T": "6",
+          "C": "6",
+          "Sa": "8",
+          "Re": "7",
+          "Sk": "3",
+          "St": "5",
+          "P": "7",
+          "Cf": "6",
+          "De": "2",
+          "overall_fit": "**5.56**"
+        }
+      ]
+    },
+    {
+      "headers": [
+        "#",
+        "Kano rationale",
+        "Primary ODI drivers"
+      ],
+      "rows": [
+        {
+          "#": "1",
+          "Kano rationale": "Commodity FP delivery core — every BESS EPC delivers a container. IPP market takes it for granted.",
+          "Primary ODI drivers": "Reliability (9) LFP BMS contains degradation; Safety (8) NOVEC + compartmentalization; Confidence (8) Grade-A cells + BMS telemetry"
+        },
+        {
+          "#": "2",
+          "Kano rationale": "Bidirectional PCS is the literal definition of \"dispatchable\" — must_be for IPP revenue model.",
+          "Primary ODI drivers": "Reliability (8) 4-quadrant ops; Time (7) <100 ms FCR-grade response; Confidence (8) certified FCR/aFRR response"
+        },
+        {
+          "#": "3",
+          "Kano rationale": "MV connection is precondition to energization. Absence blocks revenue entirely.",
+          "Primary ODI drivers": "Safety (9) NA-protection prevents fault feed-in; Reliability (9) digital relays; Confidence (9) IEC 61850 interop"
+        },
+        {
+          "#": "4",
+          "Kano rationale": "More sophisticated EMS → more revenue stacks (EPEX + FCR + aFRR + §19 StromNEV). Linear revenue lift.",
+          "Primary ODI drivers": "Cost (9) revenue optimization lifts IRR; Time (8) sub-second dispatch; Pain (7) removes manual trade-desk work"
+        },
+        {
+          "#": "5",
+          "Kano rationale": "Without FGW TR8 plant cert the asset cannot energize — hard regulatory gate. Need #11/#13 underserved → high delight.",
+          "Primary ODI drivers": "Safety (10) certified protection envelope; Confidence (10) lender/DSO acceptance; Stress (9) removes #11 TR3 gap risk"
+        },
+        {
+          "#": "8",
+          "Kano rationale": "Foundation + trenching + fencing — universally required, rarely the deciding factor.",
+          "Primary ODI drivers": "Safety (8) Feuerwehr access; Pain (7) coordinates Baugenehmigung with L6a,L6b"
+        }
+      ]
+    },
+    {
+      "headers": [
+        "#",
+        "Source constraint",
+        "Statement (error-first)",
+        "Affected markets",
+        "Imp",
+        "Sat_cur"
+      ],
+      "rows": [
+        {
+          "#": "PR1",
+          "Source constraint": "Li-Ion Thermal Runaway Hazard",
+          "Statement (error-first)": "Minimize the likelihood of a propagating thermal-runaway event originating in an LFP cell triggering a Feuerwehr-attended incident with container write-off",
+          "Affected markets": "221118",
+          "Imp": "9.5",
+          "Sat_cur": "5.0"
+        },
+        {
+          "#": "PR2",
+          "Source constraint": "Li-Ion Thermal Runaway Hazard",
+          "Statement (error-first)": "Minimize the likelihood of a NOVEC 1230 / aerosol suppression false-discharge causing unplanned container decommissioning and refill cost",
+          "Affected markets": "221118",
+          "Imp": "6.5",
+          "Sat_cur": "5.5"
+        },
+        {
+          "#": "PR3",
+          "Source constraint": "Fire-Protection Clearance",
+          "Statement (error-first)": "Minimize the likelihood of a Brandschutzkonzept rework cycle caused by >3 MWh cluster separation walls being missed in the first Feuerwehr review",
+          "Affected markets": "221118",
+          "Imp": "7.5",
+          "Sat_cur": "4.0"
+        },
+        {
+          "#": "PR4",
+          "Source constraint": "Land Footprint and Siting",
+          "Statement (error-first)": "Minimize the likelihood that the LFP-container footprint (40–80 m²/MWh) plus safety clearances disqualifies a site that would accommodate a higher-density medium (flywheel, solid-state)",
+          "Affected markets": "221118",
+          "Imp": "6.0",
+          "Sat_cur": "5.0"
+        },
+        {
+          "#": "PR5",
+          "Source constraint": "Battery Supply Chain Concentration",
+          "Statement (error-first)": "Minimize the likelihood of LFP-cell single-country tariff or CRMA compliance exposure exceeding 70% of project CAPEX",
+          "Affected markets": "221118",
+          "Imp": "7.0",
+          "Sat_cur": "4.0"
+        },
+        {
+          "#": "PR6",
+          "Source constraint": "Battery Supply Chain Concentration",
+          "Statement (error-first)": "Minimize the time to re-qualify an alternate LFP cell supplier (FAT, UN38.3, IEC 62619) when primary supply is disrupted",
+          "Affected markets": "221118",
+          "Imp": "6.5",
+          "Sat_cur": "3.5"
+        },
+        {
+          "#": "PR7",
+          "Source constraint": "Ambient Temperature Envelope",
+          "Statement (error-first)": "Minimize the likelihood of LFP capacity derating reducing dispatch revenue at ambient <−10 °C or >+40 °C beyond HVAC compensation",
+          "Affected markets": "221118",
+          "Imp": "7.0",
+          "Sat_cur": "5.5"
+        },
+        {
+          "#": "PR8",
+          "Source constraint": "Ambient Temperature Envelope",
+          "Statement (error-first)": "Minimize the likelihood of HVAC parasitic load exceeding 3% of throughput across the annual temperature envelope",
+          "Affected markets": "221118",
+          "Imp": "6.0",
+          "Sat_cur": "5.0"
+        },
+        {
+          "#": "PR9",
+          "Source constraint": "Round-Trip Energy Losses",
+          "Statement (error-first)": "Minimize the likelihood that the Li-ion + PCS + aux AC-AC RTE falls below 85% on a 10-year degradation curve (vs. flow-battery 70% or flywheel 90%)",
+          "Affected markets": "221118",
+          "Imp": "8.0",
+          "Sat_cur": "5.5"
+        },
+        {
+          "#": "PR10",
+          "Source constraint": "Round-Trip Energy Losses",
+          "Statement (error-first)": "Minimize the likelihood of LFP capacity fade (SoH <80% before Year 10) shortening the revenue-generating lifetime relative to the PPA/toll term",
+          "Affected markets": "221118",
+          "Imp": "8.5",
+          "Sat_cur": "5.0"
+        },
+        {
+          "#": "PR11",
+          "Source constraint": "CAPEX Viability Threshold",
+          "Statement (error-first)": "Minimize the likelihood of installed €/kWh exceeding the €250–400 band that gates the arbitrage / peak-shaving business case",
+          "Affected markets": "221118",
+          "Imp": "8.0",
+          "Sat_cur": "4.5"
+        },
+        {
+          "#": "PR12",
+          "Source constraint": "CAPEX Viability Threshold",
+          "Statement (error-first)": "Minimize the likelihood of LFP cell-price volatility (±20% YoY) invalidating the EPC offer between FID and procurement lock",
+          "Affected markets": "221118",
+          "Imp": "7.0",
+          "Sat_cur": "4.0"
+        }
+      ]
+    },
+    {
+      "headers": [
+        "Constraint",
+        "Why product-related (not market)"
+      ],
+      "rows": [
+        {
+          "Constraint": "Li-Ion Thermal Runaway",
+          "Why product-related (not market)": "Would disappear with flow battery, flywheel, CAES, thermal-to-power — none have propagating cell-level runaway."
+        },
+        {
+          "Constraint": "Fire-Protection Clearance (Li-ion specifics)",
+          "Why product-related (not market)": ">3 MWh separation-wall rule is Li-ion hazard-class driven. Flow batteries have no VdS-equivalent separation requirement."
+        },
+        {
+          "Constraint": "Land Footprint 40–80 m²/MWh",
+          "Why product-related (not market)": "LFP energy density specific. Flow battery ~60–120 m²/MWh; flywheel smaller; molten-salt very different."
+        },
+        {
+          "Constraint": "Battery Supply Chain Concentration",
+          "Why product-related (not market)": "LFP cell concentration in CN — does not exist for vanadium-flow (EU/AU), flywheels (EU/US steel), or TES."
+        },
+        {
+          "Constraint": "Ambient Temperature",
+          "Why product-related (not market)": "LFP chemistry-specific derating. Flywheels and TES have very different envelopes."
+        },
+        {
+          "Constraint": "Round-Trip Energy Losses 10–15%",
+          "Why product-related (not market)": "Li-ion RTE regime. Flywheel ~90%, flow ~70%, CAES ~55%. Different-mechanism need would differ."
+        },
+        {
+          "Constraint": "CAPEX €250–400/kWh",
+          "Why product-related (not market)": "LFP price curve. Flow-battery CAPEX is €400–700/kWh; flywheel €1k+/kWh short-duration."
+        }
+      ]
+    },
+    {
+      "headers": [
+        "Check",
+        "Status"
+      ],
+      "rows": [
+        {
+          "Check": "Litmus test: needs disappear with non-Li-ion mechanism",
+          "Status": "✅ all 12"
+        },
+        {
+          "Check": "Source-constraint traceability: each `source_constraint` exists in Step 07",
+          "Status": "✅"
+        },
+        {
+          "Check": "Completeness: every Li-ion-specific constraint generates ≥1 need",
+          "Status": "✅"
+        },
+        {
+          "Check": "No `importance<3 AND satisfaction>7` entries",
+          "Status": "✅"
+        },
+        {
+          "Check": "No duplication with Step 06 market needs",
+          "Status": "✅ (checked against JTBD_other_electric_power_generation_bess_ref.md)"
+        },
+        {
+          "Check": "Causal mechanism stated in every statement",
+          "Status": "✅"
+        }
+      ]
+    },
+    {
+      "headers": [
+        "Feature",
+        "Kano",
+        "Vendor",
+        "Best Incumbent",
+        "Incumbent tech",
+        "Advantage"
+      ],
+      "rows": [
+        {
+          "Feature": "**Single-Source EPC Contract Vehicle**",
+          "Kano": "attractive",
+          "Vendor": "**8**",
+          "Best Incumbent": "7",
+          "Incumbent tech": "Fluence turnkey wrap",
+          "Advantage": "**parity** (gap ≤1)"
+        },
+        {
+          "Feature": "**Co-located PV+BESS Hybrid Design**",
+          "Kano": "attractive",
+          "Vendor": "**9**",
+          "Best Incumbent": "3",
+          "Incumbent tech": "Fluence (no PV heritage)",
+          "Advantage": "**superior** (+6)"
+        },
+        {
+          "Feature": "**EV-Charging Buffer Configuration**",
+          "Kano": "indifferent",
+          "Vendor": "4",
+          "Best Incumbent": "4",
+          "Incumbent tech": "ads-tec Energy integrated BESS+HPC",
+          "Advantage": "parity"
+        },
+        {
+          "Feature": "Grid-Code Certification Delivery *(tech-scope, vendor delta)*",
+          "Kano": "must_be",
+          "Vendor": "**8**",
+          "Best Incumbent": "7",
+          "Incumbent tech": "Fluence cert team",
+          "Advantage": "parity"
+        },
+        {
+          "Feature": "Containerized Li-ion BESS Integration *(tech-scope, vendor delta)*",
+          "Kano": "must_be",
+          "Vendor": "6",
+          "Best Incumbent": "**9**",
+          "Incumbent tech": "Tesla Megapack / Sungrow PowerTitan",
+          "Advantage": "**inferior** (−3)"
+        },
+        {
+          "Feature": "Bidirectional Power Conversion System *(tech-scope, vendor delta)*",
+          "Kano": "must_be",
+          "Vendor": "6",
+          "Best Incumbent": "**9**",
+          "Incumbent tech": "SMA Sunny Central Storage / Sungrow SC",
+          "Advantage": "**inferior** (−3)"
+        }
+      ]
+    },
+    {
+      "headers": [
+        "Feature",
+        "Specific comparison"
+      ],
+      "rows": [
+        {
+          "Feature": "Single-Source EPC Contract",
+          "Specific comparison": "Mein Solar wraps multi-OEM BOM under one legal counterparty + performance bond (kWh throughput + RTE + availability). Fluence / Tesla also single-counterparty but equipment-locked (vendor lock-in penalty = Step 06 need #18). Net: same outcome, lower lock-in."
+        },
+        {
+          "Feature": "Co-located PV+BESS Hybrid",
+          "Specific comparison": "Mein Solar's PV-EPC incumbency = one grid connection, one FGW TR8 dossier covering both assets, shared EMS, shared MV switchgear. Fluence / Tesla have no PV heritage — retrofit onto existing PV park needs separate developer. Directly addresses Step 06 need #3 (interface ambiguity) for S3 segment."
+        },
+        {
+          "Feature": "EV-Charging Buffer",
+          "Specific comparison": "Not the IPP use case. Indifferent for 221118. Vendor & incumbent both parity at minimal relevance."
+        },
+        {
+          "Feature": "Grid-Code Cert Delivery (vendor delta)",
+          "Specific comparison": "Mein Solar native VDE-AR-N 4110 / FGW TR8 DE practice from PV EPC; Fluence runs cert via local subcontractor. Modest vendor edge, within parity band."
+        },
+        {
+          "Feature": "Containerized Li-ion BESS Integration (vendor delta)",
+          "Specific comparison": "Mein Solar integrates third-party LFP containers (CATL EnerC, Sungrow PowerTitan, SolarEast). Tesla Megapack / Sungrow PowerTitan are vertically integrated (cell → pack → container) — deeper BMS/BAMS optimization, tighter thermal control. **Vendor is inferior here.**"
+        },
+        {
+          "Feature": "Bidirectional PCS (vendor delta)",
+          "Specific comparison": "Mein Solar procures PCS (SMA, Sungrow, Ingeteam). OEM incumbents integrate PCS natively with BMS control — faster FCR response, tighter SoC tracking. **Vendor is inferior here.**"
+        }
+      ]
+    },
+    {
+      "headers": [
+        "Check",
+        "Result"
+      ],
+      "rows": [
+        {
+          "Check": "Vendor-bias (>70% superior)",
+          "Result": "✅ PASS — only 1/6 superior (17%)"
+        },
+        {
+          "Check": "Anti-vendor-bias (>70% inferior)",
+          "Result": "✅ PASS — 2/6 inferior (33%)"
+        },
+        {
+          "Check": "Advantage arithmetic (",
+          "Result": "vendor − incumbent"
+        },
+        {
+          "Check": "Kano appropriateness: must_be with vendor or incumbent <5",
+          "Result": "✅ PASS (all must_be features have both scores ≥6)"
+        },
+        {
+          "Check": "Attractive features require vendor > incumbent",
+          "Result": "✅ PV+BESS Hybrid (9 vs 3); Single-Source (8 vs 7 parity — still valid, one attractive can be parity if incumbent caught up)"
+        },
+        {
+          "Check": "Rationale specificity (concrete spec comparison)",
+          "Result": "✅ PASS — each rationale names OEM product or capability"
+        }
+      ]
+    },
+    {
+      "headers": [
+        "Layer",
+        "Headline",
+        "Evidence"
+      ],
+      "rows": [
+        {
+          "Layer": "Step 09 Tech Fit",
+          "Headline": "**Grid-Code Cert Delivery** (overall_fit 8.11) is the strongest feature in this market; addresses Step 06 underserved need #11 (TR3/TR8 dossier gap, Opp 15). EMS is one_dimensional revenue lift (6.89).",
+          "Evidence": "Kano + 9-dim ODI"
+        },
+        {
+          "Layer": "Step 10 Product-Related Needs",
+          "Headline": "12 Li-ion-specific needs isolated. Largest gaps: PR10 capacity fade vs PPA term (Imp 8.5, Sat 5.0), PR11 €/kWh CAPEX band (8.0/4.5), PR9 RTE 85% floor (8.0/5.5), PR3 Brandschutz rework (7.5/4.0).",
+          "Evidence": "Litmus test vs. flow-battery / flywheel / TES alternatives"
+        },
+        {
+          "Layer": "Step 11 Vendor Fit",
+          "Headline": "1 superior (PV+BESS Hybrid), 3 parity (incl. Single-Source EPC), **2 inferior** (Containerized Integration vs. Tesla/Sungrow; PCS vs. SMA/Sungrow native).",
+          "Evidence": "Balanced assessment; OEM vertical integration outweighs Mein Solar on sub-system depth"
+        }
+      ]
+    }
+  ],
+  "entities": [
+    {
+      "component": "feature_market_fit",
+      "naics_code": "221118",
+      "naics_title": "Other Electric Power Generation",
+      "market_name": "Standalone BESS / Independent Power Producers",
+      "product_name": "EPC für Großbatteriespeicher",
+      "vendor_name": "Mein Solar GmbH",
+      "technology_class": "Large-Scale Battery Energy Storage System EPC",
+      "commodity_or_group": "Battery Energy Storage System EPC Services",
+      "incumbent_anchor": "OEM-led turnkey (Fluence / Tesla Megapack / Sungrow PowerTitan / Wärtsilä)",
+      "step_09_tech_feature_market_fit": [
+        {
+          "feature_name": "Containerized Li-ion BESS Integration",
+          "market_name": "Standalone BESS / Independent Power Producers",
+          "naics_code": "221118",
+          "kano_class": "must_be",
+          "fit_score_time": 5,
+          "fit_score_cost": 6,
+          "fit_score_safety": 8,
+          "fit_score_reliability": 9,
+          "fit_score_skill": 4,
+          "fit_score_stress": 6,
+          "fit_score_pain": 5,
+          "fit_score_confidence": 8,
+          "fit_score_delight": 4,
+          "overall_fit": 6.11,
+          "feature_scope": "technology",
+          "rationale": "must_be: every BESS IPP delivers a container. Drivers: Reliability (9) LFP BMS + Grade-A cells; Safety (8) NOVEC + compartmentalization; Confidence (8) BMS telemetry reconciles Step 06 need #22 on SLA evidence."
+        },
+        {
+          "feature_name": "Bidirectional Power Conversion System",
+          "market_name": "Standalone BESS / Independent Power Producers",
+          "naics_code": "221118",
+          "kano_class": "must_be",
+          "fit_score_time": 7,
+          "fit_score_cost": 7,
+          "fit_score_safety": 6,
+          "fit_score_reliability": 8,
+          "fit_score_skill": 4,
+          "fit_score_stress": 6,
+          "fit_score_pain": 5,
+          "fit_score_confidence": 8,
+          "fit_score_delight": 5,
+          "overall_fit": 6.22,
+          "feature_scope": "technology",
+          "rationale": "must_be for dispatchable revenue model. Drivers: Reliability (8) 4-quadrant ops; Time (7) <100 ms FCR-grade response; Cost (7) reactive power = ancillary revenue."
+        },
+        {
+          "feature_name": "Medium-Voltage Grid Coupling",
+          "market_name": "Standalone BESS / Independent Power Producers",
+          "naics_code": "221118",
+          "kano_class": "must_be",
+          "fit_score_time": 6,
+          "fit_score_cost": 5,
+          "fit_score_safety": 9,
+          "fit_score_reliability": 9,
+          "fit_score_skill": 4,
+          "fit_score_stress": 6,
+          "fit_score_pain": 4,
+          "fit_score_confidence": 9,
+          "fit_score_delight": 3,
+          "overall_fit": 6.11,
+          "feature_scope": "technology",
+          "rationale": "must_be: MV connection is precondition to energization. Drivers: Safety (9) NA-protection prevents fault feed-in; Reliability (9) digital relays; Confidence (9) IEC 61850 DSO interop."
+        },
+        {
+          "feature_name": "Energy Management System (EMS)",
+          "market_name": "Standalone BESS / Independent Power Producers",
+          "naics_code": "221118",
+          "kano_class": "one_dimensional",
+          "fit_score_time": 8,
+          "fit_score_cost": 9,
+          "fit_score_safety": 5,
+          "fit_score_reliability": 7,
+          "fit_score_skill": 6,
+          "fit_score_stress": 7,
+          "fit_score_pain": 7,
+          "fit_score_confidence": 7,
+          "fit_score_delight": 6,
+          "overall_fit": 6.89,
+          "feature_scope": "technology",
+          "rationale": "one_dimensional: more sophisticated EMS → linearly more revenue stacks (EPEX + FCR + aFRR + §19 StromNEV). Drivers: Cost (9) IRR lift; Time (8) sub-second dispatch; Pain (7) removes manual trade-desk work."
+        },
+        {
+          "feature_name": "Grid-Code Certification Delivery",
+          "market_name": "Standalone BESS / Independent Power Producers",
+          "naics_code": "221118",
+          "kano_class": "must_be",
+          "fit_score_time": 9,
+          "fit_score_cost": 7,
+          "fit_score_safety": 10,
+          "fit_score_reliability": 8,
+          "fit_score_skill": 7,
+          "fit_score_stress": 9,
+          "fit_score_pain": 8,
+          "fit_score_confidence": 10,
+          "fit_score_delight": 5,
+          "overall_fit": 8.11,
+          "feature_scope": "technology",
+          "rationale": "must_be: VDE-AR-N 4110 plant cert is hard regulatory gate; asset cannot energize without it. Drivers: Safety (10) certified protection envelope; Confidence (10) DSO + lender acceptance; Stress (9) removes Step 06 need #11 (TR3 dossier gap, Opp 15) and #13 (commissioning recovery, Opp 13)."
+        },
+        {
+          "feature_name": "Civil Works & Site Preparation",
+          "market_name": "Standalone BESS / Independent Power Producers",
+          "naics_code": "221118",
+          "kano_class": "must_be",
+          "fit_score_time": 6,
+          "fit_score_cost": 6,
+          "fit_score_safety": 8,
+          "fit_score_reliability": 7,
+          "fit_score_skill": 3,
+          "fit_score_stress": 5,
+          "fit_score_pain": 7,
+          "fit_score_confidence": 6,
+          "fit_score_delight": 2,
+          "overall_fit": 5.56,
+          "feature_scope": "technology",
+          "rationale": "must_be but rarely decisive. Drivers: Safety (8) Feuerwehr access + perimeter; Pain (7) coordinates Baugenehmigung with L6a,L6b. Skill (3) — universal trade skill set."
+        }
+      ],
+      "step_10_product_related_needs": [
+        {
+          "statement": "Minimize the likelihood of a propagating thermal-runaway event originating in an LFP cell triggering a Feuerwehr-attended incident with container write-off",
+          "source_constraint": "Li-Ion Thermal Runaway Hazard",
+          "affected_markets": [
+            "Standalone BESS / Independent Power Producers"
+          ],
+          "importance": 9.5,
+          "satisfaction_current": 5.0,
+          "product_related": true
+        },
+        {
+          "statement": "Minimize the likelihood of a NOVEC 1230 / aerosol suppression false-discharge causing unplanned container decommissioning and refill cost",
+          "source_constraint": "Li-Ion Thermal Runaway Hazard",
+          "affected_markets": [
+            "Standalone BESS / Independent Power Producers"
+          ],
+          "importance": 6.5,
+          "satisfaction_current": 5.5,
+          "product_related": true
+        },
+        {
+          "statement": "Minimize the likelihood of a Brandschutzkonzept rework cycle caused by >3 MWh cluster separation walls being missed in the first Feuerwehr review",
+          "source_constraint": "Fire-Protection Clearance",
+          "affected_markets": [
+            "Standalone BESS / Independent Power Producers"
+          ],
+          "importance": 7.5,
+          "satisfaction_current": 4.0,
+          "product_related": true
+        },
+        {
+          "statement": "Minimize the likelihood that the LFP-container footprint (40-80 m2/MWh) plus safety clearances disqualifies a site that would accommodate a higher-density medium",
+          "source_constraint": "Land Footprint and Siting",
+          "affected_markets": [
+            "Standalone BESS / Independent Power Producers"
+          ],
+          "importance": 6.0,
+          "satisfaction_current": 5.0,
+          "product_related": true
+        },
+        {
+          "statement": "Minimize the likelihood of LFP-cell single-country tariff or CRMA compliance exposure exceeding 70% of project CAPEX",
+          "source_constraint": "Battery Supply Chain Concentration",
+          "affected_markets": [
+            "Standalone BESS / Independent Power Producers"
+          ],
+          "importance": 7.0,
+          "satisfaction_current": 4.0,
+          "product_related": true
+        },
+        {
+          "statement": "Minimize the time to re-qualify an alternate LFP cell supplier (FAT, UN38.3, IEC 62619) when primary supply is disrupted",
+          "source_constraint": "Battery Supply Chain Concentration",
+          "affected_markets": [
+            "Standalone BESS / Independent Power Producers"
+          ],
+          "importance": 6.5,
+          "satisfaction_current": 3.5,
+          "product_related": true
+        },
+        {
+          "statement": "Minimize the likelihood of LFP capacity derating reducing dispatch revenue at ambient <-10 C or >+40 C beyond HVAC compensation",
+          "source_constraint": "Ambient Temperature Envelope",
+          "affected_markets": [
+            "Standalone BESS / Independent Power Producers"
+          ],
+          "importance": 7.0,
+          "satisfaction_current": 5.5,
+          "product_related": true
+        },
+        {
+          "statement": "Minimize the likelihood of HVAC parasitic load exceeding 3% of throughput across the annual temperature envelope",
+          "source_constraint": "Ambient Temperature Envelope",
+          "affected_markets": [
+            "Standalone BESS / Independent Power Producers"
+          ],
+          "importance": 6.0,
+          "satisfaction_current": 5.0,
+          "product_related": true
+        },
+        {
+          "statement": "Minimize the likelihood that the Li-ion + PCS + aux AC-AC RTE falls below 85% on a 10-year degradation curve",
+          "source_constraint": "Round-Trip Energy Losses",
+          "affected_markets": [
+            "Standalone BESS / Independent Power Producers"
+          ],
+          "importance": 8.0,
+          "satisfaction_current": 5.5,
+          "product_related": true
+        },
+        {
+          "statement": "Minimize the likelihood of LFP capacity fade (SoH <80% before Year 10) shortening the revenue-generating lifetime relative to the PPA/toll term",
+          "source_constraint": "Round-Trip Energy Losses",
+          "affected_markets": [
+            "Standalone BESS / Independent Power Producers"
+          ],
+          "importance": 8.5,
+          "satisfaction_current": 5.0,
+          "product_related": true
+        },
+        {
+          "statement": "Minimize the likelihood of installed EUR/kWh exceeding the 250-400 band that gates the arbitrage / peak-shaving business case",
+          "source_constraint": "CAPEX Viability Threshold",
+          "affected_markets": [
+            "Standalone BESS / Independent Power Producers"
+          ],
+          "importance": 8.0,
+          "satisfaction_current": 4.5,
+          "product_related": true
+        },
+        {
+          "statement": "Minimize the likelihood of LFP cell-price volatility (+/-20% YoY) invalidating the EPC offer between FID and procurement lock",
+          "source_constraint": "CAPEX Viability Threshold",
+          "affected_markets": [
+            "Standalone BESS / Independent Power Producers"
+          ],
+          "importance": 7.0,
+          "satisfaction_current": 4.0,
+          "product_related": true
+        }
+      ],
+      "step_11_vendor_feature_market_fit": [
+        {
+          "feature_name": "Single-Source EPC Contract Vehicle",
+          "feature_description": "Wrap multi-OEM BOM under one legal counterparty with performance bond across kWh throughput, RTE, and availability",
+          "market_name": "Standalone BESS / Independent Power Producers",
+          "naics_code": "221118",
+          "vendor_score": 8,
+          "best_incumbent_score": 7,
+          "best_incumbent_technology": "OEM-led turnkey (Fluence wrap)",
+          "advantage": "parity",
+          "kano_class": "attractive",
+          "feature_scope": "vendor",
+          "rationale": "Mein Solar's single-counterparty wrap addresses Step 06 need #3 (interface ambiguity, Opp 15) and #21 (multi-warranty chase, Opp 13). Fluence / Tesla also single-counterparty but equipment-locked (ties to need #18 change-order opacity). Net: same outcome, lower lock-in — but advantage gap <=1 point → parity."
+        },
+        {
+          "feature_name": "Co-located PV+BESS Hybrid Design",
+          "feature_description": "Size PV generator and BESS as one coupled asset with shared grid connection, FGW TR8 dossier, EMS, and MV switchgear",
+          "market_name": "Standalone BESS / Independent Power Producers",
+          "naics_code": "221118",
+          "vendor_score": 9,
+          "best_incumbent_score": 3,
+          "best_incumbent_technology": "Fluence (no PV heritage)",
+          "advantage": "superior",
+          "kano_class": "attractive",
+          "feature_scope": "vendor",
+          "rationale": "Mein Solar PV-EPC incumbency enables one grid connection, one FGW TR8 dossier, shared EMS, shared MV switchgear for PV+BESS — directly addresses Step 06 need #3 for S3 segment (Solar/Wind developer extending to storage). Fluence / Tesla Megapack lack PV origination; retrofit onto operational PV park needs separate developer coordination. Clear superior on S3 scenarios."
+        },
+        {
+          "feature_name": "EV-Charging Buffer Configuration",
+          "feature_description": "Size BESS as buffer for HPC stations to avoid costly grid upgrade at site with weak connection",
+          "market_name": "Standalone BESS / Independent Power Producers",
+          "naics_code": "221118",
+          "vendor_score": 4,
+          "best_incumbent_score": 4,
+          "best_incumbent_technology": "ads-tec Energy integrated BESS+HPC",
+          "advantage": "parity",
+          "kano_class": "indifferent",
+          "feature_scope": "vendor",
+          "rationale": "IPP market is not HPC hubs — feature irrelevant for 221118 scenarios (Standalone BESS IPP, PV+BESS hybrid, Wind+BESS). Both vendor and incumbent parity at minimal relevance."
+        },
+        {
+          "feature_name": "Grid-Code Certification Delivery",
+          "feature_description": "Produce VDE-AR-N 4110 plant certificate (type B) per FGW TR8 with DSO acceptance",
+          "market_name": "Standalone BESS / Independent Power Producers",
+          "naics_code": "221118",
+          "vendor_score": 8,
+          "best_incumbent_score": 7,
+          "best_incumbent_technology": "Fluence cert team (via local subcontractor)",
+          "advantage": "parity",
+          "kano_class": "must_be",
+          "feature_scope": "vendor",
+          "rationale": "Mein Solar native DE practice from PV EPC (direct VDE-AR-N 4110 experience). Fluence runs cert via local subcontractor — slight execution delta but both reach certified outcome. Gap <=1 → parity."
+        },
+        {
+          "feature_name": "Containerized Li-ion BESS Integration",
+          "feature_description": "Integrate LFP battery modules, BMS, HVAC, and fire suppression inside ISO container envelope",
+          "market_name": "Standalone BESS / Independent Power Producers",
+          "naics_code": "221118",
+          "vendor_score": 6,
+          "best_incumbent_score": 9,
+          "best_incumbent_technology": "Tesla Megapack / Sungrow PowerTitan",
+          "advantage": "inferior",
+          "kano_class": "must_be",
+          "feature_scope": "vendor",
+          "rationale": "Mein Solar integrates third-party LFP containers (CATL EnerC, Sungrow PowerTitan, SolarEast). Tesla Megapack and Sungrow PowerTitan are vertically integrated (cell to pack to container) — deeper BMS/BAMS optimization, tighter thermal control, factory-tested thermal-runaway propagation containment. Vendor inferior on sub-system depth (-3 points)."
+        },
+        {
+          "feature_name": "Bidirectional Power Conversion System",
+          "feature_description": "Convert between DC battery and AC grid via 4-quadrant inverter with reactive power capability",
+          "market_name": "Standalone BESS / Independent Power Producers",
+          "naics_code": "221118",
+          "vendor_score": 6,
+          "best_incumbent_score": 9,
+          "best_incumbent_technology": "SMA Sunny Central Storage / Sungrow SC",
+          "advantage": "inferior",
+          "kano_class": "must_be",
+          "feature_scope": "vendor",
+          "rationale": "Mein Solar procures PCS from SMA / Sungrow / Ingeteam — excellent equipment but arm's-length. OEM integrators bundle PCS natively with BMS — faster FCR response (<50 ms vs <100 ms), tighter SoC tracking. Vendor inferior on native integration (-3 points)."
+        }
+      ],
+      "summary": {
+        "tech_fit_strongest_feature": "Grid-Code Certification Delivery (overall_fit 8.11)",
+        "tech_fit_weakest_feature": "Civil Works & Site Preparation (overall_fit 5.56)",
+        "product_related_need_count": 12,
+        "top_product_related_gaps": [
+          "PR10 LFP capacity fade vs PPA term (Imp 8.5, Sat 5.0)",
+          "PR11 EUR/kWh CAPEX band gate (Imp 8.0, Sat 4.5)",
+          "PR9 10-year AC-AC RTE 85% floor (Imp 8.0, Sat 5.5)",
+          "PR3 Brandschutzkonzept rework (Imp 7.5, Sat 4.0)"
+        ],
+        "vendor_advantage_distribution": {
+          "superior": 1,
+          "parity": 3,
+          "inferior": 2
+        },
+        "vendor_superior_features": [
+          "Co-located PV+BESS Hybrid Design"
+        ],
+        "vendor_inferior_features": [
+          "Containerized Li-ion BESS Integration",
+          "Bidirectional Power Conversion System"
+        ],
+        "strategic_implication": "Mein Solar wins in S3 (Solar/Wind developer extending to storage) via PV+BESS hybrid differentiator and lock-in-free single-source wrap. Loses against Tesla Megapack / Sungrow PowerTitan on pure-play Li-ion container + PCS depth for S1 (pure-play BESS IPP) / S2 (utility-owned IPP arm) segments."
+      },
+      "qa": {
+        "step_09_features_scored": 6,
+        "step_09_overall_fit_arithmetic_verified": true,
+        "step_09_feature_naming_compliance": "PASS",
+        "step_09_safety_confidence_correlation": "PASS (features 1,3,5)",
+        "step_10_litmus_test_all_pass": true,
+        "step_10_source_constraint_traceability": "PASS (all 12 source constraints exist in Step 07)",
+        "step_10_no_market_need_duplication": "PASS",
+        "step_11_vendor_bias_check": "PASS (17% superior, 33% inferior)",
+        "step_11_advantage_arithmetic_verified": true,
+        "step_11_rationale_specificity": "PASS (named OEMs per feature)"
+      }
+    }
+  ],
+  "has_bom": true,
+  "naics_sector_type": "non_manufacturing"
+}

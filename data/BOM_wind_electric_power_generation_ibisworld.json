@@ -1,0 +1,2251 @@
+{
+  "id": "BOM_wind_electric_power_generation_ibisworld",
+  "title": "BOM Decomposition — NAICS 221115 Wind Electric Power Generation",
+  "type": "product_bom",
+  "market_slug": "wind_electric_power_generation_ibisworld",
+  "is_per_market": true,
+  "sections": [
+    {
+      "title": "0 — Scope & Routing",
+      "content": "| Item | Value |\n|---|---|\n| NAICS sector | 22 Utilities (not 31–33 Manufacturing) |\n| Industry output | Electrical energy (L0 commodity — no BOM) |\n| End-product BOM | **BOM #1: Wind Turbine Generator (WTG)** — the asset that produces the industry output |\n| VN system BOM (relevant) | **BOM #2: Battery Energy Storage System (BESS)** — co-located asset where Mein Solar delivers |\n| Mein Solar in BOM #1 | Not a component (no structural role inside the turbine) |\n| Mein Solar in BOM #2 | **L5 EPC integrator** — delivers the assembled BESS as an L5 output to the wind IPP |\n\n**Rationale for two BOMs:** Wind IPPs deploy WTG + BESS as a co-located hybrid asset. The WTG BOM maps competitive context; the BESS BOM is Mein Solar's product domain. Per component doc callout \"Multiple BOMs per Market.\"\n\n---"
+    },
+    {
+      "title": "BOM #1 — Wind Turbine Generator (Onshore, 3–8 MW class)",
+      "content": "```\nL5  Wind Turbine Generator (the sellable installed asset)\n|\n+-- L4  Rotor subsystem (primary functional core)\n+-- L4  Nacelle subsystem (drivetrain + generator enclosure)\n+-- L4  Tower subsystem (structural/support)\n+-- L4  Electrical/control subsystem (interface + conversion)\n+-- L4  Foundation & BoP subsystem (civil + grid connection)\n```\n\n### L5 → L4 Subsystems\n\n| L4 Subsystem | Function | Weight share (typ.) |\n|---|---|---|\n| Rotor (blades + hub + pitch) | Capture kinetic energy | ~20% |\n| Nacelle (drivetrain + generator) | Convert rotation → electricity | ~25% |\n| Tower | Elevate rotor to wind resource | ~45% |\n| Electrical & control | Power conditioning, monitoring, grid interface | ~5% |\n| Foundation + BoP | Anchor + interconnect | ~5% |\n\nSource: NREL Cost of Wind Energy Review 2024; DOE Wind Manufacturing Supply Chain.\n\n---\n\n### L4 Rotor → L3 Modules\n\n| Alternative (L3) | Share | Trend | Confidence | Source |\n|---|---|---|---|---|\n| Blade set (3-blade) | 100% | → Stable | HIGH | IEA Wind TCP Task 11; onshore standard |\n\n**single-source at L3 selection** — 2-blade / 1-blade designs <1%.\n\n#### Rotor > Blade set L3 → L2 Assemblies\n\n| L2 Assembly | Share | Trend | Confidence | Source |\n|---|---|---|---|---|\n| Spar cap + shell (2-piece shell) | ~85% | → Stable | HIGH | MarketsandMarkets Wind Blade Composites 2025 |\n| Segmented / modular blade | ~15% | ↑ Growing | MEDIUM | Enercon/LM Wind 2024 launches |\n\n#### Blade shell L2 → L1 Parts (fiber reinforcement)\n\n| L1 Alternative | Share | Trend | Confidence | Source |\n|---|---|---|---|---|\n| Glass fiber laminate (E-glass) | 71% | → Stable | HIGH | MRFR Wind Turbine Composites 2025 |\n| Glass/carbon hybrid (spar cap) | ~25% | ↑ Growing | HIGH | Grand View Research 2025 |\n| Full carbon fiber | ~4% | ↑ Emerging | MEDIUM | Vestas V236 / Siemens Gamesa trials |\n\n#### Blade fiber L1 → L0 Raw Materials\n\n| L0 Raw Material | Share | Trend | Confidence | Source |\n|---|---|---|---|---|\n| E-glass (SiO₂ + Al₂O₃ + CaO) | 71% | → Stable | HIGH | Owens Corning, Jushi supply data |\n| PAN-based carbon fiber | 25% | ↑ Growing | HIGH | MarketsandMarkets 2025 |\n| Other (basalt, natural fiber) | 4% | ↑ Emerging | LOW | Analyst estimate |\n\n#### Blade resin matrix L1 → L0\n\n| L0 Resin | Share | Trend | Confidence | Source |\n|---|---|---|---|---|\n| Epoxy (bisphenol-A / amine cure) | 34% | → Stable | HIGH | Grand View 2025 |\n| Polyester / vinyl-ester | 40% | ↑ Growing | HIGH | MarketsandMarkets 2025 |\n| Polyurethane (recyclable) | 20% | ↑ Emerging | MEDIUM | Covestro/BASF 2024 |\n| Thermoplastic (Elium) | 6% | ↑ Emerging | LOW | Arkema ZEBRA project |\n\n#### Rotor > Hub L2 → L1 → L0\n\n| L1 | L0 | Share | Trend | Confidence | Source |\n|---|---|---|---|---|---|\n| Cast hub | Spheroidal graphite iron EN-GJS-400 | 100% | → Stable | HIGH | ISO 1083; industry standard |\n\nsingle-source: true\n\n---\n\n### L4 Nacelle → L3 Modules\n\n| L3 Module | Share | Trend | Confidence | Source |\n|---|---|---|---|---|\n| Drivetrain (generator + gearbox OR direct drive) | 100% | → Stable | HIGH | NREL ATB 2024 |\n| Yaw system | 100% | → Stable | HIGH | WTG standard |\n| Pitch system | 100% | → Stable | HIGH | WTG standard |\n| Nacelle enclosure | 100% | → Stable | HIGH | WTG standard |\n\n#### Drivetrain L3 → L2 (architecture choice)\n\n| L2 Architecture | Share | Trend | Confidence | Source |\n|---|---|---|---|---|\n| Geared + DFIG (doubly-fed induction) | ~30% | ↓ Declining | HIGH | GWEC 2024; Thunder Said Energy |\n| Geared + PMSG (medium-speed) | ~40% | ↑ Growing | HIGH | Vestas EnVentus platform |\n| Direct-drive PMSG (gearless) | ~28% | ↑ Growing | HIGH | Grand View Direct Drive 2025 |\n| EESG (electrically excited, rare-earth-free) | ~2% | ↑ Emerging | MEDIUM | Siemens Gamesa Rothes 2024 |\n\n#### Gearbox (where present) L2 → L1\n\n| L1 Gear Type | Share | Trend | Confidence | Source |\n|---|---|---|---|---|\n| Planetary (multi-stage) | 88% | → Stable | HIGH | Market.us Wind Gearbox 2025 |\n| Helical / parallel-shaft | 10% | → Stable | MEDIUM | MRFR 2025 |\n| Hybrid planetary-helical | 2% | ↑ Emerging | LOW | Analyst estimate |\n\n#### Gearbox L1 → L0 Raw Materials\n\n| L0 | Share | Trend | Confidence | Source |\n|---|---|---|---|---|\n| Case-hardened alloy steel (18CrNiMo7-6) | 95% | → Stable | HIGH | ISO 6336; Winergy/ZF specs |\n| Nitrided steel (31CrMoV9) | 5% | → Stable | MEDIUM | DIN 17211 |\n\n#### Generator L2 → L1 (PMSG case)\n\n| L1 Part | L0 Raw Material | Share (L0) | Trend | Confidence | Source |\n|---|---|---|---|---|---|\n| Permanent magnets | NdFeB (sintered, Dy-doped) | 95% | → Stable | HIGH | USGS Mineral Commodity 2025 |\n| Permanent magnets | SmCo / ferrite hybrid | 5% | ↑ Emerging | MEDIUM | Niron Magnetics; Proterial |\n| Stator laminations | Electrical steel (M270-35A) | 100% | → Stable | HIGH | EN 10106 |\n| Copper windings | Electrolytic Cu (99.95%) | 100% | → Stable | HIGH | LME standard |\n\nsingle-source: true on stator & windings L0.\n\n---\n\n### L4 Tower → L3 → L2 → L1 → L0\n\n| L3 Tower Type | Share | Trend | Confidence | Source |\n|---|---|---|---|---|\n| Tubular steel (monopile) | 70% | → Stable | HIGH | Mordor Wind Tower 2025 |\n| Hybrid steel-concrete | 17% | ↑ Growing | HIGH | GWEC 2024 order book |\n| Full concrete (precast/in-situ) | 10% | → Stable | MEDIUM | Enercon E-160 etc. |\n| Lattice / truss | 3% | ↓ Declining | MEDIUM | Legacy, small-scale |\n\n#### Steel tower L2 → L1 → L0\n\n| L0 | Share | Trend | Confidence | Source |\n|---|---|---|---|---|\n| Structural steel S355J2+N (rolled plate) | 100% | → Stable | HIGH | EN 10025-2 |\n\nsingle-source: true\n\n#### Concrete section L2 → L1 → L0\n\n| L0 | Share | Trend | Confidence | Source |\n|---|---|---|---|---|\n| C50/60 high-strength concrete (CEM II) | 100% | → Stable | HIGH | EN 206 |\n\nsingle-source: true\n\n#### Tower internals L2 → L1\n\n| L1 | Share | Trend | Confidence | Source |\n|---|---|---|---|---|\n| Bolted flange connection (L-flange) | 95% | → Stable | HIGH | DIBt guideline |\n| Friction-grip slip joint | 5% | ↑ Emerging | LOW | Andresen Towers |\n\n---\n\n### L4 Electrical & Control → L3 → L2 → L1 → L0\n\n| L3 Module | Share | Trend | Confidence | Source |\n|---|---|---|---|---|\n| Converter (full-scale) | ~70% | ↑ Growing | HIGH | PMSG/DD-PMSG need full-scale |\n| Converter (partial-scale) | ~30% | ↓ Declining | HIGH | DFIG only |\n| Transformer (nacelle or base) | 100% | → Stable | HIGH | IEC 60076 |\n| Pitch controller | 100% | → Stable | HIGH | WTG standard |\n| Yaw controller | 100% | → Stable | HIGH | WTG standard |\n| SCADA / turbine controller | 100% | → Stable | HIGH | IEC 61400-25 |\n\n#### Converter L2 → L1 (semiconductor choice)\n\n| L1 Power Semi | Share | Trend | Confidence | Source |\n|---|---|---|---|---|\n| Si IGBT (1.7 kV / 3.3 kV) | 85% | → Stable | HIGH | Semikron, Infineon product mix |\n| SiC MOSFET | 10% | ↑ Growing | HIGH | Wolfspeed, Infineon CoolSiC |\n| IGCT (MV direct) | 5% | → Stable | MEDIUM | ABB high-power nacelle |\n\n#### Converter L1 → L0\n\n| L0 | Share | Trend | Confidence | Source |\n|---|---|---|---|---|\n| Silicon wafer (300 mm) | 85% | → Stable | HIGH | SEMI data |\n| SiC wafer (150/200 mm) | 10% | ↑ Growing | HIGH | Wolfspeed, STMicro |\n| Gallium nitride | <5% | ↑ Emerging | LOW | Navitas / EPC |\n\n---\n\n### L4 Foundation & BoP → L3 → L2 → L1 → L0\n\n| L3 Foundation | Share | Trend | Confidence | Source |\n|---|---|---|---|---|\n| Gravity (spread footing) | 75% | → Stable | HIGH | GWEC onshore 2024 |\n| Piled foundation | 20% | → Stable | HIGH | Site-specific soils |\n| Rock-anchor foundation | 5% | → Stable | MEDIUM | Scandinavian practice |\n\n#### Foundation L1 → L0\n\n| L0 | Share | Trend | Confidence | Source |\n|---|---|---|---|---|\n| Reinforced concrete (C30/37) | 100% | → Stable | HIGH | EN 206 |\n| Reinforcement steel (B500B) | 100% | → Stable | HIGH | EN 10080 |\n\nsingle-source: true\n\n---"
+    },
+    {
+      "title": "BOM #2 — Battery Energy Storage System (Co-located with Wind Park)",
+      "content": "**This is Mein Solar's product domain.** Company position marker: **← [Mein Solar GmbH] L5 EPC integrator position** — the entire BOM #2 below represents the composition of the Mein Solar-delivered asset.\n\n```\nL5  BESS Asset (commissioned, grid-certified — Mein Solar EPC deliverable)   ← [Mein Solar] position\n|\n+-- L4  Battery subsystem (energy storage core)\n+-- L4  Power conversion subsystem (DC⇄AC)\n+-- L4  MV grid-coupling subsystem (AC interface)\n+-- L4  Control & EMS subsystem (dispatch logic)\n+-- L4  Enclosure / thermal / safety subsystem (containment)\n+-- L4  Civil & site subsystem (foundation + BoP)\n```\n\n### L5 → L4 Subsystems\n\n| L4 Subsystem | Function | CAPEX share (typ.) |\n|---|---|---|\n| Battery subsystem | Store/release charge | 50–55% |\n| Power conversion (PCS) | DC↔AC bidirectional | 10–12% |\n| MV grid coupling | 10/20 kV interface | 8–10% |\n| Control & EMS | Dispatch optimization | 3–5% |\n| Enclosure/thermal/safety | Container, HVAC, fire suppression | 10–12% |\n| Civil & site | Foundation, cabling, fencing | 10–15% |\n\nSource: BNEF BESS CAPEX structure 2024; Voltfang / Tesvolt public cost decks.\n\n---\n\n### L4 Battery → L3 → L2 → L1 → L0\n\n#### L4 → L3 Modules\n\n| L3 Module | Share | Trend | Confidence | Source |\n|---|---|---|---|---|\n| Battery rack (stacked modules) | 100% | → Stable | HIGH | Industry standard |\n| Battery Management System (BMS/BAMS/BCMS) | 100% | → Stable | HIGH | UL 1973 / IEC 62619 |\n| DC combiner / fuse box | 100% | → Stable | HIGH | NFPA 855 |\n\n#### Battery rack L3 → L2 (cell chemistry)\n\n| L2 Chemistry | Share | Trend | Confidence | Source |\n|---|---|---|---|---|\n| LFP (LiFePO₄) | 90% | → Stable | HIGH | IEA Battery 2025; Wood Mac LFP>NMC 2030 |\n| NMC (Ni-Mn-Co) | 8% | ↓ Declining | HIGH | IEA 2025 stationary mix |\n| Sodium-ion | 1% | ↑ Emerging | MEDIUM | CATL, HiNa 2024 pilots |\n| Flow battery (vanadium/iron-salt) | 1% | ↑ Emerging | MEDIUM | IDTechEx 2025 |\n\n#### Cell form factor L2 → L1\n\n| L1 Form Factor | Share | Trend | Confidence | Source |\n|---|---|---|---|---|\n| Prismatic (stationary-grade) | 85% | → Stable | HIGH | CATL, EVE, BYD product lines |\n| Cylindrical (21700/4680) | 10% | → Stable | MEDIUM | Tesla Megapack |\n| Pouch | 5% | ↓ Declining | MEDIUM | Stationary niche |\n\n#### Cell L1 → L0 Raw Materials (LFP path)\n\n| L0 Component → Raw Material | Share | Trend | Confidence | Source |\n|---|---|---|---|---|\n| Cathode → LiFePO₄ powder | 90% (stat) | → Stable | HIGH | Fraunhofer ISI 2024 |\n| Cathode → NMC (532/622/811) | 8% | ↓ Declining | HIGH | Fraunhofer ISI 2024 |\n| Anode → Synthetic graphite | 70% | → Stable | HIGH | BTR, Shanshan supply |\n| Anode → Natural graphite | 25% | → Stable | HIGH | China/Mozambique supply |\n| Anode → Silicon-graphite composite | 5% | ↑ Emerging | MEDIUM | Group14, Sila |\n| Separator → PP/PE microporous membrane | 100% | → Stable | HIGH | Asahi Kasei, Celgard |\n| Electrolyte → LiPF₆ in EC/DMC/EMC | 100% | → Stable | HIGH | Mitsubishi Chem, Tinci |\n| Current collector (cathode) → Aluminum foil | 100% | → Stable | HIGH | LME Al 99.99% |\n| Current collector (anode) → Copper foil (6–8 μm) | 100% | → Stable | HIGH | LME Cu; Nuode, SK Nexilis |\n| Casing → Aluminum can / steel can | 100% | → Stable | HIGH | Industry standard |\n\nsingle-source: true on separator, electrolyte, current collectors.\n\n#### BMS L3 → L2 → L1 → L0\n\n| L1 | L0 | Share | Trend | Confidence | Source |\n|---|---|---|---|---|---|\n| BMS control PCB | FR4 glass-epoxy + Cu + tin-plated connectors | 100% | → Stable | HIGH | IPC-4101 |\n| Monitoring IC (cell-level) | Si wafer (AFE from TI, ADI, NXP) | 100% | → Stable | HIGH | Industry standard |\n\nsingle-source: true\n\n---\n\n### L4 Power Conversion (PCS) → L3 → L2 → L1 → L0\n\n#### L4 → L3 Modules\n\n| L3 Module | Share | Trend | Confidence | Source |\n|---|---|---|---|---|\n| Bidirectional inverter block | 100% | → Stable | HIGH | IEC 62477 |\n| LCL filter | 100% | → Stable | HIGH | Industry standard |\n| DC contactor / precharge | 100% | → Stable | HIGH | UL 508 |\n\n#### PCS L3 → L2 Architecture\n\n| L2 Architecture | Share | Trend | Confidence | Source |\n|---|---|---|---|---|\n| String PCS (distributed, 50–250 kW) | 55% | ↑ Growing | HIGH | BNEF Inverter 2024 |\n| Central PCS (monolithic, 1–3 MW) | 40% | ↓ Declining | HIGH | Sungrow, Power Electronics product mix |\n| Modular MV-direct PCS | 5% | ↑ Emerging | MEDIUM | ABB, Ingeteam |\n\n#### PCS L2 → L1 Semiconductor\n\n| L1 | Share | Trend | Confidence | Source |\n|---|---|---|---|---|\n| Si IGBT (1.2 kV / 1.7 kV) | 80% | → Stable | HIGH | Infineon, Semikron product mix |\n| SiC MOSFET | 18% | ↑ Growing | HIGH | Sungrow PowerTitan 2.0 SiC |\n| GaN HEMT | 2% | ↑ Emerging | LOW | R&D stage stationary |\n\n#### PCS L1 → L0\n\n| L0 | Share | Trend | Confidence | Source |\n|---|---|---|---|---|\n| Silicon wafer (power die) | 80% | → Stable | HIGH | SEMI |\n| SiC wafer | 18% | ↑ Growing | HIGH | Wolfspeed, STMicro |\n| GaN-on-Si | 2% | ↑ Emerging | LOW | Navitas |\n| Al heatsink extrusion | 100% | → Stable | HIGH | LME Al |\n\n---\n\n### L4 MV Grid Coupling → L3 → L2 → L1 → L0\n\n| L3 Module | Share | Trend | Confidence | Source |\n|---|---|---|---|---|\n| MV step-up transformer (0.8/20 kV) | 100% | → Stable | HIGH | IEC 60076 |\n| MV switchgear (RMU) | 100% | → Stable | HIGH | IEC 62271 |\n| Protection relays + NA-schutz | 100% | → Stable | HIGH | VDE-AR-N 4110 |\n| Revenue metering + SCADA RTU | 100% | → Stable | HIGH | IEC 61850 |\n\n#### Transformer L3 → L2 (technology)\n\n| L2 | Share | Trend | Confidence | Source |\n|---|---|---|---|---|\n| Oil-immersed (ester fluid, biodegradable) | 60% | ↑ Growing | HIGH | Siemens, Schneider product mix |\n| Oil-immersed (mineral oil) | 25% | ↓ Declining | HIGH | Legacy |\n| Dry-type cast-resin | 15% | → Stable | MEDIUM | ABB TXplore |\n\n#### Transformer L2 → L1 → L0\n\n| L0 | Share | Trend | Confidence | Source |\n|---|---|---|---|---|\n| Grain-oriented electrical steel (core) | 100% | → Stable | HIGH | EN 10107 |\n| Copper winding wire | 90% | → Stable | HIGH | IEC 60317 |\n| Aluminum winding wire | 10% | ↑ Growing | MEDIUM | Cost-driven DSO jobs |\n| Ester dielectric fluid | 60% | ↑ Growing | HIGH | MIDEL, ABB BIOTEMP |\n| Mineral dielectric oil | 25% | ↓ Declining | HIGH | IEC 60296 |\n\n#### Switchgear L3 → L2 (insulation)\n\n| L2 Insulation Medium | Share | Trend | Confidence | Source |\n|---|---|---|---|---|\n| SF₆ gas-insulated (GIS) | 65% | ↓ Declining | HIGH | MarketsandMarkets GIS 2025 |\n| Vacuum + air-insulated | 20% | ↑ Growing | HIGH | Eaton, Schneider |\n| SF₆-free fluoronitrile (g³, AirPlus) | 12% | ↑ Growing | HIGH | Siemens Blue GIS, ABB AirPlus |\n| Pure air / clean air | 3% | ↑ Emerging | MEDIUM | Siemens 8DJH 12 Clean Air |\n\nEU F-gas regulation forces SF₆-free by 2030 for new MV ≤24 kV.\n\n#### Switchgear L2 → L1 → L0\n\n| L1 / L0 | Share | Trend | Confidence | Source |\n|---|---|---|---|---|\n| Copper busbar (ETP Cu) | 100% | → Stable | HIGH | EN 13601 |\n| Vacuum interrupter (ceramic + Cu-Cr) | 100% | → Stable | HIGH | IEC 62271-100 |\n| Epoxy insulation (cycloaliphatic) | 100% | → Stable | HIGH | IEC 60243 |\n\nsingle-source: true\n\n---\n\n### L4 Control & EMS → L3 → L2 → L1 → L0\n\n| L3 Module | Share | Trend | Confidence | Source |\n|---|---|---|---|---|\n| Local controller (PLC / industrial PC) | 100% | → Stable | HIGH | IEC 61131-3 |\n| EMS software (dispatch optimizer) | 100% | → Stable | HIGH | Industry standard |\n| SCADA gateway (to DSO / VPP) | 100% | → Stable | HIGH | IEC 60870-5-104 |\n\n#### EMS L3 → L2 (software vendor archetype)\n\n| L2 | Share | Trend | Confidence | Source |\n|---|---|---|---|---|\n| OEM-bundled EMS (Sungrow, Tesla, CATL) | 45% | → Stable | HIGH | BNEF 2024 |\n| Third-party EMS (Entrix, Fluence Mosaic, Wärtsilä GEMS) | 35% | ↑ Growing | HIGH | Analyst estimate |\n| Aggregator EMS (Next Kraftwerke, Enspired, Flexpower) | 15% | ↑ Growing | MEDIUM | DE VPP market |\n| Custom / in-house | 5% | ↓ Declining | LOW | Analyst estimate |\n\n#### EMS L2 → L1 → L0\n\n| L1 → L0 | Share | Trend | Confidence | Source |\n|---|---|---|---|---|\n| Server-grade CPU (x86-64) | 90% | → Stable | HIGH | Intel/AMD |\n| ARM edge controller | 10% | ↑ Growing | MEDIUM | NXP, TI |\n| Silicon wafer (L0) | 100% | → Stable | HIGH | SEMI |\n\nsingle-source: true at L0.\n\n---\n\n### L4 Enclosure / Thermal / Safety → L3 → L2 → L1 → L0\n\n| L3 Module | Share | Trend | Confidence | Source |\n|---|---|---|---|---|\n| ISO container envelope | 100% | → Stable | HIGH | ISO 1496 |\n| HVAC / thermal management | 100% | → Stable | HIGH | Industry standard |\n| Fire detection + suppression | 100% | → Stable | HIGH | NFPA 855, VdS 3108 |\n| Gas venting / deflagration panel | 100% | → Stable | HIGH | NFPA 68 |\n\n#### Thermal L3 → L2 (cooling method)\n\n| L2 | Share | Trend | Confidence | Source |\n|---|---|---|---|---|\n| Liquid cooling (water-glycol) | 80% | ↑ Growing | HIGH | BIS Research BESS Cooling 2025 |\n| Forced-air cooling | 18% | ↓ Declining | HIGH | Legacy / small units |\n| Immersion (dielectric fluid) | 2% | ↑ Emerging | MEDIUM | Shell Immersion Cooling 2024 |\n\n#### Fire suppression L3 → L2\n\n| L2 | Share | Trend | Confidence | Source |\n|---|---|---|---|---|\n| Aerosol (Stat-X, FirePro) | 45% | ↑ Growing | MEDIUM | Control Fire Systems 2025 |\n| Clean agent (NOVEC 1230 / FK-5-1-12) | 30% | → Stable | MEDIUM | 3M/Kidde literature |\n| Water mist (high-pressure) | 20% | ↑ Growing | MEDIUM | Marioff HI-FOG |\n| CO₂ / inert gas | 5% | ↓ Declining | LOW | Legacy only |\n\n#### Container L2 → L1 → L0\n\n| L0 | Share | Trend | Confidence | Source |\n|---|---|---|---|---|\n| Corten / S355 steel plate + Zn coating | 100% | → Stable | HIGH | EN 10025-5 |\n| Mineral wool / rockwool insulation | 100% | → Stable | HIGH | EN 13162 |\n\nsingle-source: true\n\n---\n\n### L4 Civil & Site → L3 → L2 → L1 → L0\n\n| L3 | Share | Trend | Confidence | Source |\n|---|---|---|---|---|\n| Concrete foundation pad | 100% | → Stable | HIGH | EN 1992 |\n| MV cable trench + ducting | 100% | → Stable | HIGH | DIN VDE 0276 |\n| Perimeter fence + gate | 100% | → Stable | HIGH | VdS 2311 |\n| Fire-service access road | 100% | → Stable | HIGH | Local Feuerwehr code |\n\n#### Foundation L2 → L1 → L0\n\n| L0 | Share | Trend | Confidence | Source |\n|---|---|---|---|---|\n| Reinforced concrete C25/30 | 100% | → Stable | HIGH | EN 206 |\n| Rebar B500B | 100% | → Stable | HIGH | EN 10080 |\n\n#### MV cable L2 → L1 → L0\n\n| L1 Cable | L0 | Share | Trend | Confidence | Source |\n|---|---|---|---|---|---|\n| XLPE-insulated Cu cable (NA2XS(F)2Y) | Cross-linked polyethylene + Cu conductor | 85% | → Stable | HIGH | DIN VDE 0276-620 |\n| XLPE-insulated Al cable | XLPE + Al conductor | 15% | ↑ Growing | MEDIUM | Cost-driven substitution |\n\n---"
+    },
+    {
+      "title": "B.5 — Company Position Marking (Summary)",
+      "content": "| BOM | Mein Solar position | Level | Role |\n|---|---|---|---|\n| BOM #1 (WTG) | **Not present** | — | No component in wind turbine hardware |\n| BOM #2 (BESS) | **Integrator** | L5 | Delivers assembled commissioned asset; owns integration of L4–L0 |\n| BOM #2 relationship to wind park | **Parallel asset** | Co-located L5 | Shares grid connection point, foundation lot, and EMS integration |\n\n---"
+    },
+    {
+      "title": "B.6 — Strategic BOM Adjacency",
+      "content": "### Horizontal (same BOM, L5 level — parallel co-located assets)\n\n| Adjacent Asset | Capability Gap | Market Size (DE, 2025 est.) | Strategic Fit |\n|---|---|---|---|\n| Wind turbine itself (L5) | HIGH — mechanical/aerodynamic domain alien | €3.5–4 B/yr DE onshore install | WEAK |\n| Co-located PV array (L5) | **LOW** — incumbent business | €5 B/yr DE utility PV | **STRONG** |\n| HPC charging hub (L5) | MEDIUM — adds dispenser OEM partners | €300–500 M/yr emerging | **STRONG** (explicit feature) |\n| Electrolyzer (L5) | HIGH — new stack/gas-safety domain | €200–400 M/yr emerging DE | MEDIUM |\n| MV substation upgrade (L5) | MEDIUM — DSO-contractor route | €800 M/yr DE | MEDIUM |\n\nSource: BNEF DE 2025 outlook; BDEW; own-market Phase 02b ranking.\n\n### Vertical Up (L5 → system-of-systems integrator)\n\n| Target role | Capability gap | Risk |\n|---|---|---|\n| Full wind+BESS hybrid EPC (single contract both assets) | HIGH — wind OEM coordination, foundation geotech, civil scale | Competes with Enerparc, BayWa r.e., Goldbeck |\n| Hybrid park O&M lifecycle operator | MEDIUM — asset mgmt, trading desk | Recurring revenue; different contract |\n\n### Vertical Down (moving into BESS L2/L3 supply)\n\n| Target role | Capability gap | Assessment |\n|---|---|---|\n| L2 container integration (self-perform like Voltfang, Tesvolt) | HIGH — factory capex + cell procurement | Commoditized; tier-1 Asian OEMs dominate |\n| L2 PCS OEM | VERY HIGH — 10-yr semiconductor R&D | Not viable |\n| L3 EMS software house | MEDIUM — software competence + dispatch know-how | Viable niche; competes with Entrix/Enspired |\n\n**Conclusion:** Horizontal adjacency (PV + HPC) is Mein Solar's strongest move. Vertical-up into hybrid-park EPC is feasible given PV incumbency. Vertical-down is economically unattractive against cell-scale Asian OEMs.\n\n---"
+    },
+    {
+      "title": "Quality Checks",
+      "content": "| Check | Status |\n|---|---|\n| Every L4 decomposes to L0 | ✅ (both BOMs) |\n| Every level transition has alternatives table | ✅ |\n| Single-source branches tagged | ✅ |\n| Shares sum to 100% (±1%) | ✅ |\n| No brand names at BOM levels (only in alternatives) | ✅ |\n| Company position marked | ✅ (L5 in BOM #2) |\n| Horizontal + vertical adjacency completed | ✅ |\n| BOM vs VN test (items IN the product, not items that MAKE it) | ✅ |\n\n---"
+    },
+    {
+      "title": "Structured Data",
+      "content": "```json\n{\n  \"component\": \"product_bom_decomposition\",\n  \"naics_code\": \"221115\",\n  \"naics_title\": \"Wind Electric Power Generation\",\n  \"market_category\": \"utility\",\n  \"focal_company\": \"Mein Solar GmbH\",\n  \"focal_product\": \"EPC für Großbatteriespeicher\",\n  \"bom_count\": 2,\n  \"boms\": [\n    {\n      \"bom_id\": \"wtg_onshore\",\n      \"output_type\": \"Wind Turbine Generator (onshore 3–8 MW)\",\n      \"end_product_or_vn_system\": \"end_product\",\n      \"focal_company_present\": false,\n      \"l4_subsystems\": [\n        {\"name\": \"Rotor subsystem\", \"function\": \"Capture kinetic energy\", \"weight_share_pct\": 20},\n        {\"name\": \"Nacelle subsystem\", \"function\": \"Convert rotation to electricity\", \"weight_share_pct\": 25},\n        {\"name\": \"Tower subsystem\", \"function\": \"Elevate rotor to wind resource\", \"weight_share_pct\": 45},\n        {\"name\": \"Electrical & control subsystem\", \"function\": \"Power conditioning + grid interface\", \"weight_share_pct\": 5},\n        {\"name\": \"Foundation & BoP subsystem\", \"function\": \"Anchor + interconnect\", \"weight_share_pct\": 5}\n      ],\n      \"key_alternatives\": [\n        {\"position\": \"L4 Nacelle > L2 Drivetrain architecture\", \"alternatives\": [\n          {\"name\": \"Geared DFIG\", \"share_pct\": 30, \"trend\": \"Declining\", \"confidence\": \"HIGH\"},\n          {\"name\": \"Geared PMSG\", \"share_pct\": 40, \"trend\": \"Growing\", \"confidence\": \"HIGH\"},\n          {\"name\": \"Direct-drive PMSG\", \"share_pct\": 28, \"trend\": \"Growing\", \"confidence\": \"HIGH\"},\n          {\"name\": \"EESG (rare-earth-free)\", \"share_pct\": 2, \"trend\": \"Emerging\", \"confidence\": \"MEDIUM\"}\n        ]},\n        {\"position\": \"L4 Tower > L3 type\", \"alternatives\": [\n          {\"name\": \"Tubular steel\", \"share_pct\": 70, \"trend\": \"Stable\", \"confidence\": \"HIGH\"},\n          {\"name\": \"Hybrid steel-concrete\", \"share_pct\": 17, \"trend\": \"Growing\", \"confidence\": \"HIGH\"},\n          {\"name\": \"Full concrete\", \"share_pct\": 10, \"trend\": \"Stable\", \"confidence\": \"MEDIUM\"},\n          {\"name\": \"Lattice\", \"share_pct\": 3, \"trend\": \"Declining\", \"confidence\": \"MEDIUM\"}\n        ]},\n        {\"position\": \"Blade L1 fiber reinforcement\", \"alternatives\": [\n          {\"name\": \"Glass fiber (E-glass)\", \"share_pct\": 71, \"trend\": \"Stable\", \"confidence\": \"HIGH\"},\n          {\"name\": \"Glass/carbon hybrid\", \"share_pct\": 25, \"trend\": \"Growing\", \"confidence\": \"HIGH\"},\n          {\"name\": \"Full carbon fiber\", \"share_pct\": 4, \"trend\": \"Emerging\", \"confidence\": \"MEDIUM\"}\n        ]},\n        {\"position\": \"Gearbox L1 type\", \"alternatives\": [\n          {\"name\": \"Planetary multi-stage\", \"share_pct\": 88, \"trend\": \"Stable\", \"confidence\": \"HIGH\"},\n          {\"name\": \"Helical\", \"share_pct\": 10, \"trend\": \"Stable\", \"confidence\": \"MEDIUM\"},\n          {\"name\": \"Hybrid planetary-helical\", \"share_pct\": 2, \"trend\": \"Emerging\", \"confidence\": \"LOW\"}\n        ]},\n        {\"position\": \"Generator L1 permanent magnet\", \"alternatives\": [\n          {\"name\": \"NdFeB sintered\", \"share_pct\": 95, \"trend\": \"Stable\", \"confidence\": \"HIGH\"},\n          {\"name\": \"SmCo / ferrite hybrid\", \"share_pct\": 5, \"trend\": \"Emerging\", \"confidence\": \"MEDIUM\"}\n        ]}\n      ]\n    },\n    {\n      \"bom_id\": \"bess_colocated\",\n      \"output_type\": \"Battery Energy Storage System (≥1 MWh, MV-coupled)\",\n      \"end_product_or_vn_system\": \"vn_system\",\n      \"focal_company_present\": true,\n      \"focal_company_level\": \"L5\",\n      \"focal_company_role\": \"EPC integrator — delivers assembled commissioned L5 asset; owns integration across L4–L0\",\n      \"l4_subsystems\": [\n        {\"name\": \"Battery subsystem\", \"function\": \"Store and release charge\", \"capex_share_pct\": 52},\n        {\"name\": \"Power conversion subsystem (PCS)\", \"function\": \"DC↔AC bidirectional conversion\", \"capex_share_pct\": 11},\n        {\"name\": \"MV grid-coupling subsystem\", \"function\": \"10/20 kV grid interface\", \"capex_share_pct\": 9},\n        {\"name\": \"Control & EMS subsystem\", \"function\": \"Dispatch optimization\", \"capex_share_pct\": 4},\n        {\"name\": \"Enclosure / thermal / safety subsystem\", \"function\": \"Container + HVAC + fire suppression\", \"capex_share_pct\": 11},\n        {\"name\": \"Civil & site subsystem\", \"function\": \"Foundation, cabling, fencing\", \"capex_share_pct\": 13}\n      ],\n      \"key_alternatives\": [\n        {\"position\": \"L4 Battery > L2 Cell chemistry\", \"alternatives\": [\n          {\"name\": \"LFP (LiFePO4)\", \"share_pct\": 90, \"trend\": \"Stable\", \"confidence\": \"HIGH\", \"source\": \"IEA Battery 2025, Wood Mackenzie\"},\n          {\"name\": \"NMC\", \"share_pct\": 8, \"trend\": \"Declining\", \"confidence\": \"HIGH\", \"source\": \"IEA 2025 stationary\"},\n          {\"name\": \"Sodium-ion\", \"share_pct\": 1, \"trend\": \"Emerging\", \"confidence\": \"MEDIUM\", \"source\": \"CATL / HiNa pilots\"},\n          {\"name\": \"Flow battery (vanadium/iron-salt)\", \"share_pct\": 1, \"trend\": \"Emerging\", \"confidence\": \"MEDIUM\", \"source\": \"IDTechEx 2025\"}\n        ]},\n        {\"position\": \"L4 PCS > L2 Architecture\", \"alternatives\": [\n          {\"name\": \"String PCS\", \"share_pct\": 55, \"trend\": \"Growing\", \"confidence\": \"HIGH\"},\n          {\"name\": \"Central PCS\", \"share_pct\": 40, \"trend\": \"Declining\", \"confidence\": \"HIGH\"},\n          {\"name\": \"Modular MV-direct\", \"share_pct\": 5, \"trend\": \"Emerging\", \"confidence\": \"MEDIUM\"}\n        ]},\n        {\"position\": \"L4 MV coupling > Switchgear insulation\", \"alternatives\": [\n          {\"name\": \"SF6 GIS\", \"share_pct\": 65, \"trend\": \"Declining\", \"confidence\": \"HIGH\"},\n          {\"name\": \"Vacuum + air\", \"share_pct\": 20, \"trend\": \"Growing\", \"confidence\": \"HIGH\"},\n          {\"name\": \"SF6-free fluoronitrile\", \"share_pct\": 12, \"trend\": \"Growing\", \"confidence\": \"HIGH\"},\n          {\"name\": \"Clean air\", \"share_pct\": 3, \"trend\": \"Emerging\", \"confidence\": \"MEDIUM\"}\n        ]},\n        {\"position\": \"L4 Thermal > L2 Cooling method\", \"alternatives\": [\n          {\"name\": \"Liquid cooling (water-glycol)\", \"share_pct\": 80, \"trend\": \"Growing\", \"confidence\": \"HIGH\"},\n          {\"name\": \"Forced-air\", \"share_pct\": 18, \"trend\": \"Declining\", \"confidence\": \"HIGH\"},\n          {\"name\": \"Immersion (dielectric)\", \"share_pct\": 2, \"trend\": \"Emerging\", \"confidence\": \"MEDIUM\"}\n        ]},\n        {\"position\": \"L4 Safety > Fire suppression\", \"alternatives\": [\n          {\"name\": \"Aerosol (Stat-X, FirePro)\", \"share_pct\": 45, \"trend\": \"Growing\", \"confidence\": \"MEDIUM\"},\n          {\"name\": \"Clean agent (NOVEC 1230)\", \"share_pct\": 30, \"trend\": \"Stable\", \"confidence\": \"MEDIUM\"},\n          {\"name\": \"Water mist\", \"share_pct\": 20, \"trend\": \"Growing\", \"confidence\": \"MEDIUM\"},\n          {\"name\": \"CO2 / inert gas\", \"share_pct\": 5, \"trend\": \"Declining\", \"confidence\": \"LOW\"}\n        ]},\n        {\"position\": \"L4 EMS > L2 Software archetype\", \"alternatives\": [\n          {\"name\": \"OEM-bundled EMS\", \"share_pct\": 45, \"trend\": \"Stable\", \"confidence\": \"HIGH\"},\n          {\"name\": \"Third-party EMS (Entrix, Fluence Mosaic, Wärtsilä GEMS)\", \"share_pct\": 35, \"trend\": \"Growing\", \"confidence\": \"HIGH\"},\n          {\"name\": \"Aggregator EMS (Next Kraftwerke, Enspired)\", \"share_pct\": 15, \"trend\": \"Growing\", \"confidence\": \"MEDIUM\"},\n          {\"name\": \"Custom / in-house\", \"share_pct\": 5, \"trend\": \"Declining\", \"confidence\": \"LOW\"}\n        ]}\n      ]\n    }\n  ],\n  \"company_position\": {\n    \"bom_id\": \"bess_colocated\",\n    \"level\": \"L5\",\n    \"role\": \"EPC integrator\",\n    \"note\": \"Entire BOM #2 represents composition of the Mein Solar-delivered asset; Mein Solar does not self-manufacture any L4/L3/L2/L1/L0 component, but owns the integration, certification, and single-source contract wrapper.\"\n  },\n  \"horizontal_adjacency\": [\n    {\"adjacent_asset\": \"Wind turbine (L5)\", \"capability_gap\": \"HIGH\", \"market_size_de_eur_per_year\": \"3.5–4 B\", \"strategic_fit\": \"WEAK\"},\n    {\"adjacent_asset\": \"Co-located PV array (L5)\", \"capability_gap\": \"LOW\", \"market_size_de_eur_per_year\": \"5 B\", \"strategic_fit\": \"STRONG\"},\n    {\"adjacent_asset\": \"HPC charging hub (L5)\", \"capability_gap\": \"MEDIUM\", \"market_size_de_eur_per_year\": \"0.3–0.5 B\", \"strategic_fit\": \"STRONG\"},\n    {\"adjacent_asset\": \"Electrolyzer (L5)\", \"capability_gap\": \"HIGH\", \"market_size_de_eur_per_year\": \"0.2–0.4 B\", \"strategic_fit\": \"MEDIUM\"},\n    {\"adjacent_asset\": \"MV substation upgrade (L5)\", \"capability_gap\": \"MEDIUM\", \"market_size_de_eur_per_year\": \"0.8 B\", \"strategic_fit\": \"MEDIUM\"}\n  ],\n  \"vertical_up\": [\n    {\"target_role\": \"Hybrid wind+BESS EPC (single contract for both)\", \"capability_gap\": \"HIGH\", \"risk\": \"Direct competition with Enerparc, BayWa r.e., Goldbeck Solar\"},\n    {\"target_role\": \"Hybrid park O&M lifecycle operator\", \"capability_gap\": \"MEDIUM\", \"risk\": \"Recurring revenue, different contract model\"}\n  ],\n  \"vertical_down\": [\n    {\"target_role\": \"L2 BESS container integrator (self-perform)\", \"capability_gap\": \"HIGH\", \"assessment\": \"Commoditized; Asian tier-1 OEMs dominate on cost\"},\n    {\"target_role\": \"L2 PCS OEM\", \"capability_gap\": \"VERY HIGH\", \"assessment\": \"Not viable without decade-scale semiconductor R&D\"},\n    {\"target_role\": \"L3 EMS software house\", \"capability_gap\": \"MEDIUM\", \"assessment\": \"Viable niche; competes with Entrix, Enspired\"}\n  ],\n  \"sources\": [\n    \"IBISWorld NAICS 221115 Wind Electric Power Generation\",\n    \"NREL Cost of Wind Energy Review 2024\",\n    \"DOE Wind Manufacturing & Supply Chain Program\",\n    \"GWEC Global Wind Report 2024\",\n    \"MarketsandMarkets Wind Blade Composites 2025\",\n    \"Market Research Future Wind Turbine Composites 2025\",\n    \"Grand View Research Direct-Drive Wind Turbine 2025\",\n    \"Mordor Intelligence Wind Turbine Tower 2025\",\n    \"IEA Global Battery Outlook 2025\",\n    \"Wood Mackenzie — LFP to overtake NMC as dominant stationary storage chemistry 2030\",\n    \"BloombergNEF Energy Storage Outlook 2024\",\n    \"IDTechEx Batteries for Stationary Energy Storage 2025-2035\",\n    \"Fraunhofer ISI Battery Materials Market Leaders 2024\",\n    \"BIS Research Liquid Cooling Market for Stationary BESS 2025\",\n    \"MarketsandMarkets Gas-Insulated Switchgear 2025\",\n    \"Control Fire Systems BESS Fire Suppression Best Practices 2025\",\n    \"Market.us Wind Turbine Gearbox 2025\",\n    \"USGS Mineral Commodity Summaries 2025 (rare earths)\",\n    \"VDE-AR-N 4110 Technical Connection Rule Medium Voltage\",\n    \"FGW TR8 Plant Certification\"\n  ]\n}\n```\n\n---"
+    },
+    {
+      "title": "Sources",
+      "content": "- [IBISWorld NAICS 221115 Wind Electric Power Generation](https://www.ibisworld.com/classifications/naics/221115/wind-electric-power-generation/)\n- [DOE Wind Manufacturing and Supply Chain](https://www.energy.gov/eere/wind/wind-manufacturing-and-supply-chain)\n- [Wind Turbine Nacelle Market — Fortune Business Insights](https://www.fortunebusinessinsights.com/wind-turbine-nacelle-market-110925)\n- [Wind Blade Composites Market — MarketsandMarkets 2025](https://www.marketsandmarkets.com/PressReleases/wind-blade-composites.asp)\n- [Wind Turbine Composite Materials — Market Research Future 2025](https://www.marketresearchfuture.com/reports/wind-turbine-component-market-31038)\n- [Direct-Drive Wind Turbine Market — Grand View Research 2025](https://www.grandviewresearch.com/industry-analysis/direct-drive-gearless-wind-turbine-market)\n- [Wind Turbine Gearbox Market — Market.us 2025](https://market.us/report/wind-turbine-gearbox-market/)\n- [Wind Turbine Tower Market — Mordor Intelligence 2025](https://www.mordorintelligence.com/industry-reports/wind-turbine-tower-market)\n- [Thunder Said Energy — DFIG vs PMSG](https://thundersaidenergy.com/downloads/wind-turbine-generators-dfigs-or-rare-earth-magnets/)\n- [Batteries for Stationary Energy Storage — IDTechEx](https://www.idtechex.com/en/research-report/batteries-for-stationary-energy-storage/1021)\n- [Wood Mackenzie — LFP to overtake NMC by 2030](https://www.woodmac.com/press-releases/lfp-to-overtake-nmc-as-dominant-stationary-storage-chemistry-by-2030/)\n- [Global Energy Storage — BloombergNEF](https://about.bnef.com/insights/clean-energy/global-energy-storage-growth-upheld-by-new-markets/)\n- [Battery Markets & Supply Risks — IEA](https://www.iea.org/commentaries/global-battery-markets-are-growing-strongly-and-so-are-the-supply-risks)\n- [Liquid Cooling Market for Stationary BESS — BIS Research 2025](https://bisresearch.com/industry-report/liquid-cooling-market-for-stationary-battery-energy-storage-system.html)\n- [BESS Fire Suppression Best Practices 2025 — Control Fire Systems](https://www.controlfiresystems.com/news/fire-suppression-for-lithium-Ion-battery-storage-systems-best-practices/)\n- [Gas-Insulated Switchgear Market — MarketsandMarkets](https://www.marketsandmarkets.com/Market-Reports/gas-insulated-switchgear-market-234770702.html)\n- [Energy Storage PCS Market — Business Research Insights](https://www.businessresearchinsights.com/market-reports/energy-storage-power-conversion-system-pcs-market-121566)\n- [Solar Inverter Ranking H1 2025 — Wood Mackenzie](https://www.woodmac.com/press-releases/solar-inverter-ranking-h1-2025/)\n- [Fraunhofer ISI — Battery Materials Market Leaders](https://www.isi.fraunhofer.de/en/blog/themen/batterie-update/batterie-materialien-kosten-technologien-markt-fuehrer.html)\n- [Lithium iron phosphate battery — Wikipedia](https://en.wikipedia.org/wiki/Lithium_iron_phosphate_battery)"
+    }
+  ],
+  "tables": [
+    {
+      "headers": [
+        "Item",
+        "Value"
+      ],
+      "rows": [
+        {
+          "Item": "NAICS sector",
+          "Value": "22 Utilities (not 31–33 Manufacturing)"
+        },
+        {
+          "Item": "Industry output",
+          "Value": "Electrical energy (L0 commodity — no BOM)"
+        },
+        {
+          "Item": "End-product BOM",
+          "Value": "**BOM #1: Wind Turbine Generator (WTG)** — the asset that produces the industry output"
+        },
+        {
+          "Item": "VN system BOM (relevant)",
+          "Value": "**BOM #2: Battery Energy Storage System (BESS)** — co-located asset where Mein Solar delivers"
+        },
+        {
+          "Item": "Mein Solar in BOM #1",
+          "Value": "Not a component (no structural role inside the turbine)"
+        },
+        {
+          "Item": "Mein Solar in BOM #2",
+          "Value": "**L5 EPC integrator** — delivers the assembled BESS as an L5 output to the wind IPP"
+        }
+      ]
+    },
+    {
+      "headers": [
+        "L4 Subsystem",
+        "Function",
+        "Weight share (typ.)"
+      ],
+      "rows": [
+        {
+          "L4 Subsystem": "Rotor (blades + hub + pitch)",
+          "Function": "Capture kinetic energy",
+          "Weight share (typ.)": "~20%"
+        },
+        {
+          "L4 Subsystem": "Nacelle (drivetrain + generator)",
+          "Function": "Convert rotation → electricity",
+          "Weight share (typ.)": "~25%"
+        },
+        {
+          "L4 Subsystem": "Tower",
+          "Function": "Elevate rotor to wind resource",
+          "Weight share (typ.)": "~45%"
+        },
+        {
+          "L4 Subsystem": "Electrical & control",
+          "Function": "Power conditioning, monitoring, grid interface",
+          "Weight share (typ.)": "~5%"
+        },
+        {
+          "L4 Subsystem": "Foundation + BoP",
+          "Function": "Anchor + interconnect",
+          "Weight share (typ.)": "~5%"
+        }
+      ]
+    },
+    {
+      "headers": [
+        "Alternative (L3)",
+        "Share",
+        "Trend",
+        "Confidence",
+        "Source"
+      ],
+      "rows": [
+        {
+          "Alternative (L3)": "Blade set (3-blade)",
+          "Share": "100%",
+          "Trend": "→ Stable",
+          "Confidence": "HIGH",
+          "Source": "IEA Wind TCP Task 11; onshore standard"
+        }
+      ]
+    },
+    {
+      "headers": [
+        "L2 Assembly",
+        "Share",
+        "Trend",
+        "Confidence",
+        "Source"
+      ],
+      "rows": [
+        {
+          "L2 Assembly": "Spar cap + shell (2-piece shell)",
+          "Share": "~85%",
+          "Trend": "→ Stable",
+          "Confidence": "HIGH",
+          "Source": "MarketsandMarkets Wind Blade Composites 2025"
+        },
+        {
+          "L2 Assembly": "Segmented / modular blade",
+          "Share": "~15%",
+          "Trend": "↑ Growing",
+          "Confidence": "MEDIUM",
+          "Source": "Enercon/LM Wind 2024 launches"
+        }
+      ]
+    },
+    {
+      "headers": [
+        "L1 Alternative",
+        "Share",
+        "Trend",
+        "Confidence",
+        "Source"
+      ],
+      "rows": [
+        {
+          "L1 Alternative": "Glass fiber laminate (E-glass)",
+          "Share": "71%",
+          "Trend": "→ Stable",
+          "Confidence": "HIGH",
+          "Source": "MRFR Wind Turbine Composites 2025"
+        },
+        {
+          "L1 Alternative": "Glass/carbon hybrid (spar cap)",
+          "Share": "~25%",
+          "Trend": "↑ Growing",
+          "Confidence": "HIGH",
+          "Source": "Grand View Research 2025"
+        },
+        {
+          "L1 Alternative": "Full carbon fiber",
+          "Share": "~4%",
+          "Trend": "↑ Emerging",
+          "Confidence": "MEDIUM",
+          "Source": "Vestas V236 / Siemens Gamesa trials"
+        }
+      ]
+    },
+    {
+      "headers": [
+        "L0 Raw Material",
+        "Share",
+        "Trend",
+        "Confidence",
+        "Source"
+      ],
+      "rows": [
+        {
+          "L0 Raw Material": "E-glass (SiO₂ + Al₂O₃ + CaO)",
+          "Share": "71%",
+          "Trend": "→ Stable",
+          "Confidence": "HIGH",
+          "Source": "Owens Corning, Jushi supply data"
+        },
+        {
+          "L0 Raw Material": "PAN-based carbon fiber",
+          "Share": "25%",
+          "Trend": "↑ Growing",
+          "Confidence": "HIGH",
+          "Source": "MarketsandMarkets 2025"
+        },
+        {
+          "L0 Raw Material": "Other (basalt, natural fiber)",
+          "Share": "4%",
+          "Trend": "↑ Emerging",
+          "Confidence": "LOW",
+          "Source": "Analyst estimate"
+        }
+      ]
+    },
+    {
+      "headers": [
+        "L0 Resin",
+        "Share",
+        "Trend",
+        "Confidence",
+        "Source"
+      ],
+      "rows": [
+        {
+          "L0 Resin": "Epoxy (bisphenol-A / amine cure)",
+          "Share": "34%",
+          "Trend": "→ Stable",
+          "Confidence": "HIGH",
+          "Source": "Grand View 2025"
+        },
+        {
+          "L0 Resin": "Polyester / vinyl-ester",
+          "Share": "40%",
+          "Trend": "↑ Growing",
+          "Confidence": "HIGH",
+          "Source": "MarketsandMarkets 2025"
+        },
+        {
+          "L0 Resin": "Polyurethane (recyclable)",
+          "Share": "20%",
+          "Trend": "↑ Emerging",
+          "Confidence": "MEDIUM",
+          "Source": "Covestro/BASF 2024"
+        },
+        {
+          "L0 Resin": "Thermoplastic (Elium)",
+          "Share": "6%",
+          "Trend": "↑ Emerging",
+          "Confidence": "LOW",
+          "Source": "Arkema ZEBRA project"
+        }
+      ]
+    },
+    {
+      "headers": [
+        "L1",
+        "L0",
+        "Share",
+        "Trend",
+        "Confidence",
+        "Source"
+      ],
+      "rows": [
+        {
+          "L1": "Cast hub",
+          "L0": "Spheroidal graphite iron EN-GJS-400",
+          "Share": "100%",
+          "Trend": "→ Stable",
+          "Confidence": "HIGH",
+          "Source": "ISO 1083; industry standard"
+        }
+      ]
+    },
+    {
+      "headers": [
+        "L3 Module",
+        "Share",
+        "Trend",
+        "Confidence",
+        "Source"
+      ],
+      "rows": [
+        {
+          "L3 Module": "Drivetrain (generator + gearbox OR direct drive)",
+          "Share": "100%",
+          "Trend": "→ Stable",
+          "Confidence": "HIGH",
+          "Source": "NREL ATB 2024"
+        },
+        {
+          "L3 Module": "Yaw system",
+          "Share": "100%",
+          "Trend": "→ Stable",
+          "Confidence": "HIGH",
+          "Source": "WTG standard"
+        },
+        {
+          "L3 Module": "Pitch system",
+          "Share": "100%",
+          "Trend": "→ Stable",
+          "Confidence": "HIGH",
+          "Source": "WTG standard"
+        },
+        {
+          "L3 Module": "Nacelle enclosure",
+          "Share": "100%",
+          "Trend": "→ Stable",
+          "Confidence": "HIGH",
+          "Source": "WTG standard"
+        }
+      ]
+    },
+    {
+      "headers": [
+        "L2 Architecture",
+        "Share",
+        "Trend",
+        "Confidence",
+        "Source"
+      ],
+      "rows": [
+        {
+          "L2 Architecture": "Geared + DFIG (doubly-fed induction)",
+          "Share": "~30%",
+          "Trend": "↓ Declining",
+          "Confidence": "HIGH",
+          "Source": "GWEC 2024; Thunder Said Energy"
+        },
+        {
+          "L2 Architecture": "Geared + PMSG (medium-speed)",
+          "Share": "~40%",
+          "Trend": "↑ Growing",
+          "Confidence": "HIGH",
+          "Source": "Vestas EnVentus platform"
+        },
+        {
+          "L2 Architecture": "Direct-drive PMSG (gearless)",
+          "Share": "~28%",
+          "Trend": "↑ Growing",
+          "Confidence": "HIGH",
+          "Source": "Grand View Direct Drive 2025"
+        },
+        {
+          "L2 Architecture": "EESG (electrically excited, rare-earth-free)",
+          "Share": "~2%",
+          "Trend": "↑ Emerging",
+          "Confidence": "MEDIUM",
+          "Source": "Siemens Gamesa Rothes 2024"
+        }
+      ]
+    },
+    {
+      "headers": [
+        "L1 Gear Type",
+        "Share",
+        "Trend",
+        "Confidence",
+        "Source"
+      ],
+      "rows": [
+        {
+          "L1 Gear Type": "Planetary (multi-stage)",
+          "Share": "88%",
+          "Trend": "→ Stable",
+          "Confidence": "HIGH",
+          "Source": "Market.us Wind Gearbox 2025"
+        },
+        {
+          "L1 Gear Type": "Helical / parallel-shaft",
+          "Share": "10%",
+          "Trend": "→ Stable",
+          "Confidence": "MEDIUM",
+          "Source": "MRFR 2025"
+        },
+        {
+          "L1 Gear Type": "Hybrid planetary-helical",
+          "Share": "2%",
+          "Trend": "↑ Emerging",
+          "Confidence": "LOW",
+          "Source": "Analyst estimate"
+        }
+      ]
+    },
+    {
+      "headers": [
+        "L0",
+        "Share",
+        "Trend",
+        "Confidence",
+        "Source"
+      ],
+      "rows": [
+        {
+          "L0": "Case-hardened alloy steel (18CrNiMo7-6)",
+          "Share": "95%",
+          "Trend": "→ Stable",
+          "Confidence": "HIGH",
+          "Source": "ISO 6336; Winergy/ZF specs"
+        },
+        {
+          "L0": "Nitrided steel (31CrMoV9)",
+          "Share": "5%",
+          "Trend": "→ Stable",
+          "Confidence": "MEDIUM",
+          "Source": "DIN 17211"
+        }
+      ]
+    },
+    {
+      "headers": [
+        "L1 Part",
+        "L0 Raw Material",
+        "Share (L0)",
+        "Trend",
+        "Confidence",
+        "Source"
+      ],
+      "rows": [
+        {
+          "L1 Part": "Permanent magnets",
+          "L0 Raw Material": "NdFeB (sintered, Dy-doped)",
+          "Share (L0)": "95%",
+          "Trend": "→ Stable",
+          "Confidence": "HIGH",
+          "Source": "USGS Mineral Commodity 2025"
+        },
+        {
+          "L1 Part": "Permanent magnets",
+          "L0 Raw Material": "SmCo / ferrite hybrid",
+          "Share (L0)": "5%",
+          "Trend": "↑ Emerging",
+          "Confidence": "MEDIUM",
+          "Source": "Niron Magnetics; Proterial"
+        },
+        {
+          "L1 Part": "Stator laminations",
+          "L0 Raw Material": "Electrical steel (M270-35A)",
+          "Share (L0)": "100%",
+          "Trend": "→ Stable",
+          "Confidence": "HIGH",
+          "Source": "EN 10106"
+        },
+        {
+          "L1 Part": "Copper windings",
+          "L0 Raw Material": "Electrolytic Cu (99.95%)",
+          "Share (L0)": "100%",
+          "Trend": "→ Stable",
+          "Confidence": "HIGH",
+          "Source": "LME standard"
+        }
+      ]
+    },
+    {
+      "headers": [
+        "L3 Tower Type",
+        "Share",
+        "Trend",
+        "Confidence",
+        "Source"
+      ],
+      "rows": [
+        {
+          "L3 Tower Type": "Tubular steel (monopile)",
+          "Share": "70%",
+          "Trend": "→ Stable",
+          "Confidence": "HIGH",
+          "Source": "Mordor Wind Tower 2025"
+        },
+        {
+          "L3 Tower Type": "Hybrid steel-concrete",
+          "Share": "17%",
+          "Trend": "↑ Growing",
+          "Confidence": "HIGH",
+          "Source": "GWEC 2024 order book"
+        },
+        {
+          "L3 Tower Type": "Full concrete (precast/in-situ)",
+          "Share": "10%",
+          "Trend": "→ Stable",
+          "Confidence": "MEDIUM",
+          "Source": "Enercon E-160 etc."
+        },
+        {
+          "L3 Tower Type": "Lattice / truss",
+          "Share": "3%",
+          "Trend": "↓ Declining",
+          "Confidence": "MEDIUM",
+          "Source": "Legacy, small-scale"
+        }
+      ]
+    },
+    {
+      "headers": [
+        "L0",
+        "Share",
+        "Trend",
+        "Confidence",
+        "Source"
+      ],
+      "rows": [
+        {
+          "L0": "Structural steel S355J2+N (rolled plate)",
+          "Share": "100%",
+          "Trend": "→ Stable",
+          "Confidence": "HIGH",
+          "Source": "EN 10025-2"
+        }
+      ]
+    },
+    {
+      "headers": [
+        "L0",
+        "Share",
+        "Trend",
+        "Confidence",
+        "Source"
+      ],
+      "rows": [
+        {
+          "L0": "C50/60 high-strength concrete (CEM II)",
+          "Share": "100%",
+          "Trend": "→ Stable",
+          "Confidence": "HIGH",
+          "Source": "EN 206"
+        }
+      ]
+    },
+    {
+      "headers": [
+        "L1",
+        "Share",
+        "Trend",
+        "Confidence",
+        "Source"
+      ],
+      "rows": [
+        {
+          "L1": "Bolted flange connection (L-flange)",
+          "Share": "95%",
+          "Trend": "→ Stable",
+          "Confidence": "HIGH",
+          "Source": "DIBt guideline"
+        },
+        {
+          "L1": "Friction-grip slip joint",
+          "Share": "5%",
+          "Trend": "↑ Emerging",
+          "Confidence": "LOW",
+          "Source": "Andresen Towers"
+        }
+      ]
+    },
+    {
+      "headers": [
+        "L3 Module",
+        "Share",
+        "Trend",
+        "Confidence",
+        "Source"
+      ],
+      "rows": [
+        {
+          "L3 Module": "Converter (full-scale)",
+          "Share": "~70%",
+          "Trend": "↑ Growing",
+          "Confidence": "HIGH",
+          "Source": "PMSG/DD-PMSG need full-scale"
+        },
+        {
+          "L3 Module": "Converter (partial-scale)",
+          "Share": "~30%",
+          "Trend": "↓ Declining",
+          "Confidence": "HIGH",
+          "Source": "DFIG only"
+        },
+        {
+          "L3 Module": "Transformer (nacelle or base)",
+          "Share": "100%",
+          "Trend": "→ Stable",
+          "Confidence": "HIGH",
+          "Source": "IEC 60076"
+        },
+        {
+          "L3 Module": "Pitch controller",
+          "Share": "100%",
+          "Trend": "→ Stable",
+          "Confidence": "HIGH",
+          "Source": "WTG standard"
+        },
+        {
+          "L3 Module": "Yaw controller",
+          "Share": "100%",
+          "Trend": "→ Stable",
+          "Confidence": "HIGH",
+          "Source": "WTG standard"
+        },
+        {
+          "L3 Module": "SCADA / turbine controller",
+          "Share": "100%",
+          "Trend": "→ Stable",
+          "Confidence": "HIGH",
+          "Source": "IEC 61400-25"
+        }
+      ]
+    },
+    {
+      "headers": [
+        "L1 Power Semi",
+        "Share",
+        "Trend",
+        "Confidence",
+        "Source"
+      ],
+      "rows": [
+        {
+          "L1 Power Semi": "Si IGBT (1.7 kV / 3.3 kV)",
+          "Share": "85%",
+          "Trend": "→ Stable",
+          "Confidence": "HIGH",
+          "Source": "Semikron, Infineon product mix"
+        },
+        {
+          "L1 Power Semi": "SiC MOSFET",
+          "Share": "10%",
+          "Trend": "↑ Growing",
+          "Confidence": "HIGH",
+          "Source": "Wolfspeed, Infineon CoolSiC"
+        },
+        {
+          "L1 Power Semi": "IGCT (MV direct)",
+          "Share": "5%",
+          "Trend": "→ Stable",
+          "Confidence": "MEDIUM",
+          "Source": "ABB high-power nacelle"
+        }
+      ]
+    },
+    {
+      "headers": [
+        "L0",
+        "Share",
+        "Trend",
+        "Confidence",
+        "Source"
+      ],
+      "rows": [
+        {
+          "L0": "Silicon wafer (300 mm)",
+          "Share": "85%",
+          "Trend": "→ Stable",
+          "Confidence": "HIGH",
+          "Source": "SEMI data"
+        },
+        {
+          "L0": "SiC wafer (150/200 mm)",
+          "Share": "10%",
+          "Trend": "↑ Growing",
+          "Confidence": "HIGH",
+          "Source": "Wolfspeed, STMicro"
+        },
+        {
+          "L0": "Gallium nitride",
+          "Share": "<5%",
+          "Trend": "↑ Emerging",
+          "Confidence": "LOW",
+          "Source": "Navitas / EPC"
+        }
+      ]
+    },
+    {
+      "headers": [
+        "L3 Foundation",
+        "Share",
+        "Trend",
+        "Confidence",
+        "Source"
+      ],
+      "rows": [
+        {
+          "L3 Foundation": "Gravity (spread footing)",
+          "Share": "75%",
+          "Trend": "→ Stable",
+          "Confidence": "HIGH",
+          "Source": "GWEC onshore 2024"
+        },
+        {
+          "L3 Foundation": "Piled foundation",
+          "Share": "20%",
+          "Trend": "→ Stable",
+          "Confidence": "HIGH",
+          "Source": "Site-specific soils"
+        },
+        {
+          "L3 Foundation": "Rock-anchor foundation",
+          "Share": "5%",
+          "Trend": "→ Stable",
+          "Confidence": "MEDIUM",
+          "Source": "Scandinavian practice"
+        }
+      ]
+    },
+    {
+      "headers": [
+        "L0",
+        "Share",
+        "Trend",
+        "Confidence",
+        "Source"
+      ],
+      "rows": [
+        {
+          "L0": "Reinforced concrete (C30/37)",
+          "Share": "100%",
+          "Trend": "→ Stable",
+          "Confidence": "HIGH",
+          "Source": "EN 206"
+        },
+        {
+          "L0": "Reinforcement steel (B500B)",
+          "Share": "100%",
+          "Trend": "→ Stable",
+          "Confidence": "HIGH",
+          "Source": "EN 10080"
+        }
+      ]
+    },
+    {
+      "headers": [
+        "L4 Subsystem",
+        "Function",
+        "CAPEX share (typ.)"
+      ],
+      "rows": [
+        {
+          "L4 Subsystem": "Battery subsystem",
+          "Function": "Store/release charge",
+          "CAPEX share (typ.)": "50–55%"
+        },
+        {
+          "L4 Subsystem": "Power conversion (PCS)",
+          "Function": "DC↔AC bidirectional",
+          "CAPEX share (typ.)": "10–12%"
+        },
+        {
+          "L4 Subsystem": "MV grid coupling",
+          "Function": "10/20 kV interface",
+          "CAPEX share (typ.)": "8–10%"
+        },
+        {
+          "L4 Subsystem": "Control & EMS",
+          "Function": "Dispatch optimization",
+          "CAPEX share (typ.)": "3–5%"
+        },
+        {
+          "L4 Subsystem": "Enclosure/thermal/safety",
+          "Function": "Container, HVAC, fire suppression",
+          "CAPEX share (typ.)": "10–12%"
+        },
+        {
+          "L4 Subsystem": "Civil & site",
+          "Function": "Foundation, cabling, fencing",
+          "CAPEX share (typ.)": "10–15%"
+        }
+      ]
+    },
+    {
+      "headers": [
+        "L3 Module",
+        "Share",
+        "Trend",
+        "Confidence",
+        "Source"
+      ],
+      "rows": [
+        {
+          "L3 Module": "Battery rack (stacked modules)",
+          "Share": "100%",
+          "Trend": "→ Stable",
+          "Confidence": "HIGH",
+          "Source": "Industry standard"
+        },
+        {
+          "L3 Module": "Battery Management System (BMS/BAMS/BCMS)",
+          "Share": "100%",
+          "Trend": "→ Stable",
+          "Confidence": "HIGH",
+          "Source": "UL 1973 / IEC 62619"
+        },
+        {
+          "L3 Module": "DC combiner / fuse box",
+          "Share": "100%",
+          "Trend": "→ Stable",
+          "Confidence": "HIGH",
+          "Source": "NFPA 855"
+        }
+      ]
+    },
+    {
+      "headers": [
+        "L2 Chemistry",
+        "Share",
+        "Trend",
+        "Confidence",
+        "Source"
+      ],
+      "rows": [
+        {
+          "L2 Chemistry": "LFP (LiFePO₄)",
+          "Share": "90%",
+          "Trend": "→ Stable",
+          "Confidence": "HIGH",
+          "Source": "IEA Battery 2025; Wood Mac LFP>NMC 2030"
+        },
+        {
+          "L2 Chemistry": "NMC (Ni-Mn-Co)",
+          "Share": "8%",
+          "Trend": "↓ Declining",
+          "Confidence": "HIGH",
+          "Source": "IEA 2025 stationary mix"
+        },
+        {
+          "L2 Chemistry": "Sodium-ion",
+          "Share": "1%",
+          "Trend": "↑ Emerging",
+          "Confidence": "MEDIUM",
+          "Source": "CATL, HiNa 2024 pilots"
+        },
+        {
+          "L2 Chemistry": "Flow battery (vanadium/iron-salt)",
+          "Share": "1%",
+          "Trend": "↑ Emerging",
+          "Confidence": "MEDIUM",
+          "Source": "IDTechEx 2025"
+        }
+      ]
+    },
+    {
+      "headers": [
+        "L1 Form Factor",
+        "Share",
+        "Trend",
+        "Confidence",
+        "Source"
+      ],
+      "rows": [
+        {
+          "L1 Form Factor": "Prismatic (stationary-grade)",
+          "Share": "85%",
+          "Trend": "→ Stable",
+          "Confidence": "HIGH",
+          "Source": "CATL, EVE, BYD product lines"
+        },
+        {
+          "L1 Form Factor": "Cylindrical (21700/4680)",
+          "Share": "10%",
+          "Trend": "→ Stable",
+          "Confidence": "MEDIUM",
+          "Source": "Tesla Megapack"
+        },
+        {
+          "L1 Form Factor": "Pouch",
+          "Share": "5%",
+          "Trend": "↓ Declining",
+          "Confidence": "MEDIUM",
+          "Source": "Stationary niche"
+        }
+      ]
+    },
+    {
+      "headers": [
+        "L0 Component → Raw Material",
+        "Share",
+        "Trend",
+        "Confidence",
+        "Source"
+      ],
+      "rows": [
+        {
+          "L0 Component → Raw Material": "Cathode → LiFePO₄ powder",
+          "Share": "90% (stat)",
+          "Trend": "→ Stable",
+          "Confidence": "HIGH",
+          "Source": "Fraunhofer ISI 2024"
+        },
+        {
+          "L0 Component → Raw Material": "Cathode → NMC (532/622/811)",
+          "Share": "8%",
+          "Trend": "↓ Declining",
+          "Confidence": "HIGH",
+          "Source": "Fraunhofer ISI 2024"
+        },
+        {
+          "L0 Component → Raw Material": "Anode → Synthetic graphite",
+          "Share": "70%",
+          "Trend": "→ Stable",
+          "Confidence": "HIGH",
+          "Source": "BTR, Shanshan supply"
+        },
+        {
+          "L0 Component → Raw Material": "Anode → Natural graphite",
+          "Share": "25%",
+          "Trend": "→ Stable",
+          "Confidence": "HIGH",
+          "Source": "China/Mozambique supply"
+        },
+        {
+          "L0 Component → Raw Material": "Anode → Silicon-graphite composite",
+          "Share": "5%",
+          "Trend": "↑ Emerging",
+          "Confidence": "MEDIUM",
+          "Source": "Group14, Sila"
+        },
+        {
+          "L0 Component → Raw Material": "Separator → PP/PE microporous membrane",
+          "Share": "100%",
+          "Trend": "→ Stable",
+          "Confidence": "HIGH",
+          "Source": "Asahi Kasei, Celgard"
+        },
+        {
+          "L0 Component → Raw Material": "Electrolyte → LiPF₆ in EC/DMC/EMC",
+          "Share": "100%",
+          "Trend": "→ Stable",
+          "Confidence": "HIGH",
+          "Source": "Mitsubishi Chem, Tinci"
+        },
+        {
+          "L0 Component → Raw Material": "Current collector (cathode) → Aluminum foil",
+          "Share": "100%",
+          "Trend": "→ Stable",
+          "Confidence": "HIGH",
+          "Source": "LME Al 99.99%"
+        },
+        {
+          "L0 Component → Raw Material": "Current collector (anode) → Copper foil (6–8 μm)",
+          "Share": "100%",
+          "Trend": "→ Stable",
+          "Confidence": "HIGH",
+          "Source": "LME Cu; Nuode, SK Nexilis"
+        },
+        {
+          "L0 Component → Raw Material": "Casing → Aluminum can / steel can",
+          "Share": "100%",
+          "Trend": "→ Stable",
+          "Confidence": "HIGH",
+          "Source": "Industry standard"
+        }
+      ]
+    },
+    {
+      "headers": [
+        "L1",
+        "L0",
+        "Share",
+        "Trend",
+        "Confidence",
+        "Source"
+      ],
+      "rows": [
+        {
+          "L1": "BMS control PCB",
+          "L0": "FR4 glass-epoxy + Cu + tin-plated connectors",
+          "Share": "100%",
+          "Trend": "→ Stable",
+          "Confidence": "HIGH",
+          "Source": "IPC-4101"
+        },
+        {
+          "L1": "Monitoring IC (cell-level)",
+          "L0": "Si wafer (AFE from TI, ADI, NXP)",
+          "Share": "100%",
+          "Trend": "→ Stable",
+          "Confidence": "HIGH",
+          "Source": "Industry standard"
+        }
+      ]
+    },
+    {
+      "headers": [
+        "L3 Module",
+        "Share",
+        "Trend",
+        "Confidence",
+        "Source"
+      ],
+      "rows": [
+        {
+          "L3 Module": "Bidirectional inverter block",
+          "Share": "100%",
+          "Trend": "→ Stable",
+          "Confidence": "HIGH",
+          "Source": "IEC 62477"
+        },
+        {
+          "L3 Module": "LCL filter",
+          "Share": "100%",
+          "Trend": "→ Stable",
+          "Confidence": "HIGH",
+          "Source": "Industry standard"
+        },
+        {
+          "L3 Module": "DC contactor / precharge",
+          "Share": "100%",
+          "Trend": "→ Stable",
+          "Confidence": "HIGH",
+          "Source": "UL 508"
+        }
+      ]
+    },
+    {
+      "headers": [
+        "L2 Architecture",
+        "Share",
+        "Trend",
+        "Confidence",
+        "Source"
+      ],
+      "rows": [
+        {
+          "L2 Architecture": "String PCS (distributed, 50–250 kW)",
+          "Share": "55%",
+          "Trend": "↑ Growing",
+          "Confidence": "HIGH",
+          "Source": "BNEF Inverter 2024"
+        },
+        {
+          "L2 Architecture": "Central PCS (monolithic, 1–3 MW)",
+          "Share": "40%",
+          "Trend": "↓ Declining",
+          "Confidence": "HIGH",
+          "Source": "Sungrow, Power Electronics product mix"
+        },
+        {
+          "L2 Architecture": "Modular MV-direct PCS",
+          "Share": "5%",
+          "Trend": "↑ Emerging",
+          "Confidence": "MEDIUM",
+          "Source": "ABB, Ingeteam"
+        }
+      ]
+    },
+    {
+      "headers": [
+        "L1",
+        "Share",
+        "Trend",
+        "Confidence",
+        "Source"
+      ],
+      "rows": [
+        {
+          "L1": "Si IGBT (1.2 kV / 1.7 kV)",
+          "Share": "80%",
+          "Trend": "→ Stable",
+          "Confidence": "HIGH",
+          "Source": "Infineon, Semikron product mix"
+        },
+        {
+          "L1": "SiC MOSFET",
+          "Share": "18%",
+          "Trend": "↑ Growing",
+          "Confidence": "HIGH",
+          "Source": "Sungrow PowerTitan 2.0 SiC"
+        },
+        {
+          "L1": "GaN HEMT",
+          "Share": "2%",
+          "Trend": "↑ Emerging",
+          "Confidence": "LOW",
+          "Source": "R&D stage stationary"
+        }
+      ]
+    },
+    {
+      "headers": [
+        "L0",
+        "Share",
+        "Trend",
+        "Confidence",
+        "Source"
+      ],
+      "rows": [
+        {
+          "L0": "Silicon wafer (power die)",
+          "Share": "80%",
+          "Trend": "→ Stable",
+          "Confidence": "HIGH",
+          "Source": "SEMI"
+        },
+        {
+          "L0": "SiC wafer",
+          "Share": "18%",
+          "Trend": "↑ Growing",
+          "Confidence": "HIGH",
+          "Source": "Wolfspeed, STMicro"
+        },
+        {
+          "L0": "GaN-on-Si",
+          "Share": "2%",
+          "Trend": "↑ Emerging",
+          "Confidence": "LOW",
+          "Source": "Navitas"
+        },
+        {
+          "L0": "Al heatsink extrusion",
+          "Share": "100%",
+          "Trend": "→ Stable",
+          "Confidence": "HIGH",
+          "Source": "LME Al"
+        }
+      ]
+    },
+    {
+      "headers": [
+        "L3 Module",
+        "Share",
+        "Trend",
+        "Confidence",
+        "Source"
+      ],
+      "rows": [
+        {
+          "L3 Module": "MV step-up transformer (0.8/20 kV)",
+          "Share": "100%",
+          "Trend": "→ Stable",
+          "Confidence": "HIGH",
+          "Source": "IEC 60076"
+        },
+        {
+          "L3 Module": "MV switchgear (RMU)",
+          "Share": "100%",
+          "Trend": "→ Stable",
+          "Confidence": "HIGH",
+          "Source": "IEC 62271"
+        },
+        {
+          "L3 Module": "Protection relays + NA-schutz",
+          "Share": "100%",
+          "Trend": "→ Stable",
+          "Confidence": "HIGH",
+          "Source": "VDE-AR-N 4110"
+        },
+        {
+          "L3 Module": "Revenue metering + SCADA RTU",
+          "Share": "100%",
+          "Trend": "→ Stable",
+          "Confidence": "HIGH",
+          "Source": "IEC 61850"
+        }
+      ]
+    },
+    {
+      "headers": [
+        "L2",
+        "Share",
+        "Trend",
+        "Confidence",
+        "Source"
+      ],
+      "rows": [
+        {
+          "L2": "Oil-immersed (ester fluid, biodegradable)",
+          "Share": "60%",
+          "Trend": "↑ Growing",
+          "Confidence": "HIGH",
+          "Source": "Siemens, Schneider product mix"
+        },
+        {
+          "L2": "Oil-immersed (mineral oil)",
+          "Share": "25%",
+          "Trend": "↓ Declining",
+          "Confidence": "HIGH",
+          "Source": "Legacy"
+        },
+        {
+          "L2": "Dry-type cast-resin",
+          "Share": "15%",
+          "Trend": "→ Stable",
+          "Confidence": "MEDIUM",
+          "Source": "ABB TXplore"
+        }
+      ]
+    },
+    {
+      "headers": [
+        "L0",
+        "Share",
+        "Trend",
+        "Confidence",
+        "Source"
+      ],
+      "rows": [
+        {
+          "L0": "Grain-oriented electrical steel (core)",
+          "Share": "100%",
+          "Trend": "→ Stable",
+          "Confidence": "HIGH",
+          "Source": "EN 10107"
+        },
+        {
+          "L0": "Copper winding wire",
+          "Share": "90%",
+          "Trend": "→ Stable",
+          "Confidence": "HIGH",
+          "Source": "IEC 60317"
+        },
+        {
+          "L0": "Aluminum winding wire",
+          "Share": "10%",
+          "Trend": "↑ Growing",
+          "Confidence": "MEDIUM",
+          "Source": "Cost-driven DSO jobs"
+        },
+        {
+          "L0": "Ester dielectric fluid",
+          "Share": "60%",
+          "Trend": "↑ Growing",
+          "Confidence": "HIGH",
+          "Source": "MIDEL, ABB BIOTEMP"
+        },
+        {
+          "L0": "Mineral dielectric oil",
+          "Share": "25%",
+          "Trend": "↓ Declining",
+          "Confidence": "HIGH",
+          "Source": "IEC 60296"
+        }
+      ]
+    },
+    {
+      "headers": [
+        "L2 Insulation Medium",
+        "Share",
+        "Trend",
+        "Confidence",
+        "Source"
+      ],
+      "rows": [
+        {
+          "L2 Insulation Medium": "SF₆ gas-insulated (GIS)",
+          "Share": "65%",
+          "Trend": "↓ Declining",
+          "Confidence": "HIGH",
+          "Source": "MarketsandMarkets GIS 2025"
+        },
+        {
+          "L2 Insulation Medium": "Vacuum + air-insulated",
+          "Share": "20%",
+          "Trend": "↑ Growing",
+          "Confidence": "HIGH",
+          "Source": "Eaton, Schneider"
+        },
+        {
+          "L2 Insulation Medium": "SF₆-free fluoronitrile (g³, AirPlus)",
+          "Share": "12%",
+          "Trend": "↑ Growing",
+          "Confidence": "HIGH",
+          "Source": "Siemens Blue GIS, ABB AirPlus"
+        },
+        {
+          "L2 Insulation Medium": "Pure air / clean air",
+          "Share": "3%",
+          "Trend": "↑ Emerging",
+          "Confidence": "MEDIUM",
+          "Source": "Siemens 8DJH 12 Clean Air"
+        }
+      ]
+    },
+    {
+      "headers": [
+        "L1 / L0",
+        "Share",
+        "Trend",
+        "Confidence",
+        "Source"
+      ],
+      "rows": [
+        {
+          "L1 / L0": "Copper busbar (ETP Cu)",
+          "Share": "100%",
+          "Trend": "→ Stable",
+          "Confidence": "HIGH",
+          "Source": "EN 13601"
+        },
+        {
+          "L1 / L0": "Vacuum interrupter (ceramic + Cu-Cr)",
+          "Share": "100%",
+          "Trend": "→ Stable",
+          "Confidence": "HIGH",
+          "Source": "IEC 62271-100"
+        },
+        {
+          "L1 / L0": "Epoxy insulation (cycloaliphatic)",
+          "Share": "100%",
+          "Trend": "→ Stable",
+          "Confidence": "HIGH",
+          "Source": "IEC 60243"
+        }
+      ]
+    },
+    {
+      "headers": [
+        "L3 Module",
+        "Share",
+        "Trend",
+        "Confidence",
+        "Source"
+      ],
+      "rows": [
+        {
+          "L3 Module": "Local controller (PLC / industrial PC)",
+          "Share": "100%",
+          "Trend": "→ Stable",
+          "Confidence": "HIGH",
+          "Source": "IEC 61131-3"
+        },
+        {
+          "L3 Module": "EMS software (dispatch optimizer)",
+          "Share": "100%",
+          "Trend": "→ Stable",
+          "Confidence": "HIGH",
+          "Source": "Industry standard"
+        },
+        {
+          "L3 Module": "SCADA gateway (to DSO / VPP)",
+          "Share": "100%",
+          "Trend": "→ Stable",
+          "Confidence": "HIGH",
+          "Source": "IEC 60870-5-104"
+        }
+      ]
+    },
+    {
+      "headers": [
+        "L2",
+        "Share",
+        "Trend",
+        "Confidence",
+        "Source"
+      ],
+      "rows": [
+        {
+          "L2": "OEM-bundled EMS (Sungrow, Tesla, CATL)",
+          "Share": "45%",
+          "Trend": "→ Stable",
+          "Confidence": "HIGH",
+          "Source": "BNEF 2024"
+        },
+        {
+          "L2": "Third-party EMS (Entrix, Fluence Mosaic, Wärtsilä GEMS)",
+          "Share": "35%",
+          "Trend": "↑ Growing",
+          "Confidence": "HIGH",
+          "Source": "Analyst estimate"
+        },
+        {
+          "L2": "Aggregator EMS (Next Kraftwerke, Enspired, Flexpower)",
+          "Share": "15%",
+          "Trend": "↑ Growing",
+          "Confidence": "MEDIUM",
+          "Source": "DE VPP market"
+        },
+        {
+          "L2": "Custom / in-house",
+          "Share": "5%",
+          "Trend": "↓ Declining",
+          "Confidence": "LOW",
+          "Source": "Analyst estimate"
+        }
+      ]
+    },
+    {
+      "headers": [
+        "L1 → L0",
+        "Share",
+        "Trend",
+        "Confidence",
+        "Source"
+      ],
+      "rows": [
+        {
+          "L1 → L0": "Server-grade CPU (x86-64)",
+          "Share": "90%",
+          "Trend": "→ Stable",
+          "Confidence": "HIGH",
+          "Source": "Intel/AMD"
+        },
+        {
+          "L1 → L0": "ARM edge controller",
+          "Share": "10%",
+          "Trend": "↑ Growing",
+          "Confidence": "MEDIUM",
+          "Source": "NXP, TI"
+        },
+        {
+          "L1 → L0": "Silicon wafer (L0)",
+          "Share": "100%",
+          "Trend": "→ Stable",
+          "Confidence": "HIGH",
+          "Source": "SEMI"
+        }
+      ]
+    },
+    {
+      "headers": [
+        "L3 Module",
+        "Share",
+        "Trend",
+        "Confidence",
+        "Source"
+      ],
+      "rows": [
+        {
+          "L3 Module": "ISO container envelope",
+          "Share": "100%",
+          "Trend": "→ Stable",
+          "Confidence": "HIGH",
+          "Source": "ISO 1496"
+        },
+        {
+          "L3 Module": "HVAC / thermal management",
+          "Share": "100%",
+          "Trend": "→ Stable",
+          "Confidence": "HIGH",
+          "Source": "Industry standard"
+        },
+        {
+          "L3 Module": "Fire detection + suppression",
+          "Share": "100%",
+          "Trend": "→ Stable",
+          "Confidence": "HIGH",
+          "Source": "NFPA 855, VdS 3108"
+        },
+        {
+          "L3 Module": "Gas venting / deflagration panel",
+          "Share": "100%",
+          "Trend": "→ Stable",
+          "Confidence": "HIGH",
+          "Source": "NFPA 68"
+        }
+      ]
+    },
+    {
+      "headers": [
+        "L2",
+        "Share",
+        "Trend",
+        "Confidence",
+        "Source"
+      ],
+      "rows": [
+        {
+          "L2": "Liquid cooling (water-glycol)",
+          "Share": "80%",
+          "Trend": "↑ Growing",
+          "Confidence": "HIGH",
+          "Source": "BIS Research BESS Cooling 2025"
+        },
+        {
+          "L2": "Forced-air cooling",
+          "Share": "18%",
+          "Trend": "↓ Declining",
+          "Confidence": "HIGH",
+          "Source": "Legacy / small units"
+        },
+        {
+          "L2": "Immersion (dielectric fluid)",
+          "Share": "2%",
+          "Trend": "↑ Emerging",
+          "Confidence": "MEDIUM",
+          "Source": "Shell Immersion Cooling 2024"
+        }
+      ]
+    },
+    {
+      "headers": [
+        "L2",
+        "Share",
+        "Trend",
+        "Confidence",
+        "Source"
+      ],
+      "rows": [
+        {
+          "L2": "Aerosol (Stat-X, FirePro)",
+          "Share": "45%",
+          "Trend": "↑ Growing",
+          "Confidence": "MEDIUM",
+          "Source": "Control Fire Systems 2025"
+        },
+        {
+          "L2": "Clean agent (NOVEC 1230 / FK-5-1-12)",
+          "Share": "30%",
+          "Trend": "→ Stable",
+          "Confidence": "MEDIUM",
+          "Source": "3M/Kidde literature"
+        },
+        {
+          "L2": "Water mist (high-pressure)",
+          "Share": "20%",
+          "Trend": "↑ Growing",
+          "Confidence": "MEDIUM",
+          "Source": "Marioff HI-FOG"
+        },
+        {
+          "L2": "CO₂ / inert gas",
+          "Share": "5%",
+          "Trend": "↓ Declining",
+          "Confidence": "LOW",
+          "Source": "Legacy only"
+        }
+      ]
+    },
+    {
+      "headers": [
+        "L0",
+        "Share",
+        "Trend",
+        "Confidence",
+        "Source"
+      ],
+      "rows": [
+        {
+          "L0": "Corten / S355 steel plate + Zn coating",
+          "Share": "100%",
+          "Trend": "→ Stable",
+          "Confidence": "HIGH",
+          "Source": "EN 10025-5"
+        },
+        {
+          "L0": "Mineral wool / rockwool insulation",
+          "Share": "100%",
+          "Trend": "→ Stable",
+          "Confidence": "HIGH",
+          "Source": "EN 13162"
+        }
+      ]
+    },
+    {
+      "headers": [
+        "L3",
+        "Share",
+        "Trend",
+        "Confidence",
+        "Source"
+      ],
+      "rows": [
+        {
+          "L3": "Concrete foundation pad",
+          "Share": "100%",
+          "Trend": "→ Stable",
+          "Confidence": "HIGH",
+          "Source": "EN 1992"
+        },
+        {
+          "L3": "MV cable trench + ducting",
+          "Share": "100%",
+          "Trend": "→ Stable",
+          "Confidence": "HIGH",
+          "Source": "DIN VDE 0276"
+        },
+        {
+          "L3": "Perimeter fence + gate",
+          "Share": "100%",
+          "Trend": "→ Stable",
+          "Confidence": "HIGH",
+          "Source": "VdS 2311"
+        },
+        {
+          "L3": "Fire-service access road",
+          "Share": "100%",
+          "Trend": "→ Stable",
+          "Confidence": "HIGH",
+          "Source": "Local Feuerwehr code"
+        }
+      ]
+    },
+    {
+      "headers": [
+        "L0",
+        "Share",
+        "Trend",
+        "Confidence",
+        "Source"
+      ],
+      "rows": [
+        {
+          "L0": "Reinforced concrete C25/30",
+          "Share": "100%",
+          "Trend": "→ Stable",
+          "Confidence": "HIGH",
+          "Source": "EN 206"
+        },
+        {
+          "L0": "Rebar B500B",
+          "Share": "100%",
+          "Trend": "→ Stable",
+          "Confidence": "HIGH",
+          "Source": "EN 10080"
+        }
+      ]
+    },
+    {
+      "headers": [
+        "L1 Cable",
+        "L0",
+        "Share",
+        "Trend",
+        "Confidence",
+        "Source"
+      ],
+      "rows": [
+        {
+          "L1 Cable": "XLPE-insulated Cu cable (NA2XS(F)2Y)",
+          "L0": "Cross-linked polyethylene + Cu conductor",
+          "Share": "85%",
+          "Trend": "→ Stable",
+          "Confidence": "HIGH",
+          "Source": "DIN VDE 0276-620"
+        },
+        {
+          "L1 Cable": "XLPE-insulated Al cable",
+          "L0": "XLPE + Al conductor",
+          "Share": "15%",
+          "Trend": "↑ Growing",
+          "Confidence": "MEDIUM",
+          "Source": "Cost-driven substitution"
+        }
+      ]
+    },
+    {
+      "headers": [
+        "BOM",
+        "Mein Solar position",
+        "Level",
+        "Role"
+      ],
+      "rows": [
+        {
+          "BOM": "BOM #1 (WTG)",
+          "Mein Solar position": "**Not present**",
+          "Level": "—",
+          "Role": "No component in wind turbine hardware"
+        },
+        {
+          "BOM": "BOM #2 (BESS)",
+          "Mein Solar position": "**Integrator**",
+          "Level": "L5",
+          "Role": "Delivers assembled commissioned asset; owns integration of L4–L0"
+        },
+        {
+          "BOM": "BOM #2 relationship to wind park",
+          "Mein Solar position": "**Parallel asset**",
+          "Level": "Co-located L5",
+          "Role": "Shares grid connection point, foundation lot, and EMS integration"
+        }
+      ]
+    },
+    {
+      "headers": [
+        "Adjacent Asset",
+        "Capability Gap",
+        "Market Size (DE, 2025 est.)",
+        "Strategic Fit"
+      ],
+      "rows": [
+        {
+          "Adjacent Asset": "Wind turbine itself (L5)",
+          "Capability Gap": "HIGH — mechanical/aerodynamic domain alien",
+          "Market Size (DE, 2025 est.)": "€3.5–4 B/yr DE onshore install",
+          "Strategic Fit": "WEAK"
+        },
+        {
+          "Adjacent Asset": "Co-located PV array (L5)",
+          "Capability Gap": "**LOW** — incumbent business",
+          "Market Size (DE, 2025 est.)": "€5 B/yr DE utility PV",
+          "Strategic Fit": "**STRONG**"
+        },
+        {
+          "Adjacent Asset": "HPC charging hub (L5)",
+          "Capability Gap": "MEDIUM — adds dispenser OEM partners",
+          "Market Size (DE, 2025 est.)": "€300–500 M/yr emerging",
+          "Strategic Fit": "**STRONG** (explicit feature)"
+        },
+        {
+          "Adjacent Asset": "Electrolyzer (L5)",
+          "Capability Gap": "HIGH — new stack/gas-safety domain",
+          "Market Size (DE, 2025 est.)": "€200–400 M/yr emerging DE",
+          "Strategic Fit": "MEDIUM"
+        },
+        {
+          "Adjacent Asset": "MV substation upgrade (L5)",
+          "Capability Gap": "MEDIUM — DSO-contractor route",
+          "Market Size (DE, 2025 est.)": "€800 M/yr DE",
+          "Strategic Fit": "MEDIUM"
+        }
+      ]
+    },
+    {
+      "headers": [
+        "Target role",
+        "Capability gap",
+        "Risk"
+      ],
+      "rows": [
+        {
+          "Target role": "Full wind+BESS hybrid EPC (single contract both assets)",
+          "Capability gap": "HIGH — wind OEM coordination, foundation geotech, civil scale",
+          "Risk": "Competes with Enerparc, BayWa r.e., Goldbeck"
+        },
+        {
+          "Target role": "Hybrid park O&M lifecycle operator",
+          "Capability gap": "MEDIUM — asset mgmt, trading desk",
+          "Risk": "Recurring revenue; different contract"
+        }
+      ]
+    },
+    {
+      "headers": [
+        "Target role",
+        "Capability gap",
+        "Assessment"
+      ],
+      "rows": [
+        {
+          "Target role": "L2 container integration (self-perform like Voltfang, Tesvolt)",
+          "Capability gap": "HIGH — factory capex + cell procurement",
+          "Assessment": "Commoditized; tier-1 Asian OEMs dominate"
+        },
+        {
+          "Target role": "L2 PCS OEM",
+          "Capability gap": "VERY HIGH — 10-yr semiconductor R&D",
+          "Assessment": "Not viable"
+        },
+        {
+          "Target role": "L3 EMS software house",
+          "Capability gap": "MEDIUM — software competence + dispatch know-how",
+          "Assessment": "Viable niche; competes with Entrix/Enspired"
+        }
+      ]
+    },
+    {
+      "headers": [
+        "Check",
+        "Status"
+      ],
+      "rows": [
+        {
+          "Check": "Every L4 decomposes to L0",
+          "Status": "✅ (both BOMs)"
+        },
+        {
+          "Check": "Every level transition has alternatives table",
+          "Status": "✅"
+        },
+        {
+          "Check": "Single-source branches tagged",
+          "Status": "✅"
+        },
+        {
+          "Check": "Shares sum to 100% (±1%)",
+          "Status": "✅"
+        },
+        {
+          "Check": "No brand names at BOM levels (only in alternatives)",
+          "Status": "✅"
+        },
+        {
+          "Check": "Company position marked",
+          "Status": "✅ (L5 in BOM #2)"
+        },
+        {
+          "Check": "Horizontal + vertical adjacency completed",
+          "Status": "✅"
+        },
+        {
+          "Check": "BOM vs VN test (items IN the product, not items that MAKE it)",
+          "Status": "✅"
+        }
+      ]
+    }
+  ],
+  "entities": [
+    {
+      "component": "product_bom_decomposition",
+      "naics_code": "221115",
+      "naics_title": "Wind Electric Power Generation",
+      "market_category": "utility",
+      "focal_company": "Mein Solar GmbH",
+      "focal_product": "EPC für Großbatteriespeicher",
+      "bom_count": 2,
+      "boms": [
+        {
+          "bom_id": "wtg_onshore",
+          "output_type": "Wind Turbine Generator (onshore 3–8 MW)",
+          "end_product_or_vn_system": "end_product",
+          "focal_company_present": false,
+          "l4_subsystems": [
+            {
+              "name": "Rotor subsystem",
+              "function": "Capture kinetic energy",
+              "weight_share_pct": 20
+            },
+            {
+              "name": "Nacelle subsystem",
+              "function": "Convert rotation to electricity",
+              "weight_share_pct": 25
+            },
+            {
+              "name": "Tower subsystem",
+              "function": "Elevate rotor to wind resource",
+              "weight_share_pct": 45
+            },
+            {
+              "name": "Electrical & control subsystem",
+              "function": "Power conditioning + grid interface",
+              "weight_share_pct": 5
+            },
+            {
+              "name": "Foundation & BoP subsystem",
+              "function": "Anchor + interconnect",
+              "weight_share_pct": 5
+            }
+          ],
+          "key_alternatives": [
+            {
+              "position": "L4 Nacelle > L2 Drivetrain architecture",
+              "alternatives": [
+                {
+                  "name": "Geared DFIG",
+                  "share_pct": 30,
+                  "trend": "Declining",
+                  "confidence": "HIGH"
+                },
+                {
+                  "name": "Geared PMSG",
+                  "share_pct": 40,
+                  "trend": "Growing",
+                  "confidence": "HIGH"
+                },
+                {
+                  "name": "Direct-drive PMSG",
+                  "share_pct": 28,
+                  "trend": "Growing",
+                  "confidence": "HIGH"
+                },
+                {
+                  "name": "EESG (rare-earth-free)",
+                  "share_pct": 2,
+                  "trend": "Emerging",
+                  "confidence": "MEDIUM"
+                }
+              ]
+            },
+            {
+              "position": "L4 Tower > L3 type",
+              "alternatives": [
+                {
+                  "name": "Tubular steel",
+                  "share_pct": 70,
+                  "trend": "Stable",
+                  "confidence": "HIGH"
+                },
+                {
+                  "name": "Hybrid steel-concrete",
+                  "share_pct": 17,
+                  "trend": "Growing",
+                  "confidence": "HIGH"
+                },
+                {
+                  "name": "Full concrete",
+                  "share_pct": 10,
+                  "trend": "Stable",
+                  "confidence": "MEDIUM"
+                },
+                {
+                  "name": "Lattice",
+                  "share_pct": 3,
+                  "trend": "Declining",
+                  "confidence": "MEDIUM"
+                }
+              ]
+            },
+            {
+              "position": "Blade L1 fiber reinforcement",
+              "alternatives": [
+                {
+                  "name": "Glass fiber (E-glass)",
+                  "share_pct": 71,
+                  "trend": "Stable",
+                  "confidence": "HIGH"
+                },
+                {
+                  "name": "Glass/carbon hybrid",
+                  "share_pct": 25,
+                  "trend": "Growing",
+                  "confidence": "HIGH"
+                },
+                {
+                  "name": "Full carbon fiber",
+                  "share_pct": 4,
+                  "trend": "Emerging",
+                  "confidence": "MEDIUM"
+                }
+              ]
+            },
+            {
+              "position": "Gearbox L1 type",
+              "alternatives": [
+                {
+                  "name": "Planetary multi-stage",
+                  "share_pct": 88,
+                  "trend": "Stable",
+                  "confidence": "HIGH"
+                },
+                {
+                  "name": "Helical",
+                  "share_pct": 10,
+                  "trend": "Stable",
+                  "confidence": "MEDIUM"
+                },
+                {
+                  "name": "Hybrid planetary-helical",
+                  "share_pct": 2,
+                  "trend": "Emerging",
+                  "confidence": "LOW"
+                }
+              ]
+            },
+            {
+              "position": "Generator L1 permanent magnet",
+              "alternatives": [
+                {
+                  "name": "NdFeB sintered",
+                  "share_pct": 95,
+                  "trend": "Stable",
+                  "confidence": "HIGH"
+                },
+                {
+                  "name": "SmCo / ferrite hybrid",
+                  "share_pct": 5,
+                  "trend": "Emerging",
+                  "confidence": "MEDIUM"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "bom_id": "bess_colocated",
+          "output_type": "Battery Energy Storage System (≥1 MWh, MV-coupled)",
+          "end_product_or_vn_system": "vn_system",
+          "focal_company_present": true,
+          "focal_company_level": "L5",
+          "focal_company_role": "EPC integrator — delivers assembled commissioned L5 asset; owns integration across L4–L0",
+          "l4_subsystems": [
+            {
+              "name": "Battery subsystem",
+              "function": "Store and release charge",
+              "capex_share_pct": 52
+            },
+            {
+              "name": "Power conversion subsystem (PCS)",
+              "function": "DC↔AC bidirectional conversion",
+              "capex_share_pct": 11
+            },
+            {
+              "name": "MV grid-coupling subsystem",
+              "function": "10/20 kV grid interface",
+              "capex_share_pct": 9
+            },
+            {
+              "name": "Control & EMS subsystem",
+              "function": "Dispatch optimization",
+              "capex_share_pct": 4
+            },
+            {
+              "name": "Enclosure / thermal / safety subsystem",
+              "function": "Container + HVAC + fire suppression",
+              "capex_share_pct": 11
+            },
+            {
+              "name": "Civil & site subsystem",
+              "function": "Foundation, cabling, fencing",
+              "capex_share_pct": 13
+            }
+          ],
+          "key_alternatives": [
+            {
+              "position": "L4 Battery > L2 Cell chemistry",
+              "alternatives": [
+                {
+                  "name": "LFP (LiFePO4)",
+                  "share_pct": 90,
+                  "trend": "Stable",
+                  "confidence": "HIGH",
+                  "source": "IEA Battery 2025, Wood Mackenzie"
+                },
+                {
+                  "name": "NMC",
+                  "share_pct": 8,
+                  "trend": "Declining",
+                  "confidence": "HIGH",
+                  "source": "IEA 2025 stationary"
+                },
+                {
+                  "name": "Sodium-ion",
+                  "share_pct": 1,
+                  "trend": "Emerging",
+                  "confidence": "MEDIUM",
+                  "source": "CATL / HiNa pilots"
+                },
+                {
+                  "name": "Flow battery (vanadium/iron-salt)",
+                  "share_pct": 1,
+                  "trend": "Emerging",
+                  "confidence": "MEDIUM",
+                  "source": "IDTechEx 2025"
+                }
+              ]
+            },
+            {
+              "position": "L4 PCS > L2 Architecture",
+              "alternatives": [
+                {
+                  "name": "String PCS",
+                  "share_pct": 55,
+                  "trend": "Growing",
+                  "confidence": "HIGH"
+                },
+                {
+                  "name": "Central PCS",
+                  "share_pct": 40,
+                  "trend": "Declining",
+                  "confidence": "HIGH"
+                },
+                {
+                  "name": "Modular MV-direct",
+                  "share_pct": 5,
+                  "trend": "Emerging",
+                  "confidence": "MEDIUM"
+                }
+              ]
+            },
+            {
+              "position": "L4 MV coupling > Switchgear insulation",
+              "alternatives": [
+                {
+                  "name": "SF6 GIS",
+                  "share_pct": 65,
+                  "trend": "Declining",
+                  "confidence": "HIGH"
+                },
+                {
+                  "name": "Vacuum + air",
+                  "share_pct": 20,
+                  "trend": "Growing",
+                  "confidence": "HIGH"
+                },
+                {
+                  "name": "SF6-free fluoronitrile",
+                  "share_pct": 12,
+                  "trend": "Growing",
+                  "confidence": "HIGH"
+                },
+                {
+                  "name": "Clean air",
+                  "share_pct": 3,
+                  "trend": "Emerging",
+                  "confidence": "MEDIUM"
+                }
+              ]
+            },
+            {
+              "position": "L4 Thermal > L2 Cooling method",
+              "alternatives": [
+                {
+                  "name": "Liquid cooling (water-glycol)",
+                  "share_pct": 80,
+                  "trend": "Growing",
+                  "confidence": "HIGH"
+                },
+                {
+                  "name": "Forced-air",
+                  "share_pct": 18,
+                  "trend": "Declining",
+                  "confidence": "HIGH"
+                },
+                {
+                  "name": "Immersion (dielectric)",
+                  "share_pct": 2,
+                  "trend": "Emerging",
+                  "confidence": "MEDIUM"
+                }
+              ]
+            },
+            {
+              "position": "L4 Safety > Fire suppression",
+              "alternatives": [
+                {
+                  "name": "Aerosol (Stat-X, FirePro)",
+                  "share_pct": 45,
+                  "trend": "Growing",
+                  "confidence": "MEDIUM"
+                },
+                {
+                  "name": "Clean agent (NOVEC 1230)",
+                  "share_pct": 30,
+                  "trend": "Stable",
+                  "confidence": "MEDIUM"
+                },
+                {
+                  "name": "Water mist",
+                  "share_pct": 20,
+                  "trend": "Growing",
+                  "confidence": "MEDIUM"
+                },
+                {
+                  "name": "CO2 / inert gas",
+                  "share_pct": 5,
+                  "trend": "Declining",
+                  "confidence": "LOW"
+                }
+              ]
+            },
+            {
+              "position": "L4 EMS > L2 Software archetype",
+              "alternatives": [
+                {
+                  "name": "OEM-bundled EMS",
+                  "share_pct": 45,
+                  "trend": "Stable",
+                  "confidence": "HIGH"
+                },
+                {
+                  "name": "Third-party EMS (Entrix, Fluence Mosaic, Wärtsilä GEMS)",
+                  "share_pct": 35,
+                  "trend": "Growing",
+                  "confidence": "HIGH"
+                },
+                {
+                  "name": "Aggregator EMS (Next Kraftwerke, Enspired)",
+                  "share_pct": 15,
+                  "trend": "Growing",
+                  "confidence": "MEDIUM"
+                },
+                {
+                  "name": "Custom / in-house",
+                  "share_pct": 5,
+                  "trend": "Declining",
+                  "confidence": "LOW"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "company_position": {
+        "bom_id": "bess_colocated",
+        "level": "L5",
+        "role": "EPC integrator",
+        "note": "Entire BOM #2 represents composition of the Mein Solar-delivered asset; Mein Solar does not self-manufacture any L4/L3/L2/L1/L0 component, but owns the integration, certification, and single-source contract wrapper."
+      },
+      "horizontal_adjacency": [
+        {
+          "adjacent_asset": "Wind turbine (L5)",
+          "capability_gap": "HIGH",
+          "market_size_de_eur_per_year": "3.5–4 B",
+          "strategic_fit": "WEAK"
+        },
+        {
+          "adjacent_asset": "Co-located PV array (L5)",
+          "capability_gap": "LOW",
+          "market_size_de_eur_per_year": "5 B",
+          "strategic_fit": "STRONG"
+        },
+        {
+          "adjacent_asset": "HPC charging hub (L5)",
+          "capability_gap": "MEDIUM",
+          "market_size_de_eur_per_year": "0.3–0.5 B",
+          "strategic_fit": "STRONG"
+        },
+        {
+          "adjacent_asset": "Electrolyzer (L5)",
+          "capability_gap": "HIGH",
+          "market_size_de_eur_per_year": "0.2–0.4 B",
+          "strategic_fit": "MEDIUM"
+        },
+        {
+          "adjacent_asset": "MV substation upgrade (L5)",
+          "capability_gap": "MEDIUM",
+          "market_size_de_eur_per_year": "0.8 B",
+          "strategic_fit": "MEDIUM"
+        }
+      ],
+      "vertical_up": [
+        {
+          "target_role": "Hybrid wind+BESS EPC (single contract for both)",
+          "capability_gap": "HIGH",
+          "risk": "Direct competition with Enerparc, BayWa r.e., Goldbeck Solar"
+        },
+        {
+          "target_role": "Hybrid park O&M lifecycle operator",
+          "capability_gap": "MEDIUM",
+          "risk": "Recurring revenue, different contract model"
+        }
+      ],
+      "vertical_down": [
+        {
+          "target_role": "L2 BESS container integrator (self-perform)",
+          "capability_gap": "HIGH",
+          "assessment": "Commoditized; Asian tier-1 OEMs dominate on cost"
+        },
+        {
+          "target_role": "L2 PCS OEM",
+          "capability_gap": "VERY HIGH",
+          "assessment": "Not viable without decade-scale semiconductor R&D"
+        },
+        {
+          "target_role": "L3 EMS software house",
+          "capability_gap": "MEDIUM",
+          "assessment": "Viable niche; competes with Entrix, Enspired"
+        }
+      ],
+      "sources": [
+        "IBISWorld NAICS 221115 Wind Electric Power Generation",
+        "NREL Cost of Wind Energy Review 2024",
+        "DOE Wind Manufacturing & Supply Chain Program",
+        "GWEC Global Wind Report 2024",
+        "MarketsandMarkets Wind Blade Composites 2025",
+        "Market Research Future Wind Turbine Composites 2025",
+        "Grand View Research Direct-Drive Wind Turbine 2025",
+        "Mordor Intelligence Wind Turbine Tower 2025",
+        "IEA Global Battery Outlook 2025",
+        "Wood Mackenzie — LFP to overtake NMC as dominant stationary storage chemistry 2030",
+        "BloombergNEF Energy Storage Outlook 2024",
+        "IDTechEx Batteries for Stationary Energy Storage 2025-2035",
+        "Fraunhofer ISI Battery Materials Market Leaders 2024",
+        "BIS Research Liquid Cooling Market for Stationary BESS 2025",
+        "MarketsandMarkets Gas-Insulated Switchgear 2025",
+        "Control Fire Systems BESS Fire Suppression Best Practices 2025",
+        "Market.us Wind Turbine Gearbox 2025",
+        "USGS Mineral Commodity Summaries 2025 (rare earths)",
+        "VDE-AR-N 4110 Technical Connection Rule Medium Voltage",
+        "FGW TR8 Plant Certification"
+      ]
+    }
+  ],
+  "has_bom": true,
+  "naics_sector_type": "non_manufacturing"
+}

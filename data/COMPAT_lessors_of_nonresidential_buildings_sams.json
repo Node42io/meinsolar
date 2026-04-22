@@ -1,0 +1,394 @@
+{
+  "id": "COMPAT_lessors_of_nonresidential_buildings_sams",
+  "title": "COMPAT — NAICS 531120 Lessors of Nonresidential Buildings",
+  "type": "constraint_compatibility",
+  "market_slug": "lessors_of_nonresidential_buildings_sams",
+  "is_per_market": true,
+  "sections": [
+    {
+      "title": "Market operating envelope (for knockout test)",
+      "content": "| Attribute | Typical value for 531120 |\n|---|---|\n| Siting | Commercial parcel (parking lot, rooftop, vacant plot, basement) adjacent to tenant building |\n| Grid connection | 10/20 kV DSO feeder via on-site MV room; LV sub-connection for ≤500 kW |\n| Ambient temperature (DE) | −15 to +38 °C outdoor; −5 to +30 °C sheltered |\n| Duty cycle | Peak shaving, arbitrage, self-consumption, HPC buffer, resilience standby |\n| Scale | 1–20 MWh typical per site; logistics/data-center shells push to 20–50 MWh |\n| Regulatory context | Baugenehmigung, VdS/Feuerwehr, VDE-AR-N 4110, FGW TR8, GEG, EU Taxonomy |\n| Hazardous atmosphere | None (non-explosive, no molten media, no acids) |\n\n**Process conditions never approach** physics thresholds of the product. Regulatory path is standard DE C&I BESS path that Mein Solar's reference asset already traversed.\n\n---"
+    },
+    {
+      "title": "Constraint × Market verdict table",
+      "content": "| # | Constraint | Type | Is Abs | Verdict | Rationale |\n|---|---|---|---|---|---|\n| 1 | MV Grid Connection Capacity | operational | false | **mitigable** | Urban/retail sites may hit saturated feeders. Physics-compatible — solved via DSO pre-study, cable upsizing, or site selection. |\n| 2 | Land Footprint and Siting | physical | false | **mitigable** | 40–80 m²/MWh fits parking/vacant plots. Dense office sites require basement placement, load reinforcement, or rooftop. |\n| 3 | Fire-Protection Clearance | regulatory | false | **mitigable** | VdS clearance, sub-3-MWh clustering, separation walls. Standard DE EPC scope. |\n| 4 | Li-Ion Thermal Runaway Hazard | physical | false | **mitigable** | Containment is standard (NOVEC, venting, compartmentalization) — included in Mein Solar base config. |\n| 5 | Grid Code Certification Lead Time | regulatory | false | **mitigable** | FGW TR8 path is mandatory but parallelizable with civil/procurement. Already in Mein Solar's reference run. |\n| 6 | Battery Supply Chain Concentration | economic | false | **mitigable** | Multi-vendor LFP sourcing, FX hedging, CRMA/EU-Battery-Reg compliance. Cost is never knockout. |\n| 7 | Ambient Temperature Envelope | environmental | false | **none** | DE commercial ambient −15 to +38 °C sits comfortably inside −20 to +50 °C rating. |\n| 8 | Round-Trip Energy Losses | physical | true | **none** | 10–15 % RTE loss is priced into the 531120 arbitrage/peak-shaving business case (IRR still positive with 30 %→50 % AfA). |\n| 9 | CAPEX Viability Threshold | economic | false | **mitigable** | DE 2025/26 installed cost ~€220–380/kWh sits inside viable band. §7g AfA + VDE 2510 tax discount + arbitrage stacking secure payback. |\n\n**Knockouts:** 0\n**Mitigable:** 7\n**None:** 2\n\n---"
+    },
+    {
+      "title": "Mitigation details",
+      "content": "| Constraint | Mitigation actions (1–3) | Cost | Time |\n|---|---|---|---|\n| MV Grid Connection Capacity | DSO pre-feasibility study; cable upsizing or new feeder; LV-coupled sizing below 500 kW where MV blocked | medium | 3–9 months |\n| Land Footprint and Siting | Use vacant/underused parking plots; rooftop placement with structural reinforcement; basement / container-in-plantroom layouts | medium | 2–6 months |\n| Fire-Protection Clearance | Sub-3-MWh cluster layout with separation; fire-wall construction; Feuerwehr access plan in Baugenehmigung | low | 1–3 months |\n| Li-Ion Thermal Runaway Hazard | NOVEC 1230 suppression; deflagration venting; gas-detection + cell-level BMS shutdown | low | included in base scope |\n| Grid Code Certification Lead Time | Parallel FGW TR3/TR8 certification tracks; pre-selected pre-certified equipment; early DSO engagement | low | 6–12 months (parallel) |\n| Battery Supply Chain Concentration | Dual-source LFP framework agreement; FX hedge on €/USD for cell lots; CRMA-compliant supplier audit | medium | ongoing |\n| CAPEX Viability Threshold | Leverage 50 % first-year depreciation + VDE 2510 corp-tax discount; stack arbitrage + Netzentgelte + peak-shaving revenues; tenant PPA for PV+BESS bundle | low | pre-FID |\n\n---"
+    },
+    {
+      "title": "Conservative review (08b)",
+      "content": "Every potential knockout re-tested against the two-question rule:\n- **Threshold exceeded in ALL normal conditions?** No — 531120 sites never hit 200 °C process temps, never present explosive atmospheres, never require acoustically transparent media.\n- **Gap >10×?** No — worst-case ambient gap (<2×) and MV capacity shortfall (<2×) both well inside mitigable band.\n\nNo downgrades required. No upgrades permitted.\n\n---"
+    },
+    {
+      "title": "Outcome",
+      "content": "| Field | Value |\n|---|---|\n| `markets_eliminated` | [] |\n| `markets_surviving` | [\"531120\"] |\n| Market status | **SURVIVES** — proceeds to Steps 09–12 |\n| Downstream penalty | Mitigation cost band: medium aggregate (driven by MV capacity + siting + supply-chain) |\n\nMarket 531120 is Mein Solar's **incumbent home ground** — PV-EPC heritage pre-adapted every mitigation path. No structural barrier stops this product in this market.\n\n---"
+    },
+    {
+      "title": "Structured Data",
+      "content": "```json\n{\n  \"component\": \"constraints-market-compatibility\",\n  \"step\": \"08\",\n  \"product_name\": \"EPC für Großbatteriespeicher\",\n  \"technology_class\": \"Large-Scale Battery Energy Storage System EPC\",\n  \"vendor_name\": \"Mein Solar GmbH\",\n  \"market\": {\n    \"market_name\": \"Commercial & Industrial Real-Estate Behind-the-Meter Storage\",\n    \"naics_code\": \"531120\",\n    \"naics_title\": \"Lessors of Nonresidential Buildings (except Miniwarehouses)\",\n    \"relevance_rationale\": \"Lessors installing BESS behind-the-meter for tenant peak shaving, PV self-consumption, HPC buffer, and resilience; Mein Solar primary L5 position under L6d-a Building Energy Infrastructure.\"\n  },\n  \"n_constraints\": 9,\n  \"assessments\": [\n    {\n      \"constraint_name\": \"MV Grid Connection Capacity\",\n      \"market_name\": \"Commercial & Industrial Real-Estate Behind-the-Meter Storage\",\n      \"naics_code\": \"531120\",\n      \"verdict\": \"mitigable\",\n      \"mitigation_actions\": [\n        \"DSO pre-feasibility and Netzanschlussbegehren early\",\n        \"Cable upsizing or new dedicated MV feeder\",\n        \"Size below LV threshold (<500 kW) where MV capacity blocked\"\n      ],\n      \"mitigation_cost_estimate\": \"medium\",\n      \"mitigation_time_estimate\": \"3-9 months\",\n      \"knockout_reason\": null,\n      \"rationale\": \"Saturated feeders on dense urban sites are common but not physically impossible; standard DSO coordination path solves it.\"\n    },\n    {\n      \"constraint_name\": \"Land Footprint and Siting\",\n      \"market_name\": \"Commercial & Industrial Real-Estate Behind-the-Meter Storage\",\n      \"naics_code\": \"531120\",\n      \"verdict\": \"mitigable\",\n      \"mitigation_actions\": [\n        \"Use underused parking plots or vacant site corners\",\n        \"Rooftop placement with structural reinforcement\",\n        \"Basement or container-in-plantroom layouts for urban sites\"\n      ],\n      \"mitigation_cost_estimate\": \"medium\",\n      \"mitigation_time_estimate\": \"2-6 months\",\n      \"knockout_reason\": null,\n      \"rationale\": \"40-80 m²/MWh is achievable on commercial parcels; dense office sites require configuration work, not physics breakthroughs.\"\n    },\n    {\n      \"constraint_name\": \"Fire-Protection Clearance\",\n      \"market_name\": \"Commercial & Industrial Real-Estate Behind-the-Meter Storage\",\n      \"naics_code\": \"531120\",\n      \"verdict\": \"mitigable\",\n      \"mitigation_actions\": [\n        \"Cluster layout below 3 MWh per fire compartment\",\n        \"Separation walls and spacing per VdS guidance\",\n        \"Feuerwehr access plan embedded in Baugenehmigung\"\n      ],\n      \"mitigation_cost_estimate\": \"low\",\n      \"mitigation_time_estimate\": \"1-3 months\",\n      \"knockout_reason\": null,\n      \"rationale\": \"VdS / local Feuerwehr clearance is routine for DE C&I BESS; certification path fully defined.\"\n    },\n    {\n      \"constraint_name\": \"Li-Ion Thermal Runaway Hazard\",\n      \"market_name\": \"Commercial & Industrial Real-Estate Behind-the-Meter Storage\",\n      \"naics_code\": \"531120\",\n      \"verdict\": \"mitigable\",\n      \"mitigation_actions\": [\n        \"NOVEC 1230 / aerosol suppression and deflagration venting\",\n        \"Cell-level BMS shutdown and compartmentalization\",\n        \"Gas detection interlock with container isolation\"\n      ],\n      \"mitigation_cost_estimate\": \"low\",\n      \"mitigation_time_estimate\": \"included in base scope\",\n      \"knockout_reason\": null,\n      \"rationale\": \"Hazard cannot be eliminated but containment is standard and pre-engineered into Mein Solar's reference container.\"\n    },\n    {\n      \"constraint_name\": \"Grid Code Certification Lead Time\",\n      \"market_name\": \"Commercial & Industrial Real-Estate Behind-the-Meter Storage\",\n      \"naics_code\": \"531120\",\n      \"verdict\": \"mitigable\",\n      \"mitigation_actions\": [\n        \"Parallel FGW TR3 / TR8 certification tracks\",\n        \"Specify pre-certified PCS / transformer SKUs\",\n        \"Early DSO engagement and acceptance test scheduling\"\n      ],\n      \"mitigation_cost_estimate\": \"low\",\n      \"mitigation_time_estimate\": \"6-12 months (parallelized)\",\n      \"knockout_reason\": null,\n      \"rationale\": \"Certification is on critical path but parallelizable; Mein Solar has already executed this path at 4.5 MW / 9 MWh scale.\"\n    },\n    {\n      \"constraint_name\": \"Battery Supply Chain Concentration\",\n      \"market_name\": \"Commercial & Industrial Real-Estate Behind-the-Meter Storage\",\n      \"naics_code\": \"531120\",\n      \"verdict\": \"mitigable\",\n      \"mitigation_actions\": [\n        \"Dual-source LFP framework agreement (CN + KR)\",\n        \"EUR/USD FX hedge on cell-lot purchases\",\n        \"CRMA / EU-Battery-Reg compliance audit trail\"\n      ],\n      \"mitigation_cost_estimate\": \"medium\",\n      \"mitigation_time_estimate\": \"ongoing\",\n      \"knockout_reason\": null,\n      \"rationale\": \"Cost/FX exposure is never a physical knockout; managed via procurement strategy.\"\n    },\n    {\n      \"constraint_name\": \"Ambient Temperature Envelope\",\n      \"market_name\": \"Commercial & Industrial Real-Estate Behind-the-Meter Storage\",\n      \"naics_code\": \"531120\",\n      \"verdict\": \"none\",\n      \"mitigation_actions\": [],\n      \"mitigation_cost_estimate\": null,\n      \"mitigation_time_estimate\": null,\n      \"knockout_reason\": null,\n      \"rationale\": \"DE commercial outdoor ambient (-15 to +38 degC) sits fully inside the -20 to +50 degC container rating.\"\n    },\n    {\n      \"constraint_name\": \"Round-Trip Energy Losses\",\n      \"market_name\": \"Commercial & Industrial Real-Estate Behind-the-Meter Storage\",\n      \"naics_code\": \"531120\",\n      \"verdict\": \"none\",\n      \"mitigation_actions\": [],\n      \"mitigation_cost_estimate\": null,\n      \"mitigation_time_estimate\": null,\n      \"knockout_reason\": null,\n      \"rationale\": \"10-15 percent RTE loss is already priced into peak-shaving / arbitrage IRR; does not prevent deployment.\"\n    },\n    {\n      \"constraint_name\": \"CAPEX Viability Threshold\",\n      \"market_name\": \"Commercial & Industrial Real-Estate Behind-the-Meter Storage\",\n      \"naics_code\": \"531120\",\n      \"verdict\": \"mitigable\",\n      \"mitigation_actions\": [\n        \"Stack revenue: Netzentgelte reduction + peak shaving + intraday arbitrage\",\n        \"Leverage 50 percent first-year depreciation plus VDE 2510 corp-tax discount\",\n        \"Structure PV+BESS bundle or tenant-PPA to defer CAPEX to balance-sheet partner\"\n      ],\n      \"mitigation_cost_estimate\": \"low\",\n      \"mitigation_time_estimate\": \"pre-FID\",\n      \"knockout_reason\": null,\n      \"rationale\": \"DE 2025/26 installed CAPEX ~220-380 EUR/kWh sits inside the viable band; cost is never a knockout.\"\n    }\n  ],\n  \"verdict_summary\": {\n    \"knockout\": 0,\n    \"mitigable\": 7,\n    \"none\": 2\n  },\n  \"markets_eliminated\": [],\n  \"markets_surviving\": [\"531120\"],\n  \"market_status\": \"surviving\",\n  \"aggregate_mitigation_cost_band\": \"medium\",\n  \"conservative_review\": {\n    \"knockouts_reviewed\": 0,\n    \"knockouts_downgraded\": 0,\n    \"notes\": \"No knockouts were raised in 08a; nothing to downgrade. Market sits in Mein Solar's incumbent operating envelope.\"\n  }\n}\n```"
+    }
+  ],
+  "tables": [
+    {
+      "headers": [
+        "Attribute",
+        "Typical value for 531120"
+      ],
+      "rows": [
+        {
+          "Attribute": "Siting",
+          "Typical value for 531120": "Commercial parcel (parking lot, rooftop, vacant plot, basement) adjacent to tenant building"
+        },
+        {
+          "Attribute": "Grid connection",
+          "Typical value for 531120": "10/20 kV DSO feeder via on-site MV room; LV sub-connection for ≤500 kW"
+        },
+        {
+          "Attribute": "Ambient temperature (DE)",
+          "Typical value for 531120": "−15 to +38 °C outdoor; −5 to +30 °C sheltered"
+        },
+        {
+          "Attribute": "Duty cycle",
+          "Typical value for 531120": "Peak shaving, arbitrage, self-consumption, HPC buffer, resilience standby"
+        },
+        {
+          "Attribute": "Scale",
+          "Typical value for 531120": "1–20 MWh typical per site; logistics/data-center shells push to 20–50 MWh"
+        },
+        {
+          "Attribute": "Regulatory context",
+          "Typical value for 531120": "Baugenehmigung, VdS/Feuerwehr, VDE-AR-N 4110, FGW TR8, GEG, EU Taxonomy"
+        },
+        {
+          "Attribute": "Hazardous atmosphere",
+          "Typical value for 531120": "None (non-explosive, no molten media, no acids)"
+        }
+      ]
+    },
+    {
+      "headers": [
+        "#",
+        "Constraint",
+        "Type",
+        "Is Abs",
+        "Verdict",
+        "Rationale"
+      ],
+      "rows": [
+        {
+          "#": "1",
+          "Constraint": "MV Grid Connection Capacity",
+          "Type": "operational",
+          "Is Abs": "false",
+          "Verdict": "**mitigable**",
+          "Rationale": "Urban/retail sites may hit saturated feeders. Physics-compatible — solved via DSO pre-study, cable upsizing, or site selection."
+        },
+        {
+          "#": "2",
+          "Constraint": "Land Footprint and Siting",
+          "Type": "physical",
+          "Is Abs": "false",
+          "Verdict": "**mitigable**",
+          "Rationale": "40–80 m²/MWh fits parking/vacant plots. Dense office sites require basement placement, load reinforcement, or rooftop."
+        },
+        {
+          "#": "3",
+          "Constraint": "Fire-Protection Clearance",
+          "Type": "regulatory",
+          "Is Abs": "false",
+          "Verdict": "**mitigable**",
+          "Rationale": "VdS clearance, sub-3-MWh clustering, separation walls. Standard DE EPC scope."
+        },
+        {
+          "#": "4",
+          "Constraint": "Li-Ion Thermal Runaway Hazard",
+          "Type": "physical",
+          "Is Abs": "false",
+          "Verdict": "**mitigable**",
+          "Rationale": "Containment is standard (NOVEC, venting, compartmentalization) — included in Mein Solar base config."
+        },
+        {
+          "#": "5",
+          "Constraint": "Grid Code Certification Lead Time",
+          "Type": "regulatory",
+          "Is Abs": "false",
+          "Verdict": "**mitigable**",
+          "Rationale": "FGW TR8 path is mandatory but parallelizable with civil/procurement. Already in Mein Solar's reference run."
+        },
+        {
+          "#": "6",
+          "Constraint": "Battery Supply Chain Concentration",
+          "Type": "economic",
+          "Is Abs": "false",
+          "Verdict": "**mitigable**",
+          "Rationale": "Multi-vendor LFP sourcing, FX hedging, CRMA/EU-Battery-Reg compliance. Cost is never knockout."
+        },
+        {
+          "#": "7",
+          "Constraint": "Ambient Temperature Envelope",
+          "Type": "environmental",
+          "Is Abs": "false",
+          "Verdict": "**none**",
+          "Rationale": "DE commercial ambient −15 to +38 °C sits comfortably inside −20 to +50 °C rating."
+        },
+        {
+          "#": "8",
+          "Constraint": "Round-Trip Energy Losses",
+          "Type": "physical",
+          "Is Abs": "true",
+          "Verdict": "**none**",
+          "Rationale": "10–15 % RTE loss is priced into the 531120 arbitrage/peak-shaving business case (IRR still positive with 30 %→50 % AfA)."
+        },
+        {
+          "#": "9",
+          "Constraint": "CAPEX Viability Threshold",
+          "Type": "economic",
+          "Is Abs": "false",
+          "Verdict": "**mitigable**",
+          "Rationale": "DE 2025/26 installed cost ~€220–380/kWh sits inside viable band. §7g AfA + VDE 2510 tax discount + arbitrage stacking secure payback."
+        }
+      ]
+    },
+    {
+      "headers": [
+        "Constraint",
+        "Mitigation actions (1–3)",
+        "Cost",
+        "Time"
+      ],
+      "rows": [
+        {
+          "Constraint": "MV Grid Connection Capacity",
+          "Mitigation actions (1–3)": "DSO pre-feasibility study; cable upsizing or new feeder; LV-coupled sizing below 500 kW where MV blocked",
+          "Cost": "medium",
+          "Time": "3–9 months"
+        },
+        {
+          "Constraint": "Land Footprint and Siting",
+          "Mitigation actions (1–3)": "Use vacant/underused parking plots; rooftop placement with structural reinforcement; basement / container-in-plantroom layouts",
+          "Cost": "medium",
+          "Time": "2–6 months"
+        },
+        {
+          "Constraint": "Fire-Protection Clearance",
+          "Mitigation actions (1–3)": "Sub-3-MWh cluster layout with separation; fire-wall construction; Feuerwehr access plan in Baugenehmigung",
+          "Cost": "low",
+          "Time": "1–3 months"
+        },
+        {
+          "Constraint": "Li-Ion Thermal Runaway Hazard",
+          "Mitigation actions (1–3)": "NOVEC 1230 suppression; deflagration venting; gas-detection + cell-level BMS shutdown",
+          "Cost": "low",
+          "Time": "included in base scope"
+        },
+        {
+          "Constraint": "Grid Code Certification Lead Time",
+          "Mitigation actions (1–3)": "Parallel FGW TR3/TR8 certification tracks; pre-selected pre-certified equipment; early DSO engagement",
+          "Cost": "low",
+          "Time": "6–12 months (parallel)"
+        },
+        {
+          "Constraint": "Battery Supply Chain Concentration",
+          "Mitigation actions (1–3)": "Dual-source LFP framework agreement; FX hedge on €/USD for cell lots; CRMA-compliant supplier audit",
+          "Cost": "medium",
+          "Time": "ongoing"
+        },
+        {
+          "Constraint": "CAPEX Viability Threshold",
+          "Mitigation actions (1–3)": "Leverage 50 % first-year depreciation + VDE 2510 corp-tax discount; stack arbitrage + Netzentgelte + peak-shaving revenues; tenant PPA for PV+BESS bundle",
+          "Cost": "low",
+          "Time": "pre-FID"
+        }
+      ]
+    },
+    {
+      "headers": [
+        "Field",
+        "Value"
+      ],
+      "rows": [
+        {
+          "Field": "`markets_eliminated`",
+          "Value": "[]"
+        },
+        {
+          "Field": "`markets_surviving`",
+          "Value": "[\"531120\"]"
+        },
+        {
+          "Field": "Market status",
+          "Value": "**SURVIVES** — proceeds to Steps 09–12"
+        },
+        {
+          "Field": "Downstream penalty",
+          "Value": "Mitigation cost band: medium aggregate (driven by MV capacity + siting + supply-chain)"
+        }
+      ]
+    }
+  ],
+  "entities": [
+    {
+      "component": "constraints-market-compatibility",
+      "step": "08",
+      "product_name": "EPC für Großbatteriespeicher",
+      "technology_class": "Large-Scale Battery Energy Storage System EPC",
+      "vendor_name": "Mein Solar GmbH",
+      "market": {
+        "market_name": "Commercial & Industrial Real-Estate Behind-the-Meter Storage",
+        "naics_code": "531120",
+        "naics_title": "Lessors of Nonresidential Buildings (except Miniwarehouses)",
+        "relevance_rationale": "Lessors installing BESS behind-the-meter for tenant peak shaving, PV self-consumption, HPC buffer, and resilience; Mein Solar primary L5 position under L6d-a Building Energy Infrastructure."
+      },
+      "n_constraints": 9,
+      "assessments": [
+        {
+          "constraint_name": "MV Grid Connection Capacity",
+          "market_name": "Commercial & Industrial Real-Estate Behind-the-Meter Storage",
+          "naics_code": "531120",
+          "verdict": "mitigable",
+          "mitigation_actions": [
+            "DSO pre-feasibility and Netzanschlussbegehren early",
+            "Cable upsizing or new dedicated MV feeder",
+            "Size below LV threshold (<500 kW) where MV capacity blocked"
+          ],
+          "mitigation_cost_estimate": "medium",
+          "mitigation_time_estimate": "3-9 months",
+          "knockout_reason": null,
+          "rationale": "Saturated feeders on dense urban sites are common but not physically impossible; standard DSO coordination path solves it."
+        },
+        {
+          "constraint_name": "Land Footprint and Siting",
+          "market_name": "Commercial & Industrial Real-Estate Behind-the-Meter Storage",
+          "naics_code": "531120",
+          "verdict": "mitigable",
+          "mitigation_actions": [
+            "Use underused parking plots or vacant site corners",
+            "Rooftop placement with structural reinforcement",
+            "Basement or container-in-plantroom layouts for urban sites"
+          ],
+          "mitigation_cost_estimate": "medium",
+          "mitigation_time_estimate": "2-6 months",
+          "knockout_reason": null,
+          "rationale": "40-80 m²/MWh is achievable on commercial parcels; dense office sites require configuration work, not physics breakthroughs."
+        },
+        {
+          "constraint_name": "Fire-Protection Clearance",
+          "market_name": "Commercial & Industrial Real-Estate Behind-the-Meter Storage",
+          "naics_code": "531120",
+          "verdict": "mitigable",
+          "mitigation_actions": [
+            "Cluster layout below 3 MWh per fire compartment",
+            "Separation walls and spacing per VdS guidance",
+            "Feuerwehr access plan embedded in Baugenehmigung"
+          ],
+          "mitigation_cost_estimate": "low",
+          "mitigation_time_estimate": "1-3 months",
+          "knockout_reason": null,
+          "rationale": "VdS / local Feuerwehr clearance is routine for DE C&I BESS; certification path fully defined."
+        },
+        {
+          "constraint_name": "Li-Ion Thermal Runaway Hazard",
+          "market_name": "Commercial & Industrial Real-Estate Behind-the-Meter Storage",
+          "naics_code": "531120",
+          "verdict": "mitigable",
+          "mitigation_actions": [
+            "NOVEC 1230 / aerosol suppression and deflagration venting",
+            "Cell-level BMS shutdown and compartmentalization",
+            "Gas detection interlock with container isolation"
+          ],
+          "mitigation_cost_estimate": "low",
+          "mitigation_time_estimate": "included in base scope",
+          "knockout_reason": null,
+          "rationale": "Hazard cannot be eliminated but containment is standard and pre-engineered into Mein Solar's reference container."
+        },
+        {
+          "constraint_name": "Grid Code Certification Lead Time",
+          "market_name": "Commercial & Industrial Real-Estate Behind-the-Meter Storage",
+          "naics_code": "531120",
+          "verdict": "mitigable",
+          "mitigation_actions": [
+            "Parallel FGW TR3 / TR8 certification tracks",
+            "Specify pre-certified PCS / transformer SKUs",
+            "Early DSO engagement and acceptance test scheduling"
+          ],
+          "mitigation_cost_estimate": "low",
+          "mitigation_time_estimate": "6-12 months (parallelized)",
+          "knockout_reason": null,
+          "rationale": "Certification is on critical path but parallelizable; Mein Solar has already executed this path at 4.5 MW / 9 MWh scale."
+        },
+        {
+          "constraint_name": "Battery Supply Chain Concentration",
+          "market_name": "Commercial & Industrial Real-Estate Behind-the-Meter Storage",
+          "naics_code": "531120",
+          "verdict": "mitigable",
+          "mitigation_actions": [
+            "Dual-source LFP framework agreement (CN + KR)",
+            "EUR/USD FX hedge on cell-lot purchases",
+            "CRMA / EU-Battery-Reg compliance audit trail"
+          ],
+          "mitigation_cost_estimate": "medium",
+          "mitigation_time_estimate": "ongoing",
+          "knockout_reason": null,
+          "rationale": "Cost/FX exposure is never a physical knockout; managed via procurement strategy."
+        },
+        {
+          "constraint_name": "Ambient Temperature Envelope",
+          "market_name": "Commercial & Industrial Real-Estate Behind-the-Meter Storage",
+          "naics_code": "531120",
+          "verdict": "none",
+          "mitigation_actions": [],
+          "mitigation_cost_estimate": null,
+          "mitigation_time_estimate": null,
+          "knockout_reason": null,
+          "rationale": "DE commercial outdoor ambient (-15 to +38 degC) sits fully inside the -20 to +50 degC container rating."
+        },
+        {
+          "constraint_name": "Round-Trip Energy Losses",
+          "market_name": "Commercial & Industrial Real-Estate Behind-the-Meter Storage",
+          "naics_code": "531120",
+          "verdict": "none",
+          "mitigation_actions": [],
+          "mitigation_cost_estimate": null,
+          "mitigation_time_estimate": null,
+          "knockout_reason": null,
+          "rationale": "10-15 percent RTE loss is already priced into peak-shaving / arbitrage IRR; does not prevent deployment."
+        },
+        {
+          "constraint_name": "CAPEX Viability Threshold",
+          "market_name": "Commercial & Industrial Real-Estate Behind-the-Meter Storage",
+          "naics_code": "531120",
+          "verdict": "mitigable",
+          "mitigation_actions": [
+            "Stack revenue: Netzentgelte reduction + peak shaving + intraday arbitrage",
+            "Leverage 50 percent first-year depreciation plus VDE 2510 corp-tax discount",
+            "Structure PV+BESS bundle or tenant-PPA to defer CAPEX to balance-sheet partner"
+          ],
+          "mitigation_cost_estimate": "low",
+          "mitigation_time_estimate": "pre-FID",
+          "knockout_reason": null,
+          "rationale": "DE 2025/26 installed CAPEX ~220-380 EUR/kWh sits inside the viable band; cost is never a knockout."
+        }
+      ],
+      "verdict_summary": {
+        "knockout": 0,
+        "mitigable": 7,
+        "none": 2
+      },
+      "markets_eliminated": [],
+      "markets_surviving": [
+        "531120"
+      ],
+      "market_status": "surviving",
+      "aggregate_mitigation_cost_band": "medium",
+      "conservative_review": {
+        "knockouts_reviewed": 0,
+        "knockouts_downgraded": 0,
+        "notes": "No knockouts were raised in 08a; nothing to downgrade. Market sits in Mein Solar's incumbent operating envelope."
+      }
+    }
+  ],
+  "has_bom": true,
+  "naics_sector_type": "non_manufacturing"
+}

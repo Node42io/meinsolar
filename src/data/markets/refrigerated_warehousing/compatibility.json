@@ -1,0 +1,349 @@
+{
+  "id": "COMPAT_refrigerated_warehousing_and_storage_sam",
+  "title": "Constraint–Market Compatibility — NAICS 493120 Refrigerated Warehousing and Storage",
+  "type": "constraint_compatibility",
+  "market_slug": "refrigerated_warehousing_and_storage_sam",
+  "is_per_market": true,
+  "sections": [
+    {
+      "title": "Market operating envelope (from 05 + VN)",
+      "content": "| Dimension | Cold storage reality |\n|---|---|\n| Site type | Large industrial warehouse with existing MV feeder |\n| Typical load | 24/7 compressor + chamber HVAC, multi-hundred-kW continuous |\n| Grid regime | VDE-AR-N 4110 / FGW TR8 (same as Mein Solar reference) |\n| Ambient | German outdoor, typically –15 °C winter low to +35 °C summer peak |\n| BESS siting | Outdoor, container footprint, separate from cold chamber envelope |\n| Business case | Peak-shaving of continuous refrigeration load + spoilage resilience |\n| Investor profile | Logistics operator (Nordfrost, Kühne+Nagel), payback-driven |\n\n---"
+    },
+    {
+      "title": "Verdict summary",
+      "content": "| # | Constraint | Type | Is abs. | Verdict | Cost | Time |\n|---|---|---|---|---|---|---|\n| 1 | MV Grid Connection Capacity | operational | false | **mitigable** | medium | 3–9 mo |\n| 2 | Land Footprint & Siting | physical | false | **none** | — | — |\n| 3 | Fire-Protection Clearance | regulatory | false | **mitigable** | low | 2–4 mo |\n| 4 | Li-Ion Thermal Runaway Hazard | physical | false | **mitigable** | low | 1–3 mo |\n| 5 | Grid-Code Certification Lead Time | regulatory | false | **mitigable** | medium | 6–12 mo |\n| 6 | Battery Supply-Chain Concentration | economic | false | **none** | — | — |\n| 7 | Ambient Temperature Envelope | environmental | false | **none** | — | — |\n| 8 | Round-Trip Energy Losses | physical | true | **none** | — | — |\n| 9 | CAPEX Viability Threshold | economic | false | **mitigable** | medium | 2–6 mo |\n\n**Knockouts: 0** → Market **SURVIVES**.\n\n---"
+    },
+    {
+      "title": "Per-constraint rationale",
+      "content": "### C1 — MV Grid Connection Capacity → mitigable\nCold stores already draw continuous multi-hundred-kW refrigeration load over a dedicated MV feeder; spare capacity for charge-window dispatch is the question, not presence of MV. Where feeder headroom is tight, BESS sizing can be load-shifted to off-peak charging windows, or a minor DSO upgrade negotiated. No physics block.\n**Mitigation:** DSO headroom study + EMS charge-window dispatch logic + optional feeder upgrade.\n\n### C2 — Land Footprint & Siting → none\n40–80 m²/MWh is trivial on an industrial cold-storage site that already houses 5,000–30,000 m² warehouse plus truck apron and refrigeration plant. Perimeter or apron-adjacent siting is standard. Baugenehmigung path is the same as adding any outdoor utility plant.\n\n### C3 — Fire-Protection Clearance → mitigable\nVdS / Feuerwehr clearance distances (separation walls, hydrant access, >3 MWh cluster segmentation) apply identically to every DE industrial site. Cold-store operators already run a fire-safety regime for refrigeration (NH₃/CO₂ detection, sprinklers); adding BESS-specific clearance to an outdoor site is routine.\n**Mitigation:** Early Feuerwehr-Abstimmung, cluster segmentation >3 MWh, standard fire-protection concept.\n\n### C4 — Li-Ion Thermal Runaway Hazard → mitigable\nHazard is a design constraint, not a market-specific block. Containerised BESS with NOVEC/aerosol suppression, deflagration venting, and compartmentalisation is the standard answer everywhere Mein Solar builds. No additional cold-store-specific adaptation required — BESS sits outside the refrigerated envelope.\n**Mitigation:** Standard containerised design with VdS-aligned suppression.\n\n### C5 — Grid-Code Certification Lead Time → mitigable\n6–12 month FGW TR8 / VDE-AR-N 4110 path is identical to every German MV-connected asset Mein Solar delivers. Not market-specific. Parallelisable with procurement and civil works.\n**Mitigation:** Early DSO Netzanschlussanfrage + parallel Type-B plant-cert dossier prep.\n\n### C6 — Battery Supply-Chain Concentration → none\nLFP sourcing risk (Chinese concentration, CRMA, EU Battery Reg. compliance) is product-inherent and identical across every market Mein Solar enters. Cold storage adds no incremental exposure. Handled at portfolio-level procurement.\n\n### C7 — Ambient Temperature Envelope → none\n–20 to +50 °C internal envelope is maintained by container HVAC regardless of market. German outdoor ambient (–15 to +35 °C typical) is well within limits. Cold-storage facilities are typically in industrial zones with normal outdoor climate (the freezing is *inside* the warehouse, not at the BESS container pad).\n\n### C8 — Round-Trip Energy Losses → none\n10–15 % AC-AC loss is a thermodynamic floor that applies to every BESS deployment. Cold-storage business case (peak-shaving a €/kWh spread of 15–25 ct/kWh between off-peak and on-peak tariff, plus Netzentgelte reduction via §19 StromNEV) easily accommodates this floor. No market-specific issue.\n\n### C9 — CAPEX Viability Threshold → mitigable\n€250–400/kWh threshold is the generic BESS business-case floor. Cold storage's 24/7 continuous refrigeration load is an unusually *good* peak-shaving target (high load factor → high energy throughput → short payback), but asset-owner awareness is low (adoption = emerging). The mitigation is commercial, not technical.\n**Mitigation:** Education-led sale with quantified peak-shaving + Netzentgelte + resilience business case; optional KfW 295 / 296 financing; BESS-as-a-Service structure to shift capex off customer balance sheet.\n\n---"
+    },
+    {
+      "title": "Architecture-distance implications (cross-ref to 05 scoring)",
+      "content": "| 05 scoring criterion | Constraint link | Implication |\n|---|---|---|\n| U1 Operating env. (3) | C7 ambient | Matches — outdoor industrial pad, standard climate |\n| C1 Install match (4) | C1 MV, C2 land | Both routine at this site type |\n| C2 Operator skill (3) | C5 cert, C4 safety | Cold-store has MV + fire-safety operations already |\n| C4 Funding (5) | C9 capex | Weakest score — no revenue-stacking culture, education-led sale |\n\nThe single 5-score in 05 (C4 funding model) aligns with the only commercial mitigation (C9 CAPEX) — a sales-effort problem, not a physics problem.\n\n---"
+    },
+    {
+      "title": "Structured Data",
+      "content": "```json\n{\n  \"market_name\": \"Refrigerated Warehousing and Storage\",\n  \"naics_code\": \"493120\",\n  \"naics_title\": \"Refrigerated Warehousing and Storage\",\n  \"market_priority\": \"MEDIUM\",\n  \"product_architecture_distance\": 4,\n  \"already_uses_technology\": false,\n  \"technology_class\": \"Large-Scale Battery Energy Storage System EPC\",\n  \"underlying_mechanism\": \"Turnkey systems integration of containerized Li-ion BESS + bidirectional PCS + MV coupling + EMS + civil under single-source EPC with VDE-AR-N 4110 / FGW TR8 certification\",\n  \"assessments\": [\n    {\n      \"constraint_name\": \"MV Grid Connection Capacity\",\n      \"constraint_type\": \"operational\",\n      \"is_absolute\": false,\n      \"market_name\": \"Refrigerated Warehousing and Storage\",\n      \"naics_code\": \"493120\",\n      \"verdict\": \"mitigable\",\n      \"mitigation_actions\": [\n        \"DSO feeder-headroom study at site acquisition\",\n        \"EMS charge-window dispatch to off-peak windows\",\n        \"Negotiate feeder upgrade where headroom inadequate\"\n      ],\n      \"mitigation_cost_estimate\": \"medium\",\n      \"mitigation_time_estimate\": \"3-9 months\",\n      \"knockout_reason\": null,\n      \"rationale\": \"Cold stores already draw continuous multi-hundred-kW refrigeration load via dedicated MV feeder. Headroom, not presence, is the question; solvable via load-shift dispatch or minor DSO upgrade.\"\n    },\n    {\n      \"constraint_name\": \"Land Footprint and Siting\",\n      \"constraint_type\": \"physical\",\n      \"is_absolute\": false,\n      \"market_name\": \"Refrigerated Warehousing and Storage\",\n      \"naics_code\": \"493120\",\n      \"verdict\": \"none\",\n      \"mitigation_actions\": [],\n      \"mitigation_cost_estimate\": null,\n      \"mitigation_time_estimate\": null,\n      \"knockout_reason\": null,\n      \"rationale\": \"40-80 m2/MWh is trivial on an industrial cold-storage campus (5,000-30,000 m2 warehouse + apron + refrigeration plant). Baugenehmigung path is standard for outdoor utility equipment.\"\n    },\n    {\n      \"constraint_name\": \"Fire-Protection Clearance\",\n      \"constraint_type\": \"regulatory\",\n      \"is_absolute\": false,\n      \"market_name\": \"Refrigerated Warehousing and Storage\",\n      \"naics_code\": \"493120\",\n      \"verdict\": \"mitigable\",\n      \"mitigation_actions\": [\n        \"Early Feuerwehr-Abstimmung before site layout freeze\",\n        \"Cluster segmentation for installations >3 MWh\",\n        \"Standard fire-protection concept (VdS-aligned)\"\n      ],\n      \"mitigation_cost_estimate\": \"low\",\n      \"mitigation_time_estimate\": \"2-4 months\",\n      \"knockout_reason\": null,\n      \"rationale\": \"VdS/Feuerwehr clearances apply identically across all DE industrial sites. Cold stores already operate a fire-safety regime for NH3/CO2 refrigeration; adding BESS clearance is routine.\"\n    },\n    {\n      \"constraint_name\": \"Li-Ion Thermal Runaway Hazard\",\n      \"constraint_type\": \"physical\",\n      \"is_absolute\": false,\n      \"market_name\": \"Refrigerated Warehousing and Storage\",\n      \"naics_code\": \"493120\",\n      \"verdict\": \"mitigable\",\n      \"mitigation_actions\": [\n        \"Containerised BESS with NOVEC/aerosol suppression\",\n        \"Deflagration venting + cell compartmentalisation\",\n        \"Detection and emergency shutdown integrated with site HSE\"\n      ],\n      \"mitigation_cost_estimate\": \"low\",\n      \"mitigation_time_estimate\": \"1-3 months\",\n      \"knockout_reason\": null,\n      \"rationale\": \"Thermal-runaway containment is a product-inherent design answer, not a market-specific block. BESS sits outside the refrigerated envelope; no cold-store-specific adaptation required.\"\n    },\n    {\n      \"constraint_name\": \"Grid Code Certification Lead Time\",\n      \"constraint_type\": \"regulatory\",\n      \"is_absolute\": false,\n      \"market_name\": \"Refrigerated Warehousing and Storage\",\n      \"naics_code\": \"493120\",\n      \"verdict\": \"mitigable\",\n      \"mitigation_actions\": [\n        \"Early Netzanschlussanfrage with DSO\",\n        \"Parallel Type-B plant-certificate dossier prep\",\n        \"Critical-path schedule with TUV/FGW-accredited certifier\"\n      ],\n      \"mitigation_cost_estimate\": \"medium\",\n      \"mitigation_time_estimate\": \"6-12 months\",\n      \"knockout_reason\": null,\n      \"rationale\": \"FGW TR8 / VDE-AR-N 4110 lead time applies to every DE MV-connected asset Mein Solar delivers. Not market-specific; parallelisable with procurement and civils.\"\n    },\n    {\n      \"constraint_name\": \"Battery Supply Chain Concentration\",\n      \"constraint_type\": \"economic\",\n      \"is_absolute\": false,\n      \"market_name\": \"Refrigerated Warehousing and Storage\",\n      \"naics_code\": \"493120\",\n      \"verdict\": \"none\",\n      \"mitigation_actions\": [],\n      \"mitigation_cost_estimate\": null,\n      \"mitigation_time_estimate\": null,\n      \"knockout_reason\": null,\n      \"rationale\": \"LFP sourcing risk and CRMA/EU Battery Regulation compliance are portfolio-level procurement concerns identical across every market. Cold storage adds no incremental exposure.\"\n    },\n    {\n      \"constraint_name\": \"Ambient Temperature Envelope\",\n      \"constraint_type\": \"environmental\",\n      \"is_absolute\": false,\n      \"market_name\": \"Refrigerated Warehousing and Storage\",\n      \"naics_code\": \"493120\",\n      \"verdict\": \"none\",\n      \"mitigation_actions\": [],\n      \"mitigation_cost_estimate\": null,\n      \"mitigation_time_estimate\": null,\n      \"knockout_reason\": null,\n      \"rationale\": \"German outdoor ambient (-15 to +35 degC typical) is well inside the -20 to +50 degC envelope. The freezing is inside the warehouse, not at the BESS container pad; container HVAC maintains internal setpoint.\"\n    },\n    {\n      \"constraint_name\": \"Round-Trip Energy Losses\",\n      \"constraint_type\": \"physical\",\n      \"is_absolute\": true,\n      \"market_name\": \"Refrigerated Warehousing and Storage\",\n      \"naics_code\": \"493120\",\n      \"verdict\": \"none\",\n      \"mitigation_actions\": [],\n      \"mitigation_cost_estimate\": null,\n      \"mitigation_time_estimate\": null,\n      \"knockout_reason\": null,\n      \"rationale\": \"10-15% AC-AC loss is a thermodynamic floor present in every BESS deployment. Cold-store peak-shaving spread (15-25 ct/kWh off-peak vs on-peak, plus Netzentgelte reduction under Paragraph 19 StromNEV) easily accommodates the loss.\"\n    },\n    {\n      \"constraint_name\": \"CAPEX Viability Threshold\",\n      \"constraint_type\": \"economic\",\n      \"is_absolute\": false,\n      \"market_name\": \"Refrigerated Warehousing and Storage\",\n      \"naics_code\": \"493120\",\n      \"verdict\": \"mitigable\",\n      \"mitigation_actions\": [\n        \"Education-led sale with quantified peak-shaving + Netzentgelte + resilience business case\",\n        \"KfW 295/296 or innovation-tender financing\",\n        \"BESS-as-a-Service contracting to shift capex off customer balance sheet\"\n      ],\n      \"mitigation_cost_estimate\": \"medium\",\n      \"mitigation_time_estimate\": \"2-6 months\",\n      \"knockout_reason\": null,\n      \"rationale\": \"250-400 EUR/kWh threshold is the generic BESS floor. Cold storage's 24/7 continuous load is an unusually good peak-shaving target (high load factor, short payback) but operator awareness is low (adoption emerging). Mitigation is commercial, not technical.\"\n    }\n  ],\n  \"market_verdict\": \"survives\",\n  \"knockout_count\": 0,\n  \"mitigable_count\": 5,\n  \"none_count\": 4,\n  \"dominant_mitigation_theme\": \"commercial_and_certification_effort_not_physics\",\n  \"summary\": \"Zero knockouts. Five mitigable (MV headroom, fire clearance, thermal-runaway design, grid-code lead time, capex business case) plus four irrelevant (land, supply chain, ambient, round-trip losses). All mitigations are standard Mein Solar EPC deliverables or commercial sales-effort items. The weakest dimension (C4 funding model, score 5 in 05) aligns with C9 CAPEX mitigation — an education-and-financing gap, not a technical barrier.\"\n}\n```"
+    }
+  ],
+  "tables": [
+    {
+      "headers": [
+        "Dimension",
+        "Cold storage reality"
+      ],
+      "rows": [
+        {
+          "Dimension": "Site type",
+          "Cold storage reality": "Large industrial warehouse with existing MV feeder"
+        },
+        {
+          "Dimension": "Typical load",
+          "Cold storage reality": "24/7 compressor + chamber HVAC, multi-hundred-kW continuous"
+        },
+        {
+          "Dimension": "Grid regime",
+          "Cold storage reality": "VDE-AR-N 4110 / FGW TR8 (same as Mein Solar reference)"
+        },
+        {
+          "Dimension": "Ambient",
+          "Cold storage reality": "German outdoor, typically –15 °C winter low to +35 °C summer peak"
+        },
+        {
+          "Dimension": "BESS siting",
+          "Cold storage reality": "Outdoor, container footprint, separate from cold chamber envelope"
+        },
+        {
+          "Dimension": "Business case",
+          "Cold storage reality": "Peak-shaving of continuous refrigeration load + spoilage resilience"
+        },
+        {
+          "Dimension": "Investor profile",
+          "Cold storage reality": "Logistics operator (Nordfrost, Kühne+Nagel), payback-driven"
+        }
+      ]
+    },
+    {
+      "headers": [
+        "#",
+        "Constraint",
+        "Type",
+        "Is abs.",
+        "Verdict",
+        "Cost",
+        "Time"
+      ],
+      "rows": [
+        {
+          "#": "1",
+          "Constraint": "MV Grid Connection Capacity",
+          "Type": "operational",
+          "Is abs.": "false",
+          "Verdict": "**mitigable**",
+          "Cost": "medium",
+          "Time": "3–9 mo"
+        },
+        {
+          "#": "2",
+          "Constraint": "Land Footprint & Siting",
+          "Type": "physical",
+          "Is abs.": "false",
+          "Verdict": "**none**",
+          "Cost": "—",
+          "Time": "—"
+        },
+        {
+          "#": "3",
+          "Constraint": "Fire-Protection Clearance",
+          "Type": "regulatory",
+          "Is abs.": "false",
+          "Verdict": "**mitigable**",
+          "Cost": "low",
+          "Time": "2–4 mo"
+        },
+        {
+          "#": "4",
+          "Constraint": "Li-Ion Thermal Runaway Hazard",
+          "Type": "physical",
+          "Is abs.": "false",
+          "Verdict": "**mitigable**",
+          "Cost": "low",
+          "Time": "1–3 mo"
+        },
+        {
+          "#": "5",
+          "Constraint": "Grid-Code Certification Lead Time",
+          "Type": "regulatory",
+          "Is abs.": "false",
+          "Verdict": "**mitigable**",
+          "Cost": "medium",
+          "Time": "6–12 mo"
+        },
+        {
+          "#": "6",
+          "Constraint": "Battery Supply-Chain Concentration",
+          "Type": "economic",
+          "Is abs.": "false",
+          "Verdict": "**none**",
+          "Cost": "—",
+          "Time": "—"
+        },
+        {
+          "#": "7",
+          "Constraint": "Ambient Temperature Envelope",
+          "Type": "environmental",
+          "Is abs.": "false",
+          "Verdict": "**none**",
+          "Cost": "—",
+          "Time": "—"
+        },
+        {
+          "#": "8",
+          "Constraint": "Round-Trip Energy Losses",
+          "Type": "physical",
+          "Is abs.": "true",
+          "Verdict": "**none**",
+          "Cost": "—",
+          "Time": "—"
+        },
+        {
+          "#": "9",
+          "Constraint": "CAPEX Viability Threshold",
+          "Type": "economic",
+          "Is abs.": "false",
+          "Verdict": "**mitigable**",
+          "Cost": "medium",
+          "Time": "2–6 mo"
+        }
+      ]
+    },
+    {
+      "headers": [
+        "05 scoring criterion",
+        "Constraint link",
+        "Implication"
+      ],
+      "rows": [
+        {
+          "05 scoring criterion": "U1 Operating env. (3)",
+          "Constraint link": "C7 ambient",
+          "Implication": "Matches — outdoor industrial pad, standard climate"
+        },
+        {
+          "05 scoring criterion": "C1 Install match (4)",
+          "Constraint link": "C1 MV, C2 land",
+          "Implication": "Both routine at this site type"
+        },
+        {
+          "05 scoring criterion": "C2 Operator skill (3)",
+          "Constraint link": "C5 cert, C4 safety",
+          "Implication": "Cold-store has MV + fire-safety operations already"
+        },
+        {
+          "05 scoring criterion": "C4 Funding (5)",
+          "Constraint link": "C9 capex",
+          "Implication": "Weakest score — no revenue-stacking culture, education-led sale"
+        }
+      ]
+    }
+  ],
+  "entities": [
+    {
+      "market_name": "Refrigerated Warehousing and Storage",
+      "naics_code": "493120",
+      "naics_title": "Refrigerated Warehousing and Storage",
+      "market_priority": "MEDIUM",
+      "product_architecture_distance": 4,
+      "already_uses_technology": false,
+      "technology_class": "Large-Scale Battery Energy Storage System EPC",
+      "underlying_mechanism": "Turnkey systems integration of containerized Li-ion BESS + bidirectional PCS + MV coupling + EMS + civil under single-source EPC with VDE-AR-N 4110 / FGW TR8 certification",
+      "assessments": [
+        {
+          "constraint_name": "MV Grid Connection Capacity",
+          "constraint_type": "operational",
+          "is_absolute": false,
+          "market_name": "Refrigerated Warehousing and Storage",
+          "naics_code": "493120",
+          "verdict": "mitigable",
+          "mitigation_actions": [
+            "DSO feeder-headroom study at site acquisition",
+            "EMS charge-window dispatch to off-peak windows",
+            "Negotiate feeder upgrade where headroom inadequate"
+          ],
+          "mitigation_cost_estimate": "medium",
+          "mitigation_time_estimate": "3-9 months",
+          "knockout_reason": null,
+          "rationale": "Cold stores already draw continuous multi-hundred-kW refrigeration load via dedicated MV feeder. Headroom, not presence, is the question; solvable via load-shift dispatch or minor DSO upgrade."
+        },
+        {
+          "constraint_name": "Land Footprint and Siting",
+          "constraint_type": "physical",
+          "is_absolute": false,
+          "market_name": "Refrigerated Warehousing and Storage",
+          "naics_code": "493120",
+          "verdict": "none",
+          "mitigation_actions": [],
+          "mitigation_cost_estimate": null,
+          "mitigation_time_estimate": null,
+          "knockout_reason": null,
+          "rationale": "40-80 m2/MWh is trivial on an industrial cold-storage campus (5,000-30,000 m2 warehouse + apron + refrigeration plant). Baugenehmigung path is standard for outdoor utility equipment."
+        },
+        {
+          "constraint_name": "Fire-Protection Clearance",
+          "constraint_type": "regulatory",
+          "is_absolute": false,
+          "market_name": "Refrigerated Warehousing and Storage",
+          "naics_code": "493120",
+          "verdict": "mitigable",
+          "mitigation_actions": [
+            "Early Feuerwehr-Abstimmung before site layout freeze",
+            "Cluster segmentation for installations >3 MWh",
+            "Standard fire-protection concept (VdS-aligned)"
+          ],
+          "mitigation_cost_estimate": "low",
+          "mitigation_time_estimate": "2-4 months",
+          "knockout_reason": null,
+          "rationale": "VdS/Feuerwehr clearances apply identically across all DE industrial sites. Cold stores already operate a fire-safety regime for NH3/CO2 refrigeration; adding BESS clearance is routine."
+        },
+        {
+          "constraint_name": "Li-Ion Thermal Runaway Hazard",
+          "constraint_type": "physical",
+          "is_absolute": false,
+          "market_name": "Refrigerated Warehousing and Storage",
+          "naics_code": "493120",
+          "verdict": "mitigable",
+          "mitigation_actions": [
+            "Containerised BESS with NOVEC/aerosol suppression",
+            "Deflagration venting + cell compartmentalisation",
+            "Detection and emergency shutdown integrated with site HSE"
+          ],
+          "mitigation_cost_estimate": "low",
+          "mitigation_time_estimate": "1-3 months",
+          "knockout_reason": null,
+          "rationale": "Thermal-runaway containment is a product-inherent design answer, not a market-specific block. BESS sits outside the refrigerated envelope; no cold-store-specific adaptation required."
+        },
+        {
+          "constraint_name": "Grid Code Certification Lead Time",
+          "constraint_type": "regulatory",
+          "is_absolute": false,
+          "market_name": "Refrigerated Warehousing and Storage",
+          "naics_code": "493120",
+          "verdict": "mitigable",
+          "mitigation_actions": [
+            "Early Netzanschlussanfrage with DSO",
+            "Parallel Type-B plant-certificate dossier prep",
+            "Critical-path schedule with TUV/FGW-accredited certifier"
+          ],
+          "mitigation_cost_estimate": "medium",
+          "mitigation_time_estimate": "6-12 months",
+          "knockout_reason": null,
+          "rationale": "FGW TR8 / VDE-AR-N 4110 lead time applies to every DE MV-connected asset Mein Solar delivers. Not market-specific; parallelisable with procurement and civils."
+        },
+        {
+          "constraint_name": "Battery Supply Chain Concentration",
+          "constraint_type": "economic",
+          "is_absolute": false,
+          "market_name": "Refrigerated Warehousing and Storage",
+          "naics_code": "493120",
+          "verdict": "none",
+          "mitigation_actions": [],
+          "mitigation_cost_estimate": null,
+          "mitigation_time_estimate": null,
+          "knockout_reason": null,
+          "rationale": "LFP sourcing risk and CRMA/EU Battery Regulation compliance are portfolio-level procurement concerns identical across every market. Cold storage adds no incremental exposure."
+        },
+        {
+          "constraint_name": "Ambient Temperature Envelope",
+          "constraint_type": "environmental",
+          "is_absolute": false,
+          "market_name": "Refrigerated Warehousing and Storage",
+          "naics_code": "493120",
+          "verdict": "none",
+          "mitigation_actions": [],
+          "mitigation_cost_estimate": null,
+          "mitigation_time_estimate": null,
+          "knockout_reason": null,
+          "rationale": "German outdoor ambient (-15 to +35 degC typical) is well inside the -20 to +50 degC envelope. The freezing is inside the warehouse, not at the BESS container pad; container HVAC maintains internal setpoint."
+        },
+        {
+          "constraint_name": "Round-Trip Energy Losses",
+          "constraint_type": "physical",
+          "is_absolute": true,
+          "market_name": "Refrigerated Warehousing and Storage",
+          "naics_code": "493120",
+          "verdict": "none",
+          "mitigation_actions": [],
+          "mitigation_cost_estimate": null,
+          "mitigation_time_estimate": null,
+          "knockout_reason": null,
+          "rationale": "10-15% AC-AC loss is a thermodynamic floor present in every BESS deployment. Cold-store peak-shaving spread (15-25 ct/kWh off-peak vs on-peak, plus Netzentgelte reduction under Paragraph 19 StromNEV) easily accommodates the loss."
+        },
+        {
+          "constraint_name": "CAPEX Viability Threshold",
+          "constraint_type": "economic",
+          "is_absolute": false,
+          "market_name": "Refrigerated Warehousing and Storage",
+          "naics_code": "493120",
+          "verdict": "mitigable",
+          "mitigation_actions": [
+            "Education-led sale with quantified peak-shaving + Netzentgelte + resilience business case",
+            "KfW 295/296 or innovation-tender financing",
+            "BESS-as-a-Service contracting to shift capex off customer balance sheet"
+          ],
+          "mitigation_cost_estimate": "medium",
+          "mitigation_time_estimate": "2-6 months",
+          "knockout_reason": null,
+          "rationale": "250-400 EUR/kWh threshold is the generic BESS floor. Cold storage's 24/7 continuous load is an unusually good peak-shaving target (high load factor, short payback) but operator awareness is low (adoption emerging). Mitigation is commercial, not technical."
+        }
+      ],
+      "market_verdict": "survives",
+      "knockout_count": 0,
+      "mitigable_count": 5,
+      "none_count": 4,
+      "dominant_mitigation_theme": "commercial_and_certification_effort_not_physics",
+      "summary": "Zero knockouts. Five mitigable (MV headroom, fire clearance, thermal-runaway design, grid-code lead time, capex business case) plus four irrelevant (land, supply chain, ambient, round-trip losses). All mitigations are standard Mein Solar EPC deliverables or commercial sales-effort items. The weakest dimension (C4 funding model, score 5 in 05) aligns with C9 CAPEX mitigation — an education-and-financing gap, not a technical barrier."
+    }
+  ],
+  "has_bom": true,
+  "naics_sector_type": "non_manufacturing"
+}

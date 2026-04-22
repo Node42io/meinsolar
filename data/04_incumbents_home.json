@@ -1,0 +1,656 @@
+{
+  "id": "04_incumbents_home",
+  "title": "04 — Incumbent Technologies (Home Market)",
+  "type": "home_market_competition",
+  "market_slug": null,
+  "is_per_market": false,
+  "sections": [
+    {
+      "title": "04a — Web research summary",
+      "content": "| Segment | Key finding | Source |\n|---|---|---|\n| Li-ion dominance | German BESS fleet hit ~2.5 GW by end-2025; new-build duration shifting 1.4 h → 2 h+ | Modo Energy, Montel |\n| PHS structural lead | Pumped hydro still dominates German long-duration (>4 h) storage; capacity expanding ~13.6 %/yr | Spherical Insights |\n| Flow battery foothold | CellCube 10 MWh Berlin grid-congestion project; VoltStorage + JenaBatteries at commercial scale; still <1 % of new capacity | energy-storage.news |\n| Delivery-model shift | EU BESS industry moving from full EPC \"wrap\" to multi-contracting with OEMs | energy-storage.news |\n| OEM turnkey | Tesla 15 %, Sungrow 14 %, CRRC 8 % of 2024 global BESS integrator share; Tesla Megapack + Sungrow PowerTitan dominant in DE utility-scale | Wood Mackenzie |\n| Domestic C&I integrators | Tesvolt (4 GWh factory Wittenberg, Samsung SDI cells), Intilion (81 MWh Essentho) scaling into utility tier | energy-storage.news |\n| DE BESS EPCs | TRICERA (280 MWh / 152 MW installed), Eco Stor (largest online DE BESS), greentech, Kyon (137.5 MW / 275 MWh approved), HyperStrong (LEAG GigaBattery Boxberg 1.6 GWh) | tricera.energy, ess-news |\n\n---"
+    },
+    {
+      "title": "04b — Incumbent technology classes (per Step 03b schema)",
+      "content": "Seven technology classes currently serve the commodity functional need in Germany. Subject class (Li-ion BESS EPC) excluded.\n\n### 1. Pumped Hydro Storage (PHS)\n\n| Field | Value |\n|---|---|\n| Mechanism | Gravitational potential energy: reversible hydraulic head between upper/lower reservoirs, Francis turbine-pump, synchronous machine to 110/220/380 kV grid |\n| Market share | **dominant** — for multi-hour/seasonal duration (Germany holds ~6.8 GW installed PHS vs. ~2.5 GW BESS end-2025) |\n| Key vendors | Voith, Andritz Hydro, GE Vernova; operators Vattenfall (Goldisthal), RWE (Herdecke/Geesthacht), Uniper (Happurg) |\n| Strengths | 60–80 yr asset life; >80 % round-trip; 1–8 GWh scale per plant; HV synchronous inertia |\n| Weaknesses | Sites geographically exhausted in Germany; 10–15 yr permitting; €1.5–2.5 bn CAPEX tickets; no small-scale C&I fit |\n\n### 2. Utility OEM-Turnkey Li-ion Container (Tesla/Sungrow/CATL model)\n\nSubject category variation — *alternative delivery model*, treated as incumbent on mechanism-free competitive grounds (different business model, not different physics).\n\n| Field | Value |\n|---|---|\n| Mechanism | Factory-integrated battery-container product (Megapack 3.9 MWh, PowerTitan 6.25 MWh, EnerC 5 MWh) with OEM-controlled BMS/PCS/EMS stack; civil + grid side subcontracted locally |\n| Market share | **dominant** — Tesla 15 % + Sungrow 14 % + CRRC 8 % of global integrator market 2024; trend in DE utility tier |\n| Key vendors | Tesla, Sungrow, CATL, HyperStrong, BYD, CRRC |\n| Strengths | Amortized factory QA; vertically integrated BMS-PCS-EMS; 3.9–6.25 MWh per container reduces footprint; rapid deployment |\n| Weaknesses | No native PV-integration design authority; OEM-wrapper warranty only on their box (owner/GC still carries interface risk); limited VDE-AR-N 4110 plant-certification scope; weak local civil/permitting capability |\n\n### 3. Pure-Play BESS System-Integrator EPC (non-solar origin)\n\n| Field | Value |\n|---|---|\n| Mechanism | Multi-vendor container + PCS + MV assembly under single EPC contract; integrator owns VDE-AR-N 4110 / FGW TR8 delivery; no in-house cell/PV heritage |\n| Market share | **significant** |\n| Key vendors | Fluence, Wärtsilä, Nidec ASI, SMA Altenso, TRICERA, Eco Stor, Kyon |\n| Strengths | Battery-agnostic best-of-breed selection; large project track record; project-financing-grade bankability |\n| Weaknesses | No PV design authority for co-located hybrids; higher indirect cost vs. OEM-turnkey; weaker on distributed/C&I layouts |\n\n### 4. Multi-Contracting / Owner-Integrator Model\n\n| Field | Value |\n|---|---|\n| Mechanism | Asset owner (IPP/utility) contracts components separately — container from OEM, PCS separately, civil local, EMS from aggregator — and self-performs or hires owner's engineer for integration |\n| Market share | **significant** — industry explicitly shifting from EPC wrap toward this model (2024–2026) |\n| Key vendors | LEAG, RWE, EnBW, Uniper, Vattenfall (self-perform); WSP, DNV, Fichtner (owner's engineers) |\n| Strengths | Eliminates EPC margin; direct OEM warranty capture; owner retains design authority |\n| Weaknesses | Interface-risk sits with owner; slower schedule; requires in-house engineering depth; sub-optimal for first-time asset owners |\n\n### 5. Vanadium Redox Flow Battery EPC\n\n| Field | Value |\n|---|---|\n| Mechanism | Two electrolyte tanks of V²⁺/V³⁺ and V⁴⁺/V⁵⁺ sulfate; ion-exchange-membrane stack; decoupled power (stack size) and energy (tank volume) |\n| Market share | **emerging** (<2 % new DE BESS capacity) |\n| Key vendors | CellCube (Graz stack line), VoltStorage, Invinity, JenaBatteries (organic redox) |\n| Strengths | 20 000+ cycle life; non-flammable electrolyte; true decoupled sizing for 8–12 h duration; second-life tanks indefinite |\n| Weaknesses | 65–75 % round-trip (vs. 85–90 % Li); 3–4× €/kWh at short duration; larger footprint; limited MW-scale references |\n\n### 6. Hydrogen Storage System (Electrolyzer + Storage + Fuel-Cell / Turbine)\n\n| Field | Value |\n|---|---|\n| Mechanism | PEM/alkaline electrolyzer → compressed or metal-hydride H₂ storage → PEM fuel-cell or H₂-gas turbine discharge to grid |\n| Market share | **emerging** |\n| Key vendors | Siemens Energy, Nel, ITM Power, Enapter, SFC Energy |\n| Strengths | Seasonal storage horizon; fuel export optionality (industrial H₂ offtake); independent P/E scaling |\n| Weaknesses | 30–40 % round-trip; high CAPEX €/kWh cycle; pressurised-gas permitting load; immature bankability |\n\n### 7. Non-Storage Substitute: Grid Reinforcement + Demand-Side Flexibility\n\n| Field | Value |\n|---|---|\n| Mechanism | DSO/TSO copper-plate upgrade (MV feeders, HV transformers) plus curtailment contracts, aFRR-qualified load, VPP dispatch — removes the storage need rather than serving it |\n| Market share | **significant** — default posture for sites with DSO capacity; §13a EnWG curtailment + Redispatch 2.0 institutionalise this |\n| Key vendors | Siemens Grid Software, Next Kraftwerke, Entrix, Flexpower, Enspired; 50Hertz, TenneT, Amprion, TransnetBW TSOs |\n| Strengths | Zero battery CAPEX risk; leverages existing assets; no fire/permitting load; regulated cost recovery for DSO |\n| Weaknesses | Grid-upgrade lead time 3–7 yr (often blocks BESS siting anyway); curtailment destroys PV revenue; DR fleets cap at ~1–2 h |\n\n### 8. Mechanical/Thermal Niches (Flywheel, CAES, Thermal-to-Power)\n\nGrouped — individually sub-1 % share.\n\n| Field | Value |\n|---|---|\n| Mechanism | High-speed flywheel (Beacon, Amber Kinetics), adiabatic CAES (Corre Energy), hot-rock/molten-salt with ORC/steam (Rondo, Kraftblock, Malta) |\n| Market share | **niche / emerging** |\n| Key vendors | Beacon Power, Corre Energy, Rondo Energy, Kraftblock, Malta Inc., Energy Dome |\n| Strengths | Very long cycle life (flywheel); multi-hundred-hour duration (thermal); non-Li chemistry (no fire risk) |\n| Weaknesses | Flywheel: <15 min duration, expensive per kWh. CAES: cavern geology dependent. Thermal: low round-trip (~45 %), very long commissioning |\n\n---"
+    },
+    {
+      "title": "04c — Switching cost assessment (home market)",
+      "content": "| Dimension | Level | Rationale |\n|---|---|---|\n| Asset replacement sunk cost | **very_high** | 10–20 yr capex life once commissioned; no practical rip-and-replace |\n| Interoperability / standardisation | moderate | PCS, EMS, MV switchgear are standards-based; container + BMS are vendor-locked |\n| Grid-code re-certification | high | Change of core equipment triggers re-test under FGW TR8 / VDE-AR-N 4110; 6–12 mo lead |\n| Contractual / warranty | high | Single-source EPC wrap lost if owner mixes vendors mid-term |\n| Workforce / process | moderate | DSOs, certifiers, O&M already trained on Li-ion BESS; shift to flow/H₂ retrains |\n| **Aggregate** | **very_high** | Matches Step 03b enum `very_high` — BESS assets are effectively sticky once operational |\n\n---"
+    },
+    {
+      "title": "04d — Competitive implications for Mein Solar",
+      "content": "| Incumbent | Mein Solar's leverage |\n|---|---|\n| PHS | Complementary, not competitive — PHS takes >4 h duration; BESS EPC serves <4 h trading/FCR/peak-shaving tier |\n| OEM-turnkey (Tesla/Sungrow) | **Direct threat on pure utility tier.** Mein Solar loses on cost and container QA; wins on PV-integrated siting, Baugenehmigung, local civil, single-throat-to-choke |\n| Pure-play BESS EPCs (Fluence, TRICERA, Eco Stor) | **Primary head-to-head.** Differentiator = PV heritage + single-source vehicle for hybrids; weakness = smaller BESS-only track record |\n| Owner-integrator | Threat on sophisticated IPPs; defend via smaller/mid-tier C&I customers without engineering depth |\n| Flow/H₂ | Not currently competitive; future optionality via FP-extension Axis 1 (storage-medium neutrality) |\n| Grid reinforcement / DR | Not a vendor to beat — a *reason buyers don't buy.* Segment out markets where grid upgrade is blocked or uneconomic |\n\n---"
+    },
+    {
+      "title": "04e — Neo4j write preview",
+      "content": "```\n(Market {name:\"Germany Large-Scale BESS EPC (home)\", naics_code:\"237130\", run_id})\n  SET switching_cost_assessment = \"very_high\"\n\n(Market) -[:has_incumbent {market_share_estimate:\"dominant\"}]-> (CompetitorTechnology {name:\"Pumped Hydro Storage\"})\n(Market) -[:has_incumbent {market_share_estimate:\"dominant\"}]-> (CompetitorTechnology {name:\"Utility OEM-Turnkey Li-ion Container\"})\n(Market) -[:has_incumbent {market_share_estimate:\"significant\"}]-> (CompetitorTechnology {name:\"Pure-Play BESS System-Integrator EPC\"})\n(Market) -[:has_incumbent {market_share_estimate:\"significant\"}]-> (CompetitorTechnology {name:\"Multi-Contracting Owner-Integrator\"})\n(Market) -[:has_incumbent {market_share_estimate:\"significant\"}]-> (CompetitorTechnology {name:\"Grid Reinforcement + Demand-Side Flexibility\"})\n(Market) -[:has_incumbent {market_share_estimate:\"emerging\"}]-> (CompetitorTechnology {name:\"Vanadium Redox Flow Battery EPC\"})\n(Market) -[:has_incumbent {market_share_estimate:\"emerging\"}]-> (CompetitorTechnology {name:\"Hydrogen Storage System\"})\n(Market) -[:has_incumbent {market_share_estimate:\"niche\"}]-> (CompetitorTechnology {name:\"Mechanical/Thermal Storage (Flywheel, CAES, TES)\"})\n```\n\n---"
+    },
+    {
+      "title": "Structured Data",
+      "content": "```json\n{\n  \"market_name\": \"Germany Large-Scale BESS EPC (home market)\",\n  \"naics_code\": \"237130\",\n  \"naics_title\": \"Power and Communication Line and Related Structures Construction\",\n  \"functional_need\": \"Deliver operational grid-connected electrical energy storage assets as turnkey capital projects with single-source engineering, procurement, construction, and grid-code certification\",\n  \"subject_technology_excluded\": \"Large-Scale Battery Energy Storage System EPC (Li-ion)\",\n  \"switching_cost_assessment\": \"very_high\",\n  \"incumbents\": [\n    {\n      \"technology_name\": \"Pumped Hydro Storage\",\n      \"mechanism\": \"Gravitational potential energy: reversible hydraulic head between upper and lower reservoirs, Francis pump-turbine, synchronous generator to HV grid\",\n      \"market_share_estimate\": \"dominant\",\n      \"key_vendors\": [\"Voith\", \"Andritz Hydro\", \"GE Vernova\", \"Vattenfall\", \"RWE\", \"Uniper\"],\n      \"strengths\": [\n        \"60-80 year asset life with >80% round-trip efficiency\",\n        \"GWh-scale energy per plant; HV synchronous inertia for grid stability\",\n        \"Mature long-duration (>4h) economics that BESS cannot yet match\"\n      ],\n      \"weaknesses\": [\n        \"German PHS sites geographically exhausted; ~6.8 GW fleet effectively capped\",\n        \"10-15 year permitting and environmental approval cycle\",\n        \"Single-ticket CAPEX €1.5-2.5 bn; no C&I or <10 MW fit\"\n      ]\n    },\n    {\n      \"technology_name\": \"Utility OEM-Turnkey Li-ion Container\",\n      \"mechanism\": \"Factory-integrated battery-container product (3.9-6.25 MWh per unit) with OEM-owned BMS, PCS, and EMS stack; civil works and MV grid-side locally subcontracted\",\n      \"market_share_estimate\": \"dominant\",\n      \"key_vendors\": [\"Tesla (Megapack)\", \"Sungrow (PowerTitan)\", \"CATL (EnerC)\", \"HyperStrong\", \"BYD\", \"CRRC\"],\n      \"strengths\": [\n        \"Amortized factory QA and vertically integrated BMS-PCS-EMS stack\",\n        \"High energy density (3.9-6.25 MWh per container) reduces footprint and MV drops\",\n        \"Tesla 15%, Sungrow 14%, CRRC 8% of global integrator share 2024\"\n      ],\n      \"weaknesses\": [\n        \"No native PV-integration design authority for co-located hybrids\",\n        \"OEM warranty covers only the box; interface risk with civil, grid, and site still on owner/GC\",\n        \"Limited local VDE-AR-N 4110 plant-certification and Baugenehmigung depth\"\n      ]\n    },\n    {\n      \"technology_name\": \"Pure-Play BESS System-Integrator EPC\",\n      \"mechanism\": \"Multi-vendor container, PCS, and MV assembly under single EPC contract; integrator owns VDE-AR-N 4110 / FGW TR8 certification delivery; no in-house PV or cell heritage\",\n      \"market_share_estimate\": \"significant\",\n      \"key_vendors\": [\"Fluence\", \"Wärtsilä\", \"Nidec ASI\", \"SMA Altenso\", \"TRICERA energy\", \"Eco Stor\", \"Kyon Energy\"],\n      \"strengths\": [\n        \"Battery-agnostic best-of-breed component selection per project\",\n        \"Deep project-finance-grade bankability from multi-GWh track records (Fluence, Wärtsilä)\",\n        \"TRICERA 280 MWh/152 MW installed; Eco Stor operates largest DE BESS online\"\n      ],\n      \"weaknesses\": [\n        \"No PV design authority for integrated hybrid assets\",\n        \"Indirect/overhead cost structure higher than OEM-turnkey\",\n        \"Weaker fit for distributed C&I or sub-10 MW sites\"\n      ]\n    },\n    {\n      \"technology_name\": \"Multi-Contracting Owner-Integrator Model\",\n      \"mechanism\": \"Asset owner (IPP or utility) separately contracts container, PCS, civil, and EMS, using in-house engineering or an owner's engineer to integrate under project-management contract rather than EPC wrap\",\n      \"market_share_estimate\": \"significant\",\n      \"key_vendors\": [\"LEAG\", \"RWE\", \"EnBW\", \"Uniper\", \"Vattenfall\", \"WSP\", \"DNV\", \"Fichtner\"],\n      \"strengths\": [\n        \"Eliminates EPC margin layer; captures direct OEM warranty terms\",\n        \"Owner retains full design authority across battery, PCS, and EMS\",\n        \"Industry trend 2024-2026 explicitly moving from full wrap to multi-contracting\"\n      ],\n      \"weaknesses\": [\n        \"Interface-risk and schedule-risk sit with owner\",\n        \"Requires deep in-house engineering and procurement staff\",\n        \"Poor fit for first-time owners or C&I offtakers without PM capacity\"\n      ]\n    },\n    {\n      \"technology_name\": \"Vanadium Redox Flow Battery EPC\",\n      \"mechanism\": \"Reversible redox reaction between two vanadium-sulfate electrolyte tanks through ion-exchange-membrane stack; power scales with stack count, energy scales with tank volume (decoupled)\",\n      \"market_share_estimate\": \"emerging\",\n      \"key_vendors\": [\"CellCube Enerox\", \"VoltStorage\", \"Invinity Energy Systems\", \"JenaBatteries (organic redox)\"],\n      \"strengths\": [\n        \"20,000+ cycle life with non-flammable aqueous electrolyte\",\n        \"True decoupled P/E sizing optimal for 6-12 h duration\",\n        \"CellCube 10 MWh Berlin grid-congestion reference; Graz stack line operational 2024\"\n      ],\n      \"weaknesses\": [\n        \"65-75% AC-AC round-trip efficiency (vs. 85-90% Li-ion)\",\n        \"3-4x €/kWh at <4 h duration; uneconomic for FCR/peak-shaving tier\",\n        \"~3x footprint and limited multi-MW project references in Germany\"\n      ]\n    },\n    {\n      \"technology_name\": \"Hydrogen Storage System\",\n      \"mechanism\": \"PEM or alkaline electrolyzer produces H2 from surplus electricity; compressed or metal-hydride storage; PEM fuel-cell or H2 gas turbine re-generates electricity to grid\",\n      \"market_share_estimate\": \"emerging\",\n      \"key_vendors\": [\"Siemens Energy\", \"Nel Hydrogen\", \"ITM Power\", \"Enapter\", \"SFC Energy\"],\n      \"strengths\": [\n        \"Seasonal (weeks/months) storage horizon unattainable by batteries\",\n        \"H2 fuel can be sold to industrial offtakers, creating dual revenue\",\n        \"Independent P/E scaling with compressed-gas storage\"\n      ],\n      \"weaknesses\": [\n        \"30-40% electric-to-electric round-trip efficiency\",\n        \"Pressurized-gas siting under BImSchG adds permitting load\",\n        \"High CAPEX per cycle; bankability immature for sub-100 MW\"\n      ]\n    },\n    {\n      \"technology_name\": \"Grid Reinforcement + Demand-Side Flexibility (non-storage substitute)\",\n      \"mechanism\": \"DSO/TSO copper-plate upgrade of MV feeders and HV transformers, combined with curtailment contracts, aFRR-qualified industrial load, and VPP dispatch via aggregators; removes the storage need rather than serving it\",\n      \"market_share_estimate\": \"significant\",\n      \"key_vendors\": [\"Siemens Grid Software\", \"Next Kraftwerke\", \"Entrix\", \"Flexpower\", \"Enspired\", \"50Hertz\", \"TenneT\", \"Amprion\", \"TransnetBW\"],\n      \"strengths\": [\n        \"Zero battery CAPEX risk; zero fire and thermal-runaway exposure\",\n        \"Regulated cost recovery available to DSOs under NEP/Redispatch 2.0\",\n        \"Leverages existing copper and industrial load base\"\n      ],\n      \"weaknesses\": [\n        \"Grid-upgrade lead times 3-7 years; often actively blocks BESS siting\",\n        \"Curtailment destroys PV/wind revenue rather than monetising surplus\",\n        \"DR and VPP durations capped at ~1-2 h, inadequate for evening peak\"\n      ]\n    },\n    {\n      \"technology_name\": \"Mechanical/Thermal Storage (Flywheel, CAES, TES)\",\n      \"mechanism\": \"High-speed composite-rotor flywheels, adiabatic compressed-air caverns, or hot-rock/molten-salt thermal reservoirs coupled to ORC/steam turbines for discharge\",\n      \"market_share_estimate\": \"niche\",\n      \"key_vendors\": [\"Beacon Power\", \"Amber Kinetics\", \"Corre Energy\", \"Rondo Energy\", \"Kraftblock\", \"Malta Inc.\", \"Energy Dome\"],\n      \"strengths\": [\n        \"Very long cycle life with no chemical degradation (flywheel)\",\n        \"Hundred-hour duration potential at lower €/kWh than batteries (thermal)\",\n        \"Non-lithium chemistry removes thermal-runaway and CRMA exposure\"\n      ],\n      \"weaknesses\": [\n        \"Flywheel duration <15 min; cost-effective only for frequency regulation\",\n        \"CAES bound by cavern geology; few suitable salt formations in Germany\",\n        \"Thermal round-trip ~45%; multi-year commissioning and immature bankability\"\n      ]\n    }\n  ],\n  \"delivery_model_competitors_within_subject_class\": [\n    {\"model\": \"OEM-turnkey container (Tesla, Sungrow, CATL)\", \"positioning\": \"Dominant utility-tier; product economics\", \"mein_solar_defense\": \"PV-integrated siting, Baugenehmigung, single-throat-to-choke\"},\n    {\"model\": \"Pure-play BESS EPC (Fluence, Wartsila, TRICERA, Eco Stor, Kyon)\", \"positioning\": \"Primary head-to-head at 10-200 MWh\", \"mein_solar_defense\": \"PV heritage + hybrid design authority; single-source vehicle\"},\n    {\"model\": \"Owner-integrator / multi-contract\", \"positioning\": \"Sophisticated IPPs and utilities self-performing\", \"mein_solar_defense\": \"Target mid-tier C&I without in-house PM depth\"},\n    {\"model\": \"C&I BESS manufacturer-integrators (Tesvolt, Intilion)\", \"positioning\": \"Scaling from C&I up into utility tier (65-81 MWh orders)\", \"mein_solar_defense\": \"Project-business EPC wrap beyond their product-sales DNA\"}\n  ],\n  \"competitive_leverage\": {\n    \"primary_threats\": [\"Tesla Megapack / Sungrow PowerTitan at >50 MWh utility tier\", \"Fluence/TRICERA on BESS-only hybrid-less projects\"],\n    \"primary_defensible_segments\": [\n      \"Co-located PV+BESS hybrids (Feature 6 activation)\",\n      \"EV-charging buffer sites with constrained DSO capacity (Feature 7 activation)\",\n      \"Mid-market C&I (1-20 MWh) where owner lacks engineering depth\",\n      \"DE markets where Baugenehmigung, Feuerwehr, and Feldprotokoll local know-how matter\"\n    ],\n    \"non_threats_for_exclusion\": [\"Pumped hydro (different duration tier)\", \"Flow batteries (different duration and cost tier, for now)\", \"Hydrogen storage (different temporal horizon)\"]\n  },\n  \"sources\": [\n    {\"url\": \"https://tricera.energy/en/tricera_ees_muenchen_2025/\", \"claim\": \"TRICERA 280 MWh / 152 MW installed, largest DE BESS EPC\"},\n    {\"url\": \"https://www.energy-storage.news/eco-stor-puts-largest-bess-in-germany-online-former-majority-owner-building-finland-project/\", \"claim\": \"Eco Stor operates largest online DE BESS\"},\n    {\"url\": \"https://www.energy-storage.news/leag-enlists-hyperstrong-for-1-6gwh-germany-bess/\", \"claim\": \"HyperStrong + LEAG 1.6 GWh GigaBattery Boxberg project\"},\n    {\"url\": \"https://www.energy-storage.news/europes-bess-industry-moves-from-epc-wrap-to-multi-contracting-closer-ties-with-suppliers/\", \"claim\": \"EU industry shifting from EPC wrap to multi-contracting\"},\n    {\"url\": \"https://www.woodmac.com/press-releases/tesla-remains-the-top-global-producer-of-battery-energy-storage-systems-in-2024-but-sungrow-narrows-the-gap/\", \"claim\": \"Tesla 15%, Sungrow 14%, CRRC 8% global integrator share 2024\"},\n    {\"url\": \"https://www.energy-storage.news/huge-potential-for-ci-battery-storage-in-germanys-power-markets-says-tesvolt/\", \"claim\": \"Tesvolt largest C&I BESS supplier in Germany; 4 GWh Wittenberg factory\"},\n    {\"url\": \"https://www.energy-storage.news/intilion-to-provide-81mwh-bess-for-germany-project/\", \"claim\": \"Intilion 81 MWh Essentho Sauerland scaling into utility tier\"},\n    {\"url\": \"https://modoenergy.com/research/en/germany-explained-how-europes-most-liquid-power-market-really-works-for-bess\", \"claim\": \"Germany BESS fleet 2.5 GW end-2025, duration trending to 2h+\"},\n    {\"url\": \"https://www.sphericalinsights.com/reports/germany-long-duration-energy-storage-market\", \"claim\": \"PHS dominates long-duration; 13.6% expansion rate\"},\n    {\"url\": \"https://www.energy-storage.news/vanadium-flow-battery-sector-gets-boost-with-uk-rental-deal-new-plant-in-germany-and-environmental-impact-whitepaper/\", \"claim\": \"CellCube Graz stack line; VoltStorage and JenaBatteries at commercial scale DE\"}\n  ]\n}\n```"
+    }
+  ],
+  "tables": [
+    {
+      "headers": [
+        "Segment",
+        "Key finding",
+        "Source"
+      ],
+      "rows": [
+        {
+          "Segment": "Li-ion dominance",
+          "Key finding": "German BESS fleet hit ~2.5 GW by end-2025; new-build duration shifting 1.4 h → 2 h+",
+          "Source": "Modo Energy, Montel"
+        },
+        {
+          "Segment": "PHS structural lead",
+          "Key finding": "Pumped hydro still dominates German long-duration (>4 h) storage; capacity expanding ~13.6 %/yr",
+          "Source": "Spherical Insights"
+        },
+        {
+          "Segment": "Flow battery foothold",
+          "Key finding": "CellCube 10 MWh Berlin grid-congestion project; VoltStorage + JenaBatteries at commercial scale; still <1 % of new capacity",
+          "Source": "energy-storage.news"
+        },
+        {
+          "Segment": "Delivery-model shift",
+          "Key finding": "EU BESS industry moving from full EPC \"wrap\" to multi-contracting with OEMs",
+          "Source": "energy-storage.news"
+        },
+        {
+          "Segment": "OEM turnkey",
+          "Key finding": "Tesla 15 %, Sungrow 14 %, CRRC 8 % of 2024 global BESS integrator share; Tesla Megapack + Sungrow PowerTitan dominant in DE utility-scale",
+          "Source": "Wood Mackenzie"
+        },
+        {
+          "Segment": "Domestic C&I integrators",
+          "Key finding": "Tesvolt (4 GWh factory Wittenberg, Samsung SDI cells), Intilion (81 MWh Essentho) scaling into utility tier",
+          "Source": "energy-storage.news"
+        },
+        {
+          "Segment": "DE BESS EPCs",
+          "Key finding": "TRICERA (280 MWh / 152 MW installed), Eco Stor (largest online DE BESS), greentech, Kyon (137.5 MW / 275 MWh approved), HyperStrong (LEAG GigaBattery Boxberg 1.6 GWh)",
+          "Source": "tricera.energy, ess-news"
+        }
+      ]
+    },
+    {
+      "headers": [
+        "Field",
+        "Value"
+      ],
+      "rows": [
+        {
+          "Field": "Mechanism",
+          "Value": "Gravitational potential energy: reversible hydraulic head between upper/lower reservoirs, Francis turbine-pump, synchronous machine to 110/220/380 kV grid"
+        },
+        {
+          "Field": "Market share",
+          "Value": "**dominant** — for multi-hour/seasonal duration (Germany holds ~6.8 GW installed PHS vs. ~2.5 GW BESS end-2025)"
+        },
+        {
+          "Field": "Key vendors",
+          "Value": "Voith, Andritz Hydro, GE Vernova; operators Vattenfall (Goldisthal), RWE (Herdecke/Geesthacht), Uniper (Happurg)"
+        },
+        {
+          "Field": "Strengths",
+          "Value": "60–80 yr asset life; >80 % round-trip; 1–8 GWh scale per plant; HV synchronous inertia"
+        },
+        {
+          "Field": "Weaknesses",
+          "Value": "Sites geographically exhausted in Germany; 10–15 yr permitting; €1.5–2.5 bn CAPEX tickets; no small-scale C&I fit"
+        }
+      ]
+    },
+    {
+      "headers": [
+        "Field",
+        "Value"
+      ],
+      "rows": [
+        {
+          "Field": "Mechanism",
+          "Value": "Factory-integrated battery-container product (Megapack 3.9 MWh, PowerTitan 6.25 MWh, EnerC 5 MWh) with OEM-controlled BMS/PCS/EMS stack; civil + grid side subcontracted locally"
+        },
+        {
+          "Field": "Market share",
+          "Value": "**dominant** — Tesla 15 % + Sungrow 14 % + CRRC 8 % of global integrator market 2024; trend in DE utility tier"
+        },
+        {
+          "Field": "Key vendors",
+          "Value": "Tesla, Sungrow, CATL, HyperStrong, BYD, CRRC"
+        },
+        {
+          "Field": "Strengths",
+          "Value": "Amortized factory QA; vertically integrated BMS-PCS-EMS; 3.9–6.25 MWh per container reduces footprint; rapid deployment"
+        },
+        {
+          "Field": "Weaknesses",
+          "Value": "No native PV-integration design authority; OEM-wrapper warranty only on their box (owner/GC still carries interface risk); limited VDE-AR-N 4110 plant-certification scope; weak local civil/permitting capability"
+        }
+      ]
+    },
+    {
+      "headers": [
+        "Field",
+        "Value"
+      ],
+      "rows": [
+        {
+          "Field": "Mechanism",
+          "Value": "Multi-vendor container + PCS + MV assembly under single EPC contract; integrator owns VDE-AR-N 4110 / FGW TR8 delivery; no in-house cell/PV heritage"
+        },
+        {
+          "Field": "Market share",
+          "Value": "**significant**"
+        },
+        {
+          "Field": "Key vendors",
+          "Value": "Fluence, Wärtsilä, Nidec ASI, SMA Altenso, TRICERA, Eco Stor, Kyon"
+        },
+        {
+          "Field": "Strengths",
+          "Value": "Battery-agnostic best-of-breed selection; large project track record; project-financing-grade bankability"
+        },
+        {
+          "Field": "Weaknesses",
+          "Value": "No PV design authority for co-located hybrids; higher indirect cost vs. OEM-turnkey; weaker on distributed/C&I layouts"
+        }
+      ]
+    },
+    {
+      "headers": [
+        "Field",
+        "Value"
+      ],
+      "rows": [
+        {
+          "Field": "Mechanism",
+          "Value": "Asset owner (IPP/utility) contracts components separately — container from OEM, PCS separately, civil local, EMS from aggregator — and self-performs or hires owner's engineer for integration"
+        },
+        {
+          "Field": "Market share",
+          "Value": "**significant** — industry explicitly shifting from EPC wrap toward this model (2024–2026)"
+        },
+        {
+          "Field": "Key vendors",
+          "Value": "LEAG, RWE, EnBW, Uniper, Vattenfall (self-perform); WSP, DNV, Fichtner (owner's engineers)"
+        },
+        {
+          "Field": "Strengths",
+          "Value": "Eliminates EPC margin; direct OEM warranty capture; owner retains design authority"
+        },
+        {
+          "Field": "Weaknesses",
+          "Value": "Interface-risk sits with owner; slower schedule; requires in-house engineering depth; sub-optimal for first-time asset owners"
+        }
+      ]
+    },
+    {
+      "headers": [
+        "Field",
+        "Value"
+      ],
+      "rows": [
+        {
+          "Field": "Mechanism",
+          "Value": "Two electrolyte tanks of V²⁺/V³⁺ and V⁴⁺/V⁵⁺ sulfate; ion-exchange-membrane stack; decoupled power (stack size) and energy (tank volume)"
+        },
+        {
+          "Field": "Market share",
+          "Value": "**emerging** (<2 % new DE BESS capacity)"
+        },
+        {
+          "Field": "Key vendors",
+          "Value": "CellCube (Graz stack line), VoltStorage, Invinity, JenaBatteries (organic redox)"
+        },
+        {
+          "Field": "Strengths",
+          "Value": "20 000+ cycle life; non-flammable electrolyte; true decoupled sizing for 8–12 h duration; second-life tanks indefinite"
+        },
+        {
+          "Field": "Weaknesses",
+          "Value": "65–75 % round-trip (vs. 85–90 % Li); 3–4× €/kWh at short duration; larger footprint; limited MW-scale references"
+        }
+      ]
+    },
+    {
+      "headers": [
+        "Field",
+        "Value"
+      ],
+      "rows": [
+        {
+          "Field": "Mechanism",
+          "Value": "PEM/alkaline electrolyzer → compressed or metal-hydride H₂ storage → PEM fuel-cell or H₂-gas turbine discharge to grid"
+        },
+        {
+          "Field": "Market share",
+          "Value": "**emerging**"
+        },
+        {
+          "Field": "Key vendors",
+          "Value": "Siemens Energy, Nel, ITM Power, Enapter, SFC Energy"
+        },
+        {
+          "Field": "Strengths",
+          "Value": "Seasonal storage horizon; fuel export optionality (industrial H₂ offtake); independent P/E scaling"
+        },
+        {
+          "Field": "Weaknesses",
+          "Value": "30–40 % round-trip; high CAPEX €/kWh cycle; pressurised-gas permitting load; immature bankability"
+        }
+      ]
+    },
+    {
+      "headers": [
+        "Field",
+        "Value"
+      ],
+      "rows": [
+        {
+          "Field": "Mechanism",
+          "Value": "DSO/TSO copper-plate upgrade (MV feeders, HV transformers) plus curtailment contracts, aFRR-qualified load, VPP dispatch — removes the storage need rather than serving it"
+        },
+        {
+          "Field": "Market share",
+          "Value": "**significant** — default posture for sites with DSO capacity; §13a EnWG curtailment + Redispatch 2.0 institutionalise this"
+        },
+        {
+          "Field": "Key vendors",
+          "Value": "Siemens Grid Software, Next Kraftwerke, Entrix, Flexpower, Enspired; 50Hertz, TenneT, Amprion, TransnetBW TSOs"
+        },
+        {
+          "Field": "Strengths",
+          "Value": "Zero battery CAPEX risk; leverages existing assets; no fire/permitting load; regulated cost recovery for DSO"
+        },
+        {
+          "Field": "Weaknesses",
+          "Value": "Grid-upgrade lead time 3–7 yr (often blocks BESS siting anyway); curtailment destroys PV revenue; DR fleets cap at ~1–2 h"
+        }
+      ]
+    },
+    {
+      "headers": [
+        "Field",
+        "Value"
+      ],
+      "rows": [
+        {
+          "Field": "Mechanism",
+          "Value": "High-speed flywheel (Beacon, Amber Kinetics), adiabatic CAES (Corre Energy), hot-rock/molten-salt with ORC/steam (Rondo, Kraftblock, Malta)"
+        },
+        {
+          "Field": "Market share",
+          "Value": "**niche / emerging**"
+        },
+        {
+          "Field": "Key vendors",
+          "Value": "Beacon Power, Corre Energy, Rondo Energy, Kraftblock, Malta Inc., Energy Dome"
+        },
+        {
+          "Field": "Strengths",
+          "Value": "Very long cycle life (flywheel); multi-hundred-hour duration (thermal); non-Li chemistry (no fire risk)"
+        },
+        {
+          "Field": "Weaknesses",
+          "Value": "Flywheel: <15 min duration, expensive per kWh. CAES: cavern geology dependent. Thermal: low round-trip (~45 %), very long commissioning"
+        }
+      ]
+    },
+    {
+      "headers": [
+        "Dimension",
+        "Level",
+        "Rationale"
+      ],
+      "rows": [
+        {
+          "Dimension": "Asset replacement sunk cost",
+          "Level": "**very_high**",
+          "Rationale": "10–20 yr capex life once commissioned; no practical rip-and-replace"
+        },
+        {
+          "Dimension": "Interoperability / standardisation",
+          "Level": "moderate",
+          "Rationale": "PCS, EMS, MV switchgear are standards-based; container + BMS are vendor-locked"
+        },
+        {
+          "Dimension": "Grid-code re-certification",
+          "Level": "high",
+          "Rationale": "Change of core equipment triggers re-test under FGW TR8 / VDE-AR-N 4110; 6–12 mo lead"
+        },
+        {
+          "Dimension": "Contractual / warranty",
+          "Level": "high",
+          "Rationale": "Single-source EPC wrap lost if owner mixes vendors mid-term"
+        },
+        {
+          "Dimension": "Workforce / process",
+          "Level": "moderate",
+          "Rationale": "DSOs, certifiers, O&M already trained on Li-ion BESS; shift to flow/H₂ retrains"
+        },
+        {
+          "Dimension": "**Aggregate**",
+          "Level": "**very_high**",
+          "Rationale": "Matches Step 03b enum `very_high` — BESS assets are effectively sticky once operational"
+        }
+      ]
+    },
+    {
+      "headers": [
+        "Incumbent",
+        "Mein Solar's leverage"
+      ],
+      "rows": [
+        {
+          "Incumbent": "PHS",
+          "Mein Solar's leverage": "Complementary, not competitive — PHS takes >4 h duration; BESS EPC serves <4 h trading/FCR/peak-shaving tier"
+        },
+        {
+          "Incumbent": "OEM-turnkey (Tesla/Sungrow)",
+          "Mein Solar's leverage": "**Direct threat on pure utility tier.** Mein Solar loses on cost and container QA; wins on PV-integrated siting, Baugenehmigung, local civil, single-throat-to-choke"
+        },
+        {
+          "Incumbent": "Pure-play BESS EPCs (Fluence, TRICERA, Eco Stor)",
+          "Mein Solar's leverage": "**Primary head-to-head.** Differentiator = PV heritage + single-source vehicle for hybrids; weakness = smaller BESS-only track record"
+        },
+        {
+          "Incumbent": "Owner-integrator",
+          "Mein Solar's leverage": "Threat on sophisticated IPPs; defend via smaller/mid-tier C&I customers without engineering depth"
+        },
+        {
+          "Incumbent": "Flow/H₂",
+          "Mein Solar's leverage": "Not currently competitive; future optionality via FP-extension Axis 1 (storage-medium neutrality)"
+        },
+        {
+          "Incumbent": "Grid reinforcement / DR",
+          "Mein Solar's leverage": "Not a vendor to beat — a *reason buyers don't buy.* Segment out markets where grid upgrade is blocked or uneconomic"
+        }
+      ]
+    }
+  ],
+  "entities": [
+    {
+      "market_name": "Germany Large-Scale BESS EPC (home market)",
+      "naics_code": "237130",
+      "naics_title": "Power and Communication Line and Related Structures Construction",
+      "functional_need": "Deliver operational grid-connected electrical energy storage assets as turnkey capital projects with single-source engineering, procurement, construction, and grid-code certification",
+      "subject_technology_excluded": "Large-Scale Battery Energy Storage System EPC (Li-ion)",
+      "switching_cost_assessment": "very_high",
+      "incumbents": [
+        {
+          "technology_name": "Pumped Hydro Storage",
+          "mechanism": "Gravitational potential energy: reversible hydraulic head between upper and lower reservoirs, Francis pump-turbine, synchronous generator to HV grid",
+          "market_share_estimate": "dominant",
+          "key_vendors": [
+            "Voith",
+            "Andritz Hydro",
+            "GE Vernova",
+            "Vattenfall",
+            "RWE",
+            "Uniper"
+          ],
+          "strengths": [
+            "60-80 year asset life with >80% round-trip efficiency",
+            "GWh-scale energy per plant; HV synchronous inertia for grid stability",
+            "Mature long-duration (>4h) economics that BESS cannot yet match"
+          ],
+          "weaknesses": [
+            "German PHS sites geographically exhausted; ~6.8 GW fleet effectively capped",
+            "10-15 year permitting and environmental approval cycle",
+            "Single-ticket CAPEX €1.5-2.5 bn; no C&I or <10 MW fit"
+          ]
+        },
+        {
+          "technology_name": "Utility OEM-Turnkey Li-ion Container",
+          "mechanism": "Factory-integrated battery-container product (3.9-6.25 MWh per unit) with OEM-owned BMS, PCS, and EMS stack; civil works and MV grid-side locally subcontracted",
+          "market_share_estimate": "dominant",
+          "key_vendors": [
+            "Tesla (Megapack)",
+            "Sungrow (PowerTitan)",
+            "CATL (EnerC)",
+            "HyperStrong",
+            "BYD",
+            "CRRC"
+          ],
+          "strengths": [
+            "Amortized factory QA and vertically integrated BMS-PCS-EMS stack",
+            "High energy density (3.9-6.25 MWh per container) reduces footprint and MV drops",
+            "Tesla 15%, Sungrow 14%, CRRC 8% of global integrator share 2024"
+          ],
+          "weaknesses": [
+            "No native PV-integration design authority for co-located hybrids",
+            "OEM warranty covers only the box; interface risk with civil, grid, and site still on owner/GC",
+            "Limited local VDE-AR-N 4110 plant-certification and Baugenehmigung depth"
+          ]
+        },
+        {
+          "technology_name": "Pure-Play BESS System-Integrator EPC",
+          "mechanism": "Multi-vendor container, PCS, and MV assembly under single EPC contract; integrator owns VDE-AR-N 4110 / FGW TR8 certification delivery; no in-house PV or cell heritage",
+          "market_share_estimate": "significant",
+          "key_vendors": [
+            "Fluence",
+            "Wärtsilä",
+            "Nidec ASI",
+            "SMA Altenso",
+            "TRICERA energy",
+            "Eco Stor",
+            "Kyon Energy"
+          ],
+          "strengths": [
+            "Battery-agnostic best-of-breed component selection per project",
+            "Deep project-finance-grade bankability from multi-GWh track records (Fluence, Wärtsilä)",
+            "TRICERA 280 MWh/152 MW installed; Eco Stor operates largest DE BESS online"
+          ],
+          "weaknesses": [
+            "No PV design authority for integrated hybrid assets",
+            "Indirect/overhead cost structure higher than OEM-turnkey",
+            "Weaker fit for distributed C&I or sub-10 MW sites"
+          ]
+        },
+        {
+          "technology_name": "Multi-Contracting Owner-Integrator Model",
+          "mechanism": "Asset owner (IPP or utility) separately contracts container, PCS, civil, and EMS, using in-house engineering or an owner's engineer to integrate under project-management contract rather than EPC wrap",
+          "market_share_estimate": "significant",
+          "key_vendors": [
+            "LEAG",
+            "RWE",
+            "EnBW",
+            "Uniper",
+            "Vattenfall",
+            "WSP",
+            "DNV",
+            "Fichtner"
+          ],
+          "strengths": [
+            "Eliminates EPC margin layer; captures direct OEM warranty terms",
+            "Owner retains full design authority across battery, PCS, and EMS",
+            "Industry trend 2024-2026 explicitly moving from full wrap to multi-contracting"
+          ],
+          "weaknesses": [
+            "Interface-risk and schedule-risk sit with owner",
+            "Requires deep in-house engineering and procurement staff",
+            "Poor fit for first-time owners or C&I offtakers without PM capacity"
+          ]
+        },
+        {
+          "technology_name": "Vanadium Redox Flow Battery EPC",
+          "mechanism": "Reversible redox reaction between two vanadium-sulfate electrolyte tanks through ion-exchange-membrane stack; power scales with stack count, energy scales with tank volume (decoupled)",
+          "market_share_estimate": "emerging",
+          "key_vendors": [
+            "CellCube Enerox",
+            "VoltStorage",
+            "Invinity Energy Systems",
+            "JenaBatteries (organic redox)"
+          ],
+          "strengths": [
+            "20,000+ cycle life with non-flammable aqueous electrolyte",
+            "True decoupled P/E sizing optimal for 6-12 h duration",
+            "CellCube 10 MWh Berlin grid-congestion reference; Graz stack line operational 2024"
+          ],
+          "weaknesses": [
+            "65-75% AC-AC round-trip efficiency (vs. 85-90% Li-ion)",
+            "3-4x €/kWh at <4 h duration; uneconomic for FCR/peak-shaving tier",
+            "~3x footprint and limited multi-MW project references in Germany"
+          ]
+        },
+        {
+          "technology_name": "Hydrogen Storage System",
+          "mechanism": "PEM or alkaline electrolyzer produces H2 from surplus electricity; compressed or metal-hydride storage; PEM fuel-cell or H2 gas turbine re-generates electricity to grid",
+          "market_share_estimate": "emerging",
+          "key_vendors": [
+            "Siemens Energy",
+            "Nel Hydrogen",
+            "ITM Power",
+            "Enapter",
+            "SFC Energy"
+          ],
+          "strengths": [
+            "Seasonal (weeks/months) storage horizon unattainable by batteries",
+            "H2 fuel can be sold to industrial offtakers, creating dual revenue",
+            "Independent P/E scaling with compressed-gas storage"
+          ],
+          "weaknesses": [
+            "30-40% electric-to-electric round-trip efficiency",
+            "Pressurized-gas siting under BImSchG adds permitting load",
+            "High CAPEX per cycle; bankability immature for sub-100 MW"
+          ]
+        },
+        {
+          "technology_name": "Grid Reinforcement + Demand-Side Flexibility (non-storage substitute)",
+          "mechanism": "DSO/TSO copper-plate upgrade of MV feeders and HV transformers, combined with curtailment contracts, aFRR-qualified industrial load, and VPP dispatch via aggregators; removes the storage need rather than serving it",
+          "market_share_estimate": "significant",
+          "key_vendors": [
+            "Siemens Grid Software",
+            "Next Kraftwerke",
+            "Entrix",
+            "Flexpower",
+            "Enspired",
+            "50Hertz",
+            "TenneT",
+            "Amprion",
+            "TransnetBW"
+          ],
+          "strengths": [
+            "Zero battery CAPEX risk; zero fire and thermal-runaway exposure",
+            "Regulated cost recovery available to DSOs under NEP/Redispatch 2.0",
+            "Leverages existing copper and industrial load base"
+          ],
+          "weaknesses": [
+            "Grid-upgrade lead times 3-7 years; often actively blocks BESS siting",
+            "Curtailment destroys PV/wind revenue rather than monetising surplus",
+            "DR and VPP durations capped at ~1-2 h, inadequate for evening peak"
+          ]
+        },
+        {
+          "technology_name": "Mechanical/Thermal Storage (Flywheel, CAES, TES)",
+          "mechanism": "High-speed composite-rotor flywheels, adiabatic compressed-air caverns, or hot-rock/molten-salt thermal reservoirs coupled to ORC/steam turbines for discharge",
+          "market_share_estimate": "niche",
+          "key_vendors": [
+            "Beacon Power",
+            "Amber Kinetics",
+            "Corre Energy",
+            "Rondo Energy",
+            "Kraftblock",
+            "Malta Inc.",
+            "Energy Dome"
+          ],
+          "strengths": [
+            "Very long cycle life with no chemical degradation (flywheel)",
+            "Hundred-hour duration potential at lower €/kWh than batteries (thermal)",
+            "Non-lithium chemistry removes thermal-runaway and CRMA exposure"
+          ],
+          "weaknesses": [
+            "Flywheel duration <15 min; cost-effective only for frequency regulation",
+            "CAES bound by cavern geology; few suitable salt formations in Germany",
+            "Thermal round-trip ~45%; multi-year commissioning and immature bankability"
+          ]
+        }
+      ],
+      "delivery_model_competitors_within_subject_class": [
+        {
+          "model": "OEM-turnkey container (Tesla, Sungrow, CATL)",
+          "positioning": "Dominant utility-tier; product economics",
+          "mein_solar_defense": "PV-integrated siting, Baugenehmigung, single-throat-to-choke"
+        },
+        {
+          "model": "Pure-play BESS EPC (Fluence, Wartsila, TRICERA, Eco Stor, Kyon)",
+          "positioning": "Primary head-to-head at 10-200 MWh",
+          "mein_solar_defense": "PV heritage + hybrid design authority; single-source vehicle"
+        },
+        {
+          "model": "Owner-integrator / multi-contract",
+          "positioning": "Sophisticated IPPs and utilities self-performing",
+          "mein_solar_defense": "Target mid-tier C&I without in-house PM depth"
+        },
+        {
+          "model": "C&I BESS manufacturer-integrators (Tesvolt, Intilion)",
+          "positioning": "Scaling from C&I up into utility tier (65-81 MWh orders)",
+          "mein_solar_defense": "Project-business EPC wrap beyond their product-sales DNA"
+        }
+      ],
+      "competitive_leverage": {
+        "primary_threats": [
+          "Tesla Megapack / Sungrow PowerTitan at >50 MWh utility tier",
+          "Fluence/TRICERA on BESS-only hybrid-less projects"
+        ],
+        "primary_defensible_segments": [
+          "Co-located PV+BESS hybrids (Feature 6 activation)",
+          "EV-charging buffer sites with constrained DSO capacity (Feature 7 activation)",
+          "Mid-market C&I (1-20 MWh) where owner lacks engineering depth",
+          "DE markets where Baugenehmigung, Feuerwehr, and Feldprotokoll local know-how matter"
+        ],
+        "non_threats_for_exclusion": [
+          "Pumped hydro (different duration tier)",
+          "Flow batteries (different duration and cost tier, for now)",
+          "Hydrogen storage (different temporal horizon)"
+        ]
+      },
+      "sources": [
+        {
+          "url": "https://tricera.energy/en/tricera_ees_muenchen_2025/",
+          "claim": "TRICERA 280 MWh / 152 MW installed, largest DE BESS EPC"
+        },
+        {
+          "url": "https://www.energy-storage.news/eco-stor-puts-largest-bess-in-germany-online-former-majority-owner-building-finland-project/",
+          "claim": "Eco Stor operates largest online DE BESS"
+        },
+        {
+          "url": "https://www.energy-storage.news/leag-enlists-hyperstrong-for-1-6gwh-germany-bess/",
+          "claim": "HyperStrong + LEAG 1.6 GWh GigaBattery Boxberg project"
+        },
+        {
+          "url": "https://www.energy-storage.news/europes-bess-industry-moves-from-epc-wrap-to-multi-contracting-closer-ties-with-suppliers/",
+          "claim": "EU industry shifting from EPC wrap to multi-contracting"
+        },
+        {
+          "url": "https://www.woodmac.com/press-releases/tesla-remains-the-top-global-producer-of-battery-energy-storage-systems-in-2024-but-sungrow-narrows-the-gap/",
+          "claim": "Tesla 15%, Sungrow 14%, CRRC 8% global integrator share 2024"
+        },
+        {
+          "url": "https://www.energy-storage.news/huge-potential-for-ci-battery-storage-in-germanys-power-markets-says-tesvolt/",
+          "claim": "Tesvolt largest C&I BESS supplier in Germany; 4 GWh Wittenberg factory"
+        },
+        {
+          "url": "https://www.energy-storage.news/intilion-to-provide-81mwh-bess-for-germany-project/",
+          "claim": "Intilion 81 MWh Essentho Sauerland scaling into utility tier"
+        },
+        {
+          "url": "https://modoenergy.com/research/en/germany-explained-how-europes-most-liquid-power-market-really-works-for-bess",
+          "claim": "Germany BESS fleet 2.5 GW end-2025, duration trending to 2h+"
+        },
+        {
+          "url": "https://www.sphericalinsights.com/reports/germany-long-duration-energy-storage-market",
+          "claim": "PHS dominates long-duration; 13.6% expansion rate"
+        },
+        {
+          "url": "https://www.energy-storage.news/vanadium-flow-battery-sector-gets-boost-with-uk-rental-deal-new-plant-in-germany-and-environmental-impact-whitepaper/",
+          "claim": "CellCube Graz stack line; VoltStorage and JenaBatteries at commercial scale DE"
+        }
+      ]
+    }
+  ],
+  "has_bom": false
+}

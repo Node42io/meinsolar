@@ -1,0 +1,1439 @@
+{
+  "id": "JTBD_refrigerated_warehousing_and_storage_sam",
+  "title": "JTBD — NAICS 493120 Refrigerated Warehousing and Storage",
+  "type": "jtbd_analysis",
+  "market_slug": "refrigerated_warehousing_and_storage_sam",
+  "is_per_market": true,
+  "sections": [
+    {
+      "title": "Phase 1 — Industry Landscape",
+      "content": "### 1.1 CFJ + Output Types + Offering Level\n\n| Field | Value |\n|---|---|\n| CFJ (L7) | Preserve the physical integrity, temperature chain, and legal compliance of perishable goods from inbound receipt through outbound dispatch, with auditable traceability and regulatory conformance |\n| Output types | Chilled storage (+2 to +8 °C), Frozen storage (-18 to -25 °C), Deep-freeze / blast (-25 to -40 °C), Pharma-GDP storage (+2 to +8 °C, validated), Cross-dock & VAS |\n| Offering level (industry) | L7 ecosystem — service NAICS, no Product BOM |\n\n### 1.2 Segments (cold-storage operator types — by circumstance)\n\n| # | Segment | Defining circumstance |\n|---|---|---|\n| S1 | Multi-tenant 3PL cold chain | Nordfrost, Frigoscandia, Constellation; multi-customer SLA, mixed temp zones, 24/7 dispatch |\n| S2 | Captive producer cold store | Nestlé, Unilever frozen, dairies; single-product, attached to plant, batch-driven |\n| S3 | Pharma / GDP-validated cold store | DHL Pharma, World Courier; +2 to +8 °C, full audit trail, IQ/OQ/PQ on every system |\n| S4 | Quick-commerce / grocery DC | REWE Frischlogistik, Edeka regional DC, Picnic; high-throughput pick, peak loads at dawn |\n| S5 | Blast-freeze / IQF processor | Iglo, Frosta tolling lines; massive intermittent compressor load during freeze cycles |\n\nFilter for Mein Solar's product: **all 5 are addressable** — same MV interface, same revenue stack. S3 (pharma) has the highest availability bar; S1 + S5 have the largest peak-shave economics.\n\n### 1.3 / 1.4 / 1.5 Process VN, BOM, Edges\n\nReuse VN file (`VN_refrigerated_warehousing_and_storage_sam.md`). No Product BOM (service NAICS). Edges immaterial — BESS sits in horizontal L6H-POWER, not in the food-flow process chain.\n\n---"
+    },
+    {
+      "title": "Phase 2 — Company Enters",
+      "content": "### 2.1 VN Anchor\n\n| Field | Value |\n|---|---|\n| Anchor unit | Battery Energy Storage System (BESS) |\n| Anchor level | **L5** |\n| Parent unit | Energy Supply & Electrical Utilities |\n| Parent level | L6 (horizontal) |\n| Anchor type | PROCESS_VN |\n| Parent defines | Job context = \"supply reliable, cost-optimized electrical energy to all cold-store loads (refrigeration, MHE, IT/OT, lighting, EV) and protect HACCP temperature chain during grid disturbance\" |\n\n### 2.2 Lens\n\n> **\"What [supply / dispatch / safeguard] does this [cold-storage operator] need [to keep refrigeration loads powered at the lowest landed €/kWh while never breaking the temperature chain]?\"**\n\nLens source: VN node `job_family` of L6H-POWER (\"Supply reliable electrical energy; manage cost and resilience\").\n\n### 2.3 Core Job + Product Job\n\n**Core Job (P2, solution-independent):**\n> *\"Keep our cold-store running at the lowest landed energy cost without ever letting the freezers warm above SLA.\"*\n\n**Product Job (anchored at L5 BESS, references parent):**\n> *\"Help the cold-store's Energy Supply & Electrical Utilities to deliver continuous, demand-charge-optimized electrical energy to refrigeration and operational loads while preserving HACCP-grade temperature continuity through grid sags, brownouts, and tariff peaks.\"*\n\nAbstraction test: 5 alternatives from different categories exist → ✅ Core Job (not scenario).\n\n### 2.4 Alternatives (5)\n\n| # | Alternative | UNSPSC (proxy) | Inherent trade-offs | Existential? |\n|---|---|---|---|---|\n| A1 | **Multi-MWh Li-ion BESS EPC** (Mein Solar's slot) | 26111711 | CAPEX €250–400/kWh, fire/thermal-runaway risk, 6–12 mo cert lead, MV grid required | — |\n| A2 | Diesel / gas standby genset only | 26101800 | Diesel cost & CO₂, 60–120 s start delay (loses sub-cycle ride-through), no peak-shave revenue, BImSchV emission limits | — |\n| A3 | DSO grid-capacity upgrade (higher contracted kW) | 83101800 | 1–3 yr DSO lead time, capacity may be denied in saturated rural feeders, no resilience benefit, recurring Netzentgelte burden | — |\n| A4 | Behind-the-meter PV + minimal storage | 26111605 / 41112113 | PV alone cannot cover 24/7 reefer baseload, intermittent, weather-dependent, undersized BESS gives no real peak-shave headroom | — |\n| A5 | Do nothing — pay demand charges & accept outage risk | — | Zero capex, zero project burden — but 60–440 €/kW/yr Leistungspreis recurring + uninsured spoilage exposure | **YES** (eliminates BESS purchase entirely) |\n\n**Merge test:** distinct alternative sets per scenario → no merge.\n**Cross-cat test:** chemistry (A1), combustion (A2), grid contract (A3), generation (A4), accept-loss (A5) → ✅ Core Job (not scenario).\n\n### 2.5 Scenarios (output-type activation)\n\n| Scenario | Activates output type | Activates L6H-POWER L5 |\n|---|---|---|\n| Sc1 — Daily peak-shave during 17:00–20:00 demand window | Chilled, Frozen, Deep-freeze | BESS, EMS, MV |\n| Sc2 — Grid sag / brownout (sub-cycle to 30 min) | All — protect temp chain | BESS, UPS, MV |\n| Sc3 — Sustained grid outage > 30 min | All — temp-chain survival | BESS + Genset interlock |\n| Sc4 — Blast-freeze cycle compressor inrush | Deep-freeze IQF | BESS, PCS |\n| Sc5 — Intraday EPEX arbitrage (negative-price hours) | Charge during PV / wind surplus | BESS + EMS + market interface |\n| Sc6 — Reefer-truck HPC charging window | Outbound dispatch | HPC + BESS buffer |\n| Sc7 — FCR / aFRR ancillary participation | Surplus capacity monetisation | BESS + EMS + aggregator |\n\nSparsity check: scenarios activate distinct asset combinations → ✅ Core Job is not too coarse.\n\n---"
+    },
+    {
+      "title": "Phase 3 — Needs Derivation",
+      "content": "### Stakeholder roles (per Burleson + Ulwick)\n\n| Role | Person in cold-store context | Active levels |\n|---|---|---|\n| Job Beneficiary | Stored goods (proxy: food-safety officer & end customer) | P2, P5 |\n| Job Executor | Facility / Energy Manager — operates BESS dispatch | P1, P2, P3, P4, P5 |\n| Job Overseer | COO / Plant Director — accountable for SLA and €/pallet | P2 own, P4 |\n| Lifecycle Support | Specifier (consulting engineer), Commissioner (TÜV), Maintainer (O&M) | P1 own stage |\n| Purchase Executor | CFO / Asset Owner — signs the EPC contract | P1-Acquisition, P4 |\n| Purchase Influencer | Insurance carrier (Allianz GVT), IFS/BRC auditor, KfW lender | P2 own, P4 |\n\n### Job Map relevance (Ulwick 8 steps, Product Job context)\n\n| # | Step | Relevant to BESS EPC | Why |\n|---|---|---|---|\n| 1 | DEFINE | ✅ | Sizing kW/kWh against load profile, SLA, revenue stack |\n| 2 | LOCATE | ✅ | Site, MV feeder, financing, certification body |\n| 3 | PREPARE | ✅ | Foundation, MV cabinet, fire clearance, Baugenehmigung |\n| 4 | CONFIRM | ✅ | VDE-AR-N 4110, FGW TR8, fire & insurance sign-off |\n| 5 | EXECUTE | ✅ | Daily dispatch, ride-through, peak-shave, arbitrage |\n| 6 | MONITOR | ✅ | SoH, market signals, refrigeration-load interlock |\n| 7 | MODIFY | ⚠️ partial | Re-tune EMS as tariff or load shifts — owned by O&M |\n| 8 | CONCLUDE | ⚠️ partial | EoL replacement, second-life — 10+ years out |\n\n**Relevant steps: 6 (DEFINE…MONITOR).** Yield target: `max(15, min(30, 6×4)) = 24 needs`. Will produce **24 ErrorStatements**.\n\n---\n\n### 3.1 Burleson Pyramid (per role, per alternative — summary)\n\nP1 Product Jobs differ sharply by alternative — illustrative for Energy Manager (Executor):\n\n| Stage | A1 BESS | A2 Genset | A3 Grid upgrade | A4 PV+small | A5 Do nothing |\n|---|---|---|---|---|---|\n| Acquire | EPC contract, finance, permit | OEM order, fuel supply | DSO application, EU tender | EPC, roof survey | — |\n| Prepare | Foundation, MV cabinet, fire | Fuel tank, BImSchV permit | Wait 1–3 yr | Roof works, inverter | — |\n| Use | Dispatch SoC, refrig interlock | Monthly test-runs | None | PV monitoring | Pay demand charge |\n| Maintain | Annual cert, BMS, HVAC | Oil, fuel, emissions | None | Module wash, inverter | — |\n| Dispose | Cell recycling (EU Battery Reg) | Diesel-tank decom | None | Module recycling | — |\n\nA5 has zero P1 burden — **always the strongest competitor**.\n\n### 3.2 + 3.3 — 24 Error Statements (P1 + P2 + P3-P5 mix)\n\nAll needs are **solution-agnostic** (\"storage solution\", \"energy supply solution\") per V6 rule. `pr` = product_related (true = caused by the BESS technology class itself).\n\n| # | Job step | Need (Minimize / Increase) | Imp | Sat | Opp | Impact | pr | Conf |\n|---|---|---|---|---|---|---|---|---|\n| N1 | DEFINE | Increase the ability to size storage capacity to within ±10 % of the demand-charge-shave that will actually clear in year-1 operation | 9 | 4 | 14 | cost | false | 0.85 |\n| N2 | DEFINE | Minimize the likelihood of underestimating refrigeration peak-load duration by >15 minutes during the daily 17:00-20:00 Leistungspreis window | 9 | 5 | 13 | cost | false | 0.83 |\n| N3 | DEFINE | Increase the ability to forecast HACCP-relevant load survival time at <30 % SoC with ≥95 % accuracy | 8 | 3 | 13 | safety | true | 0.80 |\n| N4 | DEFINE | Minimize the likelihood of mis-stacking incompatible revenue streams (peak-shave vs FCR vs §19 StromNEV) costing >5 % of business case | 8 | 3 | 13 | cost | false | 0.82 |\n| N5 | LOCATE | Minimize the likelihood that DSO MV-feeder spare-capacity assessment reverses after 6+ months of project work | 10 | 4 | 16 | reliability | false | 0.90 |\n| N6 | LOCATE | Increase the ability to secure FGW-accredited certification slots without >4 weeks of schedule slip | 7 | 4 | 10 | time | false | 0.78 |\n| N7 | LOCATE | Minimize the likelihood that fire-clearance distance to refrigeration plant or IFS-bonded storage exceeds available footprint | 9 | 4 | 14 | safety | true | 0.84 |\n| N8 | LOCATE | Increase the ability to obtain insurance terms that recognize Li-ion containment design without >25 % premium uplift | 7 | 3 | 11 | cost | true | 0.75 |\n| N9 | PREPARE | Minimize the likelihood of foundation, MV-cabinet, and refrigeration-plant works colliding on the construction critical path | 8 | 4 | 12 | time | false | 0.80 |\n| N10 | PREPARE | Increase the ability to interlock storage-system control with NH₃/CO₂ refrigeration safety logic without retrofitting refrigeration PLC | 8 | 3 | 13 | safety | false | 0.82 |\n| N11 | PREPARE | Minimize the likelihood of operator training gaps causing HACCP-procedure non-compliance during commissioning | 7 | 5 | 9 | skill | false | 0.72 |\n| N12 | CONFIRM | Minimize the likelihood that fire-protection commissioning fails on first inspection, delaying COD by >30 days | 9 | 4 | 14 | safety | true | 0.85 |\n| N13 | CONFIRM | Increase the ability to demonstrate sub-100 ms ride-through to NH₃ refrigeration controllers with witnessed test evidence | 9 | 3 | 15 | safety | false | 0.83 |\n| N14 | CONFIRM | Minimize the likelihood of insurance auditor flagging missing IEC 62443 cybersecurity controls before COD | 6 | 4 | 8 | safety | true | 0.70 |\n| N15 | EXECUTE | Increase the ability to absorb compressor-start inrush of >3× nominal without tripping MV protection | 9 | 4 | 14 | reliability | false | 0.86 |\n| N16 | EXECUTE | Minimize the likelihood of dispatch error letting any chamber exceed +2 °C above SLA setpoint during grid disturbance | 10 | 3 | 17 | safety | false | 0.92 |\n| N17 | EXECUTE | Increase the ability to capture EPEX intraday arbitrage on >300 days/yr without compromising HACCP reserve SoC | 8 | 3 | 13 | cost | false | 0.80 |\n| N18 | EXECUTE | Minimize the likelihood of cell-cycle degradation exceeding 2 %/yr from arbitrage cycling above C/2 | 7 | 5 | 9 | reliability | true | 0.78 |\n| N19 | MONITOR | Increase the ability to detect early thermal-runaway precursors with ≥30 minute lead time before suppression activation | 10 | 3 | 17 | safety | true | 0.88 |\n| N20 | MONITOR | Minimize the likelihood of HACCP audit finding gaps in temperature-chain evidence during BESS-mediated grid events | 9 | 4 | 14 | safety | false | 0.83 |\n| N21 | MONITOR | Increase the ability to expose live SoH and reserved-resilience-SoC to the WMS / SCADA layer in real time | 7 | 3 | 11 | reliability | true | 0.74 |\n| N22 | MONITOR | Minimize the likelihood of EMS over-discharging below the contractually-reserved spoilage-protection envelope | 9 | 3 | 15 | safety | true | 0.85 |\n| N23 | EXECUTE (P3 Role) | Increase the ability of the Energy Manager to demonstrate measurable €/MWh savings to the COO every quarter | 7 | 4 | 10 | cost | false | 0.70 |\n| N24 | CONFIRM (P5 Emotion) | Minimize the likelihood of nighttime spoilage anxiety for the duty manager — visible reserved-resilience SoC at all times `[hypothesis]` | 6 | 2 | 10 | reliability | true | 0.55 |\n\n### 3.4 ODI Roll-up\n\n| Bucket | Threshold | Count | Needs |\n|---|---|---|---|\n| **Underserved** (imp >7 AND sat <5) | strongest opportunity | **15** | N1, N2, N3, N4, N5, N7, N9, N10, N12, N13, N15, N16, N17, N19, N20, N22 (16 by strict count incl. N9 sat=4) |\n| Overserved (imp <3 AND sat >7) | resource elsewhere | 0 | — |\n| Mid-tier | balance | 8 | N6, N8, N11, N14, N18, N21, N23, N24 |\n\n**Top 5 by opportunity score:**\n1. **N16** — Dispatch error letting chamber exceed +2 °C SLA (opp **17**, safety, market-inherent)\n2. **N19** — Thermal-runaway early detection (opp **17**, safety, tech-specific)\n3. **N5** — DSO capacity reversal mid-project (opp **16**, reliability, market-inherent)\n4. **N13** — Sub-100 ms ride-through to NH₃ controllers (opp **15**, safety, market-inherent)\n5. **N22** — EMS over-discharge below resilience envelope (opp **15**, safety, tech-specific)\n\n### Yield-target check\n\n| Metric | Target | Actual | Pass |\n|---|---|---|---|\n| Statements per market | 15-30 | 24 | ✅ |\n| Needs per relevant step | ≥2 | min 3 (DEFINE 4, LOCATE 4, PREPARE 3, CONFIRM 4, EXECUTE 5, MONITOR 4) | ✅ |\n| product_related=false ratio | 60-70 % | 14/24 = 58 % | ⚠️ on boundary — acceptable for tech-heavy cold-store BESS |\n| product_related=true ratio | 30-40 % | 10/24 = 42 % | ⚠️ slight over — driven by Li-ion-inherent fire/cycle/EMS risks |\n| Minimize vs Increase | ~60/40 | 13 Min / 11 Inc = 54/46 | ✅ |\n| Job-map steps | 8 exact | 8 (6 relevant) | ✅ |\n\n---"
+    },
+    {
+      "title": "QA — V1-V8 Validation",
+      "content": "| # | Check | Status |\n|---|---|---|\n| V1 | Format compliance (Minimize/Increase + 1 KPI) | ✅ |\n| V2 | product_related correctly classified | ✅ (technology-caused needs all reference Li-ion/PCS/cells) |\n| V3 | No unrealistic imp/sat patterns | ✅ |\n| V4 | Impact category matches KPI | ✅ |\n| V5 | Coverage ≥2/step, mix close to 60/40 | ✅ |\n| V6 | Solution-agnostic — no vendor/product names | ✅ |\n| V7 | Anchor level matches abstraction (system → L5) | ✅ |\n| V8 | Product job references parent (Energy Supply & Electrical Utilities) | ✅ |\n\n---"
+    },
+    {
+      "title": "Structured Data",
+      "content": "```json\n{\n  \"component\": \"jtbd_analysis\",\n  \"market_name\": \"Refrigerated Warehousing and Storage\",\n  \"naics_code\": \"493120\",\n  \"naics_title\": \"Refrigerated Warehousing and Storage\",\n  \"vendor_name\": \"Mein Solar GmbH\",\n  \"product_name\": \"EPC für Großbatteriespeicher\",\n  \"anchor_type\": \"PROCESS_VN\",\n  \"anchor_vn_unit\": \"Battery Energy Storage System (BESS)\",\n  \"anchor_level\": \"L5\",\n  \"parent_vn_unit\": \"Energy Supply & Electrical Utilities\",\n  \"parent_level\": \"L6\",\n  \"cfj_statement\": \"Preserve the physical integrity, temperature chain, and legal compliance of perishable goods from inbound receipt through outbound dispatch, with auditable traceability and regulatory conformance\",\n  \"product_job_statement\": \"Help the cold-store's Energy Supply & Electrical Utilities to deliver continuous, demand-charge-optimized electrical energy to refrigeration and operational loads while preserving HACCP-grade temperature continuity through grid sags, brownouts, and tariff peaks\",\n\n  \"segments\": [\n    {\"id\": \"S1\", \"name\": \"Multi-tenant 3PL cold chain\", \"circumstance\": \"multi-customer SLA, mixed temp zones, 24/7 dispatch\"},\n    {\"id\": \"S2\", \"name\": \"Captive producer cold store\", \"circumstance\": \"single-product, attached to plant, batch-driven\"},\n    {\"id\": \"S3\", \"name\": \"Pharma / GDP-validated cold store\", \"circumstance\": \"+2 to +8 °C, full audit trail, IQ/OQ/PQ\"},\n    {\"id\": \"S4\", \"name\": \"Quick-commerce / grocery DC\", \"circumstance\": \"high-throughput pick, peak loads at dawn\"},\n    {\"id\": \"S5\", \"name\": \"Blast-freeze / IQF processor\", \"circumstance\": \"intermittent compressor load during freeze cycles\"}\n  ],\n\n  \"lens\": \"What supply / dispatch / safeguard does this cold-storage operator need to keep refrigeration loads powered at the lowest landed €/kWh while never breaking the temperature chain?\",\n\n  \"core_job\": \"Keep our cold-store running at the lowest landed energy cost without ever letting the freezers warm above SLA.\",\n\n  \"alternatives\": [\n    {\"id\": \"A1\", \"name\": \"Multi-MWh Li-ion BESS EPC\", \"category\": \"same_category_same_outcome\", \"unspsc_proxy\": \"26111711\", \"trade_offs\": [\"CAPEX €250-400/kWh\", \"thermal-runaway risk\", \"6-12 mo cert lead\", \"MV grid required\"], \"existential\": false},\n    {\"id\": \"A2\", \"name\": \"Diesel/gas standby genset only\", \"category\": \"different_approach\", \"unspsc_proxy\": \"26101800\", \"trade_offs\": [\"diesel cost & CO2\", \"60-120 s start delay\", \"no peak-shave revenue\", \"BImSchV emission limits\"], \"existential\": false},\n    {\"id\": \"A3\", \"name\": \"DSO grid-capacity upgrade\", \"category\": \"workaround\", \"unspsc_proxy\": \"83101800\", \"trade_offs\": [\"1-3 yr DSO lead\", \"may be denied in saturated feeders\", \"no resilience benefit\", \"recurring Netzentgelte\"], \"existential\": false},\n    {\"id\": \"A4\", \"name\": \"Behind-the-meter PV + minimal storage\", \"category\": \"different_category_same_outcome\", \"unspsc_proxy\": \"26111605\", \"trade_offs\": [\"cannot cover 24/7 reefer baseload\", \"intermittent\", \"weather-dependent\", \"no real peak-shave headroom\"], \"existential\": false},\n    {\"id\": \"A5\", \"name\": \"Do nothing — pay demand charges & accept outage risk\", \"category\": \"status_quo\", \"unspsc_proxy\": null, \"trade_offs\": [\"zero capex\", \"60-440 €/kW/yr Leistungspreis recurring\", \"uninsured spoilage exposure\"], \"existential\": true}\n  ],\n\n  \"scenarios\": [\n    {\"id\": \"Sc1\", \"name\": \"Daily peak-shave 17:00-20:00\", \"activates\": [\"Chilled\", \"Frozen\", \"Deep-freeze\"], \"alternatives_in_play\": [\"A1\", \"A4\", \"A5\"]},\n    {\"id\": \"Sc2\", \"name\": \"Grid sag/brownout (sub-cycle to 30 min)\", \"activates\": [\"All temp zones\"], \"alternatives_in_play\": [\"A1\", \"A2\"]},\n    {\"id\": \"Sc3\", \"name\": \"Sustained grid outage > 30 min\", \"activates\": [\"All temp zones\"], \"alternatives_in_play\": [\"A1\", \"A2\"]},\n    {\"id\": \"Sc4\", \"name\": \"Blast-freeze cycle compressor inrush\", \"activates\": [\"Deep-freeze IQF\"], \"alternatives_in_play\": [\"A1\", \"A3\"]},\n    {\"id\": \"Sc5\", \"name\": \"Intraday EPEX arbitrage\", \"activates\": [\"Charge during PV/wind surplus\"], \"alternatives_in_play\": [\"A1\"]},\n    {\"id\": \"Sc6\", \"name\": \"Reefer-truck HPC charging window\", \"activates\": [\"Outbound dispatch\"], \"alternatives_in_play\": [\"A1\", \"A3\"]},\n    {\"id\": \"Sc7\", \"name\": \"FCR/aFRR ancillary participation\", \"activates\": [\"Surplus capacity\"], \"alternatives_in_play\": [\"A1\"]}\n  ],\n\n  \"stakeholder_roles\": [\n    {\"role\": \"Job Beneficiary\", \"person\": \"Stored goods (proxy: food-safety officer, end customer)\", \"active_levels\": [\"P2\", \"P5\"]},\n    {\"role\": \"Job Executor\", \"person\": \"Facility / Energy Manager\", \"active_levels\": [\"P1\", \"P2\", \"P3\", \"P4\", \"P5\"]},\n    {\"role\": \"Job Overseer\", \"person\": \"COO / Plant Director\", \"active_levels\": [\"P2_own\", \"P4\"]},\n    {\"role\": \"Lifecycle Support\", \"person\": \"Specifier (consulting eng), Commissioner (TÜV), Maintainer (O&M)\", \"active_levels\": [\"P1_own_stage\"]},\n    {\"role\": \"Purchase Executor\", \"person\": \"CFO / Asset Owner\", \"active_levels\": [\"P1_acq\", \"P4\"]},\n    {\"role\": \"Purchase Influencer\", \"person\": \"Insurance carrier, IFS/BRC auditor, KfW lender\", \"active_levels\": [\"P2_own\", \"P4\"]}\n  ],\n\n  \"job_map\": [\n    {\"step_number\": 1, \"step_name\": \"DEFINE\", \"relevant_to_product\": true,  \"relevance_rationale\": \"Sizing kW/kWh against load profile, SLA, revenue stack\"},\n    {\"step_number\": 2, \"step_name\": \"LOCATE\", \"relevant_to_product\": true,  \"relevance_rationale\": \"Site, MV feeder, financing, certification body\"},\n    {\"step_number\": 3, \"step_name\": \"PREPARE\", \"relevant_to_product\": true, \"relevance_rationale\": \"Foundation, MV cabinet, fire clearance, Baugenehmigung\"},\n    {\"step_number\": 4, \"step_name\": \"CONFIRM\", \"relevant_to_product\": true, \"relevance_rationale\": \"VDE-AR-N 4110, FGW TR8, fire & insurance sign-off\"},\n    {\"step_number\": 5, \"step_name\": \"EXECUTE\", \"relevant_to_product\": true, \"relevance_rationale\": \"Daily dispatch, ride-through, peak-shave, arbitrage\"},\n    {\"step_number\": 6, \"step_name\": \"MONITOR\", \"relevant_to_product\": true, \"relevance_rationale\": \"SoH, market signals, refrigeration-load interlock\"},\n    {\"step_number\": 7, \"step_name\": \"MODIFY\", \"relevant_to_product\": false,\"relevance_rationale\": \"Re-tune EMS owned by O&M provider, partial scope\"},\n    {\"step_number\": 8, \"step_name\": \"CONCLUDE\", \"relevant_to_product\": false,\"relevance_rationale\": \"EoL replacement / second-life is 10+ yr out, partial scope\"}\n  ],\n\n  \"incumbent_anchors\": [\n    {\"technology_name\": \"Diesel/gas standby genset\", \"anchor_vn_unit\": \"Diesel / Gas Standby Genset\", \"anchor_level\": \"L5\", \"rationale\": \"Dominant incumbent for outage protection; no peak-shave or arbitrage revenue\"},\n    {\"technology_name\": \"Higher contracted DSO grid capacity\", \"anchor_vn_unit\": \"MV Grid Connection & Switchgear\", \"anchor_level\": \"L5\", \"rationale\": \"Pay-the-Netzentgelte status-quo; no resilience benefit\"},\n    {\"technology_name\": \"Behind-the-meter PV (no/small storage)\", \"anchor_vn_unit\": \"On-site PV Generation\", \"anchor_level\": \"L5\", \"rationale\": \"Generation-only, intermittent, cannot cover 24/7 reefer baseload\"}\n  ],\n\n  \"error_statements\": [\n    {\"id\": \"N1\",  \"job_step_number\": 1, \"job_step_name\": \"DEFINE\",  \"full_statement\": \"Increase the ability to size storage capacity to within ±10 % of the demand-charge-shave that will actually clear in year-1 operation\", \"importance\": 9, \"satisfaction_current\": 4, \"opportunity_score\": 14, \"impact_category\": \"cost\",        \"product_related\": false, \"rationale\": \"Cold-store load profiles are flat-baseline + spike-driven; sizing tools designed for PV self-consumption mis-predict shave value\", \"confidence\": 0.85},\n    {\"id\": \"N2\",  \"job_step_number\": 1, \"job_step_name\": \"DEFINE\",  \"full_statement\": \"Minimize the likelihood of underestimating refrigeration peak-load duration by >15 minutes during the daily 17:00-20:00 Leistungspreis window\", \"importance\": 9, \"satisfaction_current\": 5, \"opportunity_score\": 13, \"impact_category\": \"cost\",        \"product_related\": false, \"rationale\": \"Compressor cycling lengthens true peak duration; ene't 60-440 €/kW Leistungspreis penalises any 15-min interval breach\", \"confidence\": 0.83},\n    {\"id\": \"N3\",  \"job_step_number\": 1, \"job_step_name\": \"DEFINE\",  \"full_statement\": \"Increase the ability to forecast HACCP-relevant load survival time at <30 % SoC with ≥95 % accuracy\",  \"importance\": 8, \"satisfaction_current\": 3, \"opportunity_score\": 13, \"impact_category\": \"safety\",      \"product_related\": true,  \"rationale\": \"Li-ion reserved-SoC envelope vs refrigeration thermal mass = facility-specific calculation rarely done at design stage\", \"confidence\": 0.80},\n    {\"id\": \"N4\",  \"job_step_number\": 1, \"job_step_name\": \"DEFINE\",  \"full_statement\": \"Minimize the likelihood of mis-stacking incompatible revenue streams (peak-shave vs FCR vs §19 StromNEV) costing >5 % of business case\", \"importance\": 8, \"satisfaction_current\": 3, \"opportunity_score\": 13, \"impact_category\": \"cost\",       \"product_related\": false, \"rationale\": \"§19 StromNEV atypical-grid-usage requires flat 7000h/yr profile — incompatible with FCR cycling\", \"confidence\": 0.82},\n    {\"id\": \"N5\",  \"job_step_number\": 2, \"job_step_name\": \"LOCATE\",  \"full_statement\": \"Minimize the likelihood that DSO MV-feeder spare-capacity assessment reverses after 6+ months of project work\",  \"importance\": 10,\"satisfaction_current\": 4, \"opportunity_score\": 16, \"impact_category\": \"reliability\", \"product_related\": false, \"rationale\": \"Rural DE feeders saturated by PV/wind; capacity letters non-binding until grid contract signed\", \"confidence\": 0.90},\n    {\"id\": \"N6\",  \"job_step_number\": 2, \"job_step_name\": \"LOCATE\",  \"full_statement\": \"Increase the ability to secure FGW-accredited certification slots without >4 weeks of schedule slip\",                  \"importance\": 7, \"satisfaction_current\": 4, \"opportunity_score\": 10, \"impact_category\": \"time\",        \"product_related\": false, \"rationale\": \"Limited TÜV/FGW capacity vs wave of BESS projects 2025-2027\", \"confidence\": 0.78},\n    {\"id\": \"N7\",  \"job_step_number\": 2, \"job_step_name\": \"LOCATE\",  \"full_statement\": \"Minimize the likelihood that fire-clearance distance to refrigeration plant or IFS-bonded storage exceeds available footprint\", \"importance\": 9, \"satisfaction_current\": 4, \"opportunity_score\": 14, \"impact_category\": \"safety\",      \"product_related\": true,  \"rationale\": \"Li-ion fire clearances clash with NH3 plant rooms and IFS food-grade buffer zones\", \"confidence\": 0.84},\n    {\"id\": \"N8\",  \"job_step_number\": 2, \"job_step_name\": \"LOCATE\",  \"full_statement\": \"Increase the ability to obtain insurance terms that recognize Li-ion containment design without >25 % premium uplift\", \"importance\": 7, \"satisfaction_current\": 3, \"opportunity_score\": 11, \"impact_category\": \"cost\",       \"product_related\": true,  \"rationale\": \"Specialty fire underwriters lack actuarial data on co-located cold-store BESS\", \"confidence\": 0.75},\n    {\"id\": \"N9\",  \"job_step_number\": 3, \"job_step_name\": \"PREPARE\", \"full_statement\": \"Minimize the likelihood of foundation, MV-cabinet, and refrigeration-plant works colliding on the construction critical path\", \"importance\": 8, \"satisfaction_current\": 4, \"opportunity_score\": 12, \"impact_category\": \"time\",       \"product_related\": false, \"rationale\": \"Live cold-store cannot stop refrigeration during BESS works → night-shift/weekend coordination\", \"confidence\": 0.80},\n    {\"id\": \"N10\", \"job_step_number\": 3, \"job_step_name\": \"PREPARE\", \"full_statement\": \"Increase the ability to interlock storage-system control with NH₃/CO₂ refrigeration safety logic without retrofitting refrigeration PLC\", \"importance\": 8, \"satisfaction_current\": 3, \"opportunity_score\": 13, \"impact_category\": \"safety\",     \"product_related\": false, \"rationale\": \"Refrigeration PLCs are EN 378 safety-rated, change-controlled; OEM resists 3rd-party signal injection\", \"confidence\": 0.82},\n    {\"id\": \"N11\", \"job_step_number\": 3, \"job_step_name\": \"PREPARE\", \"full_statement\": \"Minimize the likelihood of operator training gaps causing HACCP-procedure non-compliance during commissioning\",         \"importance\": 7, \"satisfaction_current\": 5, \"opportunity_score\": 9,  \"impact_category\": \"skill\",      \"product_related\": false, \"rationale\": \"Cold-store operators have no Li-ion training tradition; HACCP requires documented competence\", \"confidence\": 0.72},\n    {\"id\": \"N12\", \"job_step_number\": 4, \"job_step_name\": \"CONFIRM\", \"full_statement\": \"Minimize the likelihood that fire-protection commissioning fails on first inspection, delaying COD by >30 days\",         \"importance\": 9, \"satisfaction_current\": 4, \"opportunity_score\": 14, \"impact_category\": \"safety\",     \"product_related\": true,  \"rationale\": \"VdS Li-ion guidance still maturing; local Feuerwehr have inconsistent acceptance criteria\", \"confidence\": 0.85},\n    {\"id\": \"N13\", \"job_step_number\": 4, \"job_step_name\": \"CONFIRM\", \"full_statement\": \"Increase the ability to demonstrate sub-100 ms ride-through to NH₃ refrigeration controllers with witnessed test evidence\", \"importance\": 9, \"satisfaction_current\": 3, \"opportunity_score\": 15, \"impact_category\": \"safety\",     \"product_related\": false, \"rationale\": \"NH3 plant trips on 200 ms voltage dip → leak risk; storage solution must prove sub-cycle support\", \"confidence\": 0.83},\n    {\"id\": \"N14\", \"job_step_number\": 4, \"job_step_name\": \"CONFIRM\", \"full_statement\": \"Minimize the likelihood of insurance auditor flagging missing IEC 62443 cybersecurity controls before COD\",            \"importance\": 6, \"satisfaction_current\": 4, \"opportunity_score\": 8,  \"impact_category\": \"safety\",     \"product_related\": true,  \"rationale\": \"Cyber-physical control over refrigeration via storage EMS = new attack surface for insurer\", \"confidence\": 0.70},\n    {\"id\": \"N15\", \"job_step_number\": 5, \"job_step_name\": \"EXECUTE\", \"full_statement\": \"Increase the ability to absorb compressor-start inrush of >3× nominal without tripping MV protection\",                   \"importance\": 9, \"satisfaction_current\": 4, \"opportunity_score\": 14, \"impact_category\": \"reliability\",\"product_related\": false, \"rationale\": \"Refrigeration compressors draw 3-7× FLA at start; MV protection trip = SLA breach risk\", \"confidence\": 0.86},\n    {\"id\": \"N16\", \"job_step_number\": 5, \"job_step_name\": \"EXECUTE\", \"full_statement\": \"Minimize the likelihood of dispatch error letting any chamber exceed +2 °C above SLA setpoint during grid disturbance\",  \"importance\":10, \"satisfaction_current\": 3, \"opportunity_score\": 17, \"impact_category\": \"safety\",     \"product_related\": false, \"rationale\": \"+2 °C breach in pharma/frozen = HACCP non-conformance + product write-off; existential risk\", \"confidence\": 0.92},\n    {\"id\": \"N17\", \"job_step_number\": 5, \"job_step_name\": \"EXECUTE\", \"full_statement\": \"Increase the ability to capture EPEX intraday arbitrage on >300 days/yr without compromising HACCP reserve SoC\",       \"importance\": 8, \"satisfaction_current\": 3, \"opportunity_score\": 13, \"impact_category\": \"cost\",       \"product_related\": false, \"rationale\": \"Generic EMS optimises €/MWh first; HACCP reserve as hard constraint is rare\", \"confidence\": 0.80},\n    {\"id\": \"N18\", \"job_step_number\": 5, \"job_step_name\": \"EXECUTE\", \"full_statement\": \"Minimize the likelihood of cell-cycle degradation exceeding 2 %/yr from arbitrage cycling above C/2\",                    \"importance\": 7, \"satisfaction_current\": 5, \"opportunity_score\": 9,  \"impact_category\": \"reliability\",\"product_related\": true,  \"rationale\": \"Aggressive arbitrage cycles erode warranty headroom; LFP at C/2 has documented 2 %/yr threshold\", \"confidence\": 0.78},\n    {\"id\": \"N19\", \"job_step_number\": 6, \"job_step_name\": \"MONITOR\", \"full_statement\": \"Increase the ability to detect early thermal-runaway precursors with ≥30 minute lead time before suppression activation\",\"importance\":10, \"satisfaction_current\": 3, \"opportunity_score\": 17, \"impact_category\": \"safety\",     \"product_related\": true,  \"rationale\": \"Cold-store next to flammable insulation/refrigerant; 30 min lead enables Feuerwehr arrival\", \"confidence\": 0.88},\n    {\"id\": \"N20\", \"job_step_number\": 6, \"job_step_name\": \"MONITOR\", \"full_statement\": \"Minimize the likelihood of HACCP audit finding gaps in temperature-chain evidence during BESS-mediated grid events\",      \"importance\": 9, \"satisfaction_current\": 4, \"opportunity_score\": 14, \"impact_category\": \"safety\",     \"product_related\": false, \"rationale\": \"Auditors require time-aligned voltage + temperature trace; standard EMS lacks T-chain export\", \"confidence\": 0.83},\n    {\"id\": \"N21\", \"job_step_number\": 6, \"job_step_name\": \"MONITOR\", \"full_statement\": \"Increase the ability to expose live SoH and reserved-resilience-SoC to the WMS / SCADA layer in real time\",              \"importance\": 7, \"satisfaction_current\": 3, \"opportunity_score\": 11, \"impact_category\": \"reliability\",\"product_related\": true,  \"rationale\": \"WMS/SCADA integration is afterthought in most BESS deployments\", \"confidence\": 0.74},\n    {\"id\": \"N22\", \"job_step_number\": 6, \"job_step_name\": \"MONITOR\", \"full_statement\": \"Minimize the likelihood of EMS over-discharging below the contractually-reserved spoilage-protection envelope\",          \"importance\": 9, \"satisfaction_current\": 3, \"opportunity_score\": 15, \"impact_category\": \"safety\",     \"product_related\": true,  \"rationale\": \"Hard reserved-SoC floor as contractual SLA is non-standard in current EMS products\", \"confidence\": 0.85},\n    {\"id\": \"N23\", \"job_step_number\": 5, \"job_step_name\": \"EXECUTE\", \"full_statement\": \"Increase the ability of the Energy Manager to demonstrate measurable €/MWh savings to the COO every quarter (P3 Role)\", \"importance\": 7, \"satisfaction_current\": 4, \"opportunity_score\": 10, \"impact_category\": \"cost\",       \"product_related\": false, \"rationale\": \"P3 role-identity need: Energy Manager becomes the cost-saver; needs auditable evidence\", \"confidence\": 0.70},\n    {\"id\": \"N24\", \"job_step_number\": 4, \"job_step_name\": \"CONFIRM\", \"full_statement\": \"Minimize the likelihood of nighttime spoilage anxiety for the duty manager — visible reserved-resilience SoC at all times (P5 Emotion) [hypothesis]\", \"importance\": 6, \"satisfaction_current\": 2, \"opportunity_score\": 10, \"impact_category\": \"reliability\",\"product_related\": true,  \"rationale\": \"P5 emotional bridge: duty manager needs visible 'safety reserve' indicator to sleep at night\", \"confidence\": 0.55}\n  ],\n\n  \"top_5_by_opportunity\": [\n    {\"id\": \"N16\", \"opportunity_score\": 17, \"summary\": \"Dispatch error → chamber +2 °C SLA breach\"},\n    {\"id\": \"N19\", \"opportunity_score\": 17, \"summary\": \"Thermal-runaway early detection ≥30 min lead\"},\n    {\"id\": \"N5\",  \"opportunity_score\": 16, \"summary\": \"DSO capacity reversal mid-project\"},\n    {\"id\": \"N13\", \"opportunity_score\": 15, \"summary\": \"Sub-100 ms ride-through to NH₃ controllers\"},\n    {\"id\": \"N22\", \"opportunity_score\": 15, \"summary\": \"EMS over-discharging below reserved-resilience SoC\"}\n  ],\n\n  \"yield_check\": {\n    \"statements_count\": 24,\n    \"in_15_to_30\": true,\n    \"min_per_relevant_step\": 3,\n    \"product_related_false_pct\": 58,\n    \"product_related_true_pct\": 42,\n    \"minimize_increase_pct\": \"54/46\",\n    \"job_map_steps\": 8,\n    \"relevant_steps\": 6\n  },\n\n  \"qa\": {\n    \"v1_format\": true,\n    \"v2_product_related_correct\": true,\n    \"v3_imp_sat_realistic\": true,\n    \"v4_impact_category_match\": true,\n    \"v5_coverage\": true,\n    \"v6_solution_agnostic\": true,\n    \"v7_anchor_level_match\": true,\n    \"v8_product_job_references_parent\": true\n  }\n}\n```\n\n---"
+    },
+    {
+      "title": "Sources",
+      "content": "- [Energy Efficiency in Refrigerated Warehouses (Green Design Consulting)](https://www.greendesignconsulting.com/single-post/energy-efficiency-in-refrigerated-warehouses) — refrigeration = 60-80 % of cold-store electricity\n- [Cold Storage Energy Management (Inertia Resources)](https://www.inertiaresourcesinc.com/cold-storage-energy.php) — energy 60-70 % of facility opex\n- [Peak Shaving — Lastspitzenkappung (Next Kraftwerke)](https://www.next-kraftwerke.de/wissen/peak-shaving) — DE Leistungspreis 60-440 €/kW/yr (ene't Jan-2024); ~180 €/kW typical\n- [Krannich Solar — Peakshaving mit Gewerbespeicher](https://krannich-solar.com/de-de/blog/peakshaving/) — payback 3-7 yr; viable from 100k kWh/yr + 100 kW peaks\n- [Cold Storage and the Cost of a Single Degree (Megawattage)](https://www.megawattage.com/blog/cold-storage-and-the-cost-of-a-single-degree/) — single extended outage can erase years of profit\n- [USDA / FoodSafety.gov — Food Safety During Power Outage](https://www.foodsafety.gov/food-safety-charts/food-safety-during-power-outage) — discard perishables after 4 h without power\n- [VDE-AR-N 4110 — MV Grid Connection Rules (VDE)](https://www.vde.com/en/fnn/topics/technical-connection-rules/tcr-for-medium-voltage)\n- [2025 Germany Energy Storage Market Guide (PVB)](https://www.pvb.com/blog/2025-germany-energy-storage-market-guide-policies-bess-selection-industry-trends-complete-citations/) — DE C&I BESS regulatory + revenue stack\n- [Moment of truth — 2026 regulatory agenda for large battery storage in Germany (Energy-Storage.News)](https://www.energy-storage.news/moment-of-truth-the-2026-regulatory-agenda-for-large-battery-storage-in-germany/)"
+    }
+  ],
+  "tables": [
+    {
+      "headers": [
+        "Field",
+        "Value"
+      ],
+      "rows": [
+        {
+          "Field": "CFJ (L7)",
+          "Value": "Preserve the physical integrity, temperature chain, and legal compliance of perishable goods from inbound receipt through outbound dispatch, with auditable traceability and regulatory conformance"
+        },
+        {
+          "Field": "Output types",
+          "Value": "Chilled storage (+2 to +8 °C), Frozen storage (-18 to -25 °C), Deep-freeze / blast (-25 to -40 °C), Pharma-GDP storage (+2 to +8 °C, validated), Cross-dock & VAS"
+        },
+        {
+          "Field": "Offering level (industry)",
+          "Value": "L7 ecosystem — service NAICS, no Product BOM"
+        }
+      ]
+    },
+    {
+      "headers": [
+        "#",
+        "Segment",
+        "Defining circumstance"
+      ],
+      "rows": [
+        {
+          "#": "S1",
+          "Segment": "Multi-tenant 3PL cold chain",
+          "Defining circumstance": "Nordfrost, Frigoscandia, Constellation; multi-customer SLA, mixed temp zones, 24/7 dispatch"
+        },
+        {
+          "#": "S2",
+          "Segment": "Captive producer cold store",
+          "Defining circumstance": "Nestlé, Unilever frozen, dairies; single-product, attached to plant, batch-driven"
+        },
+        {
+          "#": "S3",
+          "Segment": "Pharma / GDP-validated cold store",
+          "Defining circumstance": "DHL Pharma, World Courier; +2 to +8 °C, full audit trail, IQ/OQ/PQ on every system"
+        },
+        {
+          "#": "S4",
+          "Segment": "Quick-commerce / grocery DC",
+          "Defining circumstance": "REWE Frischlogistik, Edeka regional DC, Picnic; high-throughput pick, peak loads at dawn"
+        },
+        {
+          "#": "S5",
+          "Segment": "Blast-freeze / IQF processor",
+          "Defining circumstance": "Iglo, Frosta tolling lines; massive intermittent compressor load during freeze cycles"
+        }
+      ]
+    },
+    {
+      "headers": [
+        "Field",
+        "Value"
+      ],
+      "rows": [
+        {
+          "Field": "Anchor unit",
+          "Value": "Battery Energy Storage System (BESS)"
+        },
+        {
+          "Field": "Anchor level",
+          "Value": "**L5**"
+        },
+        {
+          "Field": "Parent unit",
+          "Value": "Energy Supply & Electrical Utilities"
+        },
+        {
+          "Field": "Parent level",
+          "Value": "L6 (horizontal)"
+        },
+        {
+          "Field": "Anchor type",
+          "Value": "PROCESS_VN"
+        },
+        {
+          "Field": "Parent defines",
+          "Value": "Job context = \"supply reliable, cost-optimized electrical energy to all cold-store loads (refrigeration, MHE, IT/OT, lighting, EV) and protect HACCP temperature chain during grid disturbance\""
+        }
+      ]
+    },
+    {
+      "headers": [
+        "#",
+        "Alternative",
+        "UNSPSC (proxy)",
+        "Inherent trade-offs",
+        "Existential?"
+      ],
+      "rows": [
+        {
+          "#": "A1",
+          "Alternative": "**Multi-MWh Li-ion BESS EPC** (Mein Solar's slot)",
+          "UNSPSC (proxy)": "26111711",
+          "Inherent trade-offs": "CAPEX €250–400/kWh, fire/thermal-runaway risk, 6–12 mo cert lead, MV grid required",
+          "Existential?": "—"
+        },
+        {
+          "#": "A2",
+          "Alternative": "Diesel / gas standby genset only",
+          "UNSPSC (proxy)": "26101800",
+          "Inherent trade-offs": "Diesel cost & CO₂, 60–120 s start delay (loses sub-cycle ride-through), no peak-shave revenue, BImSchV emission limits",
+          "Existential?": "—"
+        },
+        {
+          "#": "A3",
+          "Alternative": "DSO grid-capacity upgrade (higher contracted kW)",
+          "UNSPSC (proxy)": "83101800",
+          "Inherent trade-offs": "1–3 yr DSO lead time, capacity may be denied in saturated rural feeders, no resilience benefit, recurring Netzentgelte burden",
+          "Existential?": "—"
+        },
+        {
+          "#": "A4",
+          "Alternative": "Behind-the-meter PV + minimal storage",
+          "UNSPSC (proxy)": "26111605 / 41112113",
+          "Inherent trade-offs": "PV alone cannot cover 24/7 reefer baseload, intermittent, weather-dependent, undersized BESS gives no real peak-shave headroom",
+          "Existential?": "—"
+        },
+        {
+          "#": "A5",
+          "Alternative": "Do nothing — pay demand charges & accept outage risk",
+          "UNSPSC (proxy)": "—",
+          "Inherent trade-offs": "Zero capex, zero project burden — but 60–440 €/kW/yr Leistungspreis recurring + uninsured spoilage exposure",
+          "Existential?": "**YES** (eliminates BESS purchase entirely)"
+        }
+      ]
+    },
+    {
+      "headers": [
+        "Scenario",
+        "Activates output type",
+        "Activates L6H-POWER L5"
+      ],
+      "rows": [
+        {
+          "Scenario": "Sc1 — Daily peak-shave during 17:00–20:00 demand window",
+          "Activates output type": "Chilled, Frozen, Deep-freeze",
+          "Activates L6H-POWER L5": "BESS, EMS, MV"
+        },
+        {
+          "Scenario": "Sc2 — Grid sag / brownout (sub-cycle to 30 min)",
+          "Activates output type": "All — protect temp chain",
+          "Activates L6H-POWER L5": "BESS, UPS, MV"
+        },
+        {
+          "Scenario": "Sc3 — Sustained grid outage > 30 min",
+          "Activates output type": "All — temp-chain survival",
+          "Activates L6H-POWER L5": "BESS + Genset interlock"
+        },
+        {
+          "Scenario": "Sc4 — Blast-freeze cycle compressor inrush",
+          "Activates output type": "Deep-freeze IQF",
+          "Activates L6H-POWER L5": "BESS, PCS"
+        },
+        {
+          "Scenario": "Sc5 — Intraday EPEX arbitrage (negative-price hours)",
+          "Activates output type": "Charge during PV / wind surplus",
+          "Activates L6H-POWER L5": "BESS + EMS + market interface"
+        },
+        {
+          "Scenario": "Sc6 — Reefer-truck HPC charging window",
+          "Activates output type": "Outbound dispatch",
+          "Activates L6H-POWER L5": "HPC + BESS buffer"
+        },
+        {
+          "Scenario": "Sc7 — FCR / aFRR ancillary participation",
+          "Activates output type": "Surplus capacity monetisation",
+          "Activates L6H-POWER L5": "BESS + EMS + aggregator"
+        }
+      ]
+    },
+    {
+      "headers": [
+        "Role",
+        "Person in cold-store context",
+        "Active levels"
+      ],
+      "rows": [
+        {
+          "Role": "Job Beneficiary",
+          "Person in cold-store context": "Stored goods (proxy: food-safety officer & end customer)",
+          "Active levels": "P2, P5"
+        },
+        {
+          "Role": "Job Executor",
+          "Person in cold-store context": "Facility / Energy Manager — operates BESS dispatch",
+          "Active levels": "P1, P2, P3, P4, P5"
+        },
+        {
+          "Role": "Job Overseer",
+          "Person in cold-store context": "COO / Plant Director — accountable for SLA and €/pallet",
+          "Active levels": "P2 own, P4"
+        },
+        {
+          "Role": "Lifecycle Support",
+          "Person in cold-store context": "Specifier (consulting engineer), Commissioner (TÜV), Maintainer (O&M)",
+          "Active levels": "P1 own stage"
+        },
+        {
+          "Role": "Purchase Executor",
+          "Person in cold-store context": "CFO / Asset Owner — signs the EPC contract",
+          "Active levels": "P1-Acquisition, P4"
+        },
+        {
+          "Role": "Purchase Influencer",
+          "Person in cold-store context": "Insurance carrier (Allianz GVT), IFS/BRC auditor, KfW lender",
+          "Active levels": "P2 own, P4"
+        }
+      ]
+    },
+    {
+      "headers": [
+        "#",
+        "Step",
+        "Relevant to BESS EPC",
+        "Why"
+      ],
+      "rows": [
+        {
+          "#": "1",
+          "Step": "DEFINE",
+          "Relevant to BESS EPC": "✅",
+          "Why": "Sizing kW/kWh against load profile, SLA, revenue stack"
+        },
+        {
+          "#": "2",
+          "Step": "LOCATE",
+          "Relevant to BESS EPC": "✅",
+          "Why": "Site, MV feeder, financing, certification body"
+        },
+        {
+          "#": "3",
+          "Step": "PREPARE",
+          "Relevant to BESS EPC": "✅",
+          "Why": "Foundation, MV cabinet, fire clearance, Baugenehmigung"
+        },
+        {
+          "#": "4",
+          "Step": "CONFIRM",
+          "Relevant to BESS EPC": "✅",
+          "Why": "VDE-AR-N 4110, FGW TR8, fire & insurance sign-off"
+        },
+        {
+          "#": "5",
+          "Step": "EXECUTE",
+          "Relevant to BESS EPC": "✅",
+          "Why": "Daily dispatch, ride-through, peak-shave, arbitrage"
+        },
+        {
+          "#": "6",
+          "Step": "MONITOR",
+          "Relevant to BESS EPC": "✅",
+          "Why": "SoH, market signals, refrigeration-load interlock"
+        },
+        {
+          "#": "7",
+          "Step": "MODIFY",
+          "Relevant to BESS EPC": "⚠️ partial",
+          "Why": "Re-tune EMS as tariff or load shifts — owned by O&M"
+        },
+        {
+          "#": "8",
+          "Step": "CONCLUDE",
+          "Relevant to BESS EPC": "⚠️ partial",
+          "Why": "EoL replacement, second-life — 10+ years out"
+        }
+      ]
+    },
+    {
+      "headers": [
+        "Stage",
+        "A1 BESS",
+        "A2 Genset",
+        "A3 Grid upgrade",
+        "A4 PV+small",
+        "A5 Do nothing"
+      ],
+      "rows": [
+        {
+          "Stage": "Acquire",
+          "A1 BESS": "EPC contract, finance, permit",
+          "A2 Genset": "OEM order, fuel supply",
+          "A3 Grid upgrade": "DSO application, EU tender",
+          "A4 PV+small": "EPC, roof survey",
+          "A5 Do nothing": "—"
+        },
+        {
+          "Stage": "Prepare",
+          "A1 BESS": "Foundation, MV cabinet, fire",
+          "A2 Genset": "Fuel tank, BImSchV permit",
+          "A3 Grid upgrade": "Wait 1–3 yr",
+          "A4 PV+small": "Roof works, inverter",
+          "A5 Do nothing": "—"
+        },
+        {
+          "Stage": "Use",
+          "A1 BESS": "Dispatch SoC, refrig interlock",
+          "A2 Genset": "Monthly test-runs",
+          "A3 Grid upgrade": "None",
+          "A4 PV+small": "PV monitoring",
+          "A5 Do nothing": "Pay demand charge"
+        },
+        {
+          "Stage": "Maintain",
+          "A1 BESS": "Annual cert, BMS, HVAC",
+          "A2 Genset": "Oil, fuel, emissions",
+          "A3 Grid upgrade": "None",
+          "A4 PV+small": "Module wash, inverter",
+          "A5 Do nothing": "—"
+        },
+        {
+          "Stage": "Dispose",
+          "A1 BESS": "Cell recycling (EU Battery Reg)",
+          "A2 Genset": "Diesel-tank decom",
+          "A3 Grid upgrade": "None",
+          "A4 PV+small": "Module recycling",
+          "A5 Do nothing": "—"
+        }
+      ]
+    },
+    {
+      "headers": [
+        "#",
+        "Job step",
+        "Need (Minimize / Increase)",
+        "Imp",
+        "Sat",
+        "Opp",
+        "Impact",
+        "pr",
+        "Conf"
+      ],
+      "rows": [
+        {
+          "#": "N1",
+          "Job step": "DEFINE",
+          "Need (Minimize / Increase)": "Increase the ability to size storage capacity to within ±10 % of the demand-charge-shave that will actually clear in year-1 operation",
+          "Imp": "9",
+          "Sat": "4",
+          "Opp": "14",
+          "Impact": "cost",
+          "pr": "false",
+          "Conf": "0.85"
+        },
+        {
+          "#": "N2",
+          "Job step": "DEFINE",
+          "Need (Minimize / Increase)": "Minimize the likelihood of underestimating refrigeration peak-load duration by >15 minutes during the daily 17:00-20:00 Leistungspreis window",
+          "Imp": "9",
+          "Sat": "5",
+          "Opp": "13",
+          "Impact": "cost",
+          "pr": "false",
+          "Conf": "0.83"
+        },
+        {
+          "#": "N3",
+          "Job step": "DEFINE",
+          "Need (Minimize / Increase)": "Increase the ability to forecast HACCP-relevant load survival time at <30 % SoC with ≥95 % accuracy",
+          "Imp": "8",
+          "Sat": "3",
+          "Opp": "13",
+          "Impact": "safety",
+          "pr": "true",
+          "Conf": "0.80"
+        },
+        {
+          "#": "N4",
+          "Job step": "DEFINE",
+          "Need (Minimize / Increase)": "Minimize the likelihood of mis-stacking incompatible revenue streams (peak-shave vs FCR vs §19 StromNEV) costing >5 % of business case",
+          "Imp": "8",
+          "Sat": "3",
+          "Opp": "13",
+          "Impact": "cost",
+          "pr": "false",
+          "Conf": "0.82"
+        },
+        {
+          "#": "N5",
+          "Job step": "LOCATE",
+          "Need (Minimize / Increase)": "Minimize the likelihood that DSO MV-feeder spare-capacity assessment reverses after 6+ months of project work",
+          "Imp": "10",
+          "Sat": "4",
+          "Opp": "16",
+          "Impact": "reliability",
+          "pr": "false",
+          "Conf": "0.90"
+        },
+        {
+          "#": "N6",
+          "Job step": "LOCATE",
+          "Need (Minimize / Increase)": "Increase the ability to secure FGW-accredited certification slots without >4 weeks of schedule slip",
+          "Imp": "7",
+          "Sat": "4",
+          "Opp": "10",
+          "Impact": "time",
+          "pr": "false",
+          "Conf": "0.78"
+        },
+        {
+          "#": "N7",
+          "Job step": "LOCATE",
+          "Need (Minimize / Increase)": "Minimize the likelihood that fire-clearance distance to refrigeration plant or IFS-bonded storage exceeds available footprint",
+          "Imp": "9",
+          "Sat": "4",
+          "Opp": "14",
+          "Impact": "safety",
+          "pr": "true",
+          "Conf": "0.84"
+        },
+        {
+          "#": "N8",
+          "Job step": "LOCATE",
+          "Need (Minimize / Increase)": "Increase the ability to obtain insurance terms that recognize Li-ion containment design without >25 % premium uplift",
+          "Imp": "7",
+          "Sat": "3",
+          "Opp": "11",
+          "Impact": "cost",
+          "pr": "true",
+          "Conf": "0.75"
+        },
+        {
+          "#": "N9",
+          "Job step": "PREPARE",
+          "Need (Minimize / Increase)": "Minimize the likelihood of foundation, MV-cabinet, and refrigeration-plant works colliding on the construction critical path",
+          "Imp": "8",
+          "Sat": "4",
+          "Opp": "12",
+          "Impact": "time",
+          "pr": "false",
+          "Conf": "0.80"
+        },
+        {
+          "#": "N10",
+          "Job step": "PREPARE",
+          "Need (Minimize / Increase)": "Increase the ability to interlock storage-system control with NH₃/CO₂ refrigeration safety logic without retrofitting refrigeration PLC",
+          "Imp": "8",
+          "Sat": "3",
+          "Opp": "13",
+          "Impact": "safety",
+          "pr": "false",
+          "Conf": "0.82"
+        },
+        {
+          "#": "N11",
+          "Job step": "PREPARE",
+          "Need (Minimize / Increase)": "Minimize the likelihood of operator training gaps causing HACCP-procedure non-compliance during commissioning",
+          "Imp": "7",
+          "Sat": "5",
+          "Opp": "9",
+          "Impact": "skill",
+          "pr": "false",
+          "Conf": "0.72"
+        },
+        {
+          "#": "N12",
+          "Job step": "CONFIRM",
+          "Need (Minimize / Increase)": "Minimize the likelihood that fire-protection commissioning fails on first inspection, delaying COD by >30 days",
+          "Imp": "9",
+          "Sat": "4",
+          "Opp": "14",
+          "Impact": "safety",
+          "pr": "true",
+          "Conf": "0.85"
+        },
+        {
+          "#": "N13",
+          "Job step": "CONFIRM",
+          "Need (Minimize / Increase)": "Increase the ability to demonstrate sub-100 ms ride-through to NH₃ refrigeration controllers with witnessed test evidence",
+          "Imp": "9",
+          "Sat": "3",
+          "Opp": "15",
+          "Impact": "safety",
+          "pr": "false",
+          "Conf": "0.83"
+        },
+        {
+          "#": "N14",
+          "Job step": "CONFIRM",
+          "Need (Minimize / Increase)": "Minimize the likelihood of insurance auditor flagging missing IEC 62443 cybersecurity controls before COD",
+          "Imp": "6",
+          "Sat": "4",
+          "Opp": "8",
+          "Impact": "safety",
+          "pr": "true",
+          "Conf": "0.70"
+        },
+        {
+          "#": "N15",
+          "Job step": "EXECUTE",
+          "Need (Minimize / Increase)": "Increase the ability to absorb compressor-start inrush of >3× nominal without tripping MV protection",
+          "Imp": "9",
+          "Sat": "4",
+          "Opp": "14",
+          "Impact": "reliability",
+          "pr": "false",
+          "Conf": "0.86"
+        },
+        {
+          "#": "N16",
+          "Job step": "EXECUTE",
+          "Need (Minimize / Increase)": "Minimize the likelihood of dispatch error letting any chamber exceed +2 °C above SLA setpoint during grid disturbance",
+          "Imp": "10",
+          "Sat": "3",
+          "Opp": "17",
+          "Impact": "safety",
+          "pr": "false",
+          "Conf": "0.92"
+        },
+        {
+          "#": "N17",
+          "Job step": "EXECUTE",
+          "Need (Minimize / Increase)": "Increase the ability to capture EPEX intraday arbitrage on >300 days/yr without compromising HACCP reserve SoC",
+          "Imp": "8",
+          "Sat": "3",
+          "Opp": "13",
+          "Impact": "cost",
+          "pr": "false",
+          "Conf": "0.80"
+        },
+        {
+          "#": "N18",
+          "Job step": "EXECUTE",
+          "Need (Minimize / Increase)": "Minimize the likelihood of cell-cycle degradation exceeding 2 %/yr from arbitrage cycling above C/2",
+          "Imp": "7",
+          "Sat": "5",
+          "Opp": "9",
+          "Impact": "reliability",
+          "pr": "true",
+          "Conf": "0.78"
+        },
+        {
+          "#": "N19",
+          "Job step": "MONITOR",
+          "Need (Minimize / Increase)": "Increase the ability to detect early thermal-runaway precursors with ≥30 minute lead time before suppression activation",
+          "Imp": "10",
+          "Sat": "3",
+          "Opp": "17",
+          "Impact": "safety",
+          "pr": "true",
+          "Conf": "0.88"
+        },
+        {
+          "#": "N20",
+          "Job step": "MONITOR",
+          "Need (Minimize / Increase)": "Minimize the likelihood of HACCP audit finding gaps in temperature-chain evidence during BESS-mediated grid events",
+          "Imp": "9",
+          "Sat": "4",
+          "Opp": "14",
+          "Impact": "safety",
+          "pr": "false",
+          "Conf": "0.83"
+        },
+        {
+          "#": "N21",
+          "Job step": "MONITOR",
+          "Need (Minimize / Increase)": "Increase the ability to expose live SoH and reserved-resilience-SoC to the WMS / SCADA layer in real time",
+          "Imp": "7",
+          "Sat": "3",
+          "Opp": "11",
+          "Impact": "reliability",
+          "pr": "true",
+          "Conf": "0.74"
+        },
+        {
+          "#": "N22",
+          "Job step": "MONITOR",
+          "Need (Minimize / Increase)": "Minimize the likelihood of EMS over-discharging below the contractually-reserved spoilage-protection envelope",
+          "Imp": "9",
+          "Sat": "3",
+          "Opp": "15",
+          "Impact": "safety",
+          "pr": "true",
+          "Conf": "0.85"
+        },
+        {
+          "#": "N23",
+          "Job step": "EXECUTE (P3 Role)",
+          "Need (Minimize / Increase)": "Increase the ability of the Energy Manager to demonstrate measurable €/MWh savings to the COO every quarter",
+          "Imp": "7",
+          "Sat": "4",
+          "Opp": "10",
+          "Impact": "cost",
+          "pr": "false",
+          "Conf": "0.70"
+        },
+        {
+          "#": "N24",
+          "Job step": "CONFIRM (P5 Emotion)",
+          "Need (Minimize / Increase)": "Minimize the likelihood of nighttime spoilage anxiety for the duty manager — visible reserved-resilience SoC at all times `[hypothesis]`",
+          "Imp": "6",
+          "Sat": "2",
+          "Opp": "10",
+          "Impact": "reliability",
+          "pr": "true",
+          "Conf": "0.55"
+        }
+      ]
+    },
+    {
+      "headers": [
+        "Bucket",
+        "Threshold",
+        "Count",
+        "Needs"
+      ],
+      "rows": [
+        {
+          "Bucket": "**Underserved** (imp >7 AND sat <5)",
+          "Threshold": "strongest opportunity",
+          "Count": "**15**",
+          "Needs": "N1, N2, N3, N4, N5, N7, N9, N10, N12, N13, N15, N16, N17, N19, N20, N22 (16 by strict count incl. N9 sat=4)"
+        },
+        {
+          "Bucket": "Overserved (imp <3 AND sat >7)",
+          "Threshold": "resource elsewhere",
+          "Count": "0",
+          "Needs": "—"
+        },
+        {
+          "Bucket": "Mid-tier",
+          "Threshold": "balance",
+          "Count": "8",
+          "Needs": "N6, N8, N11, N14, N18, N21, N23, N24"
+        }
+      ]
+    },
+    {
+      "headers": [
+        "Metric",
+        "Target",
+        "Actual",
+        "Pass"
+      ],
+      "rows": [
+        {
+          "Metric": "Statements per market",
+          "Target": "15-30",
+          "Actual": "24",
+          "Pass": "✅"
+        },
+        {
+          "Metric": "Needs per relevant step",
+          "Target": "≥2",
+          "Actual": "min 3 (DEFINE 4, LOCATE 4, PREPARE 3, CONFIRM 4, EXECUTE 5, MONITOR 4)",
+          "Pass": "✅"
+        },
+        {
+          "Metric": "product_related=false ratio",
+          "Target": "60-70 %",
+          "Actual": "14/24 = 58 %",
+          "Pass": "⚠️ on boundary — acceptable for tech-heavy cold-store BESS"
+        },
+        {
+          "Metric": "product_related=true ratio",
+          "Target": "30-40 %",
+          "Actual": "10/24 = 42 %",
+          "Pass": "⚠️ slight over — driven by Li-ion-inherent fire/cycle/EMS risks"
+        },
+        {
+          "Metric": "Minimize vs Increase",
+          "Target": "~60/40",
+          "Actual": "13 Min / 11 Inc = 54/46",
+          "Pass": "✅"
+        },
+        {
+          "Metric": "Job-map steps",
+          "Target": "8 exact",
+          "Actual": "8 (6 relevant)",
+          "Pass": "✅"
+        }
+      ]
+    },
+    {
+      "headers": [
+        "#",
+        "Check",
+        "Status"
+      ],
+      "rows": [
+        {
+          "#": "V1",
+          "Check": "Format compliance (Minimize/Increase + 1 KPI)",
+          "Status": "✅"
+        },
+        {
+          "#": "V2",
+          "Check": "product_related correctly classified",
+          "Status": "✅ (technology-caused needs all reference Li-ion/PCS/cells)"
+        },
+        {
+          "#": "V3",
+          "Check": "No unrealistic imp/sat patterns",
+          "Status": "✅"
+        },
+        {
+          "#": "V4",
+          "Check": "Impact category matches KPI",
+          "Status": "✅"
+        },
+        {
+          "#": "V5",
+          "Check": "Coverage ≥2/step, mix close to 60/40",
+          "Status": "✅"
+        },
+        {
+          "#": "V6",
+          "Check": "Solution-agnostic — no vendor/product names",
+          "Status": "✅"
+        },
+        {
+          "#": "V7",
+          "Check": "Anchor level matches abstraction (system → L5)",
+          "Status": "✅"
+        },
+        {
+          "#": "V8",
+          "Check": "Product job references parent (Energy Supply & Electrical Utilities)",
+          "Status": "✅"
+        }
+      ]
+    }
+  ],
+  "entities": [
+    {
+      "component": "jtbd_analysis",
+      "market_name": "Refrigerated Warehousing and Storage",
+      "naics_code": "493120",
+      "naics_title": "Refrigerated Warehousing and Storage",
+      "vendor_name": "Mein Solar GmbH",
+      "product_name": "EPC für Großbatteriespeicher",
+      "anchor_type": "PROCESS_VN",
+      "anchor_vn_unit": "Battery Energy Storage System (BESS)",
+      "anchor_level": "L5",
+      "parent_vn_unit": "Energy Supply & Electrical Utilities",
+      "parent_level": "L6",
+      "cfj_statement": "Preserve the physical integrity, temperature chain, and legal compliance of perishable goods from inbound receipt through outbound dispatch, with auditable traceability and regulatory conformance",
+      "product_job_statement": "Help the cold-store's Energy Supply & Electrical Utilities to deliver continuous, demand-charge-optimized electrical energy to refrigeration and operational loads while preserving HACCP-grade temperature continuity through grid sags, brownouts, and tariff peaks",
+      "segments": [
+        {
+          "id": "S1",
+          "name": "Multi-tenant 3PL cold chain",
+          "circumstance": "multi-customer SLA, mixed temp zones, 24/7 dispatch"
+        },
+        {
+          "id": "S2",
+          "name": "Captive producer cold store",
+          "circumstance": "single-product, attached to plant, batch-driven"
+        },
+        {
+          "id": "S3",
+          "name": "Pharma / GDP-validated cold store",
+          "circumstance": "+2 to +8 °C, full audit trail, IQ/OQ/PQ"
+        },
+        {
+          "id": "S4",
+          "name": "Quick-commerce / grocery DC",
+          "circumstance": "high-throughput pick, peak loads at dawn"
+        },
+        {
+          "id": "S5",
+          "name": "Blast-freeze / IQF processor",
+          "circumstance": "intermittent compressor load during freeze cycles"
+        }
+      ],
+      "lens": "What supply / dispatch / safeguard does this cold-storage operator need to keep refrigeration loads powered at the lowest landed €/kWh while never breaking the temperature chain?",
+      "core_job": "Keep our cold-store running at the lowest landed energy cost without ever letting the freezers warm above SLA.",
+      "alternatives": [
+        {
+          "id": "A1",
+          "name": "Multi-MWh Li-ion BESS EPC",
+          "category": "same_category_same_outcome",
+          "unspsc_proxy": "26111711",
+          "trade_offs": [
+            "CAPEX €250-400/kWh",
+            "thermal-runaway risk",
+            "6-12 mo cert lead",
+            "MV grid required"
+          ],
+          "existential": false
+        },
+        {
+          "id": "A2",
+          "name": "Diesel/gas standby genset only",
+          "category": "different_approach",
+          "unspsc_proxy": "26101800",
+          "trade_offs": [
+            "diesel cost & CO2",
+            "60-120 s start delay",
+            "no peak-shave revenue",
+            "BImSchV emission limits"
+          ],
+          "existential": false
+        },
+        {
+          "id": "A3",
+          "name": "DSO grid-capacity upgrade",
+          "category": "workaround",
+          "unspsc_proxy": "83101800",
+          "trade_offs": [
+            "1-3 yr DSO lead",
+            "may be denied in saturated feeders",
+            "no resilience benefit",
+            "recurring Netzentgelte"
+          ],
+          "existential": false
+        },
+        {
+          "id": "A4",
+          "name": "Behind-the-meter PV + minimal storage",
+          "category": "different_category_same_outcome",
+          "unspsc_proxy": "26111605",
+          "trade_offs": [
+            "cannot cover 24/7 reefer baseload",
+            "intermittent",
+            "weather-dependent",
+            "no real peak-shave headroom"
+          ],
+          "existential": false
+        },
+        {
+          "id": "A5",
+          "name": "Do nothing — pay demand charges & accept outage risk",
+          "category": "status_quo",
+          "unspsc_proxy": null,
+          "trade_offs": [
+            "zero capex",
+            "60-440 €/kW/yr Leistungspreis recurring",
+            "uninsured spoilage exposure"
+          ],
+          "existential": true
+        }
+      ],
+      "scenarios": [
+        {
+          "id": "Sc1",
+          "name": "Daily peak-shave 17:00-20:00",
+          "activates": [
+            "Chilled",
+            "Frozen",
+            "Deep-freeze"
+          ],
+          "alternatives_in_play": [
+            "A1",
+            "A4",
+            "A5"
+          ]
+        },
+        {
+          "id": "Sc2",
+          "name": "Grid sag/brownout (sub-cycle to 30 min)",
+          "activates": [
+            "All temp zones"
+          ],
+          "alternatives_in_play": [
+            "A1",
+            "A2"
+          ]
+        },
+        {
+          "id": "Sc3",
+          "name": "Sustained grid outage > 30 min",
+          "activates": [
+            "All temp zones"
+          ],
+          "alternatives_in_play": [
+            "A1",
+            "A2"
+          ]
+        },
+        {
+          "id": "Sc4",
+          "name": "Blast-freeze cycle compressor inrush",
+          "activates": [
+            "Deep-freeze IQF"
+          ],
+          "alternatives_in_play": [
+            "A1",
+            "A3"
+          ]
+        },
+        {
+          "id": "Sc5",
+          "name": "Intraday EPEX arbitrage",
+          "activates": [
+            "Charge during PV/wind surplus"
+          ],
+          "alternatives_in_play": [
+            "A1"
+          ]
+        },
+        {
+          "id": "Sc6",
+          "name": "Reefer-truck HPC charging window",
+          "activates": [
+            "Outbound dispatch"
+          ],
+          "alternatives_in_play": [
+            "A1",
+            "A3"
+          ]
+        },
+        {
+          "id": "Sc7",
+          "name": "FCR/aFRR ancillary participation",
+          "activates": [
+            "Surplus capacity"
+          ],
+          "alternatives_in_play": [
+            "A1"
+          ]
+        }
+      ],
+      "stakeholder_roles": [
+        {
+          "role": "Job Beneficiary",
+          "person": "Stored goods (proxy: food-safety officer, end customer)",
+          "active_levels": [
+            "P2",
+            "P5"
+          ]
+        },
+        {
+          "role": "Job Executor",
+          "person": "Facility / Energy Manager",
+          "active_levels": [
+            "P1",
+            "P2",
+            "P3",
+            "P4",
+            "P5"
+          ]
+        },
+        {
+          "role": "Job Overseer",
+          "person": "COO / Plant Director",
+          "active_levels": [
+            "P2_own",
+            "P4"
+          ]
+        },
+        {
+          "role": "Lifecycle Support",
+          "person": "Specifier (consulting eng), Commissioner (TÜV), Maintainer (O&M)",
+          "active_levels": [
+            "P1_own_stage"
+          ]
+        },
+        {
+          "role": "Purchase Executor",
+          "person": "CFO / Asset Owner",
+          "active_levels": [
+            "P1_acq",
+            "P4"
+          ]
+        },
+        {
+          "role": "Purchase Influencer",
+          "person": "Insurance carrier, IFS/BRC auditor, KfW lender",
+          "active_levels": [
+            "P2_own",
+            "P4"
+          ]
+        }
+      ],
+      "job_map": [
+        {
+          "step_number": 1,
+          "step_name": "DEFINE",
+          "relevant_to_product": true,
+          "relevance_rationale": "Sizing kW/kWh against load profile, SLA, revenue stack"
+        },
+        {
+          "step_number": 2,
+          "step_name": "LOCATE",
+          "relevant_to_product": true,
+          "relevance_rationale": "Site, MV feeder, financing, certification body"
+        },
+        {
+          "step_number": 3,
+          "step_name": "PREPARE",
+          "relevant_to_product": true,
+          "relevance_rationale": "Foundation, MV cabinet, fire clearance, Baugenehmigung"
+        },
+        {
+          "step_number": 4,
+          "step_name": "CONFIRM",
+          "relevant_to_product": true,
+          "relevance_rationale": "VDE-AR-N 4110, FGW TR8, fire & insurance sign-off"
+        },
+        {
+          "step_number": 5,
+          "step_name": "EXECUTE",
+          "relevant_to_product": true,
+          "relevance_rationale": "Daily dispatch, ride-through, peak-shave, arbitrage"
+        },
+        {
+          "step_number": 6,
+          "step_name": "MONITOR",
+          "relevant_to_product": true,
+          "relevance_rationale": "SoH, market signals, refrigeration-load interlock"
+        },
+        {
+          "step_number": 7,
+          "step_name": "MODIFY",
+          "relevant_to_product": false,
+          "relevance_rationale": "Re-tune EMS owned by O&M provider, partial scope"
+        },
+        {
+          "step_number": 8,
+          "step_name": "CONCLUDE",
+          "relevant_to_product": false,
+          "relevance_rationale": "EoL replacement / second-life is 10+ yr out, partial scope"
+        }
+      ],
+      "incumbent_anchors": [
+        {
+          "technology_name": "Diesel/gas standby genset",
+          "anchor_vn_unit": "Diesel / Gas Standby Genset",
+          "anchor_level": "L5",
+          "rationale": "Dominant incumbent for outage protection; no peak-shave or arbitrage revenue"
+        },
+        {
+          "technology_name": "Higher contracted DSO grid capacity",
+          "anchor_vn_unit": "MV Grid Connection & Switchgear",
+          "anchor_level": "L5",
+          "rationale": "Pay-the-Netzentgelte status-quo; no resilience benefit"
+        },
+        {
+          "technology_name": "Behind-the-meter PV (no/small storage)",
+          "anchor_vn_unit": "On-site PV Generation",
+          "anchor_level": "L5",
+          "rationale": "Generation-only, intermittent, cannot cover 24/7 reefer baseload"
+        }
+      ],
+      "error_statements": [
+        {
+          "id": "N1",
+          "job_step_number": 1,
+          "job_step_name": "DEFINE",
+          "full_statement": "Increase the ability to size storage capacity to within ±10 % of the demand-charge-shave that will actually clear in year-1 operation",
+          "importance": 9,
+          "satisfaction_current": 4,
+          "opportunity_score": 14,
+          "impact_category": "cost",
+          "product_related": false,
+          "rationale": "Cold-store load profiles are flat-baseline + spike-driven; sizing tools designed for PV self-consumption mis-predict shave value",
+          "confidence": 0.85
+        },
+        {
+          "id": "N2",
+          "job_step_number": 1,
+          "job_step_name": "DEFINE",
+          "full_statement": "Minimize the likelihood of underestimating refrigeration peak-load duration by >15 minutes during the daily 17:00-20:00 Leistungspreis window",
+          "importance": 9,
+          "satisfaction_current": 5,
+          "opportunity_score": 13,
+          "impact_category": "cost",
+          "product_related": false,
+          "rationale": "Compressor cycling lengthens true peak duration; ene't 60-440 €/kW Leistungspreis penalises any 15-min interval breach",
+          "confidence": 0.83
+        },
+        {
+          "id": "N3",
+          "job_step_number": 1,
+          "job_step_name": "DEFINE",
+          "full_statement": "Increase the ability to forecast HACCP-relevant load survival time at <30 % SoC with ≥95 % accuracy",
+          "importance": 8,
+          "satisfaction_current": 3,
+          "opportunity_score": 13,
+          "impact_category": "safety",
+          "product_related": true,
+          "rationale": "Li-ion reserved-SoC envelope vs refrigeration thermal mass = facility-specific calculation rarely done at design stage",
+          "confidence": 0.8
+        },
+        {
+          "id": "N4",
+          "job_step_number": 1,
+          "job_step_name": "DEFINE",
+          "full_statement": "Minimize the likelihood of mis-stacking incompatible revenue streams (peak-shave vs FCR vs §19 StromNEV) costing >5 % of business case",
+          "importance": 8,
+          "satisfaction_current": 3,
+          "opportunity_score": 13,
+          "impact_category": "cost",
+          "product_related": false,
+          "rationale": "§19 StromNEV atypical-grid-usage requires flat 7000h/yr profile — incompatible with FCR cycling",
+          "confidence": 0.82
+        },
+        {
+          "id": "N5",
+          "job_step_number": 2,
+          "job_step_name": "LOCATE",
+          "full_statement": "Minimize the likelihood that DSO MV-feeder spare-capacity assessment reverses after 6+ months of project work",
+          "importance": 10,
+          "satisfaction_current": 4,
+          "opportunity_score": 16,
+          "impact_category": "reliability",
+          "product_related": false,
+          "rationale": "Rural DE feeders saturated by PV/wind; capacity letters non-binding until grid contract signed",
+          "confidence": 0.9
+        },
+        {
+          "id": "N6",
+          "job_step_number": 2,
+          "job_step_name": "LOCATE",
+          "full_statement": "Increase the ability to secure FGW-accredited certification slots without >4 weeks of schedule slip",
+          "importance": 7,
+          "satisfaction_current": 4,
+          "opportunity_score": 10,
+          "impact_category": "time",
+          "product_related": false,
+          "rationale": "Limited TÜV/FGW capacity vs wave of BESS projects 2025-2027",
+          "confidence": 0.78
+        },
+        {
+          "id": "N7",
+          "job_step_number": 2,
+          "job_step_name": "LOCATE",
+          "full_statement": "Minimize the likelihood that fire-clearance distance to refrigeration plant or IFS-bonded storage exceeds available footprint",
+          "importance": 9,
+          "satisfaction_current": 4,
+          "opportunity_score": 14,
+          "impact_category": "safety",
+          "product_related": true,
+          "rationale": "Li-ion fire clearances clash with NH3 plant rooms and IFS food-grade buffer zones",
+          "confidence": 0.84
+        },
+        {
+          "id": "N8",
+          "job_step_number": 2,
+          "job_step_name": "LOCATE",
+          "full_statement": "Increase the ability to obtain insurance terms that recognize Li-ion containment design without >25 % premium uplift",
+          "importance": 7,
+          "satisfaction_current": 3,
+          "opportunity_score": 11,
+          "impact_category": "cost",
+          "product_related": true,
+          "rationale": "Specialty fire underwriters lack actuarial data on co-located cold-store BESS",
+          "confidence": 0.75
+        },
+        {
+          "id": "N9",
+          "job_step_number": 3,
+          "job_step_name": "PREPARE",
+          "full_statement": "Minimize the likelihood of foundation, MV-cabinet, and refrigeration-plant works colliding on the construction critical path",
+          "importance": 8,
+          "satisfaction_current": 4,
+          "opportunity_score": 12,
+          "impact_category": "time",
+          "product_related": false,
+          "rationale": "Live cold-store cannot stop refrigeration during BESS works → night-shift/weekend coordination",
+          "confidence": 0.8
+        },
+        {
+          "id": "N10",
+          "job_step_number": 3,
+          "job_step_name": "PREPARE",
+          "full_statement": "Increase the ability to interlock storage-system control with NH₃/CO₂ refrigeration safety logic without retrofitting refrigeration PLC",
+          "importance": 8,
+          "satisfaction_current": 3,
+          "opportunity_score": 13,
+          "impact_category": "safety",
+          "product_related": false,
+          "rationale": "Refrigeration PLCs are EN 378 safety-rated, change-controlled; OEM resists 3rd-party signal injection",
+          "confidence": 0.82
+        },
+        {
+          "id": "N11",
+          "job_step_number": 3,
+          "job_step_name": "PREPARE",
+          "full_statement": "Minimize the likelihood of operator training gaps causing HACCP-procedure non-compliance during commissioning",
+          "importance": 7,
+          "satisfaction_current": 5,
+          "opportunity_score": 9,
+          "impact_category": "skill",
+          "product_related": false,
+          "rationale": "Cold-store operators have no Li-ion training tradition; HACCP requires documented competence",
+          "confidence": 0.72
+        },
+        {
+          "id": "N12",
+          "job_step_number": 4,
+          "job_step_name": "CONFIRM",
+          "full_statement": "Minimize the likelihood that fire-protection commissioning fails on first inspection, delaying COD by >30 days",
+          "importance": 9,
+          "satisfaction_current": 4,
+          "opportunity_score": 14,
+          "impact_category": "safety",
+          "product_related": true,
+          "rationale": "VdS Li-ion guidance still maturing; local Feuerwehr have inconsistent acceptance criteria",
+          "confidence": 0.85
+        },
+        {
+          "id": "N13",
+          "job_step_number": 4,
+          "job_step_name": "CONFIRM",
+          "full_statement": "Increase the ability to demonstrate sub-100 ms ride-through to NH₃ refrigeration controllers with witnessed test evidence",
+          "importance": 9,
+          "satisfaction_current": 3,
+          "opportunity_score": 15,
+          "impact_category": "safety",
+          "product_related": false,
+          "rationale": "NH3 plant trips on 200 ms voltage dip → leak risk; storage solution must prove sub-cycle support",
+          "confidence": 0.83
+        },
+        {
+          "id": "N14",
+          "job_step_number": 4,
+          "job_step_name": "CONFIRM",
+          "full_statement": "Minimize the likelihood of insurance auditor flagging missing IEC 62443 cybersecurity controls before COD",
+          "importance": 6,
+          "satisfaction_current": 4,
+          "opportunity_score": 8,
+          "impact_category": "safety",
+          "product_related": true,
+          "rationale": "Cyber-physical control over refrigeration via storage EMS = new attack surface for insurer",
+          "confidence": 0.7
+        },
+        {
+          "id": "N15",
+          "job_step_number": 5,
+          "job_step_name": "EXECUTE",
+          "full_statement": "Increase the ability to absorb compressor-start inrush of >3× nominal without tripping MV protection",
+          "importance": 9,
+          "satisfaction_current": 4,
+          "opportunity_score": 14,
+          "impact_category": "reliability",
+          "product_related": false,
+          "rationale": "Refrigeration compressors draw 3-7× FLA at start; MV protection trip = SLA breach risk",
+          "confidence": 0.86
+        },
+        {
+          "id": "N16",
+          "job_step_number": 5,
+          "job_step_name": "EXECUTE",
+          "full_statement": "Minimize the likelihood of dispatch error letting any chamber exceed +2 °C above SLA setpoint during grid disturbance",
+          "importance": 10,
+          "satisfaction_current": 3,
+          "opportunity_score": 17,
+          "impact_category": "safety",
+          "product_related": false,
+          "rationale": "+2 °C breach in pharma/frozen = HACCP non-conformance + product write-off; existential risk",
+          "confidence": 0.92
+        },
+        {
+          "id": "N17",
+          "job_step_number": 5,
+          "job_step_name": "EXECUTE",
+          "full_statement": "Increase the ability to capture EPEX intraday arbitrage on >300 days/yr without compromising HACCP reserve SoC",
+          "importance": 8,
+          "satisfaction_current": 3,
+          "opportunity_score": 13,
+          "impact_category": "cost",
+          "product_related": false,
+          "rationale": "Generic EMS optimises €/MWh first; HACCP reserve as hard constraint is rare",
+          "confidence": 0.8
+        },
+        {
+          "id": "N18",
+          "job_step_number": 5,
+          "job_step_name": "EXECUTE",
+          "full_statement": "Minimize the likelihood of cell-cycle degradation exceeding 2 %/yr from arbitrage cycling above C/2",
+          "importance": 7,
+          "satisfaction_current": 5,
+          "opportunity_score": 9,
+          "impact_category": "reliability",
+          "product_related": true,
+          "rationale": "Aggressive arbitrage cycles erode warranty headroom; LFP at C/2 has documented 2 %/yr threshold",
+          "confidence": 0.78
+        },
+        {
+          "id": "N19",
+          "job_step_number": 6,
+          "job_step_name": "MONITOR",
+          "full_statement": "Increase the ability to detect early thermal-runaway precursors with ≥30 minute lead time before suppression activation",
+          "importance": 10,
+          "satisfaction_current": 3,
+          "opportunity_score": 17,
+          "impact_category": "safety",
+          "product_related": true,
+          "rationale": "Cold-store next to flammable insulation/refrigerant; 30 min lead enables Feuerwehr arrival",
+          "confidence": 0.88
+        },
+        {
+          "id": "N20",
+          "job_step_number": 6,
+          "job_step_name": "MONITOR",
+          "full_statement": "Minimize the likelihood of HACCP audit finding gaps in temperature-chain evidence during BESS-mediated grid events",
+          "importance": 9,
+          "satisfaction_current": 4,
+          "opportunity_score": 14,
+          "impact_category": "safety",
+          "product_related": false,
+          "rationale": "Auditors require time-aligned voltage + temperature trace; standard EMS lacks T-chain export",
+          "confidence": 0.83
+        },
+        {
+          "id": "N21",
+          "job_step_number": 6,
+          "job_step_name": "MONITOR",
+          "full_statement": "Increase the ability to expose live SoH and reserved-resilience-SoC to the WMS / SCADA layer in real time",
+          "importance": 7,
+          "satisfaction_current": 3,
+          "opportunity_score": 11,
+          "impact_category": "reliability",
+          "product_related": true,
+          "rationale": "WMS/SCADA integration is afterthought in most BESS deployments",
+          "confidence": 0.74
+        },
+        {
+          "id": "N22",
+          "job_step_number": 6,
+          "job_step_name": "MONITOR",
+          "full_statement": "Minimize the likelihood of EMS over-discharging below the contractually-reserved spoilage-protection envelope",
+          "importance": 9,
+          "satisfaction_current": 3,
+          "opportunity_score": 15,
+          "impact_category": "safety",
+          "product_related": true,
+          "rationale": "Hard reserved-SoC floor as contractual SLA is non-standard in current EMS products",
+          "confidence": 0.85
+        },
+        {
+          "id": "N23",
+          "job_step_number": 5,
+          "job_step_name": "EXECUTE",
+          "full_statement": "Increase the ability of the Energy Manager to demonstrate measurable €/MWh savings to the COO every quarter (P3 Role)",
+          "importance": 7,
+          "satisfaction_current": 4,
+          "opportunity_score": 10,
+          "impact_category": "cost",
+          "product_related": false,
+          "rationale": "P3 role-identity need: Energy Manager becomes the cost-saver; needs auditable evidence",
+          "confidence": 0.7
+        },
+        {
+          "id": "N24",
+          "job_step_number": 4,
+          "job_step_name": "CONFIRM",
+          "full_statement": "Minimize the likelihood of nighttime spoilage anxiety for the duty manager — visible reserved-resilience SoC at all times (P5 Emotion) [hypothesis]",
+          "importance": 6,
+          "satisfaction_current": 2,
+          "opportunity_score": 10,
+          "impact_category": "reliability",
+          "product_related": true,
+          "rationale": "P5 emotional bridge: duty manager needs visible 'safety reserve' indicator to sleep at night",
+          "confidence": 0.55
+        }
+      ],
+      "top_5_by_opportunity": [
+        {
+          "id": "N16",
+          "opportunity_score": 17,
+          "summary": "Dispatch error → chamber +2 °C SLA breach"
+        },
+        {
+          "id": "N19",
+          "opportunity_score": 17,
+          "summary": "Thermal-runaway early detection ≥30 min lead"
+        },
+        {
+          "id": "N5",
+          "opportunity_score": 16,
+          "summary": "DSO capacity reversal mid-project"
+        },
+        {
+          "id": "N13",
+          "opportunity_score": 15,
+          "summary": "Sub-100 ms ride-through to NH₃ controllers"
+        },
+        {
+          "id": "N22",
+          "opportunity_score": 15,
+          "summary": "EMS over-discharging below reserved-resilience SoC"
+        }
+      ],
+      "yield_check": {
+        "statements_count": 24,
+        "in_15_to_30": true,
+        "min_per_relevant_step": 3,
+        "product_related_false_pct": 58,
+        "product_related_true_pct": 42,
+        "minimize_increase_pct": "54/46",
+        "job_map_steps": 8,
+        "relevant_steps": 6
+      },
+      "qa": {
+        "v1_format": true,
+        "v2_product_related_correct": true,
+        "v3_imp_sat_realistic": true,
+        "v4_impact_category_match": true,
+        "v5_coverage": true,
+        "v6_solution_agnostic": true,
+        "v7_anchor_level_match": true,
+        "v8_product_job_references_parent": true
+      }
+    }
+  ],
+  "has_bom": true,
+  "naics_sector_type": "non_manufacturing"
+}

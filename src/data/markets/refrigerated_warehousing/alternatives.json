@@ -1,0 +1,583 @@
+{
+  "id": "FIT_refrigerated_warehousing_and_storage_sam",
+  "title": "FIT — NAICS 493120 Refrigerated Warehousing and Storage",
+  "type": "feature_market_fit",
+  "market_slug": "refrigerated_warehousing_and_storage_sam",
+  "is_per_market": true,
+  "sections": [
+    {
+      "title": "Step 09 — Technology-Level Feature-Market Fit",
+      "content": "6 technology-scope features × 1 surviving market = 6 entries. 9-ODI scoring on 1–10 scale; `overall_fit` = arithmetic mean.\n\n| # | Feature | Kano | Time | Cost | Safety | Reliab | Skill | Stress | Pain | Confid | Delight | **Overall** |\n|---|---|---|---|---|---|---|---|---|---|---|---|---|\n| F1 | Containerized Li-ion BESS Integration | must_be | 4 | 7 | 5 | 7 | 3 | 4 | 5 | 6 | 3 | **4.89** |\n| F2 | Bidirectional Power Conversion System | one_dimensional | 7 | 7 | 8 | 9 | 3 | 7 | 4 | 8 | 4 | **6.33** |\n| F3 | Medium-Voltage Grid Coupling | must_be | 3 | 4 | 7 | 7 | 3 | 5 | 3 | 6 | 2 | **4.44** |\n| F4 | Energy Management System (EMS) | attractive | 6 | 9 | 8 | 8 | 5 | 8 | 7 | 9 | 7 | **7.44** |\n| F5 | Grid-Code Certification Delivery | must_be | 5 | 4 | 8 | 7 | 7 | 8 | 6 | 8 | 3 | **6.22** |\n| F8 | Civil Works & Site Preparation | must_be | 6 | 5 | 6 | 6 | 6 | 6 | 7 | 5 | 3 | **5.56** |\n\n### Rationale (per feature)\n\n**F1 — Containerized Li-ion BESS Integration · must_be**\nKano: table-stakes — any storage EPC must deliver a containerized BESS. Primary drivers: Cost (7) peak-shave & EPEX arbitrage economics, Reliability (7) single-pre-commissioned envelope. Dragged down by Safety (5) — Li-ion fire clearance vs NH₃/CO₂ plant rooms + IFS buffer zones (N7, N12) caps the score. Supports N15 compressor inrush absorption via container-level reserve.\n\n**F2 — Bidirectional Power Conversion System · one_dimensional**\nKano: linear — more MW, more ancillary modes, more Q(U) → proportionally better. Primary drivers: Reliability (9) sub-100 ms ride-through directly answers N13 (top-5 need), Safety (8) protects NH₃ controllers from 200 ms sag trips, Confidence (8) witnessed test evidence. Skill (3) depressed because operators are food logistics, not power electronics.\n\n**F3 — Medium-Voltage Grid Coupling · must_be**\nKano: cold-store site is already MV; coupling is assumed. Primary drivers: Safety (7), Reliability (7) — protection relays prevent MV-side trip during compressor inrush (N15). Cost (4) and Time (3) low because MV coupling is a sunk EPC cost, not a savings lever. Does NOT solve N5 (DSO reversal) — that is pre-commitment risk.\n\n**F4 — EMS · attractive — HIGHEST FIT (7.44)**\nKano: DELIGHTER in this market. Cold-store operators currently run diesel+tariff-negotiation; an EMS that enforces a hard HACCP-reserved-SoC floor while optimising peak-shave / EPEX / §19 StromNEV is genuinely surprising. Primary drivers: Cost (9) unlocks revenue-stack, Confidence (9) directly answers N16 (top-1, +2 °C SLA breach) and N22 (over-discharge), Safety (8) HACCP interlock. Delight (7) — first time an energy asset defers to food-safety logic, not the reverse.\n\n**F5 — Grid-Code Certification Delivery · must_be**\nKano: legally required to energize; not optional. Primary drivers: Skill (7) removes FGW TR8 burden from food-logistics customer, Stress (8) addresses N6 certification-slot anxiety, Safety (8) and Confidence (8) — certified asset passes insurance (N8) and auditor (N14). Cost (4) low because certification is overhead the customer already expected.\n\n**F8 — Civil Works & Site Preparation · must_be**\nKano: construction is assumed. Primary drivers: Pain (7) eliminates customer coordination of Baugenehmigung + Feuerwehr + foundation + trenching — a cold-store operator has zero appetite for this. Addresses N9 (construction-path collision). Cost (5), Reliability (6) moderate; Delight (3) — civil works are invisible when done right.\n\n### Cross-market consistency notes (09b)\n\n- No other surviving markets in this analysis scope — per-market cross-check is moot for single-market run. Intra-feature check: no score-1 on Safety/Reliability for a safety-critical feature; no all-10 rows; Kano vs Safety/Confidence correlation intact (F4 attractive has the highest confidence score).\n- Feature names comply with 1.pdf: noun phrases, 2–6 words, no brand/outcome/superlative.\n\n---"
+    },
+    {
+      "title": "Step 10 — Product-Related Needs (Burleson Product Jobs)",
+      "content": "Needs that would DISAPPEAR if a fundamentally different storage medium (flow battery, flywheel, thermal) or a non-BESS alternative were chosen. Each traces to a specific Step 07 constraint. Market-level needs already in Step 06 are excluded.\n\n| # | Statement | Source Constraint | Importance | Satisfaction |\n|---|---|---|---|---|\n| PR1 | Minimize the likelihood of thermal-runaway propagation from a single LFP cell compromising the adjacent refrigeration plant or IFS-bonded food-grade storage | Li-Ion Thermal Runaway Hazard | 9.5 | 3.0 |\n| PR2 | Minimize the likelihood that fire-clearance distance imposed by Li-ion chemistry exceeds the available footprint between the refrigeration plant room and the IFS buffer zone | Fire-Protection Clearance | 8.5 | 3.5 |\n| PR3 | Increase the ability to detect early thermal-runaway precursors (off-gas, dT/dt, voltage deviation) with ≥30 minute lead time before NOVEC activation | Li-Ion Thermal Runaway Hazard | 9.5 | 3.0 |\n| PR4 | Minimize the likelihood of LFP calendar-ageing reducing reserved-resilience-SoC capacity below contracted spoilage-protection envelope before year 10 | Calendar / Cycle lifetime of LFP cells (Ambient Temperature Envelope) | 7.5 | 4.5 |\n| PR5 | Minimize the likelihood of cell-cycle degradation exceeding 2 %/yr from EPEX arbitrage cycling above C/2 eroding warranted throughput | Round-Trip Energy Losses (cycle-life budget) | 7.0 | 5.0 |\n| PR6 | Minimize the likelihood that HVAC auxiliary load during summer ambient >35 °C suppresses deliverable peak-shave capacity below sizing-case | Ambient Temperature Envelope | 6.5 | 5.0 |\n| PR7 | Minimize the likelihood that Round-Trip efficiency loss of 10–15 % erases peak-shave margin when Leistungspreis spread is <120 €/kW/yr | Round-Trip Energy Losses | 7.0 | 5.5 |\n| PR8 | Minimize the likelihood that FGW TR8 plant-certificate lead time of 6–12 months blocks cold-store seasonal COD window (pre-Oktober peak tariff) | Grid Code Certification Lead Time | 8.0 | 4.0 |\n| PR9 | Minimize the likelihood that cell-supply concentration in CN suppliers exposes the cold-store owner to CRMA/EU Battery Regulation tariff or FX shock before commissioning | Battery Supply Chain Concentration | 6.5 | 4.0 |\n| PR10 | Increase the ability to maintain reserved-resilience-SoC under insurer-audited IEC 62443 cyber controls without exposing refrigeration SCADA to the BESS EMS as an attack surface | Li-Ion Thermal Runaway Hazard (operational) + indirectly CAPEX | 6.5 | 3.5 |\n| PR11 | Minimize the likelihood that LFP deep-discharge below 5 % SoC during a sustained outage permanently degrades the resilience envelope before generator cut-in | Round-Trip Energy Losses (LFP DoD sensitivity) | 7.5 | 4.5 |\n| PR12 | Minimize the likelihood of land-footprint of 40–80 m²/MWh encroaching on truck-dock apron or refrigerated-trailer staging lane at a logistics cold-store | Land Footprint and Siting | 7.0 | 5.0 |\n\n### Litmus verification\n\nEach need above passes \"would disappear with a different mechanism\": PR1–PR3 disappear with flow battery (no thermal runaway), PR4–PR5–PR11 disappear with flywheel or CAES (no electrochemical degradation), PR6 disappears with thermal storage (tolerates ambient), PR7 is thermodynamic but is BESS-specific vs DSO upgrade (A3) which has no RTE loss, PR8 disappears with \"no storage\" or genset (A2 — BImSchV instead), PR9 disappears with non-Li chemistry, PR12 disappears with rooftop PV-only.\n\nExcluded from this list because they are MARKET needs (already in JTBD N1…N24): N5 DSO capacity reversal (applies to any grid-connected asset), N10 NH₃ PLC interlock (market integration need), N15 compressor inrush (applies to any supply), N16 dispatch SLA breach (core job), N20 HACCP audit trail (market compliance).\n\n### Affected markets\n\nAll 12 entries affect NAICS 493120 (single-market analysis). `affected_markets = [\"Refrigerated Warehousing and Storage\"]` for every entry.\n\n---"
+    },
+    {
+      "title": "Step 11 — Vendor Feature-Market Fit (Mein Solar GmbH)",
+      "content": "3 vendor-scope features × 1 market. Best incumbents selected per feature from JTBD alternative set (A2 genset, A3 DSO upgrade, A4 PV-only) + competitive alternative integrators (Voltfang, Tesvolt, Alpitronic, Kostad).\n\n| # | Feature | Kano | Vendor | Best Incumbent (score) | Incumbent tech | Advantage |\n|---|---|---|---|---|---|---|\n| V6 | Integrated PV + Storage Design Authority | attractive | 8 | 5 | Split-contract PV EPC + BESS integrator (Voltfang/Tesvolt turnkey) | **superior** |\n| V7 | On-Site Charging-Buffer Integration | attractive | 7 | 6 | Alpitronic integrated BESS+HPC (for reefer-truck HPC use case Sc6) | parity |\n| V9 | Single-Source EPC Contract Vehicle | one_dimensional | 9 | 4 | Split-contract: DSO + BESS vendor + fire consultant + civil (Voltfang packaged unit, Kostad) | **superior** |\n\n### Rationale\n\n**V6 — Integrated PV + Storage Design Authority · attractive · superior (gap 3)**\nCold-store roofs are large (5–20k m²) and often already-solar-ready. Mein Solar's PV-EPC incumbency collapses PV array + BESS into a single MV-coupling, single EMS, single FGW TR8 dossier. Vendor score 8 reflects operational PV+BESS reference; concrete spec: one FGW plant certificate vs two for split delivery. Best incumbent: a cold-store operator hiring Voltfang/Tesvolt for BESS must separately tender PV EPC — double interface risk, double certification. Incumbent score 5 reflects adequate delivery but with clear gap. Attractive: cold-store operators (food logistics) do not expect a single counterparty — it is a genuine delighter when offered.\n\n**V7 — On-Site Charging-Buffer Integration · attractive · parity (gap 1)**\nRelevant only in Sc6 (reefer-truck HPC) — not the primary revenue driver for cold-store. Vendor score 7 reflects the \"EV-Charging Buffer Configuration\" feature applied to cold-store yards with electrified reefer fleets. Alpitronic delivers comparable BESS+HPC integrated packages with documented deployments at logistics yards. Vendor advantage is not structural here because reefer-charging is a niche use-case at cold-stores and Alpitronic has dedicated HPC heritage that Mein Solar lacks. Parity verdict is fair — not every feature wins.\n\n**V9 — Single-Source EPC Contract Vehicle · one_dimensional · superior (gap 5)**\nLargest vendor advantage. Cold-store operators are food-logistics specialists — interface risk across DSO + battery OEM + PCS OEM + civil + fire consultant + certifier is exactly the burden Mein Solar absorbs. Vendor score 9: one contract, one warranty wrapper, one availability SLA covering battery, PCS, MV, software, civil. Best incumbent score 4: packaged units (Voltfang, Tesvolt) cover equipment scope but NOT MV grid works, civil, or certification — customer still tenders 3–4 separate contracts. Gap is defensible by specific contract-structure comparison, not marketing claim. One_dimensional because scope of single-source wrapper linearly reduces interface risk — broader wrapper, more reduction.\n\n### Objectivity cross-check (11b)\n\n- Superior 2 / parity 1 / inferior 0 → 67 % superior, below 70 % threshold. No systematic vendor bias.\n- Vendor scores not inflated to 10; one parity verdict reflects genuine Alpitronic strength in HPC.\n- No straw-man incumbents — V6 and V9 compared against Voltfang/Tesvolt (real market leaders); V7 against Alpitronic (genuine HPC incumbent).\n- Every rationale references concrete capability delta (one cert vs two; one contract vs four).\n- Feature names comply with 1.pdf: no \"Mein Solar\" brand, no superlatives, spec-visible noun phrases.\n\n---"
+    },
+    {
+      "title": "Summary verdict",
+      "content": "- **Highest tech fit:** F4 EMS (7.44, attractive) — directly answers N16 (+2 °C breach) and N22 (over-discharge) — and is the feature a cold-store has never been offered.\n- **Largest vendor edge:** V9 Single-Source EPC (gap 5, superior) — cold-store operator interface-risk aversion is the strongest structural pull for Mein Solar.\n- **Biggest product-related risk:** PR1 + PR3 thermal-runaway cluster (imp ≥9.5, sat ≤3) — Li-ion fire next to NH₃/food creates a hard insurer/auditor barrier that does not exist for flow-battery or flywheel alternatives. The BESS EPC thesis here depends on credible containment + early detection narrative.\n- **Adoption reality:** already_uses_technology = FALSE and adoption = emerging → this is an education-led sale against A5 (do-nothing, existential competitor).\n\n---"
+    },
+    {
+      "title": "Structured Data",
+      "content": "```json\n{\n  \"component\": \"feature_market_fit\",\n  \"market_name\": \"Refrigerated Warehousing and Storage\",\n  \"naics_code\": \"493120\",\n  \"vendor_name\": \"Mein Solar GmbH\",\n  \"product_name\": \"EPC für Großbatteriespeicher\",\n  \"technology_class\": \"Large-Scale Battery Energy Storage System EPC\",\n  \"commodity_functional_promise\": \"Deliver operational grid-connected electrical energy storage assets as turnkey capital projects with single-source engineering, procurement, construction, and grid-code certification\",\n\n  \"step_09_tech_feature_fit\": [\n    {\n      \"feature_name\": \"Containerized Li-ion BESS Integration\",\n      \"market_name\": \"Refrigerated Warehousing and Storage\",\n      \"naics_code\": \"493120\",\n      \"kano_class\": \"must_be\",\n      \"fit_score_time\": 4, \"fit_score_cost\": 7, \"fit_score_safety\": 5,\n      \"fit_score_reliability\": 7, \"fit_score_skill\": 3, \"fit_score_stress\": 4,\n      \"fit_score_pain\": 5, \"fit_score_confidence\": 6, \"fit_score_delight\": 3,\n      \"overall_fit\": 4.89,\n      \"rationale\": \"Table-stakes — every storage EPC delivers a containerized BESS, so must_be. Primary drivers: Cost (7) peak-shave and EPEX arbitrage economics; Reliability (7) pre-commissioned envelope. Safety (5) capped by Li-ion fire clearance conflict with NH3/CO2 plant rooms and IFS buffer zones (market needs N7, N12). Supports N15 compressor-inrush absorption via container-level reserve.\"\n    },\n    {\n      \"feature_name\": \"Bidirectional Power Conversion System\",\n      \"market_name\": \"Refrigerated Warehousing and Storage\",\n      \"naics_code\": \"493120\",\n      \"kano_class\": \"one_dimensional\",\n      \"fit_score_time\": 7, \"fit_score_cost\": 7, \"fit_score_safety\": 8,\n      \"fit_score_reliability\": 9, \"fit_score_skill\": 3, \"fit_score_stress\": 7,\n      \"fit_score_pain\": 4, \"fit_score_confidence\": 8, \"fit_score_delight\": 4,\n      \"overall_fit\": 6.33,\n      \"rationale\": \"Linear (one_dimensional): more MW, more ancillary modes, more Q(U) capability -> proportionally better. Reliability (9) because sub-100 ms ride-through directly answers N13 (top-5 need). Safety (8) protects NH3 refrigeration controllers from 200 ms sag trips. Confidence (8) underwritten by witnessed FGW TR3 unit test evidence. Skill (3) reflects cold-store operator population (food logistics, not power electronics).\"\n    },\n    {\n      \"feature_name\": \"Medium-Voltage Grid Coupling\",\n      \"market_name\": \"Refrigerated Warehousing and Storage\",\n      \"naics_code\": \"493120\",\n      \"kano_class\": \"must_be\",\n      \"fit_score_time\": 3, \"fit_score_cost\": 4, \"fit_score_safety\": 7,\n      \"fit_score_reliability\": 7, \"fit_score_skill\": 3, \"fit_score_stress\": 5,\n      \"fit_score_pain\": 3, \"fit_score_confidence\": 6, \"fit_score_delight\": 2,\n      \"overall_fit\": 4.44,\n      \"rationale\": \"Cold-store sites are already MV-connected; coupling is assumed (must_be). Safety (7) and Reliability (7) driven by protection relays preventing MV-side trip during compressor inrush (N15). Cost (4) and Time (3) low because coupling is sunk EPC cost, not a savings lever. Does NOT address N5 (DSO capacity reversal) — that is a pre-commitment risk outside the coupling feature.\"\n    },\n    {\n      \"feature_name\": \"Energy Management System\",\n      \"market_name\": \"Refrigerated Warehousing and Storage\",\n      \"naics_code\": \"493120\",\n      \"kano_class\": \"attractive\",\n      \"fit_score_time\": 6, \"fit_score_cost\": 9, \"fit_score_safety\": 8,\n      \"fit_score_reliability\": 8, \"fit_score_skill\": 5, \"fit_score_stress\": 8,\n      \"fit_score_pain\": 7, \"fit_score_confidence\": 9, \"fit_score_delight\": 7,\n      \"overall_fit\": 7.44,\n      \"rationale\": \"Attractive (DELIGHTER) — cold-store operators today run diesel + tariff negotiation; a hard HACCP-reserved-SoC floor layered with peak-shave + EPEX + §19 StromNEV optimisation is genuinely surprising. Cost (9) unlocks full revenue stack; Confidence (9) answers N16 (+2 °C SLA breach, top-1 opp 17) and N22 (EMS over-discharge, opp 15). Safety (8) via HACCP interlock. Delight (7) — first energy asset that defers to food-safety logic, not the reverse.\"\n    },\n    {\n      \"feature_name\": \"Grid-Code Certification Delivery\",\n      \"market_name\": \"Refrigerated Warehousing and Storage\",\n      \"naics_code\": \"493120\",\n      \"kano_class\": \"must_be\",\n      \"fit_score_time\": 5, \"fit_score_cost\": 4, \"fit_score_safety\": 8,\n      \"fit_score_reliability\": 7, \"fit_score_skill\": 7, \"fit_score_stress\": 8,\n      \"fit_score_pain\": 6, \"fit_score_confidence\": 8, \"fit_score_delight\": 3,\n      \"overall_fit\": 6.22,\n      \"rationale\": \"Must_be — legally required to energise a VDE-AR-N 4110 asset. Skill (7) removes FGW TR8 burden from food-logistics customer. Stress (8) addresses N6 certification-slot scarcity anxiety. Safety (8) and Confidence (8) because certified asset passes insurance (N8) and auditor (N14) review. Cost (4) low because certification is overhead the customer already expected to pay for.\"\n    },\n    {\n      \"feature_name\": \"Civil Works and Site Preparation\",\n      \"market_name\": \"Refrigerated Warehousing and Storage\",\n      \"naics_code\": \"493120\",\n      \"kano_class\": \"must_be\",\n      \"fit_score_time\": 6, \"fit_score_cost\": 5, \"fit_score_safety\": 6,\n      \"fit_score_reliability\": 6, \"fit_score_skill\": 6, \"fit_score_stress\": 6,\n      \"fit_score_pain\": 7, \"fit_score_confidence\": 5, \"fit_score_delight\": 3,\n      \"overall_fit\": 5.56,\n      \"rationale\": \"Must_be — construction is assumed in an EPC scope. Pain (7) because it eliminates customer coordination of Baugenehmigung + Feuerwehr + foundation + trenching — a cold-store operator has zero appetite for this. Directly addresses N9 (construction-path collision with refrigeration works). Cost (5), Reliability (6) moderate; Delight (3) — civil works are invisible when done right.\"\n    }\n  ],\n\n  \"step_10_product_related_needs\": [\n    {\n      \"id\": \"PR1\",\n      \"statement\": \"Minimize the likelihood of thermal-runaway propagation from a single LFP cell compromising the adjacent refrigeration plant or IFS-bonded food-grade storage\",\n      \"source_constraint\": \"Li-Ion Thermal Runaway Hazard\",\n      \"affected_markets\": [\"Refrigerated Warehousing and Storage\"],\n      \"importance\": 9.5,\n      \"satisfaction_current\": 3.0\n    },\n    {\n      \"id\": \"PR2\",\n      \"statement\": \"Minimize the likelihood that fire-clearance distance imposed by Li-ion chemistry exceeds the available footprint between the refrigeration plant room and the IFS buffer zone\",\n      \"source_constraint\": \"Fire-Protection Clearance\",\n      \"affected_markets\": [\"Refrigerated Warehousing and Storage\"],\n      \"importance\": 8.5,\n      \"satisfaction_current\": 3.5\n    },\n    {\n      \"id\": \"PR3\",\n      \"statement\": \"Increase the ability to detect early thermal-runaway precursors (off-gas, dT/dt, voltage deviation) with >=30 minute lead time before NOVEC activation\",\n      \"source_constraint\": \"Li-Ion Thermal Runaway Hazard\",\n      \"affected_markets\": [\"Refrigerated Warehousing and Storage\"],\n      \"importance\": 9.5,\n      \"satisfaction_current\": 3.0\n    },\n    {\n      \"id\": \"PR4\",\n      \"statement\": \"Minimize the likelihood of LFP calendar-ageing reducing reserved-resilience-SoC capacity below contracted spoilage-protection envelope before year 10\",\n      \"source_constraint\": \"Ambient Temperature Envelope\",\n      \"affected_markets\": [\"Refrigerated Warehousing and Storage\"],\n      \"importance\": 7.5,\n      \"satisfaction_current\": 4.5\n    },\n    {\n      \"id\": \"PR5\",\n      \"statement\": \"Minimize the likelihood of cell-cycle degradation exceeding 2 %/yr from EPEX arbitrage cycling above C/2 eroding warranted throughput\",\n      \"source_constraint\": \"Round-Trip Energy Losses\",\n      \"affected_markets\": [\"Refrigerated Warehousing and Storage\"],\n      \"importance\": 7.0,\n      \"satisfaction_current\": 5.0\n    },\n    {\n      \"id\": \"PR6\",\n      \"statement\": \"Minimize the likelihood that HVAC auxiliary load during summer ambient >35 C suppresses deliverable peak-shave capacity below sizing-case\",\n      \"source_constraint\": \"Ambient Temperature Envelope\",\n      \"affected_markets\": [\"Refrigerated Warehousing and Storage\"],\n      \"importance\": 6.5,\n      \"satisfaction_current\": 5.0\n    },\n    {\n      \"id\": \"PR7\",\n      \"statement\": \"Minimize the likelihood that Round-Trip efficiency loss of 10-15 % erases peak-shave margin when Leistungspreis spread is <120 EUR/kW/yr\",\n      \"source_constraint\": \"Round-Trip Energy Losses\",\n      \"affected_markets\": [\"Refrigerated Warehousing and Storage\"],\n      \"importance\": 7.0,\n      \"satisfaction_current\": 5.5\n    },\n    {\n      \"id\": \"PR8\",\n      \"statement\": \"Minimize the likelihood that FGW TR8 plant-certificate lead time of 6-12 months blocks cold-store seasonal COD window (pre-Oktober peak tariff)\",\n      \"source_constraint\": \"Grid Code Certification Lead Time\",\n      \"affected_markets\": [\"Refrigerated Warehousing and Storage\"],\n      \"importance\": 8.0,\n      \"satisfaction_current\": 4.0\n    },\n    {\n      \"id\": \"PR9\",\n      \"statement\": \"Minimize the likelihood that cell-supply concentration in Chinese suppliers exposes the cold-store owner to CRMA/EU Battery Regulation tariff or FX shock before commissioning\",\n      \"source_constraint\": \"Battery Supply Chain Concentration\",\n      \"affected_markets\": [\"Refrigerated Warehousing and Storage\"],\n      \"importance\": 6.5,\n      \"satisfaction_current\": 4.0\n    },\n    {\n      \"id\": \"PR10\",\n      \"statement\": \"Increase the ability to maintain reserved-resilience-SoC under insurer-audited IEC 62443 cyber controls without exposing refrigeration SCADA to the BESS EMS as an attack surface\",\n      \"source_constraint\": \"Li-Ion Thermal Runaway Hazard\",\n      \"affected_markets\": [\"Refrigerated Warehousing and Storage\"],\n      \"importance\": 6.5,\n      \"satisfaction_current\": 3.5\n    },\n    {\n      \"id\": \"PR11\",\n      \"statement\": \"Minimize the likelihood that LFP deep-discharge below 5 % SoC during a sustained outage permanently degrades the resilience envelope before generator cut-in\",\n      \"source_constraint\": \"Round-Trip Energy Losses\",\n      \"affected_markets\": [\"Refrigerated Warehousing and Storage\"],\n      \"importance\": 7.5,\n      \"satisfaction_current\": 4.5\n    },\n    {\n      \"id\": \"PR12\",\n      \"statement\": \"Minimize the likelihood of land-footprint of 40-80 m2/MWh encroaching on truck-dock apron or refrigerated-trailer staging lane at a logistics cold-store\",\n      \"source_constraint\": \"Land Footprint and Siting\",\n      \"affected_markets\": [\"Refrigerated Warehousing and Storage\"],\n      \"importance\": 7.0,\n      \"satisfaction_current\": 5.0\n    }\n  ],\n\n  \"step_11_vendor_feature_comparison\": [\n    {\n      \"feature_name\": \"Integrated PV and Storage Design Authority\",\n      \"feature_description\": \"Deliver a single MV-coupled, single FGW TR8 certified PV+BESS asset by carrying PV-EPC design authority into the storage scope\",\n      \"market_name\": \"Refrigerated Warehousing and Storage\",\n      \"naics_code\": \"493120\",\n      \"vendor_score\": 8,\n      \"best_incumbent_score\": 5,\n      \"best_incumbent_technology\": \"Split-contract PV EPC + BESS integrator (Voltfang / Tesvolt turnkey units)\",\n      \"advantage\": \"superior\",\n      \"kano_class\": \"attractive\",\n      \"rationale\": \"Cold-store roofs are 5-20k m2 and typically PV-ready. Mein Solar collapses PV array + BESS into one MV coupling, one EMS, one FGW plant certificate, one warranty wrapper — concrete spec: one certificate vs two for split delivery. Voltfang/Tesvolt packaged units deliver BESS only; customer must separately tender PV EPC, doubling interface risk. Attractive because cold-store operators (food logistics) do not expect a single counterparty across PV and BESS — it is a genuine delighter. Superior with 3-point gap, exceeding 1-point threshold.\"\n    },\n    {\n      \"feature_name\": \"On-Site Charging-Buffer Integration\",\n      \"feature_description\": \"Size BESS as HPC buffer for electrified reefer-truck yard charging to avoid DSO feeder upgrade\",\n      \"market_name\": \"Refrigerated Warehousing and Storage\",\n      \"naics_code\": \"493120\",\n      \"vendor_score\": 7,\n      \"best_incumbent_score\": 6,\n      \"best_incumbent_technology\": \"Alpitronic integrated BESS+HPC units deployed at logistics yards\",\n      \"advantage\": \"parity\",\n      \"kano_class\": \"attractive\",\n      \"rationale\": \"Relevant only in Sc6 (reefer-truck HPC dispatch window) — not the primary revenue driver at a cold-store. Mein Solar's EV-charging-buffer feature transfers to logistics-yard HPC at 150-350 kW per dispenser on constrained feeders. Alpitronic has dedicated HPC heritage and documented logistics-yard deployments that Mein Solar lacks; vendor advantage is not structural here. Score gap 1 = parity; a balanced assessment acknowledges incumbent strength in this niche.\"\n    },\n    {\n      \"feature_name\": \"Single-Source EPC Contract Vehicle\",\n      \"feature_description\": \"Consolidate DSO coordination, battery OEM, PCS, civil, fire, and certification into one contract, one schedule, one availability SLA\",\n      \"market_name\": \"Refrigerated Warehousing and Storage\",\n      \"naics_code\": \"493120\",\n      \"vendor_score\": 9,\n      \"best_incumbent_score\": 4,\n      \"best_incumbent_technology\": \"Split-contract: Voltfang/Tesvolt packaged BESS unit + separate DSO + civil + fire + certifier tenders\",\n      \"advantage\": \"superior\",\n      \"kano_class\": \"one_dimensional\",\n      \"rationale\": \"Largest vendor advantage. Cold-store operators are food-logistics specialists; interface risk across DSO + battery OEM + PCS OEM + civil + fire consultant + certifier is exactly what a single-source EPC removes. Mein Solar score 9: one contract, one warranty wrapper covering battery + PCS + MV + software + civil. Incumbent score 4: Voltfang/Tesvolt packaged units cover equipment only, not MV grid works, civil, or FGW certification — customer still tenders 3-4 separate contracts. One_dimensional because scope of the wrapper linearly reduces interface risk. Gap 5 far exceeds 1-point threshold.\"\n    }\n  ],\n\n  \"summary\": {\n    \"highest_tech_fit_feature\": \"Energy Management System\",\n    \"highest_tech_fit_score\": 7.44,\n    \"highest_tech_fit_kano\": \"attractive\",\n    \"largest_vendor_advantage_feature\": \"Single-Source EPC Contract Vehicle\",\n    \"largest_vendor_advantage_gap\": 5,\n    \"critical_product_related_risk\": \"PR1 + PR3 thermal-runaway cluster — importance 9.5, satisfaction 3.0, Li-ion fire next to NH3/food creates a hard insurer/auditor barrier absent in non-Li alternatives\",\n    \"adoption_context\": \"already_uses_technology=FALSE, adoption=emerging — education-led sale against A5 (do-nothing) existential competitor\"\n  },\n\n  \"qa\": {\n    \"step_09_features_assessed\": 6,\n    \"step_09_kano_distribution\": {\"must_be\": 4, \"one_dimensional\": 1, \"attractive\": 1, \"indifferent\": 0, \"reverse\": 0},\n    \"step_09_overall_fit_recomputed\": true,\n    \"step_10_needs_count\": 12,\n    \"step_10_litmus_pass_pct\": 100,\n    \"step_10_constraints_with_at_least_one_need\": 6,\n    \"step_11_features_assessed\": 3,\n    \"step_11_advantage_distribution\": {\"superior\": 2, \"parity\": 1, \"inferior\": 0},\n    \"step_11_bias_check\": \"67% superior, below 70% threshold — no systematic bias flagged\",\n    \"feature_names_1pdf_compliant\": true\n  }\n}\n```"
+    }
+  ],
+  "tables": [
+    {
+      "headers": [
+        "#",
+        "Feature",
+        "Kano",
+        "Time",
+        "Cost",
+        "Safety",
+        "Reliab",
+        "Skill",
+        "Stress",
+        "Pain",
+        "Confid",
+        "Delight",
+        "**Overall**"
+      ],
+      "rows": [
+        {
+          "#": "F1",
+          "Feature": "Containerized Li-ion BESS Integration",
+          "Kano": "must_be",
+          "Time": "4",
+          "Cost": "7",
+          "Safety": "5",
+          "Reliab": "7",
+          "Skill": "3",
+          "Stress": "4",
+          "Pain": "5",
+          "Confid": "6",
+          "Delight": "3",
+          "**Overall**": "**4.89**"
+        },
+        {
+          "#": "F2",
+          "Feature": "Bidirectional Power Conversion System",
+          "Kano": "one_dimensional",
+          "Time": "7",
+          "Cost": "7",
+          "Safety": "8",
+          "Reliab": "9",
+          "Skill": "3",
+          "Stress": "7",
+          "Pain": "4",
+          "Confid": "8",
+          "Delight": "4",
+          "**Overall**": "**6.33**"
+        },
+        {
+          "#": "F3",
+          "Feature": "Medium-Voltage Grid Coupling",
+          "Kano": "must_be",
+          "Time": "3",
+          "Cost": "4",
+          "Safety": "7",
+          "Reliab": "7",
+          "Skill": "3",
+          "Stress": "5",
+          "Pain": "3",
+          "Confid": "6",
+          "Delight": "2",
+          "**Overall**": "**4.44**"
+        },
+        {
+          "#": "F4",
+          "Feature": "Energy Management System (EMS)",
+          "Kano": "attractive",
+          "Time": "6",
+          "Cost": "9",
+          "Safety": "8",
+          "Reliab": "8",
+          "Skill": "5",
+          "Stress": "8",
+          "Pain": "7",
+          "Confid": "9",
+          "Delight": "7",
+          "**Overall**": "**7.44**"
+        },
+        {
+          "#": "F5",
+          "Feature": "Grid-Code Certification Delivery",
+          "Kano": "must_be",
+          "Time": "5",
+          "Cost": "4",
+          "Safety": "8",
+          "Reliab": "7",
+          "Skill": "7",
+          "Stress": "8",
+          "Pain": "6",
+          "Confid": "8",
+          "Delight": "3",
+          "**Overall**": "**6.22**"
+        },
+        {
+          "#": "F8",
+          "Feature": "Civil Works & Site Preparation",
+          "Kano": "must_be",
+          "Time": "6",
+          "Cost": "5",
+          "Safety": "6",
+          "Reliab": "6",
+          "Skill": "6",
+          "Stress": "6",
+          "Pain": "7",
+          "Confid": "5",
+          "Delight": "3",
+          "**Overall**": "**5.56**"
+        }
+      ]
+    },
+    {
+      "headers": [
+        "#",
+        "Statement",
+        "Source Constraint",
+        "Importance",
+        "Satisfaction"
+      ],
+      "rows": [
+        {
+          "#": "PR1",
+          "Statement": "Minimize the likelihood of thermal-runaway propagation from a single LFP cell compromising the adjacent refrigeration plant or IFS-bonded food-grade storage",
+          "Source Constraint": "Li-Ion Thermal Runaway Hazard",
+          "Importance": "9.5",
+          "Satisfaction": "3.0"
+        },
+        {
+          "#": "PR2",
+          "Statement": "Minimize the likelihood that fire-clearance distance imposed by Li-ion chemistry exceeds the available footprint between the refrigeration plant room and the IFS buffer zone",
+          "Source Constraint": "Fire-Protection Clearance",
+          "Importance": "8.5",
+          "Satisfaction": "3.5"
+        },
+        {
+          "#": "PR3",
+          "Statement": "Increase the ability to detect early thermal-runaway precursors (off-gas, dT/dt, voltage deviation) with ≥30 minute lead time before NOVEC activation",
+          "Source Constraint": "Li-Ion Thermal Runaway Hazard",
+          "Importance": "9.5",
+          "Satisfaction": "3.0"
+        },
+        {
+          "#": "PR4",
+          "Statement": "Minimize the likelihood of LFP calendar-ageing reducing reserved-resilience-SoC capacity below contracted spoilage-protection envelope before year 10",
+          "Source Constraint": "Calendar / Cycle lifetime of LFP cells (Ambient Temperature Envelope)",
+          "Importance": "7.5",
+          "Satisfaction": "4.5"
+        },
+        {
+          "#": "PR5",
+          "Statement": "Minimize the likelihood of cell-cycle degradation exceeding 2 %/yr from EPEX arbitrage cycling above C/2 eroding warranted throughput",
+          "Source Constraint": "Round-Trip Energy Losses (cycle-life budget)",
+          "Importance": "7.0",
+          "Satisfaction": "5.0"
+        },
+        {
+          "#": "PR6",
+          "Statement": "Minimize the likelihood that HVAC auxiliary load during summer ambient >35 °C suppresses deliverable peak-shave capacity below sizing-case",
+          "Source Constraint": "Ambient Temperature Envelope",
+          "Importance": "6.5",
+          "Satisfaction": "5.0"
+        },
+        {
+          "#": "PR7",
+          "Statement": "Minimize the likelihood that Round-Trip efficiency loss of 10–15 % erases peak-shave margin when Leistungspreis spread is <120 €/kW/yr",
+          "Source Constraint": "Round-Trip Energy Losses",
+          "Importance": "7.0",
+          "Satisfaction": "5.5"
+        },
+        {
+          "#": "PR8",
+          "Statement": "Minimize the likelihood that FGW TR8 plant-certificate lead time of 6–12 months blocks cold-store seasonal COD window (pre-Oktober peak tariff)",
+          "Source Constraint": "Grid Code Certification Lead Time",
+          "Importance": "8.0",
+          "Satisfaction": "4.0"
+        },
+        {
+          "#": "PR9",
+          "Statement": "Minimize the likelihood that cell-supply concentration in CN suppliers exposes the cold-store owner to CRMA/EU Battery Regulation tariff or FX shock before commissioning",
+          "Source Constraint": "Battery Supply Chain Concentration",
+          "Importance": "6.5",
+          "Satisfaction": "4.0"
+        },
+        {
+          "#": "PR10",
+          "Statement": "Increase the ability to maintain reserved-resilience-SoC under insurer-audited IEC 62443 cyber controls without exposing refrigeration SCADA to the BESS EMS as an attack surface",
+          "Source Constraint": "Li-Ion Thermal Runaway Hazard (operational) + indirectly CAPEX",
+          "Importance": "6.5",
+          "Satisfaction": "3.5"
+        },
+        {
+          "#": "PR11",
+          "Statement": "Minimize the likelihood that LFP deep-discharge below 5 % SoC during a sustained outage permanently degrades the resilience envelope before generator cut-in",
+          "Source Constraint": "Round-Trip Energy Losses (LFP DoD sensitivity)",
+          "Importance": "7.5",
+          "Satisfaction": "4.5"
+        },
+        {
+          "#": "PR12",
+          "Statement": "Minimize the likelihood of land-footprint of 40–80 m²/MWh encroaching on truck-dock apron or refrigerated-trailer staging lane at a logistics cold-store",
+          "Source Constraint": "Land Footprint and Siting",
+          "Importance": "7.0",
+          "Satisfaction": "5.0"
+        }
+      ]
+    },
+    {
+      "headers": [
+        "#",
+        "Feature",
+        "Kano",
+        "Vendor",
+        "Best Incumbent (score)",
+        "Incumbent tech",
+        "Advantage"
+      ],
+      "rows": [
+        {
+          "#": "V6",
+          "Feature": "Integrated PV + Storage Design Authority",
+          "Kano": "attractive",
+          "Vendor": "8",
+          "Best Incumbent (score)": "5",
+          "Incumbent tech": "Split-contract PV EPC + BESS integrator (Voltfang/Tesvolt turnkey)",
+          "Advantage": "**superior**"
+        },
+        {
+          "#": "V7",
+          "Feature": "On-Site Charging-Buffer Integration",
+          "Kano": "attractive",
+          "Vendor": "7",
+          "Best Incumbent (score)": "6",
+          "Incumbent tech": "Alpitronic integrated BESS+HPC (for reefer-truck HPC use case Sc6)",
+          "Advantage": "parity"
+        },
+        {
+          "#": "V9",
+          "Feature": "Single-Source EPC Contract Vehicle",
+          "Kano": "one_dimensional",
+          "Vendor": "9",
+          "Best Incumbent (score)": "4",
+          "Incumbent tech": "Split-contract: DSO + BESS vendor + fire consultant + civil (Voltfang packaged unit, Kostad)",
+          "Advantage": "**superior**"
+        }
+      ]
+    }
+  ],
+  "entities": [
+    {
+      "component": "feature_market_fit",
+      "market_name": "Refrigerated Warehousing and Storage",
+      "naics_code": "493120",
+      "vendor_name": "Mein Solar GmbH",
+      "product_name": "EPC für Großbatteriespeicher",
+      "technology_class": "Large-Scale Battery Energy Storage System EPC",
+      "commodity_functional_promise": "Deliver operational grid-connected electrical energy storage assets as turnkey capital projects with single-source engineering, procurement, construction, and grid-code certification",
+      "step_09_tech_feature_fit": [
+        {
+          "feature_name": "Containerized Li-ion BESS Integration",
+          "market_name": "Refrigerated Warehousing and Storage",
+          "naics_code": "493120",
+          "kano_class": "must_be",
+          "fit_score_time": 4,
+          "fit_score_cost": 7,
+          "fit_score_safety": 5,
+          "fit_score_reliability": 7,
+          "fit_score_skill": 3,
+          "fit_score_stress": 4,
+          "fit_score_pain": 5,
+          "fit_score_confidence": 6,
+          "fit_score_delight": 3,
+          "overall_fit": 4.89,
+          "rationale": "Table-stakes — every storage EPC delivers a containerized BESS, so must_be. Primary drivers: Cost (7) peak-shave and EPEX arbitrage economics; Reliability (7) pre-commissioned envelope. Safety (5) capped by Li-ion fire clearance conflict with NH3/CO2 plant rooms and IFS buffer zones (market needs N7, N12). Supports N15 compressor-inrush absorption via container-level reserve."
+        },
+        {
+          "feature_name": "Bidirectional Power Conversion System",
+          "market_name": "Refrigerated Warehousing and Storage",
+          "naics_code": "493120",
+          "kano_class": "one_dimensional",
+          "fit_score_time": 7,
+          "fit_score_cost": 7,
+          "fit_score_safety": 8,
+          "fit_score_reliability": 9,
+          "fit_score_skill": 3,
+          "fit_score_stress": 7,
+          "fit_score_pain": 4,
+          "fit_score_confidence": 8,
+          "fit_score_delight": 4,
+          "overall_fit": 6.33,
+          "rationale": "Linear (one_dimensional): more MW, more ancillary modes, more Q(U) capability -> proportionally better. Reliability (9) because sub-100 ms ride-through directly answers N13 (top-5 need). Safety (8) protects NH3 refrigeration controllers from 200 ms sag trips. Confidence (8) underwritten by witnessed FGW TR3 unit test evidence. Skill (3) reflects cold-store operator population (food logistics, not power electronics)."
+        },
+        {
+          "feature_name": "Medium-Voltage Grid Coupling",
+          "market_name": "Refrigerated Warehousing and Storage",
+          "naics_code": "493120",
+          "kano_class": "must_be",
+          "fit_score_time": 3,
+          "fit_score_cost": 4,
+          "fit_score_safety": 7,
+          "fit_score_reliability": 7,
+          "fit_score_skill": 3,
+          "fit_score_stress": 5,
+          "fit_score_pain": 3,
+          "fit_score_confidence": 6,
+          "fit_score_delight": 2,
+          "overall_fit": 4.44,
+          "rationale": "Cold-store sites are already MV-connected; coupling is assumed (must_be). Safety (7) and Reliability (7) driven by protection relays preventing MV-side trip during compressor inrush (N15). Cost (4) and Time (3) low because coupling is sunk EPC cost, not a savings lever. Does NOT address N5 (DSO capacity reversal) — that is a pre-commitment risk outside the coupling feature."
+        },
+        {
+          "feature_name": "Energy Management System",
+          "market_name": "Refrigerated Warehousing and Storage",
+          "naics_code": "493120",
+          "kano_class": "attractive",
+          "fit_score_time": 6,
+          "fit_score_cost": 9,
+          "fit_score_safety": 8,
+          "fit_score_reliability": 8,
+          "fit_score_skill": 5,
+          "fit_score_stress": 8,
+          "fit_score_pain": 7,
+          "fit_score_confidence": 9,
+          "fit_score_delight": 7,
+          "overall_fit": 7.44,
+          "rationale": "Attractive (DELIGHTER) — cold-store operators today run diesel + tariff negotiation; a hard HACCP-reserved-SoC floor layered with peak-shave + EPEX + §19 StromNEV optimisation is genuinely surprising. Cost (9) unlocks full revenue stack; Confidence (9) answers N16 (+2 °C SLA breach, top-1 opp 17) and N22 (EMS over-discharge, opp 15). Safety (8) via HACCP interlock. Delight (7) — first energy asset that defers to food-safety logic, not the reverse."
+        },
+        {
+          "feature_name": "Grid-Code Certification Delivery",
+          "market_name": "Refrigerated Warehousing and Storage",
+          "naics_code": "493120",
+          "kano_class": "must_be",
+          "fit_score_time": 5,
+          "fit_score_cost": 4,
+          "fit_score_safety": 8,
+          "fit_score_reliability": 7,
+          "fit_score_skill": 7,
+          "fit_score_stress": 8,
+          "fit_score_pain": 6,
+          "fit_score_confidence": 8,
+          "fit_score_delight": 3,
+          "overall_fit": 6.22,
+          "rationale": "Must_be — legally required to energise a VDE-AR-N 4110 asset. Skill (7) removes FGW TR8 burden from food-logistics customer. Stress (8) addresses N6 certification-slot scarcity anxiety. Safety (8) and Confidence (8) because certified asset passes insurance (N8) and auditor (N14) review. Cost (4) low because certification is overhead the customer already expected to pay for."
+        },
+        {
+          "feature_name": "Civil Works and Site Preparation",
+          "market_name": "Refrigerated Warehousing and Storage",
+          "naics_code": "493120",
+          "kano_class": "must_be",
+          "fit_score_time": 6,
+          "fit_score_cost": 5,
+          "fit_score_safety": 6,
+          "fit_score_reliability": 6,
+          "fit_score_skill": 6,
+          "fit_score_stress": 6,
+          "fit_score_pain": 7,
+          "fit_score_confidence": 5,
+          "fit_score_delight": 3,
+          "overall_fit": 5.56,
+          "rationale": "Must_be — construction is assumed in an EPC scope. Pain (7) because it eliminates customer coordination of Baugenehmigung + Feuerwehr + foundation + trenching — a cold-store operator has zero appetite for this. Directly addresses N9 (construction-path collision with refrigeration works). Cost (5), Reliability (6) moderate; Delight (3) — civil works are invisible when done right."
+        }
+      ],
+      "step_10_product_related_needs": [
+        {
+          "id": "PR1",
+          "statement": "Minimize the likelihood of thermal-runaway propagation from a single LFP cell compromising the adjacent refrigeration plant or IFS-bonded food-grade storage",
+          "source_constraint": "Li-Ion Thermal Runaway Hazard",
+          "affected_markets": [
+            "Refrigerated Warehousing and Storage"
+          ],
+          "importance": 9.5,
+          "satisfaction_current": 3.0
+        },
+        {
+          "id": "PR2",
+          "statement": "Minimize the likelihood that fire-clearance distance imposed by Li-ion chemistry exceeds the available footprint between the refrigeration plant room and the IFS buffer zone",
+          "source_constraint": "Fire-Protection Clearance",
+          "affected_markets": [
+            "Refrigerated Warehousing and Storage"
+          ],
+          "importance": 8.5,
+          "satisfaction_current": 3.5
+        },
+        {
+          "id": "PR3",
+          "statement": "Increase the ability to detect early thermal-runaway precursors (off-gas, dT/dt, voltage deviation) with >=30 minute lead time before NOVEC activation",
+          "source_constraint": "Li-Ion Thermal Runaway Hazard",
+          "affected_markets": [
+            "Refrigerated Warehousing and Storage"
+          ],
+          "importance": 9.5,
+          "satisfaction_current": 3.0
+        },
+        {
+          "id": "PR4",
+          "statement": "Minimize the likelihood of LFP calendar-ageing reducing reserved-resilience-SoC capacity below contracted spoilage-protection envelope before year 10",
+          "source_constraint": "Ambient Temperature Envelope",
+          "affected_markets": [
+            "Refrigerated Warehousing and Storage"
+          ],
+          "importance": 7.5,
+          "satisfaction_current": 4.5
+        },
+        {
+          "id": "PR5",
+          "statement": "Minimize the likelihood of cell-cycle degradation exceeding 2 %/yr from EPEX arbitrage cycling above C/2 eroding warranted throughput",
+          "source_constraint": "Round-Trip Energy Losses",
+          "affected_markets": [
+            "Refrigerated Warehousing and Storage"
+          ],
+          "importance": 7.0,
+          "satisfaction_current": 5.0
+        },
+        {
+          "id": "PR6",
+          "statement": "Minimize the likelihood that HVAC auxiliary load during summer ambient >35 C suppresses deliverable peak-shave capacity below sizing-case",
+          "source_constraint": "Ambient Temperature Envelope",
+          "affected_markets": [
+            "Refrigerated Warehousing and Storage"
+          ],
+          "importance": 6.5,
+          "satisfaction_current": 5.0
+        },
+        {
+          "id": "PR7",
+          "statement": "Minimize the likelihood that Round-Trip efficiency loss of 10-15 % erases peak-shave margin when Leistungspreis spread is <120 EUR/kW/yr",
+          "source_constraint": "Round-Trip Energy Losses",
+          "affected_markets": [
+            "Refrigerated Warehousing and Storage"
+          ],
+          "importance": 7.0,
+          "satisfaction_current": 5.5
+        },
+        {
+          "id": "PR8",
+          "statement": "Minimize the likelihood that FGW TR8 plant-certificate lead time of 6-12 months blocks cold-store seasonal COD window (pre-Oktober peak tariff)",
+          "source_constraint": "Grid Code Certification Lead Time",
+          "affected_markets": [
+            "Refrigerated Warehousing and Storage"
+          ],
+          "importance": 8.0,
+          "satisfaction_current": 4.0
+        },
+        {
+          "id": "PR9",
+          "statement": "Minimize the likelihood that cell-supply concentration in Chinese suppliers exposes the cold-store owner to CRMA/EU Battery Regulation tariff or FX shock before commissioning",
+          "source_constraint": "Battery Supply Chain Concentration",
+          "affected_markets": [
+            "Refrigerated Warehousing and Storage"
+          ],
+          "importance": 6.5,
+          "satisfaction_current": 4.0
+        },
+        {
+          "id": "PR10",
+          "statement": "Increase the ability to maintain reserved-resilience-SoC under insurer-audited IEC 62443 cyber controls without exposing refrigeration SCADA to the BESS EMS as an attack surface",
+          "source_constraint": "Li-Ion Thermal Runaway Hazard",
+          "affected_markets": [
+            "Refrigerated Warehousing and Storage"
+          ],
+          "importance": 6.5,
+          "satisfaction_current": 3.5
+        },
+        {
+          "id": "PR11",
+          "statement": "Minimize the likelihood that LFP deep-discharge below 5 % SoC during a sustained outage permanently degrades the resilience envelope before generator cut-in",
+          "source_constraint": "Round-Trip Energy Losses",
+          "affected_markets": [
+            "Refrigerated Warehousing and Storage"
+          ],
+          "importance": 7.5,
+          "satisfaction_current": 4.5
+        },
+        {
+          "id": "PR12",
+          "statement": "Minimize the likelihood of land-footprint of 40-80 m2/MWh encroaching on truck-dock apron or refrigerated-trailer staging lane at a logistics cold-store",
+          "source_constraint": "Land Footprint and Siting",
+          "affected_markets": [
+            "Refrigerated Warehousing and Storage"
+          ],
+          "importance": 7.0,
+          "satisfaction_current": 5.0
+        }
+      ],
+      "step_11_vendor_feature_comparison": [
+        {
+          "feature_name": "Integrated PV and Storage Design Authority",
+          "feature_description": "Deliver a single MV-coupled, single FGW TR8 certified PV+BESS asset by carrying PV-EPC design authority into the storage scope",
+          "market_name": "Refrigerated Warehousing and Storage",
+          "naics_code": "493120",
+          "vendor_score": 8,
+          "best_incumbent_score": 5,
+          "best_incumbent_technology": "Split-contract PV EPC + BESS integrator (Voltfang / Tesvolt turnkey units)",
+          "advantage": "superior",
+          "kano_class": "attractive",
+          "rationale": "Cold-store roofs are 5-20k m2 and typically PV-ready. Mein Solar collapses PV array + BESS into one MV coupling, one EMS, one FGW plant certificate, one warranty wrapper — concrete spec: one certificate vs two for split delivery. Voltfang/Tesvolt packaged units deliver BESS only; customer must separately tender PV EPC, doubling interface risk. Attractive because cold-store operators (food logistics) do not expect a single counterparty across PV and BESS — it is a genuine delighter. Superior with 3-point gap, exceeding 1-point threshold."
+        },
+        {
+          "feature_name": "On-Site Charging-Buffer Integration",
+          "feature_description": "Size BESS as HPC buffer for electrified reefer-truck yard charging to avoid DSO feeder upgrade",
+          "market_name": "Refrigerated Warehousing and Storage",
+          "naics_code": "493120",
+          "vendor_score": 7,
+          "best_incumbent_score": 6,
+          "best_incumbent_technology": "Alpitronic integrated BESS+HPC units deployed at logistics yards",
+          "advantage": "parity",
+          "kano_class": "attractive",
+          "rationale": "Relevant only in Sc6 (reefer-truck HPC dispatch window) — not the primary revenue driver at a cold-store. Mein Solar's EV-charging-buffer feature transfers to logistics-yard HPC at 150-350 kW per dispenser on constrained feeders. Alpitronic has dedicated HPC heritage and documented logistics-yard deployments that Mein Solar lacks; vendor advantage is not structural here. Score gap 1 = parity; a balanced assessment acknowledges incumbent strength in this niche."
+        },
+        {
+          "feature_name": "Single-Source EPC Contract Vehicle",
+          "feature_description": "Consolidate DSO coordination, battery OEM, PCS, civil, fire, and certification into one contract, one schedule, one availability SLA",
+          "market_name": "Refrigerated Warehousing and Storage",
+          "naics_code": "493120",
+          "vendor_score": 9,
+          "best_incumbent_score": 4,
+          "best_incumbent_technology": "Split-contract: Voltfang/Tesvolt packaged BESS unit + separate DSO + civil + fire + certifier tenders",
+          "advantage": "superior",
+          "kano_class": "one_dimensional",
+          "rationale": "Largest vendor advantage. Cold-store operators are food-logistics specialists; interface risk across DSO + battery OEM + PCS OEM + civil + fire consultant + certifier is exactly what a single-source EPC removes. Mein Solar score 9: one contract, one warranty wrapper covering battery + PCS + MV + software + civil. Incumbent score 4: Voltfang/Tesvolt packaged units cover equipment only, not MV grid works, civil, or FGW certification — customer still tenders 3-4 separate contracts. One_dimensional because scope of the wrapper linearly reduces interface risk. Gap 5 far exceeds 1-point threshold."
+        }
+      ],
+      "summary": {
+        "highest_tech_fit_feature": "Energy Management System",
+        "highest_tech_fit_score": 7.44,
+        "highest_tech_fit_kano": "attractive",
+        "largest_vendor_advantage_feature": "Single-Source EPC Contract Vehicle",
+        "largest_vendor_advantage_gap": 5,
+        "critical_product_related_risk": "PR1 + PR3 thermal-runaway cluster — importance 9.5, satisfaction 3.0, Li-ion fire next to NH3/food creates a hard insurer/auditor barrier absent in non-Li alternatives",
+        "adoption_context": "already_uses_technology=FALSE, adoption=emerging — education-led sale against A5 (do-nothing) existential competitor"
+      },
+      "qa": {
+        "step_09_features_assessed": 6,
+        "step_09_kano_distribution": {
+          "must_be": 4,
+          "one_dimensional": 1,
+          "attractive": 1,
+          "indifferent": 0,
+          "reverse": 0
+        },
+        "step_09_overall_fit_recomputed": true,
+        "step_10_needs_count": 12,
+        "step_10_litmus_pass_pct": 100,
+        "step_10_constraints_with_at_least_one_need": 6,
+        "step_11_features_assessed": 3,
+        "step_11_advantage_distribution": {
+          "superior": 2,
+          "parity": 1,
+          "inferior": 0
+        },
+        "step_11_bias_check": "67% superior, below 70% threshold — no systematic bias flagged",
+        "feature_names_1pdf_compliant": true
+      }
+    }
+  ],
+  "has_bom": true,
+  "naics_sector_type": "non_manufacturing"
+}

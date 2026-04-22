@@ -1,0 +1,309 @@
+{
+  "id": "COMPAT_other_electric_power_generation_bess_ref",
+  "title": "COMPAT — NAICS 221118 Other Electric Power Generation (BESS Reference)",
+  "type": "constraint_compatibility",
+  "market_slug": "other_electric_power_generation_bess_ref",
+  "is_per_market": true,
+  "sections": [
+    {
+      "title": "1 — Summary",
+      "content": "| # | Constraint | Type | Threshold | Verdict | Why |\n|---|---|---|---|---|---|\n| C1 | MV Grid Connection Capacity | operational | — | **none** | Site selection is the market's core activity — IPPs self-select connection-capable sites |\n| C2 | Land Footprint & Siting | physical | 40–80 m²/MWh | **none** | IPPs acquire greenfield/brownfield plots sized exactly for BESS footprint |\n| C3 | Fire-Protection Clearance | regulatory | VdS / Feuerwehr | **none** | Standard BESS IPP site design already incorporates VdS concept + Baugenehmigung |\n| C4 | Li-Ion Thermal Runaway Hazard | physical | — | **none** | Containerized BESS with NOVEC + deflagration venting is the market's default architecture |\n| C5 | Grid Code Certification Lead Time | regulatory | 6–12 months | **none** | Parallelized with procurement; baseline expectation for 221118 project schedule |\n| C6 | Battery Supply Chain Concentration | economic | — | **mitigable** | CRMA/EU Battery Reg + FX/tariff exposure adds compliance overhead; dual-source procurement + EU-local-content strategy |\n| C7 | Ambient Temperature Envelope | environmental | -20 to +50 °C | **none** | German site ambient (-15 to +38 °C) sits well inside envelope; HVAC handles peaks |\n| C8 | Round-Trip Energy Losses | physical | 10–15% | **none** | Baked into IPP revenue model — arbitrage/FCR/aFRR models price 85–90% RTE as baseline |\n| C9 | CAPEX Viability Threshold | economic | €250–400/kWh | **none** | 221118 IPP market specifically exists inside this envelope (LFP container pricing 2026 ≈ €200–320/kWh installed) |\n\n---"
+    },
+    {
+      "title": "2 — Knockouts",
+      "content": "**None.** This is the product's native market (distance 1 in architecture scoring). No physics or regulation knocks out the fit.\n\n---"
+    },
+    {
+      "title": "3 — Mitigable constraints (carried into scoring)",
+      "content": "### C6 — Battery Supply Chain Concentration (economic)\n\n- **Barrier:** LFP cells concentrated in CN suppliers (CATL, EVE, BYD, Gotion). FX/tariff exposure and EU Battery Regulation / CRMA compliance overhead. IPP asset owners increasingly require supply-chain disclosure.\n- **Mitigation actions:**\n  1. Dual-source procurement framework (primary CN + secondary KR/EU via Samsung SDI, LG ES, Northvolt/ACC as they scale)\n  2. EU Battery Regulation Digital Product Passport (DPP) compliance pipeline at FAT\n  3. CRMA-compatible sourcing documentation package bundled into EPC deliverables\n- **Cost estimate:** **medium** (€10K–100K per project — passport tooling, audit overhead, second-source qualification)\n- **Time estimate:** 3–6 months one-time organizational build; marginal per-project thereafter\n- **Rationale for keeping \"mitigable\" not \"none\":** IPP buyers (esp. EU-finance-backed) are beginning to require supply-chain transparency as procurement criterion (post-CRMA 2025). Not a physical barrier, but a contractual/compliance overhead that differentiates integrators.\n\n---"
+    },
+    {
+      "title": "4 — Verdict rationale details (per-constraint)",
+      "content": "### C1 — MV Grid Connection Capacity — none\nIPP developers underwrite projects only after a positive Netzverträglichkeitsprüfung. The market's operating model is to pre-qualify sites with available MV feeder capacity. Mein Solar's Grid-Capacity Study L5 adjacency directly addresses this in its upstream scope.\n\n### C2 — Land Footprint & Siting — none\n221118 projects are intentionally sited on industrial plots (40–80 m²/MWh × 9 MWh ≈ 360–720 m²). Site acquisition is a distinct L6a activity and is not a product constraint at market-entry level.\n\n### C3 — Fire-Protection Clearance — none\nVdS fire concept + Feuerwehr access are baseline deliverables in every BESS IPP project in Germany. Mein Solar has the competence (PARTIAL → bringing VdS-certified engineer in-house per 04e). Not a barrier to market participation — it **is** the market's standard practice.\n\n### C4 — Li-Ion Thermal Runaway — none\nContainerized BESS = NOVEC 1230 + deflagration venting + compartmentalization is the **de facto** standard the IPP market operates under. The constraint is industry-baseline, not market-specific.\n\n### C5 — Grid Code Certification Lead Time — none\nEvery 221118 project schedule includes 6–12 months of FGW TR8 dossier preparation on the critical path. This is market-routine. Mein Solar has native VDE-AR-N 4110 / FGW TR8 capability (PV-EPC heritage).\n\n### C7 — Ambient Temperature Envelope — none\nGerman site climate: nominal -15 to +38 °C (historic extremes), squarely inside the -20 to +50 °C envelope. Internal HVAC handles any overshoot. Irrelevant for 221118 in DE geography.\n\n### C8 — Round-Trip Energy Losses — none\nIPP revenue models (day-ahead arbitrage, FCR, aFRR) explicitly price in 85–90% AC-AC RTE. Not a barrier; it's a design parameter.\n\n### C9 — CAPEX Viability Threshold — none\nThe 221118 IPP market **defines itself** by projects that close the business case within €250–400/kWh. 2026 market LFP turnkey pricing ≈ €200–320/kWh installed — well inside envelope. Merchant trading stack (Entrix, Next Kraftwerke) is actively compressing payback.\n\n---"
+    },
+    {
+      "title": "5 — Downstream implications",
+      "content": "| Downstream Step | Impact |\n|---|---|\n| Market survives Step 08 | ✅ YES |\n| Goes into Step 09 Feature-Market Fit | ✅ |\n| Goes into Step 10 Competitive Landscape | ✅ (vs. Fluence, Tesla, Sungrow, Wärtsilä) |\n| Constraint cost penalty into Step 12 | **Low** — only 1 mitigable (C6 medium, one-time organizational) |\n| Fit Assessment CR dimension | High constraint readiness — all hard physical/regulatory constraints already handled as part of baseline delivery |\n\n---"
+    },
+    {
+      "title": "6 — Graph writes (Neo4j pattern)",
+      "content": "```cypher\n// C6 only (knockouts & none are not stored as incompatible_with)\nMERGE (c:Constraint {name: \"Battery Supply Chain Concentration\", run_id: $run_id})\nMERGE (m:Market {naics_code: \"221118\", run_id: $run_id})\nMERGE (c)-[r:incompatible_with]->(m)\nSET r.compatibility = \"mitigable\",\n    r.rationale = \"EU Battery Reg + CRMA + FX exposure on CN-concentrated LFP supply\",\n    r.mitigation_actions = $actions,\n    r.mitigation_cost_estimate = \"medium\",\n    r.mitigation_time_estimate = \"3-6 months\",\n    r.knockout_reason = null\n\n// No Market.status change — 221118 remains active\n```\n\n---"
+    },
+    {
+      "title": "Structured Data",
+      "content": "```json\n{\n  \"component\": \"constraint_market_compatibility\",\n  \"step\": \"08_constraint_market_compat\",\n  \"product_name\": \"EPC für Großbatteriespeicher\",\n  \"vendor_name\": \"Mein Solar GmbH\",\n  \"technology_class\": \"Large-Scale Battery Energy Storage System EPC\",\n  \"market\": {\n    \"naics_code\": \"221118\",\n    \"naics_title\": \"Other Electric Power Generation\",\n    \"market_name\": \"Standalone BESS / Independent Power Producers\",\n    \"architecture_distance\": 1,\n    \"market_priority\": \"HIGH\",\n    \"already_uses_technology\": true\n  },\n  \"assessments\": [\n    {\n      \"constraint_name\": \"MV Grid Connection Capacity\",\n      \"market_name\": \"Standalone BESS / Independent Power Producers\",\n      \"naics_code\": \"221118\",\n      \"verdict\": \"none\",\n      \"mitigation_actions\": [],\n      \"mitigation_cost_estimate\": null,\n      \"mitigation_time_estimate\": null,\n      \"knockout_reason\": null,\n      \"rationale\": \"IPPs pre-qualify sites via Netzverträglichkeitsprüfung; MV capacity is a site-selection gate, not a market-level barrier.\"\n    },\n    {\n      \"constraint_name\": \"Land Footprint and Siting\",\n      \"market_name\": \"Standalone BESS / Independent Power Producers\",\n      \"naics_code\": \"221118\",\n      \"verdict\": \"none\",\n      \"mitigation_actions\": [],\n      \"mitigation_cost_estimate\": null,\n      \"mitigation_time_estimate\": null,\n      \"knockout_reason\": null,\n      \"rationale\": \"221118 projects are greenfield/brownfield sized specifically for BESS footprint; 40–80 m²/MWh is a routine design parameter.\"\n    },\n    {\n      \"constraint_name\": \"Fire-Protection Clearance\",\n      \"market_name\": \"Standalone BESS / Independent Power Producers\",\n      \"naics_code\": \"221118\",\n      \"verdict\": \"none\",\n      \"mitigation_actions\": [],\n      \"mitigation_cost_estimate\": null,\n      \"mitigation_time_estimate\": null,\n      \"knockout_reason\": null,\n      \"rationale\": \"VdS fire concept + Feuerwehr plan is baseline deliverable for every BESS IPP in Germany — market-standard practice, not a barrier.\"\n    },\n    {\n      \"constraint_name\": \"Li-Ion Thermal Runaway Hazard\",\n      \"market_name\": \"Standalone BESS / Independent Power Producers\",\n      \"naics_code\": \"221118\",\n      \"verdict\": \"none\",\n      \"mitigation_actions\": [],\n      \"mitigation_cost_estimate\": null,\n      \"mitigation_time_estimate\": null,\n      \"knockout_reason\": null,\n      \"rationale\": \"Containerized BESS with NOVEC 1230 + deflagration venting + compartmentalization is the de-facto architecture for this market.\"\n    },\n    {\n      \"constraint_name\": \"Grid Code Certification Lead Time\",\n      \"market_name\": \"Standalone BESS / Independent Power Producers\",\n      \"naics_code\": \"221118\",\n      \"verdict\": \"none\",\n      \"mitigation_actions\": [],\n      \"mitigation_cost_estimate\": null,\n      \"mitigation_time_estimate\": null,\n      \"knockout_reason\": null,\n      \"rationale\": \"6–12 months for FGW TR8 / VDE-AR-N 4110 is the routine critical path for 221118 projects; Mein Solar has native capability.\"\n    },\n    {\n      \"constraint_name\": \"Battery Supply Chain Concentration\",\n      \"market_name\": \"Standalone BESS / Independent Power Producers\",\n      \"naics_code\": \"221118\",\n      \"verdict\": \"mitigable\",\n      \"mitigation_actions\": [\n        \"Establish dual-source procurement (primary CN + secondary KR/EU) for LFP cells\",\n        \"Build EU Battery Regulation Digital Product Passport (DPP) compliance pipeline at FAT\",\n        \"Bundle CRMA-compatible sourcing documentation into EPC deliverables\"\n      ],\n      \"mitigation_cost_estimate\": \"medium\",\n      \"mitigation_time_estimate\": \"3-6 months\",\n      \"knockout_reason\": null,\n      \"rationale\": \"IPP buyers increasingly require supply-chain transparency under CRMA (2025) and EU Battery Regulation. Not a physical barrier — a compliance/contractual overhead. One-time organizational build with marginal per-project cost.\"\n    },\n    {\n      \"constraint_name\": \"Ambient Temperature Envelope\",\n      \"market_name\": \"Standalone BESS / Independent Power Producers\",\n      \"naics_code\": \"221118\",\n      \"verdict\": \"none\",\n      \"mitigation_actions\": [],\n      \"mitigation_cost_estimate\": null,\n      \"mitigation_time_estimate\": null,\n      \"knockout_reason\": null,\n      \"rationale\": \"German site climate (-15 to +38 °C historic) sits inside the -20 to +50 °C envelope; container HVAC handles extremes.\"\n    },\n    {\n      \"constraint_name\": \"Round-Trip Energy Losses\",\n      \"market_name\": \"Standalone BESS / Independent Power Producers\",\n      \"naics_code\": \"221118\",\n      \"verdict\": \"none\",\n      \"mitigation_actions\": [],\n      \"mitigation_cost_estimate\": null,\n      \"mitigation_time_estimate\": null,\n      \"knockout_reason\": null,\n      \"rationale\": \"IPP arbitrage/FCR/aFRR revenue models explicitly price 85–90% AC-AC RTE. It is a design parameter, not a barrier to participation.\"\n    },\n    {\n      \"constraint_name\": \"CAPEX Viability Threshold\",\n      \"market_name\": \"Standalone BESS / Independent Power Producers\",\n      \"naics_code\": \"221118\",\n      \"verdict\": \"none\",\n      \"mitigation_actions\": [],\n      \"mitigation_cost_estimate\": null,\n      \"mitigation_time_estimate\": null,\n      \"knockout_reason\": null,\n      \"rationale\": \"221118 IPP market self-selects for projects inside €250–400/kWh envelope; 2026 LFP turnkey pricing ≈ €200–320/kWh installed — well inside threshold.\"\n    }\n  ],\n  \"verdict_counts\": {\"knockout\": 0, \"mitigable\": 1, \"none\": 8},\n  \"market_status\": \"surviving\",\n  \"market_eliminated\": false,\n  \"knockout_reasons\": [],\n  \"mitigation_cost_roll_up\": {\n    \"mitigable_count\": 1,\n    \"total_estimated_cost_bucket\": \"medium\",\n    \"cost_breakdown\": [\n      {\"constraint\": \"Battery Supply Chain Concentration\", \"cost\": \"medium\", \"one_time_or_per_project\": \"one_time_organizational\"}\n    ]\n  },\n  \"constraint_readiness_score_hint\": \"HIGH — all 8 hard physical/regulatory constraints are baseline-handled; only compliance overhead (C6) remains as penalty\",\n  \"downstream_impact\": {\n    \"proceeds_to_feature_market_fit\": true,\n    \"proceeds_to_competitive_landscape\": true,\n    \"proceeds_to_market_prioritization\": true,\n    \"expected_penalty_in_prioritization\": \"minimal — one medium mitigable, one-time organizational build\"\n  },\n  \"qa\": {\n    \"all_9_constraints_assessed\": true,\n    \"knockout_false_positive_check_passed\": true,\n    \"cost_never_a_knockout_rule_honored\": true,\n    \"certification_path_rule_honored\": true,\n    \"two_question_test_applied\": \"no knockouts — N/A\",\n    \"naics_codes_used_not_names\": true\n  }\n}\n```"
+    }
+  ],
+  "tables": [
+    {
+      "headers": [
+        "#",
+        "Constraint",
+        "Type",
+        "Threshold",
+        "Verdict",
+        "Why"
+      ],
+      "rows": [
+        {
+          "#": "C1",
+          "Constraint": "MV Grid Connection Capacity",
+          "Type": "operational",
+          "Threshold": "—",
+          "Verdict": "**none**",
+          "Why": "Site selection is the market's core activity — IPPs self-select connection-capable sites"
+        },
+        {
+          "#": "C2",
+          "Constraint": "Land Footprint & Siting",
+          "Type": "physical",
+          "Threshold": "40–80 m²/MWh",
+          "Verdict": "**none**",
+          "Why": "IPPs acquire greenfield/brownfield plots sized exactly for BESS footprint"
+        },
+        {
+          "#": "C3",
+          "Constraint": "Fire-Protection Clearance",
+          "Type": "regulatory",
+          "Threshold": "VdS / Feuerwehr",
+          "Verdict": "**none**",
+          "Why": "Standard BESS IPP site design already incorporates VdS concept + Baugenehmigung"
+        },
+        {
+          "#": "C4",
+          "Constraint": "Li-Ion Thermal Runaway Hazard",
+          "Type": "physical",
+          "Threshold": "—",
+          "Verdict": "**none**",
+          "Why": "Containerized BESS with NOVEC + deflagration venting is the market's default architecture"
+        },
+        {
+          "#": "C5",
+          "Constraint": "Grid Code Certification Lead Time",
+          "Type": "regulatory",
+          "Threshold": "6–12 months",
+          "Verdict": "**none**",
+          "Why": "Parallelized with procurement; baseline expectation for 221118 project schedule"
+        },
+        {
+          "#": "C6",
+          "Constraint": "Battery Supply Chain Concentration",
+          "Type": "economic",
+          "Threshold": "—",
+          "Verdict": "**mitigable**",
+          "Why": "CRMA/EU Battery Reg + FX/tariff exposure adds compliance overhead; dual-source procurement + EU-local-content strategy"
+        },
+        {
+          "#": "C7",
+          "Constraint": "Ambient Temperature Envelope",
+          "Type": "environmental",
+          "Threshold": "-20 to +50 °C",
+          "Verdict": "**none**",
+          "Why": "German site ambient (-15 to +38 °C) sits well inside envelope; HVAC handles peaks"
+        },
+        {
+          "#": "C8",
+          "Constraint": "Round-Trip Energy Losses",
+          "Type": "physical",
+          "Threshold": "10–15%",
+          "Verdict": "**none**",
+          "Why": "Baked into IPP revenue model — arbitrage/FCR/aFRR models price 85–90% RTE as baseline"
+        },
+        {
+          "#": "C9",
+          "Constraint": "CAPEX Viability Threshold",
+          "Type": "economic",
+          "Threshold": "€250–400/kWh",
+          "Verdict": "**none**",
+          "Why": "221118 IPP market specifically exists inside this envelope (LFP container pricing 2026 ≈ €200–320/kWh installed)"
+        }
+      ]
+    },
+    {
+      "headers": [
+        "Downstream Step",
+        "Impact"
+      ],
+      "rows": [
+        {
+          "Downstream Step": "Market survives Step 08",
+          "Impact": "✅ YES"
+        },
+        {
+          "Downstream Step": "Goes into Step 09 Feature-Market Fit",
+          "Impact": "✅"
+        },
+        {
+          "Downstream Step": "Goes into Step 10 Competitive Landscape",
+          "Impact": "✅ (vs. Fluence, Tesla, Sungrow, Wärtsilä)"
+        },
+        {
+          "Downstream Step": "Constraint cost penalty into Step 12",
+          "Impact": "**Low** — only 1 mitigable (C6 medium, one-time organizational)"
+        },
+        {
+          "Downstream Step": "Fit Assessment CR dimension",
+          "Impact": "High constraint readiness — all hard physical/regulatory constraints already handled as part of baseline delivery"
+        }
+      ]
+    }
+  ],
+  "entities": [
+    {
+      "component": "constraint_market_compatibility",
+      "step": "08_constraint_market_compat",
+      "product_name": "EPC für Großbatteriespeicher",
+      "vendor_name": "Mein Solar GmbH",
+      "technology_class": "Large-Scale Battery Energy Storage System EPC",
+      "market": {
+        "naics_code": "221118",
+        "naics_title": "Other Electric Power Generation",
+        "market_name": "Standalone BESS / Independent Power Producers",
+        "architecture_distance": 1,
+        "market_priority": "HIGH",
+        "already_uses_technology": true
+      },
+      "assessments": [
+        {
+          "constraint_name": "MV Grid Connection Capacity",
+          "market_name": "Standalone BESS / Independent Power Producers",
+          "naics_code": "221118",
+          "verdict": "none",
+          "mitigation_actions": [],
+          "mitigation_cost_estimate": null,
+          "mitigation_time_estimate": null,
+          "knockout_reason": null,
+          "rationale": "IPPs pre-qualify sites via Netzverträglichkeitsprüfung; MV capacity is a site-selection gate, not a market-level barrier."
+        },
+        {
+          "constraint_name": "Land Footprint and Siting",
+          "market_name": "Standalone BESS / Independent Power Producers",
+          "naics_code": "221118",
+          "verdict": "none",
+          "mitigation_actions": [],
+          "mitigation_cost_estimate": null,
+          "mitigation_time_estimate": null,
+          "knockout_reason": null,
+          "rationale": "221118 projects are greenfield/brownfield sized specifically for BESS footprint; 40–80 m²/MWh is a routine design parameter."
+        },
+        {
+          "constraint_name": "Fire-Protection Clearance",
+          "market_name": "Standalone BESS / Independent Power Producers",
+          "naics_code": "221118",
+          "verdict": "none",
+          "mitigation_actions": [],
+          "mitigation_cost_estimate": null,
+          "mitigation_time_estimate": null,
+          "knockout_reason": null,
+          "rationale": "VdS fire concept + Feuerwehr plan is baseline deliverable for every BESS IPP in Germany — market-standard practice, not a barrier."
+        },
+        {
+          "constraint_name": "Li-Ion Thermal Runaway Hazard",
+          "market_name": "Standalone BESS / Independent Power Producers",
+          "naics_code": "221118",
+          "verdict": "none",
+          "mitigation_actions": [],
+          "mitigation_cost_estimate": null,
+          "mitigation_time_estimate": null,
+          "knockout_reason": null,
+          "rationale": "Containerized BESS with NOVEC 1230 + deflagration venting + compartmentalization is the de-facto architecture for this market."
+        },
+        {
+          "constraint_name": "Grid Code Certification Lead Time",
+          "market_name": "Standalone BESS / Independent Power Producers",
+          "naics_code": "221118",
+          "verdict": "none",
+          "mitigation_actions": [],
+          "mitigation_cost_estimate": null,
+          "mitigation_time_estimate": null,
+          "knockout_reason": null,
+          "rationale": "6–12 months for FGW TR8 / VDE-AR-N 4110 is the routine critical path for 221118 projects; Mein Solar has native capability."
+        },
+        {
+          "constraint_name": "Battery Supply Chain Concentration",
+          "market_name": "Standalone BESS / Independent Power Producers",
+          "naics_code": "221118",
+          "verdict": "mitigable",
+          "mitigation_actions": [
+            "Establish dual-source procurement (primary CN + secondary KR/EU) for LFP cells",
+            "Build EU Battery Regulation Digital Product Passport (DPP) compliance pipeline at FAT",
+            "Bundle CRMA-compatible sourcing documentation into EPC deliverables"
+          ],
+          "mitigation_cost_estimate": "medium",
+          "mitigation_time_estimate": "3-6 months",
+          "knockout_reason": null,
+          "rationale": "IPP buyers increasingly require supply-chain transparency under CRMA (2025) and EU Battery Regulation. Not a physical barrier — a compliance/contractual overhead. One-time organizational build with marginal per-project cost."
+        },
+        {
+          "constraint_name": "Ambient Temperature Envelope",
+          "market_name": "Standalone BESS / Independent Power Producers",
+          "naics_code": "221118",
+          "verdict": "none",
+          "mitigation_actions": [],
+          "mitigation_cost_estimate": null,
+          "mitigation_time_estimate": null,
+          "knockout_reason": null,
+          "rationale": "German site climate (-15 to +38 °C historic) sits inside the -20 to +50 °C envelope; container HVAC handles extremes."
+        },
+        {
+          "constraint_name": "Round-Trip Energy Losses",
+          "market_name": "Standalone BESS / Independent Power Producers",
+          "naics_code": "221118",
+          "verdict": "none",
+          "mitigation_actions": [],
+          "mitigation_cost_estimate": null,
+          "mitigation_time_estimate": null,
+          "knockout_reason": null,
+          "rationale": "IPP arbitrage/FCR/aFRR revenue models explicitly price 85–90% AC-AC RTE. It is a design parameter, not a barrier to participation."
+        },
+        {
+          "constraint_name": "CAPEX Viability Threshold",
+          "market_name": "Standalone BESS / Independent Power Producers",
+          "naics_code": "221118",
+          "verdict": "none",
+          "mitigation_actions": [],
+          "mitigation_cost_estimate": null,
+          "mitigation_time_estimate": null,
+          "knockout_reason": null,
+          "rationale": "221118 IPP market self-selects for projects inside €250–400/kWh envelope; 2026 LFP turnkey pricing ≈ €200–320/kWh installed — well inside threshold."
+        }
+      ],
+      "verdict_counts": {
+        "knockout": 0,
+        "mitigable": 1,
+        "none": 8
+      },
+      "market_status": "surviving",
+      "market_eliminated": false,
+      "knockout_reasons": [],
+      "mitigation_cost_roll_up": {
+        "mitigable_count": 1,
+        "total_estimated_cost_bucket": "medium",
+        "cost_breakdown": [
+          {
+            "constraint": "Battery Supply Chain Concentration",
+            "cost": "medium",
+            "one_time_or_per_project": "one_time_organizational"
+          }
+        ]
+      },
+      "constraint_readiness_score_hint": "HIGH — all 8 hard physical/regulatory constraints are baseline-handled; only compliance overhead (C6) remains as penalty",
+      "downstream_impact": {
+        "proceeds_to_feature_market_fit": true,
+        "proceeds_to_competitive_landscape": true,
+        "proceeds_to_market_prioritization": true,
+        "expected_penalty_in_prioritization": "minimal — one medium mitigable, one-time organizational build"
+      },
+      "qa": {
+        "all_9_constraints_assessed": true,
+        "knockout_false_positive_check_passed": true,
+        "cost_never_a_knockout_rule_honored": true,
+        "certification_path_rule_honored": true,
+        "two_question_test_applied": "no knockouts — N/A",
+        "naics_codes_used_not_names": true
+      }
+    }
+  ],
+  "has_bom": true,
+  "naics_sector_type": "non_manufacturing"
+}

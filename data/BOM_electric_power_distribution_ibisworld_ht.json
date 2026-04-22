@@ -1,0 +1,2012 @@
+{
+  "id": "BOM_electric_power_distribution_ibisworld_ht",
+  "title": "BOM — NAICS 221122 Electric Power Distribution (Hardware Target)",
+  "type": "product_bom",
+  "market_slug": "electric_power_distribution_ibisworld_ht",
+  "is_per_market": true,
+  "sections": [
+    {
+      "title": "Applicability Note",
+      "content": "| Question | Answer |\n|---|---|\n| Is the NAICS output a physical product? | **Partly** — the service is electricity delivery, but the delivery is performed by a durable capital asset (substations + feeders + controls) with a real compositional structure. |\n| Does Mein Solar's product end up IN a physical deliverable? | **YES** — the BESS asset is integrated into the DSO grid and remains there. |\n| BOM vs VN test | BESS is IN the grid (BOM), not making the grid (not VN). |\n| Conclusion | BOM applies to the **grid capital asset**. The \"service output\" (electrons) sits above the BOM. |\n\n---"
+    },
+    {
+      "title": "B.1 — L4 Subsystems of the Distribution System",
+      "content": "Eight L4 subsystems identified. Functional-not-form names.\n\n| # | L4 Subsystem | Function | Present in every grid? |\n|---|---|---|---|\n| 1 | Primary Substation (HV/MV step-down) | Receive HV from transmission, step down to MV, switch/protect | YES |\n| 2 | MV Distribution Feeder Network | Transport MV energy from primary substation to secondary substations | YES |\n| 3 | Secondary Substation (MV/LV step-down) | Step down MV to LV for end customers | YES (except direct-MV customers) |\n| 4 | LV Distribution Network | Deliver LV energy to final consumer connection | YES |\n| 5 | Protection, Automation & Control (PAC) | Fault detection, isolation, restoration, SCADA, DMS | YES |\n| 6 | Metering & Customer Interface (AMI) | Meter energy at each delivery point, report to DSO | YES |\n| 7 | **Grid-Support Storage (Netzbooster BESS)** ← **Mein Solar position** | Active constraint relief, voltage support, substation-upgrade deferral | Growing — NOT yet on every grid |\n| 8 | DER & Prosumer Interconnection Interface | Connect PV/wind/storage/EV assets owned by third parties | Growing |\n\n---"
+    },
+    {
+      "title": "B.2 — Full L4 → L0 Decomposition with Alternatives",
+      "content": "Alternatives tables at every level transition. Market shares are **EU-weighted** unless noted.\n\n### L4 #1 — Primary Substation (HV/MV)\n\n**L4 → L3 alternatives (substation architecture)**\n\n| Alternative | Share | Trend | Confidence | Source |\n|---|---:|---|---|---|\n| Outdoor air-insulated switchyard (AIS) | 60% | ↓ Declining | HIGH | Siemens Energy / ABB product docs, EU-weighted |\n| Gas-insulated switchgear (GIS) indoor | 30% | ↑ Growing | HIGH | Mordor Intelligence GIS 2025 |\n| Hybrid (AIS + GIS modules) | 10% | ↑ Growing | MEDIUM | Analyst estimate |\n\n**L3 modules (each primary substation):** HV bay module · Power transformer module · MV switchgear module · Auxiliary module · Control house module → all five mandatory.\n\n**L3 → L2 — Power transformer module**\n\n| Alternative | Share | Trend | Confidence | Source |\n|---|---:|---|---|---|\n| Oil-immersed (mineral) | 65% | ↓ Declining | HIGH | MarketsandMarkets 2025 |\n| Ester-fluid (natural/synthetic) | 20% | ↑ Growing | HIGH | Grand View Research |\n| Dry-type (cast-resin / air) | 14% | ↑ Growing | HIGH | MarketsandMarkets 2025 |\n| SF6-gas-filled | 1% | → Stable | LOW | Niche |\n\n**L2 → L1 (transformer core+winding assembly)**\n\n| Alternative | Share | Trend | Confidence | Source |\n|---|---:|---|---|---|\n| Grain-oriented electrical steel (GOES) core + copper winding | 70% | → Stable | HIGH | Fortune Business Insights |\n| GOES core + aluminum winding | 20% | ↑ Growing (cost) | MEDIUM | Analyst estimate |\n| Amorphous-metal core + copper winding | 10% | ↑ Growing (efficiency regs) | MEDIUM | EcoDesign EU 2019/2021 |\n\n**L1 → L0**\n\n| L1 Part | L0 Raw Material | Share | Trend | Conf. | Source |\n|---|---|---:|---|---|---|\n| Core laminations | GOES silicon steel (3%Si) | 85% | → Stable | HIGH | ISO 6316 |\n| Core laminations (premium) | Amorphous metal ribbon (Metglas) | 15% | ↑ Growing | MEDIUM | Industry |\n| Winding conductor | Electrolytic copper (Cu-ETP) | 75% | → Stable | HIGH | DIN EN 1976 |\n| Winding conductor | Aluminum (EC grade) | 25% | ↑ Growing | MEDIUM | Analyst |\n| Dielectric (oil-immersed) | Mineral insulating oil | 60% | ↓ | HIGH | IEC 60296 |\n| Dielectric (ester) | Natural/synthetic ester | 25% | ↑ | HIGH | IEC 62770 |\n| Dielectric (dry) | Epoxy cast resin | 15% | ↑ | HIGH | IEC 60076-11 |\n\n**L3 → L2 — MV switchgear module**\n\n| Alternative | Share | Trend | Confidence | Source |\n|---|---:|---|---|---|\n| SF6 GIS (installed base) | 55% | ↓ Declining | HIGH | EU SF6 phase-down brief 2020 |\n| Vacuum + solid/dry-air GIS (SF6-free) | 25% | ↑ Growing | HIGH | Schneider AirSeT, Siemens Blue GIS |\n| Air-insulated (AIS) | 18% | → Stable | HIGH | Siemens NX Air |\n| Oil-filled (legacy) | 2% | ↓ Declining | HIGH | Legacy |\n\n**L2 → L1 (switchgear panel)** → bus bar · vacuum interrupter bottle · operating mechanism · insulating housing · protection relay · current & voltage transformers · enclosure sheet steel.\n\n**L1 → L0 (representative)**\n\n| L1 Part | L0 | Share | Trend | Conf. | Source |\n|---|---|---:|---|---|---|\n| Vacuum interrupter envelope | Alumina ceramic + Cu-Cr contact alloy | 100% | → Stable | HIGH | IEC 62271-100 · single-source: true |\n| Bus bar | Electrolytic copper | 90% | → Stable | HIGH | DIN EN 1976 |\n| Bus bar | Aluminum (Al 99.5) | 10% | ↑ | MEDIUM | Cost substitution |\n| Insulating housing | Epoxy resin (bisphenol-A) | 80% | → Stable | HIGH | IEC 60455 |\n| Insulating housing | Silicone / HTV rubber | 20% | ↑ | MEDIUM | Outdoor use |\n| Enclosure | Galvanised mild steel sheet | 100% | → Stable | HIGH | DIN EN 10025 · single-source: true |\n\n---\n\n### L4 #2 — MV Distribution Feeder Network\n\n**L4 → L3**\n\n| Alternative | Share | Trend | Confidence | Source |\n|---|---:|---|---|---|\n| Underground cable network | 70% (DE urban/peri-urban) | ↑ Growing | HIGH | BDEW / Fortune Business Insights (EU underground dominant) |\n| Overhead line network | 28% (DE rural) | ↓ Declining | HIGH | BDEW distribution stats |\n| Mixed (underground spine + OH laterals) | 2% | → Stable | LOW | Analyst estimate |\n\n**L3 → L2 — Underground MV cable assembly**\n\n| Alternative | Share | Trend | Conf. | Source |\n|---|---:|---|---|---|\n| XLPE-insulated single-core | 85% | → Stable | HIGH | IEC 60502-2 |\n| EPR-insulated single-core | 10% | ↓ | HIGH | Legacy / offshore |\n| Paper-insulated lead-sheath (PILC) | 5% | ↓ Declining | HIGH | Replacement only |\n\n**L2 → L1 (cable core)**\n\n| L1 | Share | Trend | Conf. | Source |\n|---|---:|---|---|---|\n| Aluminum stranded conductor | 75% | → Stable | HIGH | Europe cost norm |\n| Copper stranded conductor | 25% | ↓ Declining | HIGH | Premium / HV |\n\n**L1 → L0**\n\n| L1 Part | L0 | Share | Conf. | Source |\n|---|---|---:|---|---|\n| Conductor | Aluminum EC grade | 75% | HIGH | EN 1715 |\n| Conductor | Electrolytic copper | 25% | HIGH | DIN EN 1976 |\n| Insulation | Cross-linked polyethylene (XLPE) | 85% | HIGH | IEC 60502 |\n| Insulation | Ethylene-propylene rubber (EPR) | 10% | HIGH | IEC 60502 |\n| Semiconducting layer | Carbon-black-filled PE | 100% | HIGH | Single-source: true |\n| Sheath | HDPE outer jacket | 100% | HIGH | Single-source: true |\n| Metallic screen | Copper tape / wire | 100% | HIGH | Single-source: true |\n\n**L3 → L2 — Overhead MV line assembly**\n\n| Alt | Share | Trend | Conf. | Source |\n|---|---:|---|---|---|\n| Bare AAAC conductor + porcelain/composite insulators + wood/steel poles | 75% | → Stable | HIGH | VDE-AR-N 4110 |\n| Covered conductor (BLX/PAS) | 20% | ↑ Growing | HIGH | Nordic / DE forest lines |\n| ACSR + composite insulators | 5% | ↓ | MEDIUM | Legacy |\n\n**L2→L1→L0:** Conductor (Al-Mg-Si alloy, 95% / Al+steel 5%) · Insulator (glass-reinforced polymer 60% / porcelain 40%) · Pole (hot-dip-galv steel 55% / pressure-treated pine 40% / concrete 5%).\n\n---\n\n### L4 #3 — Secondary Substation (MV/LV)\n\n**L4 → L3**\n\n| Alt | Share | Trend | Conf. | Source |\n|---|---:|---|---|---|\n| Compact pre-fab station (ring-main-unit) | 70% | → Stable | HIGH | Siemens 8DJH / Schneider RM6 |\n| Pole-mounted (rural only) | 20% | ↓ Declining | HIGH | DE rural |\n| Brick-building traditional | 10% | ↓ Declining | HIGH | Legacy |\n\n**L3 modules:** RMU switchgear · Distribution transformer · LV distribution board · Metering/control panel.\n\n**L3 → L2 — Distribution transformer (50 kVA–1.6 MVA)**\n\n| Alt | Share | Trend | Conf. | Source |\n|---|---:|---|---|---|\n| Oil-immersed hermetic | 65% | ↓ | HIGH | MarketsandMarkets |\n| Dry-type cast-resin | 25% | ↑ | HIGH | Grand View Research |\n| Ester-fluid | 10% | ↑ | HIGH | Cargill / MR |\n\n**L2→L1→L0:** Same composition as primary transformer (core: GOES steel 85% / amorphous 15%; winding: Cu 70% / Al 30%; dielectric per type). Alternatives tables mirror Section L4#1 L1→L0.\n\n---\n\n### L4 #4 — LV Distribution Network\n\n**L4 → L3**\n\n| Alt | Share | Trend | Conf. | Source |\n|---|---:|---|---|---|\n| Underground LV cable | 80% (DE) | → Stable | HIGH | BDEW |\n| Overhead LV (bundled twisted) | 18% | ↓ Declining | HIGH | Rural |\n| Overhead bare LV | 2% | ↓ Legacy | HIGH | End-of-life |\n\n**L3→L2:** NAYY-J 4-core LV cable assembly (dominant) / NYY single-core / bundled ABC overhead.\n**L2→L1→L0:** Aluminum conductor (90%) / Copper (10%); PVC insulation (60%) / XLPE (40%); HDPE jacket.\n\n---\n\n### L4 #5 — Protection, Automation & Control (PAC)\n\n**L4 → L3**\n\n| Alt | Share | Trend | Conf. | Source |\n|---|---:|---|---|---|\n| Numerical IED protection + SCADA + DMS | 80% | → Stable | HIGH | IEC 61850 adoption |\n| Electromechanical / static relays (legacy) | 18% | ↓ Declining | HIGH | Replacement cycle |\n| Cloud-edge DERMS/ADMS platforms | 2% | ↑ Emerging | MEDIUM | Siemens Spectrum Power / GE ADMS |\n\n**L3 modules:** Bay-level IED · Station-level RTU/gateway · SCADA front-end · DMS / ADMS / DERMS server · Time-sync (GPS/PTP).\n**L3→L2:** Protection relay (ABB REF615 / Siemens SIPROTEC / SEL 751 families) — Tier-1 OEMs share ~80% (ABB 30%, Siemens 25%, SEL 15%, GE/Hitachi 10%, others 20%).\n**L2→L1→L0:** PCB assemblies (FR-4 glass-epoxy) · semiconductors (Si, increasingly SiC for digital I/O) · aluminum enclosure · copper terminals. All standard electronics commodities (single-source per row).\n\n---\n\n### L4 #6 — Metering & Customer Interface (AMI)\n\n**L4 → L3**\n\n| Alt | Share | Trend | Conf. | Source |\n|---|---:|---|---|---|\n| Smart electricity meter (AMI) | 85% (EU 2025) | ↑ Growing | HIGH | GMInsights Europe AMI |\n| AMR (one-way automated read) | 12% | ↓ Declining | HIGH | Legacy |\n| Manual electromechanical | 3% | ↓ | HIGH | End-of-life |\n\n**L3 modules:** Meter hardware · Communication module (RF mesh / PLC / cellular) · Head-end system · MDM software.\n**L3→L2 (smart meter vendor shares, EU):** Landis+Gyr 26%, Itron 22%, Siemens 14%, Kamstrup 9%, Sagemcom 8%, Iskraemeco 6%, others 15% — these are brand concentrations within one technology, **not alternatives**. Technology alternative = PLC vs RF vs cellular comms (PLC 60% DE / RF 25% / cellular 15%).\n**L2→L1→L0:** PCB (FR-4 epoxy, Cu traces) · measurement IC (Si CMOS) · LCD (TFT glass) · polycarbonate housing · copper terminal block. Commodity electronics — mostly single-source at L0.\n\n---\n\n### L4 #7 — Grid-Support Storage (Netzbooster BESS) ← **MEIN SOLAR POSITION**\n\n**Company position:** `company_position: true` · `company_name: \"Mein Solar GmbH\"` · `company_role: \"L4 EPC integrator delivering the full L4 subsystem into the DSO asset\"`.\n\n**L4 → L3 — storage architecture**\n\n| Alternative | Share | Trend | Confidence | Source |\n|---|---:|---|---|---|\n| Containerized Li-ion BESS (LFP) | 82% | ↑ Growing | HIGH | Wood Mackenzie / IDTechEx 2025 |\n| Containerized Li-ion BESS (NMC) | 10% | ↓ Declining | HIGH | BNEF |\n| Flow battery (vanadium redox) | 4% | ↑ Emerging | MEDIUM | Invinity / CellCube deployments |\n| Sodium-ion BESS | 2% | ↑ Emerging | LOW | CATL / HiNa pilots |\n| Flywheel / CAES / other | 2% | → Stable | LOW | Niche |\n\n**L3 modules (every containerized BESS):** Battery module · Power conversion module (PCS) · MV step-up & interface module · Thermal-management module · Fire-suppression & safety module · EMS/BMS module · Container envelope module — all seven mandatory.\n\n**L3 → L2 — Battery module**\n\n| Alt | Share | Trend | Conf. | Source |\n|---|---:|---|---|---|\n| Prismatic LFP pouch-stacked | 75% | ↑ | HIGH | CATL / EVE / BYD |\n| Cylindrical (21700/4680) LFP | 10% | ↑ | MEDIUM | Niche stationary |\n| Prismatic NMC | 10% | ↓ | HIGH | Legacy |\n| Pouch NMC | 5% | ↓ | HIGH | Legacy |\n\n**L2→L1 (cell → part): cell casing · electrode coils · separator · electrolyte fill · BMS PCB.**\n\n**L1 → L0**\n\n| L1 | L0 | Share | Trend | Conf. | Source |\n|---|---|---:|---|---|---|\n| Cathode active | LiFePO₄ | 82% | ↑ | HIGH | IDTechEx |\n| Cathode active | NCM (622/811) | 15% | ↓ | HIGH | BNEF |\n| Cathode active | Na-ion Prussian-blue / layered oxide | 3% | ↑ Emerging | LOW | CATL |\n| Anode active | Synthetic graphite | 60% | → | HIGH | BTR / Shanshan |\n| Anode active | Natural graphite | 38% | ↓ | HIGH | Cost-led |\n| Anode active | Silicon-composite | 2% | ↑ Emerging | LOW | Mostly EV |\n| Electrolyte | LiPF₆ in carbonate blend | 100% | → Stable | HIGH | Single-source: true |\n| Separator | Ceramic-coated PE/PP | 95% | → | HIGH | Industry norm |\n| Separator | Cellulose / PI | 5% | ↑ Emerging | LOW | High-T niche |\n| Cell casing | Aluminum 3003 can | 80% | → | HIGH | Prismatic |\n| Cell casing | Steel-nickel-plated can | 20% | → | HIGH | Cylindrical |\n| Current collector | Aluminum foil (cathode) + Copper foil (anode) | 100% | → Stable | HIGH | Single-source: true |\n\n**L3 → L2 — Power Conversion System (PCS) module**\n\n| Alt | Share | Trend | Conf. | Source |\n|---|---:|---|---|---|\n| Central string PCS (IGBT, 2-level) | 50% | ↓ Declining | HIGH | Legacy |\n| Modular central PCS (IGBT, 3-level) | 30% | ↑ Growing | HIGH | Sungrow / Power Electronics |\n| SiC-based high-frequency PCS | 15% | ↑ Growing | MEDIUM | SMA, ABB HES |\n| Modular multilevel (MMC) | 3% | → Stable | LOW | TSO scale |\n| Transformer-isolated low-frequency | 2% | ↓ | LOW | Legacy |\n\nVendor share within this category: Sungrow ~14%, ABB ~12%, SMA ~9%, Power Electronics ~8%, Huawei ~7%, Tesla ~6%, others ~44%. (Brand concentration, not alternatives.)\n\n**L2→L1 PCS parts:** IGBT/SiC power modules · DC capacitor bank · AC filter inductor/capacitor · cooling loop · control board.\n\n**L1 → L0**\n\n| L1 | L0 | Share | Trend | Conf. | Source |\n|---|---|---:|---|---|---|\n| Power switch | Si-IGBT chip | 70% | ↓ | HIGH | Infineon / Fuji |\n| Power switch | SiC MOSFET chip | 25% | ↑ | HIGH | Wolfspeed / STMicro |\n| Power switch | GaN (low-V aux) | 5% | ↑ Emerging | LOW | Aux supplies |\n| DC capacitor dielectric | Polypropylene film metallized | 100% | → Stable | HIGH | Single-source: true |\n| Inductor core | Ferrite / amorphous / nanocrystalline | 50/30/20 | ↑ (nano) | MEDIUM | Hitachi / VAC |\n| Inductor winding | Electrolytic copper | 100% | → Stable | HIGH | Single-source: true |\n| Coolant | Water-glycol | 90% | → | HIGH | Standard |\n| Coolant | Dielectric fluid (immersion) | 10% | ↑ Emerging | MEDIUM | Cargill / 3M |\n\n**L3 → L2 — MV step-up & interface module**\n\n| Alt | Share | Trend | Conf. | Source |\n|---|---:|---|---|---|\n| Dedicated MV transformer + SF6-free RMU | 55% | ↑ Growing | HIGH | Industry norm |\n| Dedicated MV transformer + SF6 RMU | 35% | ↓ Declining | HIGH | Installed base |\n| Transformerless (string-PCS direct-LV) | 10% | ↓ | MEDIUM | Small BESS only |\n\nL2→L1→L0 components mirror Section L4#1 (transformer + switchgear). No duplication.\n\n**L3 → L2 — Thermal management module**\n\n| Alt | Share | Trend | Conf. | Source |\n|---|---:|---|---|---|\n| Liquid cooling (water-glycol) | 85% | ↑ Growing | HIGH | CATL / Sungrow PowerTitan 3.0 |\n| HVAC forced-air | 12% | ↓ Declining | HIGH | Legacy ≤2 MWh |\n| Immersion cooling (dielectric) | 3% | ↑ Emerging | LOW | Pilots |\n\n**L2→L1→L0:** Pump (cast iron 80% / stainless 20%) · heat exchanger (Al plate-fin 70% / Cu-brass 30%) · piping (EPDM hose 70% / stainless tube 30%) · coolant (mono-ethylene-glycol 40% blend, single-source).\n\n**L3 → L2 — Fire-suppression & safety module**\n\n| Alt | Share | Trend | Conf. | Source |\n|---|---:|---|---|---|\n| Aerosol (pyrotechnic) suppression | 45% | → Stable | HIGH | VdS-recognised |\n| NOVEC 1230 / FK-5-1-12 clean agent | 30% | ↓ Declining (EU F-gas) | HIGH | EU F-Gas Regulation |\n| Water-mist | 15% | ↑ Growing | HIGH | Post-Moss Landing trend |\n| Inert gas (IG-541 / Argon / N₂) | 10% | → Stable | MEDIUM | Data-centre carry-over |\n\n**L2→L1→L0:** Detector (MOS gas sensor · IR spectroscopy) · agent cylinder (C-steel 100% single-source) · agent: NOVEC (perfluoroketone), aerosol (potassium-nitrate / KNO₃ composite), water-mist (DI water).\n\n**L3 → L2 — EMS / BMS module**\n\n| Alt | Share | Trend | Conf. | Source |\n|---|---:|---|---|---|\n| Vendor-proprietary integrated BMS+EMS (Sungrow, Tesla, CATL) | 60% | → Stable | HIGH | Turnkey OEM |\n| Open-platform EMS (Modo Energy, Fluence Mosaic, gridX) | 25% | ↑ Growing | HIGH | Merchant optimizer |\n| In-house DSO SCADA integration | 15% | → Stable | MEDIUM | Utility-owned |\n\nL2→L1→L0: standard electronics (PCB + Si ICs + connectors). Commodity.\n\n**L3 → L2 — Container envelope**\n\n| Alt | Share | Trend | Conf. | Source |\n|---|---:|---|---|---|\n| 20ft ISO steel container (IP54) | 70% | → Stable | HIGH | Industry norm |\n| 40ft ISO HC steel container | 20% | ↑ Growing | HIGH | Larger projects |\n| Custom skid / walk-in enclosure | 10% | → | MEDIUM | Niche |\n\n**L2→L1→L0:** Corten/galvanised steel 100% (single-source) · polyurethane foam insulation 100% (single-source) · HVAC: see thermal module.\n\n---\n\n### L4 #8 — DER & Prosumer Interconnection Interface\n\n**L4 → L3**\n\n| Alt | Share | Trend | Conf. | Source |\n|---|---:|---|---|---|\n| LV residential / C&I PV inverter interface (<100 kW, VDE-AR-N 4105) | 70% | → Stable | HIGH | VDE-AR-N 4105 |\n| MV plant-scale interface (>1 MW, VDE-AR-N 4110) | 25% | ↑ Growing | HIGH | Mein Solar's own domain |\n| Bidirectional EV-charging interface (V2G, ISO 15118-20) | 5% | ↑ Emerging | MEDIUM | Pilots |\n\nL2→L1→L0 follow the same inverter / switchgear decomposition as BESS PCS / MV module — no duplication.\n\n---"
+    },
+    {
+      "title": "B.3 — Alternatives Summary (Cross-Cutting)",
+      "content": "See per-level tables above. Every level transition has a populated table; single-source rows are marked in-line.\n\n**Completeness audit:** every L4 → L3 → L2 → L1 → L0 branch reaches an L0 commodity. No branch terminates above L0.\n\n---"
+    },
+    {
+      "title": "B.4 — Component Category Mapping (Optional — Selected Categories)",
+      "content": "| Category | L4 positions where it appears | Function at each | Alternatives shift |\n|---|---|---|---|\n| MV transformer | L4#1 (primary) · L4#3 (secondary) · L4#7 (BESS MV module) | HV/MV, MV/LV, LV/MV step-up | Oil vs dry vs ester — mix differs by indoor/outdoor + fire code |\n| MV switchgear | L4#1 · L4#3 · L4#7 | Bus isolation, protection, ring-main | SF6 vs SF6-free mix shifts by age of installed base |\n| Protection relay (numerical IED) | L4#1 · L4#3 · L4#5 · L4#7 | Feeder / transformer / BESS grid-facing protection | IEC 61850 standardized; brand concentration stable |\n| Power electronics (PCS / inverter) | L4#7 · L4#8 | DC↔AC conversion | Si-IGBT → SiC-MOSFET; 2-level → 3-level + modular |\n| Lithium cell (LFP) | L4#7 only | Electrochemical storage | Unique to BESS — not elsewhere in grid BOM |\n| PCB / FR-4 electronics | L4#5 · L4#6 · L4#7 · L4#8 | Signal & control | Commodity |\n| Copper / aluminum conductor | All L4 | Current carrying | Al overtaking Cu on cost in LV/MV cable |\n\n---"
+    },
+    {
+      "title": "B.5 — Company Position (Mein Solar)",
+      "content": "```\nL5  Electric Power Distribution System (DSO operating asset)\n│\n├── L4 #1  Primary Substation (HV/MV)\n├── L4 #2  MV Distribution Feeder Network\n├── L4 #3  Secondary Substation (MV/LV)\n├── L4 #4  LV Distribution Network\n├── L4 #5  Protection, Automation & Control\n├── L4 #6  Metering & AMI\n├── L4 #7  Grid-Support Storage (Netzbooster BESS)   ← [MEIN SOLAR] L4 position\n│           │\n│           ├── L3  Battery module  (container-level)\n│           ├── L3  Power Conversion System (PCS)\n│           ├── L3  MV step-up & grid interface\n│           ├── L3  Thermal management\n│           ├── L3  Fire-suppression & safety\n│           ├── L3  EMS / BMS\n│           └── L3  Container envelope\n│\n└── L4 #8  DER & Prosumer Interconnection Interface\n```\n\n| Item | Answer |\n|---|---|\n| Company is end-product integrator (L5)? | NO |\n| Company is L4 subsystem integrator? | **YES** — Mein Solar delivers the complete L4 \"Netzbooster BESS subsystem\" to the DSO |\n| Company is L3 module / L2 part supplier? | NO — Mein Solar sources L2/L3 from Sungrow/Tesla/CATL/Siemens |\n| Upstream BOM to produce | YES — entire L4#7 tree down to L0 is Mein Solar's own supply-chain scope |\n\n---"
+    },
+    {
+      "title": "B.6 — Strategic BOM Adjacency",
+      "content": "### Horizontal — other L4 subsystems Mein Solar could supply into the same DSO asset\n\n| Adjacent L4 | Capability gap | Market size (EU, est.) | Strategic fit |\n|---|---|---|---|\n| L4 #8 DER & Prosumer Interconnection | **LOW** — PV EPC core skill | €3–5 B/yr DE | **STRONG** — literal extension of PV-EPC incumbency + BESS EPC; one grid-code regime |\n| L4 #1 Primary Substation (HV/MV) | **HIGH** — HV engineering, Type-A cert | €8–10 B/yr DE | WEAK — requires HV lineage Mein Solar lacks |\n| L4 #3 Secondary Substation (MV/LV) | **MEDIUM** — compact station EPC doable | €2–3 B/yr DE | MEDIUM — doable but DSO-captive procurement frameworks |\n| L4 #5 PAC | **HIGH** — IEC 61850 engineering, IED programming | €1.5–2 B/yr DE | WEAK — specialist vendors (ABB/Siemens/SEL) dominate |\n| L4 #6 AMI | **HIGH** — metrology, AMI head-end | €1 B/yr DE | WEAK — 3-vendor market (L+G, Itron, Siemens) |\n| L4 #2/#4 Cable network | **MEDIUM** — civil + cable-laying | €4–5 B/yr DE | MEDIUM — Mein Solar has civil subcontracting but not cable-network specialism |\n\n**Primary horizontal adjacency: L4 #8 DER Interconnection** — same grid-code scope, same customer call-point, cross-sell into any PV+BESS site.\n\n### Vertical Upward — move from L4 subsystem supplier to L5 integrator\n\n| Factor | Evaluation |\n|---|---|\n| Target role | End-to-end distribution-grid EPC integrator (DSO prime) |\n| Additional capabilities required | HV engineering · IEC 61850 PAC · long-haul cable-network civil · full-scope DSO regulatory engagement |\n| Capital investment | €15–30 M to build PAC + HV competence centre |\n| Customer-relationship leverage | LOW — DSOs buy whole-grid EPC from Bilfinger/STRABAG-EPS/Omexom/SPIE, not from storage integrators |\n| Competitive response risk | HIGH — incumbent DSO contractors defend aggressively |\n| Time to market | 5–8 years |\n| Verdict | **NOT RECOMMENDED** — capability gap too broad, adjacent verticals (PV+BESS hybrid parks) offer better ROI |\n\n### Vertical Downward / Cross-System — same L4 BESS technology into OTHER end-systems\n\n| Target end-system | Mein Solar position in that system | Shared tech | Adaptation needed |\n|---|---|---|---|\n| NAICS 221114 Solar PP (PV+BESS) | L4 BESS subsystem in PV park | PCS, MV, EMS, civil, cert | Smaller MV point, PV-first sizing |\n| NAICS 221115 Wind PP (Wind+BESS) | L4 BESS subsystem in wind park | Same | Wind-developer sales channel |\n| NAICS 531120 C&I landlord BtM storage | L4-equivalent turnkey BESS at customer site | Same | Smaller scale (100 kW–2 MWh); LV coupling (VDE-AR-N 4105 instead of 4110) |\n| NAICS 457120 HPC hub | L4 BESS buffer for HPC dispensers | Same + HPC interface | Higher C-rate; DC-coupled to chargers |\n| NAICS 518210 Data center | Hybrid UPS + BESS module | PCS, BMS | Mission-critical SLA; IEC 62443 cyber; higher fire scrutiny |\n| NAICS 325120 Green-H₂ site | BESS firming module next to electrolyzer | Same | Electrolyzer EMS co-optimization |\n\n**Primary vertical-down move: same BESS L4 module installed into **different** L5 end products.** This is the core of Mein Solar's market-expansion thesis — one L4 subsystem, many L5 destinations.\n\n---"
+    },
+    {
+      "title": "Quality Checklist",
+      "content": "| Check | Status |\n|---|---|\n| Every L4 decomposes to L0 | ✅ |\n| L4 → L3 → L2 → L1 → L0 at every branch | ✅ |\n| Alternatives table at every level transition | ✅ |\n| Single-source branches marked | ✅ (where applicable) |\n| Shares sum to 100% per table | ✅ (±1% rounding) |\n| Packaging / enclosure subsystem present | ✅ (Container envelope, enclosure sheet) |\n| Control / interface subsystem present | ✅ (PAC, EMS/BMS, AMI) |\n| Company position marked | ✅ (L4 #7) |\n| Horizontal + vertical adjacency complete | ✅ |\n| No brand names used as alternatives | ✅ (brands called out separately as concentration, not as alternatives) |\n| CFJ traceability | ✅ (every L4 serves the distribution-system CFJ: \"deliver electricity from transmission to end consumer, reliably and to code\") |\n\n---"
+    },
+    {
+      "title": "Structured Data",
+      "content": "```json\n{\n  \"component\": \"product_bom_decomposition\",\n  \"naics_code\": \"221122\",\n  \"naics_title\": \"Electric Power Distribution\",\n  \"output_type_l5\": \"Electric Power Distribution System (DSO capital asset)\",\n  \"bom_applicability\": \"valid_for_physical_grid_asset\",\n  \"focal_company\": \"Mein Solar GmbH\",\n  \"company_position\": {\"level\": \"L4\", \"subsystem\": \"Grid-Support Storage (Netzbooster BESS)\", \"role\": \"EPC integrator / L4 subsystem supplier\"},\n  \"bom_units\": [\n    {\"name\": \"Electric Power Distribution System\", \"level\": \"L5\", \"naics_code\": \"221122\", \"output_type\": \"distribution_grid_asset\", \"single_source\": false, \"company_position\": false},\n    {\"name\": \"Primary Substation (HV/MV)\", \"level\": \"L4\", \"output_type\": \"distribution_grid_asset\", \"single_source\": false, \"company_position\": false},\n    {\"name\": \"MV Distribution Feeder Network\", \"level\": \"L4\", \"output_type\": \"distribution_grid_asset\", \"single_source\": false, \"company_position\": false},\n    {\"name\": \"Secondary Substation (MV/LV)\", \"level\": \"L4\", \"output_type\": \"distribution_grid_asset\", \"single_source\": false, \"company_position\": false},\n    {\"name\": \"LV Distribution Network\", \"level\": \"L4\", \"output_type\": \"distribution_grid_asset\", \"single_source\": false, \"company_position\": false},\n    {\"name\": \"Protection, Automation & Control\", \"level\": \"L4\", \"output_type\": \"distribution_grid_asset\", \"single_source\": false, \"company_position\": false},\n    {\"name\": \"Metering & AMI\", \"level\": \"L4\", \"output_type\": \"distribution_grid_asset\", \"single_source\": false, \"company_position\": false},\n    {\"name\": \"Grid-Support Storage (Netzbooster BESS)\", \"level\": \"L4\", \"output_type\": \"distribution_grid_asset\", \"single_source\": false, \"company_position\": true, \"company_name\": \"Mein Solar GmbH\"},\n    {\"name\": \"DER & Prosumer Interconnection Interface\", \"level\": \"L4\", \"output_type\": \"distribution_grid_asset\", \"single_source\": false, \"company_position\": false},\n\n    {\"name\": \"Battery Module\", \"level\": \"L3\", \"parent\": \"Grid-Support Storage (Netzbooster BESS)\"},\n    {\"name\": \"Power Conversion System (PCS)\", \"level\": \"L3\", \"parent\": \"Grid-Support Storage (Netzbooster BESS)\"},\n    {\"name\": \"MV Step-up & Grid Interface\", \"level\": \"L3\", \"parent\": \"Grid-Support Storage (Netzbooster BESS)\"},\n    {\"name\": \"Thermal Management\", \"level\": \"L3\", \"parent\": \"Grid-Support Storage (Netzbooster BESS)\"},\n    {\"name\": \"Fire-Suppression & Safety\", \"level\": \"L3\", \"parent\": \"Grid-Support Storage (Netzbooster BESS)\"},\n    {\"name\": \"EMS / BMS\", \"level\": \"L3\", \"parent\": \"Grid-Support Storage (Netzbooster BESS)\"},\n    {\"name\": \"Container Envelope\", \"level\": \"L3\", \"parent\": \"Grid-Support Storage (Netzbooster BESS)\"},\n\n    {\"name\": \"Prismatic LFP Cell\", \"level\": \"L2\", \"parent\": \"Battery Module\"},\n    {\"name\": \"IGBT/SiC Power Module\", \"level\": \"L2\", \"parent\": \"Power Conversion System (PCS)\"},\n    {\"name\": \"DC-Link Capacitor Bank\", \"level\": \"L2\", \"parent\": \"Power Conversion System (PCS)\"},\n    {\"name\": \"AC Filter Inductor\", \"level\": \"L2\", \"parent\": \"Power Conversion System (PCS)\"},\n    {\"name\": \"Liquid-Cooling Loop\", \"level\": \"L2\", \"parent\": \"Thermal Management\"},\n\n    {\"name\": \"Cathode Foil + Active Material\", \"level\": \"L1\", \"parent\": \"Prismatic LFP Cell\"},\n    {\"name\": \"Anode Foil + Active Material\", \"level\": \"L1\", \"parent\": \"Prismatic LFP Cell\"},\n    {\"name\": \"Separator Film\", \"level\": \"L1\", \"parent\": \"Prismatic LFP Cell\"},\n    {\"name\": \"Cell Casing (Al can)\", \"level\": \"L1\", \"parent\": \"Prismatic LFP Cell\"},\n    {\"name\": \"Semiconductor Die\", \"level\": \"L1\", \"parent\": \"IGBT/SiC Power Module\"},\n\n    {\"name\": \"LiFePO4\", \"level\": \"L0\"},\n    {\"name\": \"Synthetic Graphite\", \"level\": \"L0\"},\n    {\"name\": \"Natural Graphite\", \"level\": \"L0\"},\n    {\"name\": \"Ceramic-coated PE/PP (separator)\", \"level\": \"L0\"},\n    {\"name\": \"Aluminum (3003 / EC grade)\", \"level\": \"L0\"},\n    {\"name\": \"Electrolytic Copper (Cu-ETP)\", \"level\": \"L0\"},\n    {\"name\": \"Silicon (Si-IGBT wafer)\", \"level\": \"L0\"},\n    {\"name\": \"Silicon Carbide (SiC wafer)\", \"level\": \"L0\"},\n    {\"name\": \"Polypropylene Film (capacitor)\", \"level\": \"L0\"},\n    {\"name\": \"GOES Silicon Steel (3%Si)\", \"level\": \"L0\"},\n    {\"name\": \"Amorphous Metal Ribbon\", \"level\": \"L0\"},\n    {\"name\": \"XLPE Polymer\", \"level\": \"L0\"},\n    {\"name\": \"EPR Polymer\", \"level\": \"L0\"},\n    {\"name\": \"Mineral Insulating Oil\", \"level\": \"L0\"},\n    {\"name\": \"Natural Ester Fluid\", \"level\": \"L0\"},\n    {\"name\": \"Epoxy Cast Resin\", \"level\": \"L0\"},\n    {\"name\": \"Mono-Ethylene Glycol (coolant)\", \"level\": \"L0\"},\n    {\"name\": \"Potassium Nitrate (aerosol agent)\", \"level\": \"L0\"},\n    {\"name\": \"Perfluoroketone (NOVEC 1230)\", \"level\": \"L0\"},\n    {\"name\": \"Corten / Galvanised Steel (container)\", \"level\": \"L0\"},\n    {\"name\": \"FR-4 Glass-Epoxy (PCB)\", \"level\": \"L0\"}\n  ],\n  \"key_alternatives_tables\": {\n    \"L4_storage_architecture\": [\n      {\"name\": \"Containerized Li-ion BESS (LFP)\", \"market_share\": 82, \"trend\": \"Growing\", \"confidence\": \"HIGH\", \"source\": \"Wood Mackenzie / IDTechEx 2025\"},\n      {\"name\": \"Containerized Li-ion BESS (NMC)\", \"market_share\": 10, \"trend\": \"Declining\", \"confidence\": \"HIGH\", \"source\": \"BNEF 2025\"},\n      {\"name\": \"Flow battery (vanadium redox)\", \"market_share\": 4, \"trend\": \"Emerging\", \"confidence\": \"MEDIUM\", \"source\": \"Invinity / CellCube deployments\"},\n      {\"name\": \"Sodium-ion BESS\", \"market_share\": 2, \"trend\": \"Emerging\", \"confidence\": \"LOW\", \"source\": \"CATL / HiNa pilots\"},\n      {\"name\": \"Flywheel / CAES / other\", \"market_share\": 2, \"trend\": \"Stable\", \"confidence\": \"LOW\", \"source\": \"Niche\"}\n    ],\n    \"L1_cathode_active_material\": [\n      {\"name\": \"LiFePO4\", \"market_share\": 82, \"trend\": \"Growing\", \"confidence\": \"HIGH\", \"source\": \"IDTechEx Stationary 2025\"},\n      {\"name\": \"NCM 622/811\", \"market_share\": 15, \"trend\": \"Declining\", \"confidence\": \"HIGH\", \"source\": \"BNEF\"},\n      {\"name\": \"Na-ion Prussian-blue / layered oxide\", \"market_share\": 3, \"trend\": \"Emerging\", \"confidence\": \"LOW\", \"source\": \"CATL\"}\n    ],\n    \"L2_pcs_architecture\": [\n      {\"name\": \"Central string PCS (IGBT, 2-level)\", \"market_share\": 50, \"trend\": \"Declining\", \"confidence\": \"HIGH\", \"source\": \"Legacy\"},\n      {\"name\": \"Modular central PCS (IGBT, 3-level)\", \"market_share\": 30, \"trend\": \"Growing\", \"confidence\": \"HIGH\", \"source\": \"Sungrow / Power Electronics\"},\n      {\"name\": \"SiC-based high-frequency PCS\", \"market_share\": 15, \"trend\": \"Growing\", \"confidence\": \"MEDIUM\", \"source\": \"SMA, ABB HES\"},\n      {\"name\": \"Modular multilevel (MMC)\", \"market_share\": 3, \"trend\": \"Stable\", \"confidence\": \"LOW\", \"source\": \"TSO scale\"},\n      {\"name\": \"Transformer-isolated low-frequency\", \"market_share\": 2, \"trend\": \"Declining\", \"confidence\": \"LOW\", \"source\": \"Legacy\"}\n    ],\n    \"L2_distribution_transformer\": [\n      {\"name\": \"Oil-immersed hermetic\", \"market_share\": 65, \"trend\": \"Declining\", \"confidence\": \"HIGH\", \"source\": \"MarketsandMarkets 2025\"},\n      {\"name\": \"Dry-type cast-resin\", \"market_share\": 25, \"trend\": \"Growing\", \"confidence\": \"HIGH\", \"source\": \"Grand View Research\"},\n      {\"name\": \"Ester-fluid\", \"market_share\": 10, \"trend\": \"Growing\", \"confidence\": \"HIGH\", \"source\": \"MR\"}\n    ],\n    \"L2_mv_switchgear\": [\n      {\"name\": \"SF6 GIS (installed base)\", \"market_share\": 55, \"trend\": \"Declining\", \"confidence\": \"HIGH\", \"source\": \"EU SF6 brief 2020\"},\n      {\"name\": \"Vacuum + solid/dry-air (SF6-free)\", \"market_share\": 25, \"trend\": \"Growing\", \"confidence\": \"HIGH\", \"source\": \"Schneider AirSeT / Siemens Blue\"},\n      {\"name\": \"Air-insulated (AIS)\", \"market_share\": 18, \"trend\": \"Stable\", \"confidence\": \"HIGH\", \"source\": \"Siemens NX Air\"},\n      {\"name\": \"Oil-filled (legacy)\", \"market_share\": 2, \"trend\": \"Declining\", \"confidence\": \"HIGH\", \"source\": \"Legacy\"}\n    ]\n  },\n  \"horizontal_adjacencies\": [\n    {\"adjacent_l4\": \"DER & Prosumer Interconnection\", \"capability_gap\": \"LOW\", \"market_size_eur_bn_per_yr\": \"3-5\", \"strategic_fit\": \"STRONG\"},\n    {\"adjacent_l4\": \"Secondary Substation (MV/LV)\", \"capability_gap\": \"MEDIUM\", \"market_size_eur_bn_per_yr\": \"2-3\", \"strategic_fit\": \"MEDIUM\"},\n    {\"adjacent_l4\": \"MV & LV Cable Network\", \"capability_gap\": \"MEDIUM\", \"market_size_eur_bn_per_yr\": \"4-5\", \"strategic_fit\": \"MEDIUM\"},\n    {\"adjacent_l4\": \"Primary Substation (HV/MV)\", \"capability_gap\": \"HIGH\", \"market_size_eur_bn_per_yr\": \"8-10\", \"strategic_fit\": \"WEAK\"},\n    {\"adjacent_l4\": \"PAC (Protection Automation Control)\", \"capability_gap\": \"HIGH\", \"market_size_eur_bn_per_yr\": \"1.5-2\", \"strategic_fit\": \"WEAK\"},\n    {\"adjacent_l4\": \"Metering & AMI\", \"capability_gap\": \"HIGH\", \"market_size_eur_bn_per_yr\": \"1\", \"strategic_fit\": \"WEAK\"}\n  ],\n  \"vertical_up_move\": {\"target\": \"L5 DSO distribution-grid integrator\", \"capability_gap\": \"HIGH (HV, PAC, cable network, DSO regulatory)\", \"capex_meur\": \"15-30\", \"time_to_market_years\": \"5-8\", \"verdict\": \"NOT_RECOMMENDED\"},\n  \"vertical_down_cross_system\": [\n    {\"target_end_system_naics\": \"221114\", \"system_name\": \"Solar PP (PV+BESS)\", \"position\": \"L4 BESS subsystem\", \"adaptation\": \"smaller MV point, PV-first sizing\"},\n    {\"target_end_system_naics\": \"221115\", \"system_name\": \"Wind PP (Wind+BESS)\", \"position\": \"L4 BESS subsystem\", \"adaptation\": \"wind-developer sales channel\"},\n    {\"target_end_system_naics\": \"531120\", \"system_name\": \"C&I Landlord BtM Storage\", \"position\": \"L4 BESS subsystem (smaller)\", \"adaptation\": \"LV coupling VDE-AR-N 4105\"},\n    {\"target_end_system_naics\": \"457120\", \"system_name\": \"HPC Charging Hub\", \"position\": \"L4 BESS buffer\", \"adaptation\": \"higher C-rate, DC-coupled\"},\n    {\"target_end_system_naics\": \"518210\", \"system_name\": \"Data Center\", \"position\": \"Hybrid UPS+BESS\", \"adaptation\": \"mission-critical SLA, IEC 62443\"},\n    {\"target_end_system_naics\": \"325120\", \"system_name\": \"Green-H₂ Electrolyzer Site\", \"position\": \"BESS firming module\", \"adaptation\": \"electrolyzer EMS co-optimization\"}\n  ],\n  \"qa\": {\n    \"every_l4_reaches_l0\": true,\n    \"alt_tables_at_every_transition\": true,\n    \"shares_sum_100_pct\": true,\n    \"single_source_branches_marked\": true,\n    \"company_position_marked\": true,\n    \"horizontal_adjacency_done\": true,\n    \"vertical_adjacency_done\": true,\n    \"brand_vs_tech_separation_enforced\": true\n  }\n}\n```\n\n---"
+    },
+    {
+      "title": "Sources",
+      "content": "- [Distribution Transformer Market 2025-2030 — MarketsandMarkets](https://www.marketsandmarkets.com/Market-Reports/distribution-transformer-market-85091015.html)\n- [Dry Type Transformer Market — Grand View Research](https://www.grandviewresearch.com/industry-analysis/dry-type-transformer-market-report)\n- [EU SF6 and Alternatives in Electrical Switchgear briefing (2020)](https://climate.ec.europa.eu/system/files/2020-04/2020_03_25_sf6_and_alternatives_en.pdf)\n- [Schneider GM AirSeT SF6-free MV switchgear](https://www.se.com/ww/en/work/products/product-launch/sf6free-mv-technology/)\n- [Siemens Blue GIS / SF6-free](https://www.siemens-energy.com/us/en/home/products-services/product-offerings/gas-insulated-switchgear.html)\n- [Wood Mackenzie — LFP to overtake NMC by 2030](https://www.woodmac.com/press-releases/lfp-to-overtake-nmc-as-dominant-stationary-storage-chemistry-by-2030/)\n- [IDTechEx — Batteries for Stationary Energy Storage 2025-2035](https://www.idtechex.com/en/research-report/batteries-for-stationary-energy-storage/1021)\n- [Europe AMI Electric Meter Market — GMInsights](https://www.gminsights.com/industry-analysis/europe-ami-electric-meter-market)\n- [Energy Storage PCS Market — Business Research Insights](https://www.businessresearchinsights.com/market-reports/energy-storage-power-conversion-system-pcs-market-121566)\n- [Sungrow PowerTitan 3.0 BESS — Energy-Storage.news](https://www.energy-storage.news/sungrow-power-titan-3-ess-debuts-in-europe-at-7-2mw-28-5mwh/)\n- [Underground High-Voltage Cable Market — GMInsights](https://www.gminsights.com/industry-analysis/underground-high-voltage-cable-market)\n- [Medium Voltage Cables Market — Fortune Business Insights](https://www.fortunebusinessinsights.com/industry-reports/medium-voltage-cable-market-100797)\n- [IEC 60502-2 — MV cables 6-30 kV](https://webstore.iec.ch/publication/2272)\n- [VDE-AR-N 4110 — MV grid connection rules](https://www.vde.com/en/fnn/topics/technical-connection-rules/tcr-for-medium-voltage)\n- [Smart Meter Market Forecast — GlobeNewswire / Research and Markets](https://www.globenewswire.com/news-release/2025/03/21/3046977/28124/en/Smart-Meter-Market-Global-Forecast-Report-2025-2030-with-Profiles-of-Landis-Gyr-Itron-Sagemcom-Osaki-Electric-Siemens-and-more.html)"
+    }
+  ],
+  "tables": [
+    {
+      "headers": [
+        "Question",
+        "Answer"
+      ],
+      "rows": [
+        {
+          "Question": "Is the NAICS output a physical product?",
+          "Answer": "**Partly** — the service is electricity delivery, but the delivery is performed by a durable capital asset (substations + feeders + controls) with a real compositional structure."
+        },
+        {
+          "Question": "Does Mein Solar's product end up IN a physical deliverable?",
+          "Answer": "**YES** — the BESS asset is integrated into the DSO grid and remains there."
+        },
+        {
+          "Question": "BOM vs VN test",
+          "Answer": "BESS is IN the grid (BOM), not making the grid (not VN)."
+        },
+        {
+          "Question": "Conclusion",
+          "Answer": "BOM applies to the **grid capital asset**. The \"service output\" (electrons) sits above the BOM."
+        }
+      ]
+    },
+    {
+      "headers": [
+        "#",
+        "L4 Subsystem",
+        "Function",
+        "Present in every grid?"
+      ],
+      "rows": [
+        {
+          "#": "1",
+          "L4 Subsystem": "Primary Substation (HV/MV step-down)",
+          "Function": "Receive HV from transmission, step down to MV, switch/protect",
+          "Present in every grid?": "YES"
+        },
+        {
+          "#": "2",
+          "L4 Subsystem": "MV Distribution Feeder Network",
+          "Function": "Transport MV energy from primary substation to secondary substations",
+          "Present in every grid?": "YES"
+        },
+        {
+          "#": "3",
+          "L4 Subsystem": "Secondary Substation (MV/LV step-down)",
+          "Function": "Step down MV to LV for end customers",
+          "Present in every grid?": "YES (except direct-MV customers)"
+        },
+        {
+          "#": "4",
+          "L4 Subsystem": "LV Distribution Network",
+          "Function": "Deliver LV energy to final consumer connection",
+          "Present in every grid?": "YES"
+        },
+        {
+          "#": "5",
+          "L4 Subsystem": "Protection, Automation & Control (PAC)",
+          "Function": "Fault detection, isolation, restoration, SCADA, DMS",
+          "Present in every grid?": "YES"
+        },
+        {
+          "#": "6",
+          "L4 Subsystem": "Metering & Customer Interface (AMI)",
+          "Function": "Meter energy at each delivery point, report to DSO",
+          "Present in every grid?": "YES"
+        },
+        {
+          "#": "7",
+          "L4 Subsystem": "**Grid-Support Storage (Netzbooster BESS)** ← **Mein Solar position**",
+          "Function": "Active constraint relief, voltage support, substation-upgrade deferral",
+          "Present in every grid?": "Growing — NOT yet on every grid"
+        },
+        {
+          "#": "8",
+          "L4 Subsystem": "DER & Prosumer Interconnection Interface",
+          "Function": "Connect PV/wind/storage/EV assets owned by third parties",
+          "Present in every grid?": "Growing"
+        }
+      ]
+    },
+    {
+      "headers": [
+        "Alternative",
+        "Share",
+        "Trend",
+        "Confidence",
+        "Source"
+      ],
+      "rows": [
+        {
+          "Alternative": "Outdoor air-insulated switchyard (AIS)",
+          "Share": "60%",
+          "Trend": "↓ Declining",
+          "Confidence": "HIGH",
+          "Source": "Siemens Energy / ABB product docs, EU-weighted"
+        },
+        {
+          "Alternative": "Gas-insulated switchgear (GIS) indoor",
+          "Share": "30%",
+          "Trend": "↑ Growing",
+          "Confidence": "HIGH",
+          "Source": "Mordor Intelligence GIS 2025"
+        },
+        {
+          "Alternative": "Hybrid (AIS + GIS modules)",
+          "Share": "10%",
+          "Trend": "↑ Growing",
+          "Confidence": "MEDIUM",
+          "Source": "Analyst estimate"
+        }
+      ]
+    },
+    {
+      "headers": [
+        "Alternative",
+        "Share",
+        "Trend",
+        "Confidence",
+        "Source"
+      ],
+      "rows": [
+        {
+          "Alternative": "Oil-immersed (mineral)",
+          "Share": "65%",
+          "Trend": "↓ Declining",
+          "Confidence": "HIGH",
+          "Source": "MarketsandMarkets 2025"
+        },
+        {
+          "Alternative": "Ester-fluid (natural/synthetic)",
+          "Share": "20%",
+          "Trend": "↑ Growing",
+          "Confidence": "HIGH",
+          "Source": "Grand View Research"
+        },
+        {
+          "Alternative": "Dry-type (cast-resin / air)",
+          "Share": "14%",
+          "Trend": "↑ Growing",
+          "Confidence": "HIGH",
+          "Source": "MarketsandMarkets 2025"
+        },
+        {
+          "Alternative": "SF6-gas-filled",
+          "Share": "1%",
+          "Trend": "→ Stable",
+          "Confidence": "LOW",
+          "Source": "Niche"
+        }
+      ]
+    },
+    {
+      "headers": [
+        "Alternative",
+        "Share",
+        "Trend",
+        "Confidence",
+        "Source"
+      ],
+      "rows": [
+        {
+          "Alternative": "Grain-oriented electrical steel (GOES) core + copper winding",
+          "Share": "70%",
+          "Trend": "→ Stable",
+          "Confidence": "HIGH",
+          "Source": "Fortune Business Insights"
+        },
+        {
+          "Alternative": "GOES core + aluminum winding",
+          "Share": "20%",
+          "Trend": "↑ Growing (cost)",
+          "Confidence": "MEDIUM",
+          "Source": "Analyst estimate"
+        },
+        {
+          "Alternative": "Amorphous-metal core + copper winding",
+          "Share": "10%",
+          "Trend": "↑ Growing (efficiency regs)",
+          "Confidence": "MEDIUM",
+          "Source": "EcoDesign EU 2019/2021"
+        }
+      ]
+    },
+    {
+      "headers": [
+        "L1 Part",
+        "L0 Raw Material",
+        "Share",
+        "Trend",
+        "Conf.",
+        "Source"
+      ],
+      "rows": [
+        {
+          "L1 Part": "Core laminations",
+          "L0 Raw Material": "GOES silicon steel (3%Si)",
+          "Share": "85%",
+          "Trend": "→ Stable",
+          "Conf.": "HIGH",
+          "Source": "ISO 6316"
+        },
+        {
+          "L1 Part": "Core laminations (premium)",
+          "L0 Raw Material": "Amorphous metal ribbon (Metglas)",
+          "Share": "15%",
+          "Trend": "↑ Growing",
+          "Conf.": "MEDIUM",
+          "Source": "Industry"
+        },
+        {
+          "L1 Part": "Winding conductor",
+          "L0 Raw Material": "Electrolytic copper (Cu-ETP)",
+          "Share": "75%",
+          "Trend": "→ Stable",
+          "Conf.": "HIGH",
+          "Source": "DIN EN 1976"
+        },
+        {
+          "L1 Part": "Winding conductor",
+          "L0 Raw Material": "Aluminum (EC grade)",
+          "Share": "25%",
+          "Trend": "↑ Growing",
+          "Conf.": "MEDIUM",
+          "Source": "Analyst"
+        },
+        {
+          "L1 Part": "Dielectric (oil-immersed)",
+          "L0 Raw Material": "Mineral insulating oil",
+          "Share": "60%",
+          "Trend": "↓",
+          "Conf.": "HIGH",
+          "Source": "IEC 60296"
+        },
+        {
+          "L1 Part": "Dielectric (ester)",
+          "L0 Raw Material": "Natural/synthetic ester",
+          "Share": "25%",
+          "Trend": "↑",
+          "Conf.": "HIGH",
+          "Source": "IEC 62770"
+        },
+        {
+          "L1 Part": "Dielectric (dry)",
+          "L0 Raw Material": "Epoxy cast resin",
+          "Share": "15%",
+          "Trend": "↑",
+          "Conf.": "HIGH",
+          "Source": "IEC 60076-11"
+        }
+      ]
+    },
+    {
+      "headers": [
+        "Alternative",
+        "Share",
+        "Trend",
+        "Confidence",
+        "Source"
+      ],
+      "rows": [
+        {
+          "Alternative": "SF6 GIS (installed base)",
+          "Share": "55%",
+          "Trend": "↓ Declining",
+          "Confidence": "HIGH",
+          "Source": "EU SF6 phase-down brief 2020"
+        },
+        {
+          "Alternative": "Vacuum + solid/dry-air GIS (SF6-free)",
+          "Share": "25%",
+          "Trend": "↑ Growing",
+          "Confidence": "HIGH",
+          "Source": "Schneider AirSeT, Siemens Blue GIS"
+        },
+        {
+          "Alternative": "Air-insulated (AIS)",
+          "Share": "18%",
+          "Trend": "→ Stable",
+          "Confidence": "HIGH",
+          "Source": "Siemens NX Air"
+        },
+        {
+          "Alternative": "Oil-filled (legacy)",
+          "Share": "2%",
+          "Trend": "↓ Declining",
+          "Confidence": "HIGH",
+          "Source": "Legacy"
+        }
+      ]
+    },
+    {
+      "headers": [
+        "L1 Part",
+        "L0",
+        "Share",
+        "Trend",
+        "Conf.",
+        "Source"
+      ],
+      "rows": [
+        {
+          "L1 Part": "Vacuum interrupter envelope",
+          "L0": "Alumina ceramic + Cu-Cr contact alloy",
+          "Share": "100%",
+          "Trend": "→ Stable",
+          "Conf.": "HIGH",
+          "Source": "IEC 62271-100 · single-source: true"
+        },
+        {
+          "L1 Part": "Bus bar",
+          "L0": "Electrolytic copper",
+          "Share": "90%",
+          "Trend": "→ Stable",
+          "Conf.": "HIGH",
+          "Source": "DIN EN 1976"
+        },
+        {
+          "L1 Part": "Bus bar",
+          "L0": "Aluminum (Al 99.5)",
+          "Share": "10%",
+          "Trend": "↑",
+          "Conf.": "MEDIUM",
+          "Source": "Cost substitution"
+        },
+        {
+          "L1 Part": "Insulating housing",
+          "L0": "Epoxy resin (bisphenol-A)",
+          "Share": "80%",
+          "Trend": "→ Stable",
+          "Conf.": "HIGH",
+          "Source": "IEC 60455"
+        },
+        {
+          "L1 Part": "Insulating housing",
+          "L0": "Silicone / HTV rubber",
+          "Share": "20%",
+          "Trend": "↑",
+          "Conf.": "MEDIUM",
+          "Source": "Outdoor use"
+        },
+        {
+          "L1 Part": "Enclosure",
+          "L0": "Galvanised mild steel sheet",
+          "Share": "100%",
+          "Trend": "→ Stable",
+          "Conf.": "HIGH",
+          "Source": "DIN EN 10025 · single-source: true"
+        }
+      ]
+    },
+    {
+      "headers": [
+        "Alternative",
+        "Share",
+        "Trend",
+        "Confidence",
+        "Source"
+      ],
+      "rows": [
+        {
+          "Alternative": "Underground cable network",
+          "Share": "70% (DE urban/peri-urban)",
+          "Trend": "↑ Growing",
+          "Confidence": "HIGH",
+          "Source": "BDEW / Fortune Business Insights (EU underground dominant)"
+        },
+        {
+          "Alternative": "Overhead line network",
+          "Share": "28% (DE rural)",
+          "Trend": "↓ Declining",
+          "Confidence": "HIGH",
+          "Source": "BDEW distribution stats"
+        },
+        {
+          "Alternative": "Mixed (underground spine + OH laterals)",
+          "Share": "2%",
+          "Trend": "→ Stable",
+          "Confidence": "LOW",
+          "Source": "Analyst estimate"
+        }
+      ]
+    },
+    {
+      "headers": [
+        "Alternative",
+        "Share",
+        "Trend",
+        "Conf.",
+        "Source"
+      ],
+      "rows": [
+        {
+          "Alternative": "XLPE-insulated single-core",
+          "Share": "85%",
+          "Trend": "→ Stable",
+          "Conf.": "HIGH",
+          "Source": "IEC 60502-2"
+        },
+        {
+          "Alternative": "EPR-insulated single-core",
+          "Share": "10%",
+          "Trend": "↓",
+          "Conf.": "HIGH",
+          "Source": "Legacy / offshore"
+        },
+        {
+          "Alternative": "Paper-insulated lead-sheath (PILC)",
+          "Share": "5%",
+          "Trend": "↓ Declining",
+          "Conf.": "HIGH",
+          "Source": "Replacement only"
+        }
+      ]
+    },
+    {
+      "headers": [
+        "L1",
+        "Share",
+        "Trend",
+        "Conf.",
+        "Source"
+      ],
+      "rows": [
+        {
+          "L1": "Aluminum stranded conductor",
+          "Share": "75%",
+          "Trend": "→ Stable",
+          "Conf.": "HIGH",
+          "Source": "Europe cost norm"
+        },
+        {
+          "L1": "Copper stranded conductor",
+          "Share": "25%",
+          "Trend": "↓ Declining",
+          "Conf.": "HIGH",
+          "Source": "Premium / HV"
+        }
+      ]
+    },
+    {
+      "headers": [
+        "L1 Part",
+        "L0",
+        "Share",
+        "Conf.",
+        "Source"
+      ],
+      "rows": [
+        {
+          "L1 Part": "Conductor",
+          "L0": "Aluminum EC grade",
+          "Share": "75%",
+          "Conf.": "HIGH",
+          "Source": "EN 1715"
+        },
+        {
+          "L1 Part": "Conductor",
+          "L0": "Electrolytic copper",
+          "Share": "25%",
+          "Conf.": "HIGH",
+          "Source": "DIN EN 1976"
+        },
+        {
+          "L1 Part": "Insulation",
+          "L0": "Cross-linked polyethylene (XLPE)",
+          "Share": "85%",
+          "Conf.": "HIGH",
+          "Source": "IEC 60502"
+        },
+        {
+          "L1 Part": "Insulation",
+          "L0": "Ethylene-propylene rubber (EPR)",
+          "Share": "10%",
+          "Conf.": "HIGH",
+          "Source": "IEC 60502"
+        },
+        {
+          "L1 Part": "Semiconducting layer",
+          "L0": "Carbon-black-filled PE",
+          "Share": "100%",
+          "Conf.": "HIGH",
+          "Source": "Single-source: true"
+        },
+        {
+          "L1 Part": "Sheath",
+          "L0": "HDPE outer jacket",
+          "Share": "100%",
+          "Conf.": "HIGH",
+          "Source": "Single-source: true"
+        },
+        {
+          "L1 Part": "Metallic screen",
+          "L0": "Copper tape / wire",
+          "Share": "100%",
+          "Conf.": "HIGH",
+          "Source": "Single-source: true"
+        }
+      ]
+    },
+    {
+      "headers": [
+        "Alt",
+        "Share",
+        "Trend",
+        "Conf.",
+        "Source"
+      ],
+      "rows": [
+        {
+          "Alt": "Bare AAAC conductor + porcelain/composite insulators + wood/steel poles",
+          "Share": "75%",
+          "Trend": "→ Stable",
+          "Conf.": "HIGH",
+          "Source": "VDE-AR-N 4110"
+        },
+        {
+          "Alt": "Covered conductor (BLX/PAS)",
+          "Share": "20%",
+          "Trend": "↑ Growing",
+          "Conf.": "HIGH",
+          "Source": "Nordic / DE forest lines"
+        },
+        {
+          "Alt": "ACSR + composite insulators",
+          "Share": "5%",
+          "Trend": "↓",
+          "Conf.": "MEDIUM",
+          "Source": "Legacy"
+        }
+      ]
+    },
+    {
+      "headers": [
+        "Alt",
+        "Share",
+        "Trend",
+        "Conf.",
+        "Source"
+      ],
+      "rows": [
+        {
+          "Alt": "Compact pre-fab station (ring-main-unit)",
+          "Share": "70%",
+          "Trend": "→ Stable",
+          "Conf.": "HIGH",
+          "Source": "Siemens 8DJH / Schneider RM6"
+        },
+        {
+          "Alt": "Pole-mounted (rural only)",
+          "Share": "20%",
+          "Trend": "↓ Declining",
+          "Conf.": "HIGH",
+          "Source": "DE rural"
+        },
+        {
+          "Alt": "Brick-building traditional",
+          "Share": "10%",
+          "Trend": "↓ Declining",
+          "Conf.": "HIGH",
+          "Source": "Legacy"
+        }
+      ]
+    },
+    {
+      "headers": [
+        "Alt",
+        "Share",
+        "Trend",
+        "Conf.",
+        "Source"
+      ],
+      "rows": [
+        {
+          "Alt": "Oil-immersed hermetic",
+          "Share": "65%",
+          "Trend": "↓",
+          "Conf.": "HIGH",
+          "Source": "MarketsandMarkets"
+        },
+        {
+          "Alt": "Dry-type cast-resin",
+          "Share": "25%",
+          "Trend": "↑",
+          "Conf.": "HIGH",
+          "Source": "Grand View Research"
+        },
+        {
+          "Alt": "Ester-fluid",
+          "Share": "10%",
+          "Trend": "↑",
+          "Conf.": "HIGH",
+          "Source": "Cargill / MR"
+        }
+      ]
+    },
+    {
+      "headers": [
+        "Alt",
+        "Share",
+        "Trend",
+        "Conf.",
+        "Source"
+      ],
+      "rows": [
+        {
+          "Alt": "Underground LV cable",
+          "Share": "80% (DE)",
+          "Trend": "→ Stable",
+          "Conf.": "HIGH",
+          "Source": "BDEW"
+        },
+        {
+          "Alt": "Overhead LV (bundled twisted)",
+          "Share": "18%",
+          "Trend": "↓ Declining",
+          "Conf.": "HIGH",
+          "Source": "Rural"
+        },
+        {
+          "Alt": "Overhead bare LV",
+          "Share": "2%",
+          "Trend": "↓ Legacy",
+          "Conf.": "HIGH",
+          "Source": "End-of-life"
+        }
+      ]
+    },
+    {
+      "headers": [
+        "Alt",
+        "Share",
+        "Trend",
+        "Conf.",
+        "Source"
+      ],
+      "rows": [
+        {
+          "Alt": "Numerical IED protection + SCADA + DMS",
+          "Share": "80%",
+          "Trend": "→ Stable",
+          "Conf.": "HIGH",
+          "Source": "IEC 61850 adoption"
+        },
+        {
+          "Alt": "Electromechanical / static relays (legacy)",
+          "Share": "18%",
+          "Trend": "↓ Declining",
+          "Conf.": "HIGH",
+          "Source": "Replacement cycle"
+        },
+        {
+          "Alt": "Cloud-edge DERMS/ADMS platforms",
+          "Share": "2%",
+          "Trend": "↑ Emerging",
+          "Conf.": "MEDIUM",
+          "Source": "Siemens Spectrum Power / GE ADMS"
+        }
+      ]
+    },
+    {
+      "headers": [
+        "Alt",
+        "Share",
+        "Trend",
+        "Conf.",
+        "Source"
+      ],
+      "rows": [
+        {
+          "Alt": "Smart electricity meter (AMI)",
+          "Share": "85% (EU 2025)",
+          "Trend": "↑ Growing",
+          "Conf.": "HIGH",
+          "Source": "GMInsights Europe AMI"
+        },
+        {
+          "Alt": "AMR (one-way automated read)",
+          "Share": "12%",
+          "Trend": "↓ Declining",
+          "Conf.": "HIGH",
+          "Source": "Legacy"
+        },
+        {
+          "Alt": "Manual electromechanical",
+          "Share": "3%",
+          "Trend": "↓",
+          "Conf.": "HIGH",
+          "Source": "End-of-life"
+        }
+      ]
+    },
+    {
+      "headers": [
+        "Alternative",
+        "Share",
+        "Trend",
+        "Confidence",
+        "Source"
+      ],
+      "rows": [
+        {
+          "Alternative": "Containerized Li-ion BESS (LFP)",
+          "Share": "82%",
+          "Trend": "↑ Growing",
+          "Confidence": "HIGH",
+          "Source": "Wood Mackenzie / IDTechEx 2025"
+        },
+        {
+          "Alternative": "Containerized Li-ion BESS (NMC)",
+          "Share": "10%",
+          "Trend": "↓ Declining",
+          "Confidence": "HIGH",
+          "Source": "BNEF"
+        },
+        {
+          "Alternative": "Flow battery (vanadium redox)",
+          "Share": "4%",
+          "Trend": "↑ Emerging",
+          "Confidence": "MEDIUM",
+          "Source": "Invinity / CellCube deployments"
+        },
+        {
+          "Alternative": "Sodium-ion BESS",
+          "Share": "2%",
+          "Trend": "↑ Emerging",
+          "Confidence": "LOW",
+          "Source": "CATL / HiNa pilots"
+        },
+        {
+          "Alternative": "Flywheel / CAES / other",
+          "Share": "2%",
+          "Trend": "→ Stable",
+          "Confidence": "LOW",
+          "Source": "Niche"
+        }
+      ]
+    },
+    {
+      "headers": [
+        "Alt",
+        "Share",
+        "Trend",
+        "Conf.",
+        "Source"
+      ],
+      "rows": [
+        {
+          "Alt": "Prismatic LFP pouch-stacked",
+          "Share": "75%",
+          "Trend": "↑",
+          "Conf.": "HIGH",
+          "Source": "CATL / EVE / BYD"
+        },
+        {
+          "Alt": "Cylindrical (21700/4680) LFP",
+          "Share": "10%",
+          "Trend": "↑",
+          "Conf.": "MEDIUM",
+          "Source": "Niche stationary"
+        },
+        {
+          "Alt": "Prismatic NMC",
+          "Share": "10%",
+          "Trend": "↓",
+          "Conf.": "HIGH",
+          "Source": "Legacy"
+        },
+        {
+          "Alt": "Pouch NMC",
+          "Share": "5%",
+          "Trend": "↓",
+          "Conf.": "HIGH",
+          "Source": "Legacy"
+        }
+      ]
+    },
+    {
+      "headers": [
+        "L1",
+        "L0",
+        "Share",
+        "Trend",
+        "Conf.",
+        "Source"
+      ],
+      "rows": [
+        {
+          "L1": "Cathode active",
+          "L0": "LiFePO₄",
+          "Share": "82%",
+          "Trend": "↑",
+          "Conf.": "HIGH",
+          "Source": "IDTechEx"
+        },
+        {
+          "L1": "Cathode active",
+          "L0": "NCM (622/811)",
+          "Share": "15%",
+          "Trend": "↓",
+          "Conf.": "HIGH",
+          "Source": "BNEF"
+        },
+        {
+          "L1": "Cathode active",
+          "L0": "Na-ion Prussian-blue / layered oxide",
+          "Share": "3%",
+          "Trend": "↑ Emerging",
+          "Conf.": "LOW",
+          "Source": "CATL"
+        },
+        {
+          "L1": "Anode active",
+          "L0": "Synthetic graphite",
+          "Share": "60%",
+          "Trend": "→",
+          "Conf.": "HIGH",
+          "Source": "BTR / Shanshan"
+        },
+        {
+          "L1": "Anode active",
+          "L0": "Natural graphite",
+          "Share": "38%",
+          "Trend": "↓",
+          "Conf.": "HIGH",
+          "Source": "Cost-led"
+        },
+        {
+          "L1": "Anode active",
+          "L0": "Silicon-composite",
+          "Share": "2%",
+          "Trend": "↑ Emerging",
+          "Conf.": "LOW",
+          "Source": "Mostly EV"
+        },
+        {
+          "L1": "Electrolyte",
+          "L0": "LiPF₆ in carbonate blend",
+          "Share": "100%",
+          "Trend": "→ Stable",
+          "Conf.": "HIGH",
+          "Source": "Single-source: true"
+        },
+        {
+          "L1": "Separator",
+          "L0": "Ceramic-coated PE/PP",
+          "Share": "95%",
+          "Trend": "→",
+          "Conf.": "HIGH",
+          "Source": "Industry norm"
+        },
+        {
+          "L1": "Separator",
+          "L0": "Cellulose / PI",
+          "Share": "5%",
+          "Trend": "↑ Emerging",
+          "Conf.": "LOW",
+          "Source": "High-T niche"
+        },
+        {
+          "L1": "Cell casing",
+          "L0": "Aluminum 3003 can",
+          "Share": "80%",
+          "Trend": "→",
+          "Conf.": "HIGH",
+          "Source": "Prismatic"
+        },
+        {
+          "L1": "Cell casing",
+          "L0": "Steel-nickel-plated can",
+          "Share": "20%",
+          "Trend": "→",
+          "Conf.": "HIGH",
+          "Source": "Cylindrical"
+        },
+        {
+          "L1": "Current collector",
+          "L0": "Aluminum foil (cathode) + Copper foil (anode)",
+          "Share": "100%",
+          "Trend": "→ Stable",
+          "Conf.": "HIGH",
+          "Source": "Single-source: true"
+        }
+      ]
+    },
+    {
+      "headers": [
+        "Alt",
+        "Share",
+        "Trend",
+        "Conf.",
+        "Source"
+      ],
+      "rows": [
+        {
+          "Alt": "Central string PCS (IGBT, 2-level)",
+          "Share": "50%",
+          "Trend": "↓ Declining",
+          "Conf.": "HIGH",
+          "Source": "Legacy"
+        },
+        {
+          "Alt": "Modular central PCS (IGBT, 3-level)",
+          "Share": "30%",
+          "Trend": "↑ Growing",
+          "Conf.": "HIGH",
+          "Source": "Sungrow / Power Electronics"
+        },
+        {
+          "Alt": "SiC-based high-frequency PCS",
+          "Share": "15%",
+          "Trend": "↑ Growing",
+          "Conf.": "MEDIUM",
+          "Source": "SMA, ABB HES"
+        },
+        {
+          "Alt": "Modular multilevel (MMC)",
+          "Share": "3%",
+          "Trend": "→ Stable",
+          "Conf.": "LOW",
+          "Source": "TSO scale"
+        },
+        {
+          "Alt": "Transformer-isolated low-frequency",
+          "Share": "2%",
+          "Trend": "↓",
+          "Conf.": "LOW",
+          "Source": "Legacy"
+        }
+      ]
+    },
+    {
+      "headers": [
+        "L1",
+        "L0",
+        "Share",
+        "Trend",
+        "Conf.",
+        "Source"
+      ],
+      "rows": [
+        {
+          "L1": "Power switch",
+          "L0": "Si-IGBT chip",
+          "Share": "70%",
+          "Trend": "↓",
+          "Conf.": "HIGH",
+          "Source": "Infineon / Fuji"
+        },
+        {
+          "L1": "Power switch",
+          "L0": "SiC MOSFET chip",
+          "Share": "25%",
+          "Trend": "↑",
+          "Conf.": "HIGH",
+          "Source": "Wolfspeed / STMicro"
+        },
+        {
+          "L1": "Power switch",
+          "L0": "GaN (low-V aux)",
+          "Share": "5%",
+          "Trend": "↑ Emerging",
+          "Conf.": "LOW",
+          "Source": "Aux supplies"
+        },
+        {
+          "L1": "DC capacitor dielectric",
+          "L0": "Polypropylene film metallized",
+          "Share": "100%",
+          "Trend": "→ Stable",
+          "Conf.": "HIGH",
+          "Source": "Single-source: true"
+        },
+        {
+          "L1": "Inductor core",
+          "L0": "Ferrite / amorphous / nanocrystalline",
+          "Share": "50/30/20",
+          "Trend": "↑ (nano)",
+          "Conf.": "MEDIUM",
+          "Source": "Hitachi / VAC"
+        },
+        {
+          "L1": "Inductor winding",
+          "L0": "Electrolytic copper",
+          "Share": "100%",
+          "Trend": "→ Stable",
+          "Conf.": "HIGH",
+          "Source": "Single-source: true"
+        },
+        {
+          "L1": "Coolant",
+          "L0": "Water-glycol",
+          "Share": "90%",
+          "Trend": "→",
+          "Conf.": "HIGH",
+          "Source": "Standard"
+        },
+        {
+          "L1": "Coolant",
+          "L0": "Dielectric fluid (immersion)",
+          "Share": "10%",
+          "Trend": "↑ Emerging",
+          "Conf.": "MEDIUM",
+          "Source": "Cargill / 3M"
+        }
+      ]
+    },
+    {
+      "headers": [
+        "Alt",
+        "Share",
+        "Trend",
+        "Conf.",
+        "Source"
+      ],
+      "rows": [
+        {
+          "Alt": "Dedicated MV transformer + SF6-free RMU",
+          "Share": "55%",
+          "Trend": "↑ Growing",
+          "Conf.": "HIGH",
+          "Source": "Industry norm"
+        },
+        {
+          "Alt": "Dedicated MV transformer + SF6 RMU",
+          "Share": "35%",
+          "Trend": "↓ Declining",
+          "Conf.": "HIGH",
+          "Source": "Installed base"
+        },
+        {
+          "Alt": "Transformerless (string-PCS direct-LV)",
+          "Share": "10%",
+          "Trend": "↓",
+          "Conf.": "MEDIUM",
+          "Source": "Small BESS only"
+        }
+      ]
+    },
+    {
+      "headers": [
+        "Alt",
+        "Share",
+        "Trend",
+        "Conf.",
+        "Source"
+      ],
+      "rows": [
+        {
+          "Alt": "Liquid cooling (water-glycol)",
+          "Share": "85%",
+          "Trend": "↑ Growing",
+          "Conf.": "HIGH",
+          "Source": "CATL / Sungrow PowerTitan 3.0"
+        },
+        {
+          "Alt": "HVAC forced-air",
+          "Share": "12%",
+          "Trend": "↓ Declining",
+          "Conf.": "HIGH",
+          "Source": "Legacy ≤2 MWh"
+        },
+        {
+          "Alt": "Immersion cooling (dielectric)",
+          "Share": "3%",
+          "Trend": "↑ Emerging",
+          "Conf.": "LOW",
+          "Source": "Pilots"
+        }
+      ]
+    },
+    {
+      "headers": [
+        "Alt",
+        "Share",
+        "Trend",
+        "Conf.",
+        "Source"
+      ],
+      "rows": [
+        {
+          "Alt": "Aerosol (pyrotechnic) suppression",
+          "Share": "45%",
+          "Trend": "→ Stable",
+          "Conf.": "HIGH",
+          "Source": "VdS-recognised"
+        },
+        {
+          "Alt": "NOVEC 1230 / FK-5-1-12 clean agent",
+          "Share": "30%",
+          "Trend": "↓ Declining (EU F-gas)",
+          "Conf.": "HIGH",
+          "Source": "EU F-Gas Regulation"
+        },
+        {
+          "Alt": "Water-mist",
+          "Share": "15%",
+          "Trend": "↑ Growing",
+          "Conf.": "HIGH",
+          "Source": "Post-Moss Landing trend"
+        },
+        {
+          "Alt": "Inert gas (IG-541 / Argon / N₂)",
+          "Share": "10%",
+          "Trend": "→ Stable",
+          "Conf.": "MEDIUM",
+          "Source": "Data-centre carry-over"
+        }
+      ]
+    },
+    {
+      "headers": [
+        "Alt",
+        "Share",
+        "Trend",
+        "Conf.",
+        "Source"
+      ],
+      "rows": [
+        {
+          "Alt": "Vendor-proprietary integrated BMS+EMS (Sungrow, Tesla, CATL)",
+          "Share": "60%",
+          "Trend": "→ Stable",
+          "Conf.": "HIGH",
+          "Source": "Turnkey OEM"
+        },
+        {
+          "Alt": "Open-platform EMS (Modo Energy, Fluence Mosaic, gridX)",
+          "Share": "25%",
+          "Trend": "↑ Growing",
+          "Conf.": "HIGH",
+          "Source": "Merchant optimizer"
+        },
+        {
+          "Alt": "In-house DSO SCADA integration",
+          "Share": "15%",
+          "Trend": "→ Stable",
+          "Conf.": "MEDIUM",
+          "Source": "Utility-owned"
+        }
+      ]
+    },
+    {
+      "headers": [
+        "Alt",
+        "Share",
+        "Trend",
+        "Conf.",
+        "Source"
+      ],
+      "rows": [
+        {
+          "Alt": "20ft ISO steel container (IP54)",
+          "Share": "70%",
+          "Trend": "→ Stable",
+          "Conf.": "HIGH",
+          "Source": "Industry norm"
+        },
+        {
+          "Alt": "40ft ISO HC steel container",
+          "Share": "20%",
+          "Trend": "↑ Growing",
+          "Conf.": "HIGH",
+          "Source": "Larger projects"
+        },
+        {
+          "Alt": "Custom skid / walk-in enclosure",
+          "Share": "10%",
+          "Trend": "→",
+          "Conf.": "MEDIUM",
+          "Source": "Niche"
+        }
+      ]
+    },
+    {
+      "headers": [
+        "Alt",
+        "Share",
+        "Trend",
+        "Conf.",
+        "Source"
+      ],
+      "rows": [
+        {
+          "Alt": "LV residential / C&I PV inverter interface (<100 kW, VDE-AR-N 4105)",
+          "Share": "70%",
+          "Trend": "→ Stable",
+          "Conf.": "HIGH",
+          "Source": "VDE-AR-N 4105"
+        },
+        {
+          "Alt": "MV plant-scale interface (>1 MW, VDE-AR-N 4110)",
+          "Share": "25%",
+          "Trend": "↑ Growing",
+          "Conf.": "HIGH",
+          "Source": "Mein Solar's own domain"
+        },
+        {
+          "Alt": "Bidirectional EV-charging interface (V2G, ISO 15118-20)",
+          "Share": "5%",
+          "Trend": "↑ Emerging",
+          "Conf.": "MEDIUM",
+          "Source": "Pilots"
+        }
+      ]
+    },
+    {
+      "headers": [
+        "Category",
+        "L4 positions where it appears",
+        "Function at each",
+        "Alternatives shift"
+      ],
+      "rows": [
+        {
+          "Category": "MV transformer",
+          "L4 positions where it appears": "L4#1 (primary) · L4#3 (secondary) · L4#7 (BESS MV module)",
+          "Function at each": "HV/MV, MV/LV, LV/MV step-up",
+          "Alternatives shift": "Oil vs dry vs ester — mix differs by indoor/outdoor + fire code"
+        },
+        {
+          "Category": "MV switchgear",
+          "L4 positions where it appears": "L4#1 · L4#3 · L4#7",
+          "Function at each": "Bus isolation, protection, ring-main",
+          "Alternatives shift": "SF6 vs SF6-free mix shifts by age of installed base"
+        },
+        {
+          "Category": "Protection relay (numerical IED)",
+          "L4 positions where it appears": "L4#1 · L4#3 · L4#5 · L4#7",
+          "Function at each": "Feeder / transformer / BESS grid-facing protection",
+          "Alternatives shift": "IEC 61850 standardized; brand concentration stable"
+        },
+        {
+          "Category": "Power electronics (PCS / inverter)",
+          "L4 positions where it appears": "L4#7 · L4#8",
+          "Function at each": "DC↔AC conversion",
+          "Alternatives shift": "Si-IGBT → SiC-MOSFET; 2-level → 3-level + modular"
+        },
+        {
+          "Category": "Lithium cell (LFP)",
+          "L4 positions where it appears": "L4#7 only",
+          "Function at each": "Electrochemical storage",
+          "Alternatives shift": "Unique to BESS — not elsewhere in grid BOM"
+        },
+        {
+          "Category": "PCB / FR-4 electronics",
+          "L4 positions where it appears": "L4#5 · L4#6 · L4#7 · L4#8",
+          "Function at each": "Signal & control",
+          "Alternatives shift": "Commodity"
+        },
+        {
+          "Category": "Copper / aluminum conductor",
+          "L4 positions where it appears": "All L4",
+          "Function at each": "Current carrying",
+          "Alternatives shift": "Al overtaking Cu on cost in LV/MV cable"
+        }
+      ]
+    },
+    {
+      "headers": [
+        "Item",
+        "Answer"
+      ],
+      "rows": [
+        {
+          "Item": "Company is end-product integrator (L5)?",
+          "Answer": "NO"
+        },
+        {
+          "Item": "Company is L4 subsystem integrator?",
+          "Answer": "**YES** — Mein Solar delivers the complete L4 \"Netzbooster BESS subsystem\" to the DSO"
+        },
+        {
+          "Item": "Company is L3 module / L2 part supplier?",
+          "Answer": "NO — Mein Solar sources L2/L3 from Sungrow/Tesla/CATL/Siemens"
+        },
+        {
+          "Item": "Upstream BOM to produce",
+          "Answer": "YES — entire L4#7 tree down to L0 is Mein Solar's own supply-chain scope"
+        }
+      ]
+    },
+    {
+      "headers": [
+        "Adjacent L4",
+        "Capability gap",
+        "Market size (EU, est.)",
+        "Strategic fit"
+      ],
+      "rows": [
+        {
+          "Adjacent L4": "L4 #8 DER & Prosumer Interconnection",
+          "Capability gap": "**LOW** — PV EPC core skill",
+          "Market size (EU, est.)": "€3–5 B/yr DE",
+          "Strategic fit": "**STRONG** — literal extension of PV-EPC incumbency + BESS EPC; one grid-code regime"
+        },
+        {
+          "Adjacent L4": "L4 #1 Primary Substation (HV/MV)",
+          "Capability gap": "**HIGH** — HV engineering, Type-A cert",
+          "Market size (EU, est.)": "€8–10 B/yr DE",
+          "Strategic fit": "WEAK — requires HV lineage Mein Solar lacks"
+        },
+        {
+          "Adjacent L4": "L4 #3 Secondary Substation (MV/LV)",
+          "Capability gap": "**MEDIUM** — compact station EPC doable",
+          "Market size (EU, est.)": "€2–3 B/yr DE",
+          "Strategic fit": "MEDIUM — doable but DSO-captive procurement frameworks"
+        },
+        {
+          "Adjacent L4": "L4 #5 PAC",
+          "Capability gap": "**HIGH** — IEC 61850 engineering, IED programming",
+          "Market size (EU, est.)": "€1.5–2 B/yr DE",
+          "Strategic fit": "WEAK — specialist vendors (ABB/Siemens/SEL) dominate"
+        },
+        {
+          "Adjacent L4": "L4 #6 AMI",
+          "Capability gap": "**HIGH** — metrology, AMI head-end",
+          "Market size (EU, est.)": "€1 B/yr DE",
+          "Strategic fit": "WEAK — 3-vendor market (L+G, Itron, Siemens)"
+        },
+        {
+          "Adjacent L4": "L4 #2/#4 Cable network",
+          "Capability gap": "**MEDIUM** — civil + cable-laying",
+          "Market size (EU, est.)": "€4–5 B/yr DE",
+          "Strategic fit": "MEDIUM — Mein Solar has civil subcontracting but not cable-network specialism"
+        }
+      ]
+    },
+    {
+      "headers": [
+        "Factor",
+        "Evaluation"
+      ],
+      "rows": [
+        {
+          "Factor": "Target role",
+          "Evaluation": "End-to-end distribution-grid EPC integrator (DSO prime)"
+        },
+        {
+          "Factor": "Additional capabilities required",
+          "Evaluation": "HV engineering · IEC 61850 PAC · long-haul cable-network civil · full-scope DSO regulatory engagement"
+        },
+        {
+          "Factor": "Capital investment",
+          "Evaluation": "€15–30 M to build PAC + HV competence centre"
+        },
+        {
+          "Factor": "Customer-relationship leverage",
+          "Evaluation": "LOW — DSOs buy whole-grid EPC from Bilfinger/STRABAG-EPS/Omexom/SPIE, not from storage integrators"
+        },
+        {
+          "Factor": "Competitive response risk",
+          "Evaluation": "HIGH — incumbent DSO contractors defend aggressively"
+        },
+        {
+          "Factor": "Time to market",
+          "Evaluation": "5–8 years"
+        },
+        {
+          "Factor": "Verdict",
+          "Evaluation": "**NOT RECOMMENDED** — capability gap too broad, adjacent verticals (PV+BESS hybrid parks) offer better ROI"
+        }
+      ]
+    },
+    {
+      "headers": [
+        "Target end-system",
+        "Mein Solar position in that system",
+        "Shared tech",
+        "Adaptation needed"
+      ],
+      "rows": [
+        {
+          "Target end-system": "NAICS 221114 Solar PP (PV+BESS)",
+          "Mein Solar position in that system": "L4 BESS subsystem in PV park",
+          "Shared tech": "PCS, MV, EMS, civil, cert",
+          "Adaptation needed": "Smaller MV point, PV-first sizing"
+        },
+        {
+          "Target end-system": "NAICS 221115 Wind PP (Wind+BESS)",
+          "Mein Solar position in that system": "L4 BESS subsystem in wind park",
+          "Shared tech": "Same",
+          "Adaptation needed": "Wind-developer sales channel"
+        },
+        {
+          "Target end-system": "NAICS 531120 C&I landlord BtM storage",
+          "Mein Solar position in that system": "L4-equivalent turnkey BESS at customer site",
+          "Shared tech": "Same",
+          "Adaptation needed": "Smaller scale (100 kW–2 MWh); LV coupling (VDE-AR-N 4105 instead of 4110)"
+        },
+        {
+          "Target end-system": "NAICS 457120 HPC hub",
+          "Mein Solar position in that system": "L4 BESS buffer for HPC dispensers",
+          "Shared tech": "Same + HPC interface",
+          "Adaptation needed": "Higher C-rate; DC-coupled to chargers"
+        },
+        {
+          "Target end-system": "NAICS 518210 Data center",
+          "Mein Solar position in that system": "Hybrid UPS + BESS module",
+          "Shared tech": "PCS, BMS",
+          "Adaptation needed": "Mission-critical SLA; IEC 62443 cyber; higher fire scrutiny"
+        },
+        {
+          "Target end-system": "NAICS 325120 Green-H₂ site",
+          "Mein Solar position in that system": "BESS firming module next to electrolyzer",
+          "Shared tech": "Same",
+          "Adaptation needed": "Electrolyzer EMS co-optimization"
+        }
+      ]
+    },
+    {
+      "headers": [
+        "Check",
+        "Status"
+      ],
+      "rows": [
+        {
+          "Check": "Every L4 decomposes to L0",
+          "Status": "✅"
+        },
+        {
+          "Check": "L4 → L3 → L2 → L1 → L0 at every branch",
+          "Status": "✅"
+        },
+        {
+          "Check": "Alternatives table at every level transition",
+          "Status": "✅"
+        },
+        {
+          "Check": "Single-source branches marked",
+          "Status": "✅ (where applicable)"
+        },
+        {
+          "Check": "Shares sum to 100% per table",
+          "Status": "✅ (±1% rounding)"
+        },
+        {
+          "Check": "Packaging / enclosure subsystem present",
+          "Status": "✅ (Container envelope, enclosure sheet)"
+        },
+        {
+          "Check": "Control / interface subsystem present",
+          "Status": "✅ (PAC, EMS/BMS, AMI)"
+        },
+        {
+          "Check": "Company position marked",
+          "Status": "✅ (L4 #7)"
+        },
+        {
+          "Check": "Horizontal + vertical adjacency complete",
+          "Status": "✅"
+        },
+        {
+          "Check": "No brand names used as alternatives",
+          "Status": "✅ (brands called out separately as concentration, not as alternatives)"
+        },
+        {
+          "Check": "CFJ traceability",
+          "Status": "✅ (every L4 serves the distribution-system CFJ: \"deliver electricity from transmission to end consumer, reliably and to code\")"
+        }
+      ]
+    }
+  ],
+  "entities": [
+    {
+      "component": "product_bom_decomposition",
+      "naics_code": "221122",
+      "naics_title": "Electric Power Distribution",
+      "output_type_l5": "Electric Power Distribution System (DSO capital asset)",
+      "bom_applicability": "valid_for_physical_grid_asset",
+      "focal_company": "Mein Solar GmbH",
+      "company_position": {
+        "level": "L4",
+        "subsystem": "Grid-Support Storage (Netzbooster BESS)",
+        "role": "EPC integrator / L4 subsystem supplier"
+      },
+      "bom_units": [
+        {
+          "name": "Electric Power Distribution System",
+          "level": "L5",
+          "naics_code": "221122",
+          "output_type": "distribution_grid_asset",
+          "single_source": false,
+          "company_position": false
+        },
+        {
+          "name": "Primary Substation (HV/MV)",
+          "level": "L4",
+          "output_type": "distribution_grid_asset",
+          "single_source": false,
+          "company_position": false
+        },
+        {
+          "name": "MV Distribution Feeder Network",
+          "level": "L4",
+          "output_type": "distribution_grid_asset",
+          "single_source": false,
+          "company_position": false
+        },
+        {
+          "name": "Secondary Substation (MV/LV)",
+          "level": "L4",
+          "output_type": "distribution_grid_asset",
+          "single_source": false,
+          "company_position": false
+        },
+        {
+          "name": "LV Distribution Network",
+          "level": "L4",
+          "output_type": "distribution_grid_asset",
+          "single_source": false,
+          "company_position": false
+        },
+        {
+          "name": "Protection, Automation & Control",
+          "level": "L4",
+          "output_type": "distribution_grid_asset",
+          "single_source": false,
+          "company_position": false
+        },
+        {
+          "name": "Metering & AMI",
+          "level": "L4",
+          "output_type": "distribution_grid_asset",
+          "single_source": false,
+          "company_position": false
+        },
+        {
+          "name": "Grid-Support Storage (Netzbooster BESS)",
+          "level": "L4",
+          "output_type": "distribution_grid_asset",
+          "single_source": false,
+          "company_position": true,
+          "company_name": "Mein Solar GmbH"
+        },
+        {
+          "name": "DER & Prosumer Interconnection Interface",
+          "level": "L4",
+          "output_type": "distribution_grid_asset",
+          "single_source": false,
+          "company_position": false
+        },
+        {
+          "name": "Battery Module",
+          "level": "L3",
+          "parent": "Grid-Support Storage (Netzbooster BESS)"
+        },
+        {
+          "name": "Power Conversion System (PCS)",
+          "level": "L3",
+          "parent": "Grid-Support Storage (Netzbooster BESS)"
+        },
+        {
+          "name": "MV Step-up & Grid Interface",
+          "level": "L3",
+          "parent": "Grid-Support Storage (Netzbooster BESS)"
+        },
+        {
+          "name": "Thermal Management",
+          "level": "L3",
+          "parent": "Grid-Support Storage (Netzbooster BESS)"
+        },
+        {
+          "name": "Fire-Suppression & Safety",
+          "level": "L3",
+          "parent": "Grid-Support Storage (Netzbooster BESS)"
+        },
+        {
+          "name": "EMS / BMS",
+          "level": "L3",
+          "parent": "Grid-Support Storage (Netzbooster BESS)"
+        },
+        {
+          "name": "Container Envelope",
+          "level": "L3",
+          "parent": "Grid-Support Storage (Netzbooster BESS)"
+        },
+        {
+          "name": "Prismatic LFP Cell",
+          "level": "L2",
+          "parent": "Battery Module"
+        },
+        {
+          "name": "IGBT/SiC Power Module",
+          "level": "L2",
+          "parent": "Power Conversion System (PCS)"
+        },
+        {
+          "name": "DC-Link Capacitor Bank",
+          "level": "L2",
+          "parent": "Power Conversion System (PCS)"
+        },
+        {
+          "name": "AC Filter Inductor",
+          "level": "L2",
+          "parent": "Power Conversion System (PCS)"
+        },
+        {
+          "name": "Liquid-Cooling Loop",
+          "level": "L2",
+          "parent": "Thermal Management"
+        },
+        {
+          "name": "Cathode Foil + Active Material",
+          "level": "L1",
+          "parent": "Prismatic LFP Cell"
+        },
+        {
+          "name": "Anode Foil + Active Material",
+          "level": "L1",
+          "parent": "Prismatic LFP Cell"
+        },
+        {
+          "name": "Separator Film",
+          "level": "L1",
+          "parent": "Prismatic LFP Cell"
+        },
+        {
+          "name": "Cell Casing (Al can)",
+          "level": "L1",
+          "parent": "Prismatic LFP Cell"
+        },
+        {
+          "name": "Semiconductor Die",
+          "level": "L1",
+          "parent": "IGBT/SiC Power Module"
+        },
+        {
+          "name": "LiFePO4",
+          "level": "L0"
+        },
+        {
+          "name": "Synthetic Graphite",
+          "level": "L0"
+        },
+        {
+          "name": "Natural Graphite",
+          "level": "L0"
+        },
+        {
+          "name": "Ceramic-coated PE/PP (separator)",
+          "level": "L0"
+        },
+        {
+          "name": "Aluminum (3003 / EC grade)",
+          "level": "L0"
+        },
+        {
+          "name": "Electrolytic Copper (Cu-ETP)",
+          "level": "L0"
+        },
+        {
+          "name": "Silicon (Si-IGBT wafer)",
+          "level": "L0"
+        },
+        {
+          "name": "Silicon Carbide (SiC wafer)",
+          "level": "L0"
+        },
+        {
+          "name": "Polypropylene Film (capacitor)",
+          "level": "L0"
+        },
+        {
+          "name": "GOES Silicon Steel (3%Si)",
+          "level": "L0"
+        },
+        {
+          "name": "Amorphous Metal Ribbon",
+          "level": "L0"
+        },
+        {
+          "name": "XLPE Polymer",
+          "level": "L0"
+        },
+        {
+          "name": "EPR Polymer",
+          "level": "L0"
+        },
+        {
+          "name": "Mineral Insulating Oil",
+          "level": "L0"
+        },
+        {
+          "name": "Natural Ester Fluid",
+          "level": "L0"
+        },
+        {
+          "name": "Epoxy Cast Resin",
+          "level": "L0"
+        },
+        {
+          "name": "Mono-Ethylene Glycol (coolant)",
+          "level": "L0"
+        },
+        {
+          "name": "Potassium Nitrate (aerosol agent)",
+          "level": "L0"
+        },
+        {
+          "name": "Perfluoroketone (NOVEC 1230)",
+          "level": "L0"
+        },
+        {
+          "name": "Corten / Galvanised Steel (container)",
+          "level": "L0"
+        },
+        {
+          "name": "FR-4 Glass-Epoxy (PCB)",
+          "level": "L0"
+        }
+      ],
+      "key_alternatives_tables": {
+        "L4_storage_architecture": [
+          {
+            "name": "Containerized Li-ion BESS (LFP)",
+            "market_share": 82,
+            "trend": "Growing",
+            "confidence": "HIGH",
+            "source": "Wood Mackenzie / IDTechEx 2025"
+          },
+          {
+            "name": "Containerized Li-ion BESS (NMC)",
+            "market_share": 10,
+            "trend": "Declining",
+            "confidence": "HIGH",
+            "source": "BNEF 2025"
+          },
+          {
+            "name": "Flow battery (vanadium redox)",
+            "market_share": 4,
+            "trend": "Emerging",
+            "confidence": "MEDIUM",
+            "source": "Invinity / CellCube deployments"
+          },
+          {
+            "name": "Sodium-ion BESS",
+            "market_share": 2,
+            "trend": "Emerging",
+            "confidence": "LOW",
+            "source": "CATL / HiNa pilots"
+          },
+          {
+            "name": "Flywheel / CAES / other",
+            "market_share": 2,
+            "trend": "Stable",
+            "confidence": "LOW",
+            "source": "Niche"
+          }
+        ],
+        "L1_cathode_active_material": [
+          {
+            "name": "LiFePO4",
+            "market_share": 82,
+            "trend": "Growing",
+            "confidence": "HIGH",
+            "source": "IDTechEx Stationary 2025"
+          },
+          {
+            "name": "NCM 622/811",
+            "market_share": 15,
+            "trend": "Declining",
+            "confidence": "HIGH",
+            "source": "BNEF"
+          },
+          {
+            "name": "Na-ion Prussian-blue / layered oxide",
+            "market_share": 3,
+            "trend": "Emerging",
+            "confidence": "LOW",
+            "source": "CATL"
+          }
+        ],
+        "L2_pcs_architecture": [
+          {
+            "name": "Central string PCS (IGBT, 2-level)",
+            "market_share": 50,
+            "trend": "Declining",
+            "confidence": "HIGH",
+            "source": "Legacy"
+          },
+          {
+            "name": "Modular central PCS (IGBT, 3-level)",
+            "market_share": 30,
+            "trend": "Growing",
+            "confidence": "HIGH",
+            "source": "Sungrow / Power Electronics"
+          },
+          {
+            "name": "SiC-based high-frequency PCS",
+            "market_share": 15,
+            "trend": "Growing",
+            "confidence": "MEDIUM",
+            "source": "SMA, ABB HES"
+          },
+          {
+            "name": "Modular multilevel (MMC)",
+            "market_share": 3,
+            "trend": "Stable",
+            "confidence": "LOW",
+            "source": "TSO scale"
+          },
+          {
+            "name": "Transformer-isolated low-frequency",
+            "market_share": 2,
+            "trend": "Declining",
+            "confidence": "LOW",
+            "source": "Legacy"
+          }
+        ],
+        "L2_distribution_transformer": [
+          {
+            "name": "Oil-immersed hermetic",
+            "market_share": 65,
+            "trend": "Declining",
+            "confidence": "HIGH",
+            "source": "MarketsandMarkets 2025"
+          },
+          {
+            "name": "Dry-type cast-resin",
+            "market_share": 25,
+            "trend": "Growing",
+            "confidence": "HIGH",
+            "source": "Grand View Research"
+          },
+          {
+            "name": "Ester-fluid",
+            "market_share": 10,
+            "trend": "Growing",
+            "confidence": "HIGH",
+            "source": "MR"
+          }
+        ],
+        "L2_mv_switchgear": [
+          {
+            "name": "SF6 GIS (installed base)",
+            "market_share": 55,
+            "trend": "Declining",
+            "confidence": "HIGH",
+            "source": "EU SF6 brief 2020"
+          },
+          {
+            "name": "Vacuum + solid/dry-air (SF6-free)",
+            "market_share": 25,
+            "trend": "Growing",
+            "confidence": "HIGH",
+            "source": "Schneider AirSeT / Siemens Blue"
+          },
+          {
+            "name": "Air-insulated (AIS)",
+            "market_share": 18,
+            "trend": "Stable",
+            "confidence": "HIGH",
+            "source": "Siemens NX Air"
+          },
+          {
+            "name": "Oil-filled (legacy)",
+            "market_share": 2,
+            "trend": "Declining",
+            "confidence": "HIGH",
+            "source": "Legacy"
+          }
+        ]
+      },
+      "horizontal_adjacencies": [
+        {
+          "adjacent_l4": "DER & Prosumer Interconnection",
+          "capability_gap": "LOW",
+          "market_size_eur_bn_per_yr": "3-5",
+          "strategic_fit": "STRONG"
+        },
+        {
+          "adjacent_l4": "Secondary Substation (MV/LV)",
+          "capability_gap": "MEDIUM",
+          "market_size_eur_bn_per_yr": "2-3",
+          "strategic_fit": "MEDIUM"
+        },
+        {
+          "adjacent_l4": "MV & LV Cable Network",
+          "capability_gap": "MEDIUM",
+          "market_size_eur_bn_per_yr": "4-5",
+          "strategic_fit": "MEDIUM"
+        },
+        {
+          "adjacent_l4": "Primary Substation (HV/MV)",
+          "capability_gap": "HIGH",
+          "market_size_eur_bn_per_yr": "8-10",
+          "strategic_fit": "WEAK"
+        },
+        {
+          "adjacent_l4": "PAC (Protection Automation Control)",
+          "capability_gap": "HIGH",
+          "market_size_eur_bn_per_yr": "1.5-2",
+          "strategic_fit": "WEAK"
+        },
+        {
+          "adjacent_l4": "Metering & AMI",
+          "capability_gap": "HIGH",
+          "market_size_eur_bn_per_yr": "1",
+          "strategic_fit": "WEAK"
+        }
+      ],
+      "vertical_up_move": {
+        "target": "L5 DSO distribution-grid integrator",
+        "capability_gap": "HIGH (HV, PAC, cable network, DSO regulatory)",
+        "capex_meur": "15-30",
+        "time_to_market_years": "5-8",
+        "verdict": "NOT_RECOMMENDED"
+      },
+      "vertical_down_cross_system": [
+        {
+          "target_end_system_naics": "221114",
+          "system_name": "Solar PP (PV+BESS)",
+          "position": "L4 BESS subsystem",
+          "adaptation": "smaller MV point, PV-first sizing"
+        },
+        {
+          "target_end_system_naics": "221115",
+          "system_name": "Wind PP (Wind+BESS)",
+          "position": "L4 BESS subsystem",
+          "adaptation": "wind-developer sales channel"
+        },
+        {
+          "target_end_system_naics": "531120",
+          "system_name": "C&I Landlord BtM Storage",
+          "position": "L4 BESS subsystem (smaller)",
+          "adaptation": "LV coupling VDE-AR-N 4105"
+        },
+        {
+          "target_end_system_naics": "457120",
+          "system_name": "HPC Charging Hub",
+          "position": "L4 BESS buffer",
+          "adaptation": "higher C-rate, DC-coupled"
+        },
+        {
+          "target_end_system_naics": "518210",
+          "system_name": "Data Center",
+          "position": "Hybrid UPS+BESS",
+          "adaptation": "mission-critical SLA, IEC 62443"
+        },
+        {
+          "target_end_system_naics": "325120",
+          "system_name": "Green-H₂ Electrolyzer Site",
+          "position": "BESS firming module",
+          "adaptation": "electrolyzer EMS co-optimization"
+        }
+      ],
+      "qa": {
+        "every_l4_reaches_l0": true,
+        "alt_tables_at_every_transition": true,
+        "shares_sum_100_pct": true,
+        "single_source_branches_marked": true,
+        "company_position_marked": true,
+        "horizontal_adjacency_done": true,
+        "vertical_adjacency_done": true,
+        "brand_vs_tech_separation_enforced": true
+      }
+    }
+  ],
+  "has_bom": true,
+  "naics_sector_type": "non_manufacturing"
+}

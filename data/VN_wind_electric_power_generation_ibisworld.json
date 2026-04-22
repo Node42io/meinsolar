@@ -1,0 +1,997 @@
+{
+  "id": "VN_wind_electric_power_generation_ibisworld",
+  "title": "VN — NAICS 221115 Wind Electric Power Generation",
+  "type": "value_network",
+  "market_slug": "wind_electric_power_generation_ibisworld",
+  "is_per_market": true,
+  "sections": [
+    {
+      "title": "CFJ (L7)",
+      "content": "> Convert kinetic wind energy into grid-compliant, dispatchable electrical energy and inject it into transmission/distribution networks under the governing grid code.\n\n---"
+    },
+    {
+      "title": "Industry Snapshot (market facts)",
+      "content": "| Fact | Value | Relevance to Mein Solar |\n|---|---|---|\n| DE grid-scale BESS capacity | 3 GW (2025) → 6 GW (2026) | Doubling market pull |\n| DE wind curtailment (2022) | ~8 TWh, €4.25 bn congestion cost | BESS = curtailment-capture instrument |\n| Wind+BESS co-loc revenue stack | ~€400 k/MW/yr (higher than solar) | Strongest €/MW business case |\n| Inertia services market | Launches Jan 2026, fixed-price | New revenue stream for grid-forming BESS |\n| Onshore OEMs (DE) | Nordex 31% of new grid-connected (2025), Enercon, Vestas | Non-Mein-Solar; buys integration services |\n| Offshore OEMs | Siemens Gamesa #1, Vestas (MHI Vestas legacy), GE Vernova | Outside Mein Solar scope (4.5 MW ref << TSO-scale) |\n\n---"
+    },
+    {
+      "title": "L7 / L6 Hierarchy",
+      "content": "```\nL7  Wind Electric Power Generation Ecosystem                  [Moore 1993]\n├── L6a  Resource Assessment & Site Development                (CORE)\n├── L6b  Permitting & Grid Interconnection                     (CORE)\n├── L6c  Wind Plant Construction & Installation                (CORE)\n├── L6d  Power Generation & Dispatch                           (CORE)\n├── L6e  Repowering / Decommissioning                          (CORE)\n├── L6H-OM   O&M / Asset Management                            (HORIZONTAL)\n├── L6H-GS   Grid Services & Storage Integration               (HORIZONTAL)  ← MEIN SOLAR VN SEGMENT\n├── L6H-QA   HSE, Quality & Compliance                         (HORIZONTAL)\n└── L6H-IT   SCADA / IT-OT / Cybersecurity                     (HORIZONTAL)\n```\n\n### L6 Core Job Families\n\n| Node | Job family (verb + object) | Output types served |\n|---|---|---|\n| L6a | Quantify wind resource and secure buildable site | Onshore, Offshore, Repower |\n| L6b | Obtain BImSchG/WindSeeG permit and DSO/TSO interconnection | All |\n| L6c | Erect turbines, cabling, substation, BoP | All |\n| L6d | Generate, forecast, trade, and dispatch wind power | All |\n| L6e | Repower aged parks or dismantle at end-of-life | Repower only |\n| L6H-OM | Maintain availability and lifecycle performance | All |\n| **L6H-GS** | **Provide flexibility, storage and grid services to firm wind output** | **All — esp. onshore with curtailment exposure** |\n| L6H-QA | Enforce safety, environmental and grid-code conformity | All |\n| L6H-IT | Operate SCADA / EMS / cyber-compliant control | All |\n\n---"
+    },
+    {
+      "title": "L5 Expansion — Mein Solar's Segment (L6H-GS)",
+      "content": "This is where Mein Solar enters. VN must enumerate all sibling L5 alternatives at this level.\n\n```\nL6H-GS  Grid Services & Storage Integration\n├── L5  Co-located BESS Storage Asset (EPC-delivered)          ← MEIN SOLAR PRIMARY POSITION\n├── L5  Standalone Grid-Booster Storage (park-adjacent)        ← MEIN SOLAR SECONDARY POSITION\n├── L5  Synchronous Condenser / Flywheel Inertia System\n├── L5  Power-to-X / Electrolyzer Offtake (curtailment sink)\n├── L5  Virtual Power Plant / Aggregator Platform (software)\n├── L5  Curtailment-Based Demand Response (flexible load)\n└── L5  Static VAR / STATCOM Reactive Compensation\n```\n\n### L5 Alternatives (Mein Solar's level) — sibling analysis\n\n| L5 Alternative | Technology | Est. share of wind-flex spend (DE, 2026) | Confidence | Mein Solar overlap |\n|---|---|---|---|---|\n| Co-located BESS (LFP, EPC) | Li-ion LFP container + PCS + MV | ~55% | MEDIUM (Timera, Fluence) | **PRIMARY — 100%** |\n| Standalone grid-booster BESS | Same stack, park-adjacent | ~20% | MEDIUM | **SECONDARY — 95%** |\n| Synchronous condenser / flywheel | Rotating mass | ~8% | LOW | 30% (MV coupling only) |\n| P2X / electrolyzer offtake | PEM/alkaline | ~7% | LOW | 40% (grid-side scope) |\n| VPP / aggregator | Software layer | ~5% | LOW | 15% (EMS adjacency) |\n| Flex load / DR | Process-side | ~3% | LOW | 5% |\n| STATCOM | Power electronics | ~2% | LOW | 20% |\n| **Sum** | | **100%** | | |\n\n---"
+    },
+    {
+      "title": "L4 Subsystems — under Co-located BESS L5 (Mein Solar primary)",
+      "content": "INCOSE-compliant subsystems. Minimum 3 required; structural gate = ≥2.\n\n| L4 Subsystem | Function | Typical vendor |\n|---|---|---|\n| LFP Battery Container | Electrochemical storage, BMS, HVAC, fire suppression | CATL EnerC, Sungrow PowerTitan, Tesla Megapack, SolarEast |\n| Bidirectional PCS | DC↔AC, 4-quadrant, grid-forming firmware | SMA, Sungrow, Power Electronics, Ingeteam |\n| MV Transformer & Switchgear | Step-up to wind park 20/30 kV collector | Siemens, ABB, Schneider, Eaton |\n| Protection & NA-Schutz Relays | VDE-AR-N 4110/4120 compliance | Siemens SIPROTEC, ABB REF/REL |\n| Energy Management System | Curtailment, arbitrage, FCR/aFRR/inertia dispatch | Entrix, Next Kraftwerke, Fluence Mosaic, in-house |\n| Civil Works & Foundation | Pads, trenching, fencing, Feuerwehr access | Local subcontractors |\n| Grid-Code Certification Dossier | FGW TR3 unit + TR8 plant cert | TÜV, DEKRA, 8.2 Consulting |\n\n### L4 under other key L5 siblings (for gate compliance)\n\n**Synchronous Condenser:** rotor+stator, excitation system, cooling skid, MV breaker.\n**Electrolyzer offtake:** stack module, gas cleanup, H2 compressor, PCS rectifier.\n**VPP platform:** forecasting engine, market-API gateway, asset-control layer.\n\n---"
+    },
+    {
+      "title": "L6 Core Process Expansion (context for adjacency scans)",
+      "content": "| L6 | Core L5 positions (named, unexpanded — Mein Solar has no primary here) |\n|---|---|\n| L6a | Met-mast / LiDAR wind measurement · Layout & yield software (WAsP, WindPRO) · Site surveying · Environmental impact study |\n| L6b | BImSchG permit filing · DSO/TSO interconnection application · Land lease contracting · Grid-code pre-certification |\n| L6c | Onshore wind turbine (Nordex, Enercon, Vestas, GE) · Offshore turbine (SGRE, Vestas) · Tower & foundation · Array cabling · Park substation · Collector system · SCADA cabinet · BoP civil |\n| L6d | Wind forecast service · PPA/market trading · Direct-marketing aggregator · Dispatch scheduler |\n| L6e | Crane & dismantling services · Blade recycling · Refurbishment |\n| L6H-OM | Turbine OEM service · ISP (Deutsche Windtechnik, Availon) · Drone blade inspection · Gearbox overhaul · Spare parts |\n| L6H-QA | BG-accredited safety · Bat/bird monitoring · FGW certifier · Grid-code auditor |\n| L6H-IT | SCADA (Bachmann, Mita-Teknik) · Cybersecurity (BSI IT-Grundschutz, IEC 62443) |\n\n---"
+    },
+    {
+      "title": "Company Position Marking",
+      "content": "```\nL7  Wind Electric Power Generation Ecosystem\n  L6H-GS  Grid Services & Storage Integration\n    L5  Co-located BESS Storage Asset (EPC-delivered)    ← MEIN SOLAR PRIMARY POSITION\n    L5  Standalone Grid-Booster Storage                  ← MEIN SOLAR SECONDARY POSITION\n    L5  Synchronous Condenser / Flywheel\n    L5  Power-to-X / Electrolyzer Offtake\n    L5  VPP / Aggregator\n    L5  Flex Load / Demand Response\n    L5  STATCOM\n```\n\n---"
+    },
+    {
+      "title": "04e — Direct Competence Transfer Scan (cross-VN)",
+      "content": "| VN Unit | Level | Competence Required | Has It? | Effort | Rationale |\n|---|---|---|---|---|---|\n| Standalone Grid-Booster Storage | L5 (L6H-GS) | Same as co-located, park-adjacent siting | YES | LOW | Identical stack; site logic only differs |\n| Park Substation (MV collector) | L5 (L6c) | MV transformer + switchgear EPC | PARTIAL | MEDIUM | MS already does MV for BESS; wind-park collector is same equipment |\n| Array Cabling (33 kV) | L5 (L6c) | MV cable install, trenching, terminations | PARTIAL | MEDIUM | Civil + cabling heritage from PV farm EPC |\n| DSO/TSO Interconnection app. | L5 (L6b) | VDE-AR-N 4110/4120 filing + FGW TR8 | YES | LOW | Core capability — already done for BESS |\n| Grid-code certification dossier | L4 (cross) | FGW TR3/TR8 package | YES | LOW | Native capability |\n| EMS / dispatch platform | L5 (L6H-GS) | Optimization, market APIs, SoC mgmt | PARTIAL | MEDIUM | Has BESS EMS; VPP/aggregator-grade is gap |\n\n(HIGH-effort units — turbine supply, blade recycling, offshore — excluded.)\n\n---"
+    },
+    {
+      "title": "04f — Strategic Adjacency Expansion (within L6H-GS segment)",
+      "content": "| Adjacent L5 | Current Incumbents | Capability Gap | Investment | Fit (1–10) | Rationale |\n|---|---|---|---|---|---|\n| Standalone Grid-Booster Storage | Fluence, Tesla, Sungrow, Wärtsilä | Project-finance structuring at park scale | 6 mo, <€200k | **9** | ~100% stack overlap; only siting/commercial model differs |\n| Synchronous Condenser / Flywheel | Hitachi Energy, ABB, Siemens Energy | Rotating-machine engineering, exciter controls | 18–24 mo, €3–5 M | 3 | <30% overlap; exit not worth it |\n| P2X / Electrolyzer Offtake | Nel, Sunfire, Siemens Energy, ITM | Stack engineering, H2 safety, gas balance of plant | 24+ mo, >€5 M | 3 | Electrical side transfers; H2 chemistry does not |\n| VPP / Aggregator | Next Kraftwerke, Entrix, Flexpower | Market-trading SW, algo-dispatch IP, balancing-group entity | 12–18 mo, €2 M + license | 5 | Platform play — partner, don't build |\n| STATCOM | ABB, Siemens Energy, GE Vernova | HV power-electronics engineering | >24 mo, >€5 M | 2 | *excluded — <30% overlap* |\n\n**Recommendation:** Only **Standalone Grid-Booster Storage** clears the 30% overlap + fit threshold as an organic adjacency. VPP is a partnership candidate, not a build.\n\n---"
+    },
+    {
+      "title": "04g — Vertical Move-Up Assessment (L5 → L6)",
+      "content": "| Current | Target | What must be added | Competitors at target | Feasibility | Economic rationale |\n|---|---|---|---|---|---|\n| L5 Co-located BESS (under L6H-GS) | L6H-GS *Grid Services & Storage Integration* — own the whole flex layer for a wind park | VPP/market-trading platform, inertia-service cert, balancing-group license, 24/7 dispatch desk | Next Kraftwerke, Entrix, Fluence Digital, Flexpower, RWE Supply & Trading | **LOW** | L5→L6H requires ops + trading + balancing-group org fundamentally different from EPC project business. TAM at L6H (~€400 k/MW × DE wind 70 GW ≈ €28 B exposure) is attractive but move-up is not organic — acquisition or partnership is the rational path. |\n| L5 Co-located BESS | L6c Wind Plant Construction (wind-park BoP EPC) | Turbine erection competence, crane logistics, blade handling, offshore marine (if applicable) | Max Bögl, Goldbeck, BayWa r.e., Nordex-EPC | **LOW** | Turbine erection is specialist trade; MS has no crane fleet or offshore vessels. Cross-segment move; viable only as BoP subcontractor role. |\n\n**If LOW (primary move-up):** The pivot from project-delivery EPC to 24/7 dispatch/trading requires a different balance sheet (prop trading capital, collateral), a different regulatory position (BNetzA balancing-group registration), and a different org (desk, risk, IT). Organic build is not economical within 18-month horizons.\n\n---"
+    },
+    {
+      "title": "VN Completeness Gate",
+      "content": "| Check | Status |\n|---|---|\n| Q1 CFJ industry-level, mechanism-free | ✅ |\n| Q2 No orphan nodes | ✅ |\n| Q3 Valid level transitions | ✅ (L7→L6→L5→L4) |\n| Q4 Every L5 has ≥2 L4 children | ✅ (primary L5 has 7) |\n| Q5 No solution-specific L7/L6 names | ✅ |\n| Q6 Naming test | ✅ (BESS, PCS, STATCOM are industry terms) |\n| Q7 Unit count 15–60 | ✅ (≈ 35 units) |\n| Full depth to company position | ✅ (L7 → L6H-GS → L5 BESS → L4 subsystems) |\n| Sibling L5 enumerated at company level | ✅ (7 alternatives) |\n\n---"
+    },
+    {
+      "title": "Strategic Takeaways",
+      "content": "1. **Mein Solar's fit in 221115 is conditional on co-location role.** The VN entry point is *not* turbine/park EPC (that is owned by specialists) — it is the **L6H-GS Grid-Services layer** attached to new or repowered wind parks.\n2. **Strongest adjacency is \"same L5, different siting\"** (standalone grid-booster). This is a 6-month organic move — no technology change, only project-finance packaging.\n3. **Inertia services (Jan 2026) and curtailment capture are the anchor revenue streams.** Mein Solar must add grid-forming PCS firmware + FGW TR3 grid-forming cert to the BESS stack.\n4. **Vertical move-up to own L6H-GS is LOW feasibility organically** — requires a trading/dispatch org the company does not have. Partner with an aggregator (Next Kraftwerke, Entrix) instead of building.\n5. **Scale mismatch with TSO-grade storage (L6e/transmission, 100–500 MW) is unchanged** — Mein Solar's 4.5 MW / 9 MWh reference fits onshore-park scale, not transmission-grid boosters.\n\n---"
+    },
+    {
+      "title": "Structured Data",
+      "content": "```json\n{\n  \"component\": \"value_network_construction\",\n  \"naics_code\": \"221115\",\n  \"naics_title\": \"Wind Electric Power Generation\",\n  \"market_name\": \"Wind+BESS Hybrid Parks\",\n  \"source\": \"IBISWorld NAICS 221115\",\n  \"naics_sector_type\": \"utility_service\",\n  \"process_vn_applies\": true,\n  \"product_bom_applies\": false,\n  \"cfj_statement\": \"Convert kinetic wind energy into grid-compliant, dispatchable electrical energy and inject it into transmission/distribution networks under the governing grid code.\",\n  \"top_level\": \"L7\",\n  \"focal_company\": \"Mein Solar GmbH\",\n  \"focal_primary_position\": {\n    \"level\": \"L5\",\n    \"name\": \"Co-located BESS Storage Asset (EPC-delivered)\",\n    \"parent\": \"L6H-GS Grid Services & Storage Integration\"\n  },\n  \"focal_secondary_position\": {\n    \"level\": \"L5\",\n    \"name\": \"Standalone Grid-Booster Storage (park-adjacent)\",\n    \"parent\": \"L6H-GS Grid Services & Storage Integration\"\n  },\n  \"units\": [\n    {\"name\": \"Wind Electric Power Generation Ecosystem\", \"level\": \"L7\", \"parent_name\": \"ROOT\", \"bom_standard\": \"Moore 1993\", \"description\": \"Industry ecosystem converting kinetic wind to grid-injected electrical energy\"},\n\n    {\"name\": \"Resource Assessment & Site Development\", \"level\": \"L6\", \"parent_name\": \"Wind Electric Power Generation Ecosystem\", \"bom_standard\": \"Maier 1998\", \"description\": \"Quantify wind resource and secure buildable site\", \"role\": \"core\"},\n    {\"name\": \"Permitting & Grid Interconnection\", \"level\": \"L6\", \"parent_name\": \"Wind Electric Power Generation Ecosystem\", \"bom_standard\": \"Maier 1998\", \"description\": \"Obtain BImSchG permit and DSO/TSO interconnection\", \"role\": \"core\"},\n    {\"name\": \"Wind Plant Construction & Installation\", \"level\": \"L6\", \"parent_name\": \"Wind Electric Power Generation Ecosystem\", \"bom_standard\": \"Maier 1998\", \"description\": \"Erect turbines, foundations, cabling, substation and BoP\", \"role\": \"core\"},\n    {\"name\": \"Power Generation & Dispatch\", \"level\": \"L6\", \"parent_name\": \"Wind Electric Power Generation Ecosystem\", \"bom_standard\": \"Maier 1998\", \"description\": \"Generate, forecast, trade and dispatch wind power\", \"role\": \"core\"},\n    {\"name\": \"Repowering & Decommissioning\", \"level\": \"L6\", \"parent_name\": \"Wind Electric Power Generation Ecosystem\", \"bom_standard\": \"Maier 1998\", \"description\": \"Repower aged parks or dismantle at end-of-life\", \"role\": \"core\"},\n\n    {\"name\": \"O&M / Asset Management\", \"level\": \"L6\", \"parent_name\": \"Wind Electric Power Generation Ecosystem\", \"bom_standard\": \"Maier 1998\", \"description\": \"Maintain availability and lifecycle performance\", \"role\": \"horizontal\"},\n    {\"name\": \"Grid Services & Storage Integration\", \"level\": \"L6\", \"parent_name\": \"Wind Electric Power Generation Ecosystem\", \"bom_standard\": \"Maier 1998\", \"description\": \"Provide flexibility, storage and grid services to firm wind output — MEIN SOLAR VN SEGMENT\", \"role\": \"horizontal\"},\n    {\"name\": \"HSE Quality & Compliance\", \"level\": \"L6\", \"parent_name\": \"Wind Electric Power Generation Ecosystem\", \"bom_standard\": \"Maier 1998\", \"description\": \"Enforce safety, environmental and grid-code conformity\", \"role\": \"horizontal\"},\n    {\"name\": \"SCADA IT-OT & Cybersecurity\", \"level\": \"L6\", \"parent_name\": \"Wind Electric Power Generation Ecosystem\", \"bom_standard\": \"Maier 1998\", \"description\": \"Operate SCADA, EMS and cyber-compliant control\", \"role\": \"horizontal\"},\n\n    {\"name\": \"Co-located BESS Storage Asset (EPC-delivered)\", \"level\": \"L5\", \"parent_name\": \"Grid Services & Storage Integration\", \"bom_standard\": \"ISO 15288\", \"description\": \"Turnkey Li-ion BESS co-located with wind park for curtailment capture and ancillary services\", \"position_marker\": \"MEIN_SOLAR_PRIMARY_POSITION\", \"estimated_share_pct\": 55, \"share_confidence\": \"MEDIUM\"},\n    {\"name\": \"Standalone Grid-Booster Storage\", \"level\": \"L5\", \"parent_name\": \"Grid Services & Storage Integration\", \"bom_standard\": \"ISO 15288\", \"description\": \"Park-adjacent BESS providing grid-boosting and TSO ancillary services\", \"position_marker\": \"MEIN_SOLAR_SECONDARY_POSITION\", \"estimated_share_pct\": 20, \"share_confidence\": \"MEDIUM\"},\n    {\"name\": \"Synchronous Condenser / Flywheel Inertia System\", \"level\": \"L5\", \"parent_name\": \"Grid Services & Storage Integration\", \"bom_standard\": \"ISO 15288\", \"description\": \"Rotating mass providing synthetic inertia and short-circuit contribution\", \"estimated_share_pct\": 8, \"share_confidence\": \"LOW\"},\n    {\"name\": \"Power-to-X / Electrolyzer Offtake\", \"level\": \"L5\", \"parent_name\": \"Grid Services & Storage Integration\", \"bom_standard\": \"ISO 15288\", \"description\": \"Hydrogen electrolyzer absorbing curtailed wind power\", \"estimated_share_pct\": 7, \"share_confidence\": \"LOW\"},\n    {\"name\": \"Virtual Power Plant / Aggregator Platform\", \"level\": \"L5\", \"parent_name\": \"Grid Services & Storage Integration\", \"bom_standard\": \"ISO 15288\", \"description\": \"Software layer aggregating distributed wind + storage assets for market dispatch\", \"estimated_share_pct\": 5, \"share_confidence\": \"LOW\"},\n    {\"name\": \"Curtailment-Based Demand Response\", \"level\": \"L5\", \"parent_name\": \"Grid Services & Storage Integration\", \"bom_standard\": \"ISO 15288\", \"description\": \"Flexible industrial load absorbing surplus wind energy\", \"estimated_share_pct\": 3, \"share_confidence\": \"LOW\"},\n    {\"name\": \"Static VAR / STATCOM Reactive Compensation\", \"level\": \"L5\", \"parent_name\": \"Grid Services & Storage Integration\", \"bom_standard\": \"ISO 15288\", \"description\": \"Power-electronic reactive-power device for voltage support\", \"estimated_share_pct\": 2, \"share_confidence\": \"LOW\"},\n\n    {\"name\": \"LFP Battery Container\", \"level\": \"L4\", \"parent_name\": \"Co-located BESS Storage Asset (EPC-delivered)\", \"bom_standard\": \"INCOSE\", \"description\": \"ISO-container Li-ion LFP rack with BMS, HVAC, fire suppression\"},\n    {\"name\": \"Bidirectional PCS\", \"level\": \"L4\", \"parent_name\": \"Co-located BESS Storage Asset (EPC-delivered)\", \"bom_standard\": \"INCOSE\", \"description\": \"4-quadrant inverter with grid-forming firmware option\"},\n    {\"name\": \"MV Transformer & Switchgear\", \"level\": \"L4\", \"parent_name\": \"Co-located BESS Storage Asset (EPC-delivered)\", \"bom_standard\": \"INCOSE\", \"description\": \"Step-up transformer and RMU to 20/30 kV collector\"},\n    {\"name\": \"Protection & NA-Schutz Relays\", \"level\": \"L4\", \"parent_name\": \"Co-located BESS Storage Asset (EPC-delivered)\", \"bom_standard\": \"INCOSE\", \"description\": \"Digital protection per VDE-AR-N 4110/4120\"},\n    {\"name\": \"Energy Management System\", \"level\": \"L4\", \"parent_name\": \"Co-located BESS Storage Asset (EPC-delivered)\", \"bom_standard\": \"INCOSE\", \"description\": \"Curtailment, arbitrage and FCR/aFRR/inertia dispatch software\"},\n    {\"name\": \"Civil Works & Foundation\", \"level\": \"L4\", \"parent_name\": \"Co-located BESS Storage Asset (EPC-delivered)\", \"bom_standard\": \"INCOSE\", \"description\": \"Pads, trenching, fencing, Feuerwehr access\"},\n    {\"name\": \"Grid-Code Certification Dossier\", \"level\": \"L4\", \"parent_name\": \"Co-located BESS Storage Asset (EPC-delivered)\", \"bom_standard\": \"INCOSE\", \"description\": \"FGW TR3 unit and TR8 plant certification package\"},\n\n    {\"name\": \"Grid-Booster BESS Container Block\", \"level\": \"L4\", \"parent_name\": \"Standalone Grid-Booster Storage\", \"bom_standard\": \"INCOSE\", \"description\": \"BESS container sized for park-adjacent siting\"},\n    {\"name\": \"Grid-Booster PCS Block\", \"level\": \"L4\", \"parent_name\": \"Standalone Grid-Booster Storage\", \"bom_standard\": \"INCOSE\", \"description\": \"Bidirectional inverter with grid-forming firmware\"},\n    {\"name\": \"Grid-Booster MV Interconnect\", \"level\": \"L4\", \"parent_name\": \"Standalone Grid-Booster Storage\", \"bom_standard\": \"INCOSE\", \"description\": \"Cable trench and MV switchgear to park collector or DSO feeder\"},\n\n    {\"name\": \"Synchronous Machine Rotor/Stator\", \"level\": \"L4\", \"parent_name\": \"Synchronous Condenser / Flywheel Inertia System\", \"bom_standard\": \"INCOSE\", \"description\": \"Rotating electrical machine providing inertia\"},\n    {\"name\": \"Excitation & Cooling System\", \"level\": \"L4\", \"parent_name\": \"Synchronous Condenser / Flywheel Inertia System\", \"bom_standard\": \"INCOSE\", \"description\": \"Exciter and cooling auxiliaries\"},\n    {\"name\": \"MV Breaker & Protection\", \"level\": \"L4\", \"parent_name\": \"Synchronous Condenser / Flywheel Inertia System\", \"bom_standard\": \"INCOSE\", \"description\": \"MV switchgear interfacing rotating mass to grid\"},\n\n    {\"name\": \"Electrolyzer Stack\", \"level\": \"L4\", \"parent_name\": \"Power-to-X / Electrolyzer Offtake\", \"bom_standard\": \"INCOSE\", \"description\": \"PEM or alkaline electrolyzer cell stack\"},\n    {\"name\": \"Hydrogen Balance of Plant\", \"level\": \"L4\", \"parent_name\": \"Power-to-X / Electrolyzer Offtake\", \"bom_standard\": \"INCOSE\", \"description\": \"Gas cleanup, compression, storage\"},\n    {\"name\": \"Rectifier / PCS\", \"level\": \"L4\", \"parent_name\": \"Power-to-X / Electrolyzer Offtake\", \"bom_standard\": \"INCOSE\", \"description\": \"AC-DC rectifier delivering DC to electrolyzer\"},\n\n    {\"name\": \"Forecasting Engine\", \"level\": \"L4\", \"parent_name\": \"Virtual Power Plant / Aggregator Platform\", \"bom_standard\": \"INCOSE\", \"description\": \"Wind/load forecasting algorithms\"},\n    {\"name\": \"Market API Gateway\", \"level\": \"L4\", \"parent_name\": \"Virtual Power Plant / Aggregator Platform\", \"bom_standard\": \"INCOSE\", \"description\": \"EPEX / Regelleistung.net / FCR prequal APIs\"},\n    {\"name\": \"Asset Control Layer\", \"level\": \"L4\", \"parent_name\": \"Virtual Power Plant / Aggregator Platform\", \"bom_standard\": \"INCOSE\", \"description\": \"Dispatch setpoints to aggregated BESS/wind/flex assets\"},\n\n    {\"name\": \"Flexible Industrial Load Interface\", \"level\": \"L4\", \"parent_name\": \"Curtailment-Based Demand Response\", \"bom_standard\": \"INCOSE\", \"description\": \"Process-side controller modulating load\"},\n    {\"name\": \"Tariff & Settlement Interface\", \"level\": \"L4\", \"parent_name\": \"Curtailment-Based Demand Response\", \"bom_standard\": \"INCOSE\", \"description\": \"Metering and settlement platform\"},\n\n    {\"name\": \"STATCOM Power-Electronic Module\", \"level\": \"L4\", \"parent_name\": \"Static VAR / STATCOM Reactive Compensation\", \"bom_standard\": \"INCOSE\", \"description\": \"Converter providing reactive current injection\"},\n    {\"name\": \"STATCOM Controller\", \"level\": \"L4\", \"parent_name\": \"Static VAR / STATCOM Reactive Compensation\", \"bom_standard\": \"INCOSE\", \"description\": \"Voltage-support and flicker-mitigation control loop\"}\n  ],\n  \"direct_competence_transfer_04e\": [\n    {\"vn_unit\": \"Standalone Grid-Booster Storage\", \"level\": \"L5\", \"competence_required\": \"BESS EPC with park-adjacent siting\", \"has_competence\": \"YES\", \"adaptation_effort\": \"LOW\", \"rationale\": \"Identical stack and grid-code scope; differs only in siting and project-finance model\"},\n    {\"vn_unit\": \"Park Substation (MV collector)\", \"level\": \"L5\", \"competence_required\": \"MV transformer and switchgear EPC\", \"has_competence\": \"PARTIAL\", \"adaptation_effort\": \"MEDIUM\", \"rationale\": \"Already delivered for BESS; wind-park collector uses same MV equipment\"},\n    {\"vn_unit\": \"Array Cabling (33 kV)\", \"level\": \"L5\", \"competence_required\": \"MV cable install, trenching, terminations\", \"has_competence\": \"PARTIAL\", \"adaptation_effort\": \"MEDIUM\", \"rationale\": \"Civil and cabling heritage from PV farm EPC transfers\"},\n    {\"vn_unit\": \"DSO/TSO Interconnection Application\", \"level\": \"L5\", \"competence_required\": \"VDE-AR-N 4110/4120 filing + FGW TR8 submission\", \"has_competence\": \"YES\", \"adaptation_effort\": \"LOW\", \"rationale\": \"Core native capability\"},\n    {\"vn_unit\": \"Energy Management System\", \"level\": \"L5\", \"competence_required\": \"Optimization + market APIs + SoC management\", \"has_competence\": \"PARTIAL\", \"adaptation_effort\": \"MEDIUM\", \"rationale\": \"Has BESS EMS; aggregator/VPP-grade functionality is a gap\"}\n  ],\n  \"strategic_adjacency_04f\": [\n    {\"adjacent_l5\": \"Standalone Grid-Booster Storage\", \"incumbents\": [\"Fluence\", \"Tesla\", \"Sungrow\", \"Wärtsilä\"], \"capability_gap\": \"Park-scale project-finance structuring\", \"investment_bridge\": \"6 months, < EUR 200k\", \"strategic_fit\": 9, \"rationale\": \"~100% technology stack overlap; only siting and commercial packaging differ\"},\n    {\"adjacent_l5\": \"Synchronous Condenser / Flywheel\", \"incumbents\": [\"Hitachi Energy\", \"ABB\", \"Siemens Energy\"], \"capability_gap\": \"Rotating-machine engineering, exciter controls\", \"investment_bridge\": \"18-24 months, EUR 3-5M\", \"strategic_fit\": 3, \"rationale\": \"<30% overlap; not economically rational\"},\n    {\"adjacent_l5\": \"Power-to-X / Electrolyzer Offtake\", \"incumbents\": [\"Nel\", \"Sunfire\", \"Siemens Energy\", \"ITM\"], \"capability_gap\": \"Stack engineering, H2 safety, gas BoP\", \"investment_bridge\": \"24+ months, > EUR 5M\", \"strategic_fit\": 3, \"rationale\": \"Electrical side transfers; H2 chemistry does not\"},\n    {\"adjacent_l5\": \"VPP / Aggregator Platform\", \"incumbents\": [\"Next Kraftwerke\", \"Entrix\", \"Flexpower\"], \"capability_gap\": \"Trading software, algo-dispatch IP, balancing-group entity\", \"investment_bridge\": \"12-18 months, EUR 2M + license\", \"strategic_fit\": 5, \"rationale\": \"Partner rather than build — platform economics favor incumbent scale\"},\n    {\"adjacent_l5\": \"STATCOM\", \"incumbents\": [\"ABB\", \"Siemens Energy\", \"GE Vernova\"], \"capability_gap\": \"HV power-electronics engineering\", \"investment_bridge\": \"> 24 months, > EUR 5M\", \"strategic_fit\": 2, \"rationale\": \"Excluded — <30% overlap\"}\n  ],\n  \"vertical_move_up_04g\": [\n    {\"current_position\": \"L5 Co-located BESS (under L6H-GS)\", \"target_position\": \"L6H-GS Grid Services & Storage Integration\", \"capabilities_to_add\": [\"VPP / market-trading platform\", \"Grid-forming inertia-service certification\", \"Balancing-group license\", \"24/7 dispatch desk\"], \"competitors_at_target\": [\"Next Kraftwerke\", \"Entrix\", \"Fluence Digital\", \"RWE Supply & Trading\"], \"feasibility\": \"LOW\", \"economic_rationale\": \"Requires different balance sheet (trading capital), regulatory position (BNetzA balancing group), and organizational structure (trading desk). TAM ~EUR 28 B (DE wind 70 GW x EUR 400 k/MW revenue stack) but organic build not viable in 18-month horizon. Partnership or acquisition is the rational path.\"},\n    {\"current_position\": \"L5 Co-located BESS (under L6H-GS)\", \"target_position\": \"L6c Wind Plant Construction\", \"capabilities_to_add\": [\"Turbine erection competence\", \"Crane logistics\", \"Blade handling\", \"Offshore marine (if applicable)\"], \"competitors_at_target\": [\"Max Bögl\", \"Goldbeck\", \"BayWa r.e.\", \"Nordex-EPC\"], \"feasibility\": \"LOW\", \"economic_rationale\": \"Turbine erection is specialist trade; Mein Solar has no crane fleet or marine assets. Viable only as BoP subcontractor role, not full wind-park EPC integrator.\"}\n  ],\n  \"completeness_gate\": {\n    \"q1_cfj_industry_level\": \"PASS\",\n    \"q2_no_orphan_nodes\": \"PASS\",\n    \"q3_valid_level_transitions\": \"PASS\",\n    \"q4_l4_children_per_l5_min2\": \"PASS\",\n    \"q5_no_solution_specific_top_names\": \"PASS\",\n    \"q6_naming_test\": \"PASS\",\n    \"q7_unit_count_in_range\": \"PASS\",\n    \"full_depth_to_company_level\": \"PASS\",\n    \"sibling_l5_enumerated\": \"PASS\",\n    \"unit_count\": 35\n  },\n  \"industry_facts\": {\n    \"de_bess_capacity_2025_gw\": 3,\n    \"de_bess_capacity_2026_gw\": 6,\n    \"de_wind_curtailment_2022_twh\": 8,\n    \"de_grid_congestion_cost_2022_eur_bn\": 4.25,\n    \"wind_bess_colocation_revenue_stack_eur_per_mw_yr\": 400000,\n    \"inertia_service_market_launch\": \"2026-01\",\n    \"onshore_oem_share_leader_de_2025\": {\"nordex\": 0.31},\n    \"mein_solar_scale_match\": \"fits onshore park-co-location (4.5 MW/9 MWh reference); mismatch with TSO transmission-grid boosters (100-500 MW)\"\n  }\n}\n```\n\n---"
+    },
+    {
+      "title": "Sources",
+      "content": "- [NAICS 221115 Wind Electric Power Generation (IBISWorld)](https://www.ibisworld.com/classifications/naics/221115/wind-electric-power-generation/)\n- [BESS co-location resurgence in Germany (Timera Energy)](https://timera-energy.com/blog/bess-co-location-resurgence-in-germany/)\n- [Co-location BESS for Wind and Solar — Economic Analysis (AssetPhysics)](https://assetphysics.com/co-location-bess-for-wind-and-solar-economic-analysis-and-financing-solutions/)\n- [Germany to Launch Inertia Service Market in 2026 (HSF Kramer)](https://www.hsfkramer.com/notes/energy/2025-posts/germany-to-launch-inertia-service-market-in-2026-new-revenue-stream-for-grid-forming-bess)\n- [Germany's Innovation Tender — Renewable + Storage Co-location (Fluence)](https://blog.fluenceenergy.com/germany-innovation-tender-full-potential-renewable-storage-co-location)\n- [Revenue potential in the German BESS market (Rabobank)](https://www.rabobank.com/knowledge/d011485293-backup-power-for-europe-part-5-revenue-potential-in-the-german-bess-market)\n- [Global Top 15 Wind Turbine Manufacturers 2026 (Blackridge Research)](https://www.blackridgeresearch.com/blog/top-wind-turbine-manufacturers-makers-companies-suppliers)\n- [Wind Turbines Manufacturers Market Share (Enerdata)](https://www.enerdata.net/publications/executive-briefing/wind-market-share.html)"
+    }
+  ],
+  "tables": [
+    {
+      "headers": [
+        "Fact",
+        "Value",
+        "Relevance to Mein Solar"
+      ],
+      "rows": [
+        {
+          "Fact": "DE grid-scale BESS capacity",
+          "Value": "3 GW (2025) → 6 GW (2026)",
+          "Relevance to Mein Solar": "Doubling market pull"
+        },
+        {
+          "Fact": "DE wind curtailment (2022)",
+          "Value": "~8 TWh, €4.25 bn congestion cost",
+          "Relevance to Mein Solar": "BESS = curtailment-capture instrument"
+        },
+        {
+          "Fact": "Wind+BESS co-loc revenue stack",
+          "Value": "~€400 k/MW/yr (higher than solar)",
+          "Relevance to Mein Solar": "Strongest €/MW business case"
+        },
+        {
+          "Fact": "Inertia services market",
+          "Value": "Launches Jan 2026, fixed-price",
+          "Relevance to Mein Solar": "New revenue stream for grid-forming BESS"
+        },
+        {
+          "Fact": "Onshore OEMs (DE)",
+          "Value": "Nordex 31% of new grid-connected (2025), Enercon, Vestas",
+          "Relevance to Mein Solar": "Non-Mein-Solar; buys integration services"
+        },
+        {
+          "Fact": "Offshore OEMs",
+          "Value": "Siemens Gamesa #1, Vestas (MHI Vestas legacy), GE Vernova",
+          "Relevance to Mein Solar": "Outside Mein Solar scope (4.5 MW ref << TSO-scale)"
+        }
+      ]
+    },
+    {
+      "headers": [
+        "Node",
+        "Job family (verb + object)",
+        "Output types served"
+      ],
+      "rows": [
+        {
+          "Node": "L6a",
+          "Job family (verb + object)": "Quantify wind resource and secure buildable site",
+          "Output types served": "Onshore, Offshore, Repower"
+        },
+        {
+          "Node": "L6b",
+          "Job family (verb + object)": "Obtain BImSchG/WindSeeG permit and DSO/TSO interconnection",
+          "Output types served": "All"
+        },
+        {
+          "Node": "L6c",
+          "Job family (verb + object)": "Erect turbines, cabling, substation, BoP",
+          "Output types served": "All"
+        },
+        {
+          "Node": "L6d",
+          "Job family (verb + object)": "Generate, forecast, trade, and dispatch wind power",
+          "Output types served": "All"
+        },
+        {
+          "Node": "L6e",
+          "Job family (verb + object)": "Repower aged parks or dismantle at end-of-life",
+          "Output types served": "Repower only"
+        },
+        {
+          "Node": "L6H-OM",
+          "Job family (verb + object)": "Maintain availability and lifecycle performance",
+          "Output types served": "All"
+        },
+        {
+          "Node": "**L6H-GS**",
+          "Job family (verb + object)": "**Provide flexibility, storage and grid services to firm wind output**",
+          "Output types served": "**All — esp. onshore with curtailment exposure**"
+        },
+        {
+          "Node": "L6H-QA",
+          "Job family (verb + object)": "Enforce safety, environmental and grid-code conformity",
+          "Output types served": "All"
+        },
+        {
+          "Node": "L6H-IT",
+          "Job family (verb + object)": "Operate SCADA / EMS / cyber-compliant control",
+          "Output types served": "All"
+        }
+      ]
+    },
+    {
+      "headers": [
+        "L5 Alternative",
+        "Technology",
+        "Est. share of wind-flex spend (DE, 2026)",
+        "Confidence",
+        "Mein Solar overlap"
+      ],
+      "rows": [
+        {
+          "L5 Alternative": "Co-located BESS (LFP, EPC)",
+          "Technology": "Li-ion LFP container + PCS + MV",
+          "Est. share of wind-flex spend (DE, 2026)": "~55%",
+          "Confidence": "MEDIUM (Timera, Fluence)",
+          "Mein Solar overlap": "**PRIMARY — 100%**"
+        },
+        {
+          "L5 Alternative": "Standalone grid-booster BESS",
+          "Technology": "Same stack, park-adjacent",
+          "Est. share of wind-flex spend (DE, 2026)": "~20%",
+          "Confidence": "MEDIUM",
+          "Mein Solar overlap": "**SECONDARY — 95%**"
+        },
+        {
+          "L5 Alternative": "Synchronous condenser / flywheel",
+          "Technology": "Rotating mass",
+          "Est. share of wind-flex spend (DE, 2026)": "~8%",
+          "Confidence": "LOW",
+          "Mein Solar overlap": "30% (MV coupling only)"
+        },
+        {
+          "L5 Alternative": "P2X / electrolyzer offtake",
+          "Technology": "PEM/alkaline",
+          "Est. share of wind-flex spend (DE, 2026)": "~7%",
+          "Confidence": "LOW",
+          "Mein Solar overlap": "40% (grid-side scope)"
+        },
+        {
+          "L5 Alternative": "VPP / aggregator",
+          "Technology": "Software layer",
+          "Est. share of wind-flex spend (DE, 2026)": "~5%",
+          "Confidence": "LOW",
+          "Mein Solar overlap": "15% (EMS adjacency)"
+        },
+        {
+          "L5 Alternative": "Flex load / DR",
+          "Technology": "Process-side",
+          "Est. share of wind-flex spend (DE, 2026)": "~3%",
+          "Confidence": "LOW",
+          "Mein Solar overlap": "5%"
+        },
+        {
+          "L5 Alternative": "STATCOM",
+          "Technology": "Power electronics",
+          "Est. share of wind-flex spend (DE, 2026)": "~2%",
+          "Confidence": "LOW",
+          "Mein Solar overlap": "20%"
+        },
+        {
+          "L5 Alternative": "**Sum**",
+          "Technology": "**100%**",
+          "Est. share of wind-flex spend (DE, 2026)": "",
+          "Confidence": "",
+          "Mein Solar overlap": ""
+        }
+      ]
+    },
+    {
+      "headers": [
+        "L4 Subsystem",
+        "Function",
+        "Typical vendor"
+      ],
+      "rows": [
+        {
+          "L4 Subsystem": "LFP Battery Container",
+          "Function": "Electrochemical storage, BMS, HVAC, fire suppression",
+          "Typical vendor": "CATL EnerC, Sungrow PowerTitan, Tesla Megapack, SolarEast"
+        },
+        {
+          "L4 Subsystem": "Bidirectional PCS",
+          "Function": "DC↔AC, 4-quadrant, grid-forming firmware",
+          "Typical vendor": "SMA, Sungrow, Power Electronics, Ingeteam"
+        },
+        {
+          "L4 Subsystem": "MV Transformer & Switchgear",
+          "Function": "Step-up to wind park 20/30 kV collector",
+          "Typical vendor": "Siemens, ABB, Schneider, Eaton"
+        },
+        {
+          "L4 Subsystem": "Protection & NA-Schutz Relays",
+          "Function": "VDE-AR-N 4110/4120 compliance",
+          "Typical vendor": "Siemens SIPROTEC, ABB REF/REL"
+        },
+        {
+          "L4 Subsystem": "Energy Management System",
+          "Function": "Curtailment, arbitrage, FCR/aFRR/inertia dispatch",
+          "Typical vendor": "Entrix, Next Kraftwerke, Fluence Mosaic, in-house"
+        },
+        {
+          "L4 Subsystem": "Civil Works & Foundation",
+          "Function": "Pads, trenching, fencing, Feuerwehr access",
+          "Typical vendor": "Local subcontractors"
+        },
+        {
+          "L4 Subsystem": "Grid-Code Certification Dossier",
+          "Function": "FGW TR3 unit + TR8 plant cert",
+          "Typical vendor": "TÜV, DEKRA, 8.2 Consulting"
+        }
+      ]
+    },
+    {
+      "headers": [
+        "L6",
+        "Core L5 positions (named, unexpanded — Mein Solar has no primary here)"
+      ],
+      "rows": [
+        {
+          "L6": "L6a",
+          "Core L5 positions (named, unexpanded — Mein Solar has no primary here)": "Met-mast / LiDAR wind measurement · Layout & yield software (WAsP, WindPRO) · Site surveying · Environmental impact study"
+        },
+        {
+          "L6": "L6b",
+          "Core L5 positions (named, unexpanded — Mein Solar has no primary here)": "BImSchG permit filing · DSO/TSO interconnection application · Land lease contracting · Grid-code pre-certification"
+        },
+        {
+          "L6": "L6c",
+          "Core L5 positions (named, unexpanded — Mein Solar has no primary here)": "Onshore wind turbine (Nordex, Enercon, Vestas, GE) · Offshore turbine (SGRE, Vestas) · Tower & foundation · Array cabling · Park substation · Collector system · SCADA cabinet · BoP civil"
+        },
+        {
+          "L6": "L6d",
+          "Core L5 positions (named, unexpanded — Mein Solar has no primary here)": "Wind forecast service · PPA/market trading · Direct-marketing aggregator · Dispatch scheduler"
+        },
+        {
+          "L6": "L6e",
+          "Core L5 positions (named, unexpanded — Mein Solar has no primary here)": "Crane & dismantling services · Blade recycling · Refurbishment"
+        },
+        {
+          "L6": "L6H-OM",
+          "Core L5 positions (named, unexpanded — Mein Solar has no primary here)": "Turbine OEM service · ISP (Deutsche Windtechnik, Availon) · Drone blade inspection · Gearbox overhaul · Spare parts"
+        },
+        {
+          "L6": "L6H-QA",
+          "Core L5 positions (named, unexpanded — Mein Solar has no primary here)": "BG-accredited safety · Bat/bird monitoring · FGW certifier · Grid-code auditor"
+        },
+        {
+          "L6": "L6H-IT",
+          "Core L5 positions (named, unexpanded — Mein Solar has no primary here)": "SCADA (Bachmann, Mita-Teknik) · Cybersecurity (BSI IT-Grundschutz, IEC 62443)"
+        }
+      ]
+    },
+    {
+      "headers": [
+        "VN Unit",
+        "Level",
+        "Competence Required",
+        "Has It?",
+        "Effort",
+        "Rationale"
+      ],
+      "rows": [
+        {
+          "VN Unit": "Standalone Grid-Booster Storage",
+          "Level": "L5 (L6H-GS)",
+          "Competence Required": "Same as co-located, park-adjacent siting",
+          "Has It?": "YES",
+          "Effort": "LOW",
+          "Rationale": "Identical stack; site logic only differs"
+        },
+        {
+          "VN Unit": "Park Substation (MV collector)",
+          "Level": "L5 (L6c)",
+          "Competence Required": "MV transformer + switchgear EPC",
+          "Has It?": "PARTIAL",
+          "Effort": "MEDIUM",
+          "Rationale": "MS already does MV for BESS; wind-park collector is same equipment"
+        },
+        {
+          "VN Unit": "Array Cabling (33 kV)",
+          "Level": "L5 (L6c)",
+          "Competence Required": "MV cable install, trenching, terminations",
+          "Has It?": "PARTIAL",
+          "Effort": "MEDIUM",
+          "Rationale": "Civil + cabling heritage from PV farm EPC"
+        },
+        {
+          "VN Unit": "DSO/TSO Interconnection app.",
+          "Level": "L5 (L6b)",
+          "Competence Required": "VDE-AR-N 4110/4120 filing + FGW TR8",
+          "Has It?": "YES",
+          "Effort": "LOW",
+          "Rationale": "Core capability — already done for BESS"
+        },
+        {
+          "VN Unit": "Grid-code certification dossier",
+          "Level": "L4 (cross)",
+          "Competence Required": "FGW TR3/TR8 package",
+          "Has It?": "YES",
+          "Effort": "LOW",
+          "Rationale": "Native capability"
+        },
+        {
+          "VN Unit": "EMS / dispatch platform",
+          "Level": "L5 (L6H-GS)",
+          "Competence Required": "Optimization, market APIs, SoC mgmt",
+          "Has It?": "PARTIAL",
+          "Effort": "MEDIUM",
+          "Rationale": "Has BESS EMS; VPP/aggregator-grade is gap"
+        }
+      ]
+    },
+    {
+      "headers": [
+        "Adjacent L5",
+        "Current Incumbents",
+        "Capability Gap",
+        "Investment",
+        "Fit (1–10)",
+        "Rationale"
+      ],
+      "rows": [
+        {
+          "Adjacent L5": "Standalone Grid-Booster Storage",
+          "Current Incumbents": "Fluence, Tesla, Sungrow, Wärtsilä",
+          "Capability Gap": "Project-finance structuring at park scale",
+          "Investment": "6 mo, <€200k",
+          "Fit (1–10)": "**9**",
+          "Rationale": "~100% stack overlap; only siting/commercial model differs"
+        },
+        {
+          "Adjacent L5": "Synchronous Condenser / Flywheel",
+          "Current Incumbents": "Hitachi Energy, ABB, Siemens Energy",
+          "Capability Gap": "Rotating-machine engineering, exciter controls",
+          "Investment": "18–24 mo, €3–5 M",
+          "Fit (1–10)": "3",
+          "Rationale": "<30% overlap; exit not worth it"
+        },
+        {
+          "Adjacent L5": "P2X / Electrolyzer Offtake",
+          "Current Incumbents": "Nel, Sunfire, Siemens Energy, ITM",
+          "Capability Gap": "Stack engineering, H2 safety, gas balance of plant",
+          "Investment": "24+ mo, >€5 M",
+          "Fit (1–10)": "3",
+          "Rationale": "Electrical side transfers; H2 chemistry does not"
+        },
+        {
+          "Adjacent L5": "VPP / Aggregator",
+          "Current Incumbents": "Next Kraftwerke, Entrix, Flexpower",
+          "Capability Gap": "Market-trading SW, algo-dispatch IP, balancing-group entity",
+          "Investment": "12–18 mo, €2 M + license",
+          "Fit (1–10)": "5",
+          "Rationale": "Platform play — partner, don't build"
+        },
+        {
+          "Adjacent L5": "STATCOM",
+          "Current Incumbents": "ABB, Siemens Energy, GE Vernova",
+          "Capability Gap": "HV power-electronics engineering",
+          "Investment": ">24 mo, >€5 M",
+          "Fit (1–10)": "2",
+          "Rationale": "*excluded — <30% overlap*"
+        }
+      ]
+    },
+    {
+      "headers": [
+        "Current",
+        "Target",
+        "What must be added",
+        "Competitors at target",
+        "Feasibility",
+        "Economic rationale"
+      ],
+      "rows": [
+        {
+          "Current": "L5 Co-located BESS (under L6H-GS)",
+          "Target": "L6H-GS *Grid Services & Storage Integration* — own the whole flex layer for a wind park",
+          "What must be added": "VPP/market-trading platform, inertia-service cert, balancing-group license, 24/7 dispatch desk",
+          "Competitors at target": "Next Kraftwerke, Entrix, Fluence Digital, Flexpower, RWE Supply & Trading",
+          "Feasibility": "**LOW**",
+          "Economic rationale": "L5→L6H requires ops + trading + balancing-group org fundamentally different from EPC project business. TAM at L6H (~€400 k/MW × DE wind 70 GW ≈ €28 B exposure) is attractive but move-up is not organic — acquisition or partnership is the rational path."
+        },
+        {
+          "Current": "L5 Co-located BESS",
+          "Target": "L6c Wind Plant Construction (wind-park BoP EPC)",
+          "What must be added": "Turbine erection competence, crane logistics, blade handling, offshore marine (if applicable)",
+          "Competitors at target": "Max Bögl, Goldbeck, BayWa r.e., Nordex-EPC",
+          "Feasibility": "**LOW**",
+          "Economic rationale": "Turbine erection is specialist trade; MS has no crane fleet or offshore vessels. Cross-segment move; viable only as BoP subcontractor role."
+        }
+      ]
+    },
+    {
+      "headers": [
+        "Check",
+        "Status"
+      ],
+      "rows": [
+        {
+          "Check": "Q1 CFJ industry-level, mechanism-free",
+          "Status": "✅"
+        },
+        {
+          "Check": "Q2 No orphan nodes",
+          "Status": "✅"
+        },
+        {
+          "Check": "Q3 Valid level transitions",
+          "Status": "✅ (L7→L6→L5→L4)"
+        },
+        {
+          "Check": "Q4 Every L5 has ≥2 L4 children",
+          "Status": "✅ (primary L5 has 7)"
+        },
+        {
+          "Check": "Q5 No solution-specific L7/L6 names",
+          "Status": "✅"
+        },
+        {
+          "Check": "Q6 Naming test",
+          "Status": "✅ (BESS, PCS, STATCOM are industry terms)"
+        },
+        {
+          "Check": "Q7 Unit count 15–60",
+          "Status": "✅ (≈ 35 units)"
+        },
+        {
+          "Check": "Full depth to company position",
+          "Status": "✅ (L7 → L6H-GS → L5 BESS → L4 subsystems)"
+        },
+        {
+          "Check": "Sibling L5 enumerated at company level",
+          "Status": "✅ (7 alternatives)"
+        }
+      ]
+    }
+  ],
+  "entities": [
+    {
+      "component": "value_network_construction",
+      "naics_code": "221115",
+      "naics_title": "Wind Electric Power Generation",
+      "market_name": "Wind+BESS Hybrid Parks",
+      "source": "IBISWorld NAICS 221115",
+      "naics_sector_type": "utility_service",
+      "process_vn_applies": true,
+      "product_bom_applies": false,
+      "cfj_statement": "Convert kinetic wind energy into grid-compliant, dispatchable electrical energy and inject it into transmission/distribution networks under the governing grid code.",
+      "top_level": "L7",
+      "focal_company": "Mein Solar GmbH",
+      "focal_primary_position": {
+        "level": "L5",
+        "name": "Co-located BESS Storage Asset (EPC-delivered)",
+        "parent": "L6H-GS Grid Services & Storage Integration"
+      },
+      "focal_secondary_position": {
+        "level": "L5",
+        "name": "Standalone Grid-Booster Storage (park-adjacent)",
+        "parent": "L6H-GS Grid Services & Storage Integration"
+      },
+      "units": [
+        {
+          "name": "Wind Electric Power Generation Ecosystem",
+          "level": "L7",
+          "parent_name": "ROOT",
+          "bom_standard": "Moore 1993",
+          "description": "Industry ecosystem converting kinetic wind to grid-injected electrical energy"
+        },
+        {
+          "name": "Resource Assessment & Site Development",
+          "level": "L6",
+          "parent_name": "Wind Electric Power Generation Ecosystem",
+          "bom_standard": "Maier 1998",
+          "description": "Quantify wind resource and secure buildable site",
+          "role": "core"
+        },
+        {
+          "name": "Permitting & Grid Interconnection",
+          "level": "L6",
+          "parent_name": "Wind Electric Power Generation Ecosystem",
+          "bom_standard": "Maier 1998",
+          "description": "Obtain BImSchG permit and DSO/TSO interconnection",
+          "role": "core"
+        },
+        {
+          "name": "Wind Plant Construction & Installation",
+          "level": "L6",
+          "parent_name": "Wind Electric Power Generation Ecosystem",
+          "bom_standard": "Maier 1998",
+          "description": "Erect turbines, foundations, cabling, substation and BoP",
+          "role": "core"
+        },
+        {
+          "name": "Power Generation & Dispatch",
+          "level": "L6",
+          "parent_name": "Wind Electric Power Generation Ecosystem",
+          "bom_standard": "Maier 1998",
+          "description": "Generate, forecast, trade and dispatch wind power",
+          "role": "core"
+        },
+        {
+          "name": "Repowering & Decommissioning",
+          "level": "L6",
+          "parent_name": "Wind Electric Power Generation Ecosystem",
+          "bom_standard": "Maier 1998",
+          "description": "Repower aged parks or dismantle at end-of-life",
+          "role": "core"
+        },
+        {
+          "name": "O&M / Asset Management",
+          "level": "L6",
+          "parent_name": "Wind Electric Power Generation Ecosystem",
+          "bom_standard": "Maier 1998",
+          "description": "Maintain availability and lifecycle performance",
+          "role": "horizontal"
+        },
+        {
+          "name": "Grid Services & Storage Integration",
+          "level": "L6",
+          "parent_name": "Wind Electric Power Generation Ecosystem",
+          "bom_standard": "Maier 1998",
+          "description": "Provide flexibility, storage and grid services to firm wind output — MEIN SOLAR VN SEGMENT",
+          "role": "horizontal"
+        },
+        {
+          "name": "HSE Quality & Compliance",
+          "level": "L6",
+          "parent_name": "Wind Electric Power Generation Ecosystem",
+          "bom_standard": "Maier 1998",
+          "description": "Enforce safety, environmental and grid-code conformity",
+          "role": "horizontal"
+        },
+        {
+          "name": "SCADA IT-OT & Cybersecurity",
+          "level": "L6",
+          "parent_name": "Wind Electric Power Generation Ecosystem",
+          "bom_standard": "Maier 1998",
+          "description": "Operate SCADA, EMS and cyber-compliant control",
+          "role": "horizontal"
+        },
+        {
+          "name": "Co-located BESS Storage Asset (EPC-delivered)",
+          "level": "L5",
+          "parent_name": "Grid Services & Storage Integration",
+          "bom_standard": "ISO 15288",
+          "description": "Turnkey Li-ion BESS co-located with wind park for curtailment capture and ancillary services",
+          "position_marker": "MEIN_SOLAR_PRIMARY_POSITION",
+          "estimated_share_pct": 55,
+          "share_confidence": "MEDIUM"
+        },
+        {
+          "name": "Standalone Grid-Booster Storage",
+          "level": "L5",
+          "parent_name": "Grid Services & Storage Integration",
+          "bom_standard": "ISO 15288",
+          "description": "Park-adjacent BESS providing grid-boosting and TSO ancillary services",
+          "position_marker": "MEIN_SOLAR_SECONDARY_POSITION",
+          "estimated_share_pct": 20,
+          "share_confidence": "MEDIUM"
+        },
+        {
+          "name": "Synchronous Condenser / Flywheel Inertia System",
+          "level": "L5",
+          "parent_name": "Grid Services & Storage Integration",
+          "bom_standard": "ISO 15288",
+          "description": "Rotating mass providing synthetic inertia and short-circuit contribution",
+          "estimated_share_pct": 8,
+          "share_confidence": "LOW"
+        },
+        {
+          "name": "Power-to-X / Electrolyzer Offtake",
+          "level": "L5",
+          "parent_name": "Grid Services & Storage Integration",
+          "bom_standard": "ISO 15288",
+          "description": "Hydrogen electrolyzer absorbing curtailed wind power",
+          "estimated_share_pct": 7,
+          "share_confidence": "LOW"
+        },
+        {
+          "name": "Virtual Power Plant / Aggregator Platform",
+          "level": "L5",
+          "parent_name": "Grid Services & Storage Integration",
+          "bom_standard": "ISO 15288",
+          "description": "Software layer aggregating distributed wind + storage assets for market dispatch",
+          "estimated_share_pct": 5,
+          "share_confidence": "LOW"
+        },
+        {
+          "name": "Curtailment-Based Demand Response",
+          "level": "L5",
+          "parent_name": "Grid Services & Storage Integration",
+          "bom_standard": "ISO 15288",
+          "description": "Flexible industrial load absorbing surplus wind energy",
+          "estimated_share_pct": 3,
+          "share_confidence": "LOW"
+        },
+        {
+          "name": "Static VAR / STATCOM Reactive Compensation",
+          "level": "L5",
+          "parent_name": "Grid Services & Storage Integration",
+          "bom_standard": "ISO 15288",
+          "description": "Power-electronic reactive-power device for voltage support",
+          "estimated_share_pct": 2,
+          "share_confidence": "LOW"
+        },
+        {
+          "name": "LFP Battery Container",
+          "level": "L4",
+          "parent_name": "Co-located BESS Storage Asset (EPC-delivered)",
+          "bom_standard": "INCOSE",
+          "description": "ISO-container Li-ion LFP rack with BMS, HVAC, fire suppression"
+        },
+        {
+          "name": "Bidirectional PCS",
+          "level": "L4",
+          "parent_name": "Co-located BESS Storage Asset (EPC-delivered)",
+          "bom_standard": "INCOSE",
+          "description": "4-quadrant inverter with grid-forming firmware option"
+        },
+        {
+          "name": "MV Transformer & Switchgear",
+          "level": "L4",
+          "parent_name": "Co-located BESS Storage Asset (EPC-delivered)",
+          "bom_standard": "INCOSE",
+          "description": "Step-up transformer and RMU to 20/30 kV collector"
+        },
+        {
+          "name": "Protection & NA-Schutz Relays",
+          "level": "L4",
+          "parent_name": "Co-located BESS Storage Asset (EPC-delivered)",
+          "bom_standard": "INCOSE",
+          "description": "Digital protection per VDE-AR-N 4110/4120"
+        },
+        {
+          "name": "Energy Management System",
+          "level": "L4",
+          "parent_name": "Co-located BESS Storage Asset (EPC-delivered)",
+          "bom_standard": "INCOSE",
+          "description": "Curtailment, arbitrage and FCR/aFRR/inertia dispatch software"
+        },
+        {
+          "name": "Civil Works & Foundation",
+          "level": "L4",
+          "parent_name": "Co-located BESS Storage Asset (EPC-delivered)",
+          "bom_standard": "INCOSE",
+          "description": "Pads, trenching, fencing, Feuerwehr access"
+        },
+        {
+          "name": "Grid-Code Certification Dossier",
+          "level": "L4",
+          "parent_name": "Co-located BESS Storage Asset (EPC-delivered)",
+          "bom_standard": "INCOSE",
+          "description": "FGW TR3 unit and TR8 plant certification package"
+        },
+        {
+          "name": "Grid-Booster BESS Container Block",
+          "level": "L4",
+          "parent_name": "Standalone Grid-Booster Storage",
+          "bom_standard": "INCOSE",
+          "description": "BESS container sized for park-adjacent siting"
+        },
+        {
+          "name": "Grid-Booster PCS Block",
+          "level": "L4",
+          "parent_name": "Standalone Grid-Booster Storage",
+          "bom_standard": "INCOSE",
+          "description": "Bidirectional inverter with grid-forming firmware"
+        },
+        {
+          "name": "Grid-Booster MV Interconnect",
+          "level": "L4",
+          "parent_name": "Standalone Grid-Booster Storage",
+          "bom_standard": "INCOSE",
+          "description": "Cable trench and MV switchgear to park collector or DSO feeder"
+        },
+        {
+          "name": "Synchronous Machine Rotor/Stator",
+          "level": "L4",
+          "parent_name": "Synchronous Condenser / Flywheel Inertia System",
+          "bom_standard": "INCOSE",
+          "description": "Rotating electrical machine providing inertia"
+        },
+        {
+          "name": "Excitation & Cooling System",
+          "level": "L4",
+          "parent_name": "Synchronous Condenser / Flywheel Inertia System",
+          "bom_standard": "INCOSE",
+          "description": "Exciter and cooling auxiliaries"
+        },
+        {
+          "name": "MV Breaker & Protection",
+          "level": "L4",
+          "parent_name": "Synchronous Condenser / Flywheel Inertia System",
+          "bom_standard": "INCOSE",
+          "description": "MV switchgear interfacing rotating mass to grid"
+        },
+        {
+          "name": "Electrolyzer Stack",
+          "level": "L4",
+          "parent_name": "Power-to-X / Electrolyzer Offtake",
+          "bom_standard": "INCOSE",
+          "description": "PEM or alkaline electrolyzer cell stack"
+        },
+        {
+          "name": "Hydrogen Balance of Plant",
+          "level": "L4",
+          "parent_name": "Power-to-X / Electrolyzer Offtake",
+          "bom_standard": "INCOSE",
+          "description": "Gas cleanup, compression, storage"
+        },
+        {
+          "name": "Rectifier / PCS",
+          "level": "L4",
+          "parent_name": "Power-to-X / Electrolyzer Offtake",
+          "bom_standard": "INCOSE",
+          "description": "AC-DC rectifier delivering DC to electrolyzer"
+        },
+        {
+          "name": "Forecasting Engine",
+          "level": "L4",
+          "parent_name": "Virtual Power Plant / Aggregator Platform",
+          "bom_standard": "INCOSE",
+          "description": "Wind/load forecasting algorithms"
+        },
+        {
+          "name": "Market API Gateway",
+          "level": "L4",
+          "parent_name": "Virtual Power Plant / Aggregator Platform",
+          "bom_standard": "INCOSE",
+          "description": "EPEX / Regelleistung.net / FCR prequal APIs"
+        },
+        {
+          "name": "Asset Control Layer",
+          "level": "L4",
+          "parent_name": "Virtual Power Plant / Aggregator Platform",
+          "bom_standard": "INCOSE",
+          "description": "Dispatch setpoints to aggregated BESS/wind/flex assets"
+        },
+        {
+          "name": "Flexible Industrial Load Interface",
+          "level": "L4",
+          "parent_name": "Curtailment-Based Demand Response",
+          "bom_standard": "INCOSE",
+          "description": "Process-side controller modulating load"
+        },
+        {
+          "name": "Tariff & Settlement Interface",
+          "level": "L4",
+          "parent_name": "Curtailment-Based Demand Response",
+          "bom_standard": "INCOSE",
+          "description": "Metering and settlement platform"
+        },
+        {
+          "name": "STATCOM Power-Electronic Module",
+          "level": "L4",
+          "parent_name": "Static VAR / STATCOM Reactive Compensation",
+          "bom_standard": "INCOSE",
+          "description": "Converter providing reactive current injection"
+        },
+        {
+          "name": "STATCOM Controller",
+          "level": "L4",
+          "parent_name": "Static VAR / STATCOM Reactive Compensation",
+          "bom_standard": "INCOSE",
+          "description": "Voltage-support and flicker-mitigation control loop"
+        }
+      ],
+      "direct_competence_transfer_04e": [
+        {
+          "vn_unit": "Standalone Grid-Booster Storage",
+          "level": "L5",
+          "competence_required": "BESS EPC with park-adjacent siting",
+          "has_competence": "YES",
+          "adaptation_effort": "LOW",
+          "rationale": "Identical stack and grid-code scope; differs only in siting and project-finance model"
+        },
+        {
+          "vn_unit": "Park Substation (MV collector)",
+          "level": "L5",
+          "competence_required": "MV transformer and switchgear EPC",
+          "has_competence": "PARTIAL",
+          "adaptation_effort": "MEDIUM",
+          "rationale": "Already delivered for BESS; wind-park collector uses same MV equipment"
+        },
+        {
+          "vn_unit": "Array Cabling (33 kV)",
+          "level": "L5",
+          "competence_required": "MV cable install, trenching, terminations",
+          "has_competence": "PARTIAL",
+          "adaptation_effort": "MEDIUM",
+          "rationale": "Civil and cabling heritage from PV farm EPC transfers"
+        },
+        {
+          "vn_unit": "DSO/TSO Interconnection Application",
+          "level": "L5",
+          "competence_required": "VDE-AR-N 4110/4120 filing + FGW TR8 submission",
+          "has_competence": "YES",
+          "adaptation_effort": "LOW",
+          "rationale": "Core native capability"
+        },
+        {
+          "vn_unit": "Energy Management System",
+          "level": "L5",
+          "competence_required": "Optimization + market APIs + SoC management",
+          "has_competence": "PARTIAL",
+          "adaptation_effort": "MEDIUM",
+          "rationale": "Has BESS EMS; aggregator/VPP-grade functionality is a gap"
+        }
+      ],
+      "strategic_adjacency_04f": [
+        {
+          "adjacent_l5": "Standalone Grid-Booster Storage",
+          "incumbents": [
+            "Fluence",
+            "Tesla",
+            "Sungrow",
+            "Wärtsilä"
+          ],
+          "capability_gap": "Park-scale project-finance structuring",
+          "investment_bridge": "6 months, < EUR 200k",
+          "strategic_fit": 9,
+          "rationale": "~100% technology stack overlap; only siting and commercial packaging differ"
+        },
+        {
+          "adjacent_l5": "Synchronous Condenser / Flywheel",
+          "incumbents": [
+            "Hitachi Energy",
+            "ABB",
+            "Siemens Energy"
+          ],
+          "capability_gap": "Rotating-machine engineering, exciter controls",
+          "investment_bridge": "18-24 months, EUR 3-5M",
+          "strategic_fit": 3,
+          "rationale": "<30% overlap; not economically rational"
+        },
+        {
+          "adjacent_l5": "Power-to-X / Electrolyzer Offtake",
+          "incumbents": [
+            "Nel",
+            "Sunfire",
+            "Siemens Energy",
+            "ITM"
+          ],
+          "capability_gap": "Stack engineering, H2 safety, gas BoP",
+          "investment_bridge": "24+ months, > EUR 5M",
+          "strategic_fit": 3,
+          "rationale": "Electrical side transfers; H2 chemistry does not"
+        },
+        {
+          "adjacent_l5": "VPP / Aggregator Platform",
+          "incumbents": [
+            "Next Kraftwerke",
+            "Entrix",
+            "Flexpower"
+          ],
+          "capability_gap": "Trading software, algo-dispatch IP, balancing-group entity",
+          "investment_bridge": "12-18 months, EUR 2M + license",
+          "strategic_fit": 5,
+          "rationale": "Partner rather than build — platform economics favor incumbent scale"
+        },
+        {
+          "adjacent_l5": "STATCOM",
+          "incumbents": [
+            "ABB",
+            "Siemens Energy",
+            "GE Vernova"
+          ],
+          "capability_gap": "HV power-electronics engineering",
+          "investment_bridge": "> 24 months, > EUR 5M",
+          "strategic_fit": 2,
+          "rationale": "Excluded — <30% overlap"
+        }
+      ],
+      "vertical_move_up_04g": [
+        {
+          "current_position": "L5 Co-located BESS (under L6H-GS)",
+          "target_position": "L6H-GS Grid Services & Storage Integration",
+          "capabilities_to_add": [
+            "VPP / market-trading platform",
+            "Grid-forming inertia-service certification",
+            "Balancing-group license",
+            "24/7 dispatch desk"
+          ],
+          "competitors_at_target": [
+            "Next Kraftwerke",
+            "Entrix",
+            "Fluence Digital",
+            "RWE Supply & Trading"
+          ],
+          "feasibility": "LOW",
+          "economic_rationale": "Requires different balance sheet (trading capital), regulatory position (BNetzA balancing group), and organizational structure (trading desk). TAM ~EUR 28 B (DE wind 70 GW x EUR 400 k/MW revenue stack) but organic build not viable in 18-month horizon. Partnership or acquisition is the rational path."
+        },
+        {
+          "current_position": "L5 Co-located BESS (under L6H-GS)",
+          "target_position": "L6c Wind Plant Construction",
+          "capabilities_to_add": [
+            "Turbine erection competence",
+            "Crane logistics",
+            "Blade handling",
+            "Offshore marine (if applicable)"
+          ],
+          "competitors_at_target": [
+            "Max Bögl",
+            "Goldbeck",
+            "BayWa r.e.",
+            "Nordex-EPC"
+          ],
+          "feasibility": "LOW",
+          "economic_rationale": "Turbine erection is specialist trade; Mein Solar has no crane fleet or marine assets. Viable only as BoP subcontractor role, not full wind-park EPC integrator."
+        }
+      ],
+      "completeness_gate": {
+        "q1_cfj_industry_level": "PASS",
+        "q2_no_orphan_nodes": "PASS",
+        "q3_valid_level_transitions": "PASS",
+        "q4_l4_children_per_l5_min2": "PASS",
+        "q5_no_solution_specific_top_names": "PASS",
+        "q6_naming_test": "PASS",
+        "q7_unit_count_in_range": "PASS",
+        "full_depth_to_company_level": "PASS",
+        "sibling_l5_enumerated": "PASS",
+        "unit_count": 35
+      },
+      "industry_facts": {
+        "de_bess_capacity_2025_gw": 3,
+        "de_bess_capacity_2026_gw": 6,
+        "de_wind_curtailment_2022_twh": 8,
+        "de_grid_congestion_cost_2022_eur_bn": 4.25,
+        "wind_bess_colocation_revenue_stack_eur_per_mw_yr": 400000,
+        "inertia_service_market_launch": "2026-01",
+        "onshore_oem_share_leader_de_2025": {
+          "nordex": 0.31
+        },
+        "mein_solar_scale_match": "fits onshore park-co-location (4.5 MW/9 MWh reference); mismatch with TSO transmission-grid boosters (100-500 MW)"
+      }
+    }
+  ],
+  "has_bom": true,
+  "naics_sector_type": "non_manufacturing"
+}

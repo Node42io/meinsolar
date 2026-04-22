@@ -1,0 +1,58 @@
+[
+  {
+    "slug": "bess_power_generation",
+    "name": "Battery Energy Storage Systems (Other Electric Power Generation)",
+    "naics": "221118",
+    "isReference": true,
+    "sourceFile": "bess_power_generation"
+  },
+  {
+    "slug": "solar_power_generation",
+    "name": "Solar Electric Power Generation",
+    "naics": "221114",
+    "isReference": false,
+    "sourceFile": "solar_power_generation"
+  },
+  {
+    "slug": "wind_power_generation",
+    "name": "Wind Electric Power Generation",
+    "naics": "221115",
+    "isReference": false,
+    "sourceFile": "wind_power_generation"
+  },
+  {
+    "slug": "electric_power_distribution",
+    "name": "Electric Power Distribution",
+    "naics": "221122",
+    "isReference": false,
+    "sourceFile": "electric_power_distribution"
+  },
+  {
+    "slug": "port_harbor_operations",
+    "name": "Port and Harbor Operations",
+    "naics": "488310",
+    "isReference": false,
+    "sourceFile": "port_harbor_operations"
+  },
+  {
+    "slug": "semiconductor_manufacturing",
+    "name": "Semiconductor and Related Device Manufacturing",
+    "naics": "334413",
+    "isReference": false,
+    "sourceFile": "semiconductor_manufacturing"
+  },
+  {
+    "slug": "refrigerated_warehousing",
+    "name": "Refrigerated Warehousing and Storage",
+    "naics": "493120",
+    "isReference": false,
+    "sourceFile": "refrigerated_warehousing"
+  },
+  {
+    "slug": "nonresidential_buildings",
+    "name": "Lessors of Nonresidential Buildings",
+    "naics": "531120",
+    "isReference": false,
+    "sourceFile": "nonresidential_buildings"
+  }
+]

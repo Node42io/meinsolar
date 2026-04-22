@@ -1,0 +1,333 @@
+{
+  "id": "COMPAT_solar_electric_power_generation_ibisworl",
+  "title": "COMPAT — NAICS 221114 Solar Electric Power Generation",
+  "type": "constraint_compatibility",
+  "market_slug": "solar_electric_power_generation_ibisworl",
+  "is_per_market": true,
+  "sections": [
+    {
+      "title": "Summary",
+      "content": "| Metric | Value |\n|---|---|\n| Constraints assessed | 9 |\n| knockout | **0** |\n| mitigable | 4 |\n| none | 5 |\n| Market verdict | **SURVIVING** — no knockouts |\n| Aggregate mitigation cost | low–medium |\n| Rationale | PV+BESS co-location is industry-standard; Mein Solar's PV-EPC incumbency and VDE-AR-N 4110 / FGW TR8 path map 1:1 to this market |\n\n---"
+    },
+    {
+      "title": "Verdict table",
+      "content": "| # | Constraint | Type | is_abs | Threshold | Verdict | Cost | Time |\n|---|---|---|---|---|---|---|---|\n| 1 | MV Grid Connection Capacity | operational | false | — | **mitigable** | medium | 6–18 mo |\n| 2 | Land Footprint and Siting | physical | false | 40–80 m²/MWh | **none** | — | — |\n| 3 | Fire-Protection Clearance | regulatory | false | per VdS / Feuerwehr | **mitigable** | low | 1–2 mo |\n| 4 | Li-Ion Thermal Runaway Hazard | physical | false | — | **mitigable** | low | in-design |\n| 5 | Grid Code Certification Lead Time | regulatory | false | 6–12 months | **mitigable** | low | 6–12 mo |\n| 6 | Battery Supply Chain Concentration | economic | false | — | **none** | — | — |\n| 7 | Ambient Temperature Envelope | environmental | false | -20 to +50 °C | **none** | — | — |\n| 8 | Round-Trip Energy Losses | physical | true | 10–15 % | **none** | — | — |\n| 9 | CAPEX Viability Threshold | economic | false | €250–400/kWh | **none** | — | — |\n\nNo constraint is a physics-knockout against this market. Cost constraints are never knockouts. All regulatory gates have certification paths that PV-EPCs already walk daily.\n\n---"
+    },
+    {
+      "title": "Per-constraint rationale",
+      "content": "### 1. MV Grid Connection Capacity — **mitigable**\n\n| | |\n|---|---|\n| Rationale | Solar parks ARE MV-connected by definition (same VDE-AR-N 4110 regime). A PV+BESS retrofit may need DSO capacity upgrade or transformer resizing when BESS is added behind an existing PV connection point. |\n| Mitigation actions | Early DSO capacity study; share the existing PV grid-connection point (netzdienliche Kopplung); negotiate capacity upgrade; design BESS to match existing Ausbaustufe. |\n| Cost | medium (€10K–100K DSO study + cost-allocation negotiation) |\n| Time | 6–18 months on critical path; parallelizable with EPC design |\n\n### 2. Land Footprint and Siting — **none**\n\n| | |\n|---|---|\n| Rationale | Utility-scale PV parks occupy 1.5–2.5 ha/MWp. A 9 MWh BESS (40–80 m²/MWh ≈ 360–720 m²) consumes <1% of an existing PV site. Land is already secured, fenced, and permitted. |\n\n### 3. Fire-Protection Clearance — **mitigable**\n\n| | |\n|---|---|\n| Rationale | Solar parks are rural, low-density sites — distance-to-property-line and Feuerwehr-Zufahrt are routinely achievable. For >3 MWh container clusters a VdS-aligned separation plan is standard. |\n| Mitigation actions | VdS 6023/3103 alignment; container spacing ≥3 m; deflagration venting; dedicated access road; Feuerwehr Einsatzplan. |\n| Cost | low (<€10K incremental vs. baseline BESS design) |\n| Time | 1–2 months in design phase |\n\n### 4. Li-Ion Thermal Runaway Hazard — **mitigable**\n\n| | |\n|---|---|\n| Rationale | Inherent chemistry risk applies to every BESS in every market — cannot be eliminated. Industry-standard containment (NOVEC 1230, compartmentalization, BMS early warning, deflagration venting) is already part of Mein Solar's reference design. No market-specific escalation for PV co-location. |\n| Mitigation actions | Grade-A LFP cells only; NOVEC 1230 suppression; cell-level temperature monitoring via BMS; compartmentalized racks; deflagration panels. |\n| Cost | low (baseline cost of any BESS EPC, already in €/kWh) |\n| Time | in-design |\n\n### 5. Grid Code Certification Lead Time — **mitigable**\n\n| | |\n|---|---|\n| Rationale | Solar parks need identical FGW TR3 (unit) + TR8 (plant type B) certification against VDE-AR-N 4110. Mein Solar's PV-EPC practice already runs this process. Lead time is parallel to procurement/construction, not additive. |\n| Mitigation actions | Kick off grid-study at contract signing; use pre-certified container from Tier-1 L2 supplier (CATL EnerC / Sungrow / SolarEast); engage FGW body (TÜV NORD / 8.2) early; bundle with existing PV plant cert where co-located. |\n| Cost | low (€5K–€30K certification-body fees; already in EPC scope) |\n| Time | 6–12 months parallel |\n\n### 6. Battery Supply Chain Concentration — **none**\n\n| | |\n|---|---|\n| Rationale | FX, tariff, and CRMA exposure apply to every BESS project across every market — not market-specific. PV+BESS customers already accept this reality as a system-level procurement risk. Cost-class, not market-class, constraint. |\n\n### 7. Ambient Temperature Envelope — **none**\n\n| | |\n|---|---|\n| Rationale | German solar park sites sit well inside the -20 to +50 °C envelope. Historical record in DE Solarpark-Standorten: -18 °C to +38 °C. HVAC maintains internal setpoint with roundtrip-efficiency penalty <2% at extremes. No design escalation required. |\n\n### 8. Round-Trip Energy Losses — **none**\n\n| | |\n|---|---|\n| Rationale | 10–15% AC-AC loss is absolute (thermodynamic floor), but it applies equally to every BESS in every market. PV+BESS business case is built on this loss assumption — revenue-stack models (arbitrage, peak shaving, §19 StromNEV) already price it in. Constraint irrelevant as a market gate. |\n\n### 9. CAPEX Viability Threshold — **none**\n\n| | |\n|---|---|\n| Rationale | PV+BESS market is the single most CAPEX-mature BESS segment — €250–400/kWh band is achieved routinely by Tier-1 L2 suppliers (CATL EnerC, Sungrow, SolarEast). Solar developers already underwrite 3–5 yr payback models on this CAPEX. Economics are proven, not a barrier. Cost is never a knockout per step-08 rules. |\n\n---"
+    },
+    {
+      "title": "Conservative review (08b)",
+      "content": "All 4 mitigable verdicts reviewed for upgrade risk → all remain mitigable.\nNo knockouts exist → nothing to downgrade.\nTwo-question test N/A (no knockouts).\n\n**Market 221114 → surviving. Enters Step 09 feature-market fit assessment with no carried penalties.**\n\n---"
+    },
+    {
+      "title": "Structured Data",
+      "content": "```json\n{\n  \"component\": \"constraint_market_compatibility\",\n  \"step\": \"08\",\n  \"product_name\": \"EPC für Großbatteriespeicher\",\n  \"vendor_name\": \"Mein Solar GmbH\",\n  \"technology_class\": \"Large-Scale Battery Energy Storage System EPC\",\n  \"market\": {\n    \"market_name\": \"PV+BESS Solar Independent Power Producers\",\n    \"naics_code\": \"221114\",\n    \"naics_title\": \"Solar Electric Power Generation\",\n    \"market_category\": \"utility\",\n    \"discovery_distance\": 2,\n    \"discovery_priority\": \"HIGH\",\n    \"already_uses_technology\": true\n  },\n  \"summary\": {\n    \"n_constraints\": 9,\n    \"n_knockout\": 0,\n    \"n_mitigable\": 4,\n    \"n_none\": 5,\n    \"market_status\": \"surviving\",\n    \"aggregate_mitigation_cost\": \"low_to_medium\",\n    \"aggregate_mitigation_time\": \"parallel_to_epc_schedule\"\n  },\n  \"assessments\": [\n    {\n      \"constraint_name\": \"MV Grid Connection Capacity\",\n      \"market_name\": \"PV+BESS Solar Independent Power Producers\",\n      \"naics_code\": \"221114\",\n      \"verdict\": \"mitigable\",\n      \"mitigation_actions\": [\n        \"Early DSO capacity study at contract signing\",\n        \"Share existing PV grid-connection point (netzdienliche Kopplung)\",\n        \"Size BESS to match Ausbaustufe of existing PV feeder\"\n      ],\n      \"mitigation_cost_estimate\": \"medium\",\n      \"mitigation_time_estimate\": \"6-18 months\",\n      \"knockout_reason\": null,\n      \"rationale\": \"Solar parks are MV-connected under the same VDE-AR-N 4110 regime. BESS retrofit may need DSO capacity upgrade or transformer resizing; standard engineering practice.\"\n    },\n    {\n      \"constraint_name\": \"Land Footprint and Siting\",\n      \"market_name\": \"PV+BESS Solar Independent Power Producers\",\n      \"naics_code\": \"221114\",\n      \"verdict\": \"none\",\n      \"mitigation_actions\": [],\n      \"mitigation_cost_estimate\": null,\n      \"mitigation_time_estimate\": null,\n      \"knockout_reason\": null,\n      \"rationale\": \"Utility PV parks occupy 1.5-2.5 ha/MWp. A 9 MWh BESS consumes <1% of an existing PV site; land already secured, fenced, permitted.\"\n    },\n    {\n      \"constraint_name\": \"Fire-Protection Clearance\",\n      \"market_name\": \"PV+BESS Solar Independent Power Producers\",\n      \"naics_code\": \"221114\",\n      \"verdict\": \"mitigable\",\n      \"mitigation_actions\": [\n        \"VdS 6023/3103 aligned separation plan\",\n        \"Container spacing >=3 m with deflagration venting\",\n        \"Dedicated Feuerwehr-Zufahrt and Einsatzplan\"\n      ],\n      \"mitigation_cost_estimate\": \"low\",\n      \"mitigation_time_estimate\": \"1-2 months\",\n      \"knockout_reason\": null,\n      \"rationale\": \"Rural solar-park sites routinely achieve property-line distances and fire-service access. >3 MWh clusters handled with standard VdS alignment.\"\n    },\n    {\n      \"constraint_name\": \"Li-Ion Thermal Runaway Hazard\",\n      \"market_name\": \"PV+BESS Solar Independent Power Producers\",\n      \"naics_code\": \"221114\",\n      \"verdict\": \"mitigable\",\n      \"mitigation_actions\": [\n        \"Grade-A LFP cells only\",\n        \"NOVEC 1230 suppression and BMS temperature monitoring\",\n        \"Compartmentalized racks with deflagration panels\"\n      ],\n      \"mitigation_cost_estimate\": \"low\",\n      \"mitigation_time_estimate\": \"in-design\",\n      \"knockout_reason\": null,\n      \"rationale\": \"Baseline safety scope applicable to every BESS market; no PV-co-location escalation. Already part of Mein Solar 4.5 MW / 9 MWh reference design.\"\n    },\n    {\n      \"constraint_name\": \"Grid Code Certification Lead Time\",\n      \"market_name\": \"PV+BESS Solar Independent Power Producers\",\n      \"naics_code\": \"221114\",\n      \"verdict\": \"mitigable\",\n      \"mitigation_actions\": [\n        \"Kick off FGW grid-study at contract signing (parallel path)\",\n        \"Use pre-certified L2 BESS container (CATL EnerC / Sungrow / SolarEast)\",\n        \"Bundle BESS plant cert with co-located PV plant cert where possible\"\n      ],\n      \"mitigation_cost_estimate\": \"low\",\n      \"mitigation_time_estimate\": \"6-12 months parallel\",\n      \"knockout_reason\": null,\n      \"rationale\": \"FGW TR3 + TR8 certification path is Mein Solar's core PV-EPC competence; directly reusable for PV+BESS hybrid plant. Lead time parallel to procurement, not additive.\"\n    },\n    {\n      \"constraint_name\": \"Battery Supply Chain Concentration\",\n      \"market_name\": \"PV+BESS Solar Independent Power Producers\",\n      \"naics_code\": \"221114\",\n      \"verdict\": \"none\",\n      \"mitigation_actions\": [],\n      \"mitigation_cost_estimate\": null,\n      \"mitigation_time_estimate\": null,\n      \"knockout_reason\": null,\n      \"rationale\": \"FX, tariff, CRMA exposure are global supply-side factors, not market-specific. PV+BESS developers already price this into CAPEX models.\"\n    },\n    {\n      \"constraint_name\": \"Ambient Temperature Envelope\",\n      \"market_name\": \"PV+BESS Solar Independent Power Producers\",\n      \"naics_code\": \"221114\",\n      \"verdict\": \"none\",\n      \"mitigation_actions\": [],\n      \"mitigation_cost_estimate\": null,\n      \"mitigation_time_estimate\": null,\n      \"knockout_reason\": null,\n      \"rationale\": \"German solar-park sites well inside -20 to +50 C envelope (historical -18 C to +38 C). HVAC maintains internal setpoint; efficiency penalty <2% at extremes.\"\n    },\n    {\n      \"constraint_name\": \"Round-Trip Energy Losses\",\n      \"market_name\": \"PV+BESS Solar Independent Power Producers\",\n      \"naics_code\": \"221114\",\n      \"verdict\": \"none\",\n      \"mitigation_actions\": [],\n      \"mitigation_cost_estimate\": null,\n      \"mitigation_time_estimate\": null,\n      \"knockout_reason\": null,\n      \"rationale\": \"10-15% AC-AC loss is thermodynamic floor across all BESS markets. PV+BESS business case already prices it into arbitrage, peak-shaving and StromNEV revenue stacks.\"\n    },\n    {\n      \"constraint_name\": \"CAPEX Viability Threshold\",\n      \"market_name\": \"PV+BESS Solar Independent Power Producers\",\n      \"naics_code\": \"221114\",\n      \"verdict\": \"none\",\n      \"mitigation_actions\": [],\n      \"mitigation_cost_estimate\": null,\n      \"mitigation_time_estimate\": null,\n      \"knockout_reason\": null,\n      \"rationale\": \"PV+BESS is the most CAPEX-mature BESS segment. 250-400 EUR/kWh routinely achieved by Tier-1 L2 suppliers. Economics proven; cost is never a knockout per step-08 rules.\"\n    }\n  ],\n  \"markets_eliminated_contribution\": [],\n  \"markets_surviving_contribution\": [\"221114\"],\n  \"conservative_review_08b\": {\n    \"knockouts_reviewed\": 0,\n    \"downgrades_applied\": 0,\n    \"upgrades_applied\": 0,\n    \"final_status\": \"surviving\"\n  },\n  \"neo4j_writes_preview\": [\n    \"(:Constraint {name:'MV Grid Connection Capacity'})-[:incompatible_with {compatibility:'mitigable'}]->(:Market {naics_code:'221114'})\",\n    \"(:Constraint {name:'Fire-Protection Clearance'})-[:incompatible_with {compatibility:'mitigable'}]->(:Market {naics_code:'221114'})\",\n    \"(:Constraint {name:'Li-Ion Thermal Runaway Hazard'})-[:incompatible_with {compatibility:'mitigable'}]->(:Market {naics_code:'221114'})\",\n    \"(:Constraint {name:'Grid Code Certification Lead Time'})-[:incompatible_with {compatibility:'mitigable'}]->(:Market {naics_code:'221114'})\"\n  ]\n}\n```"
+    }
+  ],
+  "tables": [
+    {
+      "headers": [
+        "Metric",
+        "Value"
+      ],
+      "rows": [
+        {
+          "Metric": "Constraints assessed",
+          "Value": "9"
+        },
+        {
+          "Metric": "knockout",
+          "Value": "**0**"
+        },
+        {
+          "Metric": "mitigable",
+          "Value": "4"
+        },
+        {
+          "Metric": "none",
+          "Value": "5"
+        },
+        {
+          "Metric": "Market verdict",
+          "Value": "**SURVIVING** — no knockouts"
+        },
+        {
+          "Metric": "Aggregate mitigation cost",
+          "Value": "low–medium"
+        },
+        {
+          "Metric": "Rationale",
+          "Value": "PV+BESS co-location is industry-standard; Mein Solar's PV-EPC incumbency and VDE-AR-N 4110 / FGW TR8 path map 1:1 to this market"
+        }
+      ]
+    },
+    {
+      "headers": [
+        "#",
+        "Constraint",
+        "Type",
+        "is_abs",
+        "Threshold",
+        "Verdict",
+        "Cost",
+        "Time"
+      ],
+      "rows": [
+        {
+          "#": "1",
+          "Constraint": "MV Grid Connection Capacity",
+          "Type": "operational",
+          "is_abs": "false",
+          "Threshold": "—",
+          "Verdict": "**mitigable**",
+          "Cost": "medium",
+          "Time": "6–18 mo"
+        },
+        {
+          "#": "2",
+          "Constraint": "Land Footprint and Siting",
+          "Type": "physical",
+          "is_abs": "false",
+          "Threshold": "40–80 m²/MWh",
+          "Verdict": "**none**",
+          "Cost": "—",
+          "Time": "—"
+        },
+        {
+          "#": "3",
+          "Constraint": "Fire-Protection Clearance",
+          "Type": "regulatory",
+          "is_abs": "false",
+          "Threshold": "per VdS / Feuerwehr",
+          "Verdict": "**mitigable**",
+          "Cost": "low",
+          "Time": "1–2 mo"
+        },
+        {
+          "#": "4",
+          "Constraint": "Li-Ion Thermal Runaway Hazard",
+          "Type": "physical",
+          "is_abs": "false",
+          "Threshold": "—",
+          "Verdict": "**mitigable**",
+          "Cost": "low",
+          "Time": "in-design"
+        },
+        {
+          "#": "5",
+          "Constraint": "Grid Code Certification Lead Time",
+          "Type": "regulatory",
+          "is_abs": "false",
+          "Threshold": "6–12 months",
+          "Verdict": "**mitigable**",
+          "Cost": "low",
+          "Time": "6–12 mo"
+        },
+        {
+          "#": "6",
+          "Constraint": "Battery Supply Chain Concentration",
+          "Type": "economic",
+          "is_abs": "false",
+          "Threshold": "—",
+          "Verdict": "**none**",
+          "Cost": "—",
+          "Time": "—"
+        },
+        {
+          "#": "7",
+          "Constraint": "Ambient Temperature Envelope",
+          "Type": "environmental",
+          "is_abs": "false",
+          "Threshold": "-20 to +50 °C",
+          "Verdict": "**none**",
+          "Cost": "—",
+          "Time": "—"
+        },
+        {
+          "#": "8",
+          "Constraint": "Round-Trip Energy Losses",
+          "Type": "physical",
+          "is_abs": "true",
+          "Threshold": "10–15 %",
+          "Verdict": "**none**",
+          "Cost": "—",
+          "Time": "—"
+        },
+        {
+          "#": "9",
+          "Constraint": "CAPEX Viability Threshold",
+          "Type": "economic",
+          "is_abs": "false",
+          "Threshold": "€250–400/kWh",
+          "Verdict": "**none**",
+          "Cost": "—",
+          "Time": "—"
+        }
+      ]
+    }
+  ],
+  "entities": [
+    {
+      "component": "constraint_market_compatibility",
+      "step": "08",
+      "product_name": "EPC für Großbatteriespeicher",
+      "vendor_name": "Mein Solar GmbH",
+      "technology_class": "Large-Scale Battery Energy Storage System EPC",
+      "market": {
+        "market_name": "PV+BESS Solar Independent Power Producers",
+        "naics_code": "221114",
+        "naics_title": "Solar Electric Power Generation",
+        "market_category": "utility",
+        "discovery_distance": 2,
+        "discovery_priority": "HIGH",
+        "already_uses_technology": true
+      },
+      "summary": {
+        "n_constraints": 9,
+        "n_knockout": 0,
+        "n_mitigable": 4,
+        "n_none": 5,
+        "market_status": "surviving",
+        "aggregate_mitigation_cost": "low_to_medium",
+        "aggregate_mitigation_time": "parallel_to_epc_schedule"
+      },
+      "assessments": [
+        {
+          "constraint_name": "MV Grid Connection Capacity",
+          "market_name": "PV+BESS Solar Independent Power Producers",
+          "naics_code": "221114",
+          "verdict": "mitigable",
+          "mitigation_actions": [
+            "Early DSO capacity study at contract signing",
+            "Share existing PV grid-connection point (netzdienliche Kopplung)",
+            "Size BESS to match Ausbaustufe of existing PV feeder"
+          ],
+          "mitigation_cost_estimate": "medium",
+          "mitigation_time_estimate": "6-18 months",
+          "knockout_reason": null,
+          "rationale": "Solar parks are MV-connected under the same VDE-AR-N 4110 regime. BESS retrofit may need DSO capacity upgrade or transformer resizing; standard engineering practice."
+        },
+        {
+          "constraint_name": "Land Footprint and Siting",
+          "market_name": "PV+BESS Solar Independent Power Producers",
+          "naics_code": "221114",
+          "verdict": "none",
+          "mitigation_actions": [],
+          "mitigation_cost_estimate": null,
+          "mitigation_time_estimate": null,
+          "knockout_reason": null,
+          "rationale": "Utility PV parks occupy 1.5-2.5 ha/MWp. A 9 MWh BESS consumes <1% of an existing PV site; land already secured, fenced, permitted."
+        },
+        {
+          "constraint_name": "Fire-Protection Clearance",
+          "market_name": "PV+BESS Solar Independent Power Producers",
+          "naics_code": "221114",
+          "verdict": "mitigable",
+          "mitigation_actions": [
+            "VdS 6023/3103 aligned separation plan",
+            "Container spacing >=3 m with deflagration venting",
+            "Dedicated Feuerwehr-Zufahrt and Einsatzplan"
+          ],
+          "mitigation_cost_estimate": "low",
+          "mitigation_time_estimate": "1-2 months",
+          "knockout_reason": null,
+          "rationale": "Rural solar-park sites routinely achieve property-line distances and fire-service access. >3 MWh clusters handled with standard VdS alignment."
+        },
+        {
+          "constraint_name": "Li-Ion Thermal Runaway Hazard",
+          "market_name": "PV+BESS Solar Independent Power Producers",
+          "naics_code": "221114",
+          "verdict": "mitigable",
+          "mitigation_actions": [
+            "Grade-A LFP cells only",
+            "NOVEC 1230 suppression and BMS temperature monitoring",
+            "Compartmentalized racks with deflagration panels"
+          ],
+          "mitigation_cost_estimate": "low",
+          "mitigation_time_estimate": "in-design",
+          "knockout_reason": null,
+          "rationale": "Baseline safety scope applicable to every BESS market; no PV-co-location escalation. Already part of Mein Solar 4.5 MW / 9 MWh reference design."
+        },
+        {
+          "constraint_name": "Grid Code Certification Lead Time",
+          "market_name": "PV+BESS Solar Independent Power Producers",
+          "naics_code": "221114",
+          "verdict": "mitigable",
+          "mitigation_actions": [
+            "Kick off FGW grid-study at contract signing (parallel path)",
+            "Use pre-certified L2 BESS container (CATL EnerC / Sungrow / SolarEast)",
+            "Bundle BESS plant cert with co-located PV plant cert where possible"
+          ],
+          "mitigation_cost_estimate": "low",
+          "mitigation_time_estimate": "6-12 months parallel",
+          "knockout_reason": null,
+          "rationale": "FGW TR3 + TR8 certification path is Mein Solar's core PV-EPC competence; directly reusable for PV+BESS hybrid plant. Lead time parallel to procurement, not additive."
+        },
+        {
+          "constraint_name": "Battery Supply Chain Concentration",
+          "market_name": "PV+BESS Solar Independent Power Producers",
+          "naics_code": "221114",
+          "verdict": "none",
+          "mitigation_actions": [],
+          "mitigation_cost_estimate": null,
+          "mitigation_time_estimate": null,
+          "knockout_reason": null,
+          "rationale": "FX, tariff, CRMA exposure are global supply-side factors, not market-specific. PV+BESS developers already price this into CAPEX models."
+        },
+        {
+          "constraint_name": "Ambient Temperature Envelope",
+          "market_name": "PV+BESS Solar Independent Power Producers",
+          "naics_code": "221114",
+          "verdict": "none",
+          "mitigation_actions": [],
+          "mitigation_cost_estimate": null,
+          "mitigation_time_estimate": null,
+          "knockout_reason": null,
+          "rationale": "German solar-park sites well inside -20 to +50 C envelope (historical -18 C to +38 C). HVAC maintains internal setpoint; efficiency penalty <2% at extremes."
+        },
+        {
+          "constraint_name": "Round-Trip Energy Losses",
+          "market_name": "PV+BESS Solar Independent Power Producers",
+          "naics_code": "221114",
+          "verdict": "none",
+          "mitigation_actions": [],
+          "mitigation_cost_estimate": null,
+          "mitigation_time_estimate": null,
+          "knockout_reason": null,
+          "rationale": "10-15% AC-AC loss is thermodynamic floor across all BESS markets. PV+BESS business case already prices it into arbitrage, peak-shaving and StromNEV revenue stacks."
+        },
+        {
+          "constraint_name": "CAPEX Viability Threshold",
+          "market_name": "PV+BESS Solar Independent Power Producers",
+          "naics_code": "221114",
+          "verdict": "none",
+          "mitigation_actions": [],
+          "mitigation_cost_estimate": null,
+          "mitigation_time_estimate": null,
+          "knockout_reason": null,
+          "rationale": "PV+BESS is the most CAPEX-mature BESS segment. 250-400 EUR/kWh routinely achieved by Tier-1 L2 suppliers. Economics proven; cost is never a knockout per step-08 rules."
+        }
+      ],
+      "markets_eliminated_contribution": [],
+      "markets_surviving_contribution": [
+        "221114"
+      ],
+      "conservative_review_08b": {
+        "knockouts_reviewed": 0,
+        "downgrades_applied": 0,
+        "upgrades_applied": 0,
+        "final_status": "surviving"
+      },
+      "neo4j_writes_preview": [
+        "(:Constraint {name:'MV Grid Connection Capacity'})-[:incompatible_with {compatibility:'mitigable'}]->(:Market {naics_code:'221114'})",
+        "(:Constraint {name:'Fire-Protection Clearance'})-[:incompatible_with {compatibility:'mitigable'}]->(:Market {naics_code:'221114'})",
+        "(:Constraint {name:'Li-Ion Thermal Runaway Hazard'})-[:incompatible_with {compatibility:'mitigable'}]->(:Market {naics_code:'221114'})",
+        "(:Constraint {name:'Grid Code Certification Lead Time'})-[:incompatible_with {compatibility:'mitigable'}]->(:Market {naics_code:'221114'})"
+      ]
+    }
+  ],
+  "has_bom": true,
+  "naics_sector_type": "non_manufacturing"
+}

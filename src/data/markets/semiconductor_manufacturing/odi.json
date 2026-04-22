@@ -1,0 +1,1051 @@
+{
+  "id": "ODI_semiconductor_and_related_device_manufac",
+  "title": "ODI Matrix — NAICS 334413 Semiconductor and Related Device Manufacturing",
+  "type": "odi_matrix",
+  "market_slug": "semiconductor_and_related_device_manufac",
+  "is_per_market": true,
+  "sections": [
+    {
+      "title": "Step 1 — Needs gathered (26 entries)",
+      "content": "| Source | Count | Tagging |\n|---|---|---|\n| Step 06 JTBD (market-level) | 18 | preserves job_step_number 1–7, impact_category, product_related as-is |\n| Step 10 product-related | 8 | injected with `job_step_number=0`, `job_step_name=\"product_constraint\"`, `impact_category=\"reliability\"` (P01/P02 safety override), `product_related=true` |\n| **Total** | **26** | — |\n\nNo market-level needs dropped; no Step 10 overlap-merged (P01↔N13, P04↔N14, P08↔N11+N12 kept separate per FIT file ruling that solution-agnostic market need + causal-mechanism product need are distinct entries).\n\n---"
+    },
+    {
+      "title": "Step 2 — Satisfaction recalibration (incumbent-anchored)",
+      "content": "Incumbent reference set per Step 03 / JTBD Phase 2: **Piller UNIBLOCK + Hitec Power (flywheel, S1 dominant)**, Schneider Galaxy VXL / Eaton / Vertiv (static UPS, tool-level), ABB PCS100 AVC + AMSC D-VAR (DVR sub-cycle), Fluence / Sungrow / Wärtsilä (emerging BESS, A4 slot).\n\n### JTBD recalibrations (Step 06 needs only)\n\n| ID | S_orig | S_recal | Evidence driving shift |\n|---|---|---|---|\n| N08 | 4 | **6** | Piller / Hitec flywheel deliver sub-50 ms ride-through with SEMI F47 track record at S1 fabs — incumbent set *does* satisfy the sub-200 ms proof in practice |\n| N10 | 4 | **5** | Piller-protected fabs show documented wafer-scrap avoidance at sag events — raise S marginally for incumbent average |\n| N12 | 4 | **6** | Rotating-mass flywheel source transition is intrinsically <16 ms; DVR sub-cycle injection also satisfies — incumbent set strong |\n| N13 | 5 | **6** | Flywheel (A1) and DVR (A3) carry zero high-energy-density fire risk; incumbent set on this market broadly satisfies (only A4 entrants drag S down) |\n| all others | — | **unchanged** | no Step 03 evidence contradicts original LLM estimate |\n\n### Step 10 product-related recalibrations\n\n| ID | S_orig | S_recal | Evidence |\n|---|---|---|---|\n| P01 | 5 | **4** | Moss Landing 2024 + McMicken thermal-runaway precedents suggest S was optimistic even across Fluence / Sungrow / Tesla containers in fab-adjacent settings |\n| P03 | 4 | **5** | Fluence / Wärtsilä ship RTE performance guarantees (AC-AC ≥85%) — modest satisfaction lift |\n| all others | — | **unchanged** | structural Li-ion chemistry issues (supply chain CN concentration, €/kWh band, m²/MWh density, dispatch-SoC vs sub-200 ms) unresolved by any A4 incumbent |\n\nImportance scores unchanged across all 26 needs (importance-stability rule — the jobs are inherent to the fab context).\n\n---"
+    },
+    {
+      "title": "Step 3 — Opportunity scores (deterministic)",
+      "content": "Formula: `opp = I + max(I − S, 0)`  ·  `is_underserved = I>7 AND S<5`  ·  `is_overserved = I<3 AND S>7`.\n\n### JTBD entries (18)\n\n| ID | Step | Statement (short) | I | S | Opp | Under | Over |\n|---|---|---|---|---|---|---|---|\n| N05 | PREPARE | Cert delay pushing COD >60 d | 10 | 3 | **17.00** | ✅ | — |\n| N11 | EXECUTE | Revenue-stack dispatch vs ride-through window | 9 | 2 | **16.00** | ✅ | — |\n| N01 | DEFINE | Under-spec sag envelope → wafer loss | 10 | 5 | **15.00** | — | — |\n| N10 | EXECUTE | Tool-state scrap >100 wafers/event | 10 | 5 | **15.00** | — | — |\n| N03 | LOCATE | MV feeder capacity shortfall | 9 | 4 | **14.00** | ✅ | — |\n| N06 | PREPARE | Parallel cert >6 mo critical path | 9 | 4 | **14.00** | ✅ | — |\n| N08 | CONFIRM | Sub-200 ms ITIC ride-through proof | 10 | 6 | **14.00** | — | — |\n| N12 | EXECUTE | ≤16 ms source-transition | 10 | 6 | **14.00** | — | — |\n| N13 | EXECUTE | Fire event → >24 h evacuation | 10 | 6 | **14.00** | — | — |\n| N18 | EXECUTE | Netzentgelte + decarb board scorecard | 8 | 3 | **13.00** | ✅ | — |\n| N14 | MONITOR | Autonomy degradation detection >3%/yr | 8 | 4 | **12.00** | ✅ | — |\n| N02 | DEFINE | Revenue-stack vs ride-through objective conflict | 7 | 3 | **11.00** | — | — |\n| N09 | CONFIRM | DCS handshake ≤5 discrepancies | 7 | 4 | **10.00** | — | — |\n| N15 | MONITOR | Discriminate real disturbances from false trips | 7 | 4 | **10.00** | — | — |\n| N17 | EXECUTE | Audit-ready power-event logs (P3) | 7 | 4 | **10.00** | — | — |\n| N04 | LOCATE | Fire-clearance zoning layout iterations | 6 | 3 | **9.00** | — | — |\n| N07 | PREPARE | Commissioning-stage energy-stack defects | 6 | 5 | **7.00** | — | — |\n| N16 | MODIFY | Firmware updates >2 h downtime | 6 | 5 | **7.00** | — | — |\n\n### Step 10 product-related entries (8)\n\n| ID | Statement (short) | I | S | Opp | Under | Over |\n|---|---|---|---|---|---|---|\n| P08 | Dispatch SoC vs ≤16 ms transition | 9 | 2 | **16.00** | ✅ | — |\n| P06 | €/kWh >400 → CFO capex rejection | 9 | 3 | **15.00** | ✅ | — |\n| P01 | Li-ion thermal runaway → >24 h evacuation | 10 | 4 | **16.00** | ✅ | — |\n| P05 | LFP cell supply disruption (CN / EU Batt Reg) | 8 | 3 | **13.00** | ✅ | — |\n| P02 | Fire-clearance setback >15 m → siting outside perimeter | 8 | 4 | **12.00** | ✅ | — |\n| P03 | 10–15% RTE loss eroding revenue stack | 7 | 5 | **9.00** | — | — |\n| P04 | HVAC duty-cycling → autonomy erosion >5%/24 mo | 7 | 4 | **10.00** | — | — |\n| P07 | Container footprint + fire-access >20% yard area | 7 | 4 | **10.00** | — | — |\n\n**Sum of opp scores:** JTBD = 222.00 · Step 10 = 101.00 · **Total = 323.00** · **Average = 12.42**\n\n**Underserved (I>7 AND S<5):** N03, N05, N06, N11, N14, N18, P01, P02, P05, P06, P08 = **11 entries**\n**Overserved (I<3 AND S>7):** **0 entries** (adoption is emerging; no incumbent comfortably satisfies fab-grade BESS needs)\n\n---"
+    },
+    {
+      "title": "Step 4 — Market ODI summary",
+      "content": "| Field | Value |\n|---|---|\n| market_name | Semiconductor Fab Power-Quality & Ride-Through |\n| naics_code | 334413 |\n| total_needs | 26 |\n| underserved_count | 11 |\n| overserved_count | 0 |\n| avg_opportunity_score | 12.42 |\n\n### Top-5 opportunities (by opp score desc, ties broken by importance then ID)\n\n| Rank | Statement | Opp |\n|---|---|---|\n| 1 | Minimize the likelihood of certification delay pushing fab COD beyond planned ramp date by >60 days (N05) | **17.00** |\n| 2 | Minimize the likelihood of revenue-stack dispatch state compromising the sub-200 ms ride-through window by >1 event per quarter (N11) | **16.00** |\n| 3 | Minimize the likelihood of revenue-stack dispatch state of charge compromising the ≤16 ms source-transition window during a grid disturbance (P08) | **16.00** |\n| 4 | Minimize the likelihood of a high-energy-density Li-ion thermal runaway event triggering >24 h fab-wide evacuation (P01) | **16.00** |\n| 5 | Minimize the likelihood of under-specifying the voltage-sag envelope such that >5% of fab tools lose wafer batches per SEMI F47 event (N01) | **15.00** |\n\n---"
+    },
+    {
+      "title": "Step 5 — Cross-check vs Feature-Market-Fit (Step 09)",
+      "content": "FIT Step 09 avg overall_fit across 6 technology features = **4.69** ( (3.56+5.22+4.11+5.67+6.33+3.22) / 6 ).\nODI avg opp score = **12.42**.\n\n| Threshold | Result |\n|---|---|\n| ODI avg > 12 AND FIT avg < 4 → \"high opp / low fit\" | **Not triggered** (FIT 4.69 > 4) |\n| ODI avg < 8 AND FIT avg > 7 → \"low opp / high fit\" | **Not triggered** |\n| Narrative read | High opportunity market (12.42) is **directionally aligned** with moderate-but-positive feature fit (4.69). Top ODI drivers (N05 cert, N11/P08 dispatch-vs-transition, P01 fire) map cleanly onto the two strongest features F5 Grid-Code Cert Delivery (6.33) and F4 EMS (5.67). Dealkiller pattern from FIT (P01, P08, P06) matches 3 of the top-5 ODI entries → internally consistent. |\n\nNo cross-check warnings emitted.\n\n---"
+    },
+    {
+      "title": "Validation (QA checklist)",
+      "content": "| # | Check | Result |\n|---|---|---|\n| Q1 | Formula `opp = I + max(I−S, 0)` — spot-check N05 (10+7=17 ✓), P08 (9+7=16 ✓), N13 (10+4=14 ✓), P03 (7+2=9 ✓), N16 (6+1=7 ✓) | **PASS** |\n| Q2 | `is_underserved = I>7 AND S<5` — 11 entries flagged match predicate exhaustively (N03, N05, N06, N11, N14, N18, P01, P02, P05, P06, P08) | **PASS** |\n| Q3 | `is_overserved = I<3 AND S>7` — 0 entries, 0 predicate-positives | **PASS** |\n| Q4 | Need count preserved: JTBD contributed 18 (Step 06), Step 10 added 8 → 26 ≥ 18 | **PASS** |\n| Q5 | Top-5 sorted by descending opp score | **PASS** |\n| Q6 | Cross-check vs Step 09 ran → no-inconsistency note emitted | **PASS** |\n\n---"
+    },
+    {
+      "title": "Strategic Read",
+      "content": "| Insight | Evidence |\n|---|---|\n| **Certification competence is the #1 monetisable opportunity** | N05 opp=17 alone tops the matrix; N06 parallel-cert opp=14; N08 SEMI F47 proof opp=14 → clusters onto FIT F5 (6.33) |\n| **Dispatch-vs-transition is the structural Li-ion conflict** | N11 + N12 + P08 all at opp ≥14; P08 at S=2 is the matrix's worst-served need — engineering must solve this before fab reference |\n| **Fire posture is the permit-gate dealkiller** | N13 (14) + P01 (16) + P02 (12) stack on fire-clearance / thermal-runaway → engineered suppression envelope + setback non-negotiable |\n| **Net-Zero reporting is the CFO hook** | N18 opp=13 underserved; only ODI entry that maps to FIT F4 EMS (5.67) where Piller / Eaton deliver nothing |\n| **Supply-chain and CAPEX are entry gates** | P05 (13) + P06 (15) both underserved — must be hedged via KfW / innovation tenders and dual-source LFP before bid submission |\n\nConsistent with JTBD + FIT strategic read: **MEDIUM priority — defer direct fab pursuit** until reference installations land in HIGH-priority markets. Enter S4 greenfield + S5 retrofit as subcontractor to fab GC (M+W, Exyte, Jacobs), leading with PV+BESS decarbonisation scope (N18) while ride-through qualification (N08, N10, N11, N12) matures.\n\n---"
+    },
+    {
+      "title": "Structured Data",
+      "content": "```json\n{\n  \"component\": \"odi_matrix\",\n  \"market_naics_code\": \"334413\",\n  \"market_naics_title\": \"Semiconductor and Related Device Manufacturing\",\n  \"market_name\": \"Semiconductor Fab Power-Quality & Ride-Through\",\n  \"product_name\": \"EPC für Großbatteriespeicher\",\n  \"vendor_name\": \"Mein Solar GmbH\",\n  \"framework\": \"Ulwick Outcome-Driven Innovation\",\n  \"formula\": \"opportunity_score = importance + max(importance - satisfaction, 0)\",\n  \"incumbent_reference_set\": [\n    \"Piller UNIBLOCK (dynamic UPS / flywheel)\",\n    \"Hitec Power (flywheel)\",\n    \"Schneider Galaxy VXL (static UPS)\",\n    \"Eaton (static UPS)\",\n    \"Vertiv (static UPS)\",\n    \"ABB PCS100 AVC (DVR)\",\n    \"AMSC D-VAR (DVR)\",\n    \"Fluence Gridstack (BESS)\",\n    \"Sungrow PowerTitan (BESS)\",\n    \"Wärtsilä GEMS (BESS)\"\n  ],\n  \"entries\": [\n    {\"error_statement\": \"Minimize the likelihood of under-specifying the voltage-sag envelope such that >5% of fab tools lose wafer batches per SEMI F47 event\", \"source_id\": \"N01\", \"market_name\": \"Semiconductor Fab Power-Quality & Ride-Through\", \"naics_code\": \"334413\", \"job_step_number\": 1, \"job_step_name\": \"DEFINE\", \"impact_category\": \"reliability\", \"importance\": 10.0, \"satisfaction_current\": 5.0, \"opportunity_score\": 15.00, \"is_underserved\": false, \"is_overserved\": false, \"product_related\": false},\n    {\"error_statement\": \"Minimize the likelihood of revenue-stack objective conflicting with ride-through readiness, eroding >15% of projected annual dispatch revenue\", \"source_id\": \"N02\", \"market_name\": \"Semiconductor Fab Power-Quality & Ride-Through\", \"naics_code\": \"334413\", \"job_step_number\": 1, \"job_step_name\": \"DEFINE\", \"impact_category\": \"cost\", \"importance\": 7.0, \"satisfaction_current\": 3.0, \"opportunity_score\": 11.00, \"is_underserved\": false, \"is_overserved\": false, \"product_related\": true},\n    {\"error_statement\": \"Minimize the likelihood of MV feeder capacity shortfall blocking fab load-growth by >10% of planned ramp capacity\", \"source_id\": \"N03\", \"market_name\": \"Semiconductor Fab Power-Quality & Ride-Through\", \"naics_code\": \"334413\", \"job_step_number\": 2, \"job_step_name\": \"LOCATE\", \"impact_category\": \"reliability\", \"importance\": 9.0, \"satisfaction_current\": 4.0, \"opportunity_score\": 14.00, \"is_underserved\": true, \"is_overserved\": false, \"product_related\": false},\n    {\"error_statement\": \"Minimize the likelihood of fire-clearance zoning requiring >2 site-layout iterations post-permit submission\", \"source_id\": \"N04\", \"market_name\": \"Semiconductor Fab Power-Quality & Ride-Through\", \"naics_code\": \"334413\", \"job_step_number\": 2, \"job_step_name\": \"LOCATE\", \"impact_category\": \"time\", \"importance\": 6.0, \"satisfaction_current\": 3.0, \"opportunity_score\": 9.00, \"is_underserved\": false, \"is_overserved\": false, \"product_related\": true},\n    {\"error_statement\": \"Minimize the likelihood of certification delay pushing fab COD beyond planned ramp date by >60 days\", \"source_id\": \"N05\", \"market_name\": \"Semiconductor Fab Power-Quality & Ride-Through\", \"naics_code\": \"334413\", \"job_step_number\": 3, \"job_step_name\": \"PREPARE\", \"impact_category\": \"time\", \"importance\": 10.0, \"satisfaction_current\": 3.0, \"opportunity_score\": 17.00, \"is_underserved\": true, \"is_overserved\": false, \"product_related\": false},\n    {\"error_statement\": \"Minimize the likelihood of parallel plant-connection and process-equipment certifications adding >6 months to critical path\", \"source_id\": \"N06\", \"market_name\": \"Semiconductor Fab Power-Quality & Ride-Through\", \"naics_code\": \"334413\", \"job_step_number\": 3, \"job_step_name\": \"PREPARE\", \"impact_category\": \"time\", \"importance\": 9.0, \"satisfaction_current\": 4.0, \"opportunity_score\": 14.00, \"is_underserved\": true, \"is_overserved\": false, \"product_related\": false},\n    {\"error_statement\": \"Minimize the likelihood of commissioning-stage energy-stack defects causing >3 module swaps before handover\", \"source_id\": \"N07\", \"market_name\": \"Semiconductor Fab Power-Quality & Ride-Through\", \"naics_code\": \"334413\", \"job_step_number\": 3, \"job_step_name\": \"PREPARE\", \"impact_category\": \"cost\", \"importance\": 6.0, \"satisfaction_current\": 5.0, \"opportunity_score\": 7.00, \"is_underserved\": false, \"is_overserved\": false, \"product_related\": true},\n    {\"error_statement\": \"Increase the ability to demonstrate sub-200 ms ride-through on the ITIC curve with documented ≥99.9% event coverage at site acceptance\", \"source_id\": \"N08\", \"market_name\": \"Semiconductor Fab Power-Quality & Ride-Through\", \"naics_code\": \"334413\", \"job_step_number\": 4, \"job_step_name\": \"CONFIRM\", \"impact_category\": \"reliability\", \"importance\": 10.0, \"satisfaction_current\": 6.0, \"opportunity_score\": 14.00, \"is_underserved\": false, \"is_overserved\": false, \"product_related\": false, \"recalibration_note\": \"S raised 4→6; Piller/Hitec flywheel incumbents deliver sub-50ms in S1 fabs\"},\n    {\"error_statement\": \"Increase the ability to complete fab-DCS handshake testing with ≤5 SEMI-protocol discrepancies before commissioning release\", \"source_id\": \"N09\", \"market_name\": \"Semiconductor Fab Power-Quality & Ride-Through\", \"naics_code\": \"334413\", \"job_step_number\": 4, \"job_step_name\": \"CONFIRM\", \"impact_category\": \"skill\", \"importance\": 7.0, \"satisfaction_current\": 4.0, \"opportunity_score\": 10.00, \"is_underserved\": false, \"is_overserved\": false, \"product_related\": true},\n    {\"error_statement\": \"Minimize the likelihood of unrecovered tool state from a voltage disturbance causing >100 wafers of lot scrap per event\", \"source_id\": \"N10\", \"market_name\": \"Semiconductor Fab Power-Quality & Ride-Through\", \"naics_code\": \"334413\", \"job_step_number\": 5, \"job_step_name\": \"EXECUTE\", \"impact_category\": \"cost\", \"importance\": 10.0, \"satisfaction_current\": 5.0, \"opportunity_score\": 15.00, \"is_underserved\": false, \"is_overserved\": false, \"product_related\": false, \"recalibration_note\": \"S raised 4→5; Piller-protected fabs show documented scrap avoidance\"},\n    {\"error_statement\": \"Minimize the likelihood of revenue-stack dispatch state compromising the sub-200 ms ride-through window by >1 event per quarter\", \"source_id\": \"N11\", \"market_name\": \"Semiconductor Fab Power-Quality & Ride-Through\", \"naics_code\": \"334413\", \"job_step_number\": 5, \"job_step_name\": \"EXECUTE\", \"impact_category\": \"reliability\", \"importance\": 9.0, \"satisfaction_current\": 2.0, \"opportunity_score\": 16.00, \"is_underserved\": true, \"is_overserved\": false, \"product_related\": true},\n    {\"error_statement\": \"Minimize the likelihood of source-transition to islanded operation exceeding 16 ms during a grid disturbance\", \"source_id\": \"N12\", \"market_name\": \"Semiconductor Fab Power-Quality & Ride-Through\", \"naics_code\": \"334413\", \"job_step_number\": 5, \"job_step_name\": \"EXECUTE\", \"impact_category\": \"reliability\", \"importance\": 10.0, \"satisfaction_current\": 6.0, \"opportunity_score\": 14.00, \"is_underserved\": false, \"is_overserved\": false, \"product_related\": true, \"recalibration_note\": \"S raised 4→6; rotating-mass flywheel source transition is intrinsically <16 ms\"},\n    {\"error_statement\": \"Minimize the likelihood of a high-energy-density stored-energy fire event triggering >24 h fab-wide evacuation\", \"source_id\": \"N13\", \"market_name\": \"Semiconductor Fab Power-Quality & Ride-Through\", \"naics_code\": \"334413\", \"job_step_number\": 5, \"job_step_name\": \"EXECUTE\", \"impact_category\": \"safety\", \"importance\": 10.0, \"satisfaction_current\": 6.0, \"opportunity_score\": 14.00, \"is_underserved\": false, \"is_overserved\": false, \"product_related\": true, \"recalibration_note\": \"S raised 5→6; flywheel/DVR incumbents carry zero fire-risk envelope\"},\n    {\"error_statement\": \"Increase the ability to detect autonomy degradation >3%/year before contracted ride-through duration is breached\", \"source_id\": \"N14\", \"market_name\": \"Semiconductor Fab Power-Quality & Ride-Through\", \"naics_code\": \"334413\", \"job_step_number\": 6, \"job_step_name\": \"MONITOR\", \"impact_category\": \"reliability\", \"importance\": 8.0, \"satisfaction_current\": 4.0, \"opportunity_score\": 12.00, \"is_underserved\": true, \"is_overserved\": false, \"product_related\": false},\n    {\"error_statement\": \"Increase the ability to discriminate real grid disturbances from controller false triggers to ≤1 false trip per month\", \"source_id\": \"N15\", \"market_name\": \"Semiconductor Fab Power-Quality & Ride-Through\", \"naics_code\": \"334413\", \"job_step_number\": 6, \"job_step_name\": \"MONITOR\", \"impact_category\": \"reliability\", \"importance\": 7.0, \"satisfaction_current\": 4.0, \"opportunity_score\": 10.00, \"is_underserved\": false, \"is_overserved\": false, \"product_related\": true},\n    {\"error_statement\": \"Minimize the likelihood of firmware updates requiring >2 h of availability-class downtime per update\", \"source_id\": \"N16\", \"market_name\": \"Semiconductor Fab Power-Quality & Ride-Through\", \"naics_code\": \"334413\", \"job_step_number\": 7, \"job_step_name\": \"MODIFY\", \"impact_category\": \"time\", \"importance\": 6.0, \"satisfaction_current\": 5.0, \"opportunity_score\": 7.00, \"is_underserved\": false, \"is_overserved\": false, \"product_related\": true},\n    {\"error_statement\": \"Increase the ability to produce audit-ready power-event logs so the Facility Engineer can close >95% of events without VP-Ops escalation\", \"source_id\": \"N17\", \"market_name\": \"Semiconductor Fab Power-Quality & Ride-Through\", \"naics_code\": \"334413\", \"job_step_number\": 5, \"job_step_name\": \"EXECUTE\", \"impact_category\": \"skill\", \"importance\": 7.0, \"satisfaction_current\": 4.0, \"opportunity_score\": 10.00, \"is_underserved\": false, \"is_overserved\": false, \"product_related\": false},\n    {\"error_statement\": \"Increase the ability to report jointly-quantified Netzentgelte-reduction and decarbonisation savings on the annual board scorecard with ≤1 auditor line-item dispute per year\", \"source_id\": \"N18\", \"market_name\": \"Semiconductor Fab Power-Quality & Ride-Through\", \"naics_code\": \"334413\", \"job_step_number\": 5, \"job_step_name\": \"EXECUTE\", \"impact_category\": \"cost\", \"importance\": 8.0, \"satisfaction_current\": 3.0, \"opportunity_score\": 13.00, \"is_underserved\": true, \"is_overserved\": false, \"product_related\": false},\n\n    {\"error_statement\": \"Minimize the likelihood of a high-energy-density Li-ion thermal runaway event triggering >24 h fab-wide evacuation\", \"source_id\": \"P01\", \"market_name\": \"Semiconductor Fab Power-Quality & Ride-Through\", \"naics_code\": \"334413\", \"job_step_number\": 0, \"job_step_name\": \"product_constraint\", \"impact_category\": \"safety\", \"importance\": 10.0, \"satisfaction_current\": 4.0, \"opportunity_score\": 16.00, \"is_underserved\": true, \"is_overserved\": false, \"product_related\": true, \"recalibration_note\": \"S lowered 5→4; Moss Landing 2024 + McMicken thermal-runaway precedents\"},\n    {\"error_statement\": \"Minimize the likelihood of fire-clearance zoning adding >15 m setback that forces BESS siting outside the fab security perimeter\", \"source_id\": \"P02\", \"market_name\": \"Semiconductor Fab Power-Quality & Ride-Through\", \"naics_code\": \"334413\", \"job_step_number\": 0, \"job_step_name\": \"product_constraint\", \"impact_category\": \"safety\", \"importance\": 8.0, \"satisfaction_current\": 4.0, \"opportunity_score\": 12.00, \"is_underserved\": true, \"is_overserved\": false, \"product_related\": true},\n    {\"error_statement\": \"Minimize the likelihood of 10–15% round-trip energy losses eroding >15% of projected Netzentgelte peak-shaving and EPEX arbitrage revenue\", \"source_id\": \"P03\", \"market_name\": \"Semiconductor Fab Power-Quality & Ride-Through\", \"naics_code\": \"334413\", \"job_step_number\": 0, \"job_step_name\": \"product_constraint\", \"impact_category\": \"reliability\", \"importance\": 7.0, \"satisfaction_current\": 5.0, \"opportunity_score\": 9.00, \"is_underserved\": false, \"is_overserved\": false, \"product_related\": true, \"recalibration_note\": \"S raised 4→5; Fluence/Wärtsilä AC-AC ≥85% RTE guarantees\"},\n    {\"error_statement\": \"Minimize the likelihood of ambient-extreme HVAC duty cycling reducing contracted ride-through autonomy by >5% within 24 months\", \"source_id\": \"P04\", \"market_name\": \"Semiconductor Fab Power-Quality & Ride-Through\", \"naics_code\": \"334413\", \"job_step_number\": 0, \"job_step_name\": \"product_constraint\", \"impact_category\": \"reliability\", \"importance\": 7.0, \"satisfaction_current\": 4.0, \"opportunity_score\": 10.00, \"is_underserved\": false, \"is_overserved\": false, \"product_related\": true},\n    {\"error_statement\": \"Minimize the likelihood of LFP cell supply disruption (CN concentration, EU Battery Reg compliance) adding >12 weeks to fab-ramp-critical COD\", \"source_id\": \"P05\", \"market_name\": \"Semiconductor Fab Power-Quality & Ride-Through\", \"naics_code\": \"334413\", \"job_step_number\": 0, \"job_step_name\": \"product_constraint\", \"impact_category\": \"reliability\", \"importance\": 8.0, \"satisfaction_current\": 3.0, \"opportunity_score\": 13.00, \"is_underserved\": true, \"is_overserved\": false, \"product_related\": true},\n    {\"error_statement\": \"Minimize the likelihood of installed cost exceeding €400/kWh such that CFO capex board rejects the project despite revenue-stack model\", \"source_id\": \"P06\", \"market_name\": \"Semiconductor Fab Power-Quality & Ride-Through\", \"naics_code\": \"334413\", \"job_step_number\": 0, \"job_step_name\": \"product_constraint\", \"impact_category\": \"reliability\", \"importance\": 9.0, \"satisfaction_current\": 3.0, \"opportunity_score\": 15.00, \"is_underserved\": true, \"is_overserved\": false, \"product_related\": true},\n    {\"error_statement\": \"Minimize the likelihood of container footprint (40–80 m²/MWh) plus fire-service access requiring >20% of planned fab utility-yard area\", \"source_id\": \"P07\", \"market_name\": \"Semiconductor Fab Power-Quality & Ride-Through\", \"naics_code\": \"334413\", \"job_step_number\": 0, \"job_step_name\": \"product_constraint\", \"impact_category\": \"reliability\", \"importance\": 7.0, \"satisfaction_current\": 4.0, \"opportunity_score\": 10.00, \"is_underserved\": false, \"is_overserved\": false, \"product_related\": true},\n    {\"error_statement\": \"Minimize the likelihood of revenue-stack dispatch state of charge compromising the ≤16 ms source-transition window during a grid disturbance\", \"source_id\": \"P08\", \"market_name\": \"Semiconductor Fab Power-Quality & Ride-Through\", \"naics_code\": \"334413\", \"job_step_number\": 0, \"job_step_name\": \"product_constraint\", \"impact_category\": \"reliability\", \"importance\": 9.0, \"satisfaction_current\": 2.0, \"opportunity_score\": 16.00, \"is_underserved\": true, \"is_overserved\": false, \"product_related\": true}\n  ],\n  \"market_summary\": {\n    \"market_name\": \"Semiconductor Fab Power-Quality & Ride-Through\",\n    \"naics_code\": \"334413\",\n    \"total_needs\": 26,\n    \"underserved_count\": 11,\n    \"overserved_count\": 0,\n    \"avg_opportunity_score\": 12.42,\n    \"top_opportunities\": [\n      \"Minimize the likelihood of certification delay pushing fab COD beyond planned ramp date by >60 days\",\n      \"Minimize the likelihood of revenue-stack dispatch state compromising the sub-200 ms ride-through window by >1 event per quarter\",\n      \"Minimize the likelihood of revenue-stack dispatch state of charge compromising the ≤16 ms source-transition window during a grid disturbance\",\n      \"Minimize the likelihood of a high-energy-density Li-ion thermal runaway event triggering >24 h fab-wide evacuation\",\n      \"Minimize the likelihood of under-specifying the voltage-sag envelope such that >5% of fab tools lose wafer batches per SEMI F47 event\"\n    ],\n    \"underserved_ids\": [\"N03\", \"N05\", \"N06\", \"N11\", \"N14\", \"N18\", \"P01\", \"P02\", \"P05\", \"P06\", \"P08\"],\n    \"overserved_ids\": []\n  },\n  \"cross_check_step_09\": {\n    \"fit_avg_overall\": 4.69,\n    \"odi_avg_opportunity\": 12.42,\n    \"high_opp_low_fit_flag\": false,\n    \"low_opp_high_fit_flag\": false,\n    \"narrative\": \"Directionally aligned: top ODI opportunities (N05 cert, N11/P08 dispatch-vs-transition, P01 fire) map onto strongest FIT features F5 Grid-Code Cert Delivery (6.33) and F4 EMS (5.67). Dealkillers P01/P08/P06 appear in both top-5 ODI and FIT dealkiller list.\"\n  },\n  \"qa_checklist\": {\n    \"Q1_formula\": \"PASS\",\n    \"Q2_underserved_flags\": \"PASS\",\n    \"Q3_overserved_flags\": \"PASS\",\n    \"Q4_need_count_preserved\": \"PASS (18 Step 06 + 8 Step 10 = 26 ≥ 18)\",\n    \"Q5_top5_ordering\": \"PASS\",\n    \"Q6_cross_check_step09\": \"PASS\"\n  },\n  \"strategic_read\": {\n    \"priority\": \"MEDIUM — defer direct fab pursuit\",\n    \"entry_mode\": \"Subcontractor to fab GC (M+W, Exyte, Jacobs, Arcadis) on S4 greenfield + S5 retrofit; lead with PV+BESS decarbonisation (N18) while ride-through qualification (N08/N10/N11/N12) matures\",\n    \"monetisable_wedge\": \"Certification-path competence (N05 + N06 + N08) × Netzentgelte+decarb EMS reporting (N18)\",\n    \"primary_dealkillers\": [\"P08 dispatch-SoC vs 16 ms transition (opp 16, sat 2)\", \"P01 Li-ion thermal runaway (opp 16)\", \"P06 CAPEX >€400/kWh CFO rejection (opp 15)\", \"N11 revenue-stack vs ride-through conflict (opp 16)\"],\n    \"consistency_with_jtbd_and_fit\": \"High — 4 of top-5 ODI entries align with FIT dealkiller set; no cross-check warnings triggered\"\n  }\n}\n```\n\n---"
+    },
+    {
+      "title": "Sources",
+      "content": "Upstream files only (no web search):\n- `01_product_decomposition.md` — features F1–F6, constraints, commodity FP\n- `02_functional_promise.md` — commodity-level FP anchor\n- `05_market_discovery.md` — market identity (NAICS 334413, distance 6, MEDIUM priority)\n- `JTBD_semiconductor_and_related_device_manufac.md` — N01–N18 error statements, incumbent anchors (Piller, Hitec, Schneider, Eaton, ABB, Fluence, Sungrow, Wärtsilä)\n- `FIT_semiconductor_and_related_device_manufac.md` — Step 09 feature-fit scores, Step 10 product-related needs P01–P08"
+    }
+  ],
+  "tables": [
+    {
+      "headers": [
+        "Source",
+        "Count",
+        "Tagging"
+      ],
+      "rows": [
+        {
+          "Source": "Step 06 JTBD (market-level)",
+          "Count": "18",
+          "Tagging": "preserves job_step_number 1–7, impact_category, product_related as-is"
+        },
+        {
+          "Source": "Step 10 product-related",
+          "Count": "8",
+          "Tagging": "injected with `job_step_number=0`, `job_step_name=\"product_constraint\"`, `impact_category=\"reliability\"` (P01/P02 safety override), `product_related=true`"
+        },
+        {
+          "Source": "**Total**",
+          "Count": "**26**",
+          "Tagging": "—"
+        }
+      ]
+    },
+    {
+      "headers": [
+        "ID",
+        "S_orig",
+        "S_recal",
+        "Evidence driving shift"
+      ],
+      "rows": [
+        {
+          "ID": "N08",
+          "S_orig": "4",
+          "S_recal": "**6**",
+          "Evidence driving shift": "Piller / Hitec flywheel deliver sub-50 ms ride-through with SEMI F47 track record at S1 fabs — incumbent set *does* satisfy the sub-200 ms proof in practice"
+        },
+        {
+          "ID": "N10",
+          "S_orig": "4",
+          "S_recal": "**5**",
+          "Evidence driving shift": "Piller-protected fabs show documented wafer-scrap avoidance at sag events — raise S marginally for incumbent average"
+        },
+        {
+          "ID": "N12",
+          "S_orig": "4",
+          "S_recal": "**6**",
+          "Evidence driving shift": "Rotating-mass flywheel source transition is intrinsically <16 ms; DVR sub-cycle injection also satisfies — incumbent set strong"
+        },
+        {
+          "ID": "N13",
+          "S_orig": "5",
+          "S_recal": "**6**",
+          "Evidence driving shift": "Flywheel (A1) and DVR (A3) carry zero high-energy-density fire risk; incumbent set on this market broadly satisfies (only A4 entrants drag S down)"
+        },
+        {
+          "ID": "all others",
+          "S_orig": "—",
+          "S_recal": "**unchanged**",
+          "Evidence driving shift": "no Step 03 evidence contradicts original LLM estimate"
+        }
+      ]
+    },
+    {
+      "headers": [
+        "ID",
+        "S_orig",
+        "S_recal",
+        "Evidence"
+      ],
+      "rows": [
+        {
+          "ID": "P01",
+          "S_orig": "5",
+          "S_recal": "**4**",
+          "Evidence": "Moss Landing 2024 + McMicken thermal-runaway precedents suggest S was optimistic even across Fluence / Sungrow / Tesla containers in fab-adjacent settings"
+        },
+        {
+          "ID": "P03",
+          "S_orig": "4",
+          "S_recal": "**5**",
+          "Evidence": "Fluence / Wärtsilä ship RTE performance guarantees (AC-AC ≥85%) — modest satisfaction lift"
+        },
+        {
+          "ID": "all others",
+          "S_orig": "—",
+          "S_recal": "**unchanged**",
+          "Evidence": "structural Li-ion chemistry issues (supply chain CN concentration, €/kWh band, m²/MWh density, dispatch-SoC vs sub-200 ms) unresolved by any A4 incumbent"
+        }
+      ]
+    },
+    {
+      "headers": [
+        "ID",
+        "Step",
+        "Statement (short)",
+        "I",
+        "S",
+        "Opp",
+        "Under",
+        "Over"
+      ],
+      "rows": [
+        {
+          "ID": "N05",
+          "Step": "PREPARE",
+          "Statement (short)": "Cert delay pushing COD >60 d",
+          "I": "10",
+          "S": "3",
+          "Opp": "**17.00**",
+          "Under": "✅",
+          "Over": "—"
+        },
+        {
+          "ID": "N11",
+          "Step": "EXECUTE",
+          "Statement (short)": "Revenue-stack dispatch vs ride-through window",
+          "I": "9",
+          "S": "2",
+          "Opp": "**16.00**",
+          "Under": "✅",
+          "Over": "—"
+        },
+        {
+          "ID": "N01",
+          "Step": "DEFINE",
+          "Statement (short)": "Under-spec sag envelope → wafer loss",
+          "I": "10",
+          "S": "5",
+          "Opp": "**15.00**",
+          "Under": "—",
+          "Over": "—"
+        },
+        {
+          "ID": "N10",
+          "Step": "EXECUTE",
+          "Statement (short)": "Tool-state scrap >100 wafers/event",
+          "I": "10",
+          "S": "5",
+          "Opp": "**15.00**",
+          "Under": "—",
+          "Over": "—"
+        },
+        {
+          "ID": "N03",
+          "Step": "LOCATE",
+          "Statement (short)": "MV feeder capacity shortfall",
+          "I": "9",
+          "S": "4",
+          "Opp": "**14.00**",
+          "Under": "✅",
+          "Over": "—"
+        },
+        {
+          "ID": "N06",
+          "Step": "PREPARE",
+          "Statement (short)": "Parallel cert >6 mo critical path",
+          "I": "9",
+          "S": "4",
+          "Opp": "**14.00**",
+          "Under": "✅",
+          "Over": "—"
+        },
+        {
+          "ID": "N08",
+          "Step": "CONFIRM",
+          "Statement (short)": "Sub-200 ms ITIC ride-through proof",
+          "I": "10",
+          "S": "6",
+          "Opp": "**14.00**",
+          "Under": "—",
+          "Over": "—"
+        },
+        {
+          "ID": "N12",
+          "Step": "EXECUTE",
+          "Statement (short)": "≤16 ms source-transition",
+          "I": "10",
+          "S": "6",
+          "Opp": "**14.00**",
+          "Under": "—",
+          "Over": "—"
+        },
+        {
+          "ID": "N13",
+          "Step": "EXECUTE",
+          "Statement (short)": "Fire event → >24 h evacuation",
+          "I": "10",
+          "S": "6",
+          "Opp": "**14.00**",
+          "Under": "—",
+          "Over": "—"
+        },
+        {
+          "ID": "N18",
+          "Step": "EXECUTE",
+          "Statement (short)": "Netzentgelte + decarb board scorecard",
+          "I": "8",
+          "S": "3",
+          "Opp": "**13.00**",
+          "Under": "✅",
+          "Over": "—"
+        },
+        {
+          "ID": "N14",
+          "Step": "MONITOR",
+          "Statement (short)": "Autonomy degradation detection >3%/yr",
+          "I": "8",
+          "S": "4",
+          "Opp": "**12.00**",
+          "Under": "✅",
+          "Over": "—"
+        },
+        {
+          "ID": "N02",
+          "Step": "DEFINE",
+          "Statement (short)": "Revenue-stack vs ride-through objective conflict",
+          "I": "7",
+          "S": "3",
+          "Opp": "**11.00**",
+          "Under": "—",
+          "Over": "—"
+        },
+        {
+          "ID": "N09",
+          "Step": "CONFIRM",
+          "Statement (short)": "DCS handshake ≤5 discrepancies",
+          "I": "7",
+          "S": "4",
+          "Opp": "**10.00**",
+          "Under": "—",
+          "Over": "—"
+        },
+        {
+          "ID": "N15",
+          "Step": "MONITOR",
+          "Statement (short)": "Discriminate real disturbances from false trips",
+          "I": "7",
+          "S": "4",
+          "Opp": "**10.00**",
+          "Under": "—",
+          "Over": "—"
+        },
+        {
+          "ID": "N17",
+          "Step": "EXECUTE",
+          "Statement (short)": "Audit-ready power-event logs (P3)",
+          "I": "7",
+          "S": "4",
+          "Opp": "**10.00**",
+          "Under": "—",
+          "Over": "—"
+        },
+        {
+          "ID": "N04",
+          "Step": "LOCATE",
+          "Statement (short)": "Fire-clearance zoning layout iterations",
+          "I": "6",
+          "S": "3",
+          "Opp": "**9.00**",
+          "Under": "—",
+          "Over": "—"
+        },
+        {
+          "ID": "N07",
+          "Step": "PREPARE",
+          "Statement (short)": "Commissioning-stage energy-stack defects",
+          "I": "6",
+          "S": "5",
+          "Opp": "**7.00**",
+          "Under": "—",
+          "Over": "—"
+        },
+        {
+          "ID": "N16",
+          "Step": "MODIFY",
+          "Statement (short)": "Firmware updates >2 h downtime",
+          "I": "6",
+          "S": "5",
+          "Opp": "**7.00**",
+          "Under": "—",
+          "Over": "—"
+        }
+      ]
+    },
+    {
+      "headers": [
+        "ID",
+        "Statement (short)",
+        "I",
+        "S",
+        "Opp",
+        "Under",
+        "Over"
+      ],
+      "rows": [
+        {
+          "ID": "P08",
+          "Statement (short)": "Dispatch SoC vs ≤16 ms transition",
+          "I": "9",
+          "S": "2",
+          "Opp": "**16.00**",
+          "Under": "✅",
+          "Over": "—"
+        },
+        {
+          "ID": "P06",
+          "Statement (short)": "€/kWh >400 → CFO capex rejection",
+          "I": "9",
+          "S": "3",
+          "Opp": "**15.00**",
+          "Under": "✅",
+          "Over": "—"
+        },
+        {
+          "ID": "P01",
+          "Statement (short)": "Li-ion thermal runaway → >24 h evacuation",
+          "I": "10",
+          "S": "4",
+          "Opp": "**16.00**",
+          "Under": "✅",
+          "Over": "—"
+        },
+        {
+          "ID": "P05",
+          "Statement (short)": "LFP cell supply disruption (CN / EU Batt Reg)",
+          "I": "8",
+          "S": "3",
+          "Opp": "**13.00**",
+          "Under": "✅",
+          "Over": "—"
+        },
+        {
+          "ID": "P02",
+          "Statement (short)": "Fire-clearance setback >15 m → siting outside perimeter",
+          "I": "8",
+          "S": "4",
+          "Opp": "**12.00**",
+          "Under": "✅",
+          "Over": "—"
+        },
+        {
+          "ID": "P03",
+          "Statement (short)": "10–15% RTE loss eroding revenue stack",
+          "I": "7",
+          "S": "5",
+          "Opp": "**9.00**",
+          "Under": "—",
+          "Over": "—"
+        },
+        {
+          "ID": "P04",
+          "Statement (short)": "HVAC duty-cycling → autonomy erosion >5%/24 mo",
+          "I": "7",
+          "S": "4",
+          "Opp": "**10.00**",
+          "Under": "—",
+          "Over": "—"
+        },
+        {
+          "ID": "P07",
+          "Statement (short)": "Container footprint + fire-access >20% yard area",
+          "I": "7",
+          "S": "4",
+          "Opp": "**10.00**",
+          "Under": "—",
+          "Over": "—"
+        }
+      ]
+    },
+    {
+      "headers": [
+        "Field",
+        "Value"
+      ],
+      "rows": [
+        {
+          "Field": "market_name",
+          "Value": "Semiconductor Fab Power-Quality & Ride-Through"
+        },
+        {
+          "Field": "naics_code",
+          "Value": "334413"
+        },
+        {
+          "Field": "total_needs",
+          "Value": "26"
+        },
+        {
+          "Field": "underserved_count",
+          "Value": "11"
+        },
+        {
+          "Field": "overserved_count",
+          "Value": "0"
+        },
+        {
+          "Field": "avg_opportunity_score",
+          "Value": "12.42"
+        }
+      ]
+    },
+    {
+      "headers": [
+        "Rank",
+        "Statement",
+        "Opp"
+      ],
+      "rows": [
+        {
+          "Rank": "1",
+          "Statement": "Minimize the likelihood of certification delay pushing fab COD beyond planned ramp date by >60 days (N05)",
+          "Opp": "**17.00**"
+        },
+        {
+          "Rank": "2",
+          "Statement": "Minimize the likelihood of revenue-stack dispatch state compromising the sub-200 ms ride-through window by >1 event per quarter (N11)",
+          "Opp": "**16.00**"
+        },
+        {
+          "Rank": "3",
+          "Statement": "Minimize the likelihood of revenue-stack dispatch state of charge compromising the ≤16 ms source-transition window during a grid disturbance (P08)",
+          "Opp": "**16.00**"
+        },
+        {
+          "Rank": "4",
+          "Statement": "Minimize the likelihood of a high-energy-density Li-ion thermal runaway event triggering >24 h fab-wide evacuation (P01)",
+          "Opp": "**16.00**"
+        },
+        {
+          "Rank": "5",
+          "Statement": "Minimize the likelihood of under-specifying the voltage-sag envelope such that >5% of fab tools lose wafer batches per SEMI F47 event (N01)",
+          "Opp": "**15.00**"
+        }
+      ]
+    },
+    {
+      "headers": [
+        "Threshold",
+        "Result"
+      ],
+      "rows": [
+        {
+          "Threshold": "ODI avg > 12 AND FIT avg < 4 → \"high opp / low fit\"",
+          "Result": "**Not triggered** (FIT 4.69 > 4)"
+        },
+        {
+          "Threshold": "ODI avg < 8 AND FIT avg > 7 → \"low opp / high fit\"",
+          "Result": "**Not triggered**"
+        },
+        {
+          "Threshold": "Narrative read",
+          "Result": "High opportunity market (12.42) is **directionally aligned** with moderate-but-positive feature fit (4.69). Top ODI drivers (N05 cert, N11/P08 dispatch-vs-transition, P01 fire) map cleanly onto the two strongest features F5 Grid-Code Cert Delivery (6.33) and F4 EMS (5.67). Dealkiller pattern from FIT (P01, P08, P06) matches 3 of the top-5 ODI entries → internally consistent."
+        }
+      ]
+    },
+    {
+      "headers": [
+        "#",
+        "Check",
+        "Result"
+      ],
+      "rows": [
+        {
+          "#": "Q1",
+          "Check": "Formula `opp = I + max(I−S, 0)` — spot-check N05 (10+7=17 ✓), P08 (9+7=16 ✓), N13 (10+4=14 ✓), P03 (7+2=9 ✓), N16 (6+1=7 ✓)",
+          "Result": "**PASS**"
+        },
+        {
+          "#": "Q2",
+          "Check": "`is_underserved = I>7 AND S<5` — 11 entries flagged match predicate exhaustively (N03, N05, N06, N11, N14, N18, P01, P02, P05, P06, P08)",
+          "Result": "**PASS**"
+        },
+        {
+          "#": "Q3",
+          "Check": "`is_overserved = I<3 AND S>7` — 0 entries, 0 predicate-positives",
+          "Result": "**PASS**"
+        },
+        {
+          "#": "Q4",
+          "Check": "Need count preserved: JTBD contributed 18 (Step 06), Step 10 added 8 → 26 ≥ 18",
+          "Result": "**PASS**"
+        },
+        {
+          "#": "Q5",
+          "Check": "Top-5 sorted by descending opp score",
+          "Result": "**PASS**"
+        },
+        {
+          "#": "Q6",
+          "Check": "Cross-check vs Step 09 ran → no-inconsistency note emitted",
+          "Result": "**PASS**"
+        }
+      ]
+    },
+    {
+      "headers": [
+        "Insight",
+        "Evidence"
+      ],
+      "rows": [
+        {
+          "Insight": "**Certification competence is the #1 monetisable opportunity**",
+          "Evidence": "N05 opp=17 alone tops the matrix; N06 parallel-cert opp=14; N08 SEMI F47 proof opp=14 → clusters onto FIT F5 (6.33)"
+        },
+        {
+          "Insight": "**Dispatch-vs-transition is the structural Li-ion conflict**",
+          "Evidence": "N11 + N12 + P08 all at opp ≥14; P08 at S=2 is the matrix's worst-served need — engineering must solve this before fab reference"
+        },
+        {
+          "Insight": "**Fire posture is the permit-gate dealkiller**",
+          "Evidence": "N13 (14) + P01 (16) + P02 (12) stack on fire-clearance / thermal-runaway → engineered suppression envelope + setback non-negotiable"
+        },
+        {
+          "Insight": "**Net-Zero reporting is the CFO hook**",
+          "Evidence": "N18 opp=13 underserved; only ODI entry that maps to FIT F4 EMS (5.67) where Piller / Eaton deliver nothing"
+        },
+        {
+          "Insight": "**Supply-chain and CAPEX are entry gates**",
+          "Evidence": "P05 (13) + P06 (15) both underserved — must be hedged via KfW / innovation tenders and dual-source LFP before bid submission"
+        }
+      ]
+    }
+  ],
+  "entities": [
+    {
+      "component": "odi_matrix",
+      "market_naics_code": "334413",
+      "market_naics_title": "Semiconductor and Related Device Manufacturing",
+      "market_name": "Semiconductor Fab Power-Quality & Ride-Through",
+      "product_name": "EPC für Großbatteriespeicher",
+      "vendor_name": "Mein Solar GmbH",
+      "framework": "Ulwick Outcome-Driven Innovation",
+      "formula": "opportunity_score = importance + max(importance - satisfaction, 0)",
+      "incumbent_reference_set": [
+        "Piller UNIBLOCK (dynamic UPS / flywheel)",
+        "Hitec Power (flywheel)",
+        "Schneider Galaxy VXL (static UPS)",
+        "Eaton (static UPS)",
+        "Vertiv (static UPS)",
+        "ABB PCS100 AVC (DVR)",
+        "AMSC D-VAR (DVR)",
+        "Fluence Gridstack (BESS)",
+        "Sungrow PowerTitan (BESS)",
+        "Wärtsilä GEMS (BESS)"
+      ],
+      "entries": [
+        {
+          "error_statement": "Minimize the likelihood of under-specifying the voltage-sag envelope such that >5% of fab tools lose wafer batches per SEMI F47 event",
+          "source_id": "N01",
+          "market_name": "Semiconductor Fab Power-Quality & Ride-Through",
+          "naics_code": "334413",
+          "job_step_number": 1,
+          "job_step_name": "DEFINE",
+          "impact_category": "reliability",
+          "importance": 10.0,
+          "satisfaction_current": 5.0,
+          "opportunity_score": 15.0,
+          "is_underserved": false,
+          "is_overserved": false,
+          "product_related": false
+        },
+        {
+          "error_statement": "Minimize the likelihood of revenue-stack objective conflicting with ride-through readiness, eroding >15% of projected annual dispatch revenue",
+          "source_id": "N02",
+          "market_name": "Semiconductor Fab Power-Quality & Ride-Through",
+          "naics_code": "334413",
+          "job_step_number": 1,
+          "job_step_name": "DEFINE",
+          "impact_category": "cost",
+          "importance": 7.0,
+          "satisfaction_current": 3.0,
+          "opportunity_score": 11.0,
+          "is_underserved": false,
+          "is_overserved": false,
+          "product_related": true
+        },
+        {
+          "error_statement": "Minimize the likelihood of MV feeder capacity shortfall blocking fab load-growth by >10% of planned ramp capacity",
+          "source_id": "N03",
+          "market_name": "Semiconductor Fab Power-Quality & Ride-Through",
+          "naics_code": "334413",
+          "job_step_number": 2,
+          "job_step_name": "LOCATE",
+          "impact_category": "reliability",
+          "importance": 9.0,
+          "satisfaction_current": 4.0,
+          "opportunity_score": 14.0,
+          "is_underserved": true,
+          "is_overserved": false,
+          "product_related": false
+        },
+        {
+          "error_statement": "Minimize the likelihood of fire-clearance zoning requiring >2 site-layout iterations post-permit submission",
+          "source_id": "N04",
+          "market_name": "Semiconductor Fab Power-Quality & Ride-Through",
+          "naics_code": "334413",
+          "job_step_number": 2,
+          "job_step_name": "LOCATE",
+          "impact_category": "time",
+          "importance": 6.0,
+          "satisfaction_current": 3.0,
+          "opportunity_score": 9.0,
+          "is_underserved": false,
+          "is_overserved": false,
+          "product_related": true
+        },
+        {
+          "error_statement": "Minimize the likelihood of certification delay pushing fab COD beyond planned ramp date by >60 days",
+          "source_id": "N05",
+          "market_name": "Semiconductor Fab Power-Quality & Ride-Through",
+          "naics_code": "334413",
+          "job_step_number": 3,
+          "job_step_name": "PREPARE",
+          "impact_category": "time",
+          "importance": 10.0,
+          "satisfaction_current": 3.0,
+          "opportunity_score": 17.0,
+          "is_underserved": true,
+          "is_overserved": false,
+          "product_related": false
+        },
+        {
+          "error_statement": "Minimize the likelihood of parallel plant-connection and process-equipment certifications adding >6 months to critical path",
+          "source_id": "N06",
+          "market_name": "Semiconductor Fab Power-Quality & Ride-Through",
+          "naics_code": "334413",
+          "job_step_number": 3,
+          "job_step_name": "PREPARE",
+          "impact_category": "time",
+          "importance": 9.0,
+          "satisfaction_current": 4.0,
+          "opportunity_score": 14.0,
+          "is_underserved": true,
+          "is_overserved": false,
+          "product_related": false
+        },
+        {
+          "error_statement": "Minimize the likelihood of commissioning-stage energy-stack defects causing >3 module swaps before handover",
+          "source_id": "N07",
+          "market_name": "Semiconductor Fab Power-Quality & Ride-Through",
+          "naics_code": "334413",
+          "job_step_number": 3,
+          "job_step_name": "PREPARE",
+          "impact_category": "cost",
+          "importance": 6.0,
+          "satisfaction_current": 5.0,
+          "opportunity_score": 7.0,
+          "is_underserved": false,
+          "is_overserved": false,
+          "product_related": true
+        },
+        {
+          "error_statement": "Increase the ability to demonstrate sub-200 ms ride-through on the ITIC curve with documented ≥99.9% event coverage at site acceptance",
+          "source_id": "N08",
+          "market_name": "Semiconductor Fab Power-Quality & Ride-Through",
+          "naics_code": "334413",
+          "job_step_number": 4,
+          "job_step_name": "CONFIRM",
+          "impact_category": "reliability",
+          "importance": 10.0,
+          "satisfaction_current": 6.0,
+          "opportunity_score": 14.0,
+          "is_underserved": false,
+          "is_overserved": false,
+          "product_related": false,
+          "recalibration_note": "S raised 4→6; Piller/Hitec flywheel incumbents deliver sub-50ms in S1 fabs"
+        },
+        {
+          "error_statement": "Increase the ability to complete fab-DCS handshake testing with ≤5 SEMI-protocol discrepancies before commissioning release",
+          "source_id": "N09",
+          "market_name": "Semiconductor Fab Power-Quality & Ride-Through",
+          "naics_code": "334413",
+          "job_step_number": 4,
+          "job_step_name": "CONFIRM",
+          "impact_category": "skill",
+          "importance": 7.0,
+          "satisfaction_current": 4.0,
+          "opportunity_score": 10.0,
+          "is_underserved": false,
+          "is_overserved": false,
+          "product_related": true
+        },
+        {
+          "error_statement": "Minimize the likelihood of unrecovered tool state from a voltage disturbance causing >100 wafers of lot scrap per event",
+          "source_id": "N10",
+          "market_name": "Semiconductor Fab Power-Quality & Ride-Through",
+          "naics_code": "334413",
+          "job_step_number": 5,
+          "job_step_name": "EXECUTE",
+          "impact_category": "cost",
+          "importance": 10.0,
+          "satisfaction_current": 5.0,
+          "opportunity_score": 15.0,
+          "is_underserved": false,
+          "is_overserved": false,
+          "product_related": false,
+          "recalibration_note": "S raised 4→5; Piller-protected fabs show documented scrap avoidance"
+        },
+        {
+          "error_statement": "Minimize the likelihood of revenue-stack dispatch state compromising the sub-200 ms ride-through window by >1 event per quarter",
+          "source_id": "N11",
+          "market_name": "Semiconductor Fab Power-Quality & Ride-Through",
+          "naics_code": "334413",
+          "job_step_number": 5,
+          "job_step_name": "EXECUTE",
+          "impact_category": "reliability",
+          "importance": 9.0,
+          "satisfaction_current": 2.0,
+          "opportunity_score": 16.0,
+          "is_underserved": true,
+          "is_overserved": false,
+          "product_related": true
+        },
+        {
+          "error_statement": "Minimize the likelihood of source-transition to islanded operation exceeding 16 ms during a grid disturbance",
+          "source_id": "N12",
+          "market_name": "Semiconductor Fab Power-Quality & Ride-Through",
+          "naics_code": "334413",
+          "job_step_number": 5,
+          "job_step_name": "EXECUTE",
+          "impact_category": "reliability",
+          "importance": 10.0,
+          "satisfaction_current": 6.0,
+          "opportunity_score": 14.0,
+          "is_underserved": false,
+          "is_overserved": false,
+          "product_related": true,
+          "recalibration_note": "S raised 4→6; rotating-mass flywheel source transition is intrinsically <16 ms"
+        },
+        {
+          "error_statement": "Minimize the likelihood of a high-energy-density stored-energy fire event triggering >24 h fab-wide evacuation",
+          "source_id": "N13",
+          "market_name": "Semiconductor Fab Power-Quality & Ride-Through",
+          "naics_code": "334413",
+          "job_step_number": 5,
+          "job_step_name": "EXECUTE",
+          "impact_category": "safety",
+          "importance": 10.0,
+          "satisfaction_current": 6.0,
+          "opportunity_score": 14.0,
+          "is_underserved": false,
+          "is_overserved": false,
+          "product_related": true,
+          "recalibration_note": "S raised 5→6; flywheel/DVR incumbents carry zero fire-risk envelope"
+        },
+        {
+          "error_statement": "Increase the ability to detect autonomy degradation >3%/year before contracted ride-through duration is breached",
+          "source_id": "N14",
+          "market_name": "Semiconductor Fab Power-Quality & Ride-Through",
+          "naics_code": "334413",
+          "job_step_number": 6,
+          "job_step_name": "MONITOR",
+          "impact_category": "reliability",
+          "importance": 8.0,
+          "satisfaction_current": 4.0,
+          "opportunity_score": 12.0,
+          "is_underserved": true,
+          "is_overserved": false,
+          "product_related": false
+        },
+        {
+          "error_statement": "Increase the ability to discriminate real grid disturbances from controller false triggers to ≤1 false trip per month",
+          "source_id": "N15",
+          "market_name": "Semiconductor Fab Power-Quality & Ride-Through",
+          "naics_code": "334413",
+          "job_step_number": 6,
+          "job_step_name": "MONITOR",
+          "impact_category": "reliability",
+          "importance": 7.0,
+          "satisfaction_current": 4.0,
+          "opportunity_score": 10.0,
+          "is_underserved": false,
+          "is_overserved": false,
+          "product_related": true
+        },
+        {
+          "error_statement": "Minimize the likelihood of firmware updates requiring >2 h of availability-class downtime per update",
+          "source_id": "N16",
+          "market_name": "Semiconductor Fab Power-Quality & Ride-Through",
+          "naics_code": "334413",
+          "job_step_number": 7,
+          "job_step_name": "MODIFY",
+          "impact_category": "time",
+          "importance": 6.0,
+          "satisfaction_current": 5.0,
+          "opportunity_score": 7.0,
+          "is_underserved": false,
+          "is_overserved": false,
+          "product_related": true
+        },
+        {
+          "error_statement": "Increase the ability to produce audit-ready power-event logs so the Facility Engineer can close >95% of events without VP-Ops escalation",
+          "source_id": "N17",
+          "market_name": "Semiconductor Fab Power-Quality & Ride-Through",
+          "naics_code": "334413",
+          "job_step_number": 5,
+          "job_step_name": "EXECUTE",
+          "impact_category": "skill",
+          "importance": 7.0,
+          "satisfaction_current": 4.0,
+          "opportunity_score": 10.0,
+          "is_underserved": false,
+          "is_overserved": false,
+          "product_related": false
+        },
+        {
+          "error_statement": "Increase the ability to report jointly-quantified Netzentgelte-reduction and decarbonisation savings on the annual board scorecard with ≤1 auditor line-item dispute per year",
+          "source_id": "N18",
+          "market_name": "Semiconductor Fab Power-Quality & Ride-Through",
+          "naics_code": "334413",
+          "job_step_number": 5,
+          "job_step_name": "EXECUTE",
+          "impact_category": "cost",
+          "importance": 8.0,
+          "satisfaction_current": 3.0,
+          "opportunity_score": 13.0,
+          "is_underserved": true,
+          "is_overserved": false,
+          "product_related": false
+        },
+        {
+          "error_statement": "Minimize the likelihood of a high-energy-density Li-ion thermal runaway event triggering >24 h fab-wide evacuation",
+          "source_id": "P01",
+          "market_name": "Semiconductor Fab Power-Quality & Ride-Through",
+          "naics_code": "334413",
+          "job_step_number": 0,
+          "job_step_name": "product_constraint",
+          "impact_category": "safety",
+          "importance": 10.0,
+          "satisfaction_current": 4.0,
+          "opportunity_score": 16.0,
+          "is_underserved": true,
+          "is_overserved": false,
+          "product_related": true,
+          "recalibration_note": "S lowered 5→4; Moss Landing 2024 + McMicken thermal-runaway precedents"
+        },
+        {
+          "error_statement": "Minimize the likelihood of fire-clearance zoning adding >15 m setback that forces BESS siting outside the fab security perimeter",
+          "source_id": "P02",
+          "market_name": "Semiconductor Fab Power-Quality & Ride-Through",
+          "naics_code": "334413",
+          "job_step_number": 0,
+          "job_step_name": "product_constraint",
+          "impact_category": "safety",
+          "importance": 8.0,
+          "satisfaction_current": 4.0,
+          "opportunity_score": 12.0,
+          "is_underserved": true,
+          "is_overserved": false,
+          "product_related": true
+        },
+        {
+          "error_statement": "Minimize the likelihood of 10–15% round-trip energy losses eroding >15% of projected Netzentgelte peak-shaving and EPEX arbitrage revenue",
+          "source_id": "P03",
+          "market_name": "Semiconductor Fab Power-Quality & Ride-Through",
+          "naics_code": "334413",
+          "job_step_number": 0,
+          "job_step_name": "product_constraint",
+          "impact_category": "reliability",
+          "importance": 7.0,
+          "satisfaction_current": 5.0,
+          "opportunity_score": 9.0,
+          "is_underserved": false,
+          "is_overserved": false,
+          "product_related": true,
+          "recalibration_note": "S raised 4→5; Fluence/Wärtsilä AC-AC ≥85% RTE guarantees"
+        },
+        {
+          "error_statement": "Minimize the likelihood of ambient-extreme HVAC duty cycling reducing contracted ride-through autonomy by >5% within 24 months",
+          "source_id": "P04",
+          "market_name": "Semiconductor Fab Power-Quality & Ride-Through",
+          "naics_code": "334413",
+          "job_step_number": 0,
+          "job_step_name": "product_constraint",
+          "impact_category": "reliability",
+          "importance": 7.0,
+          "satisfaction_current": 4.0,
+          "opportunity_score": 10.0,
+          "is_underserved": false,
+          "is_overserved": false,
+          "product_related": true
+        },
+        {
+          "error_statement": "Minimize the likelihood of LFP cell supply disruption (CN concentration, EU Battery Reg compliance) adding >12 weeks to fab-ramp-critical COD",
+          "source_id": "P05",
+          "market_name": "Semiconductor Fab Power-Quality & Ride-Through",
+          "naics_code": "334413",
+          "job_step_number": 0,
+          "job_step_name": "product_constraint",
+          "impact_category": "reliability",
+          "importance": 8.0,
+          "satisfaction_current": 3.0,
+          "opportunity_score": 13.0,
+          "is_underserved": true,
+          "is_overserved": false,
+          "product_related": true
+        },
+        {
+          "error_statement": "Minimize the likelihood of installed cost exceeding €400/kWh such that CFO capex board rejects the project despite revenue-stack model",
+          "source_id": "P06",
+          "market_name": "Semiconductor Fab Power-Quality & Ride-Through",
+          "naics_code": "334413",
+          "job_step_number": 0,
+          "job_step_name": "product_constraint",
+          "impact_category": "reliability",
+          "importance": 9.0,
+          "satisfaction_current": 3.0,
+          "opportunity_score": 15.0,
+          "is_underserved": true,
+          "is_overserved": false,
+          "product_related": true
+        },
+        {
+          "error_statement": "Minimize the likelihood of container footprint (40–80 m²/MWh) plus fire-service access requiring >20% of planned fab utility-yard area",
+          "source_id": "P07",
+          "market_name": "Semiconductor Fab Power-Quality & Ride-Through",
+          "naics_code": "334413",
+          "job_step_number": 0,
+          "job_step_name": "product_constraint",
+          "impact_category": "reliability",
+          "importance": 7.0,
+          "satisfaction_current": 4.0,
+          "opportunity_score": 10.0,
+          "is_underserved": false,
+          "is_overserved": false,
+          "product_related": true
+        },
+        {
+          "error_statement": "Minimize the likelihood of revenue-stack dispatch state of charge compromising the ≤16 ms source-transition window during a grid disturbance",
+          "source_id": "P08",
+          "market_name": "Semiconductor Fab Power-Quality & Ride-Through",
+          "naics_code": "334413",
+          "job_step_number": 0,
+          "job_step_name": "product_constraint",
+          "impact_category": "reliability",
+          "importance": 9.0,
+          "satisfaction_current": 2.0,
+          "opportunity_score": 16.0,
+          "is_underserved": true,
+          "is_overserved": false,
+          "product_related": true
+        }
+      ],
+      "market_summary": {
+        "market_name": "Semiconductor Fab Power-Quality & Ride-Through",
+        "naics_code": "334413",
+        "total_needs": 26,
+        "underserved_count": 11,
+        "overserved_count": 0,
+        "avg_opportunity_score": 12.42,
+        "top_opportunities": [
+          "Minimize the likelihood of certification delay pushing fab COD beyond planned ramp date by >60 days",
+          "Minimize the likelihood of revenue-stack dispatch state compromising the sub-200 ms ride-through window by >1 event per quarter",
+          "Minimize the likelihood of revenue-stack dispatch state of charge compromising the ≤16 ms source-transition window during a grid disturbance",
+          "Minimize the likelihood of a high-energy-density Li-ion thermal runaway event triggering >24 h fab-wide evacuation",
+          "Minimize the likelihood of under-specifying the voltage-sag envelope such that >5% of fab tools lose wafer batches per SEMI F47 event"
+        ],
+        "underserved_ids": [
+          "N03",
+          "N05",
+          "N06",
+          "N11",
+          "N14",
+          "N18",
+          "P01",
+          "P02",
+          "P05",
+          "P06",
+          "P08"
+        ],
+        "overserved_ids": []
+      },
+      "cross_check_step_09": {
+        "fit_avg_overall": 4.69,
+        "odi_avg_opportunity": 12.42,
+        "high_opp_low_fit_flag": false,
+        "low_opp_high_fit_flag": false,
+        "narrative": "Directionally aligned: top ODI opportunities (N05 cert, N11/P08 dispatch-vs-transition, P01 fire) map onto strongest FIT features F5 Grid-Code Cert Delivery (6.33) and F4 EMS (5.67). Dealkillers P01/P08/P06 appear in both top-5 ODI and FIT dealkiller list."
+      },
+      "qa_checklist": {
+        "Q1_formula": "PASS",
+        "Q2_underserved_flags": "PASS",
+        "Q3_overserved_flags": "PASS",
+        "Q4_need_count_preserved": "PASS (18 Step 06 + 8 Step 10 = 26 ≥ 18)",
+        "Q5_top5_ordering": "PASS",
+        "Q6_cross_check_step09": "PASS"
+      },
+      "strategic_read": {
+        "priority": "MEDIUM — defer direct fab pursuit",
+        "entry_mode": "Subcontractor to fab GC (M+W, Exyte, Jacobs, Arcadis) on S4 greenfield + S5 retrofit; lead with PV+BESS decarbonisation (N18) while ride-through qualification (N08/N10/N11/N12) matures",
+        "monetisable_wedge": "Certification-path competence (N05 + N06 + N08) × Netzentgelte+decarb EMS reporting (N18)",
+        "primary_dealkillers": [
+          "P08 dispatch-SoC vs 16 ms transition (opp 16, sat 2)",
+          "P01 Li-ion thermal runaway (opp 16)",
+          "P06 CAPEX >€400/kWh CFO rejection (opp 15)",
+          "N11 revenue-stack vs ride-through conflict (opp 16)"
+        ],
+        "consistency_with_jtbd_and_fit": "High — 4 of top-5 ODI entries align with FIT dealkiller set; no cross-check warnings triggered"
+      }
+    }
+  ],
+  "has_bom": true,
+  "naics_sector_type": "manufacturing"
+}

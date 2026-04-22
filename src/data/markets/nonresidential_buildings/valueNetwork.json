@@ -1,0 +1,929 @@
+{
+  "id": "VN_lessors_of_nonresidential_buildings_sams",
+  "title": "Value Network — NAICS 531120 Lessors of Nonresidential Buildings",
+  "type": "value_network",
+  "market_slug": "lessors_of_nonresidential_buildings_sams",
+  "is_per_market": true,
+  "sections": [
+    {
+      "title": "CFJ (Industry-Level)",
+      "content": "> **Provide operationally-ready, leasable non-residential space with reliable building infrastructure and tenant services, under a long-term rental/lease contract, at a risk-adjusted yield that funds capex and asset appreciation.**\n\nMechanism-free: no reference to specific asset class, technology, or financing vehicle.\n\n---"
+    },
+    {
+      "title": "L7 → L6 Process Structure",
+      "content": "| Level | Node | Type | Job family | Serves output types |\n|---|---|---|---|---|\n| L7 | Commercial Real Estate Ecosystem | — | Enable lessor-tenant value exchange | All |\n| L6a | Site Acquisition & Development | Core | Acquire and entitle developable parcel | Office, Logistics, Retail, Industrial, MedOffice |\n| L6b | Building Construction & Fit-Out | Core | Construct envelope and core-and-shell | All |\n| L6c | Leasing & Tenant Onboarding | Core | Market, underwrite, sign, onboard tenants | All |\n| L6d | Property Operations & Infrastructure | Core | **Deliver continuous building services** (where BESS sits) | All |\n| L6e | Tenant Services & Turnover | Core | Service, renew, rotate tenants | All |\n| L6f | Asset Disposal / Recapitalization | Core | Refinance or divest at target yield | All |\n| L6H-FM | Facilities Management (H) | Horizontal | Maintain physical asset in rentable condition | All |\n| L6H-ESG | ESG & Compliance Reporting (H) | Horizontal | Produce EU Taxonomy / GRESB / CSRD dossiers | All |\n| L6H-FIN | Financial Administration (H) | Horizontal | Rent roll, CAM reconciliation, debt service | All |\n| L6H-INS | Insurance & Risk (H) | Horizontal | Underwrite fire/liability/BI exposure | All |\n\n---"
+    },
+    {
+      "title": "Sub-SoS Decomposition under L6d (Property Operations)",
+      "content": "Mein Solar sells into **L6d-a Building Energy Infrastructure**.\n\n| L6a-c | Node | Description |\n|---|---|---|\n| L6d-a | **Building Energy Infrastructure** | On-site generation, storage, conversion, grid coupling |\n| L6d-b | Building Automation & Controls | BMS/BAS, access, lighting, security platforms |\n| L6d-c | Utilities Provisioning | Water, wastewater, submetering, telecom |\n| L6d-d | Janitorial, Waste & Landscaping | Physical upkeep of common areas and grounds |\n\n---"
+    },
+    {
+      "title": "L5 Positions under L6d-a Building Energy Infrastructure (Mein Solar's Segment)",
+      "content": "Sibling L5 alternatives under same L6 parent — the competitive context.\n\n| L5 Position | Status | Typical Incumbents (DE) | Mein Solar? |\n|---|---|---|---|\n| **Battery Energy Storage System** | — | Voltfang, Tesvolt, Commeo, Sungrow, Tesla Megapack, Fluence | **← PRIMARY POSITION** |\n| **Rooftop / Carport PV Generator** | — | Enerparc, BayWa r.e., Goldbeck Solar, IBC Solar, Mein Solar | **← SECONDARY POSITION** |\n| **EV Charging Infrastructure (AC + HPC)** | — | Alpitronic, ads-tec, Kostad, ABB E-mobility, EnBW/Ionity OEM | **← SECONDARY (via buffer feature)** |\n| HVAC / Heat Pump Plant | — | Viessmann, Vaillant, Daikin, Mitsubishi Electric, STIEBEL ELTRON | — |\n| CHP / Cogeneration Unit | — | 2G Energy, Sokratherm, MTU Onsite, Viessmann Vitobloc | — |\n| MV Grid Connection & Switchgear | — | Siemens, ABB, Schneider, Eaton | — |\n| Building Energy Management System (BEMS) | — | Siemens Desigo, Schneider EcoStruxure, Honeywell Niagara, Kieback&Peter | — |\n| Emergency / Standby Generator | — | Caterpillar, Kohler, FG Wilson, Rolls-Royce MTU | — |\n\n---"
+    },
+    {
+      "title": "L4 Subsystems under Mein Solar's L5 (BESS)",
+      "content": "| L4 | Function | Typical vendor |\n|---|---|---|\n| Battery Modules & BMS | Store/release DC energy, state monitoring | CATL, EVE, BYD, Samsung SDI |\n| Power Conversion System (PCS) | 4-quadrant DC↔AC bidirectional inverter | Sungrow, SMA, Power Electronics, Ingeteam |\n| MV Transformer & Switchgear | Step-up to 10/20 kV DSO grid | Siemens, ABB, Schneider |\n| Thermal Management Unit | Liquid cooling / HVAC inside container | Pfannenberg, Rittal, Kelvion |\n| Fire Suppression System | NOVEC 1230 / aerosol, deflagration vents | Siemens, Fike, Minimax |\n| Energy Management Software (EMS) | Dispatch vs. peak-shaving / arbitrage setpoints | Envision, Next Kraftwerke, Entrix, Kiwigrid |\n| Container Enclosure & Racking | IP54 housing, seismic frame, cable management | Sungrow, SolarEast, BYD, CATL EnerC |\n\n---"
+    },
+    {
+      "title": "L6 → Output Type Activation Matrix",
+      "content": "Output types = lessor asset classes (what the landlord produces).\n\n|  | Office | Logistics / Industrial | Retail | Med-Office | Data-Center Shell |\n|---|---|---|---|---|---|\n| L6a Site Acquisition | ✓ | ✓ | ✓ | ✓ | ✓ |\n| L6b Construction | ✓ | ✓ | ✓ | ✓ | ✓ |\n| L6c Leasing | ✓ | ✓ | ✓ | ✓ | ✓ |\n| L6d-a Energy Infrastructure | ✓ | ✓✓ | ✓ | ✓✓ | ✓✓✓ |\n| L6d-b BMS/BAS | ✓ | ✓ | ✓ | ✓ | ✓✓ |\n| L6e Tenant Services | ✓ | ✓ | ✓ | ✓ | — |\n| L6f Disposal | ✓ | ✓ | ✓ | ✓ | ✓ |\n\nEnergy infra activation is **highest in logistics, med-office, and data-center-shell** — these are where Mein Solar's BESS fit is strongest (high kW loads, EV fleet charging, resilience demand).\n\n---"
+    },
+    {
+      "title": "04e — Direct Competence Transfer Scan (Mein Solar)",
+      "content": "Scan across the entire 531120 VN for where Mein Solar's existing EPC capability transfers with LOW/MEDIUM adaptation.\n\n| VN Unit | Level | Competence Required | Has It? | Effort | Rationale |\n|---|---|---|---|---|---|\n| Rooftop / Carport PV Generator | L5 | PV EPC, MV coupling, Baugenehmigung | YES | LOW | Mein Solar's incumbent capability; same customer |\n| EV Charging Infrastructure | L5 | MV coupling, civil, HPC integration | PARTIAL | LOW | Feature 7 already defined; dispenser sourcing via OEM |\n| BEMS (BESS+PV+HVAC orchestration) | L5 | EMS software integration at site scope | PARTIAL | MEDIUM | Has EMS for BESS; needs BMS/BAS bridge |\n| MV Grid Connection & Switchgear | L5 | MV design, protection relays, DSO interface | YES | LOW | Already delivered inside BESS scope |\n| CHP / Cogeneration | L5 | Prime-mover engineering, gas permits | NO | HIGH | excluded |\n| HVAC / Heat-Pump Plant | L5 | Refrigerant handling, hydronic design | NO | HIGH | excluded |\n| Emergency Generator | L5 | Diesel/gas genset integration | PARTIAL | MEDIUM | Parallel coupling via PCS feasible |\n\n---"
+    },
+    {
+      "title": "04f — Strategic Adjacency Expansion (within L6d-a)",
+      "content": "Horizontal moves inside Mein Solar's home segment.\n\n| Adjacent L5 | Current Incumbents | Competence Gap | Investment | Fit (1-10) | Rationale |\n|---|---|---|---|---|---|\n| Rooftop / Carport PV | Enerparc, BayWa r.e., IBC Solar | None — Mein Solar incumbent | 0 | **10** | Already positioned; 100% overlap |\n| EV Charging Infrastructure | Alpitronic, ads-tec, Kostad | HPC dispenser certification partnership | 6–12mo, ~€0.5M | **8** | 70% overlap (MV, civil, EMS); dispenser = OEM buy |\n| BEMS integrator layer | Siemens Desigo, EcoStruxure, Niagara | BMS/BAS software stack, ISO 16484 | 12–18mo, ~€1.5M | 6 | 40% overlap; entry via PV+BESS+HVAC orchestration niche |\n| Emergency Generator integration | CAT, Kohler, Rolls-Royce MTU | Diesel genset OEM partnership | 6–12mo, ~€0.3M | 6 | BESS + genset hybrid for resilience sites |\n| HVAC / Heat Pump Plant | Viessmann, Vaillant, Daikin | TGA planning, refrigerant license | >24mo, >€3M | 2 | excluded — <30% overlap |\n| CHP / Cogeneration | 2G Energy, Sokratherm | Prime mover, gas regulation | >24mo, >€3M | 2 | excluded — <30% overlap |\n\n---"
+    },
+    {
+      "title": "04g — Vertical Move-Up Assessment",
+      "content": "| Current | Target (1 up) | What to Add | Competitors | Feasibility | Economic Rationale |\n|---|---|---|---|---|---|\n| L5 BESS (under L6d-a) | **L6d-a Integrator**: full Building Energy Infrastructure bundle (PV + BESS + EV + BEMS + MV) | BEMS software layer, genset partnership, multi-asset SLA wrapper, energy-as-a-service financing | Naturstrom+, Enpal Business, Voltaro, Spie, Engie Deutschland | **MEDIUM** | TAM at L6d-a ≈ €5–8B DE commercial annually vs. ~€1–1.5B BESS-only. PV+BESS is natural bundle; BEMS is feasible via OEM tie-up; EaaS financing requires balance-sheet partner. Move-up is coherent with Mein Solar's existing PV+BESS authority. |\n\nGoing up one more level (to **L6d Property Operations**) would require full FM service, waste management, security — organizationally distinct; LOW feasibility, not assessed here.\n\n---"
+    },
+    {
+      "title": "Completeness Check",
+      "content": "| Check | Status |\n|---|---|\n| CFJ industry-level, mechanism-free | ✅ |\n| L6 core sequence follows process order | ✅ (Acquire → Build → Lease → Operate → Service → Dispose) |\n| Horizontal L6 nodes identified (FM, ESG, FIN, INS) | ✅ |\n| L5 alternatives at company's level enumerated | ✅ (8 L5 positions under L6d-a) |\n| L4 children ≥3 for Mein Solar's L5 | ✅ (7 L4 subsystems) |\n| No solution-specific L7/L6 names | ✅ |\n| Company primary position marked | ✅ |\n| Unit count in range (15–60) | ✅ (34 units) |\n\n---"
+    },
+    {
+      "title": "Key Market Signals (2026)",
+      "content": "| Signal | Source |\n|---|---|\n| C&I storage = **>60% of DE installed storage capacity** (>15 GW in 2024) | PVB/Montel market reports |\n| **MiSpeL regulation** mid-2026 enables mixed-energy co-location w/o EEG-subsidy loss | Energy-Storage News |\n| EnWG amendment Nov 2025 recognizes large BESS as **privileged infrastructure under building law** — faster Baugenehmigung | Energy-Storage News |\n| First-year depreciation **30% → 50%** for C&I BESS from 2025; +10% corp-tax discount for VDE 2510-certified assets | PVB market guide |\n| DE grid-connected storage: ~24 GWh (+22% YoY) | Strategic Energy Europe |\n\n---"
+    },
+    {
+      "title": "Structured Data",
+      "content": "```json\n{\n  \"market_name\": \"Commercial & Industrial Real-Estate Behind-the-Meter Storage\",\n  \"naics_code\": \"531120\",\n  \"naics_title\": \"Lessors of Nonresidential Buildings (except Miniwarehouses)\",\n  \"cfj_statement\": \"Provide operationally-ready, leasable non-residential space with reliable building infrastructure and tenant services, under a long-term rental/lease contract, at a risk-adjusted yield that funds capex and asset appreciation.\",\n  \"top_level\": \"L7\",\n  \"company_primary_position\": {\"name\": \"Battery Energy Storage System\", \"level\": \"L5\", \"parent\": \"Building Energy Infrastructure\"},\n  \"company_secondary_positions\": [\n    {\"name\": \"Rooftop / Carport PV Generator\", \"level\": \"L5\"},\n    {\"name\": \"EV Charging Infrastructure\", \"level\": \"L5\"}\n  ],\n  \"units\": [\n    {\"name\": \"Commercial Real Estate Ecosystem\", \"level\": \"L7\", \"description\": \"Economic community coordinating lessor–tenant value exchange for non-residential space\", \"bom_standard\": \"Moore 1993\", \"parent_name\": \"ROOT\"},\n    {\"name\": \"Site Acquisition & Development\", \"level\": \"L6\", \"description\": \"Acquire and entitle developable parcels; secure zoning and permits\", \"bom_standard\": \"Maier 1998\", \"parent_name\": \"Commercial Real Estate Ecosystem\"},\n    {\"name\": \"Building Construction & Fit-Out\", \"level\": \"L6\", \"description\": \"Construct envelope, core-and-shell, and tenant improvements\", \"bom_standard\": \"Maier 1998\", \"parent_name\": \"Commercial Real Estate Ecosystem\"},\n    {\"name\": \"Leasing & Tenant Onboarding\", \"level\": \"L6\", \"description\": \"Market space, underwrite tenants, sign leases, onboard occupants\", \"bom_standard\": \"Maier 1998\", \"parent_name\": \"Commercial Real Estate Ecosystem\"},\n    {\"name\": \"Property Operations & Infrastructure\", \"level\": \"L6\", \"description\": \"Deliver continuous building services, energy, and automation\", \"bom_standard\": \"Maier 1998\", \"parent_name\": \"Commercial Real Estate Ecosystem\"},\n    {\"name\": \"Tenant Services & Turnover\", \"level\": \"L6\", \"description\": \"Service active tenants; renew, rotate, and re-let space\", \"bom_standard\": \"Maier 1998\", \"parent_name\": \"Commercial Real Estate Ecosystem\"},\n    {\"name\": \"Asset Disposal / Recapitalization\", \"level\": \"L6\", \"description\": \"Refinance, recapitalize, or divest the asset at target yield\", \"bom_standard\": \"Maier 1998\", \"parent_name\": \"Commercial Real Estate Ecosystem\"},\n    {\"name\": \"Facilities Management (H)\", \"level\": \"L6\", \"description\": \"Horizontal: maintain physical asset in rentable condition across all stages\", \"bom_standard\": \"Maier 1998\", \"parent_name\": \"Commercial Real Estate Ecosystem\"},\n    {\"name\": \"ESG & Compliance Reporting (H)\", \"level\": \"L6\", \"description\": \"Horizontal: EU Taxonomy, GRESB, CSRD, GEG disclosures\", \"bom_standard\": \"Maier 1998\", \"parent_name\": \"Commercial Real Estate Ecosystem\"},\n    {\"name\": \"Financial Administration (H)\", \"level\": \"L6\", \"description\": \"Horizontal: rent roll, CAM reconciliation, debt service, tax\", \"bom_standard\": \"Maier 1998\", \"parent_name\": \"Commercial Real Estate Ecosystem\"},\n    {\"name\": \"Insurance & Risk (H)\", \"level\": \"L6\", \"description\": \"Horizontal: fire, liability, business-interruption underwriting\", \"bom_standard\": \"Maier 1998\", \"parent_name\": \"Commercial Real Estate Ecosystem\"},\n\n    {\"name\": \"Building Energy Infrastructure\", \"level\": \"L6a\", \"description\": \"On-site generation, storage, grid coupling, and energy orchestration\", \"bom_standard\": \"Maier 1998\", \"parent_name\": \"Property Operations & Infrastructure\"},\n    {\"name\": \"Building Automation & Controls\", \"level\": \"L6a\", \"description\": \"BMS/BAS platforms, access control, lighting, security\", \"bom_standard\": \"Maier 1998\", \"parent_name\": \"Property Operations & Infrastructure\"},\n    {\"name\": \"Utilities Provisioning\", \"level\": \"L6a\", \"description\": \"Water, wastewater, submetering, telecom\", \"bom_standard\": \"Maier 1998\", \"parent_name\": \"Property Operations & Infrastructure\"},\n    {\"name\": \"Janitorial, Waste & Landscaping\", \"level\": \"L6a\", \"description\": \"Physical upkeep of common areas and grounds\", \"bom_standard\": \"Maier 1998\", \"parent_name\": \"Property Operations & Infrastructure\"},\n\n    {\"name\": \"Battery Energy Storage System\", \"level\": \"L5\", \"description\": \"Containerized Li-ion BESS with PCS, EMS, MV coupling — Mein Solar PRIMARY POSITION\", \"bom_standard\": \"ISO 15288\", \"parent_name\": \"Building Energy Infrastructure\"},\n    {\"name\": \"Rooftop / Carport PV Generator\", \"level\": \"L5\", \"description\": \"On-site solar generation — Mein Solar SECONDARY POSITION\", \"bom_standard\": \"ISO 15288\", \"parent_name\": \"Building Energy Infrastructure\"},\n    {\"name\": \"EV Charging Infrastructure\", \"level\": \"L5\", \"description\": \"AC and HPC charging for tenant/fleet — Mein Solar SECONDARY POSITION\", \"bom_standard\": \"ISO 15288\", \"parent_name\": \"Building Energy Infrastructure\"},\n    {\"name\": \"HVAC / Heat Pump Plant\", \"level\": \"L5\", \"description\": \"Space heating/cooling central plant\", \"bom_standard\": \"ISO 15288\", \"parent_name\": \"Building Energy Infrastructure\"},\n    {\"name\": \"CHP / Cogeneration Unit\", \"level\": \"L5\", \"description\": \"Gas-fired combined heat and power\", \"bom_standard\": \"ISO 15288\", \"parent_name\": \"Building Energy Infrastructure\"},\n    {\"name\": \"MV Grid Connection & Switchgear\", \"level\": \"L5\", \"description\": \"Medium-voltage DSO connection and protection\", \"bom_standard\": \"ISO 15288\", \"parent_name\": \"Building Energy Infrastructure\"},\n    {\"name\": \"Building Energy Management System\", \"level\": \"L5\", \"description\": \"Site-level EMS orchestrating PV, BESS, HVAC, EV loads\", \"bom_standard\": \"ISO 15288\", \"parent_name\": \"Building Energy Infrastructure\"},\n    {\"name\": \"Emergency / Standby Generator\", \"level\": \"L5\", \"description\": \"Diesel or gas genset for resilience and black-start\", \"bom_standard\": \"ISO 15288\", \"parent_name\": \"Building Energy Infrastructure\"},\n\n    {\"name\": \"Battery Modules & BMS\", \"level\": \"L4\", \"description\": \"LFP cells, racks, battery management system\", \"bom_standard\": \"INCOSE\", \"parent_name\": \"Battery Energy Storage System\"},\n    {\"name\": \"Power Conversion System\", \"level\": \"L4\", \"description\": \"4-quadrant bidirectional DC/AC inverter\", \"bom_standard\": \"INCOSE\", \"parent_name\": \"Battery Energy Storage System\"},\n    {\"name\": \"MV Transformer & Switchgear\", \"level\": \"L4\", \"description\": \"Step-up transformer and protection relays\", \"bom_standard\": \"INCOSE\", \"parent_name\": \"Battery Energy Storage System\"},\n    {\"name\": \"Thermal Management Unit\", \"level\": \"L4\", \"description\": \"Liquid cooling loop and container HVAC\", \"bom_standard\": \"INCOSE\", \"parent_name\": \"Battery Energy Storage System\"},\n    {\"name\": \"Fire Suppression\", \"level\": \"L4\", \"description\": \"NOVEC 1230/aerosol, deflagration venting\", \"bom_standard\": \"INCOSE\", \"parent_name\": \"Battery Energy Storage System\"},\n    {\"name\": \"Energy Management Software\", \"level\": \"L4\", \"description\": \"Dispatch optimizer for peak shaving, arbitrage, ancillary services\", \"bom_standard\": \"INCOSE\", \"parent_name\": \"Battery Energy Storage System\"},\n    {\"name\": \"Container Enclosure\", \"level\": \"L4\", \"description\": \"IP54 ISO HC container with racking and cable management\", \"bom_standard\": \"INCOSE\", \"parent_name\": \"Battery Energy Storage System\"}\n  ],\n  \"adjacency_analysis\": {\n    \"direct_competence_transfer\": [\n      {\"vn_unit\": \"Rooftop / Carport PV Generator\", \"level\": \"L5\", \"has_it\": \"YES\", \"effort\": \"LOW\"},\n      {\"vn_unit\": \"EV Charging Infrastructure\", \"level\": \"L5\", \"has_it\": \"PARTIAL\", \"effort\": \"LOW\"},\n      {\"vn_unit\": \"MV Grid Connection & Switchgear\", \"level\": \"L5\", \"has_it\": \"YES\", \"effort\": \"LOW\"},\n      {\"vn_unit\": \"Building Energy Management System\", \"level\": \"L5\", \"has_it\": \"PARTIAL\", \"effort\": \"MEDIUM\"},\n      {\"vn_unit\": \"Emergency / Standby Generator\", \"level\": \"L5\", \"has_it\": \"PARTIAL\", \"effort\": \"MEDIUM\"}\n    ],\n    \"strategic_adjacency_expansion\": [\n      {\"adjacent_l5\": \"Rooftop / Carport PV Generator\", \"fit\": 10, \"investment\": \"0 — incumbent\", \"overlap_pct\": 100},\n      {\"adjacent_l5\": \"EV Charging Infrastructure\", \"fit\": 8, \"investment\": \"6-12mo, ~€0.5M\", \"overlap_pct\": 70},\n      {\"adjacent_l5\": \"Building Energy Management System\", \"fit\": 6, \"investment\": \"12-18mo, ~€1.5M\", \"overlap_pct\": 40},\n      {\"adjacent_l5\": \"Emergency Generator integration\", \"fit\": 6, \"investment\": \"6-12mo, ~€0.3M\", \"overlap_pct\": 40}\n    ],\n    \"vertical_move_up\": {\n      \"current\": \"L5 BESS under L6d-a\",\n      \"target\": \"L6d-a Building Energy Infrastructure integrator\",\n      \"feasibility\": \"MEDIUM\",\n      \"competitors_at_target\": [\"Naturstrom+\", \"Enpal Business\", \"Voltaro\", \"Spie Deutschland\", \"Engie Deutschland\"],\n      \"tam_current_eur\": \"1.0-1.5B\",\n      \"tam_target_eur\": \"5-8B\",\n      \"rationale\": \"PV+BESS bundle is natural extension; BEMS layer via OEM partnership; EaaS financing needs balance-sheet partner.\"\n    }\n  },\n  \"key_incumbents_by_l5\": {\n    \"BESS\": [\"Voltfang\", \"Tesvolt\", \"Commeo\", \"Sungrow PowerTitan\", \"Tesla Megapack\", \"Fluence\"],\n    \"PV_Generator\": [\"Enerparc\", \"BayWa r.e.\", \"Goldbeck Solar\", \"IBC Solar\", \"Mein Solar\"],\n    \"EV_Charging\": [\"Alpitronic\", \"ads-tec Energy\", \"Kostad\", \"ABB E-mobility\", \"EnBW / Ionity OEM\"],\n    \"HVAC_HeatPump\": [\"Viessmann\", \"Vaillant\", \"Daikin\", \"Mitsubishi Electric\", \"STIEBEL ELTRON\"],\n    \"CHP\": [\"2G Energy\", \"Sokratherm\", \"Viessmann Vitobloc\", \"MTU Onsite\"],\n    \"MV_Switchgear\": [\"Siemens\", \"ABB\", \"Schneider Electric\", \"Eaton\"],\n    \"BEMS\": [\"Siemens Desigo\", \"Schneider EcoStruxure\", \"Honeywell Niagara\", \"Kieback&Peter\"]\n  },\n  \"qa_status\": {\n    \"Q1_cfj_industry_level\": \"PASS\",\n    \"Q2_no_orphan_nodes\": \"PASS\",\n    \"Q3_valid_level_transitions\": \"PASS\",\n    \"Q4_l4_children_per_l5_ge_2\": \"PASS (7 under BESS)\",\n    \"Q5_no_solution_specific_l7_l6\": \"PASS\",\n    \"Q6_naming_test\": \"PASS\",\n    \"Q7_unit_count_in_range\": \"PASS (34 units)\"\n  }\n}\n```\n\n---"
+    },
+    {
+      "title": "Sources",
+      "content": "- [NAICS 531120 — IBISWorld](https://www.ibisworld.com/classifications/naics/531120/lessors-of-nonresidential-buildings-except-miniwarehouses/)\n- [NAICS 531120 — SamSearch](https://samsearch.co/naics-ai-lookup/531120)\n- [Germany 2026 BESS regulatory agenda — Energy-Storage News](https://www.energy-storage.news/moment-of-truth-the-2026-regulatory-agenda-for-large-battery-storage-in-germany/)\n- [Germany BESS market guide — PVB Energy Storage](https://www.pvb.com/blog/2025-germany-energy-storage-market-guide-policies-bess-selection-industry-trends-complete-citations/)\n- [Battery Storage in Germany — Montel](https://montel.energy/resources/blog/battery-storage-in-germany-markets-policy-and-what-to-watch-in-2025)\n- [Germany's battery storage market triples since 2023 — Strategic Energy Europe](https://strategicenergy.eu/germanys-battery-storage-market/)"
+    }
+  ],
+  "tables": [
+    {
+      "headers": [
+        "Level",
+        "Node",
+        "Type",
+        "Job family",
+        "Serves output types"
+      ],
+      "rows": [
+        {
+          "Level": "L7",
+          "Node": "Commercial Real Estate Ecosystem",
+          "Type": "—",
+          "Job family": "Enable lessor-tenant value exchange",
+          "Serves output types": "All"
+        },
+        {
+          "Level": "L6a",
+          "Node": "Site Acquisition & Development",
+          "Type": "Core",
+          "Job family": "Acquire and entitle developable parcel",
+          "Serves output types": "Office, Logistics, Retail, Industrial, MedOffice"
+        },
+        {
+          "Level": "L6b",
+          "Node": "Building Construction & Fit-Out",
+          "Type": "Core",
+          "Job family": "Construct envelope and core-and-shell",
+          "Serves output types": "All"
+        },
+        {
+          "Level": "L6c",
+          "Node": "Leasing & Tenant Onboarding",
+          "Type": "Core",
+          "Job family": "Market, underwrite, sign, onboard tenants",
+          "Serves output types": "All"
+        },
+        {
+          "Level": "L6d",
+          "Node": "Property Operations & Infrastructure",
+          "Type": "Core",
+          "Job family": "**Deliver continuous building services** (where BESS sits)",
+          "Serves output types": "All"
+        },
+        {
+          "Level": "L6e",
+          "Node": "Tenant Services & Turnover",
+          "Type": "Core",
+          "Job family": "Service, renew, rotate tenants",
+          "Serves output types": "All"
+        },
+        {
+          "Level": "L6f",
+          "Node": "Asset Disposal / Recapitalization",
+          "Type": "Core",
+          "Job family": "Refinance or divest at target yield",
+          "Serves output types": "All"
+        },
+        {
+          "Level": "L6H-FM",
+          "Node": "Facilities Management (H)",
+          "Type": "Horizontal",
+          "Job family": "Maintain physical asset in rentable condition",
+          "Serves output types": "All"
+        },
+        {
+          "Level": "L6H-ESG",
+          "Node": "ESG & Compliance Reporting (H)",
+          "Type": "Horizontal",
+          "Job family": "Produce EU Taxonomy / GRESB / CSRD dossiers",
+          "Serves output types": "All"
+        },
+        {
+          "Level": "L6H-FIN",
+          "Node": "Financial Administration (H)",
+          "Type": "Horizontal",
+          "Job family": "Rent roll, CAM reconciliation, debt service",
+          "Serves output types": "All"
+        },
+        {
+          "Level": "L6H-INS",
+          "Node": "Insurance & Risk (H)",
+          "Type": "Horizontal",
+          "Job family": "Underwrite fire/liability/BI exposure",
+          "Serves output types": "All"
+        }
+      ]
+    },
+    {
+      "headers": [
+        "L6a-c",
+        "Node",
+        "Description"
+      ],
+      "rows": [
+        {
+          "L6a-c": "L6d-a",
+          "Node": "**Building Energy Infrastructure**",
+          "Description": "On-site generation, storage, conversion, grid coupling"
+        },
+        {
+          "L6a-c": "L6d-b",
+          "Node": "Building Automation & Controls",
+          "Description": "BMS/BAS, access, lighting, security platforms"
+        },
+        {
+          "L6a-c": "L6d-c",
+          "Node": "Utilities Provisioning",
+          "Description": "Water, wastewater, submetering, telecom"
+        },
+        {
+          "L6a-c": "L6d-d",
+          "Node": "Janitorial, Waste & Landscaping",
+          "Description": "Physical upkeep of common areas and grounds"
+        }
+      ]
+    },
+    {
+      "headers": [
+        "L5 Position",
+        "Status",
+        "Typical Incumbents (DE)",
+        "Mein Solar?"
+      ],
+      "rows": [
+        {
+          "L5 Position": "**Battery Energy Storage System**",
+          "Status": "—",
+          "Typical Incumbents (DE)": "Voltfang, Tesvolt, Commeo, Sungrow, Tesla Megapack, Fluence",
+          "Mein Solar?": "**← PRIMARY POSITION**"
+        },
+        {
+          "L5 Position": "**Rooftop / Carport PV Generator**",
+          "Status": "—",
+          "Typical Incumbents (DE)": "Enerparc, BayWa r.e., Goldbeck Solar, IBC Solar, Mein Solar",
+          "Mein Solar?": "**← SECONDARY POSITION**"
+        },
+        {
+          "L5 Position": "**EV Charging Infrastructure (AC + HPC)**",
+          "Status": "—",
+          "Typical Incumbents (DE)": "Alpitronic, ads-tec, Kostad, ABB E-mobility, EnBW/Ionity OEM",
+          "Mein Solar?": "**← SECONDARY (via buffer feature)**"
+        },
+        {
+          "L5 Position": "HVAC / Heat Pump Plant",
+          "Status": "—",
+          "Typical Incumbents (DE)": "Viessmann, Vaillant, Daikin, Mitsubishi Electric, STIEBEL ELTRON",
+          "Mein Solar?": "—"
+        },
+        {
+          "L5 Position": "CHP / Cogeneration Unit",
+          "Status": "—",
+          "Typical Incumbents (DE)": "2G Energy, Sokratherm, MTU Onsite, Viessmann Vitobloc",
+          "Mein Solar?": "—"
+        },
+        {
+          "L5 Position": "MV Grid Connection & Switchgear",
+          "Status": "—",
+          "Typical Incumbents (DE)": "Siemens, ABB, Schneider, Eaton",
+          "Mein Solar?": "—"
+        },
+        {
+          "L5 Position": "Building Energy Management System (BEMS)",
+          "Status": "—",
+          "Typical Incumbents (DE)": "Siemens Desigo, Schneider EcoStruxure, Honeywell Niagara, Kieback&Peter",
+          "Mein Solar?": "—"
+        },
+        {
+          "L5 Position": "Emergency / Standby Generator",
+          "Status": "—",
+          "Typical Incumbents (DE)": "Caterpillar, Kohler, FG Wilson, Rolls-Royce MTU",
+          "Mein Solar?": "—"
+        }
+      ]
+    },
+    {
+      "headers": [
+        "L4",
+        "Function",
+        "Typical vendor"
+      ],
+      "rows": [
+        {
+          "L4": "Battery Modules & BMS",
+          "Function": "Store/release DC energy, state monitoring",
+          "Typical vendor": "CATL, EVE, BYD, Samsung SDI"
+        },
+        {
+          "L4": "Power Conversion System (PCS)",
+          "Function": "4-quadrant DC↔AC bidirectional inverter",
+          "Typical vendor": "Sungrow, SMA, Power Electronics, Ingeteam"
+        },
+        {
+          "L4": "MV Transformer & Switchgear",
+          "Function": "Step-up to 10/20 kV DSO grid",
+          "Typical vendor": "Siemens, ABB, Schneider"
+        },
+        {
+          "L4": "Thermal Management Unit",
+          "Function": "Liquid cooling / HVAC inside container",
+          "Typical vendor": "Pfannenberg, Rittal, Kelvion"
+        },
+        {
+          "L4": "Fire Suppression System",
+          "Function": "NOVEC 1230 / aerosol, deflagration vents",
+          "Typical vendor": "Siemens, Fike, Minimax"
+        },
+        {
+          "L4": "Energy Management Software (EMS)",
+          "Function": "Dispatch vs. peak-shaving / arbitrage setpoints",
+          "Typical vendor": "Envision, Next Kraftwerke, Entrix, Kiwigrid"
+        },
+        {
+          "L4": "Container Enclosure & Racking",
+          "Function": "IP54 housing, seismic frame, cable management",
+          "Typical vendor": "Sungrow, SolarEast, BYD, CATL EnerC"
+        }
+      ]
+    },
+    {
+      "headers": [
+        "Office",
+        "Logistics / Industrial",
+        "Retail",
+        "Med-Office",
+        "Data-Center Shell"
+      ],
+      "rows": [
+        {
+          "Office": "L6a Site Acquisition",
+          "Logistics / Industrial": "✓",
+          "Retail": "✓",
+          "Med-Office": "✓",
+          "Data-Center Shell": "✓"
+        },
+        {
+          "Office": "L6b Construction",
+          "Logistics / Industrial": "✓",
+          "Retail": "✓",
+          "Med-Office": "✓",
+          "Data-Center Shell": "✓"
+        },
+        {
+          "Office": "L6c Leasing",
+          "Logistics / Industrial": "✓",
+          "Retail": "✓",
+          "Med-Office": "✓",
+          "Data-Center Shell": "✓"
+        },
+        {
+          "Office": "L6d-a Energy Infrastructure",
+          "Logistics / Industrial": "✓",
+          "Retail": "✓✓",
+          "Med-Office": "✓",
+          "Data-Center Shell": "✓✓"
+        },
+        {
+          "Office": "L6d-b BMS/BAS",
+          "Logistics / Industrial": "✓",
+          "Retail": "✓",
+          "Med-Office": "✓",
+          "Data-Center Shell": "✓"
+        },
+        {
+          "Office": "L6e Tenant Services",
+          "Logistics / Industrial": "✓",
+          "Retail": "✓",
+          "Med-Office": "✓",
+          "Data-Center Shell": "✓"
+        },
+        {
+          "Office": "L6f Disposal",
+          "Logistics / Industrial": "✓",
+          "Retail": "✓",
+          "Med-Office": "✓",
+          "Data-Center Shell": "✓"
+        }
+      ]
+    },
+    {
+      "headers": [
+        "VN Unit",
+        "Level",
+        "Competence Required",
+        "Has It?",
+        "Effort",
+        "Rationale"
+      ],
+      "rows": [
+        {
+          "VN Unit": "Rooftop / Carport PV Generator",
+          "Level": "L5",
+          "Competence Required": "PV EPC, MV coupling, Baugenehmigung",
+          "Has It?": "YES",
+          "Effort": "LOW",
+          "Rationale": "Mein Solar's incumbent capability; same customer"
+        },
+        {
+          "VN Unit": "EV Charging Infrastructure",
+          "Level": "L5",
+          "Competence Required": "MV coupling, civil, HPC integration",
+          "Has It?": "PARTIAL",
+          "Effort": "LOW",
+          "Rationale": "Feature 7 already defined; dispenser sourcing via OEM"
+        },
+        {
+          "VN Unit": "BEMS (BESS+PV+HVAC orchestration)",
+          "Level": "L5",
+          "Competence Required": "EMS software integration at site scope",
+          "Has It?": "PARTIAL",
+          "Effort": "MEDIUM",
+          "Rationale": "Has EMS for BESS; needs BMS/BAS bridge"
+        },
+        {
+          "VN Unit": "MV Grid Connection & Switchgear",
+          "Level": "L5",
+          "Competence Required": "MV design, protection relays, DSO interface",
+          "Has It?": "YES",
+          "Effort": "LOW",
+          "Rationale": "Already delivered inside BESS scope"
+        },
+        {
+          "VN Unit": "CHP / Cogeneration",
+          "Level": "L5",
+          "Competence Required": "Prime-mover engineering, gas permits",
+          "Has It?": "NO",
+          "Effort": "HIGH",
+          "Rationale": "excluded"
+        },
+        {
+          "VN Unit": "HVAC / Heat-Pump Plant",
+          "Level": "L5",
+          "Competence Required": "Refrigerant handling, hydronic design",
+          "Has It?": "NO",
+          "Effort": "HIGH",
+          "Rationale": "excluded"
+        },
+        {
+          "VN Unit": "Emergency Generator",
+          "Level": "L5",
+          "Competence Required": "Diesel/gas genset integration",
+          "Has It?": "PARTIAL",
+          "Effort": "MEDIUM",
+          "Rationale": "Parallel coupling via PCS feasible"
+        }
+      ]
+    },
+    {
+      "headers": [
+        "Adjacent L5",
+        "Current Incumbents",
+        "Competence Gap",
+        "Investment",
+        "Fit (1-10)",
+        "Rationale"
+      ],
+      "rows": [
+        {
+          "Adjacent L5": "Rooftop / Carport PV",
+          "Current Incumbents": "Enerparc, BayWa r.e., IBC Solar",
+          "Competence Gap": "None — Mein Solar incumbent",
+          "Investment": "0",
+          "Fit (1-10)": "**10**",
+          "Rationale": "Already positioned; 100% overlap"
+        },
+        {
+          "Adjacent L5": "EV Charging Infrastructure",
+          "Current Incumbents": "Alpitronic, ads-tec, Kostad",
+          "Competence Gap": "HPC dispenser certification partnership",
+          "Investment": "6–12mo, ~€0.5M",
+          "Fit (1-10)": "**8**",
+          "Rationale": "70% overlap (MV, civil, EMS); dispenser = OEM buy"
+        },
+        {
+          "Adjacent L5": "BEMS integrator layer",
+          "Current Incumbents": "Siemens Desigo, EcoStruxure, Niagara",
+          "Competence Gap": "BMS/BAS software stack, ISO 16484",
+          "Investment": "12–18mo, ~€1.5M",
+          "Fit (1-10)": "6",
+          "Rationale": "40% overlap; entry via PV+BESS+HVAC orchestration niche"
+        },
+        {
+          "Adjacent L5": "Emergency Generator integration",
+          "Current Incumbents": "CAT, Kohler, Rolls-Royce MTU",
+          "Competence Gap": "Diesel genset OEM partnership",
+          "Investment": "6–12mo, ~€0.3M",
+          "Fit (1-10)": "6",
+          "Rationale": "BESS + genset hybrid for resilience sites"
+        },
+        {
+          "Adjacent L5": "HVAC / Heat Pump Plant",
+          "Current Incumbents": "Viessmann, Vaillant, Daikin",
+          "Competence Gap": "TGA planning, refrigerant license",
+          "Investment": ">24mo, >€3M",
+          "Fit (1-10)": "2",
+          "Rationale": "excluded — <30% overlap"
+        },
+        {
+          "Adjacent L5": "CHP / Cogeneration",
+          "Current Incumbents": "2G Energy, Sokratherm",
+          "Competence Gap": "Prime mover, gas regulation",
+          "Investment": ">24mo, >€3M",
+          "Fit (1-10)": "2",
+          "Rationale": "excluded — <30% overlap"
+        }
+      ]
+    },
+    {
+      "headers": [
+        "Current",
+        "Target (1 up)",
+        "What to Add",
+        "Competitors",
+        "Feasibility",
+        "Economic Rationale"
+      ],
+      "rows": [
+        {
+          "Current": "L5 BESS (under L6d-a)",
+          "Target (1 up)": "**L6d-a Integrator**: full Building Energy Infrastructure bundle (PV + BESS + EV + BEMS + MV)",
+          "What to Add": "BEMS software layer, genset partnership, multi-asset SLA wrapper, energy-as-a-service financing",
+          "Competitors": "Naturstrom+, Enpal Business, Voltaro, Spie, Engie Deutschland",
+          "Feasibility": "**MEDIUM**",
+          "Economic Rationale": "TAM at L6d-a ≈ €5–8B DE commercial annually vs. ~€1–1.5B BESS-only. PV+BESS is natural bundle; BEMS is feasible via OEM tie-up; EaaS financing requires balance-sheet partner. Move-up is coherent with Mein Solar's existing PV+BESS authority."
+        }
+      ]
+    },
+    {
+      "headers": [
+        "Check",
+        "Status"
+      ],
+      "rows": [
+        {
+          "Check": "CFJ industry-level, mechanism-free",
+          "Status": "✅"
+        },
+        {
+          "Check": "L6 core sequence follows process order",
+          "Status": "✅ (Acquire → Build → Lease → Operate → Service → Dispose)"
+        },
+        {
+          "Check": "Horizontal L6 nodes identified (FM, ESG, FIN, INS)",
+          "Status": "✅"
+        },
+        {
+          "Check": "L5 alternatives at company's level enumerated",
+          "Status": "✅ (8 L5 positions under L6d-a)"
+        },
+        {
+          "Check": "L4 children ≥3 for Mein Solar's L5",
+          "Status": "✅ (7 L4 subsystems)"
+        },
+        {
+          "Check": "No solution-specific L7/L6 names",
+          "Status": "✅"
+        },
+        {
+          "Check": "Company primary position marked",
+          "Status": "✅"
+        },
+        {
+          "Check": "Unit count in range (15–60)",
+          "Status": "✅ (34 units)"
+        }
+      ]
+    },
+    {
+      "headers": [
+        "Signal",
+        "Source"
+      ],
+      "rows": [
+        {
+          "Signal": "C&I storage = **>60% of DE installed storage capacity** (>15 GW in 2024)",
+          "Source": "PVB/Montel market reports"
+        },
+        {
+          "Signal": "**MiSpeL regulation** mid-2026 enables mixed-energy co-location w/o EEG-subsidy loss",
+          "Source": "Energy-Storage News"
+        },
+        {
+          "Signal": "EnWG amendment Nov 2025 recognizes large BESS as **privileged infrastructure under building law** — faster Baugenehmigung",
+          "Source": "Energy-Storage News"
+        },
+        {
+          "Signal": "First-year depreciation **30% → 50%** for C&I BESS from 2025; +10% corp-tax discount for VDE 2510-certified assets",
+          "Source": "PVB market guide"
+        },
+        {
+          "Signal": "DE grid-connected storage: ~24 GWh (+22% YoY)",
+          "Source": "Strategic Energy Europe"
+        }
+      ]
+    }
+  ],
+  "entities": [
+    {
+      "market_name": "Commercial & Industrial Real-Estate Behind-the-Meter Storage",
+      "naics_code": "531120",
+      "naics_title": "Lessors of Nonresidential Buildings (except Miniwarehouses)",
+      "cfj_statement": "Provide operationally-ready, leasable non-residential space with reliable building infrastructure and tenant services, under a long-term rental/lease contract, at a risk-adjusted yield that funds capex and asset appreciation.",
+      "top_level": "L7",
+      "company_primary_position": {
+        "name": "Battery Energy Storage System",
+        "level": "L5",
+        "parent": "Building Energy Infrastructure"
+      },
+      "company_secondary_positions": [
+        {
+          "name": "Rooftop / Carport PV Generator",
+          "level": "L5"
+        },
+        {
+          "name": "EV Charging Infrastructure",
+          "level": "L5"
+        }
+      ],
+      "units": [
+        {
+          "name": "Commercial Real Estate Ecosystem",
+          "level": "L7",
+          "description": "Economic community coordinating lessor–tenant value exchange for non-residential space",
+          "bom_standard": "Moore 1993",
+          "parent_name": "ROOT"
+        },
+        {
+          "name": "Site Acquisition & Development",
+          "level": "L6",
+          "description": "Acquire and entitle developable parcels; secure zoning and permits",
+          "bom_standard": "Maier 1998",
+          "parent_name": "Commercial Real Estate Ecosystem"
+        },
+        {
+          "name": "Building Construction & Fit-Out",
+          "level": "L6",
+          "description": "Construct envelope, core-and-shell, and tenant improvements",
+          "bom_standard": "Maier 1998",
+          "parent_name": "Commercial Real Estate Ecosystem"
+        },
+        {
+          "name": "Leasing & Tenant Onboarding",
+          "level": "L6",
+          "description": "Market space, underwrite tenants, sign leases, onboard occupants",
+          "bom_standard": "Maier 1998",
+          "parent_name": "Commercial Real Estate Ecosystem"
+        },
+        {
+          "name": "Property Operations & Infrastructure",
+          "level": "L6",
+          "description": "Deliver continuous building services, energy, and automation",
+          "bom_standard": "Maier 1998",
+          "parent_name": "Commercial Real Estate Ecosystem"
+        },
+        {
+          "name": "Tenant Services & Turnover",
+          "level": "L6",
+          "description": "Service active tenants; renew, rotate, and re-let space",
+          "bom_standard": "Maier 1998",
+          "parent_name": "Commercial Real Estate Ecosystem"
+        },
+        {
+          "name": "Asset Disposal / Recapitalization",
+          "level": "L6",
+          "description": "Refinance, recapitalize, or divest the asset at target yield",
+          "bom_standard": "Maier 1998",
+          "parent_name": "Commercial Real Estate Ecosystem"
+        },
+        {
+          "name": "Facilities Management (H)",
+          "level": "L6",
+          "description": "Horizontal: maintain physical asset in rentable condition across all stages",
+          "bom_standard": "Maier 1998",
+          "parent_name": "Commercial Real Estate Ecosystem"
+        },
+        {
+          "name": "ESG & Compliance Reporting (H)",
+          "level": "L6",
+          "description": "Horizontal: EU Taxonomy, GRESB, CSRD, GEG disclosures",
+          "bom_standard": "Maier 1998",
+          "parent_name": "Commercial Real Estate Ecosystem"
+        },
+        {
+          "name": "Financial Administration (H)",
+          "level": "L6",
+          "description": "Horizontal: rent roll, CAM reconciliation, debt service, tax",
+          "bom_standard": "Maier 1998",
+          "parent_name": "Commercial Real Estate Ecosystem"
+        },
+        {
+          "name": "Insurance & Risk (H)",
+          "level": "L6",
+          "description": "Horizontal: fire, liability, business-interruption underwriting",
+          "bom_standard": "Maier 1998",
+          "parent_name": "Commercial Real Estate Ecosystem"
+        },
+        {
+          "name": "Building Energy Infrastructure",
+          "level": "L6a",
+          "description": "On-site generation, storage, grid coupling, and energy orchestration",
+          "bom_standard": "Maier 1998",
+          "parent_name": "Property Operations & Infrastructure"
+        },
+        {
+          "name": "Building Automation & Controls",
+          "level": "L6a",
+          "description": "BMS/BAS platforms, access control, lighting, security",
+          "bom_standard": "Maier 1998",
+          "parent_name": "Property Operations & Infrastructure"
+        },
+        {
+          "name": "Utilities Provisioning",
+          "level": "L6a",
+          "description": "Water, wastewater, submetering, telecom",
+          "bom_standard": "Maier 1998",
+          "parent_name": "Property Operations & Infrastructure"
+        },
+        {
+          "name": "Janitorial, Waste & Landscaping",
+          "level": "L6a",
+          "description": "Physical upkeep of common areas and grounds",
+          "bom_standard": "Maier 1998",
+          "parent_name": "Property Operations & Infrastructure"
+        },
+        {
+          "name": "Battery Energy Storage System",
+          "level": "L5",
+          "description": "Containerized Li-ion BESS with PCS, EMS, MV coupling — Mein Solar PRIMARY POSITION",
+          "bom_standard": "ISO 15288",
+          "parent_name": "Building Energy Infrastructure"
+        },
+        {
+          "name": "Rooftop / Carport PV Generator",
+          "level": "L5",
+          "description": "On-site solar generation — Mein Solar SECONDARY POSITION",
+          "bom_standard": "ISO 15288",
+          "parent_name": "Building Energy Infrastructure"
+        },
+        {
+          "name": "EV Charging Infrastructure",
+          "level": "L5",
+          "description": "AC and HPC charging for tenant/fleet — Mein Solar SECONDARY POSITION",
+          "bom_standard": "ISO 15288",
+          "parent_name": "Building Energy Infrastructure"
+        },
+        {
+          "name": "HVAC / Heat Pump Plant",
+          "level": "L5",
+          "description": "Space heating/cooling central plant",
+          "bom_standard": "ISO 15288",
+          "parent_name": "Building Energy Infrastructure"
+        },
+        {
+          "name": "CHP / Cogeneration Unit",
+          "level": "L5",
+          "description": "Gas-fired combined heat and power",
+          "bom_standard": "ISO 15288",
+          "parent_name": "Building Energy Infrastructure"
+        },
+        {
+          "name": "MV Grid Connection & Switchgear",
+          "level": "L5",
+          "description": "Medium-voltage DSO connection and protection",
+          "bom_standard": "ISO 15288",
+          "parent_name": "Building Energy Infrastructure"
+        },
+        {
+          "name": "Building Energy Management System",
+          "level": "L5",
+          "description": "Site-level EMS orchestrating PV, BESS, HVAC, EV loads",
+          "bom_standard": "ISO 15288",
+          "parent_name": "Building Energy Infrastructure"
+        },
+        {
+          "name": "Emergency / Standby Generator",
+          "level": "L5",
+          "description": "Diesel or gas genset for resilience and black-start",
+          "bom_standard": "ISO 15288",
+          "parent_name": "Building Energy Infrastructure"
+        },
+        {
+          "name": "Battery Modules & BMS",
+          "level": "L4",
+          "description": "LFP cells, racks, battery management system",
+          "bom_standard": "INCOSE",
+          "parent_name": "Battery Energy Storage System"
+        },
+        {
+          "name": "Power Conversion System",
+          "level": "L4",
+          "description": "4-quadrant bidirectional DC/AC inverter",
+          "bom_standard": "INCOSE",
+          "parent_name": "Battery Energy Storage System"
+        },
+        {
+          "name": "MV Transformer & Switchgear",
+          "level": "L4",
+          "description": "Step-up transformer and protection relays",
+          "bom_standard": "INCOSE",
+          "parent_name": "Battery Energy Storage System"
+        },
+        {
+          "name": "Thermal Management Unit",
+          "level": "L4",
+          "description": "Liquid cooling loop and container HVAC",
+          "bom_standard": "INCOSE",
+          "parent_name": "Battery Energy Storage System"
+        },
+        {
+          "name": "Fire Suppression",
+          "level": "L4",
+          "description": "NOVEC 1230/aerosol, deflagration venting",
+          "bom_standard": "INCOSE",
+          "parent_name": "Battery Energy Storage System"
+        },
+        {
+          "name": "Energy Management Software",
+          "level": "L4",
+          "description": "Dispatch optimizer for peak shaving, arbitrage, ancillary services",
+          "bom_standard": "INCOSE",
+          "parent_name": "Battery Energy Storage System"
+        },
+        {
+          "name": "Container Enclosure",
+          "level": "L4",
+          "description": "IP54 ISO HC container with racking and cable management",
+          "bom_standard": "INCOSE",
+          "parent_name": "Battery Energy Storage System"
+        }
+      ],
+      "adjacency_analysis": {
+        "direct_competence_transfer": [
+          {
+            "vn_unit": "Rooftop / Carport PV Generator",
+            "level": "L5",
+            "has_it": "YES",
+            "effort": "LOW"
+          },
+          {
+            "vn_unit": "EV Charging Infrastructure",
+            "level": "L5",
+            "has_it": "PARTIAL",
+            "effort": "LOW"
+          },
+          {
+            "vn_unit": "MV Grid Connection & Switchgear",
+            "level": "L5",
+            "has_it": "YES",
+            "effort": "LOW"
+          },
+          {
+            "vn_unit": "Building Energy Management System",
+            "level": "L5",
+            "has_it": "PARTIAL",
+            "effort": "MEDIUM"
+          },
+          {
+            "vn_unit": "Emergency / Standby Generator",
+            "level": "L5",
+            "has_it": "PARTIAL",
+            "effort": "MEDIUM"
+          }
+        ],
+        "strategic_adjacency_expansion": [
+          {
+            "adjacent_l5": "Rooftop / Carport PV Generator",
+            "fit": 10,
+            "investment": "0 — incumbent",
+            "overlap_pct": 100
+          },
+          {
+            "adjacent_l5": "EV Charging Infrastructure",
+            "fit": 8,
+            "investment": "6-12mo, ~€0.5M",
+            "overlap_pct": 70
+          },
+          {
+            "adjacent_l5": "Building Energy Management System",
+            "fit": 6,
+            "investment": "12-18mo, ~€1.5M",
+            "overlap_pct": 40
+          },
+          {
+            "adjacent_l5": "Emergency Generator integration",
+            "fit": 6,
+            "investment": "6-12mo, ~€0.3M",
+            "overlap_pct": 40
+          }
+        ],
+        "vertical_move_up": {
+          "current": "L5 BESS under L6d-a",
+          "target": "L6d-a Building Energy Infrastructure integrator",
+          "feasibility": "MEDIUM",
+          "competitors_at_target": [
+            "Naturstrom+",
+            "Enpal Business",
+            "Voltaro",
+            "Spie Deutschland",
+            "Engie Deutschland"
+          ],
+          "tam_current_eur": "1.0-1.5B",
+          "tam_target_eur": "5-8B",
+          "rationale": "PV+BESS bundle is natural extension; BEMS layer via OEM partnership; EaaS financing needs balance-sheet partner."
+        }
+      },
+      "key_incumbents_by_l5": {
+        "BESS": [
+          "Voltfang",
+          "Tesvolt",
+          "Commeo",
+          "Sungrow PowerTitan",
+          "Tesla Megapack",
+          "Fluence"
+        ],
+        "PV_Generator": [
+          "Enerparc",
+          "BayWa r.e.",
+          "Goldbeck Solar",
+          "IBC Solar",
+          "Mein Solar"
+        ],
+        "EV_Charging": [
+          "Alpitronic",
+          "ads-tec Energy",
+          "Kostad",
+          "ABB E-mobility",
+          "EnBW / Ionity OEM"
+        ],
+        "HVAC_HeatPump": [
+          "Viessmann",
+          "Vaillant",
+          "Daikin",
+          "Mitsubishi Electric",
+          "STIEBEL ELTRON"
+        ],
+        "CHP": [
+          "2G Energy",
+          "Sokratherm",
+          "Viessmann Vitobloc",
+          "MTU Onsite"
+        ],
+        "MV_Switchgear": [
+          "Siemens",
+          "ABB",
+          "Schneider Electric",
+          "Eaton"
+        ],
+        "BEMS": [
+          "Siemens Desigo",
+          "Schneider EcoStruxure",
+          "Honeywell Niagara",
+          "Kieback&Peter"
+        ]
+      },
+      "qa_status": {
+        "Q1_cfj_industry_level": "PASS",
+        "Q2_no_orphan_nodes": "PASS",
+        "Q3_valid_level_transitions": "PASS",
+        "Q4_l4_children_per_l5_ge_2": "PASS (7 under BESS)",
+        "Q5_no_solution_specific_l7_l6": "PASS",
+        "Q6_naming_test": "PASS",
+        "Q7_unit_count_in_range": "PASS (34 units)"
+      }
+    }
+  ],
+  "has_bom": true,
+  "naics_sector_type": "non_manufacturing"
+}

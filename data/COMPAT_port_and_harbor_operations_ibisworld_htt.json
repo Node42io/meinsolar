@@ -1,0 +1,388 @@
+{
+  "id": "COMPAT_port_and_harbor_operations_ibisworld_htt",
+  "title": "COMPAT — NAICS 488310 Port and Harbor Operations",
+  "type": "constraint_compatibility",
+  "market_slug": "port_and_harbor_operations_ibisworld_htt",
+  "is_per_market": true,
+  "sections": [
+    {
+      "title": "Market-specific context (relevant to constraint assessment)",
+      "content": "| Factor | Value | Implication |\n|---|---|---|\n| Salt-air coastal environment | IEC 60721-3 severity C/3C3 | Standard IP54 BESS container needs IP55+ / stainless fasteners (incremental, not blocking) |\n| Port peak loads | Cruise up to 16 MW, container ~7.5 MW | BESS size well within product scale (4.5 MW reference, modular to 25 MWh) |\n| Regulatory driver | AFIR Reg. 2023/1804 — OPS by 2030 for TEN-T ports | Strong demand pull; public funding available |\n| Critical-infrastructure status | NIS2, EU CER Directive | Enhanced supply-chain scrutiny on BESS components |\n| Terminal land | Dense near quay, available in outer yards | Siting workable via modular placement |\n| Fire regime | VdS + local Feuerwehr + ISPS security zones | Standard clearance design adapts |\n| Grid connection | Typically 10–110 kV DSO/TSO, sometimes constrained near quay | BESS can itself relieve grid bottleneck |\n| TAM | DE port-energy €500M–1B (2026–2032) | Economic case strongly supports CAPEX thresholds |\n\n---"
+    },
+    {
+      "title": "Constraint × Market verdict matrix (9 assessments)",
+      "content": "| # | Constraint | Type | Verdict | Cost | Time | Rationale (short) |\n|---|---|---|---|---|---|---|\n| 1 | MV Grid Connection Capacity | operational | **mitigable** | medium | 6–12 mo | Port MV grids often saturated near quayside under OPS demand (cruise 16 MW). DSO upgrade process standard; BESS itself buffers shortfall. |\n| 2 | Land Footprint and Siting | physical | **mitigable** | low | 3–6 mo | Container terminals dense but port authorities control ample outer-yard land; 40–80 m²/MWh fits within peripheral areas. Baugenehmigung via port master plan. |\n| 3 | Fire-Protection Clearance | regulatory | **mitigable** | medium | 3–6 mo | ISPS security zones + dangerous-goods (bunkering) adjacency require specific separation. Standard VdS clearances plus port-fire coordination; well-established path. |\n| 4 | Li-Ion Thermal Runaway Hazard | physical | **mitigable** | low | 0–3 mo | Contained via standard NOVEC 1230 + deflagration venting already in base product. Port fire brigades dedicated; proximity to flammables requires mass-explosive-zone distance check only. |\n| 5 | Grid Code Certification Lead Time | regulatory | **mitigable** | low | 6–12 mo | FGW TR8 type B plant cert required regardless of market — included in EPC scope. No port-specific delta. |\n| 6 | Battery Supply Chain Concentration | economic | **mitigable** | medium | 3–6 mo | Ports = critical infrastructure under NIS2/CER. Public-procurement + port operators may require EU-origin cells or enhanced supplier due diligence. Premium cells available (ACC, Northvolt residuals, Verkor pipeline). |\n| 7 | Ambient Temperature Envelope | environmental | **none** | — | — | German coastal ports operate −10 to +35 °C year-round; well within −20 to +50 °C envelope. Salt-air (IP55+/stainless) is an enclosure upgrade, not an ambient-range breach. |\n| 8 | Round-Trip Energy Losses | physical | **none** | — | — | 10–15% AC-AC loss is structural to technology, not market-specific. Priced into OPEX for all use cases. |\n| 9 | CAPEX Viability Threshold | economic | **none** | — | — | AFIR mandate + EU funding + port-authority creditworthiness support €250–400/kWh envelope. Ports are mandate-driven buyers, not payback-gated C&I. |\n\n---"
+    },
+    {
+      "title": "Knockouts",
+      "content": "**None.** No constraint crosses the \"physics impossibility\" or \"no certification path\" bar for port operations.\n\nFalse-knockout checks considered and rejected:\n- *Salt-air corrosion* — not a knockout; IP55+ / 316 stainless fasteners are standard marine-grade upgrade (low incremental cost, <3 mo design change).\n- *ISPS security clearance* — not a knockout; BESS placement within secured port perimeter is normal; integration into port access control is additive.\n- *Adjacency to bunkering / dangerous goods* — mass-explosive safety distance per VdS is achievable through placement, not a physics wall.\n\n---"
+    },
+    {
+      "title": "Incremental market-specific constraints (not in base list)",
+      "content": "These are port-specific adaptations that extend the base constraints but do not rise to knockout:\n\n| Adaptation | Mapped base constraint | Effort |\n|---|---|---|\n| Salt-air ingress protection (IP55+ / 316 stainless) | Ambient Temperature Envelope | LOW — <€50k / 2–3 mo design change |\n| Grid-forming PCS for microgrid / islanding with OPS | Round-Trip Energy Losses (ops mode) | LOW — available from same PCS vendor (SMA, Sungrow, Power Electronics) |\n| Harmonised port-EMS API (TOS / port-authority SCADA) | Grid Code Certification Lead Time | MEDIUM — €100–300k software interface work per port |\n\n---"
+    },
+    {
+      "title": "Downstream impact",
+      "content": "- Market **enters** Feature-Market Fit (Step 09), Competitive Landscape (Step 10), and Market Prioritization (Step 12).\n- Mitigable-constraint cost penalty (sum of 6 × low-to-medium): ~€0.5–1.2M per deal, plus 6–12 mo lead time (already parallel to base EPC schedule).\n- Key adaptation investment to load into prioritization: **IP55+ marine variant** (~€50k/6 mo one-off) + **port-EMS interface** (~€100–300k per first port, reusable).\n\n---"
+    },
+    {
+      "title": "Structured Data",
+      "content": "```json\n{\n  \"component\": \"constraint_market_compatibility\",\n  \"naics_code\": \"488310\",\n  \"naics_title\": \"Port and Harbor Operations\",\n  \"market_name\": \"Port Electrification — Shore Power, Crane, Ferry Charging\",\n  \"technology_class\": \"Large-Scale Battery Energy Storage System EPC\",\n  \"product_name\": \"EPC für Großbatteriespeicher\",\n  \"verdict_summary\": {\n    \"knockout_count\": 0,\n    \"mitigable_count\": 6,\n    \"none_count\": 3,\n    \"market_status\": \"surviving\",\n    \"total_mitigation_cost_range_eur\": \"500000-1200000\",\n    \"total_mitigation_time_range\": \"6-12 months (parallel to base EPC)\"\n  },\n  \"assessments\": [\n    {\n      \"constraint_name\": \"MV Grid Connection Capacity\",\n      \"market_name\": \"Port and Harbor Operations\",\n      \"naics_code\": \"488310\",\n      \"verdict\": \"mitigable\",\n      \"mitigation_actions\": [\n        \"Early DSO/TSO grid-capacity study (Netzanschlussanfrage) at site selection\",\n        \"Size BESS as grid-relief buffer where feeder saturated\",\n        \"Coordinate with port authority master-plan MV expansion programme\"\n      ],\n      \"mitigation_cost_estimate\": \"medium\",\n      \"mitigation_time_estimate\": \"6-12 months\",\n      \"knockout_reason\": null,\n      \"rationale\": \"Port MV feeders often saturated near quayside under OPS demand (cruise up to 16 MW). Standard DSO upgrade process applies; BESS itself can relieve grid bottleneck.\"\n    },\n    {\n      \"constraint_name\": \"Land Footprint and Siting\",\n      \"market_name\": \"Port and Harbor Operations\",\n      \"naics_code\": \"488310\",\n      \"verdict\": \"mitigable\",\n      \"mitigation_actions\": [\n        \"Modular container placement in outer-yard or peripheral terminal areas\",\n        \"Baugenehmigung via port master plan (faster than greenfield)\",\n        \"Vertical stacking or 40ft HC containers to reduce footprint\"\n      ],\n      \"mitigation_cost_estimate\": \"low\",\n      \"mitigation_time_estimate\": \"3-6 months\",\n      \"knockout_reason\": null,\n      \"rationale\": \"Terminals are dense near quay but port authorities control ample peripheral land. 40-80 m²/MWh fits within outer yards and unused logistics zones.\"\n    },\n    {\n      \"constraint_name\": \"Fire-Protection Clearance\",\n      \"market_name\": \"Port and Harbor Operations\",\n      \"naics_code\": \"488310\",\n      \"verdict\": \"mitigable\",\n      \"mitigation_actions\": [\n        \"Site-specific fire concept with port Feuerwehr and VdS\",\n        \"Mass-explosive safety distance to bunkering and dangerous-goods zones\",\n        \"Separation walls for clusters >3 MWh\",\n        \"Coordination with ISPS security perimeter\"\n      ],\n      \"mitigation_cost_estimate\": \"medium\",\n      \"mitigation_time_estimate\": \"3-6 months\",\n      \"knockout_reason\": null,\n      \"rationale\": \"Ports carry ISPS + dangerous-goods regulatory overlay. Standard VdS clearance design adapts with port-fire authority coordination — well-established path, no novel rule.\"\n    },\n    {\n      \"constraint_name\": \"Li-Ion Thermal Runaway Hazard\",\n      \"market_name\": \"Port and Harbor Operations\",\n      \"naics_code\": \"488310\",\n      \"verdict\": \"mitigable\",\n      \"mitigation_actions\": [\n        \"Standard NOVEC 1230 suppression + deflagration venting (base product)\",\n        \"Mass-explosive-zone distance analysis to fuel bunkering\",\n        \"Coordination with dedicated port fire brigade\"\n      ],\n      \"mitigation_cost_estimate\": \"low\",\n      \"mitigation_time_estimate\": \"0-3 months\",\n      \"knockout_reason\": null,\n      \"rationale\": \"Thermal runaway risk is inherent but fully contained by base product suppression system. Port proximity to flammables requires only placement-distance check, not new hardware.\"\n    },\n    {\n      \"constraint_name\": \"Grid Code Certification Lead Time\",\n      \"market_name\": \"Port and Harbor Operations\",\n      \"naics_code\": \"488310\",\n      \"verdict\": \"mitigable\",\n      \"mitigation_actions\": [\n        \"FGW TR8 type B plant certificate (standard EPC scope)\",\n        \"Parallel certification with procurement and civil\",\n        \"DSO acceptance included in project timeline\"\n      ],\n      \"mitigation_cost_estimate\": \"low\",\n      \"mitigation_time_estimate\": \"6-12 months\",\n      \"knockout_reason\": null,\n      \"rationale\": \"VDE-AR-N 4110 / FGW TR8 certification required for any German MV plant — included in base EPC scope. No port-specific delta.\"\n    },\n    {\n      \"constraint_name\": \"Battery Supply Chain Concentration\",\n      \"market_name\": \"Port and Harbor Operations\",\n      \"naics_code\": \"488310\",\n      \"verdict\": \"mitigable\",\n      \"mitigation_actions\": [\n        \"EU-origin or dual-sourced LFP cells where port operator requires\",\n        \"Supplier due-diligence under NIS2 / EU CER critical-infrastructure framework\",\n        \"CRMA and EU Battery Regulation compliance documentation\"\n      ],\n      \"mitigation_cost_estimate\": \"medium\",\n      \"mitigation_time_estimate\": \"3-6 months\",\n      \"knockout_reason\": null,\n      \"rationale\": \"Ports are critical infrastructure (NIS2 / EU CER). Public-procurement + port operators may require EU-origin cells or enhanced supplier scrutiny, increasing BoM cost 10-25% but not blocking.\"\n    },\n    {\n      \"constraint_name\": \"Ambient Temperature Envelope\",\n      \"market_name\": \"Port and Harbor Operations\",\n      \"naics_code\": \"488310\",\n      \"verdict\": \"none\",\n      \"mitigation_actions\": [],\n      \"mitigation_cost_estimate\": null,\n      \"mitigation_time_estimate\": null,\n      \"knockout_reason\": null,\n      \"rationale\": \"German coastal ports operate −10 to +35 °C year-round — well within the −20 to +50 °C envelope. Salt-air ingress is a separate enclosure-protection topic (IP55+ / stainless), not an ambient-range breach.\"\n    },\n    {\n      \"constraint_name\": \"Round-Trip Energy Losses\",\n      \"market_name\": \"Port and Harbor Operations\",\n      \"naics_code\": \"488310\",\n      \"verdict\": \"none\",\n      \"mitigation_actions\": [],\n      \"mitigation_cost_estimate\": null,\n      \"mitigation_time_estimate\": null,\n      \"knockout_reason\": null,\n      \"rationale\": \"10-15% AC-AC loss is a structural property of the technology, not a market-specific barrier. Priced into OPEX and arbitrage economics for every use case.\"\n    },\n    {\n      \"constraint_name\": \"CAPEX Viability Threshold\",\n      \"market_name\": \"Port and Harbor Operations\",\n      \"naics_code\": \"488310\",\n      \"verdict\": \"none\",\n      \"mitigation_actions\": [],\n      \"mitigation_cost_estimate\": null,\n      \"mitigation_time_estimate\": null,\n      \"knockout_reason\": null,\n      \"rationale\": \"AFIR Reg. 2023/1804 mandate by 2030 + EU/BMWK funding programmes + port-authority creditworthiness mean ports are mandate-driven buyers, not payback-gated like C&I. €250-400/kWh threshold comfortably met.\"\n    }\n  ],\n  \"incremental_market_specific_adaptations\": [\n    {\n      \"name\": \"Salt-air ingress protection\",\n      \"mapped_base_constraint\": \"Ambient Temperature Envelope\",\n      \"action\": \"Upgrade to IP55+ enclosure and 316 stainless fasteners per IEC 60721-3 severity 3C3\",\n      \"cost\": \"low\",\n      \"time\": \"2-3 months\",\n      \"note\": \"Standard marine-grade upgrade; container vendors (SolarEdge, Sungrow, SMA) offer coastal variants\"\n    },\n    {\n      \"name\": \"Grid-forming PCS for microgrid / islanding\",\n      \"mapped_base_constraint\": \"Round-Trip Energy Losses\",\n      \"action\": \"Specify grid-forming PCS (not grid-following) for OPS firming and islanding during DSO faults\",\n      \"cost\": \"low\",\n      \"time\": \"0-3 months\",\n      \"note\": \"Available from same PCS vendors (SMA Sunny Central Storage, Sungrow, Power Electronics) at modest premium\"\n    },\n    {\n      \"name\": \"Port-EMS / TOS interface\",\n      \"mapped_base_constraint\": \"Grid Code Certification Lead Time\",\n      \"action\": \"Build software interface between BESS EMS and port authority SCADA / TOS\",\n      \"cost\": \"medium\",\n      \"time\": \"3-6 months per first port (reusable thereafter)\",\n      \"note\": \"One-off integration; reusable pattern across ports\"\n    }\n  ],\n  \"markets_eliminated_impact\": false,\n  \"downstream_notes\": {\n    \"enters_feature_market_fit\": true,\n    \"enters_competitive_landscape\": true,\n    \"enters_market_prioritization\": true,\n    \"cost_penalty_total_eur_range\": \"500000-1200000\",\n    \"time_penalty_note\": \"6-12 months, parallel to base EPC schedule — no critical-path extension\"\n  },\n  \"sources_referenced_from_upstream\": [\n    \"01_product_decomposition.md (constraints list, specifications, UNSPSC)\",\n    \"02_functional_promise.md (product-level functional promise)\",\n    \"05_market_discovery.md (market rank 10, distance 5, MEDIUM priority)\",\n    \"VN_port_and_harbor_operations_ibisworld_htt.md (L5 primary position, 04e/04f/04g adjacency data, salt-air / AFIR / OPS context)\"\n  ]\n}\n```"
+    }
+  ],
+  "tables": [
+    {
+      "headers": [
+        "Factor",
+        "Value",
+        "Implication"
+      ],
+      "rows": [
+        {
+          "Factor": "Salt-air coastal environment",
+          "Value": "IEC 60721-3 severity C/3C3",
+          "Implication": "Standard IP54 BESS container needs IP55+ / stainless fasteners (incremental, not blocking)"
+        },
+        {
+          "Factor": "Port peak loads",
+          "Value": "Cruise up to 16 MW, container ~7.5 MW",
+          "Implication": "BESS size well within product scale (4.5 MW reference, modular to 25 MWh)"
+        },
+        {
+          "Factor": "Regulatory driver",
+          "Value": "AFIR Reg. 2023/1804 — OPS by 2030 for TEN-T ports",
+          "Implication": "Strong demand pull; public funding available"
+        },
+        {
+          "Factor": "Critical-infrastructure status",
+          "Value": "NIS2, EU CER Directive",
+          "Implication": "Enhanced supply-chain scrutiny on BESS components"
+        },
+        {
+          "Factor": "Terminal land",
+          "Value": "Dense near quay, available in outer yards",
+          "Implication": "Siting workable via modular placement"
+        },
+        {
+          "Factor": "Fire regime",
+          "Value": "VdS + local Feuerwehr + ISPS security zones",
+          "Implication": "Standard clearance design adapts"
+        },
+        {
+          "Factor": "Grid connection",
+          "Value": "Typically 10–110 kV DSO/TSO, sometimes constrained near quay",
+          "Implication": "BESS can itself relieve grid bottleneck"
+        },
+        {
+          "Factor": "TAM",
+          "Value": "DE port-energy €500M–1B (2026–2032)",
+          "Implication": "Economic case strongly supports CAPEX thresholds"
+        }
+      ]
+    },
+    {
+      "headers": [
+        "#",
+        "Constraint",
+        "Type",
+        "Verdict",
+        "Cost",
+        "Time",
+        "Rationale (short)"
+      ],
+      "rows": [
+        {
+          "#": "1",
+          "Constraint": "MV Grid Connection Capacity",
+          "Type": "operational",
+          "Verdict": "**mitigable**",
+          "Cost": "medium",
+          "Time": "6–12 mo",
+          "Rationale (short)": "Port MV grids often saturated near quayside under OPS demand (cruise 16 MW). DSO upgrade process standard; BESS itself buffers shortfall."
+        },
+        {
+          "#": "2",
+          "Constraint": "Land Footprint and Siting",
+          "Type": "physical",
+          "Verdict": "**mitigable**",
+          "Cost": "low",
+          "Time": "3–6 mo",
+          "Rationale (short)": "Container terminals dense but port authorities control ample outer-yard land; 40–80 m²/MWh fits within peripheral areas. Baugenehmigung via port master plan."
+        },
+        {
+          "#": "3",
+          "Constraint": "Fire-Protection Clearance",
+          "Type": "regulatory",
+          "Verdict": "**mitigable**",
+          "Cost": "medium",
+          "Time": "3–6 mo",
+          "Rationale (short)": "ISPS security zones + dangerous-goods (bunkering) adjacency require specific separation. Standard VdS clearances plus port-fire coordination; well-established path."
+        },
+        {
+          "#": "4",
+          "Constraint": "Li-Ion Thermal Runaway Hazard",
+          "Type": "physical",
+          "Verdict": "**mitigable**",
+          "Cost": "low",
+          "Time": "0–3 mo",
+          "Rationale (short)": "Contained via standard NOVEC 1230 + deflagration venting already in base product. Port fire brigades dedicated; proximity to flammables requires mass-explosive-zone distance check only."
+        },
+        {
+          "#": "5",
+          "Constraint": "Grid Code Certification Lead Time",
+          "Type": "regulatory",
+          "Verdict": "**mitigable**",
+          "Cost": "low",
+          "Time": "6–12 mo",
+          "Rationale (short)": "FGW TR8 type B plant cert required regardless of market — included in EPC scope. No port-specific delta."
+        },
+        {
+          "#": "6",
+          "Constraint": "Battery Supply Chain Concentration",
+          "Type": "economic",
+          "Verdict": "**mitigable**",
+          "Cost": "medium",
+          "Time": "3–6 mo",
+          "Rationale (short)": "Ports = critical infrastructure under NIS2/CER. Public-procurement + port operators may require EU-origin cells or enhanced supplier due diligence. Premium cells available (ACC, Northvolt residuals, Verkor pipeline)."
+        },
+        {
+          "#": "7",
+          "Constraint": "Ambient Temperature Envelope",
+          "Type": "environmental",
+          "Verdict": "**none**",
+          "Cost": "—",
+          "Time": "—",
+          "Rationale (short)": "German coastal ports operate −10 to +35 °C year-round; well within −20 to +50 °C envelope. Salt-air (IP55+/stainless) is an enclosure upgrade, not an ambient-range breach."
+        },
+        {
+          "#": "8",
+          "Constraint": "Round-Trip Energy Losses",
+          "Type": "physical",
+          "Verdict": "**none**",
+          "Cost": "—",
+          "Time": "—",
+          "Rationale (short)": "10–15% AC-AC loss is structural to technology, not market-specific. Priced into OPEX for all use cases."
+        },
+        {
+          "#": "9",
+          "Constraint": "CAPEX Viability Threshold",
+          "Type": "economic",
+          "Verdict": "**none**",
+          "Cost": "—",
+          "Time": "—",
+          "Rationale (short)": "AFIR mandate + EU funding + port-authority creditworthiness support €250–400/kWh envelope. Ports are mandate-driven buyers, not payback-gated C&I."
+        }
+      ]
+    },
+    {
+      "headers": [
+        "Adaptation",
+        "Mapped base constraint",
+        "Effort"
+      ],
+      "rows": [
+        {
+          "Adaptation": "Salt-air ingress protection (IP55+ / 316 stainless)",
+          "Mapped base constraint": "Ambient Temperature Envelope",
+          "Effort": "LOW — <€50k / 2–3 mo design change"
+        },
+        {
+          "Adaptation": "Grid-forming PCS for microgrid / islanding with OPS",
+          "Mapped base constraint": "Round-Trip Energy Losses (ops mode)",
+          "Effort": "LOW — available from same PCS vendor (SMA, Sungrow, Power Electronics)"
+        },
+        {
+          "Adaptation": "Harmonised port-EMS API (TOS / port-authority SCADA)",
+          "Mapped base constraint": "Grid Code Certification Lead Time",
+          "Effort": "MEDIUM — €100–300k software interface work per port"
+        }
+      ]
+    }
+  ],
+  "entities": [
+    {
+      "component": "constraint_market_compatibility",
+      "naics_code": "488310",
+      "naics_title": "Port and Harbor Operations",
+      "market_name": "Port Electrification — Shore Power, Crane, Ferry Charging",
+      "technology_class": "Large-Scale Battery Energy Storage System EPC",
+      "product_name": "EPC für Großbatteriespeicher",
+      "verdict_summary": {
+        "knockout_count": 0,
+        "mitigable_count": 6,
+        "none_count": 3,
+        "market_status": "surviving",
+        "total_mitigation_cost_range_eur": "500000-1200000",
+        "total_mitigation_time_range": "6-12 months (parallel to base EPC)"
+      },
+      "assessments": [
+        {
+          "constraint_name": "MV Grid Connection Capacity",
+          "market_name": "Port and Harbor Operations",
+          "naics_code": "488310",
+          "verdict": "mitigable",
+          "mitigation_actions": [
+            "Early DSO/TSO grid-capacity study (Netzanschlussanfrage) at site selection",
+            "Size BESS as grid-relief buffer where feeder saturated",
+            "Coordinate with port authority master-plan MV expansion programme"
+          ],
+          "mitigation_cost_estimate": "medium",
+          "mitigation_time_estimate": "6-12 months",
+          "knockout_reason": null,
+          "rationale": "Port MV feeders often saturated near quayside under OPS demand (cruise up to 16 MW). Standard DSO upgrade process applies; BESS itself can relieve grid bottleneck."
+        },
+        {
+          "constraint_name": "Land Footprint and Siting",
+          "market_name": "Port and Harbor Operations",
+          "naics_code": "488310",
+          "verdict": "mitigable",
+          "mitigation_actions": [
+            "Modular container placement in outer-yard or peripheral terminal areas",
+            "Baugenehmigung via port master plan (faster than greenfield)",
+            "Vertical stacking or 40ft HC containers to reduce footprint"
+          ],
+          "mitigation_cost_estimate": "low",
+          "mitigation_time_estimate": "3-6 months",
+          "knockout_reason": null,
+          "rationale": "Terminals are dense near quay but port authorities control ample peripheral land. 40-80 m²/MWh fits within outer yards and unused logistics zones."
+        },
+        {
+          "constraint_name": "Fire-Protection Clearance",
+          "market_name": "Port and Harbor Operations",
+          "naics_code": "488310",
+          "verdict": "mitigable",
+          "mitigation_actions": [
+            "Site-specific fire concept with port Feuerwehr and VdS",
+            "Mass-explosive safety distance to bunkering and dangerous-goods zones",
+            "Separation walls for clusters >3 MWh",
+            "Coordination with ISPS security perimeter"
+          ],
+          "mitigation_cost_estimate": "medium",
+          "mitigation_time_estimate": "3-6 months",
+          "knockout_reason": null,
+          "rationale": "Ports carry ISPS + dangerous-goods regulatory overlay. Standard VdS clearance design adapts with port-fire authority coordination — well-established path, no novel rule."
+        },
+        {
+          "constraint_name": "Li-Ion Thermal Runaway Hazard",
+          "market_name": "Port and Harbor Operations",
+          "naics_code": "488310",
+          "verdict": "mitigable",
+          "mitigation_actions": [
+            "Standard NOVEC 1230 suppression + deflagration venting (base product)",
+            "Mass-explosive-zone distance analysis to fuel bunkering",
+            "Coordination with dedicated port fire brigade"
+          ],
+          "mitigation_cost_estimate": "low",
+          "mitigation_time_estimate": "0-3 months",
+          "knockout_reason": null,
+          "rationale": "Thermal runaway risk is inherent but fully contained by base product suppression system. Port proximity to flammables requires only placement-distance check, not new hardware."
+        },
+        {
+          "constraint_name": "Grid Code Certification Lead Time",
+          "market_name": "Port and Harbor Operations",
+          "naics_code": "488310",
+          "verdict": "mitigable",
+          "mitigation_actions": [
+            "FGW TR8 type B plant certificate (standard EPC scope)",
+            "Parallel certification with procurement and civil",
+            "DSO acceptance included in project timeline"
+          ],
+          "mitigation_cost_estimate": "low",
+          "mitigation_time_estimate": "6-12 months",
+          "knockout_reason": null,
+          "rationale": "VDE-AR-N 4110 / FGW TR8 certification required for any German MV plant — included in base EPC scope. No port-specific delta."
+        },
+        {
+          "constraint_name": "Battery Supply Chain Concentration",
+          "market_name": "Port and Harbor Operations",
+          "naics_code": "488310",
+          "verdict": "mitigable",
+          "mitigation_actions": [
+            "EU-origin or dual-sourced LFP cells where port operator requires",
+            "Supplier due-diligence under NIS2 / EU CER critical-infrastructure framework",
+            "CRMA and EU Battery Regulation compliance documentation"
+          ],
+          "mitigation_cost_estimate": "medium",
+          "mitigation_time_estimate": "3-6 months",
+          "knockout_reason": null,
+          "rationale": "Ports are critical infrastructure (NIS2 / EU CER). Public-procurement + port operators may require EU-origin cells or enhanced supplier scrutiny, increasing BoM cost 10-25% but not blocking."
+        },
+        {
+          "constraint_name": "Ambient Temperature Envelope",
+          "market_name": "Port and Harbor Operations",
+          "naics_code": "488310",
+          "verdict": "none",
+          "mitigation_actions": [],
+          "mitigation_cost_estimate": null,
+          "mitigation_time_estimate": null,
+          "knockout_reason": null,
+          "rationale": "German coastal ports operate −10 to +35 °C year-round — well within the −20 to +50 °C envelope. Salt-air ingress is a separate enclosure-protection topic (IP55+ / stainless), not an ambient-range breach."
+        },
+        {
+          "constraint_name": "Round-Trip Energy Losses",
+          "market_name": "Port and Harbor Operations",
+          "naics_code": "488310",
+          "verdict": "none",
+          "mitigation_actions": [],
+          "mitigation_cost_estimate": null,
+          "mitigation_time_estimate": null,
+          "knockout_reason": null,
+          "rationale": "10-15% AC-AC loss is a structural property of the technology, not a market-specific barrier. Priced into OPEX and arbitrage economics for every use case."
+        },
+        {
+          "constraint_name": "CAPEX Viability Threshold",
+          "market_name": "Port and Harbor Operations",
+          "naics_code": "488310",
+          "verdict": "none",
+          "mitigation_actions": [],
+          "mitigation_cost_estimate": null,
+          "mitigation_time_estimate": null,
+          "knockout_reason": null,
+          "rationale": "AFIR Reg. 2023/1804 mandate by 2030 + EU/BMWK funding programmes + port-authority creditworthiness mean ports are mandate-driven buyers, not payback-gated like C&I. €250-400/kWh threshold comfortably met."
+        }
+      ],
+      "incremental_market_specific_adaptations": [
+        {
+          "name": "Salt-air ingress protection",
+          "mapped_base_constraint": "Ambient Temperature Envelope",
+          "action": "Upgrade to IP55+ enclosure and 316 stainless fasteners per IEC 60721-3 severity 3C3",
+          "cost": "low",
+          "time": "2-3 months",
+          "note": "Standard marine-grade upgrade; container vendors (SolarEdge, Sungrow, SMA) offer coastal variants"
+        },
+        {
+          "name": "Grid-forming PCS for microgrid / islanding",
+          "mapped_base_constraint": "Round-Trip Energy Losses",
+          "action": "Specify grid-forming PCS (not grid-following) for OPS firming and islanding during DSO faults",
+          "cost": "low",
+          "time": "0-3 months",
+          "note": "Available from same PCS vendors (SMA Sunny Central Storage, Sungrow, Power Electronics) at modest premium"
+        },
+        {
+          "name": "Port-EMS / TOS interface",
+          "mapped_base_constraint": "Grid Code Certification Lead Time",
+          "action": "Build software interface between BESS EMS and port authority SCADA / TOS",
+          "cost": "medium",
+          "time": "3-6 months per first port (reusable thereafter)",
+          "note": "One-off integration; reusable pattern across ports"
+        }
+      ],
+      "markets_eliminated_impact": false,
+      "downstream_notes": {
+        "enters_feature_market_fit": true,
+        "enters_competitive_landscape": true,
+        "enters_market_prioritization": true,
+        "cost_penalty_total_eur_range": "500000-1200000",
+        "time_penalty_note": "6-12 months, parallel to base EPC schedule — no critical-path extension"
+      },
+      "sources_referenced_from_upstream": [
+        "01_product_decomposition.md (constraints list, specifications, UNSPSC)",
+        "02_functional_promise.md (product-level functional promise)",
+        "05_market_discovery.md (market rank 10, distance 5, MEDIUM priority)",
+        "VN_port_and_harbor_operations_ibisworld_htt.md (L5 primary position, 04e/04f/04g adjacency data, salt-air / AFIR / OPS context)"
+      ]
+    }
+  ],
+  "has_bom": true,
+  "naics_sector_type": "non_manufacturing"
+}

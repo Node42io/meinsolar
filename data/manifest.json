@@ -1,0 +1,276 @@
+{
+  "analysis_pages": [
+    {
+      "id": "01_product_decomposition",
+      "title": "01 — Product Decomposition",
+      "type": "product_decomposition",
+      "file": "01_product_decomposition.json"
+    },
+    {
+      "id": "02_functional_promise",
+      "title": "02 — Functional Promise",
+      "type": "functional_promise",
+      "file": "02_functional_promise.json"
+    },
+    {
+      "id": "03_constraints",
+      "title": "03 — Constraints Analysis",
+      "type": "constraints",
+      "file": "03_constraints.json"
+    },
+    {
+      "id": "04_incumbents_home",
+      "title": "04 — Incumbent Technologies (Home Market)",
+      "type": "home_market_competition",
+      "file": "04_incumbents_home.json"
+    },
+    {
+      "id": "05_market_discovery",
+      "title": "05 — Market Discovery (Phases 02a + 02b)",
+      "type": "market_discovery",
+      "file": "05_market_discovery.json"
+    },
+    {
+      "id": "10_final_ranking",
+      "title": "10 — Final Market Ranking (PCM Step 14)",
+      "type": "final_ranking",
+      "file": "10_final_ranking.json"
+    }
+  ],
+  "markets": [
+    {
+      "slug": "electric_power_distribution_ibisworld_ht",
+      "title": "Value Network — NAICS 221122 Electric Power Distri",
+      "available_analyses": [
+        "product_bom",
+        "constraint_compatibility",
+        "feature_market_fit",
+        "jtbd_analysis",
+        "odi_matrix",
+        "value_network"
+      ],
+      "has_bom": true,
+      "has_application_engineering": false,
+      "has_business_model": false,
+      "has_market_sizing": false,
+      "has_go_to_market": false,
+      "has_competitive_intel": false,
+      "has_feasibility": false,
+      "has_value_chain": false,
+      "has_working_capital": false
+    },
+    {
+      "slug": "lessors_of_nonresidential_buildings_sams",
+      "title": "Value Network — NAICS 531120 Lessors of Nonresiden",
+      "available_analyses": [
+        "product_bom",
+        "constraint_compatibility",
+        "feature_market_fit",
+        "jtbd_analysis",
+        "odi_matrix",
+        "value_network"
+      ],
+      "has_bom": true,
+      "has_application_engineering": false,
+      "has_business_model": false,
+      "has_market_sizing": false,
+      "has_go_to_market": false,
+      "has_competitive_intel": false,
+      "has_feasibility": false,
+      "has_value_chain": false,
+      "has_working_capital": false
+    },
+    {
+      "slug": "other_electric_power_generation_bess_ref",
+      "title": "VN — NAICS 221118 Other Electric Power Generation ",
+      "available_analyses": [
+        "product_bom",
+        "constraint_compatibility",
+        "feature_market_fit",
+        "jtbd_analysis",
+        "odi_matrix",
+        "value_network"
+      ],
+      "has_bom": true,
+      "has_application_engineering": false,
+      "has_business_model": false,
+      "has_market_sizing": false,
+      "has_go_to_market": false,
+      "has_competitive_intel": false,
+      "has_feasibility": false,
+      "has_value_chain": false,
+      "has_working_capital": false
+    },
+    {
+      "slug": "port_and_harbor_operations_ibisworld_htt",
+      "title": "VN — NAICS 488310 Port and Harbor Operations",
+      "available_analyses": [
+        "product_bom",
+        "constraint_compatibility",
+        "feature_market_fit",
+        "jtbd_analysis",
+        "odi_matrix",
+        "value_network"
+      ],
+      "has_bom": true,
+      "has_application_engineering": false,
+      "has_business_model": false,
+      "has_market_sizing": false,
+      "has_go_to_market": false,
+      "has_competitive_intel": false,
+      "has_feasibility": false,
+      "has_value_chain": false,
+      "has_working_capital": false
+    },
+    {
+      "slug": "refrigerated_warehousing_and_storage_sam",
+      "title": "VN — NAICS 493120 Refrigerated Warehousing and Sto",
+      "available_analyses": [
+        "product_bom",
+        "constraint_compatibility",
+        "feature_market_fit",
+        "jtbd_analysis",
+        "odi_matrix",
+        "value_network"
+      ],
+      "has_bom": true,
+      "has_application_engineering": false,
+      "has_business_model": false,
+      "has_market_sizing": false,
+      "has_go_to_market": false,
+      "has_competitive_intel": false,
+      "has_feasibility": false,
+      "has_value_chain": false,
+      "has_working_capital": false
+    },
+    {
+      "slug": "semiconductor_and_related_device_manufac",
+      "title": "Value Network — NAICS 334413 Semiconductor and Rel",
+      "available_analyses": [
+        "product_bom",
+        "constraint_compatibility",
+        "feature_market_fit",
+        "jtbd_analysis",
+        "odi_matrix",
+        "value_network"
+      ],
+      "has_bom": true,
+      "has_application_engineering": false,
+      "has_business_model": false,
+      "has_market_sizing": false,
+      "has_go_to_market": false,
+      "has_competitive_intel": false,
+      "has_feasibility": false,
+      "has_value_chain": false,
+      "has_working_capital": false
+    },
+    {
+      "slug": "solar_electric_power_generation_ibisworl",
+      "title": "VN — NAICS 221114 Solar Electric Power Generation",
+      "available_analyses": [
+        "product_bom",
+        "constraint_compatibility",
+        "feature_market_fit",
+        "jtbd_analysis",
+        "odi_matrix",
+        "value_network"
+      ],
+      "has_bom": true,
+      "has_application_engineering": false,
+      "has_business_model": false,
+      "has_market_sizing": false,
+      "has_go_to_market": false,
+      "has_competitive_intel": false,
+      "has_feasibility": false,
+      "has_value_chain": false,
+      "has_working_capital": false
+    },
+    {
+      "slug": "wind_electric_power_generation_ibisworld",
+      "title": "VN — NAICS 221115 Wind Electric Power Generation",
+      "available_analyses": [
+        "product_bom",
+        "constraint_compatibility",
+        "feature_market_fit",
+        "jtbd_analysis",
+        "odi_matrix",
+        "value_network"
+      ],
+      "has_bom": true,
+      "has_application_engineering": false,
+      "has_business_model": false,
+      "has_market_sizing": false,
+      "has_go_to_market": false,
+      "has_competitive_intel": false,
+      "has_feasibility": false,
+      "has_value_chain": false,
+      "has_working_capital": false
+    }
+  ],
+  "market_types": {
+    "electric_power_distribution_ibisworld_ht": [
+      "product_bom",
+      "constraint_compatibility",
+      "feature_market_fit",
+      "jtbd_analysis",
+      "odi_matrix",
+      "value_network"
+    ],
+    "lessors_of_nonresidential_buildings_sams": [
+      "product_bom",
+      "constraint_compatibility",
+      "feature_market_fit",
+      "jtbd_analysis",
+      "odi_matrix",
+      "value_network"
+    ],
+    "other_electric_power_generation_bess_ref": [
+      "product_bom",
+      "constraint_compatibility",
+      "feature_market_fit",
+      "jtbd_analysis",
+      "odi_matrix",
+      "value_network"
+    ],
+    "port_and_harbor_operations_ibisworld_htt": [
+      "product_bom",
+      "constraint_compatibility",
+      "feature_market_fit",
+      "jtbd_analysis",
+      "odi_matrix",
+      "value_network"
+    ],
+    "refrigerated_warehousing_and_storage_sam": [
+      "product_bom",
+      "constraint_compatibility",
+      "feature_market_fit",
+      "jtbd_analysis",
+      "odi_matrix",
+      "value_network"
+    ],
+    "semiconductor_and_related_device_manufac": [
+      "product_bom",
+      "constraint_compatibility",
+      "feature_market_fit",
+      "jtbd_analysis",
+      "odi_matrix",
+      "value_network"
+    ],
+    "solar_electric_power_generation_ibisworl": [
+      "product_bom",
+      "constraint_compatibility",
+      "feature_market_fit",
+      "jtbd_analysis",
+      "odi_matrix",
+      "value_network"
+    ],
+    "wind_electric_power_generation_ibisworld": [
+      "product_bom",
+      "constraint_compatibility",
+      "feature_market_fit",
+      "jtbd_analysis",
+      "odi_matrix",
+      "value_network"
+    ]
+  }
+}

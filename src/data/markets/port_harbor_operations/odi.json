@@ -1,0 +1,1143 @@
+{
+  "id": "ODI_port_and_harbor_operations_ibisworld_htt",
+  "title": "ODI Matrix — NAICS 488310 Port and Harbor Operations",
+  "type": "odi_matrix",
+  "market_slug": "port_and_harbor_operations_ibisworld_htt",
+  "is_per_market": true,
+  "sections": [
+    {
+      "title": "Step 1 — Needs gathered (28 entries)",
+      "content": "25 market-level needs inherited verbatim from JTBD Phase 3 (`N1`–`N25`). 3 additional product-related needs from FIT Step 10 (PR4, PR5, PR7) injected with `job_step_number=0`, `job_step_name=\"product_constraint\"`, `product_related=true`. PR1/PR2/PR3/PR6/PR8/PR9 are duplicates of N6/N9/N5/N12/N22/N17 and excluded.\n\n---"
+    },
+    {
+      "title": "Step 2 — Satisfaction recalibration (incumbent-anchored)",
+      "content": "Incumbent reference set (from Step 03 + Step 11): **Siemens Smart Infrastructure**, **ABB Ports & Terminals** (Pier 300 LA, ECT Rotterdam 20 MWh), **Wärtsilä GEMS**, **Cavotec** (OPS specialist), **Schneider EcoStruxure**, **Fluence**, OEM-turnkey (Tesla/Sungrow), and non-storage substitute grid-reinforcement.\n\n| # | S_orig | S_recal | Evidence from Step 03 / Step 11 |\n|---|---|---|---|\n| N8 | 4 | **5** | Siemens/ABB have mature BoP scope control from >100 utility refs — raise S |\n| N10 | 2 | **5** | Siemens SI wraps OPS+MV+BESS at public-tender scale — incumbents (not Mein Solar) satisfy this well |\n| N11 | 4 | **5** | Cavotec + Siemens jointly own VDE-AR-N 4110 / IEC 80005-1 handover — raise S |\n| N13 | 4 | **5** | T1 incumbent witness-test experience on DE grid code — raise S |\n| N14 | 5 | **6** | ABB Pier 300 + ECT 20 MWh show >95% OPS connection rate achievable |\n| N15 | 4 | **5** | Wärtsilä GEMS / Fluence Mosaic deliver demand-charge shaving — raise S |\n| N16 | 5 | **6** | Tier-1 PCS (SMA, Sungrow, ABB) ride-through is mature — raise S |\n| N22 | 4 | **5** | CellCube + Tesla recycling partners + EU Battery Passport pilots — raise S |\n| N24 | 4 | **5** | T1 incumbents carry cleaner public-tender audit record — raise S |\n| PR4 | 4 | **5** | T1 container OEMs (CATL EnerC, Sungrow) offer 1 C profiles at warranty-matched fade — raise S |\n| PR5 | 4 | **5** | Siemens/ABB MV protection-relay engineering is mature (IEC 61850 GOOSE) — raise S |\n| all others | — | **unchanged** | No Step 03 evidence contradicts original estimate (N1/N4/N7 schedule friction universal; N2/N9/N25 port-specific gaps unfilled by any incumbent) |\n\nImportance scores unchanged (importance-stability rule). 11 of 28 satisfaction scores adjusted; 17 unchanged.\n\n---"
+    },
+    {
+      "title": "Step 3 — Opportunity scores (deterministic)",
+      "content": "Sorted by opportunity_score desc.\n\n| # | Statement (short) | I | S | Opp | Under | Over |\n|---|---|---|---|---|---|---|\n| N1 | BESS undersizing vs AFIR 2030 peak OPS | 10 | 3 | **17.00** | ✅ | — |\n| N4 | DSO MV-capacity blocker found post tender-award | 10 | 3 | **17.00** | ✅ | — |\n| N7 | Time-to-RtB <15 mo to meet AFIR 2030 | 10 | 3 | **17.00** | ✅ | — |\n| N2 | Bankable multi-revenue sizing study | 9 | 3 | **15.00** | ✅ | — |\n| N9 | Feuerwehr/VdS re-design for passenger-berth Li-ion | 9 | 3 | **15.00** | ✅ | — |\n| N12 | Firmware drift blocks commissioning | 9 | 3 | **15.00** | ✅ | — |\n| N25 | AFIR-2030 miss — single-counterparty emotion | 9 | 3 | **15.00** | ✅ | — |\n| N5 | 40–80 m²/MWh quayside w/ Feuerwehr + ISPS | 9 | 4 | **14.00** | ✅ | — |\n| N14 | AFIR-scope OPS connection rate >95% | 10 | 6 | **14.00** | — | — |\n| N16 | PCS trip under ride-through w/ ship on OPS | 10 | 6 | **14.00** | — | — |\n| N23 | Board-level AFIR-compliant CAPEX presentation | 9 | 4 | **14.00** | ✅ | — |\n| N3 | Miss CEF-Transport co-funding window | 8 | 3 | **13.00** | ✅ | — |\n| N6 | Salt-air C5-M/CX siting violation | 8 | 3 | **13.00** | ✅ | — |\n| N8 | BoP scope variability >8% overrun | 9 | 5 | **13.00** | — | — |\n| N10 | VOB/VgV bid without public-port reference | 9 | 5 | **13.00** | — | — |\n| N11 | VDE 4110 / IEC 80005-1 interface handover | 9 | 5 | **13.00** | — | — |\n| N15 | DSO demand-charge ceiling under concurrent peaks | 9 | 5 | **13.00** | — | — |\n| N19 | Add OPS berth / HPC without re-tender | 8 | 3 | **13.00** | ✅ | — |\n| N17 | Salt-air fade/corrosion undetected | 8 | 4 | **12.00** | ✅ | — |\n| PR5 | MV relay mis-coordination (DSO / ring-bus / OPS) | 8.5 | 5 | **12.00** | — | — |\n| N13 | Close witness-test non-conf <30 days | 8 | 5 | **11.00** | — | — |\n| N21 | Annual re-cert audit single dossier | 7 | 3 | **11.00** | — | — |\n| N22 | EU Battery Reg EoL under public ownership | 8 | 5 | **11.00** | — | — |\n| N24 | Public-tender audit findings / immaturity signal | 8 | 5 | **11.00** | — | — |\n| PR4 | LFP cycle-life degradation >0.5 C exposure | 8 | 5 | **11.00** | — | — |\n| PR7 | SoC recovery after cruise-berth discharge | 7.5 | 4 | **11.00** | ✅ | — |\n| N18 | Dispatch-priority drift across OPS/HPC/peak | 7 | 4 | **10.00** | — | — |\n| N20 | Re-cert for new vessel classes (LNG/methanol) | 7 | 4 | **10.00** | — | — |\n\n**Underserved (I>7 AND S<5):** N1, N2, N3, N4, N5, N6, N7, N9, N12, N17, N19, N23, N25, PR7 → **14 entries (50%)**\n**Overserved (I<3 AND S>7):** none.\n**Sum of opp scores:** 368.00 · **Avg:** **13.14**.\n\n---"
+    },
+    {
+      "title": "Step 4 — Market ODI summary",
+      "content": "| Field | Value |\n|---|---|\n| market_name | Port Electrification — Shore Power, Crane Smoothing, Ferry & Terminal-Vehicle Charging |\n| naics_code | 488310 |\n| total_needs | 28 |\n| underserved_count | 14 |\n| overserved_count | 0 |\n| avg_opportunity_score | 13.14 |\n\n**Top-5 opportunities:**\n1. Minimize the likelihood of undersizing BESS/microgrid capacity by >20% relative to AFIR-2030 peak OPS demand (17.00) — N1\n2. Minimize the likelihood of discovering a DSO MV-capacity blocker after tender-award milestone (17.00) — N4\n3. Minimize the time-to-Ready-to-Build from tender award to under 15 months to meet AFIR 2030 (17.00) — N7\n4. Increase the ability to produce a bankable multi-revenue model (AFIR + §19 StromNEV + HPC + PV firming) (15.00) — N2\n5. Minimize the likelihood of schedule slip from Feuerwehr/VdS fire-protection clearance re-design for passenger-berth Li-ion containers (15.00) — N9\n\n---"
+    },
+    {
+      "title": "Step 5 — Cross-check vs Step 09 Feature-Fit",
+      "content": "Feature-Fit avg across 6 tech features (from FIT) = (5.56+5.44+5.44+6.33+7.11+4.89)/6 = **5.80**.\nODI avg = **13.14**.\n\n| Cross-check rule | Triggered? | Note |\n|---|---|---|\n| ODI avg >12 AND Feature-Fit avg <4 | **No** (5.80) | FF is mid-range |\n| ODI avg <8 AND Feature-Fit avg >7 | No | — |\n\n### Feature-Opportunity Alignment\n\n| Opportunity | Aligned Feature | Evidence |\n|---|---|---|\n| **N7 RtB<15 mo (opp 17)** + **N12 firmware (15)** + **N9 VdS fire (15)** | **F5 Grid-Code Cert Delivery (fit 7.11)** | Mein Solar native FGW TR8 path compresses schedule — single strongest tech-feature-opp alignment |\n| **N1 sizing (17)** + **N2 multi-rev (15)** + **N15 peak (13)** | **F4 EMS (fit 6.33) + V1 PV+Storage (superior)** | EMS sophistication + PV-EPC heritage address port-wide sizing study needs |\n| **N14 OPS>95% (14)** + **N16 PCS ride-through (14)** | **F2 PCS + F3 MV Coupling (both must_be)** | Must_be features already at parity; not differentiators |\n| **N10 VOB/VgV (13)** + **N25 AFIR-miss (15)** | **V3 Single-Source EPC (inferior)** | Mein Solar inferior to Siemens at public-port scale — joint-bid required to capture opp |\n| **N4 DSO blocker (17)** | No strong feature fit | External complement — MV grid connection capacity; addressable via early DSO engagement |\n\n**Key gap:** Top opportunity N4 (DSO blocker, opp 17) is not directly covered by any Mein Solar feature — it's a complement-level risk (Step 02g). Mitigation = early DSO-engagement workflow on tender entry.\n\n---"
+    },
+    {
+      "title": "QA Checklist",
+      "content": "| # | Check | Result |\n|---|---|---|\n| Q1 | `opp = I + max(I−S, 0)` spot-check 5 | PASS (N1 17.00, N4 17.00, N14 14.00, N18 10.00, PR7 11.00) |\n| Q2 | Underserved flag iff I>7 AND S<5 | PASS (14 flagged, correct) |\n| Q3 | Overserved flag iff I<3 AND S>7 | PASS (none) |\n| Q4 | Entry count ≥ Step 06 count (25) | PASS (28 ≥ 25) |\n| Q5 | Top-5 sorted desc on opp_score | PASS |\n| Q6 | Cross-check vs Step 09 Feature-Fit | PASS (executed; alignment + DSO gap noted) |\n\n---"
+    },
+    {
+      "title": "Strategic Takeaways",
+      "content": "1. **14/28 needs underserved (50%)** — highest ratio in Mein Solar's portfolio so far; reflects AFIR-2030 urgency and absence of a mature DE public-port BESS EPC category.\n2. **Three-way tie at opp=17** (N1, N4, N7) — all schedule-and-sizing risks. Mein Solar wins the schedule axis (F5 Grid-Cert, V3 single-source) but must pair with explicit DSO-early-engagement and parallel-container sizing methodology for 16 MW cruise-berth peaks.\n3. **F5 Grid-Code Cert Delivery** is the technology-level winner (fit 7.11) attacking three of the top-7 opportunities (N7, N12, N9).\n4. **V1 PV+Storage Design Authority** is the vendor-level winner — activates on N2 (multi-rev), N14 (OPS uptime between vessels), N23 (board-level AFIR story).\n5. **V3 Single-Source EPC is inferior** at public-port scale — N10/N25 opportunities captured only via joint-bid with Siemens/ABB/Cavotec for first anchor reference.\n6. **N4 DSO blocker** has no in-product mitigation — treat as pre-bid gate; reject tenders without DSO pre-clearance letter to avoid post-award schedule bleeding.\n\n---"
+    },
+    {
+      "title": "Structured Data",
+      "content": "```json\n{\n  \"component\": \"odi_matrix\",\n  \"naics_code\": \"488310\",\n  \"naics_title\": \"Port and Harbor Operations\",\n  \"market_name\": \"Port Electrification — Shore Power, Crane Smoothing, Ferry & Terminal-Vehicle Charging\",\n  \"product_name\": \"EPC für Großbatteriespeicher\",\n  \"vendor_name\": \"Mein Solar GmbH\",\n  \"technology_class\": \"Large-Scale Battery Energy Storage System EPC\",\n  \"formula\": \"opportunity_score = importance + max(importance - satisfaction, 0)\",\n\n  \"entries\": [\n    {\"error_statement\":\"Minimize the likelihood of undersizing BESS/microgrid capacity by >20% relative to AFIR-2030 peak OPS demand (cruise up to 16 MW, container ~7.5 MW per berth) due to incomplete vessel-call-profile data\",\"market_name\":\"Port Electrification — Shore Power, Crane Smoothing, Ferry & Terminal-Vehicle Charging\",\"naics_code\":\"488310\",\"importance\":10.0,\"satisfaction_current\":3.0,\"opportunity_score\":17.00,\"is_underserved\":true,\"is_overserved\":false,\"product_related\":false,\"job_step_number\":1,\"job_step_name\":\"DEFINE\",\"impact_category\":\"reliability\",\"id\":\"N1\"},\n    {\"error_statement\":\"Increase the ability to produce a bankable multi-revenue model combining AFIR-compliance value, peak-shaving (§19 StromNEV), HPC buffering and PV firming in a single port-wide sizing study\",\"market_name\":\"Port Electrification — Shore Power, Crane Smoothing, Ferry & Terminal-Vehicle Charging\",\"naics_code\":\"488310\",\"importance\":9.0,\"satisfaction_current\":3.0,\"opportunity_score\":15.00,\"is_underserved\":true,\"is_overserved\":false,\"product_related\":false,\"job_step_number\":1,\"job_step_name\":\"DEFINE\",\"impact_category\":\"cost\",\"id\":\"N2\"},\n    {\"error_statement\":\"Minimize the likelihood of missing the CEF-Transport / AFIR co-funding window (up to 50% CAPEX for TEN-T ports) during initial business-case definition\",\"market_name\":\"Port Electrification — Shore Power, Crane Smoothing, Ferry & Terminal-Vehicle Charging\",\"naics_code\":\"488310\",\"importance\":8.0,\"satisfaction_current\":3.0,\"opportunity_score\":13.00,\"is_underserved\":true,\"is_overserved\":false,\"product_related\":false,\"job_step_number\":1,\"job_step_name\":\"DEFINE\",\"impact_category\":\"cost\",\"id\":\"N3\"},\n    {\"error_statement\":\"Minimize the likelihood of discovering a DSO MV-capacity blocker after tender-award milestone, causing >12-month AFIR-compliance slip\",\"market_name\":\"Port Electrification — Shore Power, Crane Smoothing, Ferry & Terminal-Vehicle Charging\",\"naics_code\":\"488310\",\"importance\":10.0,\"satisfaction_current\":3.0,\"opportunity_score\":17.00,\"is_underserved\":true,\"is_overserved\":false,\"product_related\":false,\"job_step_number\":2,\"job_step_name\":\"LOCATE\",\"impact_category\":\"time\",\"id\":\"N4\"},\n    {\"error_statement\":\"Increase the ability to secure a buildable 40-80 m2 per MWh quayside footprint with Feuerwehr access that does not impede terminal throughput or ISPS-restricted zones\",\"market_name\":\"Port Electrification — Shore Power, Crane Smoothing, Ferry & Terminal-Vehicle Charging\",\"naics_code\":\"488310\",\"importance\":9.0,\"satisfaction_current\":4.0,\"opportunity_score\":14.00,\"is_underserved\":true,\"is_overserved\":false,\"product_related\":true,\"job_step_number\":2,\"job_step_name\":\"LOCATE\",\"impact_category\":\"time\",\"id\":\"N5\"},\n    {\"error_statement\":\"Minimize the likelihood of siting selections that violate IEC 60721-3 salt-air corrosion class (C5-M / CX coastal) requiring container re-hardening post-tender\",\"market_name\":\"Port Electrification — Shore Power, Crane Smoothing, Ferry & Terminal-Vehicle Charging\",\"naics_code\":\"488310\",\"importance\":8.0,\"satisfaction_current\":3.0,\"opportunity_score\":13.00,\"is_underserved\":true,\"is_overserved\":false,\"product_related\":true,\"job_step_number\":2,\"job_step_name\":\"LOCATE\",\"impact_category\":\"reliability\",\"id\":\"N6\"},\n    {\"error_statement\":\"Minimize the time-to-Ready-to-Build from tender award to under 15 months to meet AFIR 2030 milestone under public-procurement schedule\",\"market_name\":\"Port Electrification — Shore Power, Crane Smoothing, Ferry & Terminal-Vehicle Charging\",\"naics_code\":\"488310\",\"importance\":10.0,\"satisfaction_current\":3.0,\"opportunity_score\":17.00,\"is_underserved\":true,\"is_overserved\":false,\"product_related\":false,\"job_step_number\":3,\"job_step_name\":\"PREPARE\",\"impact_category\":\"time\",\"id\":\"N7\"},\n    {\"error_statement\":\"Minimize variability between planned and as-built BoP scope (cable runs, MV transformer, OPS reel interface) causing >8% cost overrun on a fixed-price public tender\",\"market_name\":\"Port Electrification — Shore Power, Crane Smoothing, Ferry & Terminal-Vehicle Charging\",\"naics_code\":\"488310\",\"importance\":9.0,\"satisfaction_current\":5.0,\"opportunity_score\":13.00,\"is_underserved\":false,\"is_overserved\":false,\"product_related\":false,\"job_step_number\":3,\"job_step_name\":\"PREPARE\",\"impact_category\":\"cost\",\"id\":\"N8\"},\n    {\"error_statement\":\"Minimize the likelihood of schedule slip driven by Feuerwehr/VdS fire-protection clearance re-design for Li-ion container adjacency to passenger and cruise berths\",\"market_name\":\"Port Electrification — Shore Power, Crane Smoothing, Ferry & Terminal-Vehicle Charging\",\"naics_code\":\"488310\",\"importance\":9.0,\"satisfaction_current\":3.0,\"opportunity_score\":15.00,\"is_underserved\":true,\"is_overserved\":false,\"product_related\":true,\"job_step_number\":3,\"job_step_name\":\"PREPARE\",\"impact_category\":\"safety\",\"id\":\"N9\"},\n    {\"error_statement\":\"Increase the ability to respond to VOB/VgV public tenders with a compliant, scored-above-threshold bid package despite zero prior public-port references\",\"market_name\":\"Port Electrification — Shore Power, Crane Smoothing, Ferry & Terminal-Vehicle Charging\",\"naics_code\":\"488310\",\"importance\":9.0,\"satisfaction_current\":5.0,\"opportunity_score\":13.00,\"is_underserved\":false,\"is_overserved\":false,\"product_related\":false,\"job_step_number\":3,\"job_step_name\":\"PREPARE\",\"impact_category\":\"cost\",\"id\":\"N10\"},\n    {\"error_statement\":\"Minimize the likelihood of OPS-interface mis-handover between landside (VDE-AR-N 4110) and shipside (IEC/IEEE 80005-1 HVSC) boundary responsibilities\",\"market_name\":\"Port Electrification — Shore Power, Crane Smoothing, Ferry & Terminal-Vehicle Charging\",\"naics_code\":\"488310\",\"importance\":9.0,\"satisfaction_current\":5.0,\"opportunity_score\":13.00,\"is_underserved\":false,\"is_overserved\":false,\"product_related\":true,\"job_step_number\":4,\"job_step_name\":\"CONFIRM\",\"impact_category\":\"reliability\",\"id\":\"N11\"},\n    {\"error_statement\":\"Minimize the likelihood of commissioning holdup caused by firmware-version incompatibility between BMS, PCS, EMS and port-side SCADA / TOS uplinks\",\"market_name\":\"Port Electrification — Shore Power, Crane Smoothing, Ferry & Terminal-Vehicle Charging\",\"naics_code\":\"488310\",\"importance\":9.0,\"satisfaction_current\":3.0,\"opportunity_score\":15.00,\"is_underserved\":true,\"is_overserved\":false,\"product_related\":true,\"job_step_number\":4,\"job_step_name\":\"CONFIRM\",\"impact_category\":\"time\",\"id\":\"N12\"},\n    {\"error_statement\":\"Minimize the time to close VDE-AR-N 4110 and IEC 80005-1 witness-test non-conformities to under 30 days from finding during a live berth window\",\"market_name\":\"Port Electrification — Shore Power, Crane Smoothing, Ferry & Terminal-Vehicle Charging\",\"naics_code\":\"488310\",\"importance\":8.0,\"satisfaction_current\":5.0,\"opportunity_score\":11.00,\"is_underserved\":false,\"is_overserved\":false,\"product_related\":false,\"job_step_number\":4,\"job_step_name\":\"CONFIRM\",\"impact_category\":\"time\",\"id\":\"N13\"},\n    {\"error_statement\":\"Maximize the share of AFIR-scope vessel calls that receive OPS connection within the berth window at contracted power to above 95%\",\"market_name\":\"Port Electrification — Shore Power, Crane Smoothing, Ferry & Terminal-Vehicle Charging\",\"naics_code\":\"488310\",\"importance\":10.0,\"satisfaction_current\":6.0,\"opportunity_score\":14.00,\"is_underserved\":false,\"is_overserved\":false,\"product_related\":false,\"job_step_number\":5,\"job_step_name\":\"EXECUTE\",\"impact_category\":\"reliability\",\"id\":\"N14\"},\n    {\"error_statement\":\"Minimize the likelihood of exceeding the contracted DSO demand-charge ceiling during simultaneous OPS + STS-crane + HPC peaks by more than 5% per month\",\"market_name\":\"Port Electrification — Shore Power, Crane Smoothing, Ferry & Terminal-Vehicle Charging\",\"naics_code\":\"488310\",\"importance\":9.0,\"satisfaction_current\":5.0,\"opportunity_score\":13.00,\"is_underserved\":false,\"is_overserved\":false,\"product_related\":false,\"job_step_number\":5,\"job_step_name\":\"EXECUTE\",\"impact_category\":\"cost\",\"id\":\"N15\"},\n    {\"error_statement\":\"Minimize the likelihood of PCS trip under grid-fault ride-through while an AFIR-scope ship is on OPS, which would force vessel auxiliary-engine restart\",\"market_name\":\"Port Electrification — Shore Power, Crane Smoothing, Ferry & Terminal-Vehicle Charging\",\"naics_code\":\"488310\",\"importance\":10.0,\"satisfaction_current\":6.0,\"opportunity_score\":14.00,\"is_underserved\":false,\"is_overserved\":false,\"product_related\":false,\"job_step_number\":5,\"job_step_name\":\"EXECUTE\",\"impact_category\":\"safety\",\"id\":\"N16\"},\n    {\"error_statement\":\"Minimize the likelihood of undetected salt-air-induced capacity fade or enclosure corrosion exceeding warranty threshold before the annual availability audit\",\"market_name\":\"Port Electrification — Shore Power, Crane Smoothing, Ferry & Terminal-Vehicle Charging\",\"naics_code\":\"488310\",\"importance\":8.0,\"satisfaction_current\":4.0,\"opportunity_score\":12.00,\"is_underserved\":true,\"is_overserved\":false,\"product_related\":true,\"job_step_number\":6,\"job_step_name\":\"MONITOR\",\"impact_category\":\"reliability\",\"id\":\"N17\"},\n    {\"error_statement\":\"Minimize dispatch-priority drift between OPS, HPC and peak-shaving queues under concurrent port events to under 1% missed-setpoint per week\",\"market_name\":\"Port Electrification — Shore Power, Crane Smoothing, Ferry & Terminal-Vehicle Charging\",\"naics_code\":\"488310\",\"importance\":7.0,\"satisfaction_current\":4.0,\"opportunity_score\":10.00,\"is_underserved\":false,\"is_overserved\":false,\"product_related\":true,\"job_step_number\":6,\"job_step_name\":\"MONITOR\",\"impact_category\":\"reliability\",\"id\":\"N18\"},\n    {\"error_statement\":\"Minimize the operator effort to commission an additional OPS berth or HPC dispenser onto the existing port microgrid without re-tendering the whole asset\",\"market_name\":\"Port Electrification — Shore Power, Crane Smoothing, Ferry & Terminal-Vehicle Charging\",\"naics_code\":\"488310\",\"importance\":8.0,\"satisfaction_current\":3.0,\"opportunity_score\":13.00,\"is_underserved\":true,\"is_overserved\":false,\"product_related\":false,\"job_step_number\":7,\"job_step_name\":\"MODIFY\",\"impact_category\":\"skill\",\"id\":\"N19\"},\n    {\"error_statement\":\"Minimize the likelihood that adding new vessel classes (LNG dual-fuel, methanol, battery-hybrid) requires re-certification of the shoreside OPS interface beyond parameter tuning\",\"market_name\":\"Port Electrification — Shore Power, Crane Smoothing, Ferry & Terminal-Vehicle Charging\",\"naics_code\":\"488310\",\"importance\":7.0,\"satisfaction_current\":4.0,\"opportunity_score\":10.00,\"is_underserved\":false,\"is_overserved\":false,\"product_related\":true,\"job_step_number\":7,\"job_step_name\":\"MODIFY\",\"impact_category\":\"cost\",\"id\":\"N20\"},\n    {\"error_statement\":\"Minimize the effort to execute annual port-authority and DSO re-certification audits through a pre-packaged single-evidence dossier\",\"market_name\":\"Port Electrification — Shore Power, Crane Smoothing, Ferry & Terminal-Vehicle Charging\",\"naics_code\":\"488310\",\"importance\":7.0,\"satisfaction_current\":3.0,\"opportunity_score\":11.00,\"is_underserved\":false,\"is_overserved\":false,\"product_related\":false,\"job_step_number\":8,\"job_step_name\":\"CONCLUDE\",\"impact_category\":\"time\",\"id\":\"N21\"},\n    {\"error_statement\":\"Minimize the likelihood of end-of-life Li-ion disposal non-compliance with EU Battery Regulation 2023/1542 reporting obligations under public-asset ownership\",\"market_name\":\"Port Electrification — Shore Power, Crane Smoothing, Ferry & Terminal-Vehicle Charging\",\"naics_code\":\"488310\",\"importance\":8.0,\"satisfaction_current\":5.0,\"opportunity_score\":11.00,\"is_underserved\":false,\"is_overserved\":false,\"product_related\":true,\"job_step_number\":8,\"job_step_name\":\"CONCLUDE\",\"impact_category\":\"safety\",\"id\":\"N22\"},\n    {\"error_statement\":\"Increase the ability to present the BESS-microgrid CAPEX as a co-funded, AFIR-compliant, future-proof port asset with committed multi-revenue evidence at the supervisory-board review\",\"market_name\":\"Port Electrification — Shore Power, Crane Smoothing, Ferry & Terminal-Vehicle Charging\",\"naics_code\":\"488310\",\"importance\":9.0,\"satisfaction_current\":4.0,\"opportunity_score\":14.00,\"is_underserved\":true,\"is_overserved\":false,\"product_related\":false,\"job_step_number\":0,\"job_step_name\":\"pyramid_P3_role\",\"impact_category\":\"cost\",\"id\":\"N23\"},\n    {\"error_statement\":\"Minimize the likelihood of public-tender audit findings or Feuerwehr refusals that publicly signal immature engineering in a politically visible port project\",\"market_name\":\"Port Electrification — Shore Power, Crane Smoothing, Ferry & Terminal-Vehicle Charging\",\"naics_code\":\"488310\",\"importance\":8.0,\"satisfaction_current\":5.0,\"opportunity_score\":11.00,\"is_underserved\":false,\"is_overserved\":false,\"product_related\":true,\"job_step_number\":0,\"job_step_name\":\"pyramid_P4_image\",\"impact_category\":\"reliability\",\"id\":\"N24\"},\n    {\"error_statement\":\"Minimize the risk perception of missing the AFIR-2030 compliance window by ensuring a single EPC counterparty owns the full schedule including DSO, IEC 80005-1 ship interface and VdS fire clearance\",\"market_name\":\"Port Electrification — Shore Power, Crane Smoothing, Ferry & Terminal-Vehicle Charging\",\"naics_code\":\"488310\",\"importance\":9.0,\"satisfaction_current\":3.0,\"opportunity_score\":15.00,\"is_underserved\":true,\"is_overserved\":false,\"product_related\":false,\"job_step_number\":0,\"job_step_name\":\"pyramid_P5_emotion\",\"impact_category\":\"time\",\"id\":\"N25\"},\n    {\"error_statement\":\"Minimize the likelihood of accelerated cycle-life degradation from sustained high C-rate (ferry fast-charge, STS regen) exceeding LFP 0.5 C design point\",\"market_name\":\"Port Electrification — Shore Power, Crane Smoothing, Ferry & Terminal-Vehicle Charging\",\"naics_code\":\"488310\",\"importance\":8.0,\"satisfaction_current\":5.0,\"opportunity_score\":11.00,\"is_underserved\":false,\"is_overserved\":false,\"product_related\":true,\"job_step_number\":0,\"job_step_name\":\"product_constraint\",\"impact_category\":\"reliability\",\"id\":\"PR4\",\"source_constraint\":\"Cycle Lifetime\"},\n    {\"error_statement\":\"Minimize the likelihood of MV protection-relay mis-coordination between DSO feeder, terminal ring-bus and OPS ship-side breakers causing nuisance trips during fault ride-through\",\"market_name\":\"Port Electrification — Shore Power, Crane Smoothing, Ferry & Terminal-Vehicle Charging\",\"naics_code\":\"488310\",\"importance\":8.5,\"satisfaction_current\":5.0,\"opportunity_score\":12.00,\"is_underserved\":false,\"is_overserved\":false,\"product_related\":true,\"job_step_number\":0,\"job_step_name\":\"product_constraint\",\"impact_category\":\"reliability\",\"id\":\"PR5\",\"source_constraint\":\"MV Grid Connection Capacity\"},\n    {\"error_statement\":\"Minimize the time to recover contracted SoC window after a high-C-rate cruise-berth discharge event before the next vessel call\",\"market_name\":\"Port Electrification — Shore Power, Crane Smoothing, Ferry & Terminal-Vehicle Charging\",\"naics_code\":\"488310\",\"importance\":7.5,\"satisfaction_current\":4.0,\"opportunity_score\":11.00,\"is_underserved\":true,\"is_overserved\":false,\"product_related\":true,\"job_step_number\":0,\"job_step_name\":\"product_constraint\",\"impact_category\":\"reliability\",\"id\":\"PR7\",\"source_constraint\":\"Round-Trip Energy Losses\"}\n  ],\n\n  \"market_summaries\": [\n    {\n      \"market_name\": \"Port Electrification — Shore Power, Crane Smoothing, Ferry & Terminal-Vehicle Charging\",\n      \"naics_code\": \"488310\",\n      \"total_needs\": 28,\n      \"underserved_count\": 14,\n      \"overserved_count\": 0,\n      \"avg_opportunity_score\": 13.14,\n      \"top_opportunities\": [\n        \"Minimize the likelihood of undersizing BESS/microgrid capacity by >20% relative to AFIR-2030 peak OPS demand (cruise up to 16 MW, container ~7.5 MW per berth) due to incomplete vessel-call-profile data\",\n        \"Minimize the likelihood of discovering a DSO MV-capacity blocker after tender-award milestone, causing >12-month AFIR-compliance slip\",\n        \"Minimize the time-to-Ready-to-Build from tender award to under 15 months to meet AFIR 2030 milestone under public-procurement schedule\",\n        \"Increase the ability to produce a bankable multi-revenue model combining AFIR-compliance value, peak-shaving (§19 StromNEV), HPC buffering and PV firming in a single port-wide sizing study\",\n        \"Minimize the likelihood of schedule slip driven by Feuerwehr/VdS fire-protection clearance re-design for Li-ion container adjacency to passenger and cruise berths\"\n      ]\n    }\n  ],\n\n  \"recalibration_log\": [\n    {\"ref\":\"N8\",\"s_original\":4,\"s_recalibrated\":5,\"reason\":\"Siemens/ABB mature BoP scope control from >100 utility references\"},\n    {\"ref\":\"N10\",\"s_original\":2,\"s_recalibrated\":5,\"reason\":\"Satisfaction scored against incumbents (Siemens SI wraps OPS+MV+BESS at public-tender scale); Mein Solar's gap is vendor-specific, not market-state\"},\n    {\"ref\":\"N11\",\"s_original\":4,\"s_recalibrated\":5,\"reason\":\"Cavotec + Siemens jointly own VDE-AR-N 4110 / IEC 80005-1 handover experience\"},\n    {\"ref\":\"N13\",\"s_original\":4,\"s_recalibrated\":5,\"reason\":\"T1 incumbent witness-test experience on DE grid code\"},\n    {\"ref\":\"N14\",\"s_original\":5,\"s_recalibrated\":6,\"reason\":\"ABB Pier 300 + ECT Rotterdam 20 MWh demonstrate >95% OPS connection achievable\"},\n    {\"ref\":\"N15\",\"s_original\":4,\"s_recalibrated\":5,\"reason\":\"Wärtsilä GEMS / Fluence Mosaic deliver demand-charge shaving\"},\n    {\"ref\":\"N16\",\"s_original\":5,\"s_recalibrated\":6,\"reason\":\"Tier-1 PCS (SMA, Sungrow, ABB) ride-through is mature\"},\n    {\"ref\":\"N22\",\"s_original\":4,\"s_recalibrated\":5,\"reason\":\"CellCube + Tesla recycling partners + EU Battery Passport pilots emerging\"},\n    {\"ref\":\"N24\",\"s_original\":4,\"s_recalibrated\":5,\"reason\":\"T1 incumbents carry cleaner public-tender audit record\"},\n    {\"ref\":\"PR4\",\"s_original\":4,\"s_recalibrated\":5,\"reason\":\"T1 container OEMs (CATL EnerC, Sungrow) offer 1 C profiles at warranty-matched fade\"},\n    {\"ref\":\"PR5\",\"s_original\":4,\"s_recalibrated\":5,\"reason\":\"Siemens/ABB MV protection-relay engineering mature (IEC 61850 GOOSE)\"}\n  ],\n\n  \"incumbent_reference_set\": [\n    {\"name\":\"Siemens Smart Infrastructure\",\"mechanism\":\"Full turnkey port (OPS + MV + BESS + TOS uplink)\",\"strengths\":[\"public-tender scale\",\"VDE-AR-N 4110 + IEC 80005-1 bundle\",\"utility credentials\"],\"weaknesses\":[\"no PV-EPC design authority\",\"premium pricing\"]},\n    {\"name\":\"ABB Ports & Terminals\",\"mechanism\":\"Microgrid + OPS + BESS with port-authority references\",\"strengths\":[\"Pier 300 LA + ECT Rotterdam 20 MWh refs\",\"HPC-charging portfolio\",\"IEC 61850 depth\"],\"weaknesses\":[\"no PV-EPC heritage\",\"slow DE delivery\"]},\n    {\"name\":\"Wärtsilä GEMS\",\"mechanism\":\"EMS-led BESS + port\",\"strengths\":[\"EMS depth\",\"grid-forming capability\"],\"weaknesses\":[\"smaller DE footprint\",\"port references sparse\"]},\n    {\"name\":\"Cavotec\",\"mechanism\":\"OPS / shore-connection specialist\",\"strengths\":[\"IEC 80005-1 shipside authority\",\"consortium partner\"],\"weaknesses\":[\"not a BESS EPC on its own\"]},\n    {\"name\":\"Schneider EcoStruxure\",\"mechanism\":\"Bundled hybrid microgrid\",\"strengths\":[\"PV+BESS bundle available\"],\"weaknesses\":[\"bundled not PV-EPC native\",\"sparse DACH port refs\"]},\n    {\"name\":\"Fluence\",\"mechanism\":\"Pure-play BESS integrator\",\"strengths\":[\"Mosaic EMS\",\"bankability\"],\"weaknesses\":[\"no port experience\",\"no PV integration\"]}\n  ],\n\n  \"cross_check_vs_step_09\": {\n    \"feature_fit_avg_overall_fit\": 5.80,\n    \"odi_avg_opportunity_score\": 13.14,\n    \"high_opp_low_fit_flag\": false,\n    \"low_opp_high_fit_flag\": false,\n    \"alignment_notes\": [\n      \"F5 Grid-Code Cert Delivery (fit=7.11) directly addresses N7 (17), N12 (15), N9 (15) — strongest tech-feature-opportunity alignment\",\n      \"F4 EMS (fit=6.33) + V1 PV+Storage (vendor superior) address N1 (17), N2 (15), N15 (13) sizing + revenue-model cluster\",\n      \"N10 (13) + N25 (15) favor Siemens (V3 inferior) — joint-bid required for first HHLA/NPorts/Duisport reference\",\n      \"N4 DSO blocker (opp 17) has no in-product feature coverage — treat as pre-bid gate; require DSO pre-clearance letter\"\n    ]\n  },\n\n  \"qa_checklist\": {\n    \"Q1_formula_correct\": \"PASS\",\n    \"Q2_underserved_flags_correct\": \"PASS\",\n    \"Q3_overserved_flags_correct\": \"PASS\",\n    \"Q4_need_count_preserved\": \"PASS\",\n    \"Q5_top5_ordering_correct\": \"PASS\",\n    \"Q6_cross_check_step09_ran\": \"PASS\"\n  },\n\n  \"neo4j_write_preview\": {\n    \"opportunity_score_nodes\": 28,\n    \"market_node_set_props\": {\n      \"odi_total_needs\": 28,\n      \"odi_underserved_count\": 14,\n      \"odi_overserved_count\": 0,\n      \"odi_avg_opportunity_score\": 13.14,\n      \"odi_top_opportunities\": \"[JSON string of top-5]\"\n    },\n    \"relationships\": \"28x (Market {naics_code:'488310'})-[:has_opportunity_score]->(OpportunityScore)\"\n  }\n}\n```"
+    }
+  ],
+  "tables": [
+    {
+      "headers": [
+        "#",
+        "S_orig",
+        "S_recal",
+        "Evidence from Step 03 / Step 11"
+      ],
+      "rows": [
+        {
+          "#": "N8",
+          "S_orig": "4",
+          "S_recal": "**5**",
+          "Evidence from Step 03 / Step 11": "Siemens/ABB have mature BoP scope control from >100 utility refs — raise S"
+        },
+        {
+          "#": "N10",
+          "S_orig": "2",
+          "S_recal": "**5**",
+          "Evidence from Step 03 / Step 11": "Siemens SI wraps OPS+MV+BESS at public-tender scale — incumbents (not Mein Solar) satisfy this well"
+        },
+        {
+          "#": "N11",
+          "S_orig": "4",
+          "S_recal": "**5**",
+          "Evidence from Step 03 / Step 11": "Cavotec + Siemens jointly own VDE-AR-N 4110 / IEC 80005-1 handover — raise S"
+        },
+        {
+          "#": "N13",
+          "S_orig": "4",
+          "S_recal": "**5**",
+          "Evidence from Step 03 / Step 11": "T1 incumbent witness-test experience on DE grid code — raise S"
+        },
+        {
+          "#": "N14",
+          "S_orig": "5",
+          "S_recal": "**6**",
+          "Evidence from Step 03 / Step 11": "ABB Pier 300 + ECT 20 MWh show >95% OPS connection rate achievable"
+        },
+        {
+          "#": "N15",
+          "S_orig": "4",
+          "S_recal": "**5**",
+          "Evidence from Step 03 / Step 11": "Wärtsilä GEMS / Fluence Mosaic deliver demand-charge shaving — raise S"
+        },
+        {
+          "#": "N16",
+          "S_orig": "5",
+          "S_recal": "**6**",
+          "Evidence from Step 03 / Step 11": "Tier-1 PCS (SMA, Sungrow, ABB) ride-through is mature — raise S"
+        },
+        {
+          "#": "N22",
+          "S_orig": "4",
+          "S_recal": "**5**",
+          "Evidence from Step 03 / Step 11": "CellCube + Tesla recycling partners + EU Battery Passport pilots — raise S"
+        },
+        {
+          "#": "N24",
+          "S_orig": "4",
+          "S_recal": "**5**",
+          "Evidence from Step 03 / Step 11": "T1 incumbents carry cleaner public-tender audit record — raise S"
+        },
+        {
+          "#": "PR4",
+          "S_orig": "4",
+          "S_recal": "**5**",
+          "Evidence from Step 03 / Step 11": "T1 container OEMs (CATL EnerC, Sungrow) offer 1 C profiles at warranty-matched fade — raise S"
+        },
+        {
+          "#": "PR5",
+          "S_orig": "4",
+          "S_recal": "**5**",
+          "Evidence from Step 03 / Step 11": "Siemens/ABB MV protection-relay engineering is mature (IEC 61850 GOOSE) — raise S"
+        },
+        {
+          "#": "all others",
+          "S_orig": "—",
+          "S_recal": "**unchanged**",
+          "Evidence from Step 03 / Step 11": "No Step 03 evidence contradicts original estimate (N1/N4/N7 schedule friction universal; N2/N9/N25 port-specific gaps unfilled by any incumbent)"
+        }
+      ]
+    },
+    {
+      "headers": [
+        "#",
+        "Statement (short)",
+        "I",
+        "S",
+        "Opp",
+        "Under",
+        "Over"
+      ],
+      "rows": [
+        {
+          "#": "N1",
+          "Statement (short)": "BESS undersizing vs AFIR 2030 peak OPS",
+          "I": "10",
+          "S": "3",
+          "Opp": "**17.00**",
+          "Under": "✅",
+          "Over": "—"
+        },
+        {
+          "#": "N4",
+          "Statement (short)": "DSO MV-capacity blocker found post tender-award",
+          "I": "10",
+          "S": "3",
+          "Opp": "**17.00**",
+          "Under": "✅",
+          "Over": "—"
+        },
+        {
+          "#": "N7",
+          "Statement (short)": "Time-to-RtB <15 mo to meet AFIR 2030",
+          "I": "10",
+          "S": "3",
+          "Opp": "**17.00**",
+          "Under": "✅",
+          "Over": "—"
+        },
+        {
+          "#": "N2",
+          "Statement (short)": "Bankable multi-revenue sizing study",
+          "I": "9",
+          "S": "3",
+          "Opp": "**15.00**",
+          "Under": "✅",
+          "Over": "—"
+        },
+        {
+          "#": "N9",
+          "Statement (short)": "Feuerwehr/VdS re-design for passenger-berth Li-ion",
+          "I": "9",
+          "S": "3",
+          "Opp": "**15.00**",
+          "Under": "✅",
+          "Over": "—"
+        },
+        {
+          "#": "N12",
+          "Statement (short)": "Firmware drift blocks commissioning",
+          "I": "9",
+          "S": "3",
+          "Opp": "**15.00**",
+          "Under": "✅",
+          "Over": "—"
+        },
+        {
+          "#": "N25",
+          "Statement (short)": "AFIR-2030 miss — single-counterparty emotion",
+          "I": "9",
+          "S": "3",
+          "Opp": "**15.00**",
+          "Under": "✅",
+          "Over": "—"
+        },
+        {
+          "#": "N5",
+          "Statement (short)": "40–80 m²/MWh quayside w/ Feuerwehr + ISPS",
+          "I": "9",
+          "S": "4",
+          "Opp": "**14.00**",
+          "Under": "✅",
+          "Over": "—"
+        },
+        {
+          "#": "N14",
+          "Statement (short)": "AFIR-scope OPS connection rate >95%",
+          "I": "10",
+          "S": "6",
+          "Opp": "**14.00**",
+          "Under": "—",
+          "Over": "—"
+        },
+        {
+          "#": "N16",
+          "Statement (short)": "PCS trip under ride-through w/ ship on OPS",
+          "I": "10",
+          "S": "6",
+          "Opp": "**14.00**",
+          "Under": "—",
+          "Over": "—"
+        },
+        {
+          "#": "N23",
+          "Statement (short)": "Board-level AFIR-compliant CAPEX presentation",
+          "I": "9",
+          "S": "4",
+          "Opp": "**14.00**",
+          "Under": "✅",
+          "Over": "—"
+        },
+        {
+          "#": "N3",
+          "Statement (short)": "Miss CEF-Transport co-funding window",
+          "I": "8",
+          "S": "3",
+          "Opp": "**13.00**",
+          "Under": "✅",
+          "Over": "—"
+        },
+        {
+          "#": "N6",
+          "Statement (short)": "Salt-air C5-M/CX siting violation",
+          "I": "8",
+          "S": "3",
+          "Opp": "**13.00**",
+          "Under": "✅",
+          "Over": "—"
+        },
+        {
+          "#": "N8",
+          "Statement (short)": "BoP scope variability >8% overrun",
+          "I": "9",
+          "S": "5",
+          "Opp": "**13.00**",
+          "Under": "—",
+          "Over": "—"
+        },
+        {
+          "#": "N10",
+          "Statement (short)": "VOB/VgV bid without public-port reference",
+          "I": "9",
+          "S": "5",
+          "Opp": "**13.00**",
+          "Under": "—",
+          "Over": "—"
+        },
+        {
+          "#": "N11",
+          "Statement (short)": "VDE 4110 / IEC 80005-1 interface handover",
+          "I": "9",
+          "S": "5",
+          "Opp": "**13.00**",
+          "Under": "—",
+          "Over": "—"
+        },
+        {
+          "#": "N15",
+          "Statement (short)": "DSO demand-charge ceiling under concurrent peaks",
+          "I": "9",
+          "S": "5",
+          "Opp": "**13.00**",
+          "Under": "—",
+          "Over": "—"
+        },
+        {
+          "#": "N19",
+          "Statement (short)": "Add OPS berth / HPC without re-tender",
+          "I": "8",
+          "S": "3",
+          "Opp": "**13.00**",
+          "Under": "✅",
+          "Over": "—"
+        },
+        {
+          "#": "N17",
+          "Statement (short)": "Salt-air fade/corrosion undetected",
+          "I": "8",
+          "S": "4",
+          "Opp": "**12.00**",
+          "Under": "✅",
+          "Over": "—"
+        },
+        {
+          "#": "PR5",
+          "Statement (short)": "MV relay mis-coordination (DSO / ring-bus / OPS)",
+          "I": "8.5",
+          "S": "5",
+          "Opp": "**12.00**",
+          "Under": "—",
+          "Over": "—"
+        },
+        {
+          "#": "N13",
+          "Statement (short)": "Close witness-test non-conf <30 days",
+          "I": "8",
+          "S": "5",
+          "Opp": "**11.00**",
+          "Under": "—",
+          "Over": "—"
+        },
+        {
+          "#": "N21",
+          "Statement (short)": "Annual re-cert audit single dossier",
+          "I": "7",
+          "S": "3",
+          "Opp": "**11.00**",
+          "Under": "—",
+          "Over": "—"
+        },
+        {
+          "#": "N22",
+          "Statement (short)": "EU Battery Reg EoL under public ownership",
+          "I": "8",
+          "S": "5",
+          "Opp": "**11.00**",
+          "Under": "—",
+          "Over": "—"
+        },
+        {
+          "#": "N24",
+          "Statement (short)": "Public-tender audit findings / immaturity signal",
+          "I": "8",
+          "S": "5",
+          "Opp": "**11.00**",
+          "Under": "—",
+          "Over": "—"
+        },
+        {
+          "#": "PR4",
+          "Statement (short)": "LFP cycle-life degradation >0.5 C exposure",
+          "I": "8",
+          "S": "5",
+          "Opp": "**11.00**",
+          "Under": "—",
+          "Over": "—"
+        },
+        {
+          "#": "PR7",
+          "Statement (short)": "SoC recovery after cruise-berth discharge",
+          "I": "7.5",
+          "S": "4",
+          "Opp": "**11.00**",
+          "Under": "✅",
+          "Over": "—"
+        },
+        {
+          "#": "N18",
+          "Statement (short)": "Dispatch-priority drift across OPS/HPC/peak",
+          "I": "7",
+          "S": "4",
+          "Opp": "**10.00**",
+          "Under": "—",
+          "Over": "—"
+        },
+        {
+          "#": "N20",
+          "Statement (short)": "Re-cert for new vessel classes (LNG/methanol)",
+          "I": "7",
+          "S": "4",
+          "Opp": "**10.00**",
+          "Under": "—",
+          "Over": "—"
+        }
+      ]
+    },
+    {
+      "headers": [
+        "Field",
+        "Value"
+      ],
+      "rows": [
+        {
+          "Field": "market_name",
+          "Value": "Port Electrification — Shore Power, Crane Smoothing, Ferry & Terminal-Vehicle Charging"
+        },
+        {
+          "Field": "naics_code",
+          "Value": "488310"
+        },
+        {
+          "Field": "total_needs",
+          "Value": "28"
+        },
+        {
+          "Field": "underserved_count",
+          "Value": "14"
+        },
+        {
+          "Field": "overserved_count",
+          "Value": "0"
+        },
+        {
+          "Field": "avg_opportunity_score",
+          "Value": "13.14"
+        }
+      ]
+    },
+    {
+      "headers": [
+        "Cross-check rule",
+        "Triggered?",
+        "Note"
+      ],
+      "rows": [
+        {
+          "Cross-check rule": "ODI avg >12 AND Feature-Fit avg <4",
+          "Triggered?": "**No** (5.80)",
+          "Note": "FF is mid-range"
+        },
+        {
+          "Cross-check rule": "ODI avg <8 AND Feature-Fit avg >7",
+          "Triggered?": "No",
+          "Note": "—"
+        }
+      ]
+    },
+    {
+      "headers": [
+        "Opportunity",
+        "Aligned Feature",
+        "Evidence"
+      ],
+      "rows": [
+        {
+          "Opportunity": "**N7 RtB<15 mo (opp 17)** + **N12 firmware (15)** + **N9 VdS fire (15)**",
+          "Aligned Feature": "**F5 Grid-Code Cert Delivery (fit 7.11)**",
+          "Evidence": "Mein Solar native FGW TR8 path compresses schedule — single strongest tech-feature-opp alignment"
+        },
+        {
+          "Opportunity": "**N1 sizing (17)** + **N2 multi-rev (15)** + **N15 peak (13)**",
+          "Aligned Feature": "**F4 EMS (fit 6.33) + V1 PV+Storage (superior)**",
+          "Evidence": "EMS sophistication + PV-EPC heritage address port-wide sizing study needs"
+        },
+        {
+          "Opportunity": "**N14 OPS>95% (14)** + **N16 PCS ride-through (14)**",
+          "Aligned Feature": "**F2 PCS + F3 MV Coupling (both must_be)**",
+          "Evidence": "Must_be features already at parity; not differentiators"
+        },
+        {
+          "Opportunity": "**N10 VOB/VgV (13)** + **N25 AFIR-miss (15)**",
+          "Aligned Feature": "**V3 Single-Source EPC (inferior)**",
+          "Evidence": "Mein Solar inferior to Siemens at public-port scale — joint-bid required to capture opp"
+        },
+        {
+          "Opportunity": "**N4 DSO blocker (17)**",
+          "Aligned Feature": "No strong feature fit",
+          "Evidence": "External complement — MV grid connection capacity; addressable via early DSO engagement"
+        }
+      ]
+    },
+    {
+      "headers": [
+        "#",
+        "Check",
+        "Result"
+      ],
+      "rows": [
+        {
+          "#": "Q1",
+          "Check": "`opp = I + max(I−S, 0)` spot-check 5",
+          "Result": "PASS (N1 17.00, N4 17.00, N14 14.00, N18 10.00, PR7 11.00)"
+        },
+        {
+          "#": "Q2",
+          "Check": "Underserved flag iff I>7 AND S<5",
+          "Result": "PASS (14 flagged, correct)"
+        },
+        {
+          "#": "Q3",
+          "Check": "Overserved flag iff I<3 AND S>7",
+          "Result": "PASS (none)"
+        },
+        {
+          "#": "Q4",
+          "Check": "Entry count ≥ Step 06 count (25)",
+          "Result": "PASS (28 ≥ 25)"
+        },
+        {
+          "#": "Q5",
+          "Check": "Top-5 sorted desc on opp_score",
+          "Result": "PASS"
+        },
+        {
+          "#": "Q6",
+          "Check": "Cross-check vs Step 09 Feature-Fit",
+          "Result": "PASS (executed; alignment + DSO gap noted)"
+        }
+      ]
+    }
+  ],
+  "entities": [
+    {
+      "component": "odi_matrix",
+      "naics_code": "488310",
+      "naics_title": "Port and Harbor Operations",
+      "market_name": "Port Electrification — Shore Power, Crane Smoothing, Ferry & Terminal-Vehicle Charging",
+      "product_name": "EPC für Großbatteriespeicher",
+      "vendor_name": "Mein Solar GmbH",
+      "technology_class": "Large-Scale Battery Energy Storage System EPC",
+      "formula": "opportunity_score = importance + max(importance - satisfaction, 0)",
+      "entries": [
+        {
+          "error_statement": "Minimize the likelihood of undersizing BESS/microgrid capacity by >20% relative to AFIR-2030 peak OPS demand (cruise up to 16 MW, container ~7.5 MW per berth) due to incomplete vessel-call-profile data",
+          "market_name": "Port Electrification — Shore Power, Crane Smoothing, Ferry & Terminal-Vehicle Charging",
+          "naics_code": "488310",
+          "importance": 10.0,
+          "satisfaction_current": 3.0,
+          "opportunity_score": 17.0,
+          "is_underserved": true,
+          "is_overserved": false,
+          "product_related": false,
+          "job_step_number": 1,
+          "job_step_name": "DEFINE",
+          "impact_category": "reliability",
+          "id": "N1"
+        },
+        {
+          "error_statement": "Increase the ability to produce a bankable multi-revenue model combining AFIR-compliance value, peak-shaving (§19 StromNEV), HPC buffering and PV firming in a single port-wide sizing study",
+          "market_name": "Port Electrification — Shore Power, Crane Smoothing, Ferry & Terminal-Vehicle Charging",
+          "naics_code": "488310",
+          "importance": 9.0,
+          "satisfaction_current": 3.0,
+          "opportunity_score": 15.0,
+          "is_underserved": true,
+          "is_overserved": false,
+          "product_related": false,
+          "job_step_number": 1,
+          "job_step_name": "DEFINE",
+          "impact_category": "cost",
+          "id": "N2"
+        },
+        {
+          "error_statement": "Minimize the likelihood of missing the CEF-Transport / AFIR co-funding window (up to 50% CAPEX for TEN-T ports) during initial business-case definition",
+          "market_name": "Port Electrification — Shore Power, Crane Smoothing, Ferry & Terminal-Vehicle Charging",
+          "naics_code": "488310",
+          "importance": 8.0,
+          "satisfaction_current": 3.0,
+          "opportunity_score": 13.0,
+          "is_underserved": true,
+          "is_overserved": false,
+          "product_related": false,
+          "job_step_number": 1,
+          "job_step_name": "DEFINE",
+          "impact_category": "cost",
+          "id": "N3"
+        },
+        {
+          "error_statement": "Minimize the likelihood of discovering a DSO MV-capacity blocker after tender-award milestone, causing >12-month AFIR-compliance slip",
+          "market_name": "Port Electrification — Shore Power, Crane Smoothing, Ferry & Terminal-Vehicle Charging",
+          "naics_code": "488310",
+          "importance": 10.0,
+          "satisfaction_current": 3.0,
+          "opportunity_score": 17.0,
+          "is_underserved": true,
+          "is_overserved": false,
+          "product_related": false,
+          "job_step_number": 2,
+          "job_step_name": "LOCATE",
+          "impact_category": "time",
+          "id": "N4"
+        },
+        {
+          "error_statement": "Increase the ability to secure a buildable 40-80 m2 per MWh quayside footprint with Feuerwehr access that does not impede terminal throughput or ISPS-restricted zones",
+          "market_name": "Port Electrification — Shore Power, Crane Smoothing, Ferry & Terminal-Vehicle Charging",
+          "naics_code": "488310",
+          "importance": 9.0,
+          "satisfaction_current": 4.0,
+          "opportunity_score": 14.0,
+          "is_underserved": true,
+          "is_overserved": false,
+          "product_related": true,
+          "job_step_number": 2,
+          "job_step_name": "LOCATE",
+          "impact_category": "time",
+          "id": "N5"
+        },
+        {
+          "error_statement": "Minimize the likelihood of siting selections that violate IEC 60721-3 salt-air corrosion class (C5-M / CX coastal) requiring container re-hardening post-tender",
+          "market_name": "Port Electrification — Shore Power, Crane Smoothing, Ferry & Terminal-Vehicle Charging",
+          "naics_code": "488310",
+          "importance": 8.0,
+          "satisfaction_current": 3.0,
+          "opportunity_score": 13.0,
+          "is_underserved": true,
+          "is_overserved": false,
+          "product_related": true,
+          "job_step_number": 2,
+          "job_step_name": "LOCATE",
+          "impact_category": "reliability",
+          "id": "N6"
+        },
+        {
+          "error_statement": "Minimize the time-to-Ready-to-Build from tender award to under 15 months to meet AFIR 2030 milestone under public-procurement schedule",
+          "market_name": "Port Electrification — Shore Power, Crane Smoothing, Ferry & Terminal-Vehicle Charging",
+          "naics_code": "488310",
+          "importance": 10.0,
+          "satisfaction_current": 3.0,
+          "opportunity_score": 17.0,
+          "is_underserved": true,
+          "is_overserved": false,
+          "product_related": false,
+          "job_step_number": 3,
+          "job_step_name": "PREPARE",
+          "impact_category": "time",
+          "id": "N7"
+        },
+        {
+          "error_statement": "Minimize variability between planned and as-built BoP scope (cable runs, MV transformer, OPS reel interface) causing >8% cost overrun on a fixed-price public tender",
+          "market_name": "Port Electrification — Shore Power, Crane Smoothing, Ferry & Terminal-Vehicle Charging",
+          "naics_code": "488310",
+          "importance": 9.0,
+          "satisfaction_current": 5.0,
+          "opportunity_score": 13.0,
+          "is_underserved": false,
+          "is_overserved": false,
+          "product_related": false,
+          "job_step_number": 3,
+          "job_step_name": "PREPARE",
+          "impact_category": "cost",
+          "id": "N8"
+        },
+        {
+          "error_statement": "Minimize the likelihood of schedule slip driven by Feuerwehr/VdS fire-protection clearance re-design for Li-ion container adjacency to passenger and cruise berths",
+          "market_name": "Port Electrification — Shore Power, Crane Smoothing, Ferry & Terminal-Vehicle Charging",
+          "naics_code": "488310",
+          "importance": 9.0,
+          "satisfaction_current": 3.0,
+          "opportunity_score": 15.0,
+          "is_underserved": true,
+          "is_overserved": false,
+          "product_related": true,
+          "job_step_number": 3,
+          "job_step_name": "PREPARE",
+          "impact_category": "safety",
+          "id": "N9"
+        },
+        {
+          "error_statement": "Increase the ability to respond to VOB/VgV public tenders with a compliant, scored-above-threshold bid package despite zero prior public-port references",
+          "market_name": "Port Electrification — Shore Power, Crane Smoothing, Ferry & Terminal-Vehicle Charging",
+          "naics_code": "488310",
+          "importance": 9.0,
+          "satisfaction_current": 5.0,
+          "opportunity_score": 13.0,
+          "is_underserved": false,
+          "is_overserved": false,
+          "product_related": false,
+          "job_step_number": 3,
+          "job_step_name": "PREPARE",
+          "impact_category": "cost",
+          "id": "N10"
+        },
+        {
+          "error_statement": "Minimize the likelihood of OPS-interface mis-handover between landside (VDE-AR-N 4110) and shipside (IEC/IEEE 80005-1 HVSC) boundary responsibilities",
+          "market_name": "Port Electrification — Shore Power, Crane Smoothing, Ferry & Terminal-Vehicle Charging",
+          "naics_code": "488310",
+          "importance": 9.0,
+          "satisfaction_current": 5.0,
+          "opportunity_score": 13.0,
+          "is_underserved": false,
+          "is_overserved": false,
+          "product_related": true,
+          "job_step_number": 4,
+          "job_step_name": "CONFIRM",
+          "impact_category": "reliability",
+          "id": "N11"
+        },
+        {
+          "error_statement": "Minimize the likelihood of commissioning holdup caused by firmware-version incompatibility between BMS, PCS, EMS and port-side SCADA / TOS uplinks",
+          "market_name": "Port Electrification — Shore Power, Crane Smoothing, Ferry & Terminal-Vehicle Charging",
+          "naics_code": "488310",
+          "importance": 9.0,
+          "satisfaction_current": 3.0,
+          "opportunity_score": 15.0,
+          "is_underserved": true,
+          "is_overserved": false,
+          "product_related": true,
+          "job_step_number": 4,
+          "job_step_name": "CONFIRM",
+          "impact_category": "time",
+          "id": "N12"
+        },
+        {
+          "error_statement": "Minimize the time to close VDE-AR-N 4110 and IEC 80005-1 witness-test non-conformities to under 30 days from finding during a live berth window",
+          "market_name": "Port Electrification — Shore Power, Crane Smoothing, Ferry & Terminal-Vehicle Charging",
+          "naics_code": "488310",
+          "importance": 8.0,
+          "satisfaction_current": 5.0,
+          "opportunity_score": 11.0,
+          "is_underserved": false,
+          "is_overserved": false,
+          "product_related": false,
+          "job_step_number": 4,
+          "job_step_name": "CONFIRM",
+          "impact_category": "time",
+          "id": "N13"
+        },
+        {
+          "error_statement": "Maximize the share of AFIR-scope vessel calls that receive OPS connection within the berth window at contracted power to above 95%",
+          "market_name": "Port Electrification — Shore Power, Crane Smoothing, Ferry & Terminal-Vehicle Charging",
+          "naics_code": "488310",
+          "importance": 10.0,
+          "satisfaction_current": 6.0,
+          "opportunity_score": 14.0,
+          "is_underserved": false,
+          "is_overserved": false,
+          "product_related": false,
+          "job_step_number": 5,
+          "job_step_name": "EXECUTE",
+          "impact_category": "reliability",
+          "id": "N14"
+        },
+        {
+          "error_statement": "Minimize the likelihood of exceeding the contracted DSO demand-charge ceiling during simultaneous OPS + STS-crane + HPC peaks by more than 5% per month",
+          "market_name": "Port Electrification — Shore Power, Crane Smoothing, Ferry & Terminal-Vehicle Charging",
+          "naics_code": "488310",
+          "importance": 9.0,
+          "satisfaction_current": 5.0,
+          "opportunity_score": 13.0,
+          "is_underserved": false,
+          "is_overserved": false,
+          "product_related": false,
+          "job_step_number": 5,
+          "job_step_name": "EXECUTE",
+          "impact_category": "cost",
+          "id": "N15"
+        },
+        {
+          "error_statement": "Minimize the likelihood of PCS trip under grid-fault ride-through while an AFIR-scope ship is on OPS, which would force vessel auxiliary-engine restart",
+          "market_name": "Port Electrification — Shore Power, Crane Smoothing, Ferry & Terminal-Vehicle Charging",
+          "naics_code": "488310",
+          "importance": 10.0,
+          "satisfaction_current": 6.0,
+          "opportunity_score": 14.0,
+          "is_underserved": false,
+          "is_overserved": false,
+          "product_related": false,
+          "job_step_number": 5,
+          "job_step_name": "EXECUTE",
+          "impact_category": "safety",
+          "id": "N16"
+        },
+        {
+          "error_statement": "Minimize the likelihood of undetected salt-air-induced capacity fade or enclosure corrosion exceeding warranty threshold before the annual availability audit",
+          "market_name": "Port Electrification — Shore Power, Crane Smoothing, Ferry & Terminal-Vehicle Charging",
+          "naics_code": "488310",
+          "importance": 8.0,
+          "satisfaction_current": 4.0,
+          "opportunity_score": 12.0,
+          "is_underserved": true,
+          "is_overserved": false,
+          "product_related": true,
+          "job_step_number": 6,
+          "job_step_name": "MONITOR",
+          "impact_category": "reliability",
+          "id": "N17"
+        },
+        {
+          "error_statement": "Minimize dispatch-priority drift between OPS, HPC and peak-shaving queues under concurrent port events to under 1% missed-setpoint per week",
+          "market_name": "Port Electrification — Shore Power, Crane Smoothing, Ferry & Terminal-Vehicle Charging",
+          "naics_code": "488310",
+          "importance": 7.0,
+          "satisfaction_current": 4.0,
+          "opportunity_score": 10.0,
+          "is_underserved": false,
+          "is_overserved": false,
+          "product_related": true,
+          "job_step_number": 6,
+          "job_step_name": "MONITOR",
+          "impact_category": "reliability",
+          "id": "N18"
+        },
+        {
+          "error_statement": "Minimize the operator effort to commission an additional OPS berth or HPC dispenser onto the existing port microgrid without re-tendering the whole asset",
+          "market_name": "Port Electrification — Shore Power, Crane Smoothing, Ferry & Terminal-Vehicle Charging",
+          "naics_code": "488310",
+          "importance": 8.0,
+          "satisfaction_current": 3.0,
+          "opportunity_score": 13.0,
+          "is_underserved": true,
+          "is_overserved": false,
+          "product_related": false,
+          "job_step_number": 7,
+          "job_step_name": "MODIFY",
+          "impact_category": "skill",
+          "id": "N19"
+        },
+        {
+          "error_statement": "Minimize the likelihood that adding new vessel classes (LNG dual-fuel, methanol, battery-hybrid) requires re-certification of the shoreside OPS interface beyond parameter tuning",
+          "market_name": "Port Electrification — Shore Power, Crane Smoothing, Ferry & Terminal-Vehicle Charging",
+          "naics_code": "488310",
+          "importance": 7.0,
+          "satisfaction_current": 4.0,
+          "opportunity_score": 10.0,
+          "is_underserved": false,
+          "is_overserved": false,
+          "product_related": true,
+          "job_step_number": 7,
+          "job_step_name": "MODIFY",
+          "impact_category": "cost",
+          "id": "N20"
+        },
+        {
+          "error_statement": "Minimize the effort to execute annual port-authority and DSO re-certification audits through a pre-packaged single-evidence dossier",
+          "market_name": "Port Electrification — Shore Power, Crane Smoothing, Ferry & Terminal-Vehicle Charging",
+          "naics_code": "488310",
+          "importance": 7.0,
+          "satisfaction_current": 3.0,
+          "opportunity_score": 11.0,
+          "is_underserved": false,
+          "is_overserved": false,
+          "product_related": false,
+          "job_step_number": 8,
+          "job_step_name": "CONCLUDE",
+          "impact_category": "time",
+          "id": "N21"
+        },
+        {
+          "error_statement": "Minimize the likelihood of end-of-life Li-ion disposal non-compliance with EU Battery Regulation 2023/1542 reporting obligations under public-asset ownership",
+          "market_name": "Port Electrification — Shore Power, Crane Smoothing, Ferry & Terminal-Vehicle Charging",
+          "naics_code": "488310",
+          "importance": 8.0,
+          "satisfaction_current": 5.0,
+          "opportunity_score": 11.0,
+          "is_underserved": false,
+          "is_overserved": false,
+          "product_related": true,
+          "job_step_number": 8,
+          "job_step_name": "CONCLUDE",
+          "impact_category": "safety",
+          "id": "N22"
+        },
+        {
+          "error_statement": "Increase the ability to present the BESS-microgrid CAPEX as a co-funded, AFIR-compliant, future-proof port asset with committed multi-revenue evidence at the supervisory-board review",
+          "market_name": "Port Electrification — Shore Power, Crane Smoothing, Ferry & Terminal-Vehicle Charging",
+          "naics_code": "488310",
+          "importance": 9.0,
+          "satisfaction_current": 4.0,
+          "opportunity_score": 14.0,
+          "is_underserved": true,
+          "is_overserved": false,
+          "product_related": false,
+          "job_step_number": 0,
+          "job_step_name": "pyramid_P3_role",
+          "impact_category": "cost",
+          "id": "N23"
+        },
+        {
+          "error_statement": "Minimize the likelihood of public-tender audit findings or Feuerwehr refusals that publicly signal immature engineering in a politically visible port project",
+          "market_name": "Port Electrification — Shore Power, Crane Smoothing, Ferry & Terminal-Vehicle Charging",
+          "naics_code": "488310",
+          "importance": 8.0,
+          "satisfaction_current": 5.0,
+          "opportunity_score": 11.0,
+          "is_underserved": false,
+          "is_overserved": false,
+          "product_related": true,
+          "job_step_number": 0,
+          "job_step_name": "pyramid_P4_image",
+          "impact_category": "reliability",
+          "id": "N24"
+        },
+        {
+          "error_statement": "Minimize the risk perception of missing the AFIR-2030 compliance window by ensuring a single EPC counterparty owns the full schedule including DSO, IEC 80005-1 ship interface and VdS fire clearance",
+          "market_name": "Port Electrification — Shore Power, Crane Smoothing, Ferry & Terminal-Vehicle Charging",
+          "naics_code": "488310",
+          "importance": 9.0,
+          "satisfaction_current": 3.0,
+          "opportunity_score": 15.0,
+          "is_underserved": true,
+          "is_overserved": false,
+          "product_related": false,
+          "job_step_number": 0,
+          "job_step_name": "pyramid_P5_emotion",
+          "impact_category": "time",
+          "id": "N25"
+        },
+        {
+          "error_statement": "Minimize the likelihood of accelerated cycle-life degradation from sustained high C-rate (ferry fast-charge, STS regen) exceeding LFP 0.5 C design point",
+          "market_name": "Port Electrification — Shore Power, Crane Smoothing, Ferry & Terminal-Vehicle Charging",
+          "naics_code": "488310",
+          "importance": 8.0,
+          "satisfaction_current": 5.0,
+          "opportunity_score": 11.0,
+          "is_underserved": false,
+          "is_overserved": false,
+          "product_related": true,
+          "job_step_number": 0,
+          "job_step_name": "product_constraint",
+          "impact_category": "reliability",
+          "id": "PR4",
+          "source_constraint": "Cycle Lifetime"
+        },
+        {
+          "error_statement": "Minimize the likelihood of MV protection-relay mis-coordination between DSO feeder, terminal ring-bus and OPS ship-side breakers causing nuisance trips during fault ride-through",
+          "market_name": "Port Electrification — Shore Power, Crane Smoothing, Ferry & Terminal-Vehicle Charging",
+          "naics_code": "488310",
+          "importance": 8.5,
+          "satisfaction_current": 5.0,
+          "opportunity_score": 12.0,
+          "is_underserved": false,
+          "is_overserved": false,
+          "product_related": true,
+          "job_step_number": 0,
+          "job_step_name": "product_constraint",
+          "impact_category": "reliability",
+          "id": "PR5",
+          "source_constraint": "MV Grid Connection Capacity"
+        },
+        {
+          "error_statement": "Minimize the time to recover contracted SoC window after a high-C-rate cruise-berth discharge event before the next vessel call",
+          "market_name": "Port Electrification — Shore Power, Crane Smoothing, Ferry & Terminal-Vehicle Charging",
+          "naics_code": "488310",
+          "importance": 7.5,
+          "satisfaction_current": 4.0,
+          "opportunity_score": 11.0,
+          "is_underserved": true,
+          "is_overserved": false,
+          "product_related": true,
+          "job_step_number": 0,
+          "job_step_name": "product_constraint",
+          "impact_category": "reliability",
+          "id": "PR7",
+          "source_constraint": "Round-Trip Energy Losses"
+        }
+      ],
+      "market_summaries": [
+        {
+          "market_name": "Port Electrification — Shore Power, Crane Smoothing, Ferry & Terminal-Vehicle Charging",
+          "naics_code": "488310",
+          "total_needs": 28,
+          "underserved_count": 14,
+          "overserved_count": 0,
+          "avg_opportunity_score": 13.14,
+          "top_opportunities": [
+            "Minimize the likelihood of undersizing BESS/microgrid capacity by >20% relative to AFIR-2030 peak OPS demand (cruise up to 16 MW, container ~7.5 MW per berth) due to incomplete vessel-call-profile data",
+            "Minimize the likelihood of discovering a DSO MV-capacity blocker after tender-award milestone, causing >12-month AFIR-compliance slip",
+            "Minimize the time-to-Ready-to-Build from tender award to under 15 months to meet AFIR 2030 milestone under public-procurement schedule",
+            "Increase the ability to produce a bankable multi-revenue model combining AFIR-compliance value, peak-shaving (§19 StromNEV), HPC buffering and PV firming in a single port-wide sizing study",
+            "Minimize the likelihood of schedule slip driven by Feuerwehr/VdS fire-protection clearance re-design for Li-ion container adjacency to passenger and cruise berths"
+          ]
+        }
+      ],
+      "recalibration_log": [
+        {
+          "ref": "N8",
+          "s_original": 4,
+          "s_recalibrated": 5,
+          "reason": "Siemens/ABB mature BoP scope control from >100 utility references"
+        },
+        {
+          "ref": "N10",
+          "s_original": 2,
+          "s_recalibrated": 5,
+          "reason": "Satisfaction scored against incumbents (Siemens SI wraps OPS+MV+BESS at public-tender scale); Mein Solar's gap is vendor-specific, not market-state"
+        },
+        {
+          "ref": "N11",
+          "s_original": 4,
+          "s_recalibrated": 5,
+          "reason": "Cavotec + Siemens jointly own VDE-AR-N 4110 / IEC 80005-1 handover experience"
+        },
+        {
+          "ref": "N13",
+          "s_original": 4,
+          "s_recalibrated": 5,
+          "reason": "T1 incumbent witness-test experience on DE grid code"
+        },
+        {
+          "ref": "N14",
+          "s_original": 5,
+          "s_recalibrated": 6,
+          "reason": "ABB Pier 300 + ECT Rotterdam 20 MWh demonstrate >95% OPS connection achievable"
+        },
+        {
+          "ref": "N15",
+          "s_original": 4,
+          "s_recalibrated": 5,
+          "reason": "Wärtsilä GEMS / Fluence Mosaic deliver demand-charge shaving"
+        },
+        {
+          "ref": "N16",
+          "s_original": 5,
+          "s_recalibrated": 6,
+          "reason": "Tier-1 PCS (SMA, Sungrow, ABB) ride-through is mature"
+        },
+        {
+          "ref": "N22",
+          "s_original": 4,
+          "s_recalibrated": 5,
+          "reason": "CellCube + Tesla recycling partners + EU Battery Passport pilots emerging"
+        },
+        {
+          "ref": "N24",
+          "s_original": 4,
+          "s_recalibrated": 5,
+          "reason": "T1 incumbents carry cleaner public-tender audit record"
+        },
+        {
+          "ref": "PR4",
+          "s_original": 4,
+          "s_recalibrated": 5,
+          "reason": "T1 container OEMs (CATL EnerC, Sungrow) offer 1 C profiles at warranty-matched fade"
+        },
+        {
+          "ref": "PR5",
+          "s_original": 4,
+          "s_recalibrated": 5,
+          "reason": "Siemens/ABB MV protection-relay engineering mature (IEC 61850 GOOSE)"
+        }
+      ],
+      "incumbent_reference_set": [
+        {
+          "name": "Siemens Smart Infrastructure",
+          "mechanism": "Full turnkey port (OPS + MV + BESS + TOS uplink)",
+          "strengths": [
+            "public-tender scale",
+            "VDE-AR-N 4110 + IEC 80005-1 bundle",
+            "utility credentials"
+          ],
+          "weaknesses": [
+            "no PV-EPC design authority",
+            "premium pricing"
+          ]
+        },
+        {
+          "name": "ABB Ports & Terminals",
+          "mechanism": "Microgrid + OPS + BESS with port-authority references",
+          "strengths": [
+            "Pier 300 LA + ECT Rotterdam 20 MWh refs",
+            "HPC-charging portfolio",
+            "IEC 61850 depth"
+          ],
+          "weaknesses": [
+            "no PV-EPC heritage",
+            "slow DE delivery"
+          ]
+        },
+        {
+          "name": "Wärtsilä GEMS",
+          "mechanism": "EMS-led BESS + port",
+          "strengths": [
+            "EMS depth",
+            "grid-forming capability"
+          ],
+          "weaknesses": [
+            "smaller DE footprint",
+            "port references sparse"
+          ]
+        },
+        {
+          "name": "Cavotec",
+          "mechanism": "OPS / shore-connection specialist",
+          "strengths": [
+            "IEC 80005-1 shipside authority",
+            "consortium partner"
+          ],
+          "weaknesses": [
+            "not a BESS EPC on its own"
+          ]
+        },
+        {
+          "name": "Schneider EcoStruxure",
+          "mechanism": "Bundled hybrid microgrid",
+          "strengths": [
+            "PV+BESS bundle available"
+          ],
+          "weaknesses": [
+            "bundled not PV-EPC native",
+            "sparse DACH port refs"
+          ]
+        },
+        {
+          "name": "Fluence",
+          "mechanism": "Pure-play BESS integrator",
+          "strengths": [
+            "Mosaic EMS",
+            "bankability"
+          ],
+          "weaknesses": [
+            "no port experience",
+            "no PV integration"
+          ]
+        }
+      ],
+      "cross_check_vs_step_09": {
+        "feature_fit_avg_overall_fit": 5.8,
+        "odi_avg_opportunity_score": 13.14,
+        "high_opp_low_fit_flag": false,
+        "low_opp_high_fit_flag": false,
+        "alignment_notes": [
+          "F5 Grid-Code Cert Delivery (fit=7.11) directly addresses N7 (17), N12 (15), N9 (15) — strongest tech-feature-opportunity alignment",
+          "F4 EMS (fit=6.33) + V1 PV+Storage (vendor superior) address N1 (17), N2 (15), N15 (13) sizing + revenue-model cluster",
+          "N10 (13) + N25 (15) favor Siemens (V3 inferior) — joint-bid required for first HHLA/NPorts/Duisport reference",
+          "N4 DSO blocker (opp 17) has no in-product feature coverage — treat as pre-bid gate; require DSO pre-clearance letter"
+        ]
+      },
+      "qa_checklist": {
+        "Q1_formula_correct": "PASS",
+        "Q2_underserved_flags_correct": "PASS",
+        "Q3_overserved_flags_correct": "PASS",
+        "Q4_need_count_preserved": "PASS",
+        "Q5_top5_ordering_correct": "PASS",
+        "Q6_cross_check_step09_ran": "PASS"
+      },
+      "neo4j_write_preview": {
+        "opportunity_score_nodes": 28,
+        "market_node_set_props": {
+          "odi_total_needs": 28,
+          "odi_underserved_count": 14,
+          "odi_overserved_count": 0,
+          "odi_avg_opportunity_score": 13.14,
+          "odi_top_opportunities": "[JSON string of top-5]"
+        },
+        "relationships": "28x (Market {naics_code:'488310'})-[:has_opportunity_score]->(OpportunityScore)"
+      }
+    }
+  ],
+  "has_bom": true,
+  "naics_sector_type": "non_manufacturing"
+}

@@ -1,0 +1,669 @@
+{
+  "id": "ODI_electric_power_distribution_ibisworld_ht",
+  "title": "ODI Matrix — NAICS 221122 Electric Power Distribution (DSO view, hardware tier)",
+  "type": "odi_matrix",
+  "market_slug": "electric_power_distribution_ibisworld_ht",
+  "is_per_market": true,
+  "sections": [
+    {
+      "title": "Step 1 — Needs gathered (13 entries)",
+      "content": "All 13 needs inherited from FIT Step 10 product-related list for 221122. Each carries `job_step_number=0`, `job_step_name=\"product_constraint\"`, `product_related=true`. No Step 06 market-level needs were resolvable beyond the references already embedded in FIT Step 11; this ODI run therefore scores the 13 product-related needs only.\n\n---"
+    },
+    {
+      "title": "Step 2 — Satisfaction recalibration (incumbent-anchored)",
+      "content": "Incumbent reference set: **Fluence Gridstack (~30% DE DSO)**, Sungrow PowerTitan, SMA Sunny Central Storage, Tesla Megapack/Autobidder, Wärtsilä GEMS, Siemens Grid Integration, Hitachi Energy, ABB, Nidec ASI.\n\n| # | S_orig | S_recal | Evidence from Step 03 / Step 11 |\n|---|---|---|---|\n| PR1 | 3.0 | **3.0** | Fluence relies on DE in-country cert partner — schedule-slip risk confirms low S |\n| PR2 | 4.0 | **4.0** | Tier-1 OEMs acknowledge TR8 acceptance delays on contested feeders |\n| PR3 | 6.0 | **5.0** | Moss Landing 2024 + McMicken propagation events show S was optimistic even for tier-1 containers |\n| PR4 | 5.0 | **5.0** | No contradiction; Feuerwehr/VdS risk applies to any Li-ion container |\n| PR5 | 5.0 | **5.0** | 40–80 m²/MWh footprint is structural across all containerized incumbents |\n| PR6 | 5.0 | **6.0** | Fluence / Tesla ship 10-yr 85 % RTE performance guarantees — raise S |\n| PR7 | 4.0 | **6.0** | Fluence Mosaic / Tesla Autobidder include degradation-aware monitoring — raise S |\n| PR8 | 4.0 | **4.0** | DSO-specific redispatch logic less mature than arbitrage; no evidence S should rise |\n| PR9 | 5.0 | **5.0** | Standard HVAC envelopes handle −20/+50 °C — no contradiction |\n| PR10 | 5.0 | **5.0** | Hot-swap module + PCS-N+1 offered by Sungrow/Fluence — parity |\n| PR11 | 4.0 | **4.0** | FX / tariff / CRMA cell-price volatility persists across incumbents |\n| PR12 | 5.0 | **5.0** | €250–400/kWh band holds; no upward adjustment |\n| PR13 | 4.0 | **4.0** | EU Battery Regulation recycling infra still nascent |\n\nImportance scores unchanged (importance-stability rule).\n\n---"
+    },
+    {
+      "title": "Step 3 — Opportunity scores (deterministic)",
+      "content": "| # | Statement (short) | I | S | Opp | Under | Over |\n|---|---|---|---|---|---|---|\n| PR1 | Cert slip (VDE-AR-N 4110 / FGW TR8) >3 mo | 9.0 | 3.0 | **15.00** | ✅ | — |\n| PR3 | Thermal-runaway propagation across modules | 10.0 | 5.0 | **15.00** | — | — |\n| PR8 | SoC parked wrong during DSO redispatch | 9.0 | 4.0 | **14.00** | ✅ | — |\n| PR4 | Feuerwehr / VdS siting rejection | 9.0 | 5.0 | **13.00** | — | — |\n| PR2 | DSO acceptance time post-commissioning | 8.0 | 4.0 | **12.00** | ✅ | — |\n| PR5 | Baugenehmigung denial on footprint | 8.0 | 5.0 | **11.00** | — | — |\n| PR10 | Restore dispatch after PCS/module fault <8 h | 8.0 | 5.0 | **11.00** | — | — |\n| PR12 | €/kWh CAPEX viability (250–400 band) | 8.0 | 5.0 | **11.00** | — | — |\n| PR7 | Capacity fade >3 %/yr undetected >30 d | 8.0 | 6.0 | **10.00** | — | — |\n| PR11 | Tender-price variance ±10 % from cell volatility | 7.0 | 4.0 | **10.00** | — | — |\n| PR13 | EU Battery Reg / CRMA recycling non-compliance | 7.0 | 4.0 | **10.00** | — | — |\n| PR6 | RTE <85 % AC-AC after 5 yr cycling | 7.0 | 6.0 | **8.00** | — | — |\n| PR9 | HVAC collapse at −20 °C / +50 °C extremes | 6.0 | 5.0 | **7.00** | — | — |\n\n**Underserved (I>7 AND S<5):** PR1, PR8, PR2 — 3 entries.\n**Overserved (I<3 AND S>7):** none.\n**Sum of opp scores:** 147.00 · **Avg:** 11.31.\n\n---"
+    },
+    {
+      "title": "Step 4 — Market ODI summary",
+      "content": "| Field | Value |\n|---|---|\n| market_name | DSO-Owned Netzbooster Storage |\n| naics_code | 221122 |\n| total_needs | 13 |\n| underserved_count | 3 |\n| overserved_count | 0 |\n| avg_opportunity_score | 11.31 |\n\n**Top-5 opportunities (by opp score desc):**\n1. Minimize the likelihood of grid-code certification (VDE-AR-N 4110 Type B / FGW TR8) slipping the DSO project critical path by >3 months — 15.00\n2. Minimize the likelihood of thermal-runaway propagation across adjacent modules or containers during a single-cell fault — 15.00\n3. Minimize the likelihood of simultaneous unavailability during a redispatch event because SoC is parked too high or too low — 14.00\n4. Minimize the likelihood of Feuerwehr or VdS rejection of container siting due to clearance / hydrant access — 13.00\n5. Minimize the time to achieve DSO acceptance after commissioning for a containerized LFP plant at a contested MV feeder — 12.00\n\n---"
+    },
+    {
+      "title": "Step 5 — Cross-check vs Step 09 Feature-Fit",
+      "content": "From FIT Step 09 overall_fit avg across 6 tech features = (4.89+5.33+5.11+6.67+6.89+4.56)/6 = **5.58**.\nODI avg = 11.31 (appropriately served band).\n\n- ODI avg <12 and Feature-Fit avg <4 → neither cross-check threshold triggered.\n- High-leverage alignment: **F5 Grid-Code Certification Delivery** (overall_fit 6.89, Mein Solar vendor_score 9) directly addresses the #1 ODI opportunity (PR1 cert slip, opp=15). ✅ Feature-opportunity alignment confirmed.\n- Gap flag: **PR8 SoC-parked-wrong (opp=14, underserved)** depends on EMS quality. F4 EMS overall_fit=6.67 but Mein Solar vendor_score=5 (inferior vs Fluence Mosaic 8). → Mein Solar captures the opportunity only with a tier-1 EMS partner (Entrix, Next Kraftwerke, Tiko).\n\n---"
+    },
+    {
+      "title": "QA Checklist",
+      "content": "| # | Check | Result |\n|---|---|---|\n| Q1 | `opp = I + max(I−S, 0)` spot-check on 5 entries | PASS (PR1 15.00, PR3 15.00, PR6 8.00, PR9 7.00, PR13 10.00) |\n| Q2 | Underserved flag iff I>7 AND S<5 | PASS (PR1, PR2, PR8 only) |\n| Q3 | Overserved flag iff I<3 AND S>7 | PASS (none) |\n| Q4 | Entry count ≥ Step 10 need count | PASS (13 = 13) |\n| Q5 | Top-5 sorted desc on opp_score | PASS |\n| Q6 | Cross-check vs Step 09 Feature-Fit | PASS (executed, alignment + gap noted) |\n\n---"
+    },
+    {
+      "title": "Structured Data",
+      "content": "```json\n{\n  \"component\": \"odi_matrix\",\n  \"naics_code\": \"221122\",\n  \"naics_title\": \"Electric Power Distribution\",\n  \"market_name\": \"DSO-Owned Netzbooster Storage\",\n  \"product_name\": \"EPC für Großbatteriespeicher\",\n  \"vendor_name\": \"Mein Solar GmbH\",\n  \"technology_class\": \"Large-Scale Battery Energy Storage System EPC\",\n  \"formula\": \"opportunity_score = importance + max(importance - satisfaction, 0)\",\n\n  \"entries\": [\n    {\"error_statement\":\"Minimize the likelihood of grid-code certification (VDE-AR-N 4110 Type B / FGW TR8) slipping the DSO project critical path by >3 months\",\"market_name\":\"DSO-Owned Netzbooster Storage\",\"naics_code\":\"221122\",\"importance\":9.0,\"satisfaction_current\":3.0,\"opportunity_score\":15.00,\"is_underserved\":true,\"is_overserved\":false,\"product_related\":true,\"job_step_number\":0,\"job_step_name\":\"product_constraint\",\"impact_category\":\"reliability\",\"source_constraint\":\"Grid Code Certification Lead Time\"},\n    {\"error_statement\":\"Minimize the time to achieve DSO acceptance after commissioning for a containerized LFP plant at a contested MV feeder\",\"market_name\":\"DSO-Owned Netzbooster Storage\",\"naics_code\":\"221122\",\"importance\":8.0,\"satisfaction_current\":4.0,\"opportunity_score\":12.00,\"is_underserved\":true,\"is_overserved\":false,\"product_related\":true,\"job_step_number\":0,\"job_step_name\":\"product_constraint\",\"impact_category\":\"reliability\",\"source_constraint\":\"Grid Code Certification Lead Time\"},\n    {\"error_statement\":\"Minimize the likelihood of thermal-runaway propagation across adjacent modules or containers during a single-cell fault\",\"market_name\":\"DSO-Owned Netzbooster Storage\",\"naics_code\":\"221122\",\"importance\":10.0,\"satisfaction_current\":5.0,\"opportunity_score\":15.00,\"is_underserved\":false,\"is_overserved\":false,\"product_related\":true,\"job_step_number\":0,\"job_step_name\":\"product_constraint\",\"impact_category\":\"reliability\",\"source_constraint\":\"Li-Ion Thermal Runaway Hazard\"},\n    {\"error_statement\":\"Minimize the likelihood of Feuerwehr or VdS rejection of container siting due to insufficient clearance or hydrant access\",\"market_name\":\"DSO-Owned Netzbooster Storage\",\"naics_code\":\"221122\",\"importance\":9.0,\"satisfaction_current\":5.0,\"opportunity_score\":13.00,\"is_underserved\":false,\"is_overserved\":false,\"product_related\":true,\"job_step_number\":0,\"job_step_name\":\"product_constraint\",\"impact_category\":\"reliability\",\"source_constraint\":\"Fire-Protection Clearance\"},\n    {\"error_statement\":\"Minimize the likelihood of Baugenehmigung denial driven by 40–80 m²/MWh footprint in DSO substation yard lots\",\"market_name\":\"DSO-Owned Netzbooster Storage\",\"naics_code\":\"221122\",\"importance\":8.0,\"satisfaction_current\":5.0,\"opportunity_score\":11.00,\"is_underserved\":false,\"is_overserved\":false,\"product_related\":true,\"job_step_number\":0,\"job_step_name\":\"product_constraint\",\"impact_category\":\"reliability\",\"source_constraint\":\"Land Footprint and Siting\"},\n    {\"error_statement\":\"Minimize the likelihood of round-trip efficiency falling below 85% AC-AC after 5 years of contracted DSO cycling\",\"market_name\":\"DSO-Owned Netzbooster Storage\",\"naics_code\":\"221122\",\"importance\":7.0,\"satisfaction_current\":6.0,\"opportunity_score\":8.00,\"is_underserved\":false,\"is_overserved\":false,\"product_related\":true,\"job_step_number\":0,\"job_step_name\":\"product_constraint\",\"impact_category\":\"reliability\",\"source_constraint\":\"Round-Trip Energy Losses\"},\n    {\"error_statement\":\"Minimize the likelihood of LFP capacity fade >3% per year beyond warranty curve going undetected for >30 days\",\"market_name\":\"DSO-Owned Netzbooster Storage\",\"naics_code\":\"221122\",\"importance\":8.0,\"satisfaction_current\":6.0,\"opportunity_score\":10.00,\"is_underserved\":false,\"is_overserved\":false,\"product_related\":true,\"job_step_number\":0,\"job_step_name\":\"product_constraint\",\"impact_category\":\"reliability\",\"source_constraint\":\"Li-Ion Thermal Runaway Hazard\"},\n    {\"error_statement\":\"Minimize the likelihood of simultaneous unavailability during a redispatch event because SoC is parked too high or too low to serve the DSO command\",\"market_name\":\"DSO-Owned Netzbooster Storage\",\"naics_code\":\"221122\",\"importance\":9.0,\"satisfaction_current\":4.0,\"opportunity_score\":14.00,\"is_underserved\":true,\"is_overserved\":false,\"product_related\":true,\"job_step_number\":0,\"job_step_name\":\"product_constraint\",\"impact_category\":\"reliability\",\"source_constraint\":\"Round-Trip Energy Losses\"},\n    {\"error_statement\":\"Minimize the likelihood of HVAC-driven efficiency collapse at ambient extremes below −20 °C or above +50 °C on rural DSO sites\",\"market_name\":\"DSO-Owned Netzbooster Storage\",\"naics_code\":\"221122\",\"importance\":6.0,\"satisfaction_current\":5.0,\"opportunity_score\":7.00,\"is_underserved\":false,\"is_overserved\":false,\"product_related\":true,\"job_step_number\":0,\"job_step_name\":\"product_constraint\",\"impact_category\":\"reliability\",\"source_constraint\":\"Ambient Temperature Envelope\"},\n    {\"error_statement\":\"Minimize the time to restore full dispatch capability after a single PCS or battery-module fault (target <8 h)\",\"market_name\":\"DSO-Owned Netzbooster Storage\",\"naics_code\":\"221122\",\"importance\":8.0,\"satisfaction_current\":5.0,\"opportunity_score\":11.00,\"is_underserved\":false,\"is_overserved\":false,\"product_related\":true,\"job_step_number\":0,\"job_step_name\":\"product_constraint\",\"impact_category\":\"reliability\",\"source_constraint\":\"MV Grid Connection Capacity\"},\n    {\"error_statement\":\"Minimize the likelihood of DSO tender-price variance exceeding ±10% across lots of similar scope driven by LFP cell supply volatility (FX, tariff, CRMA)\",\"market_name\":\"DSO-Owned Netzbooster Storage\",\"naics_code\":\"221122\",\"importance\":7.0,\"satisfaction_current\":4.0,\"opportunity_score\":10.00,\"is_underserved\":false,\"is_overserved\":false,\"product_related\":true,\"job_step_number\":0,\"job_step_name\":\"product_constraint\",\"impact_category\":\"reliability\",\"source_constraint\":\"Battery Supply Chain Concentration\"},\n    {\"error_statement\":\"Minimize the likelihood that the storage business case closes below €250/kWh installed or collapses above €400/kWh in DSO framework contracts\",\"market_name\":\"DSO-Owned Netzbooster Storage\",\"naics_code\":\"221122\",\"importance\":8.0,\"satisfaction_current\":5.0,\"opportunity_score\":11.00,\"is_underserved\":false,\"is_overserved\":false,\"product_related\":true,\"job_step_number\":0,\"job_step_name\":\"product_constraint\",\"impact_category\":\"reliability\",\"source_constraint\":\"CAPEX Viability Threshold\"},\n    {\"error_statement\":\"Minimize the likelihood of end-of-life recycling non-compliance (EU Battery Regulation, CRMA) imposing retroactive cost on the DSO as asset owner\",\"market_name\":\"DSO-Owned Netzbooster Storage\",\"naics_code\":\"221122\",\"importance\":7.0,\"satisfaction_current\":4.0,\"opportunity_score\":10.00,\"is_underserved\":false,\"is_overserved\":false,\"product_related\":true,\"job_step_number\":0,\"job_step_name\":\"product_constraint\",\"impact_category\":\"reliability\",\"source_constraint\":\"Battery Supply Chain Concentration\"}\n  ],\n\n  \"market_summaries\": [\n    {\n      \"market_name\": \"DSO-Owned Netzbooster Storage\",\n      \"naics_code\": \"221122\",\n      \"total_needs\": 13,\n      \"underserved_count\": 3,\n      \"overserved_count\": 0,\n      \"avg_opportunity_score\": 11.31,\n      \"top_opportunities\": [\n        \"Minimize the likelihood of grid-code certification (VDE-AR-N 4110 Type B / FGW TR8) slipping the DSO project critical path by >3 months\",\n        \"Minimize the likelihood of thermal-runaway propagation across adjacent modules or containers during a single-cell fault\",\n        \"Minimize the likelihood of simultaneous unavailability during a redispatch event because SoC is parked too high or too low to serve the DSO command\",\n        \"Minimize the likelihood of Feuerwehr or VdS rejection of container siting due to insufficient clearance or hydrant access\",\n        \"Minimize the time to achieve DSO acceptance after commissioning for a containerized LFP plant at a contested MV feeder\"\n      ]\n    }\n  ],\n\n  \"recalibration_log\": [\n    {\"ref\":\"PR3\",\"s_original\":6.0,\"s_recalibrated\":5.0,\"reason\":\"Moss Landing 2024 + McMicken propagation incidents — tier-1 container protection weaker than original estimate\"},\n    {\"ref\":\"PR6\",\"s_original\":5.0,\"s_recalibrated\":6.0,\"reason\":\"Fluence / Tesla 10-yr 85% RTE performance guarantees — raise S\"},\n    {\"ref\":\"PR7\",\"s_original\":4.0,\"s_recalibrated\":6.0,\"reason\":\"Fluence Mosaic / Tesla Autobidder include degradation-aware monitoring — raise S\"}\n  ],\n\n  \"incumbent_reference_set\": [\n    {\"name\":\"Fluence Gridstack\",\"market_share_estimate\":\"~30% DE DSO\",\"mechanism\":\"Standardized LFP container + Mosaic EMS\",\"strengths\":[\"standardized product\",\"10-yr performance guarantee\",\"strong EMS\"],\"weaknesses\":[\"split PV EPC\",\"in-country cert partner reliance\",\"split civil+MV in DE framework tenders\"]},\n    {\"name\":\"Sungrow PowerTitan\",\"mechanism\":\"Native PCS + liquid-cooled container\",\"strengths\":[\"tier-1 PCS firmware\",\"<100 ms FCR\"],\"weaknesses\":[\"not turnkey EPC\",\"third-party civil\"]},\n    {\"name\":\"Tesla Megapack / Autobidder\",\"mechanism\":\"Integrated container + ML dispatch\",\"strengths\":[\"EMS moat\",\"fast delivery\"],\"weaknesses\":[\"limited DE cert familiarity\",\"rigid product config\"]},\n    {\"name\":\"Wärtsilä GEMS\",\"mechanism\":\"EMS + integration\",\"strengths\":[\"EMS depth\",\"grid-forming\"],\"weaknesses\":[\"smaller DE footprint\"]},\n    {\"name\":\"Siemens Grid Integration / Hitachi Energy / ABB / Nidec ASI\",\"mechanism\":\"Utility-grade MV + protection\",\"strengths\":[\"IEC 61850 interop\",\"utility credentials\"],\"weaknesses\":[\"pricing\",\"less agile DE cert process\"]}\n  ],\n\n  \"cross_check_vs_step_09\": {\n    \"feature_fit_avg_overall_fit\": 5.58,\n    \"odi_avg_opportunity_score\": 11.31,\n    \"high_opp_low_fit_flag\": false,\n    \"low_opp_high_fit_flag\": false,\n    \"alignment_notes\": [\n      \"F5 Grid-Code Certification Delivery (overall_fit=6.89, Mein Solar vendor_score=9) directly addresses top ODI opportunity PR1 (opp=15)\",\n      \"F4 EMS (overall_fit=6.67, Mein Solar vendor_score=5) is the bottleneck for capturing PR8 (opp=14, underserved) — tier-1 EMS partner required\"\n    ]\n  },\n\n  \"qa_checklist\": {\n    \"Q1_formula_correct\": \"PASS\",\n    \"Q2_underserved_flags_correct\": \"PASS\",\n    \"Q3_overserved_flags_correct\": \"PASS\",\n    \"Q4_need_count_preserved\": \"PASS\",\n    \"Q5_top5_ordering_correct\": \"PASS\",\n    \"Q6_cross_check_step09_ran\": \"PASS\"\n  },\n\n  \"neo4j_write_preview\": {\n    \"opportunity_score_nodes\": 13,\n    \"market_node_set_props\": {\n      \"odi_total_needs\": 13,\n      \"odi_underserved_count\": 3,\n      \"odi_overserved_count\": 0,\n      \"odi_avg_opportunity_score\": 11.31,\n      \"odi_top_opportunities\": \"[JSON string of top-5]\"\n    },\n    \"relationships\": \"13× (Market {naics_code:'221122'})-[:has_opportunity_score]->(OpportunityScore)\"\n  }\n}\n```"
+    }
+  ],
+  "tables": [
+    {
+      "headers": [
+        "#",
+        "S_orig",
+        "S_recal",
+        "Evidence from Step 03 / Step 11"
+      ],
+      "rows": [
+        {
+          "#": "PR1",
+          "S_orig": "3.0",
+          "S_recal": "**3.0**",
+          "Evidence from Step 03 / Step 11": "Fluence relies on DE in-country cert partner — schedule-slip risk confirms low S"
+        },
+        {
+          "#": "PR2",
+          "S_orig": "4.0",
+          "S_recal": "**4.0**",
+          "Evidence from Step 03 / Step 11": "Tier-1 OEMs acknowledge TR8 acceptance delays on contested feeders"
+        },
+        {
+          "#": "PR3",
+          "S_orig": "6.0",
+          "S_recal": "**5.0**",
+          "Evidence from Step 03 / Step 11": "Moss Landing 2024 + McMicken propagation events show S was optimistic even for tier-1 containers"
+        },
+        {
+          "#": "PR4",
+          "S_orig": "5.0",
+          "S_recal": "**5.0**",
+          "Evidence from Step 03 / Step 11": "No contradiction; Feuerwehr/VdS risk applies to any Li-ion container"
+        },
+        {
+          "#": "PR5",
+          "S_orig": "5.0",
+          "S_recal": "**5.0**",
+          "Evidence from Step 03 / Step 11": "40–80 m²/MWh footprint is structural across all containerized incumbents"
+        },
+        {
+          "#": "PR6",
+          "S_orig": "5.0",
+          "S_recal": "**6.0**",
+          "Evidence from Step 03 / Step 11": "Fluence / Tesla ship 10-yr 85 % RTE performance guarantees — raise S"
+        },
+        {
+          "#": "PR7",
+          "S_orig": "4.0",
+          "S_recal": "**6.0**",
+          "Evidence from Step 03 / Step 11": "Fluence Mosaic / Tesla Autobidder include degradation-aware monitoring — raise S"
+        },
+        {
+          "#": "PR8",
+          "S_orig": "4.0",
+          "S_recal": "**4.0**",
+          "Evidence from Step 03 / Step 11": "DSO-specific redispatch logic less mature than arbitrage; no evidence S should rise"
+        },
+        {
+          "#": "PR9",
+          "S_orig": "5.0",
+          "S_recal": "**5.0**",
+          "Evidence from Step 03 / Step 11": "Standard HVAC envelopes handle −20/+50 °C — no contradiction"
+        },
+        {
+          "#": "PR10",
+          "S_orig": "5.0",
+          "S_recal": "**5.0**",
+          "Evidence from Step 03 / Step 11": "Hot-swap module + PCS-N+1 offered by Sungrow/Fluence — parity"
+        },
+        {
+          "#": "PR11",
+          "S_orig": "4.0",
+          "S_recal": "**4.0**",
+          "Evidence from Step 03 / Step 11": "FX / tariff / CRMA cell-price volatility persists across incumbents"
+        },
+        {
+          "#": "PR12",
+          "S_orig": "5.0",
+          "S_recal": "**5.0**",
+          "Evidence from Step 03 / Step 11": "€250–400/kWh band holds; no upward adjustment"
+        },
+        {
+          "#": "PR13",
+          "S_orig": "4.0",
+          "S_recal": "**4.0**",
+          "Evidence from Step 03 / Step 11": "EU Battery Regulation recycling infra still nascent"
+        }
+      ]
+    },
+    {
+      "headers": [
+        "#",
+        "Statement (short)",
+        "I",
+        "S",
+        "Opp",
+        "Under",
+        "Over"
+      ],
+      "rows": [
+        {
+          "#": "PR1",
+          "Statement (short)": "Cert slip (VDE-AR-N 4110 / FGW TR8) >3 mo",
+          "I": "9.0",
+          "S": "3.0",
+          "Opp": "**15.00**",
+          "Under": "✅",
+          "Over": "—"
+        },
+        {
+          "#": "PR3",
+          "Statement (short)": "Thermal-runaway propagation across modules",
+          "I": "10.0",
+          "S": "5.0",
+          "Opp": "**15.00**",
+          "Under": "—",
+          "Over": "—"
+        },
+        {
+          "#": "PR8",
+          "Statement (short)": "SoC parked wrong during DSO redispatch",
+          "I": "9.0",
+          "S": "4.0",
+          "Opp": "**14.00**",
+          "Under": "✅",
+          "Over": "—"
+        },
+        {
+          "#": "PR4",
+          "Statement (short)": "Feuerwehr / VdS siting rejection",
+          "I": "9.0",
+          "S": "5.0",
+          "Opp": "**13.00**",
+          "Under": "—",
+          "Over": "—"
+        },
+        {
+          "#": "PR2",
+          "Statement (short)": "DSO acceptance time post-commissioning",
+          "I": "8.0",
+          "S": "4.0",
+          "Opp": "**12.00**",
+          "Under": "✅",
+          "Over": "—"
+        },
+        {
+          "#": "PR5",
+          "Statement (short)": "Baugenehmigung denial on footprint",
+          "I": "8.0",
+          "S": "5.0",
+          "Opp": "**11.00**",
+          "Under": "—",
+          "Over": "—"
+        },
+        {
+          "#": "PR10",
+          "Statement (short)": "Restore dispatch after PCS/module fault <8 h",
+          "I": "8.0",
+          "S": "5.0",
+          "Opp": "**11.00**",
+          "Under": "—",
+          "Over": "—"
+        },
+        {
+          "#": "PR12",
+          "Statement (short)": "€/kWh CAPEX viability (250–400 band)",
+          "I": "8.0",
+          "S": "5.0",
+          "Opp": "**11.00**",
+          "Under": "—",
+          "Over": "—"
+        },
+        {
+          "#": "PR7",
+          "Statement (short)": "Capacity fade >3 %/yr undetected >30 d",
+          "I": "8.0",
+          "S": "6.0",
+          "Opp": "**10.00**",
+          "Under": "—",
+          "Over": "—"
+        },
+        {
+          "#": "PR11",
+          "Statement (short)": "Tender-price variance ±10 % from cell volatility",
+          "I": "7.0",
+          "S": "4.0",
+          "Opp": "**10.00**",
+          "Under": "—",
+          "Over": "—"
+        },
+        {
+          "#": "PR13",
+          "Statement (short)": "EU Battery Reg / CRMA recycling non-compliance",
+          "I": "7.0",
+          "S": "4.0",
+          "Opp": "**10.00**",
+          "Under": "—",
+          "Over": "—"
+        },
+        {
+          "#": "PR6",
+          "Statement (short)": "RTE <85 % AC-AC after 5 yr cycling",
+          "I": "7.0",
+          "S": "6.0",
+          "Opp": "**8.00**",
+          "Under": "—",
+          "Over": "—"
+        },
+        {
+          "#": "PR9",
+          "Statement (short)": "HVAC collapse at −20 °C / +50 °C extremes",
+          "I": "6.0",
+          "S": "5.0",
+          "Opp": "**7.00**",
+          "Under": "—",
+          "Over": "—"
+        }
+      ]
+    },
+    {
+      "headers": [
+        "Field",
+        "Value"
+      ],
+      "rows": [
+        {
+          "Field": "market_name",
+          "Value": "DSO-Owned Netzbooster Storage"
+        },
+        {
+          "Field": "naics_code",
+          "Value": "221122"
+        },
+        {
+          "Field": "total_needs",
+          "Value": "13"
+        },
+        {
+          "Field": "underserved_count",
+          "Value": "3"
+        },
+        {
+          "Field": "overserved_count",
+          "Value": "0"
+        },
+        {
+          "Field": "avg_opportunity_score",
+          "Value": "11.31"
+        }
+      ]
+    },
+    {
+      "headers": [
+        "#",
+        "Check",
+        "Result"
+      ],
+      "rows": [
+        {
+          "#": "Q1",
+          "Check": "`opp = I + max(I−S, 0)` spot-check on 5 entries",
+          "Result": "PASS (PR1 15.00, PR3 15.00, PR6 8.00, PR9 7.00, PR13 10.00)"
+        },
+        {
+          "#": "Q2",
+          "Check": "Underserved flag iff I>7 AND S<5",
+          "Result": "PASS (PR1, PR2, PR8 only)"
+        },
+        {
+          "#": "Q3",
+          "Check": "Overserved flag iff I<3 AND S>7",
+          "Result": "PASS (none)"
+        },
+        {
+          "#": "Q4",
+          "Check": "Entry count ≥ Step 10 need count",
+          "Result": "PASS (13 = 13)"
+        },
+        {
+          "#": "Q5",
+          "Check": "Top-5 sorted desc on opp_score",
+          "Result": "PASS"
+        },
+        {
+          "#": "Q6",
+          "Check": "Cross-check vs Step 09 Feature-Fit",
+          "Result": "PASS (executed, alignment + gap noted)"
+        }
+      ]
+    }
+  ],
+  "entities": [
+    {
+      "component": "odi_matrix",
+      "naics_code": "221122",
+      "naics_title": "Electric Power Distribution",
+      "market_name": "DSO-Owned Netzbooster Storage",
+      "product_name": "EPC für Großbatteriespeicher",
+      "vendor_name": "Mein Solar GmbH",
+      "technology_class": "Large-Scale Battery Energy Storage System EPC",
+      "formula": "opportunity_score = importance + max(importance - satisfaction, 0)",
+      "entries": [
+        {
+          "error_statement": "Minimize the likelihood of grid-code certification (VDE-AR-N 4110 Type B / FGW TR8) slipping the DSO project critical path by >3 months",
+          "market_name": "DSO-Owned Netzbooster Storage",
+          "naics_code": "221122",
+          "importance": 9.0,
+          "satisfaction_current": 3.0,
+          "opportunity_score": 15.0,
+          "is_underserved": true,
+          "is_overserved": false,
+          "product_related": true,
+          "job_step_number": 0,
+          "job_step_name": "product_constraint",
+          "impact_category": "reliability",
+          "source_constraint": "Grid Code Certification Lead Time"
+        },
+        {
+          "error_statement": "Minimize the time to achieve DSO acceptance after commissioning for a containerized LFP plant at a contested MV feeder",
+          "market_name": "DSO-Owned Netzbooster Storage",
+          "naics_code": "221122",
+          "importance": 8.0,
+          "satisfaction_current": 4.0,
+          "opportunity_score": 12.0,
+          "is_underserved": true,
+          "is_overserved": false,
+          "product_related": true,
+          "job_step_number": 0,
+          "job_step_name": "product_constraint",
+          "impact_category": "reliability",
+          "source_constraint": "Grid Code Certification Lead Time"
+        },
+        {
+          "error_statement": "Minimize the likelihood of thermal-runaway propagation across adjacent modules or containers during a single-cell fault",
+          "market_name": "DSO-Owned Netzbooster Storage",
+          "naics_code": "221122",
+          "importance": 10.0,
+          "satisfaction_current": 5.0,
+          "opportunity_score": 15.0,
+          "is_underserved": false,
+          "is_overserved": false,
+          "product_related": true,
+          "job_step_number": 0,
+          "job_step_name": "product_constraint",
+          "impact_category": "reliability",
+          "source_constraint": "Li-Ion Thermal Runaway Hazard"
+        },
+        {
+          "error_statement": "Minimize the likelihood of Feuerwehr or VdS rejection of container siting due to insufficient clearance or hydrant access",
+          "market_name": "DSO-Owned Netzbooster Storage",
+          "naics_code": "221122",
+          "importance": 9.0,
+          "satisfaction_current": 5.0,
+          "opportunity_score": 13.0,
+          "is_underserved": false,
+          "is_overserved": false,
+          "product_related": true,
+          "job_step_number": 0,
+          "job_step_name": "product_constraint",
+          "impact_category": "reliability",
+          "source_constraint": "Fire-Protection Clearance"
+        },
+        {
+          "error_statement": "Minimize the likelihood of Baugenehmigung denial driven by 40–80 m²/MWh footprint in DSO substation yard lots",
+          "market_name": "DSO-Owned Netzbooster Storage",
+          "naics_code": "221122",
+          "importance": 8.0,
+          "satisfaction_current": 5.0,
+          "opportunity_score": 11.0,
+          "is_underserved": false,
+          "is_overserved": false,
+          "product_related": true,
+          "job_step_number": 0,
+          "job_step_name": "product_constraint",
+          "impact_category": "reliability",
+          "source_constraint": "Land Footprint and Siting"
+        },
+        {
+          "error_statement": "Minimize the likelihood of round-trip efficiency falling below 85% AC-AC after 5 years of contracted DSO cycling",
+          "market_name": "DSO-Owned Netzbooster Storage",
+          "naics_code": "221122",
+          "importance": 7.0,
+          "satisfaction_current": 6.0,
+          "opportunity_score": 8.0,
+          "is_underserved": false,
+          "is_overserved": false,
+          "product_related": true,
+          "job_step_number": 0,
+          "job_step_name": "product_constraint",
+          "impact_category": "reliability",
+          "source_constraint": "Round-Trip Energy Losses"
+        },
+        {
+          "error_statement": "Minimize the likelihood of LFP capacity fade >3% per year beyond warranty curve going undetected for >30 days",
+          "market_name": "DSO-Owned Netzbooster Storage",
+          "naics_code": "221122",
+          "importance": 8.0,
+          "satisfaction_current": 6.0,
+          "opportunity_score": 10.0,
+          "is_underserved": false,
+          "is_overserved": false,
+          "product_related": true,
+          "job_step_number": 0,
+          "job_step_name": "product_constraint",
+          "impact_category": "reliability",
+          "source_constraint": "Li-Ion Thermal Runaway Hazard"
+        },
+        {
+          "error_statement": "Minimize the likelihood of simultaneous unavailability during a redispatch event because SoC is parked too high or too low to serve the DSO command",
+          "market_name": "DSO-Owned Netzbooster Storage",
+          "naics_code": "221122",
+          "importance": 9.0,
+          "satisfaction_current": 4.0,
+          "opportunity_score": 14.0,
+          "is_underserved": true,
+          "is_overserved": false,
+          "product_related": true,
+          "job_step_number": 0,
+          "job_step_name": "product_constraint",
+          "impact_category": "reliability",
+          "source_constraint": "Round-Trip Energy Losses"
+        },
+        {
+          "error_statement": "Minimize the likelihood of HVAC-driven efficiency collapse at ambient extremes below −20 °C or above +50 °C on rural DSO sites",
+          "market_name": "DSO-Owned Netzbooster Storage",
+          "naics_code": "221122",
+          "importance": 6.0,
+          "satisfaction_current": 5.0,
+          "opportunity_score": 7.0,
+          "is_underserved": false,
+          "is_overserved": false,
+          "product_related": true,
+          "job_step_number": 0,
+          "job_step_name": "product_constraint",
+          "impact_category": "reliability",
+          "source_constraint": "Ambient Temperature Envelope"
+        },
+        {
+          "error_statement": "Minimize the time to restore full dispatch capability after a single PCS or battery-module fault (target <8 h)",
+          "market_name": "DSO-Owned Netzbooster Storage",
+          "naics_code": "221122",
+          "importance": 8.0,
+          "satisfaction_current": 5.0,
+          "opportunity_score": 11.0,
+          "is_underserved": false,
+          "is_overserved": false,
+          "product_related": true,
+          "job_step_number": 0,
+          "job_step_name": "product_constraint",
+          "impact_category": "reliability",
+          "source_constraint": "MV Grid Connection Capacity"
+        },
+        {
+          "error_statement": "Minimize the likelihood of DSO tender-price variance exceeding ±10% across lots of similar scope driven by LFP cell supply volatility (FX, tariff, CRMA)",
+          "market_name": "DSO-Owned Netzbooster Storage",
+          "naics_code": "221122",
+          "importance": 7.0,
+          "satisfaction_current": 4.0,
+          "opportunity_score": 10.0,
+          "is_underserved": false,
+          "is_overserved": false,
+          "product_related": true,
+          "job_step_number": 0,
+          "job_step_name": "product_constraint",
+          "impact_category": "reliability",
+          "source_constraint": "Battery Supply Chain Concentration"
+        },
+        {
+          "error_statement": "Minimize the likelihood that the storage business case closes below €250/kWh installed or collapses above €400/kWh in DSO framework contracts",
+          "market_name": "DSO-Owned Netzbooster Storage",
+          "naics_code": "221122",
+          "importance": 8.0,
+          "satisfaction_current": 5.0,
+          "opportunity_score": 11.0,
+          "is_underserved": false,
+          "is_overserved": false,
+          "product_related": true,
+          "job_step_number": 0,
+          "job_step_name": "product_constraint",
+          "impact_category": "reliability",
+          "source_constraint": "CAPEX Viability Threshold"
+        },
+        {
+          "error_statement": "Minimize the likelihood of end-of-life recycling non-compliance (EU Battery Regulation, CRMA) imposing retroactive cost on the DSO as asset owner",
+          "market_name": "DSO-Owned Netzbooster Storage",
+          "naics_code": "221122",
+          "importance": 7.0,
+          "satisfaction_current": 4.0,
+          "opportunity_score": 10.0,
+          "is_underserved": false,
+          "is_overserved": false,
+          "product_related": true,
+          "job_step_number": 0,
+          "job_step_name": "product_constraint",
+          "impact_category": "reliability",
+          "source_constraint": "Battery Supply Chain Concentration"
+        }
+      ],
+      "market_summaries": [
+        {
+          "market_name": "DSO-Owned Netzbooster Storage",
+          "naics_code": "221122",
+          "total_needs": 13,
+          "underserved_count": 3,
+          "overserved_count": 0,
+          "avg_opportunity_score": 11.31,
+          "top_opportunities": [
+            "Minimize the likelihood of grid-code certification (VDE-AR-N 4110 Type B / FGW TR8) slipping the DSO project critical path by >3 months",
+            "Minimize the likelihood of thermal-runaway propagation across adjacent modules or containers during a single-cell fault",
+            "Minimize the likelihood of simultaneous unavailability during a redispatch event because SoC is parked too high or too low to serve the DSO command",
+            "Minimize the likelihood of Feuerwehr or VdS rejection of container siting due to insufficient clearance or hydrant access",
+            "Minimize the time to achieve DSO acceptance after commissioning for a containerized LFP plant at a contested MV feeder"
+          ]
+        }
+      ],
+      "recalibration_log": [
+        {
+          "ref": "PR3",
+          "s_original": 6.0,
+          "s_recalibrated": 5.0,
+          "reason": "Moss Landing 2024 + McMicken propagation incidents — tier-1 container protection weaker than original estimate"
+        },
+        {
+          "ref": "PR6",
+          "s_original": 5.0,
+          "s_recalibrated": 6.0,
+          "reason": "Fluence / Tesla 10-yr 85% RTE performance guarantees — raise S"
+        },
+        {
+          "ref": "PR7",
+          "s_original": 4.0,
+          "s_recalibrated": 6.0,
+          "reason": "Fluence Mosaic / Tesla Autobidder include degradation-aware monitoring — raise S"
+        }
+      ],
+      "incumbent_reference_set": [
+        {
+          "name": "Fluence Gridstack",
+          "market_share_estimate": "~30% DE DSO",
+          "mechanism": "Standardized LFP container + Mosaic EMS",
+          "strengths": [
+            "standardized product",
+            "10-yr performance guarantee",
+            "strong EMS"
+          ],
+          "weaknesses": [
+            "split PV EPC",
+            "in-country cert partner reliance",
+            "split civil+MV in DE framework tenders"
+          ]
+        },
+        {
+          "name": "Sungrow PowerTitan",
+          "mechanism": "Native PCS + liquid-cooled container",
+          "strengths": [
+            "tier-1 PCS firmware",
+            "<100 ms FCR"
+          ],
+          "weaknesses": [
+            "not turnkey EPC",
+            "third-party civil"
+          ]
+        },
+        {
+          "name": "Tesla Megapack / Autobidder",
+          "mechanism": "Integrated container + ML dispatch",
+          "strengths": [
+            "EMS moat",
+            "fast delivery"
+          ],
+          "weaknesses": [
+            "limited DE cert familiarity",
+            "rigid product config"
+          ]
+        },
+        {
+          "name": "Wärtsilä GEMS",
+          "mechanism": "EMS + integration",
+          "strengths": [
+            "EMS depth",
+            "grid-forming"
+          ],
+          "weaknesses": [
+            "smaller DE footprint"
+          ]
+        },
+        {
+          "name": "Siemens Grid Integration / Hitachi Energy / ABB / Nidec ASI",
+          "mechanism": "Utility-grade MV + protection",
+          "strengths": [
+            "IEC 61850 interop",
+            "utility credentials"
+          ],
+          "weaknesses": [
+            "pricing",
+            "less agile DE cert process"
+          ]
+        }
+      ],
+      "cross_check_vs_step_09": {
+        "feature_fit_avg_overall_fit": 5.58,
+        "odi_avg_opportunity_score": 11.31,
+        "high_opp_low_fit_flag": false,
+        "low_opp_high_fit_flag": false,
+        "alignment_notes": [
+          "F5 Grid-Code Certification Delivery (overall_fit=6.89, Mein Solar vendor_score=9) directly addresses top ODI opportunity PR1 (opp=15)",
+          "F4 EMS (overall_fit=6.67, Mein Solar vendor_score=5) is the bottleneck for capturing PR8 (opp=14, underserved) — tier-1 EMS partner required"
+        ]
+      },
+      "qa_checklist": {
+        "Q1_formula_correct": "PASS",
+        "Q2_underserved_flags_correct": "PASS",
+        "Q3_overserved_flags_correct": "PASS",
+        "Q4_need_count_preserved": "PASS",
+        "Q5_top5_ordering_correct": "PASS",
+        "Q6_cross_check_step09_ran": "PASS"
+      },
+      "neo4j_write_preview": {
+        "opportunity_score_nodes": 13,
+        "market_node_set_props": {
+          "odi_total_needs": 13,
+          "odi_underserved_count": 3,
+          "odi_overserved_count": 0,
+          "odi_avg_opportunity_score": 11.31,
+          "odi_top_opportunities": "[JSON string of top-5]"
+        },
+        "relationships": "13× (Market {naics_code:'221122'})-[:has_opportunity_score]->(OpportunityScore)"
+      }
+    }
+  ],
+  "has_bom": true,
+  "naics_sector_type": "non_manufacturing"
+}

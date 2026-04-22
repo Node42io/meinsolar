@@ -1,0 +1,457 @@
+{
+  "id": "COMPAT_semiconductor_and_related_device_manufac",
+  "title": "Constraint-Market Compatibility — NAICS 334413 Semiconductor and Related Device Manufacturing",
+  "type": "constraint_compatibility",
+  "market_slug": "semiconductor_and_related_device_manufac",
+  "is_per_market": true,
+  "sections": [
+    {
+      "title": "Step 07 — Constraints carried forward from Product Decomposition",
+      "content": "9 constraints from §01. No new technology-class constraints added (Step 07 web-research augmentation deferred — operating envelope already exhaustively captured upstream).\n\n| # | Name | Type | is_absolute | Threshold |\n|---|---|---|---|---|\n| P1 | MV Grid Connection Capacity | operational | false | DSO spare MV capacity required |\n| P2 | Land Footprint and Siting | physical | false | 40–80 m²/MWh + clearances |\n| P3 | Fire-Protection Clearance | regulatory | false | VdS / local Feuerwehr; >3 MWh cluster rules |\n| P4 | Li-Ion Thermal Runaway Hazard | physical | true | NOVEC, compartmentation, deflagration venting |\n| P5 | Grid Code Certification Lead Time | regulatory | false | 6–12 months |\n| P6 | Battery Supply Chain Concentration | economic | false | CN LFP concentration; CRMA/EU Battery Reg |\n| P7 | Ambient Temperature Envelope | environmental | false | −20 to +50 °C |\n| P8 | Round-Trip Energy Losses | physical | true | 10–15% (thermodynamic floor) |\n| P9 | CAPEX Viability Threshold | economic | false | €250–400/kWh installed |\n\nP4 and P8 are flagged `is_absolute=true` at the commodity level (physics), but neither is a *market-side* knockout against 334413 — the fab environment never forces the product beyond those limits; they are mitigated in design.\n\n---"
+    },
+    {
+      "title": "Step 08 — Per-Market Assessment against 334413",
+      "content": "### Summary table\n\n| # | Constraint | Verdict | Cost | Time | Core rationale |\n|---|---|---|---|---|---|\n| P1 | MV Grid Connection Capacity | **mitigable** | medium | 6–12 mo | Fab has its own HV/MV substation; BESS ties into internal MV bus, not DSO feeder. Load-flow + breaker coordination study required. |\n| P2 | Land Footprint and Siting | **mitigable** | low | 2–4 mo | Fab sites are large industrial parcels (e.g. Infineon Dresden, ESMC Dresden ≫50 ha); utility-yard placement standard. Fire clearances drive siting, not total area. |\n| P3 | Fire-Protection Clearance | **mitigable** | medium | 3–6 mo | Fab insurance regime (FM Global / VdS) stricter than default VdS; BESS container requires separation-distance study, often upgraded suppression, and GC sign-off. |\n| P4 | Li-Ion Thermal Runaway Hazard | **mitigable** | medium | 6–12 mo | Fab-grade risk review (FM Global DS 5-33 equivalent), deflagration-vented compartments, gas-detect interlocks, potentially remote-sited container. Standard in fab-power engineering. |\n| P5 | Grid Code Certification Lead Time | **none** | — | — | Fab greenfield build cycles are 24–36 months; 6–12 mo VDE-AR-N 4110 / FGW TR8 cert runs in parallel with cleanroom fit-out. Not on critical path. |\n| P6 | Battery Supply Chain Concentration | **mitigable** | medium | ongoing | Fab owners (Infineon, Bosch, ESMC) bound by EU Chips Act + sovereignty optics — may require EU cell content or dual-sourcing. Mein Solar substitutes EU/KR cells at 5–15% cost premium. |\n| P7 | Ambient Temperature Envelope | **none** | — | — | German fab sites (Dresden, Reutlingen, Magdeburg) within −20 to +50 °C envelope. HVAC inside container handles balance. |\n| P8 | Round-Trip Energy Losses | **none** | — | — | Fab use-case is ride-through + PQ, not arbitrage. Roundtrip efficiency immaterial when energy-service is millisecond-to-second ride-through. For PV+BESS self-consumption add-on, 10–15% loss is accepted as cost of flex. |\n| P9 | CAPEX Viability Threshold | **mitigable** | high | 12–18 mo | Fab business case is *availability* not arbitrage: ride-through saves one lost batch = €M–€10M+, so €/kWh economics invert. Sale must reframe from arbitrage-payback to availability-insurance + Netzentgelte + decarbonization stack. Not a cost block, a narrative block. |\n\n### Knockout analysis\n\nNo knockouts. Fab environment is *inside* the product's operating envelope for every physical/chemical constraint. Every regulatory / economic barrier has a known certification or engineering path.\n\n**Cross-check against knockout false-positive rules:**\n- No cost-based knockout (P9 correctly mitigable — cost is never knockout).\n- No performance-degradation knockout (P8 correctly none — no zero-output condition in 334413).\n- No regulatory-without-path knockout (P3, P4, P6 all have certification / engineering paths).\n- No physics gap (ambient fab utility-yard conditions are benign; temperature, acoustic, footprint envelopes comfortably met).\n\n### Conservative review (08b simulation)\n\nApplied two-question test to every mitigable verdict. No verdicts upgraded to knockout (validator only downgrades). None downgraded from mitigable to none (we were already conservative: P1, P3, P4, P6, P9 are genuine engineering/commercial work).\n\n---"
+    },
+    {
+      "title": "Surviving / eliminated",
+      "content": "| Status | NAICS | Rationale |\n|---|---|---|\n| `markets_surviving` | **334413** | Zero knockouts. Enters Step 09 (feature-market fit) and Step 12 (prioritization) with mitigation cost overhead: 1×high, 4×medium, 1×low. |\n| `markets_eliminated` | — | — |\n\n**Cumulative mitigation cost load (this market):**\n- 1× high (P9 — business-case reframing)\n- 4× medium (P1, P3, P4, P6)\n- 1× low (P2)\n- Time to full readiness: **12–18 months** (longest single item P9; P4 and P1 parallelizable inside).\n\n---"
+    },
+    {
+      "title": "Strategic notes (for downstream scoring)",
+      "content": "1. **The binding constraint is not technical, it's commercial.** P9 dominates: fab owners don't buy on €/kWh; they buy on availability-insurance + decarbonization. Mein Solar sales motion must pivot, not re-engineer.\n2. **P4 cost is conservative.** Fab fire reviews (FM Global) are stricter than VdS. Container may need to sit outside fab perimeter, increasing cable runs — but still well inside \"medium\" bucket.\n3. **P5 is a timing gift, not a barrier.** Fab 24–36 mo build cycles absorb VDE-AR-N 4110 lead time completely.\n4. **P6 links to sovereignty narrative.** EU Chips Act fab owners likely *prefer* non-CN cells; this could become a differentiator rather than a penalty.\n5. **Consistent with VN strategic read:** entry mode recommendation (subcontract under M+W / Exyte / Jacobs, lead with PV+BESS) maps directly onto the mitigation stack — all P-items collapse to the GC's existing engineering ledger.\n\n---"
+    },
+    {
+      "title": "Structured Data",
+      "content": "```json\n{\n  \"component\": \"constraint_market_compatibility\",\n  \"market_naics_code\": \"334413\",\n  \"market_naics_title\": \"Semiconductor and Related Device Manufacturing\",\n  \"product_name\": \"EPC für Großbatteriespeicher\",\n  \"vendor_name\": \"Mein Solar GmbH\",\n  \"technology_class\": \"Large-Scale Battery Energy Storage System EPC\",\n  \"run_scope\": \"single_market_compatibility\",\n\n  \"constraints_evaluated\": [\n    {\n      \"name\": \"MV Grid Connection Capacity\",\n      \"constraint_type\": \"operational\",\n      \"is_absolute\": false,\n      \"threshold_value\": null,\n      \"threshold_unit\": null,\n      \"description\": \"DSO spare MV feeder capacity required; saturated grid demands upgrade\"\n    },\n    {\n      \"name\": \"Land Footprint and Siting\",\n      \"constraint_type\": \"physical\",\n      \"is_absolute\": false,\n      \"threshold_value\": \"40-80\",\n      \"threshold_unit\": \"m2_per_MWh\",\n      \"description\": \"Container + clearances + fire-service access + Baugenehmigung\"\n    },\n    {\n      \"name\": \"Fire-Protection Clearance\",\n      \"constraint_type\": \"regulatory\",\n      \"is_absolute\": false,\n      \"threshold_value\": null,\n      \"threshold_unit\": null,\n      \"description\": \"VdS / Feuerwehr clearances; separation walls >3 MWh clusters\"\n    },\n    {\n      \"name\": \"Li-Ion Thermal Runaway Hazard\",\n      \"constraint_type\": \"physical\",\n      \"is_absolute\": true,\n      \"threshold_value\": null,\n      \"threshold_unit\": null,\n      \"description\": \"Inherent chemistry risk; containment via NOVEC, compartmentation, deflagration venting\"\n    },\n    {\n      \"name\": \"Grid Code Certification Lead Time\",\n      \"constraint_type\": \"regulatory\",\n      \"is_absolute\": false,\n      \"threshold_value\": \"6-12\",\n      \"threshold_unit\": \"months\",\n      \"description\": \"FGW TR8 Type B plant cert + DSO acceptance, parallelizable but on critical path\"\n    },\n    {\n      \"name\": \"Battery Supply Chain Concentration\",\n      \"constraint_type\": \"economic\",\n      \"is_absolute\": false,\n      \"threshold_value\": null,\n      \"threshold_unit\": null,\n      \"description\": \"LFP cells concentrated in CN; FX / tariff / CRMA / EU Battery Reg exposure\"\n    },\n    {\n      \"name\": \"Ambient Temperature Envelope\",\n      \"constraint_type\": \"environmental\",\n      \"is_absolute\": false,\n      \"threshold_value\": \"-20 to +50\",\n      \"threshold_unit\": \"C\",\n      \"description\": \"HVAC maintains internal setpoint; extremes reduce efficiency and cycle life\"\n    },\n    {\n      \"name\": \"Round-Trip Energy Losses\",\n      \"constraint_type\": \"physical\",\n      \"is_absolute\": true,\n      \"threshold_value\": \"10-15\",\n      \"threshold_unit\": \"%\",\n      \"description\": \"Thermodynamic floor from PCS + internal resistance + HVAC aux load\"\n    },\n    {\n      \"name\": \"CAPEX Viability Threshold\",\n      \"constraint_type\": \"economic\",\n      \"is_absolute\": false,\n      \"threshold_value\": \"250-400\",\n      \"threshold_unit\": \"EUR_per_kWh\",\n      \"description\": \"Below threshold arbitrage business case closes; above, payback >7 years\"\n    }\n  ],\n\n  \"assessments\": [\n    {\n      \"constraint_name\": \"MV Grid Connection Capacity\",\n      \"market_name\": \"Semiconductor and Related Device Manufacturing\",\n      \"naics_code\": \"334413\",\n      \"verdict\": \"mitigable\",\n      \"mitigation_actions\": [\n        \"Tie BESS into fab internal MV bus (not DSO feeder)\",\n        \"Perform load-flow and short-circuit coordination study with fab facility engineering\",\n        \"Agree breaker / protection settings with existing fab HV/MV substation operator\"\n      ],\n      \"mitigation_cost_estimate\": \"medium\",\n      \"mitigation_time_estimate\": \"6-12 months\",\n      \"knockout_reason\": null,\n      \"rationale\": \"Fabs operate their own HV/MV substation sized for tens-to-hundreds of MW. BESS interconnect is internal, not DSO-side. Study work is standard but non-trivial.\"\n    },\n    {\n      \"constraint_name\": \"Land Footprint and Siting\",\n      \"market_name\": \"Semiconductor and Related Device Manufacturing\",\n      \"naics_code\": \"334413\",\n      \"verdict\": \"mitigable\",\n      \"mitigation_actions\": [\n        \"Site BESS container in fab utility-yard / power-block perimeter\",\n        \"Run FM Global / VdS separation-distance study\",\n        \"Coordinate with Baugenehmigung for greenfield or Nachtrag for brownfield\"\n      ],\n      \"mitigation_cost_estimate\": \"low\",\n      \"mitigation_time_estimate\": \"2-4 months\",\n      \"knockout_reason\": null,\n      \"rationale\": \"Fab parcels >50 ha (Infineon Dresden, ESMC Dresden). Footprint is negligible vs. fab size; binding dimension is fire clearance, not area.\"\n    },\n    {\n      \"constraint_name\": \"Fire-Protection Clearance\",\n      \"market_name\": \"Semiconductor and Related Device Manufacturing\",\n      \"naics_code\": \"334413\",\n      \"verdict\": \"mitigable\",\n      \"mitigation_actions\": [\n        \"Apply FM Global DS 5-33 / SEMI S2-equivalent separation-distance analysis\",\n        \"Potentially increase container separation or add physical firewall for cluster >3 MWh\",\n        \"Pass fab-owner fire insurer (FM Global / HDI / Munich Re) review\"\n      ],\n      \"mitigation_cost_estimate\": \"medium\",\n      \"mitigation_time_estimate\": \"3-6 months\",\n      \"knockout_reason\": null,\n      \"rationale\": \"Fab insurance regime is stricter than generic VdS guidance; BESS location selection and suppression specification must survive owner's fire insurer review. Standard work inside fab facility engineering scope.\"\n    },\n    {\n      \"constraint_name\": \"Li-Ion Thermal Runaway Hazard\",\n      \"market_name\": \"Semiconductor and Related Device Manufacturing\",\n      \"naics_code\": \"334413\",\n      \"verdict\": \"mitigable\",\n      \"mitigation_actions\": [\n        \"Fab-grade hazard / failure-mode review (FMEA + HAZOP)\",\n        \"Deflagration-vented compartmentation + gas-detect interlocks with fab DCS\",\n        \"Remote siting option (container outside fab perimeter with MV cable link) where fire engineer requires it\"\n      ],\n      \"mitigation_cost_estimate\": \"medium\",\n      \"mitigation_time_estimate\": \"6-12 months\",\n      \"knockout_reason\": null,\n      \"rationale\": \"is_absolute flag is at chemistry level, not market level. Fab industry is risk-averse but has mature processes for classifying and siting energy-dense assets (dielectric gas, H2, solvent storage). BESS fits that methodology.\"\n    },\n    {\n      \"constraint_name\": \"Grid Code Certification Lead Time\",\n      \"market_name\": \"Semiconductor and Related Device Manufacturing\",\n      \"naics_code\": \"334413\",\n      \"verdict\": \"none\",\n      \"mitigation_actions\": [],\n      \"mitigation_cost_estimate\": null,\n      \"mitigation_time_estimate\": null,\n      \"knockout_reason\": null,\n      \"rationale\": \"Fab build cycles are 24-36 months. 6-12 month FGW TR8 certification runs entirely inside that window and is not on fab's critical path.\"\n    },\n    {\n      \"constraint_name\": \"Battery Supply Chain Concentration\",\n      \"market_name\": \"Semiconductor and Related Device Manufacturing\",\n      \"naics_code\": \"334413\",\n      \"verdict\": \"mitigable\",\n      \"mitigation_actions\": [\n        \"Offer EU/KR-cell BESS variant (LG ES, Samsung SDI, Northvolt) at cost premium\",\n        \"Dual-source cell supply to hedge tariff / CRMA exposure\",\n        \"Prepare EU Battery Regulation / Digital Product Passport compliance documentation\"\n      ],\n      \"mitigation_cost_estimate\": \"medium\",\n      \"mitigation_time_estimate\": \"ongoing / per-project\",\n      \"knockout_reason\": null,\n      \"rationale\": \"EU Chips Act and sovereignty optics may push fab owners toward non-CN cell content. Premium is 5-15%. Also potentially a positive differentiator rather than a penalty.\"\n    },\n    {\n      \"constraint_name\": \"Ambient Temperature Envelope\",\n      \"market_name\": \"Semiconductor and Related Device Manufacturing\",\n      \"naics_code\": \"334413\",\n      \"verdict\": \"none\",\n      \"mitigation_actions\": [],\n      \"mitigation_cost_estimate\": null,\n      \"mitigation_time_estimate\": null,\n      \"knockout_reason\": null,\n      \"rationale\": \"German fab locations (Dresden, Reutlingen, Magdeburg, Villach) fall within -20 to +50 C. Container HVAC buffer handles extremes.\"\n    },\n    {\n      \"constraint_name\": \"Round-Trip Energy Losses\",\n      \"market_name\": \"Semiconductor and Related Device Manufacturing\",\n      \"naics_code\": \"334413\",\n      \"verdict\": \"none\",\n      \"mitigation_actions\": [],\n      \"mitigation_cost_estimate\": null,\n      \"mitigation_time_estimate\": null,\n      \"knockout_reason\": null,\n      \"rationale\": \"Fab use-case is ride-through + power quality, where roundtrip efficiency is immaterial (millisecond dispatch). For PV+BESS self-consumption layer, 10-15% loss is standard cost of flex. No zero-output condition.\"\n    },\n    {\n      \"constraint_name\": \"CAPEX Viability Threshold\",\n      \"market_name\": \"Semiconductor and Related Device Manufacturing\",\n      \"naics_code\": \"334413\",\n      \"verdict\": \"mitigable\",\n      \"mitigation_actions\": [\n        \"Reframe business case from arbitrage-payback to availability-insurance (one saved batch = €M-€10M+)\",\n        \"Stack Netzentgelte peak-shaving + decarbonization + ancillary-services revenue on top of ride-through primary\",\n        \"Position PV+BESS bundle vs. standalone to leverage Mein Solar PV-EPC cost base\"\n      ],\n      \"mitigation_cost_estimate\": \"high\",\n      \"mitigation_time_estimate\": \"12-18 months\",\n      \"knockout_reason\": null,\n      \"rationale\": \"Cost is never a knockout. Fab buyers do not evaluate BESS on €/kWh vs. arbitrage payback; they evaluate on availability insurance. Sales motion pivot (marketing + proposal engineering) is the work item, not hardware.\"\n    }\n  ],\n\n  \"verdict_counts\": {\n    \"knockout\": 0,\n    \"mitigable\": 6,\n    \"none\": 3\n  },\n\n  \"mitigation_cost_load\": {\n    \"high\": 1,\n    \"medium\": 4,\n    \"low\": 1,\n    \"aggregate_time_to_ready_months\": \"12-18\"\n  },\n\n  \"markets_eliminated\": [],\n  \"markets_surviving\": [\"334413\"],\n\n  \"conservative_review\": {\n    \"downgrades_applied\": 0,\n    \"upgrades_applied\": 0,\n    \"notes\": \"No knockout verdicts exist to downgrade. Mitigable verdicts tested against two-question rule — all have engineering paths with <2x gap to threshold where thresholds apply.\"\n  },\n\n  \"downstream_handoff\": {\n    \"proceeds_to_step_09_feature_market_fit\": true,\n    \"proceeds_to_step_12_market_prioritization\": true,\n    \"scoring_notes\": \"Carry 1 high + 4 medium + 1 low mitigation-cost penalty into market prioritization. Architecture distance from §05 = 6 (MEDIUM priority). Defer vs. HIGH-priority markets (utilities, C&I landlords, HPC hubs, data centers) per VN strategic read.\"\n  },\n\n  \"qa\": {\n    \"all_constraints_assessed\": true,\n    \"knockouts_have_physics_or_mandatory_regulation_basis\": \"n/a (no knockouts)\",\n    \"mitigables_have_actions_cost_time\": true,\n    \"none_verdicts_have_rationale\": true,\n    \"cost_not_used_as_knockout\": true,\n    \"regulations_with_cert_path_not_knockout\": true\n  }\n}\n```\n\n---"
+    },
+    {
+      "title": "Sources",
+      "content": "Upstream only (no web search):\n- `01_product_decomposition.md` — constraints P1–P9 definitions, thresholds, severity\n- `02_functional_promise.md` — FP Extension axes and required complements (P5, P6, P9 context)\n- `05_market_discovery.md` — architecture distance 6, MEDIUM priority, emerging adoption for 334413\n- `VN_semiconductor_and_related_device_manufac.md` — fab utility-yard L6H-POWER positioning, SEMI F47 context, FM Global insurance regime, fab build-cycle durations, sovereignty / EU-cell preference"
+    }
+  ],
+  "tables": [
+    {
+      "headers": [
+        "#",
+        "Name",
+        "Type",
+        "is_absolute",
+        "Threshold"
+      ],
+      "rows": [
+        {
+          "#": "P1",
+          "Name": "MV Grid Connection Capacity",
+          "Type": "operational",
+          "is_absolute": "false",
+          "Threshold": "DSO spare MV capacity required"
+        },
+        {
+          "#": "P2",
+          "Name": "Land Footprint and Siting",
+          "Type": "physical",
+          "is_absolute": "false",
+          "Threshold": "40–80 m²/MWh + clearances"
+        },
+        {
+          "#": "P3",
+          "Name": "Fire-Protection Clearance",
+          "Type": "regulatory",
+          "is_absolute": "false",
+          "Threshold": "VdS / local Feuerwehr; >3 MWh cluster rules"
+        },
+        {
+          "#": "P4",
+          "Name": "Li-Ion Thermal Runaway Hazard",
+          "Type": "physical",
+          "is_absolute": "true",
+          "Threshold": "NOVEC, compartmentation, deflagration venting"
+        },
+        {
+          "#": "P5",
+          "Name": "Grid Code Certification Lead Time",
+          "Type": "regulatory",
+          "is_absolute": "false",
+          "Threshold": "6–12 months"
+        },
+        {
+          "#": "P6",
+          "Name": "Battery Supply Chain Concentration",
+          "Type": "economic",
+          "is_absolute": "false",
+          "Threshold": "CN LFP concentration; CRMA/EU Battery Reg"
+        },
+        {
+          "#": "P7",
+          "Name": "Ambient Temperature Envelope",
+          "Type": "environmental",
+          "is_absolute": "false",
+          "Threshold": "−20 to +50 °C"
+        },
+        {
+          "#": "P8",
+          "Name": "Round-Trip Energy Losses",
+          "Type": "physical",
+          "is_absolute": "true",
+          "Threshold": "10–15% (thermodynamic floor)"
+        },
+        {
+          "#": "P9",
+          "Name": "CAPEX Viability Threshold",
+          "Type": "economic",
+          "is_absolute": "false",
+          "Threshold": "€250–400/kWh installed"
+        }
+      ]
+    },
+    {
+      "headers": [
+        "#",
+        "Constraint",
+        "Verdict",
+        "Cost",
+        "Time",
+        "Core rationale"
+      ],
+      "rows": [
+        {
+          "#": "P1",
+          "Constraint": "MV Grid Connection Capacity",
+          "Verdict": "**mitigable**",
+          "Cost": "medium",
+          "Time": "6–12 mo",
+          "Core rationale": "Fab has its own HV/MV substation; BESS ties into internal MV bus, not DSO feeder. Load-flow + breaker coordination study required."
+        },
+        {
+          "#": "P2",
+          "Constraint": "Land Footprint and Siting",
+          "Verdict": "**mitigable**",
+          "Cost": "low",
+          "Time": "2–4 mo",
+          "Core rationale": "Fab sites are large industrial parcels (e.g. Infineon Dresden, ESMC Dresden ≫50 ha); utility-yard placement standard. Fire clearances drive siting, not total area."
+        },
+        {
+          "#": "P3",
+          "Constraint": "Fire-Protection Clearance",
+          "Verdict": "**mitigable**",
+          "Cost": "medium",
+          "Time": "3–6 mo",
+          "Core rationale": "Fab insurance regime (FM Global / VdS) stricter than default VdS; BESS container requires separation-distance study, often upgraded suppression, and GC sign-off."
+        },
+        {
+          "#": "P4",
+          "Constraint": "Li-Ion Thermal Runaway Hazard",
+          "Verdict": "**mitigable**",
+          "Cost": "medium",
+          "Time": "6–12 mo",
+          "Core rationale": "Fab-grade risk review (FM Global DS 5-33 equivalent), deflagration-vented compartments, gas-detect interlocks, potentially remote-sited container. Standard in fab-power engineering."
+        },
+        {
+          "#": "P5",
+          "Constraint": "Grid Code Certification Lead Time",
+          "Verdict": "**none**",
+          "Cost": "—",
+          "Time": "—",
+          "Core rationale": "Fab greenfield build cycles are 24–36 months; 6–12 mo VDE-AR-N 4110 / FGW TR8 cert runs in parallel with cleanroom fit-out. Not on critical path."
+        },
+        {
+          "#": "P6",
+          "Constraint": "Battery Supply Chain Concentration",
+          "Verdict": "**mitigable**",
+          "Cost": "medium",
+          "Time": "ongoing",
+          "Core rationale": "Fab owners (Infineon, Bosch, ESMC) bound by EU Chips Act + sovereignty optics — may require EU cell content or dual-sourcing. Mein Solar substitutes EU/KR cells at 5–15% cost premium."
+        },
+        {
+          "#": "P7",
+          "Constraint": "Ambient Temperature Envelope",
+          "Verdict": "**none**",
+          "Cost": "—",
+          "Time": "—",
+          "Core rationale": "German fab sites (Dresden, Reutlingen, Magdeburg) within −20 to +50 °C envelope. HVAC inside container handles balance."
+        },
+        {
+          "#": "P8",
+          "Constraint": "Round-Trip Energy Losses",
+          "Verdict": "**none**",
+          "Cost": "—",
+          "Time": "—",
+          "Core rationale": "Fab use-case is ride-through + PQ, not arbitrage. Roundtrip efficiency immaterial when energy-service is millisecond-to-second ride-through. For PV+BESS self-consumption add-on, 10–15% loss is accepted as cost of flex."
+        },
+        {
+          "#": "P9",
+          "Constraint": "CAPEX Viability Threshold",
+          "Verdict": "**mitigable**",
+          "Cost": "high",
+          "Time": "12–18 mo",
+          "Core rationale": "Fab business case is *availability* not arbitrage: ride-through saves one lost batch = €M–€10M+, so €/kWh economics invert. Sale must reframe from arbitrage-payback to availability-insurance + Netzentgelte + decarbonization stack. Not a cost block, a narrative block."
+        }
+      ]
+    },
+    {
+      "headers": [
+        "Status",
+        "NAICS",
+        "Rationale"
+      ],
+      "rows": [
+        {
+          "Status": "`markets_surviving`",
+          "NAICS": "**334413**",
+          "Rationale": "Zero knockouts. Enters Step 09 (feature-market fit) and Step 12 (prioritization) with mitigation cost overhead: 1×high, 4×medium, 1×low."
+        },
+        {
+          "Status": "`markets_eliminated`",
+          "NAICS": "—",
+          "Rationale": "—"
+        }
+      ]
+    }
+  ],
+  "entities": [
+    {
+      "component": "constraint_market_compatibility",
+      "market_naics_code": "334413",
+      "market_naics_title": "Semiconductor and Related Device Manufacturing",
+      "product_name": "EPC für Großbatteriespeicher",
+      "vendor_name": "Mein Solar GmbH",
+      "technology_class": "Large-Scale Battery Energy Storage System EPC",
+      "run_scope": "single_market_compatibility",
+      "constraints_evaluated": [
+        {
+          "name": "MV Grid Connection Capacity",
+          "constraint_type": "operational",
+          "is_absolute": false,
+          "threshold_value": null,
+          "threshold_unit": null,
+          "description": "DSO spare MV feeder capacity required; saturated grid demands upgrade"
+        },
+        {
+          "name": "Land Footprint and Siting",
+          "constraint_type": "physical",
+          "is_absolute": false,
+          "threshold_value": "40-80",
+          "threshold_unit": "m2_per_MWh",
+          "description": "Container + clearances + fire-service access + Baugenehmigung"
+        },
+        {
+          "name": "Fire-Protection Clearance",
+          "constraint_type": "regulatory",
+          "is_absolute": false,
+          "threshold_value": null,
+          "threshold_unit": null,
+          "description": "VdS / Feuerwehr clearances; separation walls >3 MWh clusters"
+        },
+        {
+          "name": "Li-Ion Thermal Runaway Hazard",
+          "constraint_type": "physical",
+          "is_absolute": true,
+          "threshold_value": null,
+          "threshold_unit": null,
+          "description": "Inherent chemistry risk; containment via NOVEC, compartmentation, deflagration venting"
+        },
+        {
+          "name": "Grid Code Certification Lead Time",
+          "constraint_type": "regulatory",
+          "is_absolute": false,
+          "threshold_value": "6-12",
+          "threshold_unit": "months",
+          "description": "FGW TR8 Type B plant cert + DSO acceptance, parallelizable but on critical path"
+        },
+        {
+          "name": "Battery Supply Chain Concentration",
+          "constraint_type": "economic",
+          "is_absolute": false,
+          "threshold_value": null,
+          "threshold_unit": null,
+          "description": "LFP cells concentrated in CN; FX / tariff / CRMA / EU Battery Reg exposure"
+        },
+        {
+          "name": "Ambient Temperature Envelope",
+          "constraint_type": "environmental",
+          "is_absolute": false,
+          "threshold_value": "-20 to +50",
+          "threshold_unit": "C",
+          "description": "HVAC maintains internal setpoint; extremes reduce efficiency and cycle life"
+        },
+        {
+          "name": "Round-Trip Energy Losses",
+          "constraint_type": "physical",
+          "is_absolute": true,
+          "threshold_value": "10-15",
+          "threshold_unit": "%",
+          "description": "Thermodynamic floor from PCS + internal resistance + HVAC aux load"
+        },
+        {
+          "name": "CAPEX Viability Threshold",
+          "constraint_type": "economic",
+          "is_absolute": false,
+          "threshold_value": "250-400",
+          "threshold_unit": "EUR_per_kWh",
+          "description": "Below threshold arbitrage business case closes; above, payback >7 years"
+        }
+      ],
+      "assessments": [
+        {
+          "constraint_name": "MV Grid Connection Capacity",
+          "market_name": "Semiconductor and Related Device Manufacturing",
+          "naics_code": "334413",
+          "verdict": "mitigable",
+          "mitigation_actions": [
+            "Tie BESS into fab internal MV bus (not DSO feeder)",
+            "Perform load-flow and short-circuit coordination study with fab facility engineering",
+            "Agree breaker / protection settings with existing fab HV/MV substation operator"
+          ],
+          "mitigation_cost_estimate": "medium",
+          "mitigation_time_estimate": "6-12 months",
+          "knockout_reason": null,
+          "rationale": "Fabs operate their own HV/MV substation sized for tens-to-hundreds of MW. BESS interconnect is internal, not DSO-side. Study work is standard but non-trivial."
+        },
+        {
+          "constraint_name": "Land Footprint and Siting",
+          "market_name": "Semiconductor and Related Device Manufacturing",
+          "naics_code": "334413",
+          "verdict": "mitigable",
+          "mitigation_actions": [
+            "Site BESS container in fab utility-yard / power-block perimeter",
+            "Run FM Global / VdS separation-distance study",
+            "Coordinate with Baugenehmigung for greenfield or Nachtrag for brownfield"
+          ],
+          "mitigation_cost_estimate": "low",
+          "mitigation_time_estimate": "2-4 months",
+          "knockout_reason": null,
+          "rationale": "Fab parcels >50 ha (Infineon Dresden, ESMC Dresden). Footprint is negligible vs. fab size; binding dimension is fire clearance, not area."
+        },
+        {
+          "constraint_name": "Fire-Protection Clearance",
+          "market_name": "Semiconductor and Related Device Manufacturing",
+          "naics_code": "334413",
+          "verdict": "mitigable",
+          "mitigation_actions": [
+            "Apply FM Global DS 5-33 / SEMI S2-equivalent separation-distance analysis",
+            "Potentially increase container separation or add physical firewall for cluster >3 MWh",
+            "Pass fab-owner fire insurer (FM Global / HDI / Munich Re) review"
+          ],
+          "mitigation_cost_estimate": "medium",
+          "mitigation_time_estimate": "3-6 months",
+          "knockout_reason": null,
+          "rationale": "Fab insurance regime is stricter than generic VdS guidance; BESS location selection and suppression specification must survive owner's fire insurer review. Standard work inside fab facility engineering scope."
+        },
+        {
+          "constraint_name": "Li-Ion Thermal Runaway Hazard",
+          "market_name": "Semiconductor and Related Device Manufacturing",
+          "naics_code": "334413",
+          "verdict": "mitigable",
+          "mitigation_actions": [
+            "Fab-grade hazard / failure-mode review (FMEA + HAZOP)",
+            "Deflagration-vented compartmentation + gas-detect interlocks with fab DCS",
+            "Remote siting option (container outside fab perimeter with MV cable link) where fire engineer requires it"
+          ],
+          "mitigation_cost_estimate": "medium",
+          "mitigation_time_estimate": "6-12 months",
+          "knockout_reason": null,
+          "rationale": "is_absolute flag is at chemistry level, not market level. Fab industry is risk-averse but has mature processes for classifying and siting energy-dense assets (dielectric gas, H2, solvent storage). BESS fits that methodology."
+        },
+        {
+          "constraint_name": "Grid Code Certification Lead Time",
+          "market_name": "Semiconductor and Related Device Manufacturing",
+          "naics_code": "334413",
+          "verdict": "none",
+          "mitigation_actions": [],
+          "mitigation_cost_estimate": null,
+          "mitigation_time_estimate": null,
+          "knockout_reason": null,
+          "rationale": "Fab build cycles are 24-36 months. 6-12 month FGW TR8 certification runs entirely inside that window and is not on fab's critical path."
+        },
+        {
+          "constraint_name": "Battery Supply Chain Concentration",
+          "market_name": "Semiconductor and Related Device Manufacturing",
+          "naics_code": "334413",
+          "verdict": "mitigable",
+          "mitigation_actions": [
+            "Offer EU/KR-cell BESS variant (LG ES, Samsung SDI, Northvolt) at cost premium",
+            "Dual-source cell supply to hedge tariff / CRMA exposure",
+            "Prepare EU Battery Regulation / Digital Product Passport compliance documentation"
+          ],
+          "mitigation_cost_estimate": "medium",
+          "mitigation_time_estimate": "ongoing / per-project",
+          "knockout_reason": null,
+          "rationale": "EU Chips Act and sovereignty optics may push fab owners toward non-CN cell content. Premium is 5-15%. Also potentially a positive differentiator rather than a penalty."
+        },
+        {
+          "constraint_name": "Ambient Temperature Envelope",
+          "market_name": "Semiconductor and Related Device Manufacturing",
+          "naics_code": "334413",
+          "verdict": "none",
+          "mitigation_actions": [],
+          "mitigation_cost_estimate": null,
+          "mitigation_time_estimate": null,
+          "knockout_reason": null,
+          "rationale": "German fab locations (Dresden, Reutlingen, Magdeburg, Villach) fall within -20 to +50 C. Container HVAC buffer handles extremes."
+        },
+        {
+          "constraint_name": "Round-Trip Energy Losses",
+          "market_name": "Semiconductor and Related Device Manufacturing",
+          "naics_code": "334413",
+          "verdict": "none",
+          "mitigation_actions": [],
+          "mitigation_cost_estimate": null,
+          "mitigation_time_estimate": null,
+          "knockout_reason": null,
+          "rationale": "Fab use-case is ride-through + power quality, where roundtrip efficiency is immaterial (millisecond dispatch). For PV+BESS self-consumption layer, 10-15% loss is standard cost of flex. No zero-output condition."
+        },
+        {
+          "constraint_name": "CAPEX Viability Threshold",
+          "market_name": "Semiconductor and Related Device Manufacturing",
+          "naics_code": "334413",
+          "verdict": "mitigable",
+          "mitigation_actions": [
+            "Reframe business case from arbitrage-payback to availability-insurance (one saved batch = €M-€10M+)",
+            "Stack Netzentgelte peak-shaving + decarbonization + ancillary-services revenue on top of ride-through primary",
+            "Position PV+BESS bundle vs. standalone to leverage Mein Solar PV-EPC cost base"
+          ],
+          "mitigation_cost_estimate": "high",
+          "mitigation_time_estimate": "12-18 months",
+          "knockout_reason": null,
+          "rationale": "Cost is never a knockout. Fab buyers do not evaluate BESS on €/kWh vs. arbitrage payback; they evaluate on availability insurance. Sales motion pivot (marketing + proposal engineering) is the work item, not hardware."
+        }
+      ],
+      "verdict_counts": {
+        "knockout": 0,
+        "mitigable": 6,
+        "none": 3
+      },
+      "mitigation_cost_load": {
+        "high": 1,
+        "medium": 4,
+        "low": 1,
+        "aggregate_time_to_ready_months": "12-18"
+      },
+      "markets_eliminated": [],
+      "markets_surviving": [
+        "334413"
+      ],
+      "conservative_review": {
+        "downgrades_applied": 0,
+        "upgrades_applied": 0,
+        "notes": "No knockout verdicts exist to downgrade. Mitigable verdicts tested against two-question rule — all have engineering paths with <2x gap to threshold where thresholds apply."
+      },
+      "downstream_handoff": {
+        "proceeds_to_step_09_feature_market_fit": true,
+        "proceeds_to_step_12_market_prioritization": true,
+        "scoring_notes": "Carry 1 high + 4 medium + 1 low mitigation-cost penalty into market prioritization. Architecture distance from §05 = 6 (MEDIUM priority). Defer vs. HIGH-priority markets (utilities, C&I landlords, HPC hubs, data centers) per VN strategic read."
+      },
+      "qa": {
+        "all_constraints_assessed": true,
+        "knockouts_have_physics_or_mandatory_regulation_basis": "n/a (no knockouts)",
+        "mitigables_have_actions_cost_time": true,
+        "none_verdicts_have_rationale": true,
+        "cost_not_used_as_knockout": true,
+        "regulations_with_cert_path_not_knockout": true
+      }
+    }
+  ],
+  "has_bom": true,
+  "naics_sector_type": "manufacturing"
+}

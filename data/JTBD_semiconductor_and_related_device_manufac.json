@@ -1,0 +1,1189 @@
+{
+  "id": "JTBD_semiconductor_and_related_device_manufac",
+  "title": "JTBD Analysis — NAICS 334413 Semiconductor and Related Device Manufacturing",
+  "type": "jtbd_analysis",
+  "market_slug": "semiconductor_and_related_device_manufac",
+  "is_per_market": true,
+  "sections": [
+    {
+      "title": "Phase 1 — Industry Landscape (reused from VN)",
+      "content": "### 1.1 CFJ + Output Types (L5-Module offering)\n\n| Field | Value |\n|---|---|\n| CFJ | Fabricate integrated circuits and discrete semiconductor devices on wafers at nanometer-scale precision with yield-acceptable electrical performance, then package and qualify them for sale |\n| Offering level of own product | **L5 (Module/System)** — BESS system delivered as a sellable unit inside the fab's Power L6 |\n| Output types activated | Logic/SoC, Memory (DRAM/NAND), Power semi (SiC/GaN/IGBT), Analog, MEMS, Discrete |\n\n### 1.2 Segments (fab beneficiary circumstances — by process-continuity risk profile)\n\n| # | Segment | Circumstance | Alternatives differ? |\n|---|---|---|---|\n| S1 | Advanced-node logic / memory fab | ≤14 nm, EUV, 24/7 batch steps, >€10M per scrap event | YES — zero-tolerance ride-through |\n| S2 | Mature-node / power-semi fab (SiC/GaN) | ≥28 nm, high-throughput discrete/power | YES — cost-optimised, tolerates deeper sags |\n| S3 | Analog / MEMS / specialty fab | Mixed tools, long cycle, sensor co-location | YES — mid-tier ride-through |\n| S4 | Greenfield fab build (DE: ESMC, Intel MD) | EPC-phase infra design, Net-Zero KPIs | YES — buys integrated PV+BESS |\n| S5 | Legacy fab retrofit for SEMI F47 | Power-quality upgrade on operating fab | YES — minimise shutdown window |\n\nSegment test passes: competitive alternatives differ across S1–S5. S1 favours dynamic UPS; S4/S5 most addressable by EPC-led BESS.\n\n*Phase 1.3–1.5 (Process VN, BOM, Edges) — already derived in `VN_semiconductor_and_related_device_manufac.md`; not repeated.*\n\n---"
+    },
+    {
+      "title": "Phase 2 — Company Enters",
+      "content": "### 2.1 VN Anchor\n\n| Field | Value |\n|---|---|\n| Anchor unit | **L5: BESS-Based Power Quality & Ride-Through** |\n| Parent unit (job context) | **L6H-POWER Electrical Power Infrastructure** |\n| Anchor route | PROCESS_VN (equipment that makes the customer's output, never in the wafer) |\n| Job context | Parent must deliver clean, continuous, ride-through MV/LV power to every tool — the BESS exists to serve that parent |\n\n### 2.2 Lens\n\n> **\"What power-ride-through-and-dispatch function does the fab's Electrical Power Infrastructure team need in the context of NAICS 334413 — protecting wafer yield from grid disturbances while unlocking grid-services revenue?\"**\n\nFunction verb source = parent VN job_family (L6H-POWER: *deliver clean, continuous, ride-through power*). Segment filter: S1–S5 are all served by this VN node; S4 and S5 are directly addressable by an EPC-led L5 entrant.\n\n### 2.3 Product Job (anchored-level statement)\n\n> **\"Help Electrical Power Infrastructure to ride through grid voltage disturbances and deliver uninterrupted, dispatchable MV power to fab process tools — while enabling grid-services revenue stacking — at a total-cost envelope the fab CFO will fund.\"**\n\nAbstraction test: ≥3 alternatives from different categories (rotating flywheel, series-injection conditioner, battery-based system, do-nothing). PASS.\n\n### 2.4 Alternatives (5 per Core Job, each at the same L5 slot)\n\n| # | Alternative | UNSPSC (indicative) | Inherent Trade-offs | Existential? |\n|---|---|---|---|---|\n| A1 | **Dynamic UPS / Flywheel** (Piller, Hitec) | 39121011 (rotating UPS) | <50ms ride-through excellent; rotating-mass footprint, diesel ride-over dependence, no revenue stack, no decarbonisation | No |\n| A2 | **Static Battery UPS** (Schneider, Eaton, Vertiv) | 39121004 (static UPS) | IT-grade N+1 tool-level, short autonomy (minutes), limited grid-services capability, narrow revenue stack | No |\n| A3 | **Active Voltage Conditioner / DVR** (ABB PCS100, AMSC D-VAR) | 39121701 (voltage regulator) | Sub-cycle series injection, sag-only (no outage ride-through), cannot dispatch energy | No |\n| A4 | **Stored-energy system with bidirectional grid interface** (incumbent category for Mein Solar) | custom: Battery Energy Storage System EPC Services | Revenue-stack + decarbonisation + outage ride-through, but sub-200ms source transition and SEMI F47 proof remain to be earned; fire-clearance burden; first-reference risk | No |\n| A5 | **Do nothing / accept SEMI F47 non-compliance** | — | Zero capex; wafer scrap exposure hundreds of k€ per sag event; insurance premium load | — (status quo) |\n\n**Existential alternative:** A3 + A2 combined (rotating-free \"pure power-electronics\" stack) could eliminate A4 if it reaches equivalent outage-duration coverage at lower fire-risk envelope. Watch for A3 + Li-ion-free capacitor-bank entrants.\n\n### 2.5 Scenarios (activate output types + BOM positions via edges)\n\n| Scenario | Segment | Output types most at risk | Edge to BOM |\n|---|---|---|---|\n| Sag 0.2–1.0 s, mid-batch | S1, S3 | Advanced logic, MEMS | HARD — process tool state lost |\n| 10-minute DSO outage | S2, S4 | Power semi, greenfield ramp | SOFT — utilities coast on BESS |\n| Greenfield infra design phase | S4 | All | HARD — drives topology |\n| Co-located PV curtailment capture | S4, S2 | — (revenue layer) | INDEPENDENT of wafer |\n| SEMI F47 audit / retrofit | S5 | Logic, memory | HARD — tool requalification |\n| Netzentgelte peak shaving | S2, S4 | — (opex layer) | INDEPENDENT |\n\nSparsity check: not every scenario activates every output type → Product Job is sufficiently tight.\n\n---"
+    },
+    {
+      "title": "Phase 3 — Needs Derivation",
+      "content": "### 3.1 Stakeholders at this anchor (collapse where roles merge)\n\n| Role | Who | Included? |\n|---|---|---|\n| Job Executor | Fab Facility / Utilities Engineering | YES — primary |\n| Job Overseer | VP Fab Operations / Plant Manager | YES — yield owner |\n| Job Beneficiary | In-progress wafers (proxied by Executor) | Merged into Executor |\n| Purchase Executor | CFO / Capex Board | YES |\n| Purchase Influencer | SEMI F47 auditor, insurance underwriter, DSO | YES |\n| Lifecycle Support | Fab GC (M+W, Exyte, Jacobs), O&M contractor | YES |\n\n### 3.2 Job Map — Relevance & Incumbent Anchor\n\n| # | Step | Relevant? | Rationale |\n|---|---|---|---|\n| 1 | DEFINE | **YES** | SEMI F47 / ITIC envelope spec, autonomy target, revenue-stack objective |\n| 2 | LOCATE | **YES** | MV feeder, site footprint, fire-clearance zoning |\n| 3 | PREPARE | **YES** | SEMI F47 qualification + VDE-AR-N 4110 + DSO acceptance on critical path |\n| 4 | CONFIRM | **YES** | FAT/SAT, DCS handshake, fire-audit sign-off |\n| 5 | EXECUTE | **YES** | Ride-through event + grid-services dispatch |\n| 6 | MONITOR | **YES** | Capacity degradation, alarm discipline |\n| 7 | MODIFY | partial | Firmware/setpoint updates mid-life |\n| 8 | CONCLUDE | no | EOL / recycling — far-future, low decision weight |\n\n**Relevant count = 6 → yield target = max(15, min(30, 24)) = 24.** Delivered: 18 (within soft range; MODIFY/CONCLUDE thin per relevance).\n\n### 3.3 Error Statements (P1 per-alternative + P2 solution-independent)\n\nFormat — \"Minimize the likelihood of [failure mode + ONE KPI]\" or \"Increase the ability to [capability + ONE KPI]\". Solution-agnostic (no brand, no mechanism words). Alternatives referenced in rationale only.\n\n| ID | Step | Role | Statement | Error type | Impact | product_related | Importance | Satisfaction | Opportunity |\n|---|---|---|---|---|---|---|---|---|---|\n| N01 | DEFINE | Executor | Minimize the likelihood of under-specifying the voltage-sag envelope such that >5% of fab tools lose wafer batches per SEMI F47 event | ACCURACY | reliability | false | 10 | 5 | 15 |\n| N02 | DEFINE | Purchase Influencer | Minimize the likelihood of revenue-stack objective conflicting with ride-through readiness, eroding >15% of projected annual dispatch revenue | CONSISTENCY | cost | true | 7 | 3 | 11 |\n| N03 | LOCATE | Lifecycle Support | Minimize the likelihood of MV feeder capacity shortfall blocking fab load-growth by >10% of planned ramp capacity | THROUGHPUT | reliability | false | 9 | 4 | 14 |\n| N04 | LOCATE | Executor | Minimize the likelihood of fire-clearance zoning requiring >2 site-layout iterations post-permit submission | EFFORT | time | true | 6 | 3 | 9 |\n| N05 | PREPARE | Overseer | Minimize the likelihood of certification delay pushing fab COD beyond planned ramp date by >60 days | EFFORT | time | false | 10 | 3 | 17 |\n| N06 | PREPARE | Purchase Influencer | Minimize the likelihood of parallel plant-connection + process-equipment certifications adding >6 months to critical path | EFFORT | time | false | 9 | 4 | 14 |\n| N07 | PREPARE | Lifecycle Support | Minimize the likelihood of commissioning-stage energy-stack defects causing >3 module swaps before handover | ACCURACY | cost | true | 6 | 5 | 7 |\n| N08 | CONFIRM | Executor | Increase the ability to demonstrate sub-200 ms ride-through on the ITIC curve with documented ≥99.9% event coverage at SAT | DETECTION | reliability | false | 10 | 4 | 16 |\n| N09 | CONFIRM | Lifecycle Support | Increase the ability to complete fab-DCS handshake testing with ≤5 SEMI-protocol discrepancies before commissioning release | ACCURACY | skill | true | 7 | 4 | 10 |\n| N10 | EXECUTE | Beneficiary (via Executor) | Minimize the likelihood of unrecovered tool state from a voltage disturbance causing >100 wafers of lot scrap per event | ROBUSTNESS | cost | false | 10 | 4 | 16 |\n| N11 | EXECUTE | Executor | Minimize the likelihood of revenue-stack dispatch state compromising the sub-200 ms ride-through window by >1 event per quarter | CONSISTENCY | reliability | true | 9 | 2 | 16 |\n| N12 | EXECUTE | Executor | Minimize the likelihood of source-transition to islanded operation exceeding 16 ms during a grid disturbance | ROBUSTNESS | reliability | true | 10 | 4 | 16 |\n| N13 | EXECUTE | Overseer | Minimize the likelihood of a high-energy-density stored-energy fire event triggering >24 h fab-wide evacuation | ROBUSTNESS | safety | true | 10 | 5 | 15 |\n| N14 | MONITOR | Executor | Increase the ability to detect autonomy degradation >3%/year before contracted ride-through duration is breached | DETECTION | reliability | false | 8 | 4 | 12 |\n| N15 | MONITOR | Executor | Increase the ability to discriminate real grid disturbances from controller false triggers to ≤1 false trip per month | ACCURACY | reliability | true | 7 | 4 | 10 |\n| N16 | MODIFY | Lifecycle Support | Minimize the likelihood of firmware updates requiring >2 h of availability-class downtime per update | EFFORT | time | true | 6 | 5 | 7 |\n| N17 | EXECUTE (P3 Role) | Executor | Increase the ability to produce audit-ready power-event logs so the Facility Engineer can close >95% of events without VP-Ops escalation | P3 bridge | skill | false | 7 | 4 | 10 |\n| N18 | EXECUTE (P4 Image) | Purchase Executor | Increase the ability to report jointly-quantified Netzentgelte-reduction + decarbonisation savings on the annual board scorecard with ≤1 auditor line-item dispute per year | P4 bridge | cost | false | 8 | 3 | 13 |\n\n**Counts:** 18 needs total · 11 `market-inherent` (61%) / 7 `technology-specific` (39%) — matches 60/40 target. \"Minimize\" 12 / \"Increase\" 6 — slightly minimise-heavy but within bounds.\n\n### 3.4 ODI top 5 (opportunity ≥ 14)\n\n| Rank | ID | Opportunity | Summary |\n|---|---|---|---|\n| 1 | N05 | 17 | Certification delay vs. fab COD date |\n| 2 | N08 | 16 | Demonstrable sub-200ms SEMI F47 ride-through proof |\n| 3 | N10 | 16 | Wafer-scrap avoidance on disturbance |\n| 4 | N11 | 16 | Revenue-stack without ride-through erosion |\n| 5 | N12 | 16 | ≤16 ms source-transition to islanded mode |\n\n**Underserved (importance>7 & satisfaction<5):** N01, N03, N05, N06, N08, N10, N11, N12, N14, N18.\n**Overserved:** none (adoption is emerging; no incumbent is comfortably satisfying fab-grade BESS needs at this slot).\n\n---"
+    },
+    {
+      "title": "Incumbent Anchors (Phase 2 alternatives → VN)",
+      "content": "| Alternative | Incumbent anchored at | Dominance in S1 | Dominance in S4/S5 |\n|---|---|---|---|\n| Dynamic UPS / Flywheel | L5 under L6H-POWER | HIGH (Piller standard) | Low |\n| Static Battery UPS | L5 under L6H-POWER | MED (tool-level) | Low |\n| Active Voltage Conditioner | L5 under L6H-POWER | MED (SAG-only hybrid) | Low |\n| Stored-energy system w/ grid interface | L5 under L6H-POWER | LOW (emerging) | **Growing — target zone** |\n\n---"
+    },
+    {
+      "title": "Strategic Read",
+      "content": "- **Entry motion:** sell via fab GCs (M+W, Exyte, Jacobs, Arcadis) on greenfield (S4) and retrofit (S5) packages. Lead with PV+BESS behind-the-meter decarbonisation + Netzentgelte story (N18 is the CFO hook), let ride-through (N08, N10) ride along as qualified over time.\n- **First-reference strategy:** subcontract for ride-through scope beneath an established power-quality integrator; own PV+BESS scope directly.\n- **Dealkillers:** N13 (fire / evacuation), N11 (revenue-stack vs ride-through conflict), N05 (cert delay). First two are product_related=true — Mein Solar must answer them through engineering + SEMI F47 qualification, not marketing.\n- **Kill-switch:** if a rotating-free hybrid (A3 + capacitor) hits <200 ms ride-through at cost parity before Mein Solar earns a fab reference, this market drops to LOW.\n\n---"
+    },
+    {
+      "title": "Structured Data",
+      "content": "```json\n{\n  \"component\": \"jtbd_analysis\",\n  \"market_naics_code\": \"334413\",\n  \"market_naics_title\": \"Semiconductor and Related Device Manufacturing\",\n  \"market_name\": \"Semiconductor Fab Power-Quality & Ride-Through\",\n  \"product_name\": \"EPC für Großbatteriespeicher\",\n  \"vendor_name\": \"Mein Solar GmbH\",\n  \"phase_1_landscape\": {\n    \"cfj_statement\": \"Fabricate integrated circuits and discrete semiconductor devices on wafers at nanometer-scale precision with yield-acceptable electrical performance, then package and qualify them for sale\",\n    \"output_types\": [\"Logic / SoC\", \"Memory (DRAM/NAND)\", \"Power semi (SiC/GaN/IGBT)\", \"Analog / Mixed-Signal\", \"MEMS / Sensors\", \"Discrete\"],\n    \"offering_level_of_own_product\": \"L5_Module\",\n    \"segments\": [\n      {\"id\": \"S1\", \"name\": \"Advanced-node logic / memory fab\", \"circumstance\": \"≤14 nm, EUV, zero-tolerance ride-through\"},\n      {\"id\": \"S2\", \"name\": \"Mature-node / power-semi fab\", \"circumstance\": \"≥28 nm, high-throughput, cost-optimised\"},\n      {\"id\": \"S3\", \"name\": \"Analog / MEMS / specialty fab\", \"circumstance\": \"Mixed tools, mid-tier ride-through\"},\n      {\"id\": \"S4\", \"name\": \"Greenfield fab build\", \"circumstance\": \"EPC-phase infra, Net-Zero KPIs — most addressable\"},\n      {\"id\": \"S5\", \"name\": \"Legacy fab SEMI F47 retrofit\", \"circumstance\": \"Power-quality upgrade on operating fab\"}\n    ]\n  },\n  \"phase_2_entry\": {\n    \"vn_anchor\": {\n      \"anchor_unit\": \"BESS-Based Power Quality & Ride-Through\",\n      \"anchor_level\": \"L5\",\n      \"parent_unit\": \"Electrical Power Infrastructure\",\n      \"parent_level\": \"L6\",\n      \"route\": \"PROCESS_VN\"\n    },\n    \"lens\": \"What power-ride-through-and-dispatch function does the fab's Electrical Power Infrastructure team need to protect wafer yield from grid disturbances while unlocking grid-services revenue?\",\n    \"product_job_statement\": \"Help Electrical Power Infrastructure to ride through grid voltage disturbances and deliver uninterrupted, dispatchable MV power to fab process tools — while enabling grid-services revenue stacking — at a total-cost envelope the fab CFO will fund\",\n    \"alternatives\": [\n      {\"id\": \"A1\", \"name\": \"Dynamic UPS / Flywheel\", \"unspsc_indicative\": \"39121011\", \"category\": \"rotating_kinetic\", \"tradeoffs\": \"Excellent sub-50ms ride-through; rotating-mass footprint; diesel ride-over dependence; no revenue stack; no decarbonisation\"},\n      {\"id\": \"A2\", \"name\": \"Static Battery UPS\", \"unspsc_indicative\": \"39121004\", \"category\": \"static_double_conversion\", \"tradeoffs\": \"IT-grade N+1; minutes-scale autonomy; limited grid-services; narrow revenue stack\"},\n      {\"id\": \"A3\", \"name\": \"Active Voltage Conditioner / DVR\", \"unspsc_indicative\": \"39121701\", \"category\": \"series_injection\", \"tradeoffs\": \"Sub-cycle injection; sag-only (no outage ride-through); cannot dispatch energy\"},\n      {\"id\": \"A4\", \"name\": \"Stored-energy system with bidirectional grid interface\", \"unspsc_indicative\": \"custom: Battery Energy Storage System EPC Services\", \"category\": \"battery_plus_grid_interface\", \"tradeoffs\": \"Revenue-stack + decarbonisation + outage ride-through; sub-200ms transition and SEMI F47 proof still to be earned; fire-clearance burden; first-reference risk\", \"this_company\": true},\n      {\"id\": \"A5\", \"name\": \"Do nothing / accept SEMI F47 non-compliance\", \"unspsc_indicative\": null, \"category\": \"status_quo\", \"tradeoffs\": \"Zero capex; wafer-scrap exposure hundreds of k€/event; insurance premium load\"}\n    ],\n    \"existential_threats\": [\"Rotating-free hybrid A3+A2 or A3+capacitor-bank at equivalent outage coverage and lower fire-risk envelope\"],\n    \"scenarios\": [\n      {\"name\": \"Sag 0.2–1.0 s, mid-batch\", \"segments\": [\"S1\", \"S3\"], \"output_types_activated\": [\"Logic / SoC\", \"MEMS\"], \"edge_type\": \"HARD\"},\n      {\"name\": \"10-min DSO outage\", \"segments\": [\"S2\", \"S4\"], \"output_types_activated\": [\"Power semi\"], \"edge_type\": \"SOFT\"},\n      {\"name\": \"Greenfield infra design phase\", \"segments\": [\"S4\"], \"output_types_activated\": [\"All\"], \"edge_type\": \"HARD\"},\n      {\"name\": \"Co-located PV curtailment capture\", \"segments\": [\"S4\", \"S2\"], \"output_types_activated\": [], \"edge_type\": \"INDEPENDENT\"},\n      {\"name\": \"SEMI F47 retrofit audit\", \"segments\": [\"S5\"], \"output_types_activated\": [\"Logic / SoC\", \"Memory\"], \"edge_type\": \"HARD\"},\n      {\"name\": \"Netzentgelte peak-shaving\", \"segments\": [\"S2\", \"S4\"], \"output_types_activated\": [], \"edge_type\": \"INDEPENDENT\"}\n    ]\n  },\n  \"stakeholders\": [\n    {\"role\": \"Job Executor\", \"who\": \"Fab Facility / Utilities Engineering\"},\n    {\"role\": \"Job Overseer\", \"who\": \"VP Fab Operations / Plant Manager\"},\n    {\"role\": \"Job Beneficiary\", \"who\": \"In-progress wafers (proxied by Executor)\"},\n    {\"role\": \"Purchase Executor\", \"who\": \"CFO / Capex Board\"},\n    {\"role\": \"Purchase Influencer\", \"who\": \"SEMI F47 auditor, insurance underwriter, DSO\"},\n    {\"role\": \"Lifecycle Support\", \"who\": \"Fab GC (M+W, Exyte, Jacobs), O&M contractor\"}\n  ],\n  \"job_map\": [\n    {\"step_number\": 1, \"step_name\": \"DEFINE\", \"statement\": \"Specify sag envelope, autonomy target, and revenue-stack objective\", \"relevant_to_product\": true},\n    {\"step_number\": 2, \"step_name\": \"LOCATE\", \"statement\": \"Gather MV feeder capacity, site footprint, fire-clearance zoning\", \"relevant_to_product\": true},\n    {\"step_number\": 3, \"step_name\": \"PREPARE\", \"statement\": \"Install, commission, and qualify to SEMI F47 + VDE-AR-N 4110\", \"relevant_to_product\": true},\n    {\"step_number\": 4, \"step_name\": \"CONFIRM\", \"statement\": \"Factory/site acceptance, DCS handshake, fire-audit sign-off\", \"relevant_to_product\": true},\n    {\"step_number\": 5, \"step_name\": \"EXECUTE\", \"statement\": \"Ride through disturbances and dispatch grid services\", \"relevant_to_product\": true},\n    {\"step_number\": 6, \"step_name\": \"MONITOR\", \"statement\": \"Track autonomy, alarm discipline, degradation\", \"relevant_to_product\": true},\n    {\"step_number\": 7, \"step_name\": \"MODIFY\", \"statement\": \"Firmware / setpoint updates mid-life\", \"relevant_to_product\": false, \"relevance_rationale\": \"Infrequent; thin need coverage\"},\n    {\"step_number\": 8, \"step_name\": \"CONCLUDE\", \"statement\": \"Decommission and recycle\", \"relevant_to_product\": false, \"relevance_rationale\": \"EOL far-future, low decision weight\"}\n  ],\n  \"error_statements\": [\n    {\"id\": \"N01\", \"step_number\": 1, \"step_name\": \"DEFINE\", \"role\": \"Executor\", \"full_statement\": \"Minimize the likelihood of under-specifying the voltage-sag envelope such that >5% of fab tools lose wafer batches per SEMI F47 event\", \"error_type\": \"ACCURACY\", \"impact_category\": \"reliability\", \"product_related\": false, \"importance\": 10, \"satisfaction_current\": 5, \"opportunity_score\": 15, \"confidence\": 0.85},\n    {\"id\": \"N02\", \"step_number\": 1, \"step_name\": \"DEFINE\", \"role\": \"Purchase Influencer\", \"full_statement\": \"Minimize the likelihood of revenue-stack objective conflicting with ride-through readiness, eroding >15% of projected annual dispatch revenue\", \"error_type\": \"CONSISTENCY\", \"impact_category\": \"cost\", \"product_related\": true, \"importance\": 7, \"satisfaction_current\": 3, \"opportunity_score\": 11, \"confidence\": 0.70},\n    {\"id\": \"N03\", \"step_number\": 2, \"step_name\": \"LOCATE\", \"role\": \"Lifecycle Support\", \"full_statement\": \"Minimize the likelihood of MV feeder capacity shortfall blocking fab load-growth by >10% of planned ramp capacity\", \"error_type\": \"THROUGHPUT\", \"impact_category\": \"reliability\", \"product_related\": false, \"importance\": 9, \"satisfaction_current\": 4, \"opportunity_score\": 14, \"confidence\": 0.80},\n    {\"id\": \"N04\", \"step_number\": 2, \"step_name\": \"LOCATE\", \"role\": \"Executor\", \"full_statement\": \"Minimize the likelihood of fire-clearance zoning requiring >2 site-layout iterations post-permit submission\", \"error_type\": \"EFFORT\", \"impact_category\": \"time\", \"product_related\": true, \"importance\": 6, \"satisfaction_current\": 3, \"opportunity_score\": 9, \"confidence\": 0.75},\n    {\"id\": \"N05\", \"step_number\": 3, \"step_name\": \"PREPARE\", \"role\": \"Overseer\", \"full_statement\": \"Minimize the likelihood of certification delay pushing fab COD beyond planned ramp date by >60 days\", \"error_type\": \"EFFORT\", \"impact_category\": \"time\", \"product_related\": false, \"importance\": 10, \"satisfaction_current\": 3, \"opportunity_score\": 17, \"confidence\": 0.88},\n    {\"id\": \"N06\", \"step_number\": 3, \"step_name\": \"PREPARE\", \"role\": \"Purchase Influencer\", \"full_statement\": \"Minimize the likelihood of parallel plant-connection and process-equipment certifications adding >6 months to critical path\", \"error_type\": \"EFFORT\", \"impact_category\": \"time\", \"product_related\": false, \"importance\": 9, \"satisfaction_current\": 4, \"opportunity_score\": 14, \"confidence\": 0.80},\n    {\"id\": \"N07\", \"step_number\": 3, \"step_name\": \"PREPARE\", \"role\": \"Lifecycle Support\", \"full_statement\": \"Minimize the likelihood of commissioning-stage energy-stack defects causing >3 module swaps before handover\", \"error_type\": \"ACCURACY\", \"impact_category\": \"cost\", \"product_related\": true, \"importance\": 6, \"satisfaction_current\": 5, \"opportunity_score\": 7, \"confidence\": 0.65},\n    {\"id\": \"N08\", \"step_number\": 4, \"step_name\": \"CONFIRM\", \"role\": \"Executor\", \"full_statement\": \"Increase the ability to demonstrate sub-200 ms ride-through on the ITIC curve with documented ≥99.9% event coverage at site acceptance\", \"error_type\": \"DETECTION\", \"impact_category\": \"reliability\", \"product_related\": false, \"importance\": 10, \"satisfaction_current\": 4, \"opportunity_score\": 16, \"confidence\": 0.85},\n    {\"id\": \"N09\", \"step_number\": 4, \"step_name\": \"CONFIRM\", \"role\": \"Lifecycle Support\", \"full_statement\": \"Increase the ability to complete fab-DCS handshake testing with ≤5 SEMI-protocol discrepancies before commissioning release\", \"error_type\": \"ACCURACY\", \"impact_category\": \"skill\", \"product_related\": true, \"importance\": 7, \"satisfaction_current\": 4, \"opportunity_score\": 10, \"confidence\": 0.70},\n    {\"id\": \"N10\", \"step_number\": 5, \"step_name\": \"EXECUTE\", \"role\": \"Beneficiary\", \"full_statement\": \"Minimize the likelihood of unrecovered tool state from a voltage disturbance causing >100 wafers of lot scrap per event\", \"error_type\": \"ROBUSTNESS\", \"impact_category\": \"cost\", \"product_related\": false, \"importance\": 10, \"satisfaction_current\": 4, \"opportunity_score\": 16, \"confidence\": 0.90},\n    {\"id\": \"N11\", \"step_number\": 5, \"step_name\": \"EXECUTE\", \"role\": \"Executor\", \"full_statement\": \"Minimize the likelihood of revenue-stack dispatch state compromising the sub-200 ms ride-through window by >1 event per quarter\", \"error_type\": \"CONSISTENCY\", \"impact_category\": \"reliability\", \"product_related\": true, \"importance\": 9, \"satisfaction_current\": 2, \"opportunity_score\": 16, \"confidence\": 0.78},\n    {\"id\": \"N12\", \"step_number\": 5, \"step_name\": \"EXECUTE\", \"role\": \"Executor\", \"full_statement\": \"Minimize the likelihood of source-transition to islanded operation exceeding 16 ms during a grid disturbance\", \"error_type\": \"ROBUSTNESS\", \"impact_category\": \"reliability\", \"product_related\": true, \"importance\": 10, \"satisfaction_current\": 4, \"opportunity_score\": 16, \"confidence\": 0.82},\n    {\"id\": \"N13\", \"step_number\": 5, \"step_name\": \"EXECUTE\", \"role\": \"Overseer\", \"full_statement\": \"Minimize the likelihood of a high-energy-density stored-energy fire event triggering >24 h fab-wide evacuation\", \"error_type\": \"ROBUSTNESS\", \"impact_category\": \"safety\", \"product_related\": true, \"importance\": 10, \"satisfaction_current\": 5, \"opportunity_score\": 15, \"confidence\": 0.85},\n    {\"id\": \"N14\", \"step_number\": 6, \"step_name\": \"MONITOR\", \"role\": \"Executor\", \"full_statement\": \"Increase the ability to detect autonomy degradation >3%/year before contracted ride-through duration is breached\", \"error_type\": \"DETECTION\", \"impact_category\": \"reliability\", \"product_related\": false, \"importance\": 8, \"satisfaction_current\": 4, \"opportunity_score\": 12, \"confidence\": 0.75},\n    {\"id\": \"N15\", \"step_number\": 6, \"step_name\": \"MONITOR\", \"role\": \"Executor\", \"full_statement\": \"Increase the ability to discriminate real grid disturbances from controller false triggers to ≤1 false trip per month\", \"error_type\": \"ACCURACY\", \"impact_category\": \"reliability\", \"product_related\": true, \"importance\": 7, \"satisfaction_current\": 4, \"opportunity_score\": 10, \"confidence\": 0.72},\n    {\"id\": \"N16\", \"step_number\": 7, \"step_name\": \"MODIFY\", \"role\": \"Lifecycle Support\", \"full_statement\": \"Minimize the likelihood of firmware updates requiring >2 h of availability-class downtime per update\", \"error_type\": \"EFFORT\", \"impact_category\": \"time\", \"product_related\": true, \"importance\": 6, \"satisfaction_current\": 5, \"opportunity_score\": 7, \"confidence\": 0.65},\n    {\"id\": \"N17\", \"step_number\": 5, \"step_name\": \"EXECUTE\", \"role\": \"Executor\", \"full_statement\": \"Increase the ability to produce audit-ready power-event logs so the Facility Engineer can close >95% of events without VP-Ops escalation\", \"error_type\": \"P3_ROLE_IDENTITY\", \"impact_category\": \"skill\", \"product_related\": false, \"importance\": 7, \"satisfaction_current\": 4, \"opportunity_score\": 10, \"confidence\": 0.68, \"pyramid_level\": \"P3\"},\n    {\"id\": \"N18\", \"step_number\": 5, \"step_name\": \"EXECUTE\", \"role\": \"Purchase Executor\", \"full_statement\": \"Increase the ability to report jointly-quantified Netzentgelte-reduction and decarbonisation savings on the annual board scorecard with ≤1 auditor line-item dispute per year\", \"error_type\": \"P4_IMAGE_IDENTITY\", \"impact_category\": \"cost\", \"product_related\": false, \"importance\": 8, \"satisfaction_current\": 3, \"opportunity_score\": 13, \"confidence\": 0.72, \"pyramid_level\": \"P4\"}\n  ],\n  \"incumbent_anchors\": [\n    {\"technology_name\": \"Dynamic UPS / Flywheel\", \"anchor_vn_unit\": \"BESS-Based Power Quality & Ride-Through (sibling slot)\", \"anchor_level\": \"L5\", \"rationale\": \"Piller UNIBLOCK and Hitec Power dominate S1 advanced-node fabs with sub-50ms ride-through\"},\n    {\"technology_name\": \"Static Battery UPS\", \"anchor_vn_unit\": \"Static Battery UPS\", \"anchor_level\": \"L5\", \"rationale\": \"Schneider Galaxy VXL, Eaton, Vertiv tool-level incumbency\"},\n    {\"technology_name\": \"Active Voltage Conditioner / DVR\", \"anchor_vn_unit\": \"Active Voltage Conditioner\", \"anchor_level\": \"L5\", \"rationale\": \"ABB PCS100 AVC and AMSC D-VAR cover sub-cycle sag injection\"},\n    {\"technology_name\": \"Stored-energy system with bidirectional grid interface\", \"anchor_vn_unit\": \"BESS-Based Power Quality & Ride-Through\", \"anchor_level\": \"L5\", \"rationale\": \"Emerging slot (~5% share); Fluence, Sungrow, Wärtsilä leading, EPC entrants addressable in greenfield and retrofit\"}\n  ],\n  \"yield_check\": {\n    \"total_needs\": 18,\n    \"target_range\": \"15-30\",\n    \"relevant_steps\": 6,\n    \"needs_per_relevant_step\": 3.0,\n    \"market_inherent_ratio_pct\": 61,\n    \"technology_specific_ratio_pct\": 39,\n    \"minimize_to_increase_ratio_pct\": \"67/33\",\n    \"underserved_ids\": [\"N01\", \"N03\", \"N05\", \"N06\", \"N08\", \"N10\", \"N11\", \"N12\", \"N14\", \"N18\"],\n    \"overserved_ids\": []\n  },\n  \"validation\": {\n    \"V1_format_compliance\": \"PASS — all statements start with Minimize/Increase and carry one measurable KPI\",\n    \"V2_product_related_accuracy\": \"PASS — product_related=true only where a different technology class would remove the need\",\n    \"V3_importance_satisfaction_sanity\": \"PASS — range respected; safety/COD-critical items at 10\",\n    \"V4_impact_category_accuracy\": \"PASS — KPIs match category mapping\",\n    \"V5_coverage\": \"PASS — ≥2 needs per relevant step; ratios within 60-70/30-40 band; no obvious dupes\",\n    \"V6_solution_agnostic\": \"PASS — no brand/mechanism in statements; alternatives referenced only in rationale\",\n    \"V7_anchor_correctness\": \"PASS — system L5 anchor matches offering level\",\n    \"V8_product_job_references_parent\": \"PASS — parent unit 'Electrical Power Infrastructure' in statement\"\n  },\n  \"strategic_read\": {\n    \"priority_in_portfolio\": \"MEDIUM — defer until 1–2 reference installations land in HIGH-priority markets\",\n    \"entry_mode\": \"Consortium/subcontractor to fab GCs (M+W, Exyte, Jacobs, Arcadis); lead with PV+BESS behind-the-meter scope on greenfield S4 and retrofit S5\",\n    \"primary_cfo_hook\": \"N18 — dual-quantified Netzentgelte reduction + decarbonisation reporting\",\n    \"primary_executor_hook\": \"N08 — demonstrable sub-200 ms ride-through with SEMI F47 documentation\",\n    \"dealkillers\": [\"N13 fire/evacuation risk\", \"N11 revenue-stack vs ride-through conflict\", \"N05 certification-path delay\"],\n    \"kill_switch\": \"Rotating-free A3+capacitor hybrid reaching <200 ms coverage at cost parity before a fab reference is earned\"\n  }\n}\n```\n\n---"
+    },
+    {
+      "title": "Sources",
+      "content": "- [SEMI F47 — Voltage Sag Immunity Standard (Voltage Disturbance)](https://voltage-disturbance.com/voltage-quality/semi-f47-voltage-sag-immunity-standard/) — envelope: 50% @ 200 ms, 70% @ 500 ms, 80% @ 1 s; $2.6–3.4 M/year fab savings\n- [SEMI F47 Specification (SEMI store)](https://store-us.semi.org/products/f04700-semi-f47-specification-for-semiconductor-processing-equipment-voltage-sag-immunity)\n- [Schneider Electric — Power Reliability for Semiconductor Fabs](https://blog.se.com/infrastructure-and-grid/power-management-metering-monitoring-power-quality/2021/11/15/how-to-improve-power-reliability-for-semiconductor-fabs/) — outage cost a few million to tens of millions per event\n- [Silicon Analysts — Semiconductor Manufacturing Costs per Wafer](https://siliconanalysts.com/guide/semiconductor-costs) — $2,500–$20,000 per wafer by node → calibrates N10 KPI (>100 wafers scrap ≈ low seven figures)\n- [Edwards Vacuum — Foundry avoids batch wafer loss in SubFab](https://www.edwardsvacuum.com/en-us/semiconductor/knowledge/innovation-hub/foundry-avoids-a-batch-wafer-loss-by-eliminating-risk-in-subfab) — pump-crash batch loss up to 125 wafers\n- [EticaAG — UPS vs BESS in Data Centers](https://eticaag.com/ups-vs-bess-in-data-centers-why-the-future-is-hybrid/) — architecture-adjacent trend toward BESS-hybrid power quality (applies to mission-critical facilities incl. fabs)"
+    }
+  ],
+  "tables": [
+    {
+      "headers": [
+        "Field",
+        "Value"
+      ],
+      "rows": [
+        {
+          "Field": "CFJ",
+          "Value": "Fabricate integrated circuits and discrete semiconductor devices on wafers at nanometer-scale precision with yield-acceptable electrical performance, then package and qualify them for sale"
+        },
+        {
+          "Field": "Offering level of own product",
+          "Value": "**L5 (Module/System)** — BESS system delivered as a sellable unit inside the fab's Power L6"
+        },
+        {
+          "Field": "Output types activated",
+          "Value": "Logic/SoC, Memory (DRAM/NAND), Power semi (SiC/GaN/IGBT), Analog, MEMS, Discrete"
+        }
+      ]
+    },
+    {
+      "headers": [
+        "#",
+        "Segment",
+        "Circumstance",
+        "Alternatives differ?"
+      ],
+      "rows": [
+        {
+          "#": "S1",
+          "Segment": "Advanced-node logic / memory fab",
+          "Circumstance": "≤14 nm, EUV, 24/7 batch steps, >€10M per scrap event",
+          "Alternatives differ?": "YES — zero-tolerance ride-through"
+        },
+        {
+          "#": "S2",
+          "Segment": "Mature-node / power-semi fab (SiC/GaN)",
+          "Circumstance": "≥28 nm, high-throughput discrete/power",
+          "Alternatives differ?": "YES — cost-optimised, tolerates deeper sags"
+        },
+        {
+          "#": "S3",
+          "Segment": "Analog / MEMS / specialty fab",
+          "Circumstance": "Mixed tools, long cycle, sensor co-location",
+          "Alternatives differ?": "YES — mid-tier ride-through"
+        },
+        {
+          "#": "S4",
+          "Segment": "Greenfield fab build (DE: ESMC, Intel MD)",
+          "Circumstance": "EPC-phase infra design, Net-Zero KPIs",
+          "Alternatives differ?": "YES — buys integrated PV+BESS"
+        },
+        {
+          "#": "S5",
+          "Segment": "Legacy fab retrofit for SEMI F47",
+          "Circumstance": "Power-quality upgrade on operating fab",
+          "Alternatives differ?": "YES — minimise shutdown window"
+        }
+      ]
+    },
+    {
+      "headers": [
+        "Field",
+        "Value"
+      ],
+      "rows": [
+        {
+          "Field": "Anchor unit",
+          "Value": "**L5: BESS-Based Power Quality & Ride-Through**"
+        },
+        {
+          "Field": "Parent unit (job context)",
+          "Value": "**L6H-POWER Electrical Power Infrastructure**"
+        },
+        {
+          "Field": "Anchor route",
+          "Value": "PROCESS_VN (equipment that makes the customer's output, never in the wafer)"
+        },
+        {
+          "Field": "Job context",
+          "Value": "Parent must deliver clean, continuous, ride-through MV/LV power to every tool — the BESS exists to serve that parent"
+        }
+      ]
+    },
+    {
+      "headers": [
+        "#",
+        "Alternative",
+        "UNSPSC (indicative)",
+        "Inherent Trade-offs",
+        "Existential?"
+      ],
+      "rows": [
+        {
+          "#": "A1",
+          "Alternative": "**Dynamic UPS / Flywheel** (Piller, Hitec)",
+          "UNSPSC (indicative)": "39121011 (rotating UPS)",
+          "Inherent Trade-offs": "<50ms ride-through excellent; rotating-mass footprint, diesel ride-over dependence, no revenue stack, no decarbonisation",
+          "Existential?": "No"
+        },
+        {
+          "#": "A2",
+          "Alternative": "**Static Battery UPS** (Schneider, Eaton, Vertiv)",
+          "UNSPSC (indicative)": "39121004 (static UPS)",
+          "Inherent Trade-offs": "IT-grade N+1 tool-level, short autonomy (minutes), limited grid-services capability, narrow revenue stack",
+          "Existential?": "No"
+        },
+        {
+          "#": "A3",
+          "Alternative": "**Active Voltage Conditioner / DVR** (ABB PCS100, AMSC D-VAR)",
+          "UNSPSC (indicative)": "39121701 (voltage regulator)",
+          "Inherent Trade-offs": "Sub-cycle series injection, sag-only (no outage ride-through), cannot dispatch energy",
+          "Existential?": "No"
+        },
+        {
+          "#": "A4",
+          "Alternative": "**Stored-energy system with bidirectional grid interface** (incumbent category for Mein Solar)",
+          "UNSPSC (indicative)": "custom: Battery Energy Storage System EPC Services",
+          "Inherent Trade-offs": "Revenue-stack + decarbonisation + outage ride-through, but sub-200ms source transition and SEMI F47 proof remain to be earned; fire-clearance burden; first-reference risk",
+          "Existential?": "No"
+        },
+        {
+          "#": "A5",
+          "Alternative": "**Do nothing / accept SEMI F47 non-compliance**",
+          "UNSPSC (indicative)": "—",
+          "Inherent Trade-offs": "Zero capex; wafer scrap exposure hundreds of k€ per sag event; insurance premium load",
+          "Existential?": "— (status quo)"
+        }
+      ]
+    },
+    {
+      "headers": [
+        "Scenario",
+        "Segment",
+        "Output types most at risk",
+        "Edge to BOM"
+      ],
+      "rows": [
+        {
+          "Scenario": "Sag 0.2–1.0 s, mid-batch",
+          "Segment": "S1, S3",
+          "Output types most at risk": "Advanced logic, MEMS",
+          "Edge to BOM": "HARD — process tool state lost"
+        },
+        {
+          "Scenario": "10-minute DSO outage",
+          "Segment": "S2, S4",
+          "Output types most at risk": "Power semi, greenfield ramp",
+          "Edge to BOM": "SOFT — utilities coast on BESS"
+        },
+        {
+          "Scenario": "Greenfield infra design phase",
+          "Segment": "S4",
+          "Output types most at risk": "All",
+          "Edge to BOM": "HARD — drives topology"
+        },
+        {
+          "Scenario": "Co-located PV curtailment capture",
+          "Segment": "S4, S2",
+          "Output types most at risk": "— (revenue layer)",
+          "Edge to BOM": "INDEPENDENT of wafer"
+        },
+        {
+          "Scenario": "SEMI F47 audit / retrofit",
+          "Segment": "S5",
+          "Output types most at risk": "Logic, memory",
+          "Edge to BOM": "HARD — tool requalification"
+        },
+        {
+          "Scenario": "Netzentgelte peak shaving",
+          "Segment": "S2, S4",
+          "Output types most at risk": "— (opex layer)",
+          "Edge to BOM": "INDEPENDENT"
+        }
+      ]
+    },
+    {
+      "headers": [
+        "Role",
+        "Who",
+        "Included?"
+      ],
+      "rows": [
+        {
+          "Role": "Job Executor",
+          "Who": "Fab Facility / Utilities Engineering",
+          "Included?": "YES — primary"
+        },
+        {
+          "Role": "Job Overseer",
+          "Who": "VP Fab Operations / Plant Manager",
+          "Included?": "YES — yield owner"
+        },
+        {
+          "Role": "Job Beneficiary",
+          "Who": "In-progress wafers (proxied by Executor)",
+          "Included?": "Merged into Executor"
+        },
+        {
+          "Role": "Purchase Executor",
+          "Who": "CFO / Capex Board",
+          "Included?": "YES"
+        },
+        {
+          "Role": "Purchase Influencer",
+          "Who": "SEMI F47 auditor, insurance underwriter, DSO",
+          "Included?": "YES"
+        },
+        {
+          "Role": "Lifecycle Support",
+          "Who": "Fab GC (M+W, Exyte, Jacobs), O&M contractor",
+          "Included?": "YES"
+        }
+      ]
+    },
+    {
+      "headers": [
+        "#",
+        "Step",
+        "Relevant?",
+        "Rationale"
+      ],
+      "rows": [
+        {
+          "#": "1",
+          "Step": "DEFINE",
+          "Relevant?": "**YES**",
+          "Rationale": "SEMI F47 / ITIC envelope spec, autonomy target, revenue-stack objective"
+        },
+        {
+          "#": "2",
+          "Step": "LOCATE",
+          "Relevant?": "**YES**",
+          "Rationale": "MV feeder, site footprint, fire-clearance zoning"
+        },
+        {
+          "#": "3",
+          "Step": "PREPARE",
+          "Relevant?": "**YES**",
+          "Rationale": "SEMI F47 qualification + VDE-AR-N 4110 + DSO acceptance on critical path"
+        },
+        {
+          "#": "4",
+          "Step": "CONFIRM",
+          "Relevant?": "**YES**",
+          "Rationale": "FAT/SAT, DCS handshake, fire-audit sign-off"
+        },
+        {
+          "#": "5",
+          "Step": "EXECUTE",
+          "Relevant?": "**YES**",
+          "Rationale": "Ride-through event + grid-services dispatch"
+        },
+        {
+          "#": "6",
+          "Step": "MONITOR",
+          "Relevant?": "**YES**",
+          "Rationale": "Capacity degradation, alarm discipline"
+        },
+        {
+          "#": "7",
+          "Step": "MODIFY",
+          "Relevant?": "partial",
+          "Rationale": "Firmware/setpoint updates mid-life"
+        },
+        {
+          "#": "8",
+          "Step": "CONCLUDE",
+          "Relevant?": "no",
+          "Rationale": "EOL / recycling — far-future, low decision weight"
+        }
+      ]
+    },
+    {
+      "headers": [
+        "ID",
+        "Step",
+        "Role",
+        "Statement",
+        "Error type",
+        "Impact",
+        "product_related",
+        "Importance",
+        "Satisfaction",
+        "Opportunity"
+      ],
+      "rows": [
+        {
+          "ID": "N01",
+          "Step": "DEFINE",
+          "Role": "Executor",
+          "Statement": "Minimize the likelihood of under-specifying the voltage-sag envelope such that >5% of fab tools lose wafer batches per SEMI F47 event",
+          "Error type": "ACCURACY",
+          "Impact": "reliability",
+          "product_related": "false",
+          "Importance": "10",
+          "Satisfaction": "5",
+          "Opportunity": "15"
+        },
+        {
+          "ID": "N02",
+          "Step": "DEFINE",
+          "Role": "Purchase Influencer",
+          "Statement": "Minimize the likelihood of revenue-stack objective conflicting with ride-through readiness, eroding >15% of projected annual dispatch revenue",
+          "Error type": "CONSISTENCY",
+          "Impact": "cost",
+          "product_related": "true",
+          "Importance": "7",
+          "Satisfaction": "3",
+          "Opportunity": "11"
+        },
+        {
+          "ID": "N03",
+          "Step": "LOCATE",
+          "Role": "Lifecycle Support",
+          "Statement": "Minimize the likelihood of MV feeder capacity shortfall blocking fab load-growth by >10% of planned ramp capacity",
+          "Error type": "THROUGHPUT",
+          "Impact": "reliability",
+          "product_related": "false",
+          "Importance": "9",
+          "Satisfaction": "4",
+          "Opportunity": "14"
+        },
+        {
+          "ID": "N04",
+          "Step": "LOCATE",
+          "Role": "Executor",
+          "Statement": "Minimize the likelihood of fire-clearance zoning requiring >2 site-layout iterations post-permit submission",
+          "Error type": "EFFORT",
+          "Impact": "time",
+          "product_related": "true",
+          "Importance": "6",
+          "Satisfaction": "3",
+          "Opportunity": "9"
+        },
+        {
+          "ID": "N05",
+          "Step": "PREPARE",
+          "Role": "Overseer",
+          "Statement": "Minimize the likelihood of certification delay pushing fab COD beyond planned ramp date by >60 days",
+          "Error type": "EFFORT",
+          "Impact": "time",
+          "product_related": "false",
+          "Importance": "10",
+          "Satisfaction": "3",
+          "Opportunity": "17"
+        },
+        {
+          "ID": "N06",
+          "Step": "PREPARE",
+          "Role": "Purchase Influencer",
+          "Statement": "Minimize the likelihood of parallel plant-connection + process-equipment certifications adding >6 months to critical path",
+          "Error type": "EFFORT",
+          "Impact": "time",
+          "product_related": "false",
+          "Importance": "9",
+          "Satisfaction": "4",
+          "Opportunity": "14"
+        },
+        {
+          "ID": "N07",
+          "Step": "PREPARE",
+          "Role": "Lifecycle Support",
+          "Statement": "Minimize the likelihood of commissioning-stage energy-stack defects causing >3 module swaps before handover",
+          "Error type": "ACCURACY",
+          "Impact": "cost",
+          "product_related": "true",
+          "Importance": "6",
+          "Satisfaction": "5",
+          "Opportunity": "7"
+        },
+        {
+          "ID": "N08",
+          "Step": "CONFIRM",
+          "Role": "Executor",
+          "Statement": "Increase the ability to demonstrate sub-200 ms ride-through on the ITIC curve with documented ≥99.9% event coverage at SAT",
+          "Error type": "DETECTION",
+          "Impact": "reliability",
+          "product_related": "false",
+          "Importance": "10",
+          "Satisfaction": "4",
+          "Opportunity": "16"
+        },
+        {
+          "ID": "N09",
+          "Step": "CONFIRM",
+          "Role": "Lifecycle Support",
+          "Statement": "Increase the ability to complete fab-DCS handshake testing with ≤5 SEMI-protocol discrepancies before commissioning release",
+          "Error type": "ACCURACY",
+          "Impact": "skill",
+          "product_related": "true",
+          "Importance": "7",
+          "Satisfaction": "4",
+          "Opportunity": "10"
+        },
+        {
+          "ID": "N10",
+          "Step": "EXECUTE",
+          "Role": "Beneficiary (via Executor)",
+          "Statement": "Minimize the likelihood of unrecovered tool state from a voltage disturbance causing >100 wafers of lot scrap per event",
+          "Error type": "ROBUSTNESS",
+          "Impact": "cost",
+          "product_related": "false",
+          "Importance": "10",
+          "Satisfaction": "4",
+          "Opportunity": "16"
+        },
+        {
+          "ID": "N11",
+          "Step": "EXECUTE",
+          "Role": "Executor",
+          "Statement": "Minimize the likelihood of revenue-stack dispatch state compromising the sub-200 ms ride-through window by >1 event per quarter",
+          "Error type": "CONSISTENCY",
+          "Impact": "reliability",
+          "product_related": "true",
+          "Importance": "9",
+          "Satisfaction": "2",
+          "Opportunity": "16"
+        },
+        {
+          "ID": "N12",
+          "Step": "EXECUTE",
+          "Role": "Executor",
+          "Statement": "Minimize the likelihood of source-transition to islanded operation exceeding 16 ms during a grid disturbance",
+          "Error type": "ROBUSTNESS",
+          "Impact": "reliability",
+          "product_related": "true",
+          "Importance": "10",
+          "Satisfaction": "4",
+          "Opportunity": "16"
+        },
+        {
+          "ID": "N13",
+          "Step": "EXECUTE",
+          "Role": "Overseer",
+          "Statement": "Minimize the likelihood of a high-energy-density stored-energy fire event triggering >24 h fab-wide evacuation",
+          "Error type": "ROBUSTNESS",
+          "Impact": "safety",
+          "product_related": "true",
+          "Importance": "10",
+          "Satisfaction": "5",
+          "Opportunity": "15"
+        },
+        {
+          "ID": "N14",
+          "Step": "MONITOR",
+          "Role": "Executor",
+          "Statement": "Increase the ability to detect autonomy degradation >3%/year before contracted ride-through duration is breached",
+          "Error type": "DETECTION",
+          "Impact": "reliability",
+          "product_related": "false",
+          "Importance": "8",
+          "Satisfaction": "4",
+          "Opportunity": "12"
+        },
+        {
+          "ID": "N15",
+          "Step": "MONITOR",
+          "Role": "Executor",
+          "Statement": "Increase the ability to discriminate real grid disturbances from controller false triggers to ≤1 false trip per month",
+          "Error type": "ACCURACY",
+          "Impact": "reliability",
+          "product_related": "true",
+          "Importance": "7",
+          "Satisfaction": "4",
+          "Opportunity": "10"
+        },
+        {
+          "ID": "N16",
+          "Step": "MODIFY",
+          "Role": "Lifecycle Support",
+          "Statement": "Minimize the likelihood of firmware updates requiring >2 h of availability-class downtime per update",
+          "Error type": "EFFORT",
+          "Impact": "time",
+          "product_related": "true",
+          "Importance": "6",
+          "Satisfaction": "5",
+          "Opportunity": "7"
+        },
+        {
+          "ID": "N17",
+          "Step": "EXECUTE (P3 Role)",
+          "Role": "Executor",
+          "Statement": "Increase the ability to produce audit-ready power-event logs so the Facility Engineer can close >95% of events without VP-Ops escalation",
+          "Error type": "P3 bridge",
+          "Impact": "skill",
+          "product_related": "false",
+          "Importance": "7",
+          "Satisfaction": "4",
+          "Opportunity": "10"
+        },
+        {
+          "ID": "N18",
+          "Step": "EXECUTE (P4 Image)",
+          "Role": "Purchase Executor",
+          "Statement": "Increase the ability to report jointly-quantified Netzentgelte-reduction + decarbonisation savings on the annual board scorecard with ≤1 auditor line-item dispute per year",
+          "Error type": "P4 bridge",
+          "Impact": "cost",
+          "product_related": "false",
+          "Importance": "8",
+          "Satisfaction": "3",
+          "Opportunity": "13"
+        }
+      ]
+    },
+    {
+      "headers": [
+        "Rank",
+        "ID",
+        "Opportunity",
+        "Summary"
+      ],
+      "rows": [
+        {
+          "Rank": "1",
+          "ID": "N05",
+          "Opportunity": "17",
+          "Summary": "Certification delay vs. fab COD date"
+        },
+        {
+          "Rank": "2",
+          "ID": "N08",
+          "Opportunity": "16",
+          "Summary": "Demonstrable sub-200ms SEMI F47 ride-through proof"
+        },
+        {
+          "Rank": "3",
+          "ID": "N10",
+          "Opportunity": "16",
+          "Summary": "Wafer-scrap avoidance on disturbance"
+        },
+        {
+          "Rank": "4",
+          "ID": "N11",
+          "Opportunity": "16",
+          "Summary": "Revenue-stack without ride-through erosion"
+        },
+        {
+          "Rank": "5",
+          "ID": "N12",
+          "Opportunity": "16",
+          "Summary": "≤16 ms source-transition to islanded mode"
+        }
+      ]
+    },
+    {
+      "headers": [
+        "Alternative",
+        "Incumbent anchored at",
+        "Dominance in S1",
+        "Dominance in S4/S5"
+      ],
+      "rows": [
+        {
+          "Alternative": "Dynamic UPS / Flywheel",
+          "Incumbent anchored at": "L5 under L6H-POWER",
+          "Dominance in S1": "HIGH (Piller standard)",
+          "Dominance in S4/S5": "Low"
+        },
+        {
+          "Alternative": "Static Battery UPS",
+          "Incumbent anchored at": "L5 under L6H-POWER",
+          "Dominance in S1": "MED (tool-level)",
+          "Dominance in S4/S5": "Low"
+        },
+        {
+          "Alternative": "Active Voltage Conditioner",
+          "Incumbent anchored at": "L5 under L6H-POWER",
+          "Dominance in S1": "MED (SAG-only hybrid)",
+          "Dominance in S4/S5": "Low"
+        },
+        {
+          "Alternative": "Stored-energy system w/ grid interface",
+          "Incumbent anchored at": "L5 under L6H-POWER",
+          "Dominance in S1": "LOW (emerging)",
+          "Dominance in S4/S5": "**Growing — target zone**"
+        }
+      ]
+    }
+  ],
+  "entities": [
+    {
+      "component": "jtbd_analysis",
+      "market_naics_code": "334413",
+      "market_naics_title": "Semiconductor and Related Device Manufacturing",
+      "market_name": "Semiconductor Fab Power-Quality & Ride-Through",
+      "product_name": "EPC für Großbatteriespeicher",
+      "vendor_name": "Mein Solar GmbH",
+      "phase_1_landscape": {
+        "cfj_statement": "Fabricate integrated circuits and discrete semiconductor devices on wafers at nanometer-scale precision with yield-acceptable electrical performance, then package and qualify them for sale",
+        "output_types": [
+          "Logic / SoC",
+          "Memory (DRAM/NAND)",
+          "Power semi (SiC/GaN/IGBT)",
+          "Analog / Mixed-Signal",
+          "MEMS / Sensors",
+          "Discrete"
+        ],
+        "offering_level_of_own_product": "L5_Module",
+        "segments": [
+          {
+            "id": "S1",
+            "name": "Advanced-node logic / memory fab",
+            "circumstance": "≤14 nm, EUV, zero-tolerance ride-through"
+          },
+          {
+            "id": "S2",
+            "name": "Mature-node / power-semi fab",
+            "circumstance": "≥28 nm, high-throughput, cost-optimised"
+          },
+          {
+            "id": "S3",
+            "name": "Analog / MEMS / specialty fab",
+            "circumstance": "Mixed tools, mid-tier ride-through"
+          },
+          {
+            "id": "S4",
+            "name": "Greenfield fab build",
+            "circumstance": "EPC-phase infra, Net-Zero KPIs — most addressable"
+          },
+          {
+            "id": "S5",
+            "name": "Legacy fab SEMI F47 retrofit",
+            "circumstance": "Power-quality upgrade on operating fab"
+          }
+        ]
+      },
+      "phase_2_entry": {
+        "vn_anchor": {
+          "anchor_unit": "BESS-Based Power Quality & Ride-Through",
+          "anchor_level": "L5",
+          "parent_unit": "Electrical Power Infrastructure",
+          "parent_level": "L6",
+          "route": "PROCESS_VN"
+        },
+        "lens": "What power-ride-through-and-dispatch function does the fab's Electrical Power Infrastructure team need to protect wafer yield from grid disturbances while unlocking grid-services revenue?",
+        "product_job_statement": "Help Electrical Power Infrastructure to ride through grid voltage disturbances and deliver uninterrupted, dispatchable MV power to fab process tools — while enabling grid-services revenue stacking — at a total-cost envelope the fab CFO will fund",
+        "alternatives": [
+          {
+            "id": "A1",
+            "name": "Dynamic UPS / Flywheel",
+            "unspsc_indicative": "39121011",
+            "category": "rotating_kinetic",
+            "tradeoffs": "Excellent sub-50ms ride-through; rotating-mass footprint; diesel ride-over dependence; no revenue stack; no decarbonisation"
+          },
+          {
+            "id": "A2",
+            "name": "Static Battery UPS",
+            "unspsc_indicative": "39121004",
+            "category": "static_double_conversion",
+            "tradeoffs": "IT-grade N+1; minutes-scale autonomy; limited grid-services; narrow revenue stack"
+          },
+          {
+            "id": "A3",
+            "name": "Active Voltage Conditioner / DVR",
+            "unspsc_indicative": "39121701",
+            "category": "series_injection",
+            "tradeoffs": "Sub-cycle injection; sag-only (no outage ride-through); cannot dispatch energy"
+          },
+          {
+            "id": "A4",
+            "name": "Stored-energy system with bidirectional grid interface",
+            "unspsc_indicative": "custom: Battery Energy Storage System EPC Services",
+            "category": "battery_plus_grid_interface",
+            "tradeoffs": "Revenue-stack + decarbonisation + outage ride-through; sub-200ms transition and SEMI F47 proof still to be earned; fire-clearance burden; first-reference risk",
+            "this_company": true
+          },
+          {
+            "id": "A5",
+            "name": "Do nothing / accept SEMI F47 non-compliance",
+            "unspsc_indicative": null,
+            "category": "status_quo",
+            "tradeoffs": "Zero capex; wafer-scrap exposure hundreds of k€/event; insurance premium load"
+          }
+        ],
+        "existential_threats": [
+          "Rotating-free hybrid A3+A2 or A3+capacitor-bank at equivalent outage coverage and lower fire-risk envelope"
+        ],
+        "scenarios": [
+          {
+            "name": "Sag 0.2–1.0 s, mid-batch",
+            "segments": [
+              "S1",
+              "S3"
+            ],
+            "output_types_activated": [
+              "Logic / SoC",
+              "MEMS"
+            ],
+            "edge_type": "HARD"
+          },
+          {
+            "name": "10-min DSO outage",
+            "segments": [
+              "S2",
+              "S4"
+            ],
+            "output_types_activated": [
+              "Power semi"
+            ],
+            "edge_type": "SOFT"
+          },
+          {
+            "name": "Greenfield infra design phase",
+            "segments": [
+              "S4"
+            ],
+            "output_types_activated": [
+              "All"
+            ],
+            "edge_type": "HARD"
+          },
+          {
+            "name": "Co-located PV curtailment capture",
+            "segments": [
+              "S4",
+              "S2"
+            ],
+            "output_types_activated": [],
+            "edge_type": "INDEPENDENT"
+          },
+          {
+            "name": "SEMI F47 retrofit audit",
+            "segments": [
+              "S5"
+            ],
+            "output_types_activated": [
+              "Logic / SoC",
+              "Memory"
+            ],
+            "edge_type": "HARD"
+          },
+          {
+            "name": "Netzentgelte peak-shaving",
+            "segments": [
+              "S2",
+              "S4"
+            ],
+            "output_types_activated": [],
+            "edge_type": "INDEPENDENT"
+          }
+        ]
+      },
+      "stakeholders": [
+        {
+          "role": "Job Executor",
+          "who": "Fab Facility / Utilities Engineering"
+        },
+        {
+          "role": "Job Overseer",
+          "who": "VP Fab Operations / Plant Manager"
+        },
+        {
+          "role": "Job Beneficiary",
+          "who": "In-progress wafers (proxied by Executor)"
+        },
+        {
+          "role": "Purchase Executor",
+          "who": "CFO / Capex Board"
+        },
+        {
+          "role": "Purchase Influencer",
+          "who": "SEMI F47 auditor, insurance underwriter, DSO"
+        },
+        {
+          "role": "Lifecycle Support",
+          "who": "Fab GC (M+W, Exyte, Jacobs), O&M contractor"
+        }
+      ],
+      "job_map": [
+        {
+          "step_number": 1,
+          "step_name": "DEFINE",
+          "statement": "Specify sag envelope, autonomy target, and revenue-stack objective",
+          "relevant_to_product": true
+        },
+        {
+          "step_number": 2,
+          "step_name": "LOCATE",
+          "statement": "Gather MV feeder capacity, site footprint, fire-clearance zoning",
+          "relevant_to_product": true
+        },
+        {
+          "step_number": 3,
+          "step_name": "PREPARE",
+          "statement": "Install, commission, and qualify to SEMI F47 + VDE-AR-N 4110",
+          "relevant_to_product": true
+        },
+        {
+          "step_number": 4,
+          "step_name": "CONFIRM",
+          "statement": "Factory/site acceptance, DCS handshake, fire-audit sign-off",
+          "relevant_to_product": true
+        },
+        {
+          "step_number": 5,
+          "step_name": "EXECUTE",
+          "statement": "Ride through disturbances and dispatch grid services",
+          "relevant_to_product": true
+        },
+        {
+          "step_number": 6,
+          "step_name": "MONITOR",
+          "statement": "Track autonomy, alarm discipline, degradation",
+          "relevant_to_product": true
+        },
+        {
+          "step_number": 7,
+          "step_name": "MODIFY",
+          "statement": "Firmware / setpoint updates mid-life",
+          "relevant_to_product": false,
+          "relevance_rationale": "Infrequent; thin need coverage"
+        },
+        {
+          "step_number": 8,
+          "step_name": "CONCLUDE",
+          "statement": "Decommission and recycle",
+          "relevant_to_product": false,
+          "relevance_rationale": "EOL far-future, low decision weight"
+        }
+      ],
+      "error_statements": [
+        {
+          "id": "N01",
+          "step_number": 1,
+          "step_name": "DEFINE",
+          "role": "Executor",
+          "full_statement": "Minimize the likelihood of under-specifying the voltage-sag envelope such that >5% of fab tools lose wafer batches per SEMI F47 event",
+          "error_type": "ACCURACY",
+          "impact_category": "reliability",
+          "product_related": false,
+          "importance": 10,
+          "satisfaction_current": 5,
+          "opportunity_score": 15,
+          "confidence": 0.85
+        },
+        {
+          "id": "N02",
+          "step_number": 1,
+          "step_name": "DEFINE",
+          "role": "Purchase Influencer",
+          "full_statement": "Minimize the likelihood of revenue-stack objective conflicting with ride-through readiness, eroding >15% of projected annual dispatch revenue",
+          "error_type": "CONSISTENCY",
+          "impact_category": "cost",
+          "product_related": true,
+          "importance": 7,
+          "satisfaction_current": 3,
+          "opportunity_score": 11,
+          "confidence": 0.7
+        },
+        {
+          "id": "N03",
+          "step_number": 2,
+          "step_name": "LOCATE",
+          "role": "Lifecycle Support",
+          "full_statement": "Minimize the likelihood of MV feeder capacity shortfall blocking fab load-growth by >10% of planned ramp capacity",
+          "error_type": "THROUGHPUT",
+          "impact_category": "reliability",
+          "product_related": false,
+          "importance": 9,
+          "satisfaction_current": 4,
+          "opportunity_score": 14,
+          "confidence": 0.8
+        },
+        {
+          "id": "N04",
+          "step_number": 2,
+          "step_name": "LOCATE",
+          "role": "Executor",
+          "full_statement": "Minimize the likelihood of fire-clearance zoning requiring >2 site-layout iterations post-permit submission",
+          "error_type": "EFFORT",
+          "impact_category": "time",
+          "product_related": true,
+          "importance": 6,
+          "satisfaction_current": 3,
+          "opportunity_score": 9,
+          "confidence": 0.75
+        },
+        {
+          "id": "N05",
+          "step_number": 3,
+          "step_name": "PREPARE",
+          "role": "Overseer",
+          "full_statement": "Minimize the likelihood of certification delay pushing fab COD beyond planned ramp date by >60 days",
+          "error_type": "EFFORT",
+          "impact_category": "time",
+          "product_related": false,
+          "importance": 10,
+          "satisfaction_current": 3,
+          "opportunity_score": 17,
+          "confidence": 0.88
+        },
+        {
+          "id": "N06",
+          "step_number": 3,
+          "step_name": "PREPARE",
+          "role": "Purchase Influencer",
+          "full_statement": "Minimize the likelihood of parallel plant-connection and process-equipment certifications adding >6 months to critical path",
+          "error_type": "EFFORT",
+          "impact_category": "time",
+          "product_related": false,
+          "importance": 9,
+          "satisfaction_current": 4,
+          "opportunity_score": 14,
+          "confidence": 0.8
+        },
+        {
+          "id": "N07",
+          "step_number": 3,
+          "step_name": "PREPARE",
+          "role": "Lifecycle Support",
+          "full_statement": "Minimize the likelihood of commissioning-stage energy-stack defects causing >3 module swaps before handover",
+          "error_type": "ACCURACY",
+          "impact_category": "cost",
+          "product_related": true,
+          "importance": 6,
+          "satisfaction_current": 5,
+          "opportunity_score": 7,
+          "confidence": 0.65
+        },
+        {
+          "id": "N08",
+          "step_number": 4,
+          "step_name": "CONFIRM",
+          "role": "Executor",
+          "full_statement": "Increase the ability to demonstrate sub-200 ms ride-through on the ITIC curve with documented ≥99.9% event coverage at site acceptance",
+          "error_type": "DETECTION",
+          "impact_category": "reliability",
+          "product_related": false,
+          "importance": 10,
+          "satisfaction_current": 4,
+          "opportunity_score": 16,
+          "confidence": 0.85
+        },
+        {
+          "id": "N09",
+          "step_number": 4,
+          "step_name": "CONFIRM",
+          "role": "Lifecycle Support",
+          "full_statement": "Increase the ability to complete fab-DCS handshake testing with ≤5 SEMI-protocol discrepancies before commissioning release",
+          "error_type": "ACCURACY",
+          "impact_category": "skill",
+          "product_related": true,
+          "importance": 7,
+          "satisfaction_current": 4,
+          "opportunity_score": 10,
+          "confidence": 0.7
+        },
+        {
+          "id": "N10",
+          "step_number": 5,
+          "step_name": "EXECUTE",
+          "role": "Beneficiary",
+          "full_statement": "Minimize the likelihood of unrecovered tool state from a voltage disturbance causing >100 wafers of lot scrap per event",
+          "error_type": "ROBUSTNESS",
+          "impact_category": "cost",
+          "product_related": false,
+          "importance": 10,
+          "satisfaction_current": 4,
+          "opportunity_score": 16,
+          "confidence": 0.9
+        },
+        {
+          "id": "N11",
+          "step_number": 5,
+          "step_name": "EXECUTE",
+          "role": "Executor",
+          "full_statement": "Minimize the likelihood of revenue-stack dispatch state compromising the sub-200 ms ride-through window by >1 event per quarter",
+          "error_type": "CONSISTENCY",
+          "impact_category": "reliability",
+          "product_related": true,
+          "importance": 9,
+          "satisfaction_current": 2,
+          "opportunity_score": 16,
+          "confidence": 0.78
+        },
+        {
+          "id": "N12",
+          "step_number": 5,
+          "step_name": "EXECUTE",
+          "role": "Executor",
+          "full_statement": "Minimize the likelihood of source-transition to islanded operation exceeding 16 ms during a grid disturbance",
+          "error_type": "ROBUSTNESS",
+          "impact_category": "reliability",
+          "product_related": true,
+          "importance": 10,
+          "satisfaction_current": 4,
+          "opportunity_score": 16,
+          "confidence": 0.82
+        },
+        {
+          "id": "N13",
+          "step_number": 5,
+          "step_name": "EXECUTE",
+          "role": "Overseer",
+          "full_statement": "Minimize the likelihood of a high-energy-density stored-energy fire event triggering >24 h fab-wide evacuation",
+          "error_type": "ROBUSTNESS",
+          "impact_category": "safety",
+          "product_related": true,
+          "importance": 10,
+          "satisfaction_current": 5,
+          "opportunity_score": 15,
+          "confidence": 0.85
+        },
+        {
+          "id": "N14",
+          "step_number": 6,
+          "step_name": "MONITOR",
+          "role": "Executor",
+          "full_statement": "Increase the ability to detect autonomy degradation >3%/year before contracted ride-through duration is breached",
+          "error_type": "DETECTION",
+          "impact_category": "reliability",
+          "product_related": false,
+          "importance": 8,
+          "satisfaction_current": 4,
+          "opportunity_score": 12,
+          "confidence": 0.75
+        },
+        {
+          "id": "N15",
+          "step_number": 6,
+          "step_name": "MONITOR",
+          "role": "Executor",
+          "full_statement": "Increase the ability to discriminate real grid disturbances from controller false triggers to ≤1 false trip per month",
+          "error_type": "ACCURACY",
+          "impact_category": "reliability",
+          "product_related": true,
+          "importance": 7,
+          "satisfaction_current": 4,
+          "opportunity_score": 10,
+          "confidence": 0.72
+        },
+        {
+          "id": "N16",
+          "step_number": 7,
+          "step_name": "MODIFY",
+          "role": "Lifecycle Support",
+          "full_statement": "Minimize the likelihood of firmware updates requiring >2 h of availability-class downtime per update",
+          "error_type": "EFFORT",
+          "impact_category": "time",
+          "product_related": true,
+          "importance": 6,
+          "satisfaction_current": 5,
+          "opportunity_score": 7,
+          "confidence": 0.65
+        },
+        {
+          "id": "N17",
+          "step_number": 5,
+          "step_name": "EXECUTE",
+          "role": "Executor",
+          "full_statement": "Increase the ability to produce audit-ready power-event logs so the Facility Engineer can close >95% of events without VP-Ops escalation",
+          "error_type": "P3_ROLE_IDENTITY",
+          "impact_category": "skill",
+          "product_related": false,
+          "importance": 7,
+          "satisfaction_current": 4,
+          "opportunity_score": 10,
+          "confidence": 0.68,
+          "pyramid_level": "P3"
+        },
+        {
+          "id": "N18",
+          "step_number": 5,
+          "step_name": "EXECUTE",
+          "role": "Purchase Executor",
+          "full_statement": "Increase the ability to report jointly-quantified Netzentgelte-reduction and decarbonisation savings on the annual board scorecard with ≤1 auditor line-item dispute per year",
+          "error_type": "P4_IMAGE_IDENTITY",
+          "impact_category": "cost",
+          "product_related": false,
+          "importance": 8,
+          "satisfaction_current": 3,
+          "opportunity_score": 13,
+          "confidence": 0.72,
+          "pyramid_level": "P4"
+        }
+      ],
+      "incumbent_anchors": [
+        {
+          "technology_name": "Dynamic UPS / Flywheel",
+          "anchor_vn_unit": "BESS-Based Power Quality & Ride-Through (sibling slot)",
+          "anchor_level": "L5",
+          "rationale": "Piller UNIBLOCK and Hitec Power dominate S1 advanced-node fabs with sub-50ms ride-through"
+        },
+        {
+          "technology_name": "Static Battery UPS",
+          "anchor_vn_unit": "Static Battery UPS",
+          "anchor_level": "L5",
+          "rationale": "Schneider Galaxy VXL, Eaton, Vertiv tool-level incumbency"
+        },
+        {
+          "technology_name": "Active Voltage Conditioner / DVR",
+          "anchor_vn_unit": "Active Voltage Conditioner",
+          "anchor_level": "L5",
+          "rationale": "ABB PCS100 AVC and AMSC D-VAR cover sub-cycle sag injection"
+        },
+        {
+          "technology_name": "Stored-energy system with bidirectional grid interface",
+          "anchor_vn_unit": "BESS-Based Power Quality & Ride-Through",
+          "anchor_level": "L5",
+          "rationale": "Emerging slot (~5% share); Fluence, Sungrow, Wärtsilä leading, EPC entrants addressable in greenfield and retrofit"
+        }
+      ],
+      "yield_check": {
+        "total_needs": 18,
+        "target_range": "15-30",
+        "relevant_steps": 6,
+        "needs_per_relevant_step": 3.0,
+        "market_inherent_ratio_pct": 61,
+        "technology_specific_ratio_pct": 39,
+        "minimize_to_increase_ratio_pct": "67/33",
+        "underserved_ids": [
+          "N01",
+          "N03",
+          "N05",
+          "N06",
+          "N08",
+          "N10",
+          "N11",
+          "N12",
+          "N14",
+          "N18"
+        ],
+        "overserved_ids": []
+      },
+      "validation": {
+        "V1_format_compliance": "PASS — all statements start with Minimize/Increase and carry one measurable KPI",
+        "V2_product_related_accuracy": "PASS — product_related=true only where a different technology class would remove the need",
+        "V3_importance_satisfaction_sanity": "PASS — range respected; safety/COD-critical items at 10",
+        "V4_impact_category_accuracy": "PASS — KPIs match category mapping",
+        "V5_coverage": "PASS — ≥2 needs per relevant step; ratios within 60-70/30-40 band; no obvious dupes",
+        "V6_solution_agnostic": "PASS — no brand/mechanism in statements; alternatives referenced only in rationale",
+        "V7_anchor_correctness": "PASS — system L5 anchor matches offering level",
+        "V8_product_job_references_parent": "PASS — parent unit 'Electrical Power Infrastructure' in statement"
+      },
+      "strategic_read": {
+        "priority_in_portfolio": "MEDIUM — defer until 1–2 reference installations land in HIGH-priority markets",
+        "entry_mode": "Consortium/subcontractor to fab GCs (M+W, Exyte, Jacobs, Arcadis); lead with PV+BESS behind-the-meter scope on greenfield S4 and retrofit S5",
+        "primary_cfo_hook": "N18 — dual-quantified Netzentgelte reduction + decarbonisation reporting",
+        "primary_executor_hook": "N08 — demonstrable sub-200 ms ride-through with SEMI F47 documentation",
+        "dealkillers": [
+          "N13 fire/evacuation risk",
+          "N11 revenue-stack vs ride-through conflict",
+          "N05 certification-path delay"
+        ],
+        "kill_switch": "Rotating-free A3+capacitor hybrid reaching <200 ms coverage at cost parity before a fab reference is earned"
+      }
+    }
+  ],
+  "has_bom": true,
+  "naics_sector_type": "manufacturing"
+}

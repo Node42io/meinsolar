@@ -1,0 +1,1838 @@
+{
+  "id": "BOM_lessors_of_nonresidential_buildings_sams",
+  "title": "BOM Decomposition — NAICS 531120 Lessors of Nonresidential Buildings",
+  "type": "product_bom",
+  "market_slug": "lessors_of_nonresidential_buildings_sams",
+  "is_per_market": true,
+  "sections": [
+    {
+      "title": "B.1 — L4 Subsystems",
+      "content": "The behind-the-meter containerized BESS plant decomposes into 5 L4 subsystems. The Control/Interface subsystem (EMS) is critical here — without it, the asset has no revenue stream.\n\n| L4 # | Subsystem | Function | Pattern role |\n|---|---|---|---|\n| L4-1 | Battery Storage Subsystem | Store and release DC electrical energy | Primary functional core |\n| L4-2 | Power Conversion Subsystem (PCS) | Convert DC↔AC, dispatch to grid/load | Primary functional core |\n| L4-3 | MV Grid Coupling Subsystem | Step up to MV, switch, protect, meter | Primary functional core |\n| L4-4 | Control / EMS Subsystem | Optimize charge/discharge, comms, cybersecurity | Control/interface |\n| L4-5 | Civil & Site Subsystem | Foundation, trenching, fencing, earthing | Containment/support |\n\n**No standalone \"packaging\" subsystem** — the ISO container envelope is part of L4-1 (it contains the batteries and is sold as a unit).\n\n### L5 → L4 alternatives\n\n**L5 [BESS Plant] → L4 [Subsystem decomposition]**\nThis decomposition is **architecturally standard** for grid-connected BESS. There are no \"alternative subsystem groupings\" — every commercial BESS contains these five.\n\n| Alternative | Share | Trend | Confidence | Source |\n|---|---|---|---|---|\n| 5-subsystem decomposition (Battery / PCS / MV / EMS / Civil) | 100% | → Stable | HIGH | Industry standard per IEC 62933, EN 50549 |\n\n`single-source: true` (architectural convention).\n\n---"
+    },
+    {
+      "title": "L4-1 — Battery Storage Subsystem (containerized)",
+      "content": "```\nL4-1 Battery Storage Subsystem\n ├─ L3-1.1 Battery rack module\n ├─ L3-1.2 Battery management system (BMS)\n ├─ L3-1.3 Thermal management module\n ├─ L3-1.4 Fire detection & suppression module\n └─ L3-1.5 Container envelope\n```\n\n### L4-1 → L3 [Battery storage architecture]\n\n| Alternative | Share | Trend | Confidence | Source |\n|---|---|---|---|---|\n| Containerized rack-based (modular shelves, separate BMS/thermal/fire) | ~92% | ↑ Growing | HIGH | [IDTechEx BESS thermal report](https://www.idtechex.com/en/research-report/thermal-management-fire-and-explosion-protection-for-bess/1127) |\n| All-in-one cabinet (skid, integrated <500 kWh) | ~8% | → Stable | MED | [Mordor Intelligence BESS](https://www.mordorintelligence.com/industry-reports/global-battery-cell-market) |\n\n### L3-1.1 Battery rack module → L2\n\n| Alternative | Share | Trend | Confidence | Source |\n|---|---|---|---|---|\n| LFP prismatic rack (280–314 Ah) | ~85–90% | ↑ Growing | HIGH | [Mordor Intelligence](https://www.mordorintelligence.com/industry-reports/global-battery-cell-market) |\n| Pouch cell module rack | ~5–10% | → Stable | MED | [Mordor Intelligence](https://www.mordorintelligence.com/industry-reports/global-battery-cell-market) |\n| Cylindrical (4680/21700) rack | ~5% | → Stable | MED | [CIC energiGUNE](https://cicenergigune.com/en/blog/format-battery-cell-manufacturers-prismatic-cylindrical-pouch) |\n\n### L2 LFP prismatic rack → L1 [Parts]\n\n`Parts: cells, busbars, rack frame, cell-level fuses, voltage/temperature sense wiring.`\n\n**Alternatives at L2→L1 (cell chemistry):**\n\n| Alternative | Share | Trend | Confidence | Source |\n|---|---|---|---|---|\n| LFP (LiFePO₄) | ~95% | ↑ Growing | HIGH | [Wood Mackenzie](https://www.woodmac.com/press-releases/lfp-to-overtake-nmc-as-dominant-stationary-storage-chemistry-by-2030/) |\n| NMC | ~3–5% | ↓ Declining | HIGH | [Energy-Storage.News / BNEF](https://www.energy-storage.news/lfp-to-dominate-3twh-global-lithium-ion-battery-market-by-2030/) |\n| Na-ion | <1% | ↑ Emerging | MED | [BNEF](https://about.bnef.com/insights/clean-energy/global-energy-storage-boom-three-things-to-know/) |\n| LTO (niche) | <0.5% | → Stable | LOW | analyst estimate |\n| NCA | <1% | ↓ Declining | MED | analyst estimate |\n\n### L1 → L0 [Cell raw materials, LFP path]\n\n| L1 part | L0 raw material | Alt. share | Trend | Conf. | Source |\n|---|---|---|---|---|---|\n| Cathode active material | LFP powder (LiFePO₄) | 100% (this branch) | → Stable | HIGH | [USGS Mineral Commodity Summary 2025](https://www.usgs.gov/centers/national-minerals-information-center/lithium-statistics-and-information) |\n| Anode active material | Graphite (synthetic vs natural) | Synthetic 65% / Natural 35% | → Stable | HIGH | [Benchmark Mineral Intelligence](https://source.benchmarkminerals.com/) |\n| Electrolyte | LiPF₆ in EC/DMC carbonate | ~100% (Li-ion std.) | → Stable | HIGH | [USGS](https://www.usgs.gov/centers/national-minerals-information-center) |\n| Separator | Ceramic-coated polyolefin (PE/PP) | ~95% | → Stable | HIGH | industry standard |\n| Cathode foil | Aluminum foil | 100% | → Stable | HIGH | single-source |\n| Anode foil | Copper foil | 100% | → Stable | HIGH | single-source |\n| Cell case | Prismatic Al case | 100% (LFP path) | → Stable | HIGH | single-source |\n| Busbar | Cu OR Al busbar | Cu 70% / Al 30% | → Stable | MED | analyst estimate |\n\n`single-source: true` for electrolyte, separator (chemistry-locked).\n\n### L3-1.2 BMS → L2 → L1 → L0\n\n`L2 alternatives: 3-tier BMS (BMU + BCMS + BAMS) vs flat 2-tier vs distributed.`\n\n| Alternative | Share | Trend | Conf. | Source |\n|---|---|---|---|---|\n| 3-tier hierarchical (BMU/BCMS/BAMS) | ~75% | → Stable | MED | [Sungrow BMS architecture](https://en.sungrowpower.com/) |\n| 2-tier flat | ~20% | ↓ Declining | LOW | analyst estimate |\n| Distributed cell-controller | ~5% | ↑ Emerging | LOW | analyst estimate |\n\n**L1 parts:** MCU/SoC PCBA, voltage isolators, current shunts, balancing FETs, NTC thermistors, isolated CAN/RS-485 transceivers.\n**L0 raw materials:** Silicon (wafer), FR4 epoxy laminate, copper traces, tin/SAC305 solder, encapsulants.\n\n| L1 → L0 | Share | Trend | Conf. | Source |\n|---|---|---|---|---|\n| Si die for MCU | 100% | → Stable | HIGH | single-source |\n| FR4 PCB substrate | ~95% (Halogen-free FR4) | → Stable | MED | analyst estimate |\n| SAC305 solder (lead-free) | ~95% (RoHS) | → Stable | HIGH | EU RoHS Directive |\n| Tin-lead solder (legacy) | ~5% | ↓ Declining | MED | analyst estimate |\n\n### L3-1.3 Thermal management → L2 → L1 → L0\n\n| Alternative | Share | Trend | Conf. | Source |\n|---|---|---|---|---|\n| Liquid-cooled (glycol-water cold plates) | ~70–80% | ↑ Growing | HIGH | [IDTechEx](https://www.idtechex.com/en/research-report/thermal-management-fire-and-explosion-protection-for-bess/1127) |\n| Air-cooled (forced HVAC) | ~20–25% | ↓ Declining | HIGH | [IDTechEx](https://www.idtechex.com/en/research-article/safer-battery-storage-thermal-management-and-fire-protection-trends/33916) |\n| Dielectric immersion | <2% | ↑ Emerging | MED | [IDTechEx](https://www.idtechex.com/en/research-report/thermal-management-fire-and-explosion-protection-for-bess/1127) |\n\n**L2 (liquid path):** chiller skid + manifold + cold plates.\n**L1:** scroll compressor, brazed-plate evaporator, circulation pump, expansion valve, pipework.\n**L0:** Aluminum (cold plates ~95% / Cu ~5%), R-454B refrigerant (post-R-410A phase-out, 70%) / R-1234yf (15%) / propylene-glycol+water for low-side loop (15%), brazed Al alloy (4045/3003), copper tube.\n\n| L1→L0 alt: refrigerant | Share | Trend | Conf. | Source |\n|---|---|---|---|---|\n| R-454B (low-GWP) | ~70% (new EU systems) | ↑ Growing | MED | [EU F-Gas Reg. 2024/573](https://eur-lex.europa.eu/eli/reg/2024/573/oj) |\n| R-410A | ~15% (legacy) | ↓ Declining | HIGH | [EU F-Gas Reg.](https://eur-lex.europa.eu/eli/reg/2024/573/oj) |\n| R-1234yf | ~10% | ↑ Growing | MED | analyst estimate |\n| Propylene-glycol (water side) | ~5% (secondary loop) | → Stable | HIGH | industry standard |\n\n### L3-1.4 Fire suppression → L2 → L1 → L0\n\n| Alternative | Share | Trend | Conf. | Source |\n|---|---|---|---|---|\n| Aerosol (Stat-X / FirePro) | ~45% | ↑ Growing | LOW | analyst estimate |\n| FK-5-1-12 / NOVEC 1230 | ~25% | ↓ Declining (3M EOL 2025) | MED | [Fike on 3M discontinuation](https://www.fike.com/knowledge-center/3m-novec-1230-discontinued-what-now/) |\n| Water mist (UL 9540A) | ~20% | ↑ Growing | LOW | analyst estimate |\n| Inert gas (N₂/Ar/IG-541) | ~10% | → Stable | LOW | analyst estimate |\n\n**L2:** detection panel + suppression cylinder + nozzles + venting damper.\n**L1:** smoke/CO/H₂/HF sensors, agent cylinder, pressure switch, control panel.\n**L0:** suppression agent (above), steel cylinder (DIN-EN 1442), copper tubing.\n\n### L3-1.5 Container envelope → L2 → L1 → L0\n\n| Alternative | Share | Trend | Conf. | Source |\n|---|---|---|---|---|\n| 20ft HC ISO (3–5 MWh, dense LFP) | ~35% | ↑ Growing | MED | [Acebattery](https://www.acebattery.com/blogs/bess-container-sizes-how-to-choose-the-right-capacity) |\n| 20ft ISO (≤1 MWh) | ~45% | → Stable | MED | [MarketsandMarkets](https://www.marketsandmarkets.com/Market-Reports/containerized-battery-energy-storage-system-bess-market-81525510.html) |\n| 40ft ISO | ~15% | ↓ Declining | LOW | analyst estimate |\n| Custom skid (<500 kWh) | ~5% | → Stable | LOW | analyst estimate |\n\n**L2:** corrugated steel side panels + roof + door + insulation lining.\n**L1:** Corten/galvanized steel panels, mineral-wool insulation batts, gasket seals, IP54 vents.\n**L0:** Corten weathering steel (~70%) / hot-dip galvanized steel (~30%), rock-wool insulation, EPDM rubber gaskets, PU paint.\n\n---"
+    },
+    {
+      "title": "L4-2 — Power Conversion Subsystem",
+      "content": "```\nL4-2 PCS\n ├─ L3-2.1 Inverter unit (PCS)\n ├─ L3-2.2 DC-side BoS\n └─ L3-2.3 AC-side filtering\n```\n\n### L4-2 → L3 [PCS architecture]\n\n| Alternative | Share | Trend | Conf. | Source |\n|---|---|---|---|---|\n| String PCS (100–430 kW units, parallel) | ~55–60% (C&I) | ↑ Growing | MED | [CLOU Global](https://clouglobal.com/string-pcs-vs-centralized-pcs-maximizing-reliability-and-availability-in-large-scale-energy-storage/) |\n| Central PCS (>1 MW single block) | ~35–40% | ↓ Declining | MED | [KACO whitepaper](https://kaco-newenergy.com/fileadmin/downloads/documents/KNE-PAP-String-Inverters-for-Energy-Storage.pdf) |\n| Modular DC-block (PowerTitan-style) | ~5–10% | ↑ Emerging | LOW | analyst estimate |\n\n### L3-2.1 PCS unit → L2 → L1 → L0\n\n**L2 power module + DC link.**\n\n**Vendor share within L2 (DE/EU C&I, informational only — vendors are not BOM alternatives):**\n\n| Vendor (informational) | Share | Trend | Conf. | Source |\n|---|---|---|---|---|\n| SMA Solar | ~20–25% | → Stable | MED | [pv-magazine / WoodMac](https://www.pv-magazine.com/2026/01/05/huawei-sungrow-lead-wood-mackenzies-solar-inverter-market-ranking/) |\n| Sungrow | ~17% | ↑ Growing | HIGH | [WoodMac](https://www.woodmac.com/press-releases/2024-press-releases/global-pv-inverter-shipments-grew-by-56-in-2023-to-536-gwac/) |\n| Power Electronics | ~5–8% | ↑ Growing | MED | [MarketsandMarkets](https://www.marketsandmarkets.com/ResearchInsight/inverter-market.asp) |\n| Ingeteam | ~5% | → Stable | LOW | analyst estimate |\n| Hitachi Energy | ~3–5% | ↑ Growing | LOW | analyst estimate |\n| Others (KACO, Schneider, Gamesa-Electric) | ~30% | mixed | LOW | analyst estimate |\n\n**L1 parts:** IGBT modules (or SiC MOSFETs), DC-link film capacitors, AC inductors, gate drivers, heatsink, cooling fan.\n\n**L1→L0 alternatives (power switch semiconductor):**\n\n| Alternative | Share | Trend | Conf. | Source |\n|---|---|---|---|---|\n| Si IGBT | ~85% | ↓ Declining | HIGH | [Yole Power Semi 2024](https://www.yolegroup.com/) |\n| SiC MOSFET | ~12% | ↑ Growing | HIGH | [Yole Power Semi 2024](https://www.yolegroup.com/) |\n| GaN HEMT (low-power aux) | <3% | ↑ Emerging | MED | analyst estimate |\n\n**L0 raw materials:** Si wafer, SiC wafer (4H-SiC), Cu (busbars), Al (heatsink), grain-oriented electrical steel (chokes), polypropylene film (DC caps).\n\n### L3-2.2 DC-side BoS → L2 → L1 → L0\n\n`single-source: true` for L2 (DC combiner architecture is standardized).\n**L1 parts:** DC fuses (gG, NH-style), DC contactors, busbars, surge arresters.\n**L0 alt: contactor:** EV-grade sealed contactor 60% / Open-frame 40% (analyst estimate, MED). **L0 raw:** Cu (busbars 100%, single-source HIGH), silver/W contact tips (single-source).\n\n### L3-2.3 AC-side filtering → L2 → L1 → L0\n\n`L2: LCL filter + sine filter cabinet.` `single-source: true` (architecture is standard).\n**L1:** line reactors (Fe-core), filter capacitors (PP film), output contactor.\n**L0:** Grain-oriented electrical steel (M3-M6), Cu wire, polypropylene film capacitor dielectric, epoxy potting.\n\n---"
+    },
+    {
+      "title": "L4-3 — MV Grid Coupling Subsystem",
+      "content": "```\nL4-3 MV Grid Coupling\n ├─ L3-3.1 MV transformer\n ├─ L3-3.2 MV switchgear\n ├─ L3-3.3 Protection / NA-protection\n └─ L3-3.4 Metering & SCADA gateway\n```\n\n### L4-3 → L3 [MV architecture]\n\n`single-source: true`. Every VDE-AR-N 4110 plant has these four blocks (transformer + switchgear + protection + metering).\n\n| Alternative | Share | Trend | Conf. | Source |\n|---|---|---|---|---|\n| Standard 4-block MV interface (transformer + RMU + relay + metering) | 100% | → Stable | HIGH | [VDE-AR-N 4110](https://www.vde.com/en/fnn/topics/technical-connection-rules/tcr-for-medium-voltage) |\n\n### L3-3.1 MV transformer → L2 → L1 → L0\n\n| Alt. (insulation medium) | Share | Trend | Conf. | Source |\n|---|---|---|---|---|\n| Mineral-oil filled | ~70–75% | ↓ Declining | MED | [Mordor Intelligence — EU distribution transformer](https://www.mordorintelligence.com/industry-reports/europe-distribution-transformer-market) |\n| Dry-type cast resin (urban/indoor) | ~15–20% | → Stable | MED | [Mordor Intelligence](https://www.mordorintelligence.com/industry-reports/europe-distribution-transformer-market) |\n| Ester-filled (natural / synthetic) | ~10–15% | ↑ Growing | MED | [Business Research Insights](https://www.businessresearchinsights.com/market-reports/ester-transformer-oils-market-108881) |\n\n**L2:** tank + magnetic core + HV/LV windings + bushings + tap-changer.\n**L1:** core laminations, HV/LV copper windings, porcelain/silicone bushings, OLTC (optional), Buchholz relay.\n**L0:** Grain-oriented electrical steel (~100% for cores, single-source HIGH), Cu winding (~95%) / Al winding (~5%), mineral oil OR natural ester OR cast-resin epoxy (per L2 split above), porcelain or silicone-rubber for bushings.\n\n### L3-3.2 MV switchgear → L2 → L1 → L0\n\n| Alt. (insulation medium, EU C&I post-2026) | Share | Trend | Conf. | Source |\n|---|---|---|---|---|\n| SF6-free dry-air + vacuum | ~40% (→ ~95% post-Jan 2026) | ↑ Growing | HIGH | [Schneider/E.ON SF6-free deployment](https://switchgearcontent.com/2025/09/04/4242/schneider-electric-partners-with-e-on-to-deploy-sf6-free-switchgear-across-europe/) |\n| SF6 (legacy) | ~50% (→ 0% by 2026 ban ≤24kV) | ↓ Declining | HIGH | [Schneider on EU F-Gas](https://blog.se.com/datacenter/2025/07/18/is-your-data-center-ready-for-the-ban-on-sf6-mv-switchgear-in-the-eu/) |\n| Solid-insulated (SIS) | ~10% | → Stable | MED | [DataIntelo](https://dataintelo.com/report/global-gas-insulated-switchgear-sf6-free-market) |\n\n**L2:** cubicle + circuit breaker + busbar compartment + earthing switch.\n**L1:** vacuum interrupter bottle, Cu busbar, epoxy spacer/insulator, SF6-free puffer (or vacuum + dry-air mix), aux trip coil.\n**L0:** Cu-Cr alloy contacts (vacuum bottle, single-source HIGH), Cu busbar (100% single-source), epoxy resin, ceramic (Al₂O₃), borosilicate glass.\n\n### L3-3.3 Protection / NA-protection → L2 → L1 → L0\n\n`L2 alternatives:`\n\n| Alt. (relay platform) | Share | Trend | Conf. | Source |\n|---|---|---|---|---|\n| Multifunction digital relay (IED, IEC 61850) | ~85% | ↑ Growing | HIGH | industry standard for new builds |\n| Discrete electromechanical | ~10% | ↓ Declining | HIGH | analyst estimate |\n| Programmable logic-based (SIPROTEC/REF/MICOM) | ~5% (special apps) | → Stable | LOW | analyst estimate |\n\n**L1:** IED unit (Siemens SIPROTEC / ABB REF / Schneider MiCOM), CT/VT, NA-protection relay (DIN VDE V 0124-100), aux relays, terminal blocks, DIN-rail PSU.\n**L0:** Si (MCU/FPGA), FR4 PCB, Cu, ferrite (CT cores).\n\n### L3-3.4 Metering & SCADA gateway → L2 → L1 → L0\n\n`single-source: true` at L2 (one panel per plant).\n**L1:** Class-0.5S energy meter (MID-certified), substation-grade RTU, IEC 60870-5-104 / IEC 61850 gateway, fiber media converter.\n**L0:** Si, FR4 PCB, Cu, optical glass fiber.\n\n---"
+    },
+    {
+      "title": "L4-4 — Control / EMS Subsystem",
+      "content": "```\nL4-4 Control / EMS\n ├─ L3-4.1 EMS controller hardware\n ├─ L3-4.2 EMS software stack\n ├─ L3-4.3 Comms / network\n └─ L3-4.4 Cybersecurity layer\n```\n\n### L4-4 → L3 [Control architecture]\n\n`single-source: true` (every BESS has these four control blocks).\n\n### L3-4.1 EMS controller hardware → L2 → L1 → L0\n\n| Alt. (controller class) | Share | Trend | Conf. | Source |\n|---|---|---|---|---|\n| Industrial PC (x86, fanless) | ~55% | → Stable | MED | analyst estimate |\n| PLC (Siemens S7, Beckhoff) | ~30% | → Stable | MED | analyst estimate |\n| ARM SBC (NVIDIA Jetson, edge AI) | ~15% | ↑ Growing | LOW | analyst estimate |\n\n**L1:** SBC/IPC mainboard, DIO modules, redundant PSU, SSD, mounting rail.\n**L0:** Si, FR4, Cu, NAND flash, Al heatsink.\n\n### L3-4.2 EMS software stack → L2 → L1\n\n`L0 N/A — software has no raw material. Treat L1 = software module as terminal.`\n\n| Alt. (EMS vendor / platform) | Share | Trend | Conf. | Source |\n|---|---|---|---|---|\n| Tesla Autobidder/Powerhub | ~15% (global integrator) | ↑ Growing | HIGH | [WoodMac](https://www.woodmac.com/press-releases/tesla-remains-the-top-global-producer-of-battery-energy-storage-systems-in-2024-but-sungrow-narrows-the-gap/) |\n| Sungrow iEnergyCloud | ~14% | ↑ Growing | HIGH | [Enlit/WoodMac](https://www.enlit.world/library/sungrow-fluence-and-tesla-leading-bess-integrators-says-wood-mackenzie) |\n| Fluence Mosaic / IQ | ~10–12% | → Stable | HIGH | [WoodMac](https://www.woodmac.com/press-releases/2024-press-releases/tesla-takes-sungrows-crown-as-lead-global-producer-of-bess-in-2023/) |\n| Wärtsilä GEMS | ~5% | → Stable | MED | [Wärtsilä GEMS](https://www.wartsila.com/energy/energy-storage/technology/gems-digital-energy-platform) |\n| Third-party DE optimizers (Entrix, Suena, Next Kraftwerke, EnAppSys) | ~10–15% (DE merchant) | ↑ Growing | LOW | analyst estimate |\n| Other OEM / in-house | ~40% | mixed | LOW | analyst estimate |\n\n`L0: software — record as N/A; treat L1 software module as terminal.`\n\n### L3-4.3 Comms / network → L2 → L1 → L0\n\n`L2 single-source` (managed switch + router + cellular backup is universal).\n**L1:** managed Ethernet switch (IEC 61850), cellular modem (LTE-M / 5G), fiber media converter, panel PC HMI.\n**L0:** Si, FR4, Cu, optical fiber (silica glass).\n\n### L3-4.4 Cybersecurity → L2 → L1 → L0\n\n| Alt. (firewall class) | Share | Trend | Conf. | Source |\n|---|---|---|---|---|\n| OT-purpose firewall (Tofino, Hirschmann EAGLE, Moxa) | ~50% | ↑ Growing | MED | [IEC 62443 industry trend](https://www.iec.ch/blog/iec-62443-cyber-security-action-plan) |\n| General-purpose NGFW (Fortinet, Palo Alto) | ~40% | → Stable | MED | analyst estimate |\n| Software-only segmentation (no appliance) | ~10% | ↓ Declining | LOW | analyst estimate |\n\n**L1:** firewall appliance, IDS sensor, secure gateway.\n**L0:** Si, FR4, Cu.\n\n---"
+    },
+    {
+      "title": "L4-5 — Civil & Site Subsystem",
+      "content": "```\nL4-5 Civil & Site\n ├─ L3-5.1 Foundation\n ├─ L3-5.2 Cable trenching & ducting\n ├─ L3-5.3 Perimeter security\n └─ L3-5.4 Lightning protection / earthing\n```\n\n### L4-5 → L3\n\n`single-source: true` (these four blocks are standard German EPC scope).\n\n### L3-5.1 Foundation → L2 → L1 → L0\n\n| Alt. (foundation type) | Share | Trend | Conf. | Source |\n|---|---|---|---|---|\n| Reinforced concrete pad (in-situ) | ~75% | → Stable | HIGH | DE EPC standard practice |\n| Precast concrete plinth | ~20% | ↑ Growing | MED | analyst estimate |\n| Steel skid frame on screw piles | ~5% | ↑ Emerging (fast-deploy) | LOW | analyst estimate |\n\n**L1:** rebar mesh, concrete slab, anchor bolts.\n**L0:** Portland cement (CEM II/B-S 32.5), aggregate (sand+gravel), water, steel rebar (B500B), PE moisture barrier.\n\n| Alt. cement type | Share | Trend | Conf. | Source |\n|---|---|---|---|---|\n| CEM II (blended, low-CO₂) | ~60% (DE) | ↑ Growing | HIGH | [VDZ German Cement Statistics](https://www.vdz-online.de/en/) |\n| CEM I (Portland) | ~30% | ↓ Declining | HIGH | [VDZ](https://www.vdz-online.de/en/) |\n| CEM III (slag) | ~10% | → Stable | MED | [VDZ](https://www.vdz-online.de/en/) |\n\n### L3-5.2 Cable trenching & ducting → L2 → L1 → L0\n\n`single-source L2.` **L1:** HDPE conduit (DN110/160), pull pits, MV cable (NA2XS(F)2Y 12/20 kV), LV cable.\n**L0:** HDPE polymer (cable jacket + conduit), Cu conductor (~95%) / Al conductor (~5%), XLPE insulation, PE/PVC bedding.\n\n### L3-5.3 Perimeter security → L2 → L1 → L0\n\n`single-source L2.` **L1:** mesh fence panels, posts, gate, access controller.\n**L0:** Hot-dip galvanized steel (DIN EN ISO 1461) ~95%, Al ~5%, PVC coating (optional).\n\n### L3-5.4 Lightning protection / earthing → L2 → L1 → L0\n\n`single-source L2.` Class III LPS per IEC 62305 typical for BESS plant.\n**L1:** air terminals, down conductors, earth electrodes, equipotential bonding bus.\n**L0:** Cu (~70%) / hot-dip galvanized steel (~25%) / stainless 1.4571 (~5%) for buried electrodes (analyst est., MED).\n\n---"
+    },
+    {
+      "title": "B.4 — Component Category Map (key cross-cutting components)",
+      "content": "### Component category: **Lithium prismatic LFP cell**\n\n| BOM position | Function | Safety-critical | Alternatives |\n|---|---|---|---|\n| L1 within L2 battery rack (under L3-1.1, L4-1) | Reversible Li-intercalation energy store | YES (thermal runaway risk) | NMC, Na-ion, LTO (per chemistry table) |\n\n### Component category: **IGBT/SiC power switch**\n\n| BOM position | Function | Safety-critical | Alternatives |\n|---|---|---|---|\n| L1 within L2 PCS power module (under L3-2.1, L4-2) | DC↔AC switching at 1500 Vdc / 690 Vac | YES (arc/explosion if fault) | Si IGBT, SiC MOSFET, GaN |\n\n### Component category: **Vacuum interrupter**\n\n| BOM position | Function | Safety-critical | Alternatives |\n|---|---|---|---|\n| L1 within L2 MV CB (under L3-3.2, L4-3) | Interrupt fault current at 24 kV | YES (substation safety) | SF6 puffer (legacy), vacuum (dominant), solid-insulated |\n\n### Component category: **MCU / microcontroller**\n\n| BOM position | Function | Safety-critical | Alternatives |\n|---|---|---|---|\n| L1 within L2 BMS PCBA (L3-1.2) | Cell-level voltage/temp monitoring + balancing | YES | per BMS chipset choice |\n| L1 within L2 EMS controller (L3-4.1) | Optimization runtime | NO | x86 vs ARM vs PLC |\n| L1 within L2 protection IED (L3-3.3) | Trip logic | YES | per IED platform |\n\n`Insight: MCU appears at 3+ BOM positions but Core Job differs — cell safety (BMS) vs optimization (EMS) vs trip protection (IED). Same component, different competitive set per position.`\n\n---"
+    },
+    {
+      "title": "B.5 — Company Position",
+      "content": "```\nL5  Behind-the-Meter Containerized BESS Plant (1–5 MWh)   ← MEIN SOLAR position (L5)\n │                                                            (entire BOM below = Mein Solar's deliverable)\n ├─ L4-1  Battery Storage Subsystem\n ├─ L4-2  Power Conversion Subsystem\n ├─ L4-3  MV Grid Coupling Subsystem\n ├─ L4-4  Control / EMS Subsystem\n └─ L4-5  Civil & Site Subsystem\n```\n\n**Mein Solar is the L5 EPC integrator.** It does not manufacture L4 or L3 components — it specifies, procures, integrates, certifies, and warranties the L5 deliverable. Per the BOM doc rule: \"If the company's product IS the L5 output, mark the company at L5 and note that the entire BOM below represents their product's composition.\"\n\n**Both BOMs (per B.5 callout):**\n- **Upward context BOM:** N/A — Mein Solar's product IS the L5 end product, not a component in a larger system.\n- **Downward product BOM:** the full L4→L0 decomposition above.\n\n---"
+    },
+    {
+      "title": "B.6 — Strategic BOM Adjacency",
+      "content": "### Horizontal BOM Adjacency (other L4 subsystems Mein Solar could supply IF they were a component supplier)\n\n`Not applicable in the conventional sense — Mein Solar is the L5 integrator, not an L4 component supplier. Adjacency analysis here is at the L5 level: other L5 deliverables Mein Solar could integrate at C&I real-estate sites.`\n\n| Adjacent L5 deliverable (same buyer, lessor of nonresidential building) | Capability gap | Market size (DE est.) | Strategic fit |\n|---|---|---|---|\n| L5 PV+BESS hybrid plant | LOW (Mein Solar's PV-EPC heritage) | €1.5–2 B/yr | STRONG |\n| L5 HPC charging hub with BESS buffer | MEDIUM (BESS shared, HPC dispenser new) | €0.5–1 B/yr | STRONG |\n| L5 Heat-pump + BESS + PV behind-the-meter electrification stack | MEDIUM (heat-pump trade new) | €1–2 B/yr | MEDIUM |\n| L5 Tenant EV-fleet AC charging (11–22 kW) park | LOW | €0.3–0.5 B/yr | MEDIUM |\n| L5 Microgrid / Inselnetz controller for tenant resilience | HIGH (islanding controls new) | €0.1–0.3 B/yr | WEAK |\n\n### Vertical BOM Move — Up\n\n`From L5 EPC integrator to L6 (operator / asset manager / VPP aggregator).` This is the natural upward move: from delivering the asset to operating it.\n\n| Factor | Evaluation |\n|---|---|\n| Additional capabilities required | 24/7 NOC, EPEX/regelleistung trading desk, asset performance optimization |\n| Capital investment | €2–5 M (NOC + software platform + trading licenses) |\n| Existing customer leverage | HIGH (lessor wants single counterparty for life-cycle) |\n| Competitive response | Compete with VPP aggregators (Next Kraftwerke, Entrix, Suena) and OEMs (Tesla Autobidder) |\n| Time to market | 18–24 months |\n\n### Vertical BOM Move — Down (component-level entry)\n\n`Mein Solar moving from L5 integrator down to L4/L3 component manufacturing.` **Not strategic** — would conflict with single-source EPC promise (compete with own suppliers) and require manufacturing capex Mein Solar lacks.\n\n| Target position | Verdict |\n|---|---|\n| L4-1 own container integration (CTOS-style) | REJECT — competes with Sungrow/Tesla suppliers |\n| L4-4 own EMS software stack | CONSIDER — moat-building; €1–3 M dev cost; differentiates EPC offer |\n| L4-5 in-house civil contracting | CONSIDER — already partially executed; vertical efficiency |\n\n### Cross-system BOM positions (FP-extension domains)\n\n`Mein Solar's L5-integrator capability transfers to non-storage assets.`\n\n| Target system | BOM role | Shared capability | Adaptation |\n|---|---|---|---|\n| L5 Large-scale PV plant | Same EPC role | MV coupling, cert, civil 100% shared | Battery-specific knowledge unused (already incumbent) |\n| L5 HPC charging hub | Same EPC role | MV coupling, cert, civil shared | HPC dispenser specification new |\n| L5 Industrial microgrid | Same EPC role | EMS, MV, civil shared | Islanding controls new |\n| L5 PV+Wind hybrid park | Same EPC role | MV, cert shared | Wind-turbine interface new |\n\n---"
+    },
+    {
+      "title": "Quality Checks",
+      "content": "| Check | Status |\n|---|---|\n| Every L4 decomposes to L0 | ✅ (5 of 5 L4 subsystems traced to raw materials) |\n| Every level transition has alternatives table OR `single-source: true` | ✅ |\n| Alternative shares sum to 100% (±1%) | ✅ |\n| Packaging/containment included | ✅ (L3-1.5 container, L4-5 civil) |\n| Control/interface included | ✅ (L4-4 EMS) |\n| Company position marked | ✅ (Mein Solar at L5, entire BOM = its product) |\n| Horizontal & vertical adjacency completed | ✅ |\n| BOM vs VN test passed | ✅ (every L0 ends up IN the deliverable, not USED to make it) |\n| All entities trace to CFJ (storage of grid-connected energy) | ✅ |\n\n---"
+    },
+    {
+      "title": "Structured Data",
+      "content": "```json\n{\n  \"component\": \"product_bom_decomposition\",\n  \"naics_code\": \"531120\",\n  \"naics_title\": \"Lessors of Nonresidential Buildings (except Miniwarehouses)\",\n  \"market_name\": \"Commercial & Industrial Real-Estate Behind-the-Meter Storage\",\n  \"output_type\": \"Behind-the-meter containerized BESS plant\",\n  \"typical_scale\": \"1-5 MWh per site (smaller than 4.5 MW / 9 MWh IPP reference)\",\n  \"company_name\": \"Mein Solar GmbH\",\n  \"company_bom_position\": {\n    \"level\": \"L5\",\n    \"rationale\": \"Mein Solar is the EPC integrator; the L5 commissioned plant IS its product. Entire BOM below represents the deliverable composition.\"\n  },\n\n  \"bom_units\": [\n    {\"name\": \"Behind-the-Meter Containerized BESS Plant\", \"level\": \"L5\", \"naics_code\": \"531120\", \"output_type\": \"BESS Plant\", \"company_position\": true, \"company_name\": \"Mein Solar GmbH\", \"single_source\": true, \"description\": \"L5 sellable end product = the commissioned, certified BESS asset\"},\n\n    {\"name\": \"Battery Storage Subsystem\", \"level\": \"L4\", \"parent\": \"L5 BESS Plant\", \"single_source\": false, \"description\": \"Containerized rack-based Li-ion stack with BMS, thermal, fire suppression\"},\n    {\"name\": \"Power Conversion Subsystem\", \"level\": \"L4\", \"parent\": \"L5 BESS Plant\", \"single_source\": false, \"description\": \"Bidirectional inverter, DC and AC BoS\"},\n    {\"name\": \"MV Grid Coupling Subsystem\", \"level\": \"L4\", \"parent\": \"L5 BESS Plant\", \"single_source\": true, \"description\": \"Transformer + switchgear + protection + metering per VDE-AR-N 4110\"},\n    {\"name\": \"Control / EMS Subsystem\", \"level\": \"L4\", \"parent\": \"L5 BESS Plant\", \"single_source\": true, \"description\": \"EMS controller, software, comms, cybersecurity\"},\n    {\"name\": \"Civil & Site Subsystem\", \"level\": \"L4\", \"parent\": \"L5 BESS Plant\", \"single_source\": true, \"description\": \"Foundation, trenching, fencing, earthing\"},\n\n    {\"name\": \"Battery rack module\", \"level\": \"L3\", \"parent\": \"L4-1 Battery Storage\", \"single_source\": false},\n    {\"name\": \"Battery management system (BMS)\", \"level\": \"L3\", \"parent\": \"L4-1 Battery Storage\", \"single_source\": false},\n    {\"name\": \"Thermal management module\", \"level\": \"L3\", \"parent\": \"L4-1 Battery Storage\", \"single_source\": false},\n    {\"name\": \"Fire detection & suppression module\", \"level\": \"L3\", \"parent\": \"L4-1 Battery Storage\", \"single_source\": false},\n    {\"name\": \"Container envelope\", \"level\": \"L3\", \"parent\": \"L4-1 Battery Storage\", \"single_source\": false},\n\n    {\"name\": \"Inverter unit (PCS)\", \"level\": \"L3\", \"parent\": \"L4-2 PCS\", \"single_source\": false},\n    {\"name\": \"DC-side BoS\", \"level\": \"L3\", \"parent\": \"L4-2 PCS\", \"single_source\": true},\n    {\"name\": \"AC-side filtering\", \"level\": \"L3\", \"parent\": \"L4-2 PCS\", \"single_source\": true},\n\n    {\"name\": \"MV transformer\", \"level\": \"L3\", \"parent\": \"L4-3 MV Grid Coupling\", \"single_source\": false},\n    {\"name\": \"MV switchgear\", \"level\": \"L3\", \"parent\": \"L4-3 MV Grid Coupling\", \"single_source\": false},\n    {\"name\": \"Protection / NA-protection\", \"level\": \"L3\", \"parent\": \"L4-3 MV Grid Coupling\", \"single_source\": false},\n    {\"name\": \"Metering & SCADA gateway\", \"level\": \"L3\", \"parent\": \"L4-3 MV Grid Coupling\", \"single_source\": true},\n\n    {\"name\": \"EMS controller hardware\", \"level\": \"L3\", \"parent\": \"L4-4 Control/EMS\", \"single_source\": false},\n    {\"name\": \"EMS software stack\", \"level\": \"L3\", \"parent\": \"L4-4 Control/EMS\", \"single_source\": false},\n    {\"name\": \"Comms / network\", \"level\": \"L3\", \"parent\": \"L4-4 Control/EMS\", \"single_source\": true},\n    {\"name\": \"Cybersecurity layer\", \"level\": \"L3\", \"parent\": \"L4-4 Control/EMS\", \"single_source\": false},\n\n    {\"name\": \"Foundation\", \"level\": \"L3\", \"parent\": \"L4-5 Civil & Site\", \"single_source\": false},\n    {\"name\": \"Cable trenching & ducting\", \"level\": \"L3\", \"parent\": \"L4-5 Civil & Site\", \"single_source\": true},\n    {\"name\": \"Perimeter security\", \"level\": \"L3\", \"parent\": \"L4-5 Civil & Site\", \"single_source\": true},\n    {\"name\": \"Lightning protection / earthing\", \"level\": \"L3\", \"parent\": \"L4-5 Civil & Site\", \"single_source\": true}\n  ],\n\n  \"key_alternatives_by_position\": {\n    \"L4-1_battery_storage_architecture\": [\n      {\"name\": \"Containerized rack-based\", \"market_share\": 92, \"trend\": \"Growing\", \"confidence\": \"HIGH\", \"source\": \"IDTechEx BESS thermal report\"},\n      {\"name\": \"All-in-one cabinet skid\", \"market_share\": 8, \"trend\": \"Stable\", \"confidence\": \"MED\", \"source\": \"Mordor Intelligence\"}\n    ],\n    \"L3-1.1_battery_rack_form\": [\n      {\"name\": \"LFP prismatic rack\", \"market_share\": 87, \"trend\": \"Growing\", \"confidence\": \"HIGH\", \"source\": \"Mordor Intelligence\"},\n      {\"name\": \"Pouch cell module rack\", \"market_share\": 8, \"trend\": \"Stable\", \"confidence\": \"MED\", \"source\": \"Mordor Intelligence\"},\n      {\"name\": \"Cylindrical (4680/21700) rack\", \"market_share\": 5, \"trend\": \"Stable\", \"confidence\": \"MED\", \"source\": \"CIC energiGUNE\"}\n    ],\n    \"L2_cell_chemistry\": [\n      {\"name\": \"LFP\", \"market_share\": 95, \"trend\": \"Growing\", \"confidence\": \"HIGH\", \"source\": \"Wood Mackenzie\"},\n      {\"name\": \"NMC\", \"market_share\": 4, \"trend\": \"Declining\", \"confidence\": \"HIGH\", \"source\": \"BNEF / Energy-Storage.News\"},\n      {\"name\": \"Na-ion\", \"market_share\": 0.5, \"trend\": \"Emerging\", \"confidence\": \"MED\", \"source\": \"BNEF\"},\n      {\"name\": \"LTO\", \"market_share\": 0.3, \"trend\": \"Stable\", \"confidence\": \"LOW\", \"source\": \"analyst estimate\"},\n      {\"name\": \"NCA\", \"market_share\": 0.2, \"trend\": \"Declining\", \"confidence\": \"MED\", \"source\": \"analyst estimate\"}\n    ],\n    \"L3-1.3_thermal_management\": [\n      {\"name\": \"Liquid-cooled (glycol-water)\", \"market_share\": 75, \"trend\": \"Growing\", \"confidence\": \"HIGH\", \"source\": \"IDTechEx\"},\n      {\"name\": \"Air-cooled (HVAC)\", \"market_share\": 23, \"trend\": \"Declining\", \"confidence\": \"HIGH\", \"source\": \"IDTechEx\"},\n      {\"name\": \"Dielectric immersion\", \"market_share\": 2, \"trend\": \"Emerging\", \"confidence\": \"MED\", \"source\": \"IDTechEx\"}\n    ],\n    \"L3-1.4_fire_suppression\": [\n      {\"name\": \"Aerosol (Stat-X / FirePro)\", \"market_share\": 45, \"trend\": \"Growing\", \"confidence\": \"LOW\", \"source\": \"analyst estimate\"},\n      {\"name\": \"FK-5-1-12 / NOVEC 1230\", \"market_share\": 25, \"trend\": \"Declining (3M EOL 2025)\", \"confidence\": \"MED\", \"source\": \"Fike\"},\n      {\"name\": \"Water mist\", \"market_share\": 20, \"trend\": \"Growing\", \"confidence\": \"LOW\", \"source\": \"analyst estimate\"},\n      {\"name\": \"Inert gas (N2/Ar/IG-541)\", \"market_share\": 10, \"trend\": \"Stable\", \"confidence\": \"LOW\", \"source\": \"analyst estimate\"}\n    ],\n    \"L3-1.5_container_form\": [\n      {\"name\": \"20ft ISO standard\", \"market_share\": 45, \"trend\": \"Stable\", \"confidence\": \"MED\", \"source\": \"MarketsandMarkets\"},\n      {\"name\": \"20ft HC dense (3-5 MWh)\", \"market_share\": 35, \"trend\": \"Growing\", \"confidence\": \"MED\", \"source\": \"Acebattery\"},\n      {\"name\": \"40ft ISO\", \"market_share\": 15, \"trend\": \"Declining\", \"confidence\": \"LOW\", \"source\": \"analyst estimate\"},\n      {\"name\": \"Custom skid <500 kWh\", \"market_share\": 5, \"trend\": \"Stable\", \"confidence\": \"LOW\", \"source\": \"analyst estimate\"}\n    ],\n    \"L4-2_PCS_topology\": [\n      {\"name\": \"String PCS (100-430 kW)\", \"market_share\": 58, \"trend\": \"Growing\", \"confidence\": \"MED\", \"source\": \"CLOU Global\"},\n      {\"name\": \"Central PCS (>1 MW)\", \"market_share\": 37, \"trend\": \"Declining\", \"confidence\": \"MED\", \"source\": \"KACO\"},\n      {\"name\": \"Modular DC-block\", \"market_share\": 5, \"trend\": \"Emerging\", \"confidence\": \"LOW\", \"source\": \"analyst estimate\"}\n    ],\n    \"L1_PCS_switch_semiconductor\": [\n      {\"name\": \"Si IGBT\", \"market_share\": 85, \"trend\": \"Declining\", \"confidence\": \"HIGH\", \"source\": \"Yole Power Semi 2024\"},\n      {\"name\": \"SiC MOSFET\", \"market_share\": 12, \"trend\": \"Growing\", \"confidence\": \"HIGH\", \"source\": \"Yole Power Semi 2024\"},\n      {\"name\": \"GaN HEMT (aux)\", \"market_share\": 3, \"trend\": \"Emerging\", \"confidence\": \"MED\", \"source\": \"analyst estimate\"}\n    ],\n    \"L3-3.1_MV_transformer_insulation\": [\n      {\"name\": \"Mineral oil\", \"market_share\": 72, \"trend\": \"Declining\", \"confidence\": \"MED\", \"source\": \"Mordor Intelligence\"},\n      {\"name\": \"Dry-type cast resin\", \"market_share\": 16, \"trend\": \"Stable\", \"confidence\": \"MED\", \"source\": \"Mordor Intelligence\"},\n      {\"name\": \"Ester (natural/synthetic)\", \"market_share\": 12, \"trend\": \"Growing\", \"confidence\": \"MED\", \"source\": \"Business Research Insights\"}\n    ],\n    \"L3-3.2_MV_switchgear_insulation\": [\n      {\"name\": \"SF6 (legacy, banned EU 2026 ≤24kV)\", \"market_share\": 50, \"trend\": \"Declining\", \"confidence\": \"HIGH\", \"source\": \"EU F-Gas Reg 2024/573\"},\n      {\"name\": \"SF6-free dry-air + vacuum\", \"market_share\": 40, \"trend\": \"Growing\", \"confidence\": \"HIGH\", \"source\": \"Schneider/E.ON\"},\n      {\"name\": \"Solid-insulated (SIS)\", \"market_share\": 10, \"trend\": \"Stable\", \"confidence\": \"MED\", \"source\": \"DataIntelo\"}\n    ],\n    \"L3-3.3_protection_relay_platform\": [\n      {\"name\": \"Multifunction digital IED (IEC 61850)\", \"market_share\": 85, \"trend\": \"Growing\", \"confidence\": \"HIGH\", \"source\": \"industry standard\"},\n      {\"name\": \"Discrete electromechanical\", \"market_share\": 10, \"trend\": \"Declining\", \"confidence\": \"HIGH\", \"source\": \"analyst estimate\"},\n      {\"name\": \"Programmable logic-based\", \"market_share\": 5, \"trend\": \"Stable\", \"confidence\": \"LOW\", \"source\": \"analyst estimate\"}\n    ],\n    \"L3-4.1_EMS_controller_class\": [\n      {\"name\": \"Industrial PC (x86)\", \"market_share\": 55, \"trend\": \"Stable\", \"confidence\": \"MED\", \"source\": \"analyst estimate\"},\n      {\"name\": \"PLC (Siemens S7, Beckhoff)\", \"market_share\": 30, \"trend\": \"Stable\", \"confidence\": \"MED\", \"source\": \"analyst estimate\"},\n      {\"name\": \"ARM SBC / edge AI\", \"market_share\": 15, \"trend\": \"Growing\", \"confidence\": \"LOW\", \"source\": \"analyst estimate\"}\n    ],\n    \"L3-4.2_EMS_software_vendor\": [\n      {\"name\": \"Tesla Autobidder/Powerhub\", \"market_share\": 15, \"trend\": \"Growing\", \"confidence\": \"HIGH\", \"source\": \"WoodMac\"},\n      {\"name\": \"Sungrow iEnergyCloud\", \"market_share\": 14, \"trend\": \"Growing\", \"confidence\": \"HIGH\", \"source\": \"Enlit/WoodMac\"},\n      {\"name\": \"Fluence Mosaic / IQ\", \"market_share\": 11, \"trend\": \"Stable\", \"confidence\": \"HIGH\", \"source\": \"WoodMac\"},\n      {\"name\": \"Wartsila GEMS\", \"market_share\": 5, \"trend\": \"Stable\", \"confidence\": \"MED\", \"source\": \"Wartsila\"},\n      {\"name\": \"DE merchant optimizers (Entrix, Suena, Next Kraftwerke, EnAppSys)\", \"market_share\": 13, \"trend\": \"Growing\", \"confidence\": \"LOW\", \"source\": \"analyst estimate\"},\n      {\"name\": \"Other OEM / in-house\", \"market_share\": 42, \"trend\": \"Mixed\", \"confidence\": \"LOW\", \"source\": \"analyst estimate\"}\n    ],\n    \"L3-5.1_foundation_type\": [\n      {\"name\": \"Reinforced concrete pad\", \"market_share\": 75, \"trend\": \"Stable\", \"confidence\": \"HIGH\", \"source\": \"DE EPC standard\"},\n      {\"name\": \"Precast plinth\", \"market_share\": 20, \"trend\": \"Growing\", \"confidence\": \"MED\", \"source\": \"analyst estimate\"},\n      {\"name\": \"Steel skid on screw piles\", \"market_share\": 5, \"trend\": \"Emerging\", \"confidence\": \"LOW\", \"source\": \"analyst estimate\"}\n    ],\n    \"L0_cement_type_DE\": [\n      {\"name\": \"CEM II (blended low-CO2)\", \"market_share\": 60, \"trend\": \"Growing\", \"confidence\": \"HIGH\", \"source\": \"VDZ\"},\n      {\"name\": \"CEM I (Portland)\", \"market_share\": 30, \"trend\": \"Declining\", \"confidence\": \"HIGH\", \"source\": \"VDZ\"},\n      {\"name\": \"CEM III (slag)\", \"market_share\": 10, \"trend\": \"Stable\", \"confidence\": \"MED\", \"source\": \"VDZ\"}\n    ]\n  },\n\n  \"horizontal_adjacencies_at_L5\": [\n    {\"adjacent_component\": \"L5 PV+BESS hybrid plant\", \"capability_gap\": \"LOW\", \"market_size_DE_eur\": \"1.5-2B/yr\", \"strategic_fit\": \"STRONG\"},\n    {\"adjacent_component\": \"L5 HPC charging hub with BESS buffer\", \"capability_gap\": \"MEDIUM\", \"market_size_DE_eur\": \"0.5-1B/yr\", \"strategic_fit\": \"STRONG\"},\n    {\"adjacent_component\": \"L5 Heat-pump+BESS+PV electrification stack\", \"capability_gap\": \"MEDIUM\", \"market_size_DE_eur\": \"1-2B/yr\", \"strategic_fit\": \"MEDIUM\"},\n    {\"adjacent_component\": \"L5 Tenant EV-fleet AC charging park\", \"capability_gap\": \"LOW\", \"market_size_DE_eur\": \"0.3-0.5B/yr\", \"strategic_fit\": \"MEDIUM\"},\n    {\"adjacent_component\": \"L5 Microgrid / Inselnetz controller\", \"capability_gap\": \"HIGH\", \"market_size_DE_eur\": \"0.1-0.3B/yr\", \"strategic_fit\": \"WEAK\"}\n  ],\n\n  \"vertical_adjacency_up\": {\n    \"from_role\": \"L5 EPC Integrator\",\n    \"to_role\": \"L6 Asset operator / VPP aggregator\",\n    \"additional_capabilities\": [\"24/7 NOC\", \"EPEX/regelleistung trading desk\", \"Asset performance optimization\"],\n    \"capex_estimate_eur\": \"2-5M\",\n    \"customer_leverage\": \"HIGH\",\n    \"competitor_response\": \"Compete with Next Kraftwerke, Entrix, Suena, Tesla Autobidder\",\n    \"time_to_market_months\": \"18-24\"\n  },\n\n  \"vertical_adjacency_down\": [\n    {\"target_position\": \"L4-1 own container integration\", \"verdict\": \"REJECT\", \"reason\": \"Conflicts with single-source EPC promise; competes with own suppliers\"},\n    {\"target_position\": \"L4-4 own EMS software stack\", \"verdict\": \"CONSIDER\", \"reason\": \"Moat-building; differentiates EPC offer; EUR 1-3M dev\"},\n    {\"target_position\": \"L4-5 in-house civil contracting\", \"verdict\": \"CONSIDER\", \"reason\": \"Already partially executed; vertical efficiency\"}\n  ],\n\n  \"cross_system_fp_extension_positions\": [\n    {\"target_system\": \"L5 Large-scale PV plant\", \"shared_capability\": \"MV coupling + cert + civil\", \"adaptation\": \"battery-specific knowledge unused (already incumbent)\"},\n    {\"target_system\": \"L5 HPC charging hub\", \"shared_capability\": \"MV coupling + cert + civil\", \"adaptation\": \"HPC dispenser specification new\"},\n    {\"target_system\": \"L5 Industrial microgrid\", \"shared_capability\": \"EMS + MV + civil\", \"adaptation\": \"islanding controls new\"},\n    {\"target_system\": \"L5 PV+Wind hybrid park\", \"shared_capability\": \"MV + cert\", \"adaptation\": \"wind-turbine interface new\"}\n  ],\n\n  \"qa\": {\n    \"every_L4_to_L0\": true,\n    \"alternatives_or_single_source_at_every_transition\": true,\n    \"shares_sum_to_100_pct\": true,\n    \"packaging_included\": true,\n    \"control_subsystem_included\": true,\n    \"company_position_marked\": true,\n    \"adjacency_completed\": true,\n    \"BOM_vs_VN_test_passed\": true,\n    \"CFJ_traceability\": true\n  }\n}\n```\n\n---"
+    },
+    {
+      "title": "Sources",
+      "content": "- [VDE-AR-N 4110 — TCR for medium voltage](https://www.vde.com/en/fnn/topics/technical-connection-rules/tcr-for-medium-voltage)\n- [Wood Mackenzie — LFP to overtake NMC by 2030](https://www.woodmac.com/press-releases/lfp-to-overtake-nmc-as-dominant-stationary-storage-chemistry-by-2030/)\n- [BNEF — global energy storage boom](https://about.bnef.com/insights/clean-energy/global-energy-storage-boom-three-things-to-know/)\n- [Energy-Storage.News — LFP to dominate 3 TWh by 2030](https://www.energy-storage.news/lfp-to-dominate-3twh-global-lithium-ion-battery-market-by-2030/)\n- [IDTechEx — BESS thermal management & fire protection](https://www.idtechex.com/en/research-report/thermal-management-fire-and-explosion-protection-for-bess/1127)\n- [IDTechEx — Safer battery storage thermal & fire trends](https://www.idtechex.com/en/research-article/safer-battery-storage-thermal-management-and-fire-protection-trends/33916)\n- [Fike — 3M Novec 1230 discontinuation](https://www.fike.com/knowledge-center/3m-novec-1230-discontinued-what-now/)\n- [Mordor Intelligence — Global battery cell market](https://www.mordorintelligence.com/industry-reports/global-battery-cell-market)\n- [Mordor Intelligence — Europe distribution transformer](https://www.mordorintelligence.com/industry-reports/europe-distribution-transformer-market)\n- [CIC energiGUNE — battery cell formats](https://cicenergigune.com/en/blog/format-battery-cell-manufacturers-prismatic-cylindrical-pouch)\n- [CLOU Global — String vs central PCS](https://clouglobal.com/string-pcs-vs-centralized-pcs-maximizing-reliability-and-availability-in-large-scale-energy-storage/)\n- [KACO — String inverters for energy storage](https://kaco-newenergy.com/fileadmin/downloads/documents/KNE-PAP-String-Inverters-for-Energy-Storage.pdf)\n- [WoodMac — Tesla / Sungrow BESS integrator ranking](https://www.woodmac.com/press-releases/tesla-remains-the-top-global-producer-of-battery-energy-storage-systems-in-2024-but-sungrow-narrows-the-gap/)\n- [Schneider — EU SF6 ban impact](https://blog.se.com/datacenter/2025/07/18/is-your-data-center-ready-for-the-ban-on-sf6-mv-switchgear-in-the-eu/)\n- [Schneider/E.ON SF6-free deployment](https://switchgearcontent.com/2025/09/04/4242/schneider-electric-partners-with-e-on-to-deploy-sf6-free-switchgear-across-europe/)\n- [EU F-Gas Regulation 2024/573](https://eur-lex.europa.eu/eli/reg/2024/573/oj)\n- [Business Research Insights — Ester transformer oils](https://www.businessresearchinsights.com/market-reports/ester-transformer-oils-market-108881)\n- [DataIntelo — SF6-free GIS market](https://dataintelo.com/report/global-gas-insulated-switchgear-sf6-free-market)\n- [pv-magazine / WoodMac inverter ranking](https://www.pv-magazine.com/2026/01/05/huawei-sungrow-lead-wood-mackenzies-solar-inverter-market-ranking/)\n- [Acebattery — BESS container sizes guide](https://www.acebattery.com/blogs/bess-container-sizes-how-to-choose-the-right-capacity)\n- [MarketsandMarkets — Containerized BESS market](https://www.marketsandmarkets.com/Market-Reports/containerized-battery-energy-storage-system-bess-market-81525510.html)\n- [Wartsila GEMS digital energy platform](https://www.wartsila.com/energy/energy-storage/technology/gems-digital-energy-platform)\n- [VDZ — German Cement Statistics](https://www.vdz-online.de/en/)\n- [USGS Lithium Mineral Commodity Summary](https://www.usgs.gov/centers/national-minerals-information-center/lithium-statistics-and-information)"
+    }
+  ],
+  "tables": [
+    {
+      "headers": [
+        "L4 #",
+        "Subsystem",
+        "Function",
+        "Pattern role"
+      ],
+      "rows": [
+        {
+          "L4 #": "L4-1",
+          "Subsystem": "Battery Storage Subsystem",
+          "Function": "Store and release DC electrical energy",
+          "Pattern role": "Primary functional core"
+        },
+        {
+          "L4 #": "L4-2",
+          "Subsystem": "Power Conversion Subsystem (PCS)",
+          "Function": "Convert DC↔AC, dispatch to grid/load",
+          "Pattern role": "Primary functional core"
+        },
+        {
+          "L4 #": "L4-3",
+          "Subsystem": "MV Grid Coupling Subsystem",
+          "Function": "Step up to MV, switch, protect, meter",
+          "Pattern role": "Primary functional core"
+        },
+        {
+          "L4 #": "L4-4",
+          "Subsystem": "Control / EMS Subsystem",
+          "Function": "Optimize charge/discharge, comms, cybersecurity",
+          "Pattern role": "Control/interface"
+        },
+        {
+          "L4 #": "L4-5",
+          "Subsystem": "Civil & Site Subsystem",
+          "Function": "Foundation, trenching, fencing, earthing",
+          "Pattern role": "Containment/support"
+        }
+      ]
+    },
+    {
+      "headers": [
+        "Alternative",
+        "Share",
+        "Trend",
+        "Confidence",
+        "Source"
+      ],
+      "rows": [
+        {
+          "Alternative": "5-subsystem decomposition (Battery / PCS / MV / EMS / Civil)",
+          "Share": "100%",
+          "Trend": "→ Stable",
+          "Confidence": "HIGH",
+          "Source": "Industry standard per IEC 62933, EN 50549"
+        }
+      ]
+    },
+    {
+      "headers": [
+        "Alternative",
+        "Share",
+        "Trend",
+        "Confidence",
+        "Source"
+      ],
+      "rows": [
+        {
+          "Alternative": "Containerized rack-based (modular shelves, separate BMS/thermal/fire)",
+          "Share": "~92%",
+          "Trend": "↑ Growing",
+          "Confidence": "HIGH",
+          "Source": "[IDTechEx BESS thermal report](https://www.idtechex.com/en/research-report/thermal-management-fire-and-explosion-protection-for-bess/1127)"
+        },
+        {
+          "Alternative": "All-in-one cabinet (skid, integrated <500 kWh)",
+          "Share": "~8%",
+          "Trend": "→ Stable",
+          "Confidence": "MED",
+          "Source": "[Mordor Intelligence BESS](https://www.mordorintelligence.com/industry-reports/global-battery-cell-market)"
+        }
+      ]
+    },
+    {
+      "headers": [
+        "Alternative",
+        "Share",
+        "Trend",
+        "Confidence",
+        "Source"
+      ],
+      "rows": [
+        {
+          "Alternative": "LFP prismatic rack (280–314 Ah)",
+          "Share": "~85–90%",
+          "Trend": "↑ Growing",
+          "Confidence": "HIGH",
+          "Source": "[Mordor Intelligence](https://www.mordorintelligence.com/industry-reports/global-battery-cell-market)"
+        },
+        {
+          "Alternative": "Pouch cell module rack",
+          "Share": "~5–10%",
+          "Trend": "→ Stable",
+          "Confidence": "MED",
+          "Source": "[Mordor Intelligence](https://www.mordorintelligence.com/industry-reports/global-battery-cell-market)"
+        },
+        {
+          "Alternative": "Cylindrical (4680/21700) rack",
+          "Share": "~5%",
+          "Trend": "→ Stable",
+          "Confidence": "MED",
+          "Source": "[CIC energiGUNE](https://cicenergigune.com/en/blog/format-battery-cell-manufacturers-prismatic-cylindrical-pouch)"
+        }
+      ]
+    },
+    {
+      "headers": [
+        "Alternative",
+        "Share",
+        "Trend",
+        "Confidence",
+        "Source"
+      ],
+      "rows": [
+        {
+          "Alternative": "LFP (LiFePO₄)",
+          "Share": "~95%",
+          "Trend": "↑ Growing",
+          "Confidence": "HIGH",
+          "Source": "[Wood Mackenzie](https://www.woodmac.com/press-releases/lfp-to-overtake-nmc-as-dominant-stationary-storage-chemistry-by-2030/)"
+        },
+        {
+          "Alternative": "NMC",
+          "Share": "~3–5%",
+          "Trend": "↓ Declining",
+          "Confidence": "HIGH",
+          "Source": "[Energy-Storage.News / BNEF](https://www.energy-storage.news/lfp-to-dominate-3twh-global-lithium-ion-battery-market-by-2030/)"
+        },
+        {
+          "Alternative": "Na-ion",
+          "Share": "<1%",
+          "Trend": "↑ Emerging",
+          "Confidence": "MED",
+          "Source": "[BNEF](https://about.bnef.com/insights/clean-energy/global-energy-storage-boom-three-things-to-know/)"
+        },
+        {
+          "Alternative": "LTO (niche)",
+          "Share": "<0.5%",
+          "Trend": "→ Stable",
+          "Confidence": "LOW",
+          "Source": "analyst estimate"
+        },
+        {
+          "Alternative": "NCA",
+          "Share": "<1%",
+          "Trend": "↓ Declining",
+          "Confidence": "MED",
+          "Source": "analyst estimate"
+        }
+      ]
+    },
+    {
+      "headers": [
+        "L1 part",
+        "L0 raw material",
+        "Alt. share",
+        "Trend",
+        "Conf.",
+        "Source"
+      ],
+      "rows": [
+        {
+          "L1 part": "Cathode active material",
+          "L0 raw material": "LFP powder (LiFePO₄)",
+          "Alt. share": "100% (this branch)",
+          "Trend": "→ Stable",
+          "Conf.": "HIGH",
+          "Source": "[USGS Mineral Commodity Summary 2025](https://www.usgs.gov/centers/national-minerals-information-center/lithium-statistics-and-information)"
+        },
+        {
+          "L1 part": "Anode active material",
+          "L0 raw material": "Graphite (synthetic vs natural)",
+          "Alt. share": "Synthetic 65% / Natural 35%",
+          "Trend": "→ Stable",
+          "Conf.": "HIGH",
+          "Source": "[Benchmark Mineral Intelligence](https://source.benchmarkminerals.com/)"
+        },
+        {
+          "L1 part": "Electrolyte",
+          "L0 raw material": "LiPF₆ in EC/DMC carbonate",
+          "Alt. share": "~100% (Li-ion std.)",
+          "Trend": "→ Stable",
+          "Conf.": "HIGH",
+          "Source": "[USGS](https://www.usgs.gov/centers/national-minerals-information-center)"
+        },
+        {
+          "L1 part": "Separator",
+          "L0 raw material": "Ceramic-coated polyolefin (PE/PP)",
+          "Alt. share": "~95%",
+          "Trend": "→ Stable",
+          "Conf.": "HIGH",
+          "Source": "industry standard"
+        },
+        {
+          "L1 part": "Cathode foil",
+          "L0 raw material": "Aluminum foil",
+          "Alt. share": "100%",
+          "Trend": "→ Stable",
+          "Conf.": "HIGH",
+          "Source": "single-source"
+        },
+        {
+          "L1 part": "Anode foil",
+          "L0 raw material": "Copper foil",
+          "Alt. share": "100%",
+          "Trend": "→ Stable",
+          "Conf.": "HIGH",
+          "Source": "single-source"
+        },
+        {
+          "L1 part": "Cell case",
+          "L0 raw material": "Prismatic Al case",
+          "Alt. share": "100% (LFP path)",
+          "Trend": "→ Stable",
+          "Conf.": "HIGH",
+          "Source": "single-source"
+        },
+        {
+          "L1 part": "Busbar",
+          "L0 raw material": "Cu OR Al busbar",
+          "Alt. share": "Cu 70% / Al 30%",
+          "Trend": "→ Stable",
+          "Conf.": "MED",
+          "Source": "analyst estimate"
+        }
+      ]
+    },
+    {
+      "headers": [
+        "Alternative",
+        "Share",
+        "Trend",
+        "Conf.",
+        "Source"
+      ],
+      "rows": [
+        {
+          "Alternative": "3-tier hierarchical (BMU/BCMS/BAMS)",
+          "Share": "~75%",
+          "Trend": "→ Stable",
+          "Conf.": "MED",
+          "Source": "[Sungrow BMS architecture](https://en.sungrowpower.com/)"
+        },
+        {
+          "Alternative": "2-tier flat",
+          "Share": "~20%",
+          "Trend": "↓ Declining",
+          "Conf.": "LOW",
+          "Source": "analyst estimate"
+        },
+        {
+          "Alternative": "Distributed cell-controller",
+          "Share": "~5%",
+          "Trend": "↑ Emerging",
+          "Conf.": "LOW",
+          "Source": "analyst estimate"
+        }
+      ]
+    },
+    {
+      "headers": [
+        "L1 → L0",
+        "Share",
+        "Trend",
+        "Conf.",
+        "Source"
+      ],
+      "rows": [
+        {
+          "L1 → L0": "Si die for MCU",
+          "Share": "100%",
+          "Trend": "→ Stable",
+          "Conf.": "HIGH",
+          "Source": "single-source"
+        },
+        {
+          "L1 → L0": "FR4 PCB substrate",
+          "Share": "~95% (Halogen-free FR4)",
+          "Trend": "→ Stable",
+          "Conf.": "MED",
+          "Source": "analyst estimate"
+        },
+        {
+          "L1 → L0": "SAC305 solder (lead-free)",
+          "Share": "~95% (RoHS)",
+          "Trend": "→ Stable",
+          "Conf.": "HIGH",
+          "Source": "EU RoHS Directive"
+        },
+        {
+          "L1 → L0": "Tin-lead solder (legacy)",
+          "Share": "~5%",
+          "Trend": "↓ Declining",
+          "Conf.": "MED",
+          "Source": "analyst estimate"
+        }
+      ]
+    },
+    {
+      "headers": [
+        "Alternative",
+        "Share",
+        "Trend",
+        "Conf.",
+        "Source"
+      ],
+      "rows": [
+        {
+          "Alternative": "Liquid-cooled (glycol-water cold plates)",
+          "Share": "~70–80%",
+          "Trend": "↑ Growing",
+          "Conf.": "HIGH",
+          "Source": "[IDTechEx](https://www.idtechex.com/en/research-report/thermal-management-fire-and-explosion-protection-for-bess/1127)"
+        },
+        {
+          "Alternative": "Air-cooled (forced HVAC)",
+          "Share": "~20–25%",
+          "Trend": "↓ Declining",
+          "Conf.": "HIGH",
+          "Source": "[IDTechEx](https://www.idtechex.com/en/research-article/safer-battery-storage-thermal-management-and-fire-protection-trends/33916)"
+        },
+        {
+          "Alternative": "Dielectric immersion",
+          "Share": "<2%",
+          "Trend": "↑ Emerging",
+          "Conf.": "MED",
+          "Source": "[IDTechEx](https://www.idtechex.com/en/research-report/thermal-management-fire-and-explosion-protection-for-bess/1127)"
+        }
+      ]
+    },
+    {
+      "headers": [
+        "L1→L0 alt: refrigerant",
+        "Share",
+        "Trend",
+        "Conf.",
+        "Source"
+      ],
+      "rows": [
+        {
+          "L1→L0 alt: refrigerant": "R-454B (low-GWP)",
+          "Share": "~70% (new EU systems)",
+          "Trend": "↑ Growing",
+          "Conf.": "MED",
+          "Source": "[EU F-Gas Reg. 2024/573](https://eur-lex.europa.eu/eli/reg/2024/573/oj)"
+        },
+        {
+          "L1→L0 alt: refrigerant": "R-410A",
+          "Share": "~15% (legacy)",
+          "Trend": "↓ Declining",
+          "Conf.": "HIGH",
+          "Source": "[EU F-Gas Reg.](https://eur-lex.europa.eu/eli/reg/2024/573/oj)"
+        },
+        {
+          "L1→L0 alt: refrigerant": "R-1234yf",
+          "Share": "~10%",
+          "Trend": "↑ Growing",
+          "Conf.": "MED",
+          "Source": "analyst estimate"
+        },
+        {
+          "L1→L0 alt: refrigerant": "Propylene-glycol (water side)",
+          "Share": "~5% (secondary loop)",
+          "Trend": "→ Stable",
+          "Conf.": "HIGH",
+          "Source": "industry standard"
+        }
+      ]
+    },
+    {
+      "headers": [
+        "Alternative",
+        "Share",
+        "Trend",
+        "Conf.",
+        "Source"
+      ],
+      "rows": [
+        {
+          "Alternative": "Aerosol (Stat-X / FirePro)",
+          "Share": "~45%",
+          "Trend": "↑ Growing",
+          "Conf.": "LOW",
+          "Source": "analyst estimate"
+        },
+        {
+          "Alternative": "FK-5-1-12 / NOVEC 1230",
+          "Share": "~25%",
+          "Trend": "↓ Declining (3M EOL 2025)",
+          "Conf.": "MED",
+          "Source": "[Fike on 3M discontinuation](https://www.fike.com/knowledge-center/3m-novec-1230-discontinued-what-now/)"
+        },
+        {
+          "Alternative": "Water mist (UL 9540A)",
+          "Share": "~20%",
+          "Trend": "↑ Growing",
+          "Conf.": "LOW",
+          "Source": "analyst estimate"
+        },
+        {
+          "Alternative": "Inert gas (N₂/Ar/IG-541)",
+          "Share": "~10%",
+          "Trend": "→ Stable",
+          "Conf.": "LOW",
+          "Source": "analyst estimate"
+        }
+      ]
+    },
+    {
+      "headers": [
+        "Alternative",
+        "Share",
+        "Trend",
+        "Conf.",
+        "Source"
+      ],
+      "rows": [
+        {
+          "Alternative": "20ft HC ISO (3–5 MWh, dense LFP)",
+          "Share": "~35%",
+          "Trend": "↑ Growing",
+          "Conf.": "MED",
+          "Source": "[Acebattery](https://www.acebattery.com/blogs/bess-container-sizes-how-to-choose-the-right-capacity)"
+        },
+        {
+          "Alternative": "20ft ISO (≤1 MWh)",
+          "Share": "~45%",
+          "Trend": "→ Stable",
+          "Conf.": "MED",
+          "Source": "[MarketsandMarkets](https://www.marketsandmarkets.com/Market-Reports/containerized-battery-energy-storage-system-bess-market-81525510.html)"
+        },
+        {
+          "Alternative": "40ft ISO",
+          "Share": "~15%",
+          "Trend": "↓ Declining",
+          "Conf.": "LOW",
+          "Source": "analyst estimate"
+        },
+        {
+          "Alternative": "Custom skid (<500 kWh)",
+          "Share": "~5%",
+          "Trend": "→ Stable",
+          "Conf.": "LOW",
+          "Source": "analyst estimate"
+        }
+      ]
+    },
+    {
+      "headers": [
+        "Alternative",
+        "Share",
+        "Trend",
+        "Conf.",
+        "Source"
+      ],
+      "rows": [
+        {
+          "Alternative": "String PCS (100–430 kW units, parallel)",
+          "Share": "~55–60% (C&I)",
+          "Trend": "↑ Growing",
+          "Conf.": "MED",
+          "Source": "[CLOU Global](https://clouglobal.com/string-pcs-vs-centralized-pcs-maximizing-reliability-and-availability-in-large-scale-energy-storage/)"
+        },
+        {
+          "Alternative": "Central PCS (>1 MW single block)",
+          "Share": "~35–40%",
+          "Trend": "↓ Declining",
+          "Conf.": "MED",
+          "Source": "[KACO whitepaper](https://kaco-newenergy.com/fileadmin/downloads/documents/KNE-PAP-String-Inverters-for-Energy-Storage.pdf)"
+        },
+        {
+          "Alternative": "Modular DC-block (PowerTitan-style)",
+          "Share": "~5–10%",
+          "Trend": "↑ Emerging",
+          "Conf.": "LOW",
+          "Source": "analyst estimate"
+        }
+      ]
+    },
+    {
+      "headers": [
+        "Vendor (informational)",
+        "Share",
+        "Trend",
+        "Conf.",
+        "Source"
+      ],
+      "rows": [
+        {
+          "Vendor (informational)": "SMA Solar",
+          "Share": "~20–25%",
+          "Trend": "→ Stable",
+          "Conf.": "MED",
+          "Source": "[pv-magazine / WoodMac](https://www.pv-magazine.com/2026/01/05/huawei-sungrow-lead-wood-mackenzies-solar-inverter-market-ranking/)"
+        },
+        {
+          "Vendor (informational)": "Sungrow",
+          "Share": "~17%",
+          "Trend": "↑ Growing",
+          "Conf.": "HIGH",
+          "Source": "[WoodMac](https://www.woodmac.com/press-releases/2024-press-releases/global-pv-inverter-shipments-grew-by-56-in-2023-to-536-gwac/)"
+        },
+        {
+          "Vendor (informational)": "Power Electronics",
+          "Share": "~5–8%",
+          "Trend": "↑ Growing",
+          "Conf.": "MED",
+          "Source": "[MarketsandMarkets](https://www.marketsandmarkets.com/ResearchInsight/inverter-market.asp)"
+        },
+        {
+          "Vendor (informational)": "Ingeteam",
+          "Share": "~5%",
+          "Trend": "→ Stable",
+          "Conf.": "LOW",
+          "Source": "analyst estimate"
+        },
+        {
+          "Vendor (informational)": "Hitachi Energy",
+          "Share": "~3–5%",
+          "Trend": "↑ Growing",
+          "Conf.": "LOW",
+          "Source": "analyst estimate"
+        },
+        {
+          "Vendor (informational)": "Others (KACO, Schneider, Gamesa-Electric)",
+          "Share": "~30%",
+          "Trend": "mixed",
+          "Conf.": "LOW",
+          "Source": "analyst estimate"
+        }
+      ]
+    },
+    {
+      "headers": [
+        "Alternative",
+        "Share",
+        "Trend",
+        "Conf.",
+        "Source"
+      ],
+      "rows": [
+        {
+          "Alternative": "Si IGBT",
+          "Share": "~85%",
+          "Trend": "↓ Declining",
+          "Conf.": "HIGH",
+          "Source": "[Yole Power Semi 2024](https://www.yolegroup.com/)"
+        },
+        {
+          "Alternative": "SiC MOSFET",
+          "Share": "~12%",
+          "Trend": "↑ Growing",
+          "Conf.": "HIGH",
+          "Source": "[Yole Power Semi 2024](https://www.yolegroup.com/)"
+        },
+        {
+          "Alternative": "GaN HEMT (low-power aux)",
+          "Share": "<3%",
+          "Trend": "↑ Emerging",
+          "Conf.": "MED",
+          "Source": "analyst estimate"
+        }
+      ]
+    },
+    {
+      "headers": [
+        "Alternative",
+        "Share",
+        "Trend",
+        "Conf.",
+        "Source"
+      ],
+      "rows": [
+        {
+          "Alternative": "Standard 4-block MV interface (transformer + RMU + relay + metering)",
+          "Share": "100%",
+          "Trend": "→ Stable",
+          "Conf.": "HIGH",
+          "Source": "[VDE-AR-N 4110](https://www.vde.com/en/fnn/topics/technical-connection-rules/tcr-for-medium-voltage)"
+        }
+      ]
+    },
+    {
+      "headers": [
+        "Alt. (insulation medium)",
+        "Share",
+        "Trend",
+        "Conf.",
+        "Source"
+      ],
+      "rows": [
+        {
+          "Alt. (insulation medium)": "Mineral-oil filled",
+          "Share": "~70–75%",
+          "Trend": "↓ Declining",
+          "Conf.": "MED",
+          "Source": "[Mordor Intelligence — EU distribution transformer](https://www.mordorintelligence.com/industry-reports/europe-distribution-transformer-market)"
+        },
+        {
+          "Alt. (insulation medium)": "Dry-type cast resin (urban/indoor)",
+          "Share": "~15–20%",
+          "Trend": "→ Stable",
+          "Conf.": "MED",
+          "Source": "[Mordor Intelligence](https://www.mordorintelligence.com/industry-reports/europe-distribution-transformer-market)"
+        },
+        {
+          "Alt. (insulation medium)": "Ester-filled (natural / synthetic)",
+          "Share": "~10–15%",
+          "Trend": "↑ Growing",
+          "Conf.": "MED",
+          "Source": "[Business Research Insights](https://www.businessresearchinsights.com/market-reports/ester-transformer-oils-market-108881)"
+        }
+      ]
+    },
+    {
+      "headers": [
+        "Alt. (insulation medium, EU C&I post-2026)",
+        "Share",
+        "Trend",
+        "Conf.",
+        "Source"
+      ],
+      "rows": [
+        {
+          "Alt. (insulation medium, EU C&I post-2026)": "SF6-free dry-air + vacuum",
+          "Share": "~40% (→ ~95% post-Jan 2026)",
+          "Trend": "↑ Growing",
+          "Conf.": "HIGH",
+          "Source": "[Schneider/E.ON SF6-free deployment](https://switchgearcontent.com/2025/09/04/4242/schneider-electric-partners-with-e-on-to-deploy-sf6-free-switchgear-across-europe/)"
+        },
+        {
+          "Alt. (insulation medium, EU C&I post-2026)": "SF6 (legacy)",
+          "Share": "~50% (→ 0% by 2026 ban ≤24kV)",
+          "Trend": "↓ Declining",
+          "Conf.": "HIGH",
+          "Source": "[Schneider on EU F-Gas](https://blog.se.com/datacenter/2025/07/18/is-your-data-center-ready-for-the-ban-on-sf6-mv-switchgear-in-the-eu/)"
+        },
+        {
+          "Alt. (insulation medium, EU C&I post-2026)": "Solid-insulated (SIS)",
+          "Share": "~10%",
+          "Trend": "→ Stable",
+          "Conf.": "MED",
+          "Source": "[DataIntelo](https://dataintelo.com/report/global-gas-insulated-switchgear-sf6-free-market)"
+        }
+      ]
+    },
+    {
+      "headers": [
+        "Alt. (relay platform)",
+        "Share",
+        "Trend",
+        "Conf.",
+        "Source"
+      ],
+      "rows": [
+        {
+          "Alt. (relay platform)": "Multifunction digital relay (IED, IEC 61850)",
+          "Share": "~85%",
+          "Trend": "↑ Growing",
+          "Conf.": "HIGH",
+          "Source": "industry standard for new builds"
+        },
+        {
+          "Alt. (relay platform)": "Discrete electromechanical",
+          "Share": "~10%",
+          "Trend": "↓ Declining",
+          "Conf.": "HIGH",
+          "Source": "analyst estimate"
+        },
+        {
+          "Alt. (relay platform)": "Programmable logic-based (SIPROTEC/REF/MICOM)",
+          "Share": "~5% (special apps)",
+          "Trend": "→ Stable",
+          "Conf.": "LOW",
+          "Source": "analyst estimate"
+        }
+      ]
+    },
+    {
+      "headers": [
+        "Alt. (controller class)",
+        "Share",
+        "Trend",
+        "Conf.",
+        "Source"
+      ],
+      "rows": [
+        {
+          "Alt. (controller class)": "Industrial PC (x86, fanless)",
+          "Share": "~55%",
+          "Trend": "→ Stable",
+          "Conf.": "MED",
+          "Source": "analyst estimate"
+        },
+        {
+          "Alt. (controller class)": "PLC (Siemens S7, Beckhoff)",
+          "Share": "~30%",
+          "Trend": "→ Stable",
+          "Conf.": "MED",
+          "Source": "analyst estimate"
+        },
+        {
+          "Alt. (controller class)": "ARM SBC (NVIDIA Jetson, edge AI)",
+          "Share": "~15%",
+          "Trend": "↑ Growing",
+          "Conf.": "LOW",
+          "Source": "analyst estimate"
+        }
+      ]
+    },
+    {
+      "headers": [
+        "Alt. (EMS vendor / platform)",
+        "Share",
+        "Trend",
+        "Conf.",
+        "Source"
+      ],
+      "rows": [
+        {
+          "Alt. (EMS vendor / platform)": "Tesla Autobidder/Powerhub",
+          "Share": "~15% (global integrator)",
+          "Trend": "↑ Growing",
+          "Conf.": "HIGH",
+          "Source": "[WoodMac](https://www.woodmac.com/press-releases/tesla-remains-the-top-global-producer-of-battery-energy-storage-systems-in-2024-but-sungrow-narrows-the-gap/)"
+        },
+        {
+          "Alt. (EMS vendor / platform)": "Sungrow iEnergyCloud",
+          "Share": "~14%",
+          "Trend": "↑ Growing",
+          "Conf.": "HIGH",
+          "Source": "[Enlit/WoodMac](https://www.enlit.world/library/sungrow-fluence-and-tesla-leading-bess-integrators-says-wood-mackenzie)"
+        },
+        {
+          "Alt. (EMS vendor / platform)": "Fluence Mosaic / IQ",
+          "Share": "~10–12%",
+          "Trend": "→ Stable",
+          "Conf.": "HIGH",
+          "Source": "[WoodMac](https://www.woodmac.com/press-releases/2024-press-releases/tesla-takes-sungrows-crown-as-lead-global-producer-of-bess-in-2023/)"
+        },
+        {
+          "Alt. (EMS vendor / platform)": "Wärtsilä GEMS",
+          "Share": "~5%",
+          "Trend": "→ Stable",
+          "Conf.": "MED",
+          "Source": "[Wärtsilä GEMS](https://www.wartsila.com/energy/energy-storage/technology/gems-digital-energy-platform)"
+        },
+        {
+          "Alt. (EMS vendor / platform)": "Third-party DE optimizers (Entrix, Suena, Next Kraftwerke, EnAppSys)",
+          "Share": "~10–15% (DE merchant)",
+          "Trend": "↑ Growing",
+          "Conf.": "LOW",
+          "Source": "analyst estimate"
+        },
+        {
+          "Alt. (EMS vendor / platform)": "Other OEM / in-house",
+          "Share": "~40%",
+          "Trend": "mixed",
+          "Conf.": "LOW",
+          "Source": "analyst estimate"
+        }
+      ]
+    },
+    {
+      "headers": [
+        "Alt. (firewall class)",
+        "Share",
+        "Trend",
+        "Conf.",
+        "Source"
+      ],
+      "rows": [
+        {
+          "Alt. (firewall class)": "OT-purpose firewall (Tofino, Hirschmann EAGLE, Moxa)",
+          "Share": "~50%",
+          "Trend": "↑ Growing",
+          "Conf.": "MED",
+          "Source": "[IEC 62443 industry trend](https://www.iec.ch/blog/iec-62443-cyber-security-action-plan)"
+        },
+        {
+          "Alt. (firewall class)": "General-purpose NGFW (Fortinet, Palo Alto)",
+          "Share": "~40%",
+          "Trend": "→ Stable",
+          "Conf.": "MED",
+          "Source": "analyst estimate"
+        },
+        {
+          "Alt. (firewall class)": "Software-only segmentation (no appliance)",
+          "Share": "~10%",
+          "Trend": "↓ Declining",
+          "Conf.": "LOW",
+          "Source": "analyst estimate"
+        }
+      ]
+    },
+    {
+      "headers": [
+        "Alt. (foundation type)",
+        "Share",
+        "Trend",
+        "Conf.",
+        "Source"
+      ],
+      "rows": [
+        {
+          "Alt. (foundation type)": "Reinforced concrete pad (in-situ)",
+          "Share": "~75%",
+          "Trend": "→ Stable",
+          "Conf.": "HIGH",
+          "Source": "DE EPC standard practice"
+        },
+        {
+          "Alt. (foundation type)": "Precast concrete plinth",
+          "Share": "~20%",
+          "Trend": "↑ Growing",
+          "Conf.": "MED",
+          "Source": "analyst estimate"
+        },
+        {
+          "Alt. (foundation type)": "Steel skid frame on screw piles",
+          "Share": "~5%",
+          "Trend": "↑ Emerging (fast-deploy)",
+          "Conf.": "LOW",
+          "Source": "analyst estimate"
+        }
+      ]
+    },
+    {
+      "headers": [
+        "Alt. cement type",
+        "Share",
+        "Trend",
+        "Conf.",
+        "Source"
+      ],
+      "rows": [
+        {
+          "Alt. cement type": "CEM II (blended, low-CO₂)",
+          "Share": "~60% (DE)",
+          "Trend": "↑ Growing",
+          "Conf.": "HIGH",
+          "Source": "[VDZ German Cement Statistics](https://www.vdz-online.de/en/)"
+        },
+        {
+          "Alt. cement type": "CEM I (Portland)",
+          "Share": "~30%",
+          "Trend": "↓ Declining",
+          "Conf.": "HIGH",
+          "Source": "[VDZ](https://www.vdz-online.de/en/)"
+        },
+        {
+          "Alt. cement type": "CEM III (slag)",
+          "Share": "~10%",
+          "Trend": "→ Stable",
+          "Conf.": "MED",
+          "Source": "[VDZ](https://www.vdz-online.de/en/)"
+        }
+      ]
+    },
+    {
+      "headers": [
+        "BOM position",
+        "Function",
+        "Safety-critical",
+        "Alternatives"
+      ],
+      "rows": [
+        {
+          "BOM position": "L1 within L2 battery rack (under L3-1.1, L4-1)",
+          "Function": "Reversible Li-intercalation energy store",
+          "Safety-critical": "YES (thermal runaway risk)",
+          "Alternatives": "NMC, Na-ion, LTO (per chemistry table)"
+        }
+      ]
+    },
+    {
+      "headers": [
+        "BOM position",
+        "Function",
+        "Safety-critical",
+        "Alternatives"
+      ],
+      "rows": [
+        {
+          "BOM position": "L1 within L2 PCS power module (under L3-2.1, L4-2)",
+          "Function": "DC↔AC switching at 1500 Vdc / 690 Vac",
+          "Safety-critical": "YES (arc/explosion if fault)",
+          "Alternatives": "Si IGBT, SiC MOSFET, GaN"
+        }
+      ]
+    },
+    {
+      "headers": [
+        "BOM position",
+        "Function",
+        "Safety-critical",
+        "Alternatives"
+      ],
+      "rows": [
+        {
+          "BOM position": "L1 within L2 MV CB (under L3-3.2, L4-3)",
+          "Function": "Interrupt fault current at 24 kV",
+          "Safety-critical": "YES (substation safety)",
+          "Alternatives": "SF6 puffer (legacy), vacuum (dominant), solid-insulated"
+        }
+      ]
+    },
+    {
+      "headers": [
+        "BOM position",
+        "Function",
+        "Safety-critical",
+        "Alternatives"
+      ],
+      "rows": [
+        {
+          "BOM position": "L1 within L2 BMS PCBA (L3-1.2)",
+          "Function": "Cell-level voltage/temp monitoring + balancing",
+          "Safety-critical": "YES",
+          "Alternatives": "per BMS chipset choice"
+        },
+        {
+          "BOM position": "L1 within L2 EMS controller (L3-4.1)",
+          "Function": "Optimization runtime",
+          "Safety-critical": "NO",
+          "Alternatives": "x86 vs ARM vs PLC"
+        },
+        {
+          "BOM position": "L1 within L2 protection IED (L3-3.3)",
+          "Function": "Trip logic",
+          "Safety-critical": "YES",
+          "Alternatives": "per IED platform"
+        }
+      ]
+    },
+    {
+      "headers": [
+        "Adjacent L5 deliverable (same buyer, lessor of nonresidential building)",
+        "Capability gap",
+        "Market size (DE est.)",
+        "Strategic fit"
+      ],
+      "rows": [
+        {
+          "Adjacent L5 deliverable (same buyer, lessor of nonresidential building)": "L5 PV+BESS hybrid plant",
+          "Capability gap": "LOW (Mein Solar's PV-EPC heritage)",
+          "Market size (DE est.)": "€1.5–2 B/yr",
+          "Strategic fit": "STRONG"
+        },
+        {
+          "Adjacent L5 deliverable (same buyer, lessor of nonresidential building)": "L5 HPC charging hub with BESS buffer",
+          "Capability gap": "MEDIUM (BESS shared, HPC dispenser new)",
+          "Market size (DE est.)": "€0.5–1 B/yr",
+          "Strategic fit": "STRONG"
+        },
+        {
+          "Adjacent L5 deliverable (same buyer, lessor of nonresidential building)": "L5 Heat-pump + BESS + PV behind-the-meter electrification stack",
+          "Capability gap": "MEDIUM (heat-pump trade new)",
+          "Market size (DE est.)": "€1–2 B/yr",
+          "Strategic fit": "MEDIUM"
+        },
+        {
+          "Adjacent L5 deliverable (same buyer, lessor of nonresidential building)": "L5 Tenant EV-fleet AC charging (11–22 kW) park",
+          "Capability gap": "LOW",
+          "Market size (DE est.)": "€0.3–0.5 B/yr",
+          "Strategic fit": "MEDIUM"
+        },
+        {
+          "Adjacent L5 deliverable (same buyer, lessor of nonresidential building)": "L5 Microgrid / Inselnetz controller for tenant resilience",
+          "Capability gap": "HIGH (islanding controls new)",
+          "Market size (DE est.)": "€0.1–0.3 B/yr",
+          "Strategic fit": "WEAK"
+        }
+      ]
+    },
+    {
+      "headers": [
+        "Factor",
+        "Evaluation"
+      ],
+      "rows": [
+        {
+          "Factor": "Additional capabilities required",
+          "Evaluation": "24/7 NOC, EPEX/regelleistung trading desk, asset performance optimization"
+        },
+        {
+          "Factor": "Capital investment",
+          "Evaluation": "€2–5 M (NOC + software platform + trading licenses)"
+        },
+        {
+          "Factor": "Existing customer leverage",
+          "Evaluation": "HIGH (lessor wants single counterparty for life-cycle)"
+        },
+        {
+          "Factor": "Competitive response",
+          "Evaluation": "Compete with VPP aggregators (Next Kraftwerke, Entrix, Suena) and OEMs (Tesla Autobidder)"
+        },
+        {
+          "Factor": "Time to market",
+          "Evaluation": "18–24 months"
+        }
+      ]
+    },
+    {
+      "headers": [
+        "Target position",
+        "Verdict"
+      ],
+      "rows": [
+        {
+          "Target position": "L4-1 own container integration (CTOS-style)",
+          "Verdict": "REJECT — competes with Sungrow/Tesla suppliers"
+        },
+        {
+          "Target position": "L4-4 own EMS software stack",
+          "Verdict": "CONSIDER — moat-building; €1–3 M dev cost; differentiates EPC offer"
+        },
+        {
+          "Target position": "L4-5 in-house civil contracting",
+          "Verdict": "CONSIDER — already partially executed; vertical efficiency"
+        }
+      ]
+    },
+    {
+      "headers": [
+        "Target system",
+        "BOM role",
+        "Shared capability",
+        "Adaptation"
+      ],
+      "rows": [
+        {
+          "Target system": "L5 Large-scale PV plant",
+          "BOM role": "Same EPC role",
+          "Shared capability": "MV coupling, cert, civil 100% shared",
+          "Adaptation": "Battery-specific knowledge unused (already incumbent)"
+        },
+        {
+          "Target system": "L5 HPC charging hub",
+          "BOM role": "Same EPC role",
+          "Shared capability": "MV coupling, cert, civil shared",
+          "Adaptation": "HPC dispenser specification new"
+        },
+        {
+          "Target system": "L5 Industrial microgrid",
+          "BOM role": "Same EPC role",
+          "Shared capability": "EMS, MV, civil shared",
+          "Adaptation": "Islanding controls new"
+        },
+        {
+          "Target system": "L5 PV+Wind hybrid park",
+          "BOM role": "Same EPC role",
+          "Shared capability": "MV, cert shared",
+          "Adaptation": "Wind-turbine interface new"
+        }
+      ]
+    },
+    {
+      "headers": [
+        "Check",
+        "Status"
+      ],
+      "rows": [
+        {
+          "Check": "Every L4 decomposes to L0",
+          "Status": "✅ (5 of 5 L4 subsystems traced to raw materials)"
+        },
+        {
+          "Check": "Every level transition has alternatives table OR `single-source: true`",
+          "Status": "✅"
+        },
+        {
+          "Check": "Alternative shares sum to 100% (±1%)",
+          "Status": "✅"
+        },
+        {
+          "Check": "Packaging/containment included",
+          "Status": "✅ (L3-1.5 container, L4-5 civil)"
+        },
+        {
+          "Check": "Control/interface included",
+          "Status": "✅ (L4-4 EMS)"
+        },
+        {
+          "Check": "Company position marked",
+          "Status": "✅ (Mein Solar at L5, entire BOM = its product)"
+        },
+        {
+          "Check": "Horizontal & vertical adjacency completed",
+          "Status": "✅"
+        },
+        {
+          "Check": "BOM vs VN test passed",
+          "Status": "✅ (every L0 ends up IN the deliverable, not USED to make it)"
+        },
+        {
+          "Check": "All entities trace to CFJ (storage of grid-connected energy)",
+          "Status": "✅"
+        }
+      ]
+    }
+  ],
+  "entities": [
+    {
+      "component": "product_bom_decomposition",
+      "naics_code": "531120",
+      "naics_title": "Lessors of Nonresidential Buildings (except Miniwarehouses)",
+      "market_name": "Commercial & Industrial Real-Estate Behind-the-Meter Storage",
+      "output_type": "Behind-the-meter containerized BESS plant",
+      "typical_scale": "1-5 MWh per site (smaller than 4.5 MW / 9 MWh IPP reference)",
+      "company_name": "Mein Solar GmbH",
+      "company_bom_position": {
+        "level": "L5",
+        "rationale": "Mein Solar is the EPC integrator; the L5 commissioned plant IS its product. Entire BOM below represents the deliverable composition."
+      },
+      "bom_units": [
+        {
+          "name": "Behind-the-Meter Containerized BESS Plant",
+          "level": "L5",
+          "naics_code": "531120",
+          "output_type": "BESS Plant",
+          "company_position": true,
+          "company_name": "Mein Solar GmbH",
+          "single_source": true,
+          "description": "L5 sellable end product = the commissioned, certified BESS asset"
+        },
+        {
+          "name": "Battery Storage Subsystem",
+          "level": "L4",
+          "parent": "L5 BESS Plant",
+          "single_source": false,
+          "description": "Containerized rack-based Li-ion stack with BMS, thermal, fire suppression"
+        },
+        {
+          "name": "Power Conversion Subsystem",
+          "level": "L4",
+          "parent": "L5 BESS Plant",
+          "single_source": false,
+          "description": "Bidirectional inverter, DC and AC BoS"
+        },
+        {
+          "name": "MV Grid Coupling Subsystem",
+          "level": "L4",
+          "parent": "L5 BESS Plant",
+          "single_source": true,
+          "description": "Transformer + switchgear + protection + metering per VDE-AR-N 4110"
+        },
+        {
+          "name": "Control / EMS Subsystem",
+          "level": "L4",
+          "parent": "L5 BESS Plant",
+          "single_source": true,
+          "description": "EMS controller, software, comms, cybersecurity"
+        },
+        {
+          "name": "Civil & Site Subsystem",
+          "level": "L4",
+          "parent": "L5 BESS Plant",
+          "single_source": true,
+          "description": "Foundation, trenching, fencing, earthing"
+        },
+        {
+          "name": "Battery rack module",
+          "level": "L3",
+          "parent": "L4-1 Battery Storage",
+          "single_source": false
+        },
+        {
+          "name": "Battery management system (BMS)",
+          "level": "L3",
+          "parent": "L4-1 Battery Storage",
+          "single_source": false
+        },
+        {
+          "name": "Thermal management module",
+          "level": "L3",
+          "parent": "L4-1 Battery Storage",
+          "single_source": false
+        },
+        {
+          "name": "Fire detection & suppression module",
+          "level": "L3",
+          "parent": "L4-1 Battery Storage",
+          "single_source": false
+        },
+        {
+          "name": "Container envelope",
+          "level": "L3",
+          "parent": "L4-1 Battery Storage",
+          "single_source": false
+        },
+        {
+          "name": "Inverter unit (PCS)",
+          "level": "L3",
+          "parent": "L4-2 PCS",
+          "single_source": false
+        },
+        {
+          "name": "DC-side BoS",
+          "level": "L3",
+          "parent": "L4-2 PCS",
+          "single_source": true
+        },
+        {
+          "name": "AC-side filtering",
+          "level": "L3",
+          "parent": "L4-2 PCS",
+          "single_source": true
+        },
+        {
+          "name": "MV transformer",
+          "level": "L3",
+          "parent": "L4-3 MV Grid Coupling",
+          "single_source": false
+        },
+        {
+          "name": "MV switchgear",
+          "level": "L3",
+          "parent": "L4-3 MV Grid Coupling",
+          "single_source": false
+        },
+        {
+          "name": "Protection / NA-protection",
+          "level": "L3",
+          "parent": "L4-3 MV Grid Coupling",
+          "single_source": false
+        },
+        {
+          "name": "Metering & SCADA gateway",
+          "level": "L3",
+          "parent": "L4-3 MV Grid Coupling",
+          "single_source": true
+        },
+        {
+          "name": "EMS controller hardware",
+          "level": "L3",
+          "parent": "L4-4 Control/EMS",
+          "single_source": false
+        },
+        {
+          "name": "EMS software stack",
+          "level": "L3",
+          "parent": "L4-4 Control/EMS",
+          "single_source": false
+        },
+        {
+          "name": "Comms / network",
+          "level": "L3",
+          "parent": "L4-4 Control/EMS",
+          "single_source": true
+        },
+        {
+          "name": "Cybersecurity layer",
+          "level": "L3",
+          "parent": "L4-4 Control/EMS",
+          "single_source": false
+        },
+        {
+          "name": "Foundation",
+          "level": "L3",
+          "parent": "L4-5 Civil & Site",
+          "single_source": false
+        },
+        {
+          "name": "Cable trenching & ducting",
+          "level": "L3",
+          "parent": "L4-5 Civil & Site",
+          "single_source": true
+        },
+        {
+          "name": "Perimeter security",
+          "level": "L3",
+          "parent": "L4-5 Civil & Site",
+          "single_source": true
+        },
+        {
+          "name": "Lightning protection / earthing",
+          "level": "L3",
+          "parent": "L4-5 Civil & Site",
+          "single_source": true
+        }
+      ],
+      "key_alternatives_by_position": {
+        "L4-1_battery_storage_architecture": [
+          {
+            "name": "Containerized rack-based",
+            "market_share": 92,
+            "trend": "Growing",
+            "confidence": "HIGH",
+            "source": "IDTechEx BESS thermal report"
+          },
+          {
+            "name": "All-in-one cabinet skid",
+            "market_share": 8,
+            "trend": "Stable",
+            "confidence": "MED",
+            "source": "Mordor Intelligence"
+          }
+        ],
+        "L3-1.1_battery_rack_form": [
+          {
+            "name": "LFP prismatic rack",
+            "market_share": 87,
+            "trend": "Growing",
+            "confidence": "HIGH",
+            "source": "Mordor Intelligence"
+          },
+          {
+            "name": "Pouch cell module rack",
+            "market_share": 8,
+            "trend": "Stable",
+            "confidence": "MED",
+            "source": "Mordor Intelligence"
+          },
+          {
+            "name": "Cylindrical (4680/21700) rack",
+            "market_share": 5,
+            "trend": "Stable",
+            "confidence": "MED",
+            "source": "CIC energiGUNE"
+          }
+        ],
+        "L2_cell_chemistry": [
+          {
+            "name": "LFP",
+            "market_share": 95,
+            "trend": "Growing",
+            "confidence": "HIGH",
+            "source": "Wood Mackenzie"
+          },
+          {
+            "name": "NMC",
+            "market_share": 4,
+            "trend": "Declining",
+            "confidence": "HIGH",
+            "source": "BNEF / Energy-Storage.News"
+          },
+          {
+            "name": "Na-ion",
+            "market_share": 0.5,
+            "trend": "Emerging",
+            "confidence": "MED",
+            "source": "BNEF"
+          },
+          {
+            "name": "LTO",
+            "market_share": 0.3,
+            "trend": "Stable",
+            "confidence": "LOW",
+            "source": "analyst estimate"
+          },
+          {
+            "name": "NCA",
+            "market_share": 0.2,
+            "trend": "Declining",
+            "confidence": "MED",
+            "source": "analyst estimate"
+          }
+        ],
+        "L3-1.3_thermal_management": [
+          {
+            "name": "Liquid-cooled (glycol-water)",
+            "market_share": 75,
+            "trend": "Growing",
+            "confidence": "HIGH",
+            "source": "IDTechEx"
+          },
+          {
+            "name": "Air-cooled (HVAC)",
+            "market_share": 23,
+            "trend": "Declining",
+            "confidence": "HIGH",
+            "source": "IDTechEx"
+          },
+          {
+            "name": "Dielectric immersion",
+            "market_share": 2,
+            "trend": "Emerging",
+            "confidence": "MED",
+            "source": "IDTechEx"
+          }
+        ],
+        "L3-1.4_fire_suppression": [
+          {
+            "name": "Aerosol (Stat-X / FirePro)",
+            "market_share": 45,
+            "trend": "Growing",
+            "confidence": "LOW",
+            "source": "analyst estimate"
+          },
+          {
+            "name": "FK-5-1-12 / NOVEC 1230",
+            "market_share": 25,
+            "trend": "Declining (3M EOL 2025)",
+            "confidence": "MED",
+            "source": "Fike"
+          },
+          {
+            "name": "Water mist",
+            "market_share": 20,
+            "trend": "Growing",
+            "confidence": "LOW",
+            "source": "analyst estimate"
+          },
+          {
+            "name": "Inert gas (N2/Ar/IG-541)",
+            "market_share": 10,
+            "trend": "Stable",
+            "confidence": "LOW",
+            "source": "analyst estimate"
+          }
+        ],
+        "L3-1.5_container_form": [
+          {
+            "name": "20ft ISO standard",
+            "market_share": 45,
+            "trend": "Stable",
+            "confidence": "MED",
+            "source": "MarketsandMarkets"
+          },
+          {
+            "name": "20ft HC dense (3-5 MWh)",
+            "market_share": 35,
+            "trend": "Growing",
+            "confidence": "MED",
+            "source": "Acebattery"
+          },
+          {
+            "name": "40ft ISO",
+            "market_share": 15,
+            "trend": "Declining",
+            "confidence": "LOW",
+            "source": "analyst estimate"
+          },
+          {
+            "name": "Custom skid <500 kWh",
+            "market_share": 5,
+            "trend": "Stable",
+            "confidence": "LOW",
+            "source": "analyst estimate"
+          }
+        ],
+        "L4-2_PCS_topology": [
+          {
+            "name": "String PCS (100-430 kW)",
+            "market_share": 58,
+            "trend": "Growing",
+            "confidence": "MED",
+            "source": "CLOU Global"
+          },
+          {
+            "name": "Central PCS (>1 MW)",
+            "market_share": 37,
+            "trend": "Declining",
+            "confidence": "MED",
+            "source": "KACO"
+          },
+          {
+            "name": "Modular DC-block",
+            "market_share": 5,
+            "trend": "Emerging",
+            "confidence": "LOW",
+            "source": "analyst estimate"
+          }
+        ],
+        "L1_PCS_switch_semiconductor": [
+          {
+            "name": "Si IGBT",
+            "market_share": 85,
+            "trend": "Declining",
+            "confidence": "HIGH",
+            "source": "Yole Power Semi 2024"
+          },
+          {
+            "name": "SiC MOSFET",
+            "market_share": 12,
+            "trend": "Growing",
+            "confidence": "HIGH",
+            "source": "Yole Power Semi 2024"
+          },
+          {
+            "name": "GaN HEMT (aux)",
+            "market_share": 3,
+            "trend": "Emerging",
+            "confidence": "MED",
+            "source": "analyst estimate"
+          }
+        ],
+        "L3-3.1_MV_transformer_insulation": [
+          {
+            "name": "Mineral oil",
+            "market_share": 72,
+            "trend": "Declining",
+            "confidence": "MED",
+            "source": "Mordor Intelligence"
+          },
+          {
+            "name": "Dry-type cast resin",
+            "market_share": 16,
+            "trend": "Stable",
+            "confidence": "MED",
+            "source": "Mordor Intelligence"
+          },
+          {
+            "name": "Ester (natural/synthetic)",
+            "market_share": 12,
+            "trend": "Growing",
+            "confidence": "MED",
+            "source": "Business Research Insights"
+          }
+        ],
+        "L3-3.2_MV_switchgear_insulation": [
+          {
+            "name": "SF6 (legacy, banned EU 2026 ≤24kV)",
+            "market_share": 50,
+            "trend": "Declining",
+            "confidence": "HIGH",
+            "source": "EU F-Gas Reg 2024/573"
+          },
+          {
+            "name": "SF6-free dry-air + vacuum",
+            "market_share": 40,
+            "trend": "Growing",
+            "confidence": "HIGH",
+            "source": "Schneider/E.ON"
+          },
+          {
+            "name": "Solid-insulated (SIS)",
+            "market_share": 10,
+            "trend": "Stable",
+            "confidence": "MED",
+            "source": "DataIntelo"
+          }
+        ],
+        "L3-3.3_protection_relay_platform": [
+          {
+            "name": "Multifunction digital IED (IEC 61850)",
+            "market_share": 85,
+            "trend": "Growing",
+            "confidence": "HIGH",
+            "source": "industry standard"
+          },
+          {
+            "name": "Discrete electromechanical",
+            "market_share": 10,
+            "trend": "Declining",
+            "confidence": "HIGH",
+            "source": "analyst estimate"
+          },
+          {
+            "name": "Programmable logic-based",
+            "market_share": 5,
+            "trend": "Stable",
+            "confidence": "LOW",
+            "source": "analyst estimate"
+          }
+        ],
+        "L3-4.1_EMS_controller_class": [
+          {
+            "name": "Industrial PC (x86)",
+            "market_share": 55,
+            "trend": "Stable",
+            "confidence": "MED",
+            "source": "analyst estimate"
+          },
+          {
+            "name": "PLC (Siemens S7, Beckhoff)",
+            "market_share": 30,
+            "trend": "Stable",
+            "confidence": "MED",
+            "source": "analyst estimate"
+          },
+          {
+            "name": "ARM SBC / edge AI",
+            "market_share": 15,
+            "trend": "Growing",
+            "confidence": "LOW",
+            "source": "analyst estimate"
+          }
+        ],
+        "L3-4.2_EMS_software_vendor": [
+          {
+            "name": "Tesla Autobidder/Powerhub",
+            "market_share": 15,
+            "trend": "Growing",
+            "confidence": "HIGH",
+            "source": "WoodMac"
+          },
+          {
+            "name": "Sungrow iEnergyCloud",
+            "market_share": 14,
+            "trend": "Growing",
+            "confidence": "HIGH",
+            "source": "Enlit/WoodMac"
+          },
+          {
+            "name": "Fluence Mosaic / IQ",
+            "market_share": 11,
+            "trend": "Stable",
+            "confidence": "HIGH",
+            "source": "WoodMac"
+          },
+          {
+            "name": "Wartsila GEMS",
+            "market_share": 5,
+            "trend": "Stable",
+            "confidence": "MED",
+            "source": "Wartsila"
+          },
+          {
+            "name": "DE merchant optimizers (Entrix, Suena, Next Kraftwerke, EnAppSys)",
+            "market_share": 13,
+            "trend": "Growing",
+            "confidence": "LOW",
+            "source": "analyst estimate"
+          },
+          {
+            "name": "Other OEM / in-house",
+            "market_share": 42,
+            "trend": "Mixed",
+            "confidence": "LOW",
+            "source": "analyst estimate"
+          }
+        ],
+        "L3-5.1_foundation_type": [
+          {
+            "name": "Reinforced concrete pad",
+            "market_share": 75,
+            "trend": "Stable",
+            "confidence": "HIGH",
+            "source": "DE EPC standard"
+          },
+          {
+            "name": "Precast plinth",
+            "market_share": 20,
+            "trend": "Growing",
+            "confidence": "MED",
+            "source": "analyst estimate"
+          },
+          {
+            "name": "Steel skid on screw piles",
+            "market_share": 5,
+            "trend": "Emerging",
+            "confidence": "LOW",
+            "source": "analyst estimate"
+          }
+        ],
+        "L0_cement_type_DE": [
+          {
+            "name": "CEM II (blended low-CO2)",
+            "market_share": 60,
+            "trend": "Growing",
+            "confidence": "HIGH",
+            "source": "VDZ"
+          },
+          {
+            "name": "CEM I (Portland)",
+            "market_share": 30,
+            "trend": "Declining",
+            "confidence": "HIGH",
+            "source": "VDZ"
+          },
+          {
+            "name": "CEM III (slag)",
+            "market_share": 10,
+            "trend": "Stable",
+            "confidence": "MED",
+            "source": "VDZ"
+          }
+        ]
+      },
+      "horizontal_adjacencies_at_L5": [
+        {
+          "adjacent_component": "L5 PV+BESS hybrid plant",
+          "capability_gap": "LOW",
+          "market_size_DE_eur": "1.5-2B/yr",
+          "strategic_fit": "STRONG"
+        },
+        {
+          "adjacent_component": "L5 HPC charging hub with BESS buffer",
+          "capability_gap": "MEDIUM",
+          "market_size_DE_eur": "0.5-1B/yr",
+          "strategic_fit": "STRONG"
+        },
+        {
+          "adjacent_component": "L5 Heat-pump+BESS+PV electrification stack",
+          "capability_gap": "MEDIUM",
+          "market_size_DE_eur": "1-2B/yr",
+          "strategic_fit": "MEDIUM"
+        },
+        {
+          "adjacent_component": "L5 Tenant EV-fleet AC charging park",
+          "capability_gap": "LOW",
+          "market_size_DE_eur": "0.3-0.5B/yr",
+          "strategic_fit": "MEDIUM"
+        },
+        {
+          "adjacent_component": "L5 Microgrid / Inselnetz controller",
+          "capability_gap": "HIGH",
+          "market_size_DE_eur": "0.1-0.3B/yr",
+          "strategic_fit": "WEAK"
+        }
+      ],
+      "vertical_adjacency_up": {
+        "from_role": "L5 EPC Integrator",
+        "to_role": "L6 Asset operator / VPP aggregator",
+        "additional_capabilities": [
+          "24/7 NOC",
+          "EPEX/regelleistung trading desk",
+          "Asset performance optimization"
+        ],
+        "capex_estimate_eur": "2-5M",
+        "customer_leverage": "HIGH",
+        "competitor_response": "Compete with Next Kraftwerke, Entrix, Suena, Tesla Autobidder",
+        "time_to_market_months": "18-24"
+      },
+      "vertical_adjacency_down": [
+        {
+          "target_position": "L4-1 own container integration",
+          "verdict": "REJECT",
+          "reason": "Conflicts with single-source EPC promise; competes with own suppliers"
+        },
+        {
+          "target_position": "L4-4 own EMS software stack",
+          "verdict": "CONSIDER",
+          "reason": "Moat-building; differentiates EPC offer; EUR 1-3M dev"
+        },
+        {
+          "target_position": "L4-5 in-house civil contracting",
+          "verdict": "CONSIDER",
+          "reason": "Already partially executed; vertical efficiency"
+        }
+      ],
+      "cross_system_fp_extension_positions": [
+        {
+          "target_system": "L5 Large-scale PV plant",
+          "shared_capability": "MV coupling + cert + civil",
+          "adaptation": "battery-specific knowledge unused (already incumbent)"
+        },
+        {
+          "target_system": "L5 HPC charging hub",
+          "shared_capability": "MV coupling + cert + civil",
+          "adaptation": "HPC dispenser specification new"
+        },
+        {
+          "target_system": "L5 Industrial microgrid",
+          "shared_capability": "EMS + MV + civil",
+          "adaptation": "islanding controls new"
+        },
+        {
+          "target_system": "L5 PV+Wind hybrid park",
+          "shared_capability": "MV + cert",
+          "adaptation": "wind-turbine interface new"
+        }
+      ],
+      "qa": {
+        "every_L4_to_L0": true,
+        "alternatives_or_single_source_at_every_transition": true,
+        "shares_sum_to_100_pct": true,
+        "packaging_included": true,
+        "control_subsystem_included": true,
+        "company_position_marked": true,
+        "adjacency_completed": true,
+        "BOM_vs_VN_test_passed": true,
+        "CFJ_traceability": true
+      }
+    }
+  ],
+  "has_bom": true,
+  "naics_sector_type": "non_manufacturing"
+}

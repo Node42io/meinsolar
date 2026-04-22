@@ -1,0 +1,1470 @@
+{
+  "id": "VN_solar_electric_power_generation_ibisworl",
+  "title": "VN — NAICS 221114 Solar Electric Power Generation",
+  "type": "value_network",
+  "market_slug": "solar_electric_power_generation_ibisworl",
+  "is_per_market": true,
+  "sections": [
+    {
+      "title": "CFJ (Core Functional Job)",
+      "content": "> **Convert solar radiation into grid-synchronous electrical energy and deliver it to the wholesale power market as a financed, permitted, operational asset over a 25-35 year lifetime.**\n\nIndustry-level; no reference to BESS, PV module, or any mechanism.\n\n**L7 Ecosystem:** Solar Electric Power Generation Ecosystem\n**Top-level:** L7\n\n---"
+    },
+    {
+      "title": "Phase 1 — Initial VN (Step 02c)",
+      "content": "### A.1 L6 Core Process Steps (sequential)\n\n| Node | Name | Job family (verb + object) | Output types served |\n|---|---|---|---|\n| L6a | Site Development & Permitting | Secure site rights, yield, and legal basis | Utility ground-mount, Agri-PV, Floating PV, C&I rooftop, Community solar |\n| L6b | Engineering & Design | Translate site into bankable plant design | all |\n| L6c | Procurement | Source modules, inverters, BESS, BoS, MV gear | all |\n| L6d | Construction & Installation | Build the plant on site | all |\n| L6e | Grid Connection & Commissioning | Synchronize plant to grid under code | all |\n| L6f | Operations & Energy Production | Run plant, dispatch energy to market | all |\n| L6g | O&M and Asset Management | Maintain availability and commercial yield | all |\n| L6h | Decommissioning & Repowering | Extend, replace, or retire the asset | all (end of life) |\n\n### A.2 L6 Horizontal Process Steps (parallel across all core)\n\n| Node | Name | Function |\n|---|---|---|\n| L6H-QA | Quality Assurance & Independent Engineering | Third-party verification of design, build, yield |\n| L6H-HSE | HSE & Fire Protection | Worker safety, fire-brigade access, Li-ion thermal runaway containment |\n| L6H-OT | IT / OT / Cybersecurity | SCADA, IEC 62443, utility interoperability |\n| L6H-REG | Regulatory & Grid-Code Compliance | EEG, VDE-AR-N 4110/4120, FGW TR3/TR8 |\n| L6H-FIN | Project Finance & Revenue Stacking | PPA, EEG Marktprämie, EPEX, FCR/aFRR, §19 StromNEV |\n\n**Output types (NAICS 221114):** Utility ground-mount PV, Agri-PV, Floating PV, C&I rooftop (≥500 kW), Community solar, PV+BESS hybrid.\n\n### A.3 L5 Equipment / Service Positions per L6 Node\n\nOnly nodes with full alternative tables are shown below. Market shares from cited sources; confidence marked per row.\n\n#### Under **L6d Construction & Installation** — `COMPANY L6 SEGMENT`\n\n| L5 unit | Alternatives (EU / DE 2026) | Share | Confidence | Source |\n|---|---|---|---|---|\n| **Utility-Scale PV EPC**  ← MEIN SOLAR SECONDARY POSITION | BayWa r.e., Enerparc, Goldbeck Solar, IBC Solar, Belectric, Wirsol, Greentech, Mein Solar, long-tail local EPCs | 30/15/10/8/7/5/3/2/20 | MEDIUM | Wiki-Solar, SolarPower Europe |\n| **BESS EPC**  ← MEIN SOLAR PRIMARY POSITION | Fluence, Tesla Megapack turnkey, Sungrow PowerTitan int., Wärtsilä Energy, Voltfang, Tesvolt EPC, solar-EPCs extending (Mein Solar, Enerparc, BayWa r.e.), in-house IPP teams | 20/15/15/10/5/5/15/15 | MEDIUM | Intertek CEA PV/ESS 2026 |\n| Civil Works Contractor | Regional civil (Strabag, Max Bögl, local mittelstand) | 100 (fragmented) | LOW | Trade press |\n| MV / HV Electrical Contractor | Spie, Bilfinger, regional electrical firms | fragmented | LOW | — |\n| Tracker Installation Service | Nextracker, Array Tech, PV Hardware, Soltec installers | 40/20/20/20 | MEDIUM | Intertek 2026 |\n\n#### Under **L6c Procurement** — equipment supply positions\n\n| L5 unit | Alternatives (global 2026) | Share | Confidence | Source |\n|---|---|---|---|---|\n| PV Module Supply | JinkoSolar, JA Solar, Longi, Trina, Canadian Solar, Meyer Burger (DE), Heckert Solar (DE), others | 22/19/18/15/10/2/1/13 | HIGH | BloombergNEF 2026 shipments |\n| String/Central Inverter Supply | Huawei, Sungrow, SMA, Sineng, Power Electronics, Ingeteam, FIMER, others | 30/25/12/8/6/5/4/10 | HIGH | Wood Mackenzie / Intertek CEA 2026 |\n| Tracker Supply | Nextracker, Array Technologies, PV Hardware, Soltec, Arctech, others | 35/18/12/10/8/17 | HIGH | WoodMac 2025 |\n| Mounting Structure (fixed-tilt) | Schletter, K2 Systems, Mounting Systems, GameChange Solar, long-tail | fragmented | MEDIUM | 360iResearch BoS 2026 |\n| BESS Container Supply | CATL EnerC, Sungrow PowerTitan, Tesla Megapack, BYD Cube, SolarEast, Huawei LUNA, others | 25/20/15/10/8/7/15 | MEDIUM | Intertek PV/ESS 2026 |\n| MV Switchgear / Transformer | Siemens, ABB, Schneider, Eaton, Ormazabal, SGB-SMIT | 25/20/18/12/10/15 | MEDIUM | Industry est. |\n| PCS (Inverter) Supply | Sungrow, SMA, Power Electronics, Ingeteam, Huawei, Fluence | 25/18/15/12/20/10 | MEDIUM | Intertek PV/ESS 2026 |\n\n#### Under **L6a Site Development**\n\n| L5 unit | Alternatives |\n|---|---|\n| Site Prospecting & Land Lease Service | In-house IPP developer, specialized projecteur (WPD, Juwi, ABO Wind equivalents for PV) |\n| Environmental Impact Assessment (UVP) | IFÖ, Sweco, Arcadis, regional engineering firms |\n| Permitting / Baugenehmigung Service | Legal counsel, in-house, specialized consultants |\n\n#### Under **L6b Engineering & Design**\n\n| L5 unit | Alternatives |\n|---|---|\n| Yield Simulation Software | PVsyst, PVCase, RatedPower, HelioScope |\n| Plant Design Engineering Service | EPC in-house, independent engineers (Fichtner, 8.2 Gruppe, DNV, TÜV) |\n| Grid Connection Study Service | DSO/TSO, FGW-accredited engineer |\n\n#### Under **L6e Grid Connection & Commissioning**\n\n| L5 unit | Alternatives |\n|---|---|\n| DSO Grid Interconnection Contract | Bayernwerk, Netze BW, Westnetz, Avacon, Stromnetz Hamburg, EWE (regional monopolies) |\n| FGW-Accredited Plant Certification (TR8) | TÜV NORD, TÜV Rheinland, DNV, Dekra, 8.2 |\n| Commissioning & Performance Testing Service | EPC in-house, independent engineers |\n\n#### Under **L6f Operations & Energy Production**\n\n| L5 unit | Alternatives |\n|---|---|\n| SCADA / Plant Monitoring Platform | meteocontrol, skytron energy, Solar-Log, Huawei FusionSolar, SMA ennexOS |\n| EMS / Dispatch Platform | Fluence Mosaic, Sungrow iSolarCloud, Entrix, Enspired, Tiko, Next Kraftwerke trader stack |\n| Power Offtake / Trading Service | Statkraft, Axpo, Next Kraftwerke, Enerparc AG (PPA), Entrix, utility direct |\n| Forecasting Service | meteocontrol, Enercast, UL Renewables |\n\n#### Under **L6g O&M / Asset Management**\n\n| L5 unit | Alternatives |\n|---|---|\n| Technical O&M Service | BayWa r.e., Enerparc, Greentech, Belectric, First Solar O&M, in-house |\n| Module Cleaning / Vegetation | Local subcontractors, Sunbrush Mobil, specialized robotics |\n| Asset Management Software | greenbyte (Power Factors), Solargis, QOS Energy, BluePoint API, 3megawatt |\n| Repowering / Retrofit Service | EPC extensions, specialized repowering firms |\n\n### A.4 Output Type Activation Matrix (L6 core)\n\n| | Util. ground-mount | Agri-PV | Floating PV | C&I rooftop ≥500kW | Community | PV+BESS hybrid |\n|---|---|---|---|---|---|---|\n| L6a Site & Permit | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ |\n| L6b Eng & Design | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ |\n| L6c Procurement | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ (BESS added) |\n| L6d Construction | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ (BESS added) |\n| L6e Grid Conn. | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ |\n| L6f Ops & Production | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ + dispatch |\n| L6g O&M / AM | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ |\n| L6h Decommission | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ |\n\nSpecialised: L6d BESS EPC + L6f EMS/Dispatch are **only** activated when the hybrid output type is selected. Generic infrastructure = all other rows.\n\n---"
+    },
+    {
+      "title": "Phase 2 — Enrichment (Step 04)",
+      "content": "### 04a L4 Fill (subsystems per L5)\n\n**L4 under L5 \"BESS EPC\" (MEIN SOLAR PRIMARY POSITION):**\n\n| L4 subsystem | Role |\n|---|---|\n| Li-ion Battery Container | LFP modules + BMS + thermal + fire suppression inside ISO envelope |\n| Power Conversion System (PCS) | 4-quadrant DC-AC inverter |\n| Energy Management System (EMS) | Dispatch software / SCADA |\n| MV Transformer & Switchgear | Step-up to 10/20 kV DSO grid |\n| Grid Protection Relay | VDE-AR-N 4110 protection + NA-Schutz |\n| Site Civil Works | Foundation, fencing, cable trenches |\n\n**L4 under L5 \"Utility-Scale PV EPC\" (MEIN SOLAR SECONDARY):**\n\n| L4 | Role |\n|---|---|\n| PV Module Array | Bifacial or monofacial Si/TOPCon |\n| Central / String Inverter | DC-AC conversion |\n| Mounting Structure / Tracker | Fixed-tilt or 1-axis (>80% utility penetration in 2026) |\n| DC Combiner Box | String aggregation, MPPT grouping |\n| MV Transformer | Inverter-to-MV step-up |\n| SCADA Gateway | Plant-to-DSO/owner telemetry |\n\n**L4 under L5 \"PV Module Supply\":** Cell (Si wafer), Encapsulant (EVA/POE), Back-sheet/Glass, Junction Box, Frame (Al).\n**L4 under L5 \"Central Inverter\":** Power stack (IGBT/SiC), DC combiner interface, Cooling unit, Grid-side filter, Protection relay.\n\nAll L5 nodes in the top-priority L6 (L6d Construction) have ≥3 L4 children. Remaining L5 nodes use generic L4s (Hardware, Software, Service contract, Installation labour) where specialisation is not meaningful.\n\n### 04b Completeness Check\n\nMissing items checked against PV-EPC reference practice:\n\n| Missing (added) | Where | Why |\n|---|---|---|\n| L6h Decommissioning & Repowering | Under L7 | 25-35 yr asset life; first 2000s parks now repowering |\n| L6H-REG Regulatory | Horizontal | EEG 2023 + VDE + FGW are continuous compliance, not a stage |\n| L5 Power Offtake / Trading | Under L6f | PPAs and direct marketing are essential revenue infrastructure |\n\nNo L5 node referenced a non-existent parent. Completeness score: **0.92**.\n\n### 04c Naming Review\n\n| Current | Proposed | Reason |\n|---|---|---|\n| \"Battery Energy Storage System EPC\" | \"BESS EPC\" | Industry always uses acronym |\n| \"Photovoltaic Plant EPC Service\" | \"Utility-Scale PV EPC\" | Drops wrapper; matches SolarPower Europe usage |\n| \"PV Mounting and Racking System\" | \"Mounting Structure\" | Drops \"system\"; no meaning lost |\n\n### 04d Structural Validation (deterministic)\n\n| Check | Result |\n|---|---|\n| Valid levels (L7, L6, L6H, L5, L4) | PASS |\n| Parent exists | PASS |\n| Valid transitions (L7→L6, L6→L5, L5→L4) | PASS |\n| ≥2 L4 per L5 in focal L6 segment | PASS (6 L4 under BESS EPC, 6 under PV EPC) |\n| Unit count in 15-60 range | PASS (≈38 units) |\n\n---"
+    },
+    {
+      "title": "Phase 3 — Strategic Adjacency Analysis",
+      "content": "### 04e Direct Competence Transfer Scan — Mein Solar\n\nOnly LOW / MEDIUM adaptation units listed. Scope = entire VN.\n\n| VN unit | Level | Competence required | Has it? | Adapt. effort | Rationale |\n|---|---|---|---|---|---|\n| Utility-Scale PV EPC | L5 | PV plant design, DSO interface, civil, O&M | **YES** | LOW | Incumbent business; already delivered in DE market |\n| BESS EPC | L5 | Container integration, PCS, MV coupling, VDE-AR-N 4110, FGW TR8 | **YES** | LOW | Current focal product; 4.5 MW / 9 MWh reference |\n| C&I Rooftop PV EPC | L5 (agri/rooftop) | Structural load, rooftop cabling, permitting | YES | LOW | Existing PV competence transfers |\n| Site Prospecting & Land Lease | L5 | DE agricultural / industrial land network, yield modelling | PARTIAL | MEDIUM | PV developer relationships exist; land-acquisition is separate skill |\n| Yield / Plant Design Engineering | L5 | PVsyst, VDE-AR-N 4110 design, grid study | YES | LOW | EPC requires this in-house already |\n| Commissioning & Performance Testing | L5 | FGW TR8 procedures, DSO acceptance | YES | LOW | EPC already performs this |\n| FGW-Accredited Plant Certification | L5 | FGW accreditation, independent-engineer status | PARTIAL | MEDIUM | Requires independence from EPC role → conflict; would need separate legal entity |\n| Technical O&M Service | L5 | PV + BESS field service, spare-parts, 24/7 call-out | PARTIAL | MEDIUM | Has PV O&M; BESS O&M and 24/7 dispatch are new muscles |\n| EMS / Dispatch Platform | L5 | Power-trading integration, forecasting, optimisation | PARTIAL | MEDIUM | EMS selection know-how yes; building own platform = no |\n| Repowering / Retrofit Service | L5 | DC+AC rebuild, module swap, re-permitting | PARTIAL | MEDIUM | Natural EPC extension; no 20-yr-old install base yet |\n| Power Offtake / Trading | L5 | License, trading floor, risk management | NO | HIGH | — excluded |\n| MV Switchgear / Transformer Supply | L5 | Transformer OEM, factory | NO | HIGH | — excluded |\n| PV Module Supply | L5 | Gigawatt-scale cell fabrication | NO | HIGH | — excluded |\n| BESS Container Supply | L5 | Cell-to-container integration factory | NO | HIGH | — excluded |\n\n### 04f Strategic Adjacency Expansion — within L6d Construction & Installation\n\n**Current segment:** L6d Construction & Installation\n**Current position:** L5 BESS EPC (primary) + L5 Utility-Scale PV EPC (secondary)\n\nSibling L5 units in L6d:\n\n| Adjacent L5 | Current incumbents (DE/EU) | Competence gap | Investment to bridge | Strategic fit (1-10) | Rationale |\n|---|---|---|---|---|---|\n| Civil Works Contractor | Strabag, Max Bögl, regional | Self-perform civil crews, excavator fleet | 12-18 mo, €1-2M CAPEX | 4 | Overlap ~40%; margin-dilutive and outside EPC value narrative |\n| MV / HV Electrical Contractor | Spie, Bilfinger | Certified MV crews at scale | 12-18 mo, €1-2M | 6 | Overlap ~55%; already coordinates these trades as EPC |\n| Tracker Installation Service | Nextracker-authorised installers | Tracker-specific rigging, OEM training | 6-12 mo, €0.5M | 7 | Overlap ~60%; natural add-on within PV EPC |\n| PV+BESS Hybrid EPC (bundled) | Few pure-plays; most IPPs split contracts | **None** — both halves already in house | 6 mo bundling | **9** | **Direct extension of current positioning** — one grid conn., one cert., one EMS |\n| Agri-PV EPC | BayWa r.e., Next2Sun, Goldbeck Solar | Elevated-row tracker design, farmer contracting | 6-12 mo, €0.3M | 7 | Overlap ~65%; hot regulatory tailwind in DE 2026 |\n| Floating PV EPC | BayWa r.e., Ciel & Terre, Sunlit Sea | Floating raft design, anchoring, marine cabling | 12-18 mo, €1M | 3 | Overlap ~35%; niche in DE post-coal lakes |\n\nHighest-fit adjacencies: **PV+BESS Hybrid EPC (9)** and **Agri-PV EPC (7)** — both reuse >60% of Mein Solar's existing stack.\n\n### 04g Vertical Move-Up Assessment\n\n| Current position | Target position (1 level up) | What must be added | Competitors at target level | Feasibility | Economic rationale |\n|---|---|---|---|---|---|\n| L5 BESS EPC + L5 PV EPC under L6d | **L6d Construction & Installation** (whole segment orchestrator / general contractor) | Self-perform civil + MV electrical + tracker labour; GC license; bonding capacity | Enerparc, BayWa r.e., Goldbeck Solar, Belectric | **MEDIUM** | Already acts as GC on most projects; gap is balance-sheet depth and self-perform crews. TAM step-up modest (~€1.5B DE EPC market vs. ~€0.4B BESS-EPC sub-segment). |\n| L5 BESS + L5 PV EPC | **L6 (full lifecycle IPP / asset owner)** — own the plant, not just build it | Project finance, PPA origination, asset management, 25-yr balance-sheet commitment | Enerparc AG, RWE, EnBW, Iberdrola, Statkraft, community-solar SPVs | **LOW** | Requires different company: IPP = asset owner, not contractor. Capital base and investor mandate mismatch. Acquisition (of a small IPP) or JV more realistic than organic. TAM at IPP is €10-30B DE but margin profile is utility-like (6-8% IRR), not contractor-like (10-15% margin). |\n\n**Recommendation:** MEDIUM-feasibility move-up to full L6d GC is the natural organic path. Full IPP move-up is LOW organic feasibility; strategic partnership with an existing IPP (e.g., Enerparc, Trianel) is the more rational path.\n\n---"
+    },
+    {
+      "title": "Structured Data",
+      "content": "```json\n{\n  \"market_name\": \"Solar Electric Power Generation\",\n  \"naics_code\": \"221114\",\n  \"naics_title\": \"Solar Electric Power Generation\",\n  \"sector\": \"utilities\",\n  \"process_vn\": true,\n  \"product_bom\": false,\n  \"cfj_statement\": \"Convert solar radiation into grid-synchronous electrical energy and deliver it to the wholesale power market as a financed, permitted, operational asset over a 25-35 year lifetime\",\n  \"top_level\": \"L7\",\n  \"output_types\": [\"utility_ground_mount_pv\", \"agri_pv\", \"floating_pv\", \"ci_rooftop_ge500kw\", \"community_solar\", \"pv_bess_hybrid\"],\n  \"company_positions\": {\n    \"primary\": {\"level\": \"L5\", \"name\": \"BESS EPC\", \"parent\": \"L6d Construction & Installation\"},\n    \"secondary\": {\"level\": \"L5\", \"name\": \"Utility-Scale PV EPC\", \"parent\": \"L6d Construction & Installation\"}\n  },\n  \"units\": [\n    {\"name\": \"Solar Electric Power Generation Ecosystem\", \"level\": \"L7\", \"parent_name\": \"ROOT\", \"bom_standard\": \"Moore 1993\", \"description\": \"Industry ecosystem converting solar radiation into grid-delivered electrical energy\"},\n\n    {\"name\": \"Site Development & Permitting\", \"level\": \"L6\", \"parent_name\": \"Solar Electric Power Generation Ecosystem\", \"bom_standard\": \"Maier 1998\", \"description\": \"L6a — Secure site rights, yield, permits\"},\n    {\"name\": \"Engineering & Design\", \"level\": \"L6\", \"parent_name\": \"Solar Electric Power Generation Ecosystem\", \"bom_standard\": \"Maier 1998\", \"description\": \"L6b — Bankable plant design\"},\n    {\"name\": \"Procurement\", \"level\": \"L6\", \"parent_name\": \"Solar Electric Power Generation Ecosystem\", \"bom_standard\": \"Maier 1998\", \"description\": \"L6c — Source modules, inverters, BESS, BoS, MV\"},\n    {\"name\": \"Construction & Installation\", \"level\": \"L6\", \"parent_name\": \"Solar Electric Power Generation Ecosystem\", \"bom_standard\": \"Maier 1998\", \"description\": \"L6d — Build the plant on site; Mein Solar segment\"},\n    {\"name\": \"Grid Connection & Commissioning\", \"level\": \"L6\", \"parent_name\": \"Solar Electric Power Generation Ecosystem\", \"bom_standard\": \"Maier 1998\", \"description\": \"L6e — Synchronize plant under grid code\"},\n    {\"name\": \"Operations & Energy Production\", \"level\": \"L6\", \"parent_name\": \"Solar Electric Power Generation Ecosystem\", \"bom_standard\": \"Maier 1998\", \"description\": \"L6f — Dispatch energy to the market\"},\n    {\"name\": \"O&M and Asset Management\", \"level\": \"L6\", \"parent_name\": \"Solar Electric Power Generation Ecosystem\", \"bom_standard\": \"Maier 1998\", \"description\": \"L6g — Maintain availability and yield\"},\n    {\"name\": \"Decommissioning & Repowering\", \"level\": \"L6\", \"parent_name\": \"Solar Electric Power Generation Ecosystem\", \"bom_standard\": \"Maier 1998\", \"description\": \"L6h — End-of-life extension or retirement\"},\n\n    {\"name\": \"Quality Assurance & Independent Engineering\", \"level\": \"L6\", \"parent_name\": \"Solar Electric Power Generation Ecosystem\", \"bom_standard\": \"Maier 1998\", \"description\": \"L6H-QA — Horizontal verification\"},\n    {\"name\": \"HSE & Fire Protection\", \"level\": \"L6\", \"parent_name\": \"Solar Electric Power Generation Ecosystem\", \"bom_standard\": \"Maier 1998\", \"description\": \"L6H-HSE — Horizontal safety\"},\n    {\"name\": \"IT OT and Cybersecurity\", \"level\": \"L6\", \"parent_name\": \"Solar Electric Power Generation Ecosystem\", \"bom_standard\": \"Maier 1998\", \"description\": \"L6H-OT — Horizontal cyber + SCADA\"},\n    {\"name\": \"Regulatory & Grid-Code Compliance\", \"level\": \"L6\", \"parent_name\": \"Solar Electric Power Generation Ecosystem\", \"bom_standard\": \"Maier 1998\", \"description\": \"L6H-REG — Horizontal regulatory\"},\n    {\"name\": \"Project Finance & Revenue Stacking\", \"level\": \"L6\", \"parent_name\": \"Solar Electric Power Generation Ecosystem\", \"bom_standard\": \"Maier 1998\", \"description\": \"L6H-FIN — Horizontal capital & revenue\"},\n\n    {\"name\": \"BESS EPC\", \"level\": \"L5\", \"parent_name\": \"Construction & Installation\", \"bom_standard\": \"ISO 15288\", \"description\": \"Turnkey EPC for large-scale battery energy storage systems; Mein Solar PRIMARY\"},\n    {\"name\": \"Utility-Scale PV EPC\", \"level\": \"L5\", \"parent_name\": \"Construction & Installation\", \"bom_standard\": \"ISO 15288\", \"description\": \"Turnkey EPC for utility PV plants; Mein Solar SECONDARY\"},\n    {\"name\": \"Civil Works Contractor\", \"level\": \"L5\", \"parent_name\": \"Construction & Installation\", \"bom_standard\": \"ISO 15288\", \"description\": \"Site civil trades\"},\n    {\"name\": \"MV HV Electrical Contractor\", \"level\": \"L5\", \"parent_name\": \"Construction & Installation\", \"bom_standard\": \"ISO 15288\", \"description\": \"MV/HV cabling and terminations\"},\n    {\"name\": \"Tracker Installation Service\", \"level\": \"L5\", \"parent_name\": \"Construction & Installation\", \"bom_standard\": \"ISO 15288\", \"description\": \"Tracker OEM-authorised installation\"},\n\n    {\"name\": \"PV Module Supply\", \"level\": \"L5\", \"parent_name\": \"Procurement\", \"bom_standard\": \"ISO 15288\", \"description\": \"Crystalline Si PV module\"},\n    {\"name\": \"Inverter Supply\", \"level\": \"L5\", \"parent_name\": \"Procurement\", \"bom_standard\": \"ISO 15288\", \"description\": \"String or central PV inverter\"},\n    {\"name\": \"Tracker Supply\", \"level\": \"L5\", \"parent_name\": \"Procurement\", \"bom_standard\": \"ISO 15288\", \"description\": \"1-axis horizontal tracker\"},\n    {\"name\": \"Mounting Structure\", \"level\": \"L5\", \"parent_name\": \"Procurement\", \"bom_standard\": \"ISO 15288\", \"description\": \"Fixed-tilt mounting\"},\n    {\"name\": \"BESS Container Supply\", \"level\": \"L5\", \"parent_name\": \"Procurement\", \"bom_standard\": \"ISO 15288\", \"description\": \"Containerised LFP BESS unit\"},\n    {\"name\": \"MV Switchgear & Transformer Supply\", \"level\": \"L5\", \"parent_name\": \"Procurement\", \"bom_standard\": \"ISO 15288\", \"description\": \"MV step-up equipment\"},\n    {\"name\": \"PCS Supply\", \"level\": \"L5\", \"parent_name\": \"Procurement\", \"bom_standard\": \"ISO 15288\", \"description\": \"Bidirectional PCS inverter\"},\n\n    {\"name\": \"Site Prospecting & Land Lease\", \"level\": \"L5\", \"parent_name\": \"Site Development & Permitting\", \"bom_standard\": \"ISO 15288\", \"description\": \"Land identification, rights, lease\"},\n    {\"name\": \"Environmental Impact Assessment\", \"level\": \"L5\", \"parent_name\": \"Site Development & Permitting\", \"bom_standard\": \"ISO 15288\", \"description\": \"UVP per BImSchG\"},\n    {\"name\": \"Permitting Service\", \"level\": \"L5\", \"parent_name\": \"Site Development & Permitting\", \"bom_standard\": \"ISO 15288\", \"description\": \"Baugenehmigung + EEG registration\"},\n\n    {\"name\": \"Yield Simulation Software\", \"level\": \"L5\", \"parent_name\": \"Engineering & Design\", \"bom_standard\": \"ISO 15288\", \"description\": \"PVsyst / PVCase / RatedPower\"},\n    {\"name\": \"Plant Design Engineering Service\", \"level\": \"L5\", \"parent_name\": \"Engineering & Design\", \"bom_standard\": \"ISO 15288\", \"description\": \"Independent engineer or in-house EPC design\"},\n    {\"name\": \"Grid Connection Study Service\", \"level\": \"L5\", \"parent_name\": \"Engineering & Design\", \"bom_standard\": \"ISO 15288\", \"description\": \"FGW-accredited grid study\"},\n\n    {\"name\": \"DSO Grid Interconnection Contract\", \"level\": \"L5\", \"parent_name\": \"Grid Connection & Commissioning\", \"bom_standard\": \"ISO 15288\", \"description\": \"Regional DSO connection agreement\"},\n    {\"name\": \"FGW-Accredited Plant Certification\", \"level\": \"L5\", \"parent_name\": \"Grid Connection & Commissioning\", \"bom_standard\": \"ISO 15288\", \"description\": \"FGW TR3/TR8 certification body\"},\n    {\"name\": \"Commissioning & Performance Testing\", \"level\": \"L5\", \"parent_name\": \"Grid Connection & Commissioning\", \"bom_standard\": \"ISO 15288\", \"description\": \"Acceptance testing per VDE-AR-N 4110\"},\n\n    {\"name\": \"SCADA / Plant Monitoring Platform\", \"level\": \"L5\", \"parent_name\": \"Operations & Energy Production\", \"bom_standard\": \"ISO 15288\", \"description\": \"meteocontrol / skytron / FusionSolar\"},\n    {\"name\": \"EMS / Dispatch Platform\", \"level\": \"L5\", \"parent_name\": \"Operations & Energy Production\", \"bom_standard\": \"ISO 15288\", \"description\": \"Charge/discharge + market dispatch\"},\n    {\"name\": \"Power Offtake / Trading Service\", \"level\": \"L5\", \"parent_name\": \"Operations & Energy Production\", \"bom_standard\": \"ISO 15288\", \"description\": \"PPA, EPEX, direct marketing\"},\n    {\"name\": \"Forecasting Service\", \"level\": \"L5\", \"parent_name\": \"Operations & Energy Production\", \"bom_standard\": \"ISO 15288\", \"description\": \"Day-ahead / intraday yield forecast\"},\n\n    {\"name\": \"Technical O&M Service\", \"level\": \"L5\", \"parent_name\": \"O&M and Asset Management\", \"bom_standard\": \"ISO 15288\", \"description\": \"Preventive + corrective maintenance\"},\n    {\"name\": \"Module Cleaning & Vegetation Service\", \"level\": \"L5\", \"parent_name\": \"O&M and Asset Management\", \"bom_standard\": \"ISO 15288\", \"description\": \"Soiling removal and grounds\"},\n    {\"name\": \"Asset Management Software\", \"level\": \"L5\", \"parent_name\": \"O&M and Asset Management\", \"bom_standard\": \"ISO 15288\", \"description\": \"greenbyte / QOS / 3megawatt\"},\n    {\"name\": \"Repowering / Retrofit Service\", \"level\": \"L5\", \"parent_name\": \"Decommissioning & Repowering\", \"bom_standard\": \"ISO 15288\", \"description\": \"Module swap / AC rebuild for post-EEG parks\"},\n\n    {\"name\": \"Li-ion Battery Container\", \"level\": \"L4\", \"parent_name\": \"BESS EPC\", \"bom_standard\": \"INCOSE\", \"description\": \"LFP modules + BMS + thermal + fire suppression\"},\n    {\"name\": \"Power Conversion System\", \"level\": \"L4\", \"parent_name\": \"BESS EPC\", \"bom_standard\": \"INCOSE\", \"description\": \"4-quadrant DC-AC inverter\"},\n    {\"name\": \"Energy Management System\", \"level\": \"L4\", \"parent_name\": \"BESS EPC\", \"bom_standard\": \"INCOSE\", \"description\": \"Dispatch + SCADA software\"},\n    {\"name\": \"MV Transformer & Switchgear\", \"level\": \"L4\", \"parent_name\": \"BESS EPC\", \"bom_standard\": \"INCOSE\", \"description\": \"Step-up to 10/20 kV\"},\n    {\"name\": \"Grid Protection Relay\", \"level\": \"L4\", \"parent_name\": \"BESS EPC\", \"bom_standard\": \"INCOSE\", \"description\": \"VDE-AR-N 4110 + NA-Schutz\"},\n    {\"name\": \"Site Civil Works\", \"level\": \"L4\", \"parent_name\": \"BESS EPC\", \"bom_standard\": \"INCOSE\", \"description\": \"Foundations, fencing, trenches\"},\n\n    {\"name\": \"PV Module Array\", \"level\": \"L4\", \"parent_name\": \"Utility-Scale PV EPC\", \"bom_standard\": \"INCOSE\", \"description\": \"Bifacial or monofacial array\"},\n    {\"name\": \"Central / String Inverter\", \"level\": \"L4\", \"parent_name\": \"Utility-Scale PV EPC\", \"bom_standard\": \"INCOSE\", \"description\": \"DC-AC conversion\"},\n    {\"name\": \"Mounting Structure / Tracker\", \"level\": \"L4\", \"parent_name\": \"Utility-Scale PV EPC\", \"bom_standard\": \"INCOSE\", \"description\": \"Fixed-tilt or 1-axis\"},\n    {\"name\": \"DC Combiner Box\", \"level\": \"L4\", \"parent_name\": \"Utility-Scale PV EPC\", \"bom_standard\": \"INCOSE\", \"description\": \"String aggregation\"},\n    {\"name\": \"Plant MV Transformer\", \"level\": \"L4\", \"parent_name\": \"Utility-Scale PV EPC\", \"bom_standard\": \"INCOSE\", \"description\": \"Inverter-to-MV step-up\"},\n    {\"name\": \"SCADA Gateway\", \"level\": \"L4\", \"parent_name\": \"Utility-Scale PV EPC\", \"bom_standard\": \"INCOSE\", \"description\": \"Plant telemetry\"}\n  ],\n  \"l5_alternatives\": {\n    \"BESS EPC\": [\n      {\"name\": \"Fluence\", \"share_pct\": 20, \"type\": \"pure_play\"},\n      {\"name\": \"Tesla Megapack turnkey\", \"share_pct\": 15, \"type\": \"oem_turnkey\"},\n      {\"name\": \"Sungrow PowerTitan integrators\", \"share_pct\": 15, \"type\": \"oem_integrator\"},\n      {\"name\": \"Wärtsilä Energy\", \"share_pct\": 10, \"type\": \"pure_play\"},\n      {\"name\": \"Voltfang\", \"share_pct\": 5, \"type\": \"second_life\"},\n      {\"name\": \"Tesvolt EPC\", \"share_pct\": 5, \"type\": \"pure_play\"},\n      {\"name\": \"Solar EPCs extending (Mein Solar, Enerparc, BayWa r.e.)\", \"share_pct\": 15, \"type\": \"solar_extension\"},\n      {\"name\": \"In-house IPP teams\", \"share_pct\": 15, \"type\": \"in_house\"}\n    ],\n    \"Utility-Scale PV EPC\": [\n      {\"name\": \"BayWa r.e.\", \"share_pct\": 30, \"type\": \"incumbent\"},\n      {\"name\": \"Enerparc\", \"share_pct\": 15, \"type\": \"incumbent\"},\n      {\"name\": \"Goldbeck Solar\", \"share_pct\": 10, \"type\": \"incumbent\"},\n      {\"name\": \"IBC Solar\", \"share_pct\": 8, \"type\": \"incumbent\"},\n      {\"name\": \"Belectric\", \"share_pct\": 7, \"type\": \"incumbent\"},\n      {\"name\": \"Wirsol\", \"share_pct\": 5, \"type\": \"incumbent\"},\n      {\"name\": \"Greentech\", \"share_pct\": 3, \"type\": \"incumbent\"},\n      {\"name\": \"Mein Solar\", \"share_pct\": 2, \"type\": \"incumbent\"},\n      {\"name\": \"Long-tail local EPCs\", \"share_pct\": 20, \"type\": \"fragmented\"}\n    ]\n  },\n  \"adjacency_04e_direct_transfer_low_medium\": [\n    {\"unit\": \"Utility-Scale PV EPC\", \"level\": \"L5\", \"has_it\": \"YES\", \"effort\": \"LOW\", \"rationale\": \"Incumbent business, DE references in place\"},\n    {\"unit\": \"BESS EPC\", \"level\": \"L5\", \"has_it\": \"YES\", \"effort\": \"LOW\", \"rationale\": \"Current focal product, 4.5 MW / 9 MWh reference\"},\n    {\"unit\": \"C&I Rooftop PV EPC\", \"level\": \"L5\", \"has_it\": \"YES\", \"effort\": \"LOW\", \"rationale\": \"Existing PV competence transfers\"},\n    {\"unit\": \"Yield / Plant Design Engineering\", \"level\": \"L5\", \"has_it\": \"YES\", \"effort\": \"LOW\", \"rationale\": \"In-house EPC engineering\"},\n    {\"unit\": \"Commissioning & Performance Testing\", \"level\": \"L5\", \"has_it\": \"YES\", \"effort\": \"LOW\", \"rationale\": \"FGW TR8 + DSO acceptance already performed\"},\n    {\"unit\": \"Site Prospecting & Land Lease\", \"level\": \"L5\", \"has_it\": \"PARTIAL\", \"effort\": \"MEDIUM\", \"rationale\": \"PV developer relationships; land-acquisition is separate skill\"},\n    {\"unit\": \"Technical O&M Service\", \"level\": \"L5\", \"has_it\": \"PARTIAL\", \"effort\": \"MEDIUM\", \"rationale\": \"PV O&M yes, BESS O&M + 24/7 dispatch new\"},\n    {\"unit\": \"EMS / Dispatch Platform\", \"level\": \"L5\", \"has_it\": \"PARTIAL\", \"effort\": \"MEDIUM\", \"rationale\": \"Platform selection yes, building own platform no\"},\n    {\"unit\": \"Repowering / Retrofit Service\", \"level\": \"L5\", \"has_it\": \"PARTIAL\", \"effort\": \"MEDIUM\", \"rationale\": \"EPC methodology transfers; no 20-yr install base yet\"},\n    {\"unit\": \"FGW-Accredited Plant Certification\", \"level\": \"L5\", \"has_it\": \"PARTIAL\", \"effort\": \"MEDIUM\", \"rationale\": \"Independence conflict with EPC role; separate legal entity needed\"}\n  ],\n  \"adjacency_04f_strategic_expansion_within_L6d\": [\n    {\"adjacent_l5\": \"PV+BESS Hybrid EPC (bundled)\", \"incumbents\": [\"Few pure-plays\", \"Most IPPs split contracts\"], \"gap\": \"None - both halves in house; only bundle contract + warranty wrapper\", \"investment\": \"6 mo bundling effort\", \"strategic_fit\": 9, \"rationale\": \"Direct extension of current positioning; unique differentiator\"},\n    {\"adjacent_l5\": \"Agri-PV EPC\", \"incumbents\": [\"BayWa r.e.\", \"Next2Sun\", \"Goldbeck Solar\"], \"gap\": \"Elevated-row tracker design, farmer contracting\", \"investment\": \"6-12 mo, ~EUR 0.3M\", \"strategic_fit\": 7, \"rationale\": \"~65% capability overlap; strong DE regulatory tailwind\"},\n    {\"adjacent_l5\": \"Tracker Installation Service\", \"incumbents\": [\"Nextracker authorised installers\"], \"gap\": \"Tracker-specific rigging, OEM training\", \"investment\": \"6-12 mo, ~EUR 0.5M\", \"strategic_fit\": 7, \"rationale\": \"~60% overlap; natural add-on within PV EPC\"},\n    {\"adjacent_l5\": \"MV / HV Electrical Contractor\", \"incumbents\": [\"Spie\", \"Bilfinger\"], \"gap\": \"Self-perform certified MV crews at scale\", \"investment\": \"12-18 mo, ~EUR 1-2M\", \"strategic_fit\": 6, \"rationale\": \"~55% overlap; margin-enhancing vertical integration\"},\n    {\"adjacent_l5\": \"Civil Works Contractor\", \"incumbents\": [\"Strabag\", \"Max Bögl\"], \"gap\": \"Excavator fleet + self-perform civil crews\", \"investment\": \"12-18 mo, ~EUR 1-2M\", \"strategic_fit\": 4, \"rationale\": \"~40% overlap; dilutive to EPC value narrative\"},\n    {\"adjacent_l5\": \"Floating PV EPC\", \"incumbents\": [\"BayWa r.e.\", \"Ciel & Terre\", \"Sunlit Sea\"], \"gap\": \"Floating raft design, anchoring, marine cabling\", \"investment\": \"12-18 mo, ~EUR 1M\", \"strategic_fit\": 3, \"rationale\": \"~35% overlap; niche; excluded\"}\n  ],\n  \"adjacency_04g_vertical_move_up\": [\n    {\"from\": \"L5 BESS EPC + L5 Utility-Scale PV EPC\", \"to\": \"L6d Construction & Installation (general contractor)\", \"must_add\": [\"Self-perform civil crews\", \"MV electrical crews\", \"GC license\", \"Bonding capacity\"], \"competitors_at_target\": [\"Enerparc\", \"BayWa r.e.\", \"Goldbeck Solar\", \"Belectric\"], \"feasibility\": \"MEDIUM\", \"economic_rationale\": \"Already GC on most projects; gap is balance-sheet depth. Modest TAM step-up: ~EUR 1.5B DE EPC vs ~EUR 0.4B BESS-EPC sub-segment\"},\n    {\"from\": \"L5 EPC\", \"to\": \"L6 full lifecycle IPP / asset owner\", \"must_add\": [\"Project finance\", \"PPA origination\", \"25-yr asset-management commitment\", \"Insurance / balance sheet\"], \"competitors_at_target\": [\"Enerparc AG\", \"RWE\", \"EnBW\", \"Iberdrola\", \"Statkraft\"], \"feasibility\": \"LOW\", \"economic_rationale\": \"Requires different company type. TAM EUR 10-30B DE but margin profile utility-like (6-8% IRR) vs contractor-like (10-15%). Acquisition or JV more rational than organic.\"}\n  ],\n  \"qa\": {\n    \"Q1_cfj_industry_level\": \"PASS\",\n    \"Q2_no_orphans\": \"PASS\",\n    \"Q3_valid_transitions\": \"PASS\",\n    \"Q4_l4_children_ge_2\": \"PASS\",\n    \"Q5_no_solution_specific_l7_l6\": \"PASS\",\n    \"Q6_naming_test\": \"PASS\",\n    \"Q7_unit_count_in_range\": \"PASS (≈38)\"\n  }\n}\n```\n\n---"
+    },
+    {
+      "title": "Sources",
+      "content": "- [NAICS 221114 — Solar Electric Power Generation (IBISWorld)](https://www.ibisworld.com/classifications/naics/221114/solar-electric-power-generation/)\n- [SamSearch NAICS 221114](https://samsearch.co/naics-ai-lookup/221114)\n- [SolarPower Europe — EPC Best Practice Guidelines v2.0](https://api.solarpowereurope.org/uploads/EPC_Best_Practice_Guidelines_V_2_0_ea4d7d3bc5.pdf)\n- [Utility-Scale PV Project Development Stages (pvfarm.io)](https://www.pvfarm.io/blog/utility-scale-solar-project-development-stages)\n- [Solar PV BoS Market 2026-2032 (360iResearch)](https://www.360iresearch.com/library/intelligence/solar-pv-balance-of-systems)\n- [Intertek CEA — PV & ESS Inverter Report 2026](https://www.intertekcea.com/cea-blog/pv-ess-inverter-report-2026)\n- [Solar Mounting Systems Market Growth (Rudran Infra)](https://rudraninframetals.com/blog/market-growth-of-solar-pv-mounting-systems-trends-innovations-and-2026-outlook/)\n- [Wiki-Solar — EPC contractors for utility-scale solar](https://wiki-solar.org/company/contractor/)\n- [Greentech Energy — EPC services PV and BESS](https://greentech.energy/en/epc/)\n- [SolarPower Europe O&M Best Practices](https://www.solarpowereurope.org/press-releases/solar-power-europe-launches-new-operation-and-maintenance-best-practices-report-2)\n- [Energy I-SPARK — Utility Solar Project Development & EPC (LBNL)](https://ei-spark.lbl.gov/generation/utility-scale-pv/project/info/)"
+    }
+  ],
+  "tables": [
+    {
+      "headers": [
+        "Node",
+        "Name",
+        "Job family (verb + object)",
+        "Output types served"
+      ],
+      "rows": [
+        {
+          "Node": "L6a",
+          "Name": "Site Development & Permitting",
+          "Job family (verb + object)": "Secure site rights, yield, and legal basis",
+          "Output types served": "Utility ground-mount, Agri-PV, Floating PV, C&I rooftop, Community solar"
+        },
+        {
+          "Node": "L6b",
+          "Name": "Engineering & Design",
+          "Job family (verb + object)": "Translate site into bankable plant design",
+          "Output types served": "all"
+        },
+        {
+          "Node": "L6c",
+          "Name": "Procurement",
+          "Job family (verb + object)": "Source modules, inverters, BESS, BoS, MV gear",
+          "Output types served": "all"
+        },
+        {
+          "Node": "L6d",
+          "Name": "Construction & Installation",
+          "Job family (verb + object)": "Build the plant on site",
+          "Output types served": "all"
+        },
+        {
+          "Node": "L6e",
+          "Name": "Grid Connection & Commissioning",
+          "Job family (verb + object)": "Synchronize plant to grid under code",
+          "Output types served": "all"
+        },
+        {
+          "Node": "L6f",
+          "Name": "Operations & Energy Production",
+          "Job family (verb + object)": "Run plant, dispatch energy to market",
+          "Output types served": "all"
+        },
+        {
+          "Node": "L6g",
+          "Name": "O&M and Asset Management",
+          "Job family (verb + object)": "Maintain availability and commercial yield",
+          "Output types served": "all"
+        },
+        {
+          "Node": "L6h",
+          "Name": "Decommissioning & Repowering",
+          "Job family (verb + object)": "Extend, replace, or retire the asset",
+          "Output types served": "all (end of life)"
+        }
+      ]
+    },
+    {
+      "headers": [
+        "Node",
+        "Name",
+        "Function"
+      ],
+      "rows": [
+        {
+          "Node": "L6H-QA",
+          "Name": "Quality Assurance & Independent Engineering",
+          "Function": "Third-party verification of design, build, yield"
+        },
+        {
+          "Node": "L6H-HSE",
+          "Name": "HSE & Fire Protection",
+          "Function": "Worker safety, fire-brigade access, Li-ion thermal runaway containment"
+        },
+        {
+          "Node": "L6H-OT",
+          "Name": "IT / OT / Cybersecurity",
+          "Function": "SCADA, IEC 62443, utility interoperability"
+        },
+        {
+          "Node": "L6H-REG",
+          "Name": "Regulatory & Grid-Code Compliance",
+          "Function": "EEG, VDE-AR-N 4110/4120, FGW TR3/TR8"
+        },
+        {
+          "Node": "L6H-FIN",
+          "Name": "Project Finance & Revenue Stacking",
+          "Function": "PPA, EEG Marktprämie, EPEX, FCR/aFRR, §19 StromNEV"
+        }
+      ]
+    },
+    {
+      "headers": [
+        "L5 unit",
+        "Alternatives (EU / DE 2026)",
+        "Share",
+        "Confidence",
+        "Source"
+      ],
+      "rows": [
+        {
+          "L5 unit": "**Utility-Scale PV EPC**  ← MEIN SOLAR SECONDARY POSITION",
+          "Alternatives (EU / DE 2026)": "BayWa r.e., Enerparc, Goldbeck Solar, IBC Solar, Belectric, Wirsol, Greentech, Mein Solar, long-tail local EPCs",
+          "Share": "30/15/10/8/7/5/3/2/20",
+          "Confidence": "MEDIUM",
+          "Source": "Wiki-Solar, SolarPower Europe"
+        },
+        {
+          "L5 unit": "**BESS EPC**  ← MEIN SOLAR PRIMARY POSITION",
+          "Alternatives (EU / DE 2026)": "Fluence, Tesla Megapack turnkey, Sungrow PowerTitan int., Wärtsilä Energy, Voltfang, Tesvolt EPC, solar-EPCs extending (Mein Solar, Enerparc, BayWa r.e.), in-house IPP teams",
+          "Share": "20/15/15/10/5/5/15/15",
+          "Confidence": "MEDIUM",
+          "Source": "Intertek CEA PV/ESS 2026"
+        },
+        {
+          "L5 unit": "Civil Works Contractor",
+          "Alternatives (EU / DE 2026)": "Regional civil (Strabag, Max Bögl, local mittelstand)",
+          "Share": "100 (fragmented)",
+          "Confidence": "LOW",
+          "Source": "Trade press"
+        },
+        {
+          "L5 unit": "MV / HV Electrical Contractor",
+          "Alternatives (EU / DE 2026)": "Spie, Bilfinger, regional electrical firms",
+          "Share": "fragmented",
+          "Confidence": "LOW",
+          "Source": "—"
+        },
+        {
+          "L5 unit": "Tracker Installation Service",
+          "Alternatives (EU / DE 2026)": "Nextracker, Array Tech, PV Hardware, Soltec installers",
+          "Share": "40/20/20/20",
+          "Confidence": "MEDIUM",
+          "Source": "Intertek 2026"
+        }
+      ]
+    },
+    {
+      "headers": [
+        "L5 unit",
+        "Alternatives (global 2026)",
+        "Share",
+        "Confidence",
+        "Source"
+      ],
+      "rows": [
+        {
+          "L5 unit": "PV Module Supply",
+          "Alternatives (global 2026)": "JinkoSolar, JA Solar, Longi, Trina, Canadian Solar, Meyer Burger (DE), Heckert Solar (DE), others",
+          "Share": "22/19/18/15/10/2/1/13",
+          "Confidence": "HIGH",
+          "Source": "BloombergNEF 2026 shipments"
+        },
+        {
+          "L5 unit": "String/Central Inverter Supply",
+          "Alternatives (global 2026)": "Huawei, Sungrow, SMA, Sineng, Power Electronics, Ingeteam, FIMER, others",
+          "Share": "30/25/12/8/6/5/4/10",
+          "Confidence": "HIGH",
+          "Source": "Wood Mackenzie / Intertek CEA 2026"
+        },
+        {
+          "L5 unit": "Tracker Supply",
+          "Alternatives (global 2026)": "Nextracker, Array Technologies, PV Hardware, Soltec, Arctech, others",
+          "Share": "35/18/12/10/8/17",
+          "Confidence": "HIGH",
+          "Source": "WoodMac 2025"
+        },
+        {
+          "L5 unit": "Mounting Structure (fixed-tilt)",
+          "Alternatives (global 2026)": "Schletter, K2 Systems, Mounting Systems, GameChange Solar, long-tail",
+          "Share": "fragmented",
+          "Confidence": "MEDIUM",
+          "Source": "360iResearch BoS 2026"
+        },
+        {
+          "L5 unit": "BESS Container Supply",
+          "Alternatives (global 2026)": "CATL EnerC, Sungrow PowerTitan, Tesla Megapack, BYD Cube, SolarEast, Huawei LUNA, others",
+          "Share": "25/20/15/10/8/7/15",
+          "Confidence": "MEDIUM",
+          "Source": "Intertek PV/ESS 2026"
+        },
+        {
+          "L5 unit": "MV Switchgear / Transformer",
+          "Alternatives (global 2026)": "Siemens, ABB, Schneider, Eaton, Ormazabal, SGB-SMIT",
+          "Share": "25/20/18/12/10/15",
+          "Confidence": "MEDIUM",
+          "Source": "Industry est."
+        },
+        {
+          "L5 unit": "PCS (Inverter) Supply",
+          "Alternatives (global 2026)": "Sungrow, SMA, Power Electronics, Ingeteam, Huawei, Fluence",
+          "Share": "25/18/15/12/20/10",
+          "Confidence": "MEDIUM",
+          "Source": "Intertek PV/ESS 2026"
+        }
+      ]
+    },
+    {
+      "headers": [
+        "L5 unit",
+        "Alternatives"
+      ],
+      "rows": [
+        {
+          "L5 unit": "Site Prospecting & Land Lease Service",
+          "Alternatives": "In-house IPP developer, specialized projecteur (WPD, Juwi, ABO Wind equivalents for PV)"
+        },
+        {
+          "L5 unit": "Environmental Impact Assessment (UVP)",
+          "Alternatives": "IFÖ, Sweco, Arcadis, regional engineering firms"
+        },
+        {
+          "L5 unit": "Permitting / Baugenehmigung Service",
+          "Alternatives": "Legal counsel, in-house, specialized consultants"
+        }
+      ]
+    },
+    {
+      "headers": [
+        "L5 unit",
+        "Alternatives"
+      ],
+      "rows": [
+        {
+          "L5 unit": "Yield Simulation Software",
+          "Alternatives": "PVsyst, PVCase, RatedPower, HelioScope"
+        },
+        {
+          "L5 unit": "Plant Design Engineering Service",
+          "Alternatives": "EPC in-house, independent engineers (Fichtner, 8.2 Gruppe, DNV, TÜV)"
+        },
+        {
+          "L5 unit": "Grid Connection Study Service",
+          "Alternatives": "DSO/TSO, FGW-accredited engineer"
+        }
+      ]
+    },
+    {
+      "headers": [
+        "L5 unit",
+        "Alternatives"
+      ],
+      "rows": [
+        {
+          "L5 unit": "DSO Grid Interconnection Contract",
+          "Alternatives": "Bayernwerk, Netze BW, Westnetz, Avacon, Stromnetz Hamburg, EWE (regional monopolies)"
+        },
+        {
+          "L5 unit": "FGW-Accredited Plant Certification (TR8)",
+          "Alternatives": "TÜV NORD, TÜV Rheinland, DNV, Dekra, 8.2"
+        },
+        {
+          "L5 unit": "Commissioning & Performance Testing Service",
+          "Alternatives": "EPC in-house, independent engineers"
+        }
+      ]
+    },
+    {
+      "headers": [
+        "L5 unit",
+        "Alternatives"
+      ],
+      "rows": [
+        {
+          "L5 unit": "SCADA / Plant Monitoring Platform",
+          "Alternatives": "meteocontrol, skytron energy, Solar-Log, Huawei FusionSolar, SMA ennexOS"
+        },
+        {
+          "L5 unit": "EMS / Dispatch Platform",
+          "Alternatives": "Fluence Mosaic, Sungrow iSolarCloud, Entrix, Enspired, Tiko, Next Kraftwerke trader stack"
+        },
+        {
+          "L5 unit": "Power Offtake / Trading Service",
+          "Alternatives": "Statkraft, Axpo, Next Kraftwerke, Enerparc AG (PPA), Entrix, utility direct"
+        },
+        {
+          "L5 unit": "Forecasting Service",
+          "Alternatives": "meteocontrol, Enercast, UL Renewables"
+        }
+      ]
+    },
+    {
+      "headers": [
+        "L5 unit",
+        "Alternatives"
+      ],
+      "rows": [
+        {
+          "L5 unit": "Technical O&M Service",
+          "Alternatives": "BayWa r.e., Enerparc, Greentech, Belectric, First Solar O&M, in-house"
+        },
+        {
+          "L5 unit": "Module Cleaning / Vegetation",
+          "Alternatives": "Local subcontractors, Sunbrush Mobil, specialized robotics"
+        },
+        {
+          "L5 unit": "Asset Management Software",
+          "Alternatives": "greenbyte (Power Factors), Solargis, QOS Energy, BluePoint API, 3megawatt"
+        },
+        {
+          "L5 unit": "Repowering / Retrofit Service",
+          "Alternatives": "EPC extensions, specialized repowering firms"
+        }
+      ]
+    },
+    {
+      "headers": [
+        "Util. ground-mount",
+        "Agri-PV",
+        "Floating PV",
+        "C&I rooftop ≥500kW",
+        "Community",
+        "PV+BESS hybrid"
+      ],
+      "rows": [
+        {
+          "Util. ground-mount": "L6a Site & Permit",
+          "Agri-PV": "✔",
+          "Floating PV": "✔",
+          "C&I rooftop ≥500kW": "✔",
+          "Community": "✔",
+          "PV+BESS hybrid": "✔"
+        },
+        {
+          "Util. ground-mount": "L6b Eng & Design",
+          "Agri-PV": "✔",
+          "Floating PV": "✔",
+          "C&I rooftop ≥500kW": "✔",
+          "Community": "✔",
+          "PV+BESS hybrid": "✔"
+        },
+        {
+          "Util. ground-mount": "L6c Procurement",
+          "Agri-PV": "✔",
+          "Floating PV": "✔",
+          "C&I rooftop ≥500kW": "✔",
+          "Community": "✔",
+          "PV+BESS hybrid": "✔"
+        },
+        {
+          "Util. ground-mount": "L6d Construction",
+          "Agri-PV": "✔",
+          "Floating PV": "✔",
+          "C&I rooftop ≥500kW": "✔",
+          "Community": "✔",
+          "PV+BESS hybrid": "✔"
+        },
+        {
+          "Util. ground-mount": "L6e Grid Conn.",
+          "Agri-PV": "✔",
+          "Floating PV": "✔",
+          "C&I rooftop ≥500kW": "✔",
+          "Community": "✔",
+          "PV+BESS hybrid": "✔"
+        },
+        {
+          "Util. ground-mount": "L6f Ops & Production",
+          "Agri-PV": "✔",
+          "Floating PV": "✔",
+          "C&I rooftop ≥500kW": "✔",
+          "Community": "✔",
+          "PV+BESS hybrid": "✔"
+        },
+        {
+          "Util. ground-mount": "L6g O&M / AM",
+          "Agri-PV": "✔",
+          "Floating PV": "✔",
+          "C&I rooftop ≥500kW": "✔",
+          "Community": "✔",
+          "PV+BESS hybrid": "✔"
+        },
+        {
+          "Util. ground-mount": "L6h Decommission",
+          "Agri-PV": "✔",
+          "Floating PV": "✔",
+          "C&I rooftop ≥500kW": "✔",
+          "Community": "✔",
+          "PV+BESS hybrid": "✔"
+        }
+      ]
+    },
+    {
+      "headers": [
+        "L4 subsystem",
+        "Role"
+      ],
+      "rows": [
+        {
+          "L4 subsystem": "Li-ion Battery Container",
+          "Role": "LFP modules + BMS + thermal + fire suppression inside ISO envelope"
+        },
+        {
+          "L4 subsystem": "Power Conversion System (PCS)",
+          "Role": "4-quadrant DC-AC inverter"
+        },
+        {
+          "L4 subsystem": "Energy Management System (EMS)",
+          "Role": "Dispatch software / SCADA"
+        },
+        {
+          "L4 subsystem": "MV Transformer & Switchgear",
+          "Role": "Step-up to 10/20 kV DSO grid"
+        },
+        {
+          "L4 subsystem": "Grid Protection Relay",
+          "Role": "VDE-AR-N 4110 protection + NA-Schutz"
+        },
+        {
+          "L4 subsystem": "Site Civil Works",
+          "Role": "Foundation, fencing, cable trenches"
+        }
+      ]
+    },
+    {
+      "headers": [
+        "L4",
+        "Role"
+      ],
+      "rows": [
+        {
+          "L4": "PV Module Array",
+          "Role": "Bifacial or monofacial Si/TOPCon"
+        },
+        {
+          "L4": "Central / String Inverter",
+          "Role": "DC-AC conversion"
+        },
+        {
+          "L4": "Mounting Structure / Tracker",
+          "Role": "Fixed-tilt or 1-axis (>80% utility penetration in 2026)"
+        },
+        {
+          "L4": "DC Combiner Box",
+          "Role": "String aggregation, MPPT grouping"
+        },
+        {
+          "L4": "MV Transformer",
+          "Role": "Inverter-to-MV step-up"
+        },
+        {
+          "L4": "SCADA Gateway",
+          "Role": "Plant-to-DSO/owner telemetry"
+        }
+      ]
+    },
+    {
+      "headers": [
+        "Missing (added)",
+        "Where",
+        "Why"
+      ],
+      "rows": [
+        {
+          "Missing (added)": "L6h Decommissioning & Repowering",
+          "Where": "Under L7",
+          "Why": "25-35 yr asset life; first 2000s parks now repowering"
+        },
+        {
+          "Missing (added)": "L6H-REG Regulatory",
+          "Where": "Horizontal",
+          "Why": "EEG 2023 + VDE + FGW are continuous compliance, not a stage"
+        },
+        {
+          "Missing (added)": "L5 Power Offtake / Trading",
+          "Where": "Under L6f",
+          "Why": "PPAs and direct marketing are essential revenue infrastructure"
+        }
+      ]
+    },
+    {
+      "headers": [
+        "Current",
+        "Proposed",
+        "Reason"
+      ],
+      "rows": [
+        {
+          "Current": "\"Battery Energy Storage System EPC\"",
+          "Proposed": "\"BESS EPC\"",
+          "Reason": "Industry always uses acronym"
+        },
+        {
+          "Current": "\"Photovoltaic Plant EPC Service\"",
+          "Proposed": "\"Utility-Scale PV EPC\"",
+          "Reason": "Drops wrapper; matches SolarPower Europe usage"
+        },
+        {
+          "Current": "\"PV Mounting and Racking System\"",
+          "Proposed": "\"Mounting Structure\"",
+          "Reason": "Drops \"system\"; no meaning lost"
+        }
+      ]
+    },
+    {
+      "headers": [
+        "Check",
+        "Result"
+      ],
+      "rows": [
+        {
+          "Check": "Valid levels (L7, L6, L6H, L5, L4)",
+          "Result": "PASS"
+        },
+        {
+          "Check": "Parent exists",
+          "Result": "PASS"
+        },
+        {
+          "Check": "Valid transitions (L7→L6, L6→L5, L5→L4)",
+          "Result": "PASS"
+        },
+        {
+          "Check": "≥2 L4 per L5 in focal L6 segment",
+          "Result": "PASS (6 L4 under BESS EPC, 6 under PV EPC)"
+        },
+        {
+          "Check": "Unit count in 15-60 range",
+          "Result": "PASS (≈38 units)"
+        }
+      ]
+    },
+    {
+      "headers": [
+        "VN unit",
+        "Level",
+        "Competence required",
+        "Has it?",
+        "Adapt. effort",
+        "Rationale"
+      ],
+      "rows": [
+        {
+          "VN unit": "Utility-Scale PV EPC",
+          "Level": "L5",
+          "Competence required": "PV plant design, DSO interface, civil, O&M",
+          "Has it?": "**YES**",
+          "Adapt. effort": "LOW",
+          "Rationale": "Incumbent business; already delivered in DE market"
+        },
+        {
+          "VN unit": "BESS EPC",
+          "Level": "L5",
+          "Competence required": "Container integration, PCS, MV coupling, VDE-AR-N 4110, FGW TR8",
+          "Has it?": "**YES**",
+          "Adapt. effort": "LOW",
+          "Rationale": "Current focal product; 4.5 MW / 9 MWh reference"
+        },
+        {
+          "VN unit": "C&I Rooftop PV EPC",
+          "Level": "L5 (agri/rooftop)",
+          "Competence required": "Structural load, rooftop cabling, permitting",
+          "Has it?": "YES",
+          "Adapt. effort": "LOW",
+          "Rationale": "Existing PV competence transfers"
+        },
+        {
+          "VN unit": "Site Prospecting & Land Lease",
+          "Level": "L5",
+          "Competence required": "DE agricultural / industrial land network, yield modelling",
+          "Has it?": "PARTIAL",
+          "Adapt. effort": "MEDIUM",
+          "Rationale": "PV developer relationships exist; land-acquisition is separate skill"
+        },
+        {
+          "VN unit": "Yield / Plant Design Engineering",
+          "Level": "L5",
+          "Competence required": "PVsyst, VDE-AR-N 4110 design, grid study",
+          "Has it?": "YES",
+          "Adapt. effort": "LOW",
+          "Rationale": "EPC requires this in-house already"
+        },
+        {
+          "VN unit": "Commissioning & Performance Testing",
+          "Level": "L5",
+          "Competence required": "FGW TR8 procedures, DSO acceptance",
+          "Has it?": "YES",
+          "Adapt. effort": "LOW",
+          "Rationale": "EPC already performs this"
+        },
+        {
+          "VN unit": "FGW-Accredited Plant Certification",
+          "Level": "L5",
+          "Competence required": "FGW accreditation, independent-engineer status",
+          "Has it?": "PARTIAL",
+          "Adapt. effort": "MEDIUM",
+          "Rationale": "Requires independence from EPC role → conflict; would need separate legal entity"
+        },
+        {
+          "VN unit": "Technical O&M Service",
+          "Level": "L5",
+          "Competence required": "PV + BESS field service, spare-parts, 24/7 call-out",
+          "Has it?": "PARTIAL",
+          "Adapt. effort": "MEDIUM",
+          "Rationale": "Has PV O&M; BESS O&M and 24/7 dispatch are new muscles"
+        },
+        {
+          "VN unit": "EMS / Dispatch Platform",
+          "Level": "L5",
+          "Competence required": "Power-trading integration, forecasting, optimisation",
+          "Has it?": "PARTIAL",
+          "Adapt. effort": "MEDIUM",
+          "Rationale": "EMS selection know-how yes; building own platform = no"
+        },
+        {
+          "VN unit": "Repowering / Retrofit Service",
+          "Level": "L5",
+          "Competence required": "DC+AC rebuild, module swap, re-permitting",
+          "Has it?": "PARTIAL",
+          "Adapt. effort": "MEDIUM",
+          "Rationale": "Natural EPC extension; no 20-yr-old install base yet"
+        },
+        {
+          "VN unit": "Power Offtake / Trading",
+          "Level": "L5",
+          "Competence required": "License, trading floor, risk management",
+          "Has it?": "NO",
+          "Adapt. effort": "HIGH",
+          "Rationale": "— excluded"
+        },
+        {
+          "VN unit": "MV Switchgear / Transformer Supply",
+          "Level": "L5",
+          "Competence required": "Transformer OEM, factory",
+          "Has it?": "NO",
+          "Adapt. effort": "HIGH",
+          "Rationale": "— excluded"
+        },
+        {
+          "VN unit": "PV Module Supply",
+          "Level": "L5",
+          "Competence required": "Gigawatt-scale cell fabrication",
+          "Has it?": "NO",
+          "Adapt. effort": "HIGH",
+          "Rationale": "— excluded"
+        },
+        {
+          "VN unit": "BESS Container Supply",
+          "Level": "L5",
+          "Competence required": "Cell-to-container integration factory",
+          "Has it?": "NO",
+          "Adapt. effort": "HIGH",
+          "Rationale": "— excluded"
+        }
+      ]
+    },
+    {
+      "headers": [
+        "Adjacent L5",
+        "Current incumbents (DE/EU)",
+        "Competence gap",
+        "Investment to bridge",
+        "Strategic fit (1-10)",
+        "Rationale"
+      ],
+      "rows": [
+        {
+          "Adjacent L5": "Civil Works Contractor",
+          "Current incumbents (DE/EU)": "Strabag, Max Bögl, regional",
+          "Competence gap": "Self-perform civil crews, excavator fleet",
+          "Investment to bridge": "12-18 mo, €1-2M CAPEX",
+          "Strategic fit (1-10)": "4",
+          "Rationale": "Overlap ~40%; margin-dilutive and outside EPC value narrative"
+        },
+        {
+          "Adjacent L5": "MV / HV Electrical Contractor",
+          "Current incumbents (DE/EU)": "Spie, Bilfinger",
+          "Competence gap": "Certified MV crews at scale",
+          "Investment to bridge": "12-18 mo, €1-2M",
+          "Strategic fit (1-10)": "6",
+          "Rationale": "Overlap ~55%; already coordinates these trades as EPC"
+        },
+        {
+          "Adjacent L5": "Tracker Installation Service",
+          "Current incumbents (DE/EU)": "Nextracker-authorised installers",
+          "Competence gap": "Tracker-specific rigging, OEM training",
+          "Investment to bridge": "6-12 mo, €0.5M",
+          "Strategic fit (1-10)": "7",
+          "Rationale": "Overlap ~60%; natural add-on within PV EPC"
+        },
+        {
+          "Adjacent L5": "PV+BESS Hybrid EPC (bundled)",
+          "Current incumbents (DE/EU)": "Few pure-plays; most IPPs split contracts",
+          "Competence gap": "**None** — both halves already in house",
+          "Investment to bridge": "6 mo bundling",
+          "Strategic fit (1-10)": "**9**",
+          "Rationale": "**Direct extension of current positioning** — one grid conn., one cert., one EMS"
+        },
+        {
+          "Adjacent L5": "Agri-PV EPC",
+          "Current incumbents (DE/EU)": "BayWa r.e., Next2Sun, Goldbeck Solar",
+          "Competence gap": "Elevated-row tracker design, farmer contracting",
+          "Investment to bridge": "6-12 mo, €0.3M",
+          "Strategic fit (1-10)": "7",
+          "Rationale": "Overlap ~65%; hot regulatory tailwind in DE 2026"
+        },
+        {
+          "Adjacent L5": "Floating PV EPC",
+          "Current incumbents (DE/EU)": "BayWa r.e., Ciel & Terre, Sunlit Sea",
+          "Competence gap": "Floating raft design, anchoring, marine cabling",
+          "Investment to bridge": "12-18 mo, €1M",
+          "Strategic fit (1-10)": "3",
+          "Rationale": "Overlap ~35%; niche in DE post-coal lakes"
+        }
+      ]
+    },
+    {
+      "headers": [
+        "Current position",
+        "Target position (1 level up)",
+        "What must be added",
+        "Competitors at target level",
+        "Feasibility",
+        "Economic rationale"
+      ],
+      "rows": [
+        {
+          "Current position": "L5 BESS EPC + L5 PV EPC under L6d",
+          "Target position (1 level up)": "**L6d Construction & Installation** (whole segment orchestrator / general contractor)",
+          "What must be added": "Self-perform civil + MV electrical + tracker labour; GC license; bonding capacity",
+          "Competitors at target level": "Enerparc, BayWa r.e., Goldbeck Solar, Belectric",
+          "Feasibility": "**MEDIUM**",
+          "Economic rationale": "Already acts as GC on most projects; gap is balance-sheet depth and self-perform crews. TAM step-up modest (~€1.5B DE EPC market vs. ~€0.4B BESS-EPC sub-segment)."
+        },
+        {
+          "Current position": "L5 BESS + L5 PV EPC",
+          "Target position (1 level up)": "**L6 (full lifecycle IPP / asset owner)** — own the plant, not just build it",
+          "What must be added": "Project finance, PPA origination, asset management, 25-yr balance-sheet commitment",
+          "Competitors at target level": "Enerparc AG, RWE, EnBW, Iberdrola, Statkraft, community-solar SPVs",
+          "Feasibility": "**LOW**",
+          "Economic rationale": "Requires different company: IPP = asset owner, not contractor. Capital base and investor mandate mismatch. Acquisition (of a small IPP) or JV more realistic than organic. TAM at IPP is €10-30B DE but margin profile is utility-like (6-8% IRR), not contractor-like (10-15% margin)."
+        }
+      ]
+    }
+  ],
+  "entities": [
+    {
+      "market_name": "Solar Electric Power Generation",
+      "naics_code": "221114",
+      "naics_title": "Solar Electric Power Generation",
+      "sector": "utilities",
+      "process_vn": true,
+      "product_bom": false,
+      "cfj_statement": "Convert solar radiation into grid-synchronous electrical energy and deliver it to the wholesale power market as a financed, permitted, operational asset over a 25-35 year lifetime",
+      "top_level": "L7",
+      "output_types": [
+        "utility_ground_mount_pv",
+        "agri_pv",
+        "floating_pv",
+        "ci_rooftop_ge500kw",
+        "community_solar",
+        "pv_bess_hybrid"
+      ],
+      "company_positions": {
+        "primary": {
+          "level": "L5",
+          "name": "BESS EPC",
+          "parent": "L6d Construction & Installation"
+        },
+        "secondary": {
+          "level": "L5",
+          "name": "Utility-Scale PV EPC",
+          "parent": "L6d Construction & Installation"
+        }
+      },
+      "units": [
+        {
+          "name": "Solar Electric Power Generation Ecosystem",
+          "level": "L7",
+          "parent_name": "ROOT",
+          "bom_standard": "Moore 1993",
+          "description": "Industry ecosystem converting solar radiation into grid-delivered electrical energy"
+        },
+        {
+          "name": "Site Development & Permitting",
+          "level": "L6",
+          "parent_name": "Solar Electric Power Generation Ecosystem",
+          "bom_standard": "Maier 1998",
+          "description": "L6a — Secure site rights, yield, permits"
+        },
+        {
+          "name": "Engineering & Design",
+          "level": "L6",
+          "parent_name": "Solar Electric Power Generation Ecosystem",
+          "bom_standard": "Maier 1998",
+          "description": "L6b — Bankable plant design"
+        },
+        {
+          "name": "Procurement",
+          "level": "L6",
+          "parent_name": "Solar Electric Power Generation Ecosystem",
+          "bom_standard": "Maier 1998",
+          "description": "L6c — Source modules, inverters, BESS, BoS, MV"
+        },
+        {
+          "name": "Construction & Installation",
+          "level": "L6",
+          "parent_name": "Solar Electric Power Generation Ecosystem",
+          "bom_standard": "Maier 1998",
+          "description": "L6d — Build the plant on site; Mein Solar segment"
+        },
+        {
+          "name": "Grid Connection & Commissioning",
+          "level": "L6",
+          "parent_name": "Solar Electric Power Generation Ecosystem",
+          "bom_standard": "Maier 1998",
+          "description": "L6e — Synchronize plant under grid code"
+        },
+        {
+          "name": "Operations & Energy Production",
+          "level": "L6",
+          "parent_name": "Solar Electric Power Generation Ecosystem",
+          "bom_standard": "Maier 1998",
+          "description": "L6f — Dispatch energy to the market"
+        },
+        {
+          "name": "O&M and Asset Management",
+          "level": "L6",
+          "parent_name": "Solar Electric Power Generation Ecosystem",
+          "bom_standard": "Maier 1998",
+          "description": "L6g — Maintain availability and yield"
+        },
+        {
+          "name": "Decommissioning & Repowering",
+          "level": "L6",
+          "parent_name": "Solar Electric Power Generation Ecosystem",
+          "bom_standard": "Maier 1998",
+          "description": "L6h — End-of-life extension or retirement"
+        },
+        {
+          "name": "Quality Assurance & Independent Engineering",
+          "level": "L6",
+          "parent_name": "Solar Electric Power Generation Ecosystem",
+          "bom_standard": "Maier 1998",
+          "description": "L6H-QA — Horizontal verification"
+        },
+        {
+          "name": "HSE & Fire Protection",
+          "level": "L6",
+          "parent_name": "Solar Electric Power Generation Ecosystem",
+          "bom_standard": "Maier 1998",
+          "description": "L6H-HSE — Horizontal safety"
+        },
+        {
+          "name": "IT OT and Cybersecurity",
+          "level": "L6",
+          "parent_name": "Solar Electric Power Generation Ecosystem",
+          "bom_standard": "Maier 1998",
+          "description": "L6H-OT — Horizontal cyber + SCADA"
+        },
+        {
+          "name": "Regulatory & Grid-Code Compliance",
+          "level": "L6",
+          "parent_name": "Solar Electric Power Generation Ecosystem",
+          "bom_standard": "Maier 1998",
+          "description": "L6H-REG — Horizontal regulatory"
+        },
+        {
+          "name": "Project Finance & Revenue Stacking",
+          "level": "L6",
+          "parent_name": "Solar Electric Power Generation Ecosystem",
+          "bom_standard": "Maier 1998",
+          "description": "L6H-FIN — Horizontal capital & revenue"
+        },
+        {
+          "name": "BESS EPC",
+          "level": "L5",
+          "parent_name": "Construction & Installation",
+          "bom_standard": "ISO 15288",
+          "description": "Turnkey EPC for large-scale battery energy storage systems; Mein Solar PRIMARY"
+        },
+        {
+          "name": "Utility-Scale PV EPC",
+          "level": "L5",
+          "parent_name": "Construction & Installation",
+          "bom_standard": "ISO 15288",
+          "description": "Turnkey EPC for utility PV plants; Mein Solar SECONDARY"
+        },
+        {
+          "name": "Civil Works Contractor",
+          "level": "L5",
+          "parent_name": "Construction & Installation",
+          "bom_standard": "ISO 15288",
+          "description": "Site civil trades"
+        },
+        {
+          "name": "MV HV Electrical Contractor",
+          "level": "L5",
+          "parent_name": "Construction & Installation",
+          "bom_standard": "ISO 15288",
+          "description": "MV/HV cabling and terminations"
+        },
+        {
+          "name": "Tracker Installation Service",
+          "level": "L5",
+          "parent_name": "Construction & Installation",
+          "bom_standard": "ISO 15288",
+          "description": "Tracker OEM-authorised installation"
+        },
+        {
+          "name": "PV Module Supply",
+          "level": "L5",
+          "parent_name": "Procurement",
+          "bom_standard": "ISO 15288",
+          "description": "Crystalline Si PV module"
+        },
+        {
+          "name": "Inverter Supply",
+          "level": "L5",
+          "parent_name": "Procurement",
+          "bom_standard": "ISO 15288",
+          "description": "String or central PV inverter"
+        },
+        {
+          "name": "Tracker Supply",
+          "level": "L5",
+          "parent_name": "Procurement",
+          "bom_standard": "ISO 15288",
+          "description": "1-axis horizontal tracker"
+        },
+        {
+          "name": "Mounting Structure",
+          "level": "L5",
+          "parent_name": "Procurement",
+          "bom_standard": "ISO 15288",
+          "description": "Fixed-tilt mounting"
+        },
+        {
+          "name": "BESS Container Supply",
+          "level": "L5",
+          "parent_name": "Procurement",
+          "bom_standard": "ISO 15288",
+          "description": "Containerised LFP BESS unit"
+        },
+        {
+          "name": "MV Switchgear & Transformer Supply",
+          "level": "L5",
+          "parent_name": "Procurement",
+          "bom_standard": "ISO 15288",
+          "description": "MV step-up equipment"
+        },
+        {
+          "name": "PCS Supply",
+          "level": "L5",
+          "parent_name": "Procurement",
+          "bom_standard": "ISO 15288",
+          "description": "Bidirectional PCS inverter"
+        },
+        {
+          "name": "Site Prospecting & Land Lease",
+          "level": "L5",
+          "parent_name": "Site Development & Permitting",
+          "bom_standard": "ISO 15288",
+          "description": "Land identification, rights, lease"
+        },
+        {
+          "name": "Environmental Impact Assessment",
+          "level": "L5",
+          "parent_name": "Site Development & Permitting",
+          "bom_standard": "ISO 15288",
+          "description": "UVP per BImSchG"
+        },
+        {
+          "name": "Permitting Service",
+          "level": "L5",
+          "parent_name": "Site Development & Permitting",
+          "bom_standard": "ISO 15288",
+          "description": "Baugenehmigung + EEG registration"
+        },
+        {
+          "name": "Yield Simulation Software",
+          "level": "L5",
+          "parent_name": "Engineering & Design",
+          "bom_standard": "ISO 15288",
+          "description": "PVsyst / PVCase / RatedPower"
+        },
+        {
+          "name": "Plant Design Engineering Service",
+          "level": "L5",
+          "parent_name": "Engineering & Design",
+          "bom_standard": "ISO 15288",
+          "description": "Independent engineer or in-house EPC design"
+        },
+        {
+          "name": "Grid Connection Study Service",
+          "level": "L5",
+          "parent_name": "Engineering & Design",
+          "bom_standard": "ISO 15288",
+          "description": "FGW-accredited grid study"
+        },
+        {
+          "name": "DSO Grid Interconnection Contract",
+          "level": "L5",
+          "parent_name": "Grid Connection & Commissioning",
+          "bom_standard": "ISO 15288",
+          "description": "Regional DSO connection agreement"
+        },
+        {
+          "name": "FGW-Accredited Plant Certification",
+          "level": "L5",
+          "parent_name": "Grid Connection & Commissioning",
+          "bom_standard": "ISO 15288",
+          "description": "FGW TR3/TR8 certification body"
+        },
+        {
+          "name": "Commissioning & Performance Testing",
+          "level": "L5",
+          "parent_name": "Grid Connection & Commissioning",
+          "bom_standard": "ISO 15288",
+          "description": "Acceptance testing per VDE-AR-N 4110"
+        },
+        {
+          "name": "SCADA / Plant Monitoring Platform",
+          "level": "L5",
+          "parent_name": "Operations & Energy Production",
+          "bom_standard": "ISO 15288",
+          "description": "meteocontrol / skytron / FusionSolar"
+        },
+        {
+          "name": "EMS / Dispatch Platform",
+          "level": "L5",
+          "parent_name": "Operations & Energy Production",
+          "bom_standard": "ISO 15288",
+          "description": "Charge/discharge + market dispatch"
+        },
+        {
+          "name": "Power Offtake / Trading Service",
+          "level": "L5",
+          "parent_name": "Operations & Energy Production",
+          "bom_standard": "ISO 15288",
+          "description": "PPA, EPEX, direct marketing"
+        },
+        {
+          "name": "Forecasting Service",
+          "level": "L5",
+          "parent_name": "Operations & Energy Production",
+          "bom_standard": "ISO 15288",
+          "description": "Day-ahead / intraday yield forecast"
+        },
+        {
+          "name": "Technical O&M Service",
+          "level": "L5",
+          "parent_name": "O&M and Asset Management",
+          "bom_standard": "ISO 15288",
+          "description": "Preventive + corrective maintenance"
+        },
+        {
+          "name": "Module Cleaning & Vegetation Service",
+          "level": "L5",
+          "parent_name": "O&M and Asset Management",
+          "bom_standard": "ISO 15288",
+          "description": "Soiling removal and grounds"
+        },
+        {
+          "name": "Asset Management Software",
+          "level": "L5",
+          "parent_name": "O&M and Asset Management",
+          "bom_standard": "ISO 15288",
+          "description": "greenbyte / QOS / 3megawatt"
+        },
+        {
+          "name": "Repowering / Retrofit Service",
+          "level": "L5",
+          "parent_name": "Decommissioning & Repowering",
+          "bom_standard": "ISO 15288",
+          "description": "Module swap / AC rebuild for post-EEG parks"
+        },
+        {
+          "name": "Li-ion Battery Container",
+          "level": "L4",
+          "parent_name": "BESS EPC",
+          "bom_standard": "INCOSE",
+          "description": "LFP modules + BMS + thermal + fire suppression"
+        },
+        {
+          "name": "Power Conversion System",
+          "level": "L4",
+          "parent_name": "BESS EPC",
+          "bom_standard": "INCOSE",
+          "description": "4-quadrant DC-AC inverter"
+        },
+        {
+          "name": "Energy Management System",
+          "level": "L4",
+          "parent_name": "BESS EPC",
+          "bom_standard": "INCOSE",
+          "description": "Dispatch + SCADA software"
+        },
+        {
+          "name": "MV Transformer & Switchgear",
+          "level": "L4",
+          "parent_name": "BESS EPC",
+          "bom_standard": "INCOSE",
+          "description": "Step-up to 10/20 kV"
+        },
+        {
+          "name": "Grid Protection Relay",
+          "level": "L4",
+          "parent_name": "BESS EPC",
+          "bom_standard": "INCOSE",
+          "description": "VDE-AR-N 4110 + NA-Schutz"
+        },
+        {
+          "name": "Site Civil Works",
+          "level": "L4",
+          "parent_name": "BESS EPC",
+          "bom_standard": "INCOSE",
+          "description": "Foundations, fencing, trenches"
+        },
+        {
+          "name": "PV Module Array",
+          "level": "L4",
+          "parent_name": "Utility-Scale PV EPC",
+          "bom_standard": "INCOSE",
+          "description": "Bifacial or monofacial array"
+        },
+        {
+          "name": "Central / String Inverter",
+          "level": "L4",
+          "parent_name": "Utility-Scale PV EPC",
+          "bom_standard": "INCOSE",
+          "description": "DC-AC conversion"
+        },
+        {
+          "name": "Mounting Structure / Tracker",
+          "level": "L4",
+          "parent_name": "Utility-Scale PV EPC",
+          "bom_standard": "INCOSE",
+          "description": "Fixed-tilt or 1-axis"
+        },
+        {
+          "name": "DC Combiner Box",
+          "level": "L4",
+          "parent_name": "Utility-Scale PV EPC",
+          "bom_standard": "INCOSE",
+          "description": "String aggregation"
+        },
+        {
+          "name": "Plant MV Transformer",
+          "level": "L4",
+          "parent_name": "Utility-Scale PV EPC",
+          "bom_standard": "INCOSE",
+          "description": "Inverter-to-MV step-up"
+        },
+        {
+          "name": "SCADA Gateway",
+          "level": "L4",
+          "parent_name": "Utility-Scale PV EPC",
+          "bom_standard": "INCOSE",
+          "description": "Plant telemetry"
+        }
+      ],
+      "l5_alternatives": {
+        "BESS EPC": [
+          {
+            "name": "Fluence",
+            "share_pct": 20,
+            "type": "pure_play"
+          },
+          {
+            "name": "Tesla Megapack turnkey",
+            "share_pct": 15,
+            "type": "oem_turnkey"
+          },
+          {
+            "name": "Sungrow PowerTitan integrators",
+            "share_pct": 15,
+            "type": "oem_integrator"
+          },
+          {
+            "name": "Wärtsilä Energy",
+            "share_pct": 10,
+            "type": "pure_play"
+          },
+          {
+            "name": "Voltfang",
+            "share_pct": 5,
+            "type": "second_life"
+          },
+          {
+            "name": "Tesvolt EPC",
+            "share_pct": 5,
+            "type": "pure_play"
+          },
+          {
+            "name": "Solar EPCs extending (Mein Solar, Enerparc, BayWa r.e.)",
+            "share_pct": 15,
+            "type": "solar_extension"
+          },
+          {
+            "name": "In-house IPP teams",
+            "share_pct": 15,
+            "type": "in_house"
+          }
+        ],
+        "Utility-Scale PV EPC": [
+          {
+            "name": "BayWa r.e.",
+            "share_pct": 30,
+            "type": "incumbent"
+          },
+          {
+            "name": "Enerparc",
+            "share_pct": 15,
+            "type": "incumbent"
+          },
+          {
+            "name": "Goldbeck Solar",
+            "share_pct": 10,
+            "type": "incumbent"
+          },
+          {
+            "name": "IBC Solar",
+            "share_pct": 8,
+            "type": "incumbent"
+          },
+          {
+            "name": "Belectric",
+            "share_pct": 7,
+            "type": "incumbent"
+          },
+          {
+            "name": "Wirsol",
+            "share_pct": 5,
+            "type": "incumbent"
+          },
+          {
+            "name": "Greentech",
+            "share_pct": 3,
+            "type": "incumbent"
+          },
+          {
+            "name": "Mein Solar",
+            "share_pct": 2,
+            "type": "incumbent"
+          },
+          {
+            "name": "Long-tail local EPCs",
+            "share_pct": 20,
+            "type": "fragmented"
+          }
+        ]
+      },
+      "adjacency_04e_direct_transfer_low_medium": [
+        {
+          "unit": "Utility-Scale PV EPC",
+          "level": "L5",
+          "has_it": "YES",
+          "effort": "LOW",
+          "rationale": "Incumbent business, DE references in place"
+        },
+        {
+          "unit": "BESS EPC",
+          "level": "L5",
+          "has_it": "YES",
+          "effort": "LOW",
+          "rationale": "Current focal product, 4.5 MW / 9 MWh reference"
+        },
+        {
+          "unit": "C&I Rooftop PV EPC",
+          "level": "L5",
+          "has_it": "YES",
+          "effort": "LOW",
+          "rationale": "Existing PV competence transfers"
+        },
+        {
+          "unit": "Yield / Plant Design Engineering",
+          "level": "L5",
+          "has_it": "YES",
+          "effort": "LOW",
+          "rationale": "In-house EPC engineering"
+        },
+        {
+          "unit": "Commissioning & Performance Testing",
+          "level": "L5",
+          "has_it": "YES",
+          "effort": "LOW",
+          "rationale": "FGW TR8 + DSO acceptance already performed"
+        },
+        {
+          "unit": "Site Prospecting & Land Lease",
+          "level": "L5",
+          "has_it": "PARTIAL",
+          "effort": "MEDIUM",
+          "rationale": "PV developer relationships; land-acquisition is separate skill"
+        },
+        {
+          "unit": "Technical O&M Service",
+          "level": "L5",
+          "has_it": "PARTIAL",
+          "effort": "MEDIUM",
+          "rationale": "PV O&M yes, BESS O&M + 24/7 dispatch new"
+        },
+        {
+          "unit": "EMS / Dispatch Platform",
+          "level": "L5",
+          "has_it": "PARTIAL",
+          "effort": "MEDIUM",
+          "rationale": "Platform selection yes, building own platform no"
+        },
+        {
+          "unit": "Repowering / Retrofit Service",
+          "level": "L5",
+          "has_it": "PARTIAL",
+          "effort": "MEDIUM",
+          "rationale": "EPC methodology transfers; no 20-yr install base yet"
+        },
+        {
+          "unit": "FGW-Accredited Plant Certification",
+          "level": "L5",
+          "has_it": "PARTIAL",
+          "effort": "MEDIUM",
+          "rationale": "Independence conflict with EPC role; separate legal entity needed"
+        }
+      ],
+      "adjacency_04f_strategic_expansion_within_L6d": [
+        {
+          "adjacent_l5": "PV+BESS Hybrid EPC (bundled)",
+          "incumbents": [
+            "Few pure-plays",
+            "Most IPPs split contracts"
+          ],
+          "gap": "None - both halves in house; only bundle contract + warranty wrapper",
+          "investment": "6 mo bundling effort",
+          "strategic_fit": 9,
+          "rationale": "Direct extension of current positioning; unique differentiator"
+        },
+        {
+          "adjacent_l5": "Agri-PV EPC",
+          "incumbents": [
+            "BayWa r.e.",
+            "Next2Sun",
+            "Goldbeck Solar"
+          ],
+          "gap": "Elevated-row tracker design, farmer contracting",
+          "investment": "6-12 mo, ~EUR 0.3M",
+          "strategic_fit": 7,
+          "rationale": "~65% capability overlap; strong DE regulatory tailwind"
+        },
+        {
+          "adjacent_l5": "Tracker Installation Service",
+          "incumbents": [
+            "Nextracker authorised installers"
+          ],
+          "gap": "Tracker-specific rigging, OEM training",
+          "investment": "6-12 mo, ~EUR 0.5M",
+          "strategic_fit": 7,
+          "rationale": "~60% overlap; natural add-on within PV EPC"
+        },
+        {
+          "adjacent_l5": "MV / HV Electrical Contractor",
+          "incumbents": [
+            "Spie",
+            "Bilfinger"
+          ],
+          "gap": "Self-perform certified MV crews at scale",
+          "investment": "12-18 mo, ~EUR 1-2M",
+          "strategic_fit": 6,
+          "rationale": "~55% overlap; margin-enhancing vertical integration"
+        },
+        {
+          "adjacent_l5": "Civil Works Contractor",
+          "incumbents": [
+            "Strabag",
+            "Max Bögl"
+          ],
+          "gap": "Excavator fleet + self-perform civil crews",
+          "investment": "12-18 mo, ~EUR 1-2M",
+          "strategic_fit": 4,
+          "rationale": "~40% overlap; dilutive to EPC value narrative"
+        },
+        {
+          "adjacent_l5": "Floating PV EPC",
+          "incumbents": [
+            "BayWa r.e.",
+            "Ciel & Terre",
+            "Sunlit Sea"
+          ],
+          "gap": "Floating raft design, anchoring, marine cabling",
+          "investment": "12-18 mo, ~EUR 1M",
+          "strategic_fit": 3,
+          "rationale": "~35% overlap; niche; excluded"
+        }
+      ],
+      "adjacency_04g_vertical_move_up": [
+        {
+          "from": "L5 BESS EPC + L5 Utility-Scale PV EPC",
+          "to": "L6d Construction & Installation (general contractor)",
+          "must_add": [
+            "Self-perform civil crews",
+            "MV electrical crews",
+            "GC license",
+            "Bonding capacity"
+          ],
+          "competitors_at_target": [
+            "Enerparc",
+            "BayWa r.e.",
+            "Goldbeck Solar",
+            "Belectric"
+          ],
+          "feasibility": "MEDIUM",
+          "economic_rationale": "Already GC on most projects; gap is balance-sheet depth. Modest TAM step-up: ~EUR 1.5B DE EPC vs ~EUR 0.4B BESS-EPC sub-segment"
+        },
+        {
+          "from": "L5 EPC",
+          "to": "L6 full lifecycle IPP / asset owner",
+          "must_add": [
+            "Project finance",
+            "PPA origination",
+            "25-yr asset-management commitment",
+            "Insurance / balance sheet"
+          ],
+          "competitors_at_target": [
+            "Enerparc AG",
+            "RWE",
+            "EnBW",
+            "Iberdrola",
+            "Statkraft"
+          ],
+          "feasibility": "LOW",
+          "economic_rationale": "Requires different company type. TAM EUR 10-30B DE but margin profile utility-like (6-8% IRR) vs contractor-like (10-15%). Acquisition or JV more rational than organic."
+        }
+      ],
+      "qa": {
+        "Q1_cfj_industry_level": "PASS",
+        "Q2_no_orphans": "PASS",
+        "Q3_valid_transitions": "PASS",
+        "Q4_l4_children_ge_2": "PASS",
+        "Q5_no_solution_specific_l7_l6": "PASS",
+        "Q6_naming_test": "PASS",
+        "Q7_unit_count_in_range": "PASS (≈38)"
+      }
+    }
+  ],
+  "has_bom": true,
+  "naics_sector_type": "non_manufacturing"
+}

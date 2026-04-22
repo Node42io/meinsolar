@@ -1,0 +1,1202 @@
+{
+  "id": "VN_electric_power_distribution_ibisworld_ht",
+  "title": "Value Network — NAICS 221122 Electric Power Distribution",
+  "type": "value_network",
+  "market_slug": "electric_power_distribution_ibisworld_ht",
+  "is_per_market": true,
+  "sections": [
+    {
+      "title": "Part A — CFJ & Top-of-Tree",
+      "content": "| Field | Value |\n|---|---|\n| `naics_code` | 221122 |\n| `naics_title` | Electric Power Distribution |\n| `sector` | Utilities (NAICS 22) — Service/Ecosystem |\n| **CFJ (industry-level)** | Deliver bulk electrical energy from the transmission interface to end-use premises at regulated voltage, frequency, reliability, and price |\n| `top_level` | L7 |\n| `vn_type` | Process VN (no Product BOM — output is a delivered service, not an artifact) |\n\n**Grounding:** DSOs receive HV energy from TSO, step down through MV (1–60 kV) and LV (<1 kV), meter it, bill it, and must concurrently run planning, protection, maintenance, and compliance. Germany's 880+ DSOs operate under EnWG + §13/§14a, VDE-AR-N 4100 series, and increasingly procure flexibility/storage to defer reinforcement. Fluence's 250 MW Kupferzell Grid Booster (TransnetBW, 2024–2026) and Bayernwerk/LEW feed-in-socket pilots (2025) confirm BESS as a procured L5 asset for the distribution/transmission interface.\n\n---"
+    },
+    {
+      "title": "Part B — L7 & L6 Hierarchy",
+      "content": "### L7\n\n| Level | Name | Description |\n|---|---|---|\n| L7 | Electric Power Distribution Ecosystem | End-to-end delivery of electricity from transmission interface to premises, under regulated reliability/quality |\n\n### L6 — Core process steps (sequential)\n\n| Level | Name | Job family (verb + object) | Serves |\n|---|---|---|---|\n| L6a | HV/MV Interface & Step-Down | Transform HV supply into MV distribution voltage | All deliveries |\n| L6b | Primary Distribution (MV Network) | Transport energy across MV feeders to secondary substations | All deliveries |\n| L6c | Secondary Distribution (LV Network) | Step down to LV and deliver to premises | Residential, small C&I |\n| L6d | Connection, Metering & Billing | Meter energy flow and charge network tariffs | All connected customers |\n| L6e | Grid Planning & Connection Mgmt | Plan capacity and admit new generators/loads | New connections, reinforcement |\n| L6f | **Flexibility & Congestion Mgmt** | Dispatch flexibility/storage to relieve MV/LV constraints | Congested feeders, redispatch, §14a, curtailment defer — **Mein Solar L5 sits here** |\n\n### L6 — Horizontal (cross-cutting)\n\n| Level | Name (H) | Job family |\n|---|---|---|\n| L6H-PQ | Power Quality & Protection (H) | Maintain voltage, frequency, fault isolation across all core steps |\n| L6H-MAINT | Asset Maintenance & Outage Response (H) | Inspect, maintain, and restore assets 24/7 |\n| L6H-OT | OT / SCADA / DMS / ADMS (H) | Monitor and control grid state in real time |\n| L6H-HSE | HSE & Regulatory Compliance (H) | Ensure EnWG, VDE-AR-N, arbeitsschutz, environmental compliance |\n| L6H-CUST | Customer Operations & Market Access (H) | Customer service, outage comms, flex-market prequal |\n\n---"
+    },
+    {
+      "title": "Part C — L5 Equipment per L6 (alternatives, conf, source)",
+      "content": "Confidence: HIGH = AHRI/industry reports; MEDIUM = analyst/single source; LOW = inference.\n\n### L6a — HV/MV Interface & Step-Down\n\n| L5 | Alternatives (share %) | Conf | Source |\n|---|---|---|---|\n| HV/MV Power Transformers | Siemens Energy 25%, Hitachi Energy 20%, SGB-SMIT 18%, GE Vernova 12%, Other 25% | MED | Transformer market reports |\n| HV Circuit Breakers & Switchgear | Siemens 30%, Hitachi Energy 22%, ABB 18%, GE Vernova 12%, Other 18% | MED | ABB/industry trade press |\n| Protection Relays (HV) | Siemens Siprotec 28%, Hitachi MicroSCADA 18%, GE Multilin 15%, SEL 20%, Other 19% | HIGH | IEC 61850 vendor surveys |\n\n### L6b — Primary Distribution (MV)\n\n| L5 | Alternatives | Conf | Source |\n|---|---|---|---|\n| MV Switchgear (GIS/AIS, SF6-free) | Siemens Blue 25%, ABB 22%, Schneider GM6 20%, Hitachi Energy 15%, Eaton 10%, Other 8% | MED | DSO tender awards DE |\n| MV Distribution Transformers | SGB-SMIT 25%, Siemens 20%, Schneider 15%, ABB 12%, Ormazabal 10%, Other 18% | MED | VIK/BDEW data |\n| MV Overhead Lines & Pylons | Bystronic, Europoles, Krampe, regional EPC — fragmented | LOW | inference |\n| MV Underground Cables | Nexans 25%, Prysmian 22%, NKT 18%, LS Cable 8%, Other 27% | HIGH | cable-market reports |\n| Ring Main Units (RMU) | Schneider RM6 25%, ABB SafePlus 20%, Siemens 18%, Ormazabal 15%, Eaton 10%, Other 12% | MED | |\n\n### L6c — Secondary Distribution (LV)\n\n| L5 | Alternatives | Conf | Source |\n|---|---|---|---|\n| LV Distribution Boards | Schneider 30%, ABB 20%, Hager 18%, Siemens 15%, Eaton 10%, Other 7% | MED | |\n| LV Cables & Connectors | Nexans, Prysmian, NKT, Lapp — commodity | LOW | |\n| Pole-Mounted / Pad-Mount Transformers | SGB-SMIT, Siemens, Schneider — regional | LOW | |\n| Street-Cabinet Smart Controllers | Siemens LV-Grid 30%, Gridhound 15%, Digi-Sensors 10%, Other 45% | LOW | DE pilot programs |\n\n### L6d — Connection, Metering & Billing\n\n| L5 | Alternatives | Conf | Source |\n|---|---|---|---|\n| Smart Meters (iMSys) | EMH 28%, Landis+Gyr 22%, Iskraemeco 15%, Itron 12%, PPC 10%, Other 13% | HIGH | BSI iMSys rollout DE |\n| MDM / Billing Systems | SAP IS-U 35%, Kisters 15%, Schleupen 12%, In-house 20%, Other 18% | MED | |\n| Smart Meter Gateway (SMGW) | PPC 35%, Theben 25%, Sagemcom 15%, EMH 10%, Other 15% | HIGH | BSI certification |\n\n### L6e — Grid Planning & Connection\n\n| L5 | Alternatives | Conf | Source |\n|---|---|---|---|\n| Grid Planning Software (load-flow, hosting-capacity) | Siemens PSS/E 25%, DIgSILENT PowerFactory 25%, Neplan 15%, Other 35% | HIGH | industry tool surveys |\n| Hosting-Capacity / Feed-in-Socket Platforms | envelio 30%, gridX 15%, VENIOS 10%, envalue 10%, In-house 35% | MED | Bayernwerk/LEW pilots |\n| Connection Application Portals | In-house 60%, Next Level 15%, Schleupen 10%, Other 15% | LOW | |\n\n### L6f — Flexibility & Congestion Management — ← **MEIN SOLAR L5 SEGMENT**\n\n| L5 | Alternatives | Conf | Source |\n|---|---|---|---|\n| **Grid-Scale Battery Storage (Netzbooster / Feeder-Relief BESS)** | Fluence 30%, Tesla Megapack 15%, Sungrow PowerTitan 12%, Wärtsilä 8%, Nidec ASI 5%, Hitachi Energy 5%, **EPC integrators (incl. Mein Solar) 10%**, Other 15% | MED | Fluence-Kupferzell, ess-news.com, EDF 2025 DSO tender |\n| Flexibility Aggregation / VPP Platforms | Next Kraftwerke 20%, Entrix 12%, Enspired 8%, Flexpower 8%, Tiko 6%, In-house 30%, Other 16% | MED | |\n| Mechanical FACTS / STATCOM / SVC | Hitachi Energy 30%, Siemens Energy 25%, GE Vernova 18%, Mitsubishi 12%, Other 15% | MED | |\n| Dynamic Line Rating (DLR) Sensors | LineVision 25%, Ampacimon 20%, Heimdall 15%, Other 40% | LOW | |\n| Redispatch 2.0 Software | Siemens Spectrum 25%, GE PowerOn 18%, In-house 30%, Other 27% | LOW | BNetzA redispatch |\n\n### Horizontal L6H L5 (condensed)\n\n| Horizontal | L5 | Sample alternatives |\n|---|---|---|\n| L6H-PQ | Digital Protection Relays | Siemens, Hitachi, SEL, GE |\n| L6H-PQ | Power-Quality Monitors | Dewetron, Elspec, Janitza |\n| L6H-MAINT | Condition-Monitoring Systems | Doble, Camlin, Dynamic Ratings |\n| L6H-MAINT | Mobile Substations & Tools | Siemens, ABB, Megger |\n| L6H-OT | SCADA/DMS/ADMS | Siemens Spectrum, GE GridOS, Hitachi Lumada, Survalent |\n| L6H-OT | IEC 61850 Substation Automation | Siemens, Hitachi, GE, SEL |\n| L6H-HSE | Cybersecurity (IEC 62443 / BSI KRITIS) | Rhebo, Claroty, Nozomi, Dragos |\n| L6H-CUST | Outage & CRM | SAP, Salesforce, In-house |\n\n---"
+    },
+    {
+      "title": "Part D — L4 Subsystems under Mein Solar's L5 (Grid-Scale BESS for DSOs)",
+      "content": "| L4 | Description | Typical suppliers |\n|---|---|---|\n| Battery Module Rack | LFP prismatic racks + BMS/BAMS/BCMS | CATL, EVE, BYD, Sungrow |\n| Power Conversion System (PCS) | 4-quadrant bidirectional inverter, 97–98% eff., grid-forming capable | SMA Sunny Central Storage, Sungrow, Power Electronics, Ingeteam |\n| MV Step-Up Transformer | 0.4/20 kV, ≥5 MVA, container-adjacent | SGB-SMIT, Siemens, Schneider |\n| MV Switchgear & Protection | SF6-free RMU + IEC 61850 protection | Schneider, ABB, Siemens |\n| Thermal Management | Liquid-cooling loop + HVAC | integrated in container (Sungrow, CATL EnerC) |\n| Fire Suppression | NOVEC 1230 / aerosol + deflagration venting | Siemens, Fike, Siex |\n| Energy Management System (EMS) | Dispatch optimizer + SoC mgmt + market/DSO setpoint interface | AutoGrid (Schneider), Fluence Mosaic/Nispera, Entrix, In-house |\n| SCADA / DSO Uplink | IEC 61850 / IEC 60870-5-104 to DMS | Siemens, Hitachi, Bachmann |\n| Civil Works | Reinforced foundation, fencing, lightning protection | Regional civil EPC |\n| Grid-Code Certification Dossier | VDE-AR-N 4110 Type B plant cert, FGW TR3/TR8 | TÜV NORD, TÜV SÜD, FGH |\n\n---"
+    },
+    {
+      "title": "Part E — Company Position Marking (required)",
+      "content": "```\nL7  Electric Power Distribution Ecosystem\n  L6a  HV/MV Interface & Step-Down\n  L6b  Primary Distribution (MV Network)\n  L6c  Secondary Distribution (LV Network)\n  L6d  Connection, Metering & Billing\n  L6e  Grid Planning & Connection Mgmt\n  L6f  Flexibility & Congestion Management\n    L5  Grid-Scale Battery Storage (Netzbooster / Feeder-Relief BESS)  ← MEIN SOLAR PRIMARY POSITION\n    L5  Flexibility Aggregation / VPP Platforms\n    L5  Mechanical FACTS / STATCOM / SVC\n    L5  Dynamic Line Rating Sensors\n    L5  Redispatch 2.0 Software\n  L6H-PQ   Power Quality & Protection (H)\n  L6H-MAINT Asset Maintenance & Outage Response (H)\n  L6H-OT   OT / SCADA / DMS / ADMS (H)\n  L6H-HSE  HSE & Regulatory Compliance (H)\n  L6H-CUST Customer Operations & Market Access (H)\n```\n\n**Mein Solar secondary positions:** none inside this VN — Mein Solar does not supply transformers, switchgear, SCADA, or aggregation software on its own. Co-located PV+BESS appears in NAICS 221114, not here.\n\n---"
+    },
+    {
+      "title": "Part F — Output Type Activation (key rows)",
+      "content": "| L6 | MV feeder congestion | HV/MV bottleneck | LV voltage-band violations | New IPP/load connection | Curtailment recovery |\n|---|---|---|---|---|---|\n| L6a Step-Down | x | x | | x | |\n| L6b Primary MV | x | x | | x | x |\n| L6c Secondary LV | | | x | x | |\n| L6d Metering | x | x | x | x | x |\n| L6e Planning | x | x | x | x | x |\n| **L6f Flex/Congestion (BESS)** | **x** | **x** | **x** | **x** | **x** |\n\nL6f is activated by **all** DSO problem types → commodity-level cross-cutting process, but the L5 alternatives inside it are NOT commodities (Netzbooster BESS requires deep integration expertise). Domain moat sits at the L5, not at the L6 level.\n\n---"
+    },
+    {
+      "title": "Part G — Strategic Adjacency (04e / 04f / 04g, condensed)",
+      "content": "### 04e — Direct Competence Transfer Scan (LOW/MEDIUM only, whole VN)\n\n| VN Unit | Level | Competence required | Company has? | Adapt effort | Rationale |\n|---|---|---|---|---|---|\n| Mechanical FACTS / STATCOM / SVC | L5 | MV coupling, power electronics, civil, cert | PARTIAL | MEDIUM | Same MV + grid-code skills; static-VAR power electronics stack is new |\n| Dynamic Line Rating sensors | L5 | MV field work, OT integration | PARTIAL | MEDIUM | Install skills transfer; sensor vendor partnership needed |\n| MV Switchgear (retrofit EPC) | L5 | MV install, protection relay config | PARTIAL | MEDIUM | EPC skills apply; not a product-build capability but install-scope fit |\n| Hosting-Capacity / Feed-in-Socket platforms | L5 | Grid-planning software, ML on load-flow | NO | HIGH | excluded |\n| Redispatch 2.0 software | L5 | Utility IT, regulated IT procurement | NO | HIGH | excluded |\n| Smart Meter Gateway / MDM | L5 | BSI-certified firmware, utility IT | NO | HIGH | excluded |\n\n### 04f — Strategic Adjacency Expansion (within L6f segment only)\n\nMein Solar's L6f sibling L5 units:\n\n| Adjacent L5 | Current incumbents | Competence gap | Invest to bridge | Fit 1–10 | Rationale (overlap %) |\n|---|---|---|---|---|---|\n| Mechanical FACTS / STATCOM / SVC | Hitachi Energy, Siemens Energy, GE, Mitsubishi | Power-electronics product line, reactive-power algorithms | 18–24 mo, €3–5M | 5 | ~40% overlap (MV + civil + cert); product IP is gap — fit as EPC partner, not OEM |\n| Flexibility Aggregation / VPP | Next Kraftwerke, Entrix, Enspired, Flexpower, Tiko | Wholesale/BM trading desk, software platform | 24–36 mo, >€5M | 3 | ~15% overlap; pure software+trading play — excluded (below 30% threshold) |\n| Dynamic Line Rating sensors | LineVision, Ampacimon, Heimdall | Sensor hardware + pattern analytics | 12–18 mo, €1–2M | 4 | ~35% overlap (MV install, OT interface); product-OEM pivot required |\n| Redispatch 2.0 Software | Siemens, GE, in-house utilities | Utility IT, regulated procurement, long sales cycle | >24 mo, >€3M | 2 | <15% overlap — excluded |\n\n**Net:** one credible L6f adjacency (FACTS/STATCOM as EPC partner of power-electronics OEM); remainder is software/trading and is off-mission.\n\n### 04g — Vertical Move-Up (L5 → L6f)\n\n| Current | Target | What must be added | Incumbents at L6f | Feasibility | Economic rationale |\n|---|---|---|---|---|---|\n| L5 Netzbooster BESS (one of several alternatives) | L6f Flexibility & Congestion Mgmt integrator (owns the full DSO flex stack) | Aggregation/VPP platform, STATCOM line, DLR sensing, redispatch software, utility-grade trading/IT | Siemens Grid Software, Hitachi Energy, Fluence Digital, Next Kraftwerke (aggregation slice) | **LOW** | L6f TAM ~10× L5-BESS TAM in DE, but move-up requires utility-IT + trading-desk + software-OEM org layer Mein Solar does not have. Organic move is blocked; partner-of-record role inside a Siemens/Hitachi-led consortium is the realistic path. |\n\n---"
+    },
+    {
+      "title": "Part H — QA Checklist (7 hard/soft checks)",
+      "content": "| # | Check | Status |\n|---|---|---|\n| Q1 | CFJ industry-level (no Mein Solar, no BESS ref) | PASS |\n| Q2 | No orphan nodes | PASS |\n| Q3 | Valid L7→L6→L5→L4 transitions | PASS |\n| Q4 | ≥2 L4 children per L5 (spot-check L6f BESS: 10) | PASS |\n| Q5 | L7/L6 not solution-specific | PASS |\n| Q6 | Three-question naming test (spot 5) | PASS (short, industry-standard) |\n| Q7 | Unit count in 15–60 range | PASS (≈38 units incl. L4) |\n\n---"
+    },
+    {
+      "title": "Part I — Sources",
+      "content": "- [IBISWorld — NAICS 221122 Electric Power Distribution](https://www.ibisworld.com/classifications/naics/221122/electric-power-distribution/)\n- [US EPA — Electric Power Generation, Transmission and Distribution (NAICS 2211)](https://www.epa.gov/regulatory-information-sector/electric-power-generation-transmission-and-distribution-naics-2211)\n- [Fluence — 250 MW Kupferzell Grid Booster (TransnetBW), 2024 groundbreaking, 2025 battery install](https://ir.fluenceenergy.com/news-releases/news-release-details/pioneers-energy-security-fluence-and-transnetbw-start)\n- [Energy-Storage.news — Fluence Grid Booster 250 MW Germany](https://www.energy-storage.news/fluence-building-250mw-grid-booster-battery-storage-system-for-german-tso-transnetbw/)\n- [ess-news — EDF wins decentralized dual-use grid booster battery project Germany (Dec 2025)](https://www.ess-news.com/2025/12/15/edf-wins-decentralized-dual-use-grid-booster-battery-project-in-germany/)\n- [ess-news — Batteries key to German solution to grid capacity constraints (Mar 2025)](https://www.ess-news.com/2025/03/20/batteries-key-to-german-solution-to-grid-capacity-constraints/)\n- [CDM Smith — Netzbooster Kupferzell project](https://www.cdmsmith.com/en-eu/client-solutions/projects/netzbooster-kupferzell)\n- [EnBW — \"Netzbooster\" for the high-voltage grid](https://www.enbw.com/company/topics/gasnetze/grid-booster-for-the-high-voltage-grid.html)\n- [White & Case — BESS changing regulatory framework Germany](https://www.whitecase.com/insight-alert/battery-energy-storage-systems-changing-regulatory-framework-germany)\n- [Montel — Battery Storage Germany markets & policy 2025](https://montel.energy/resources/blog/battery-storage-in-germany-markets-policy-and-what-to-watch-in-2025)\n\n---"
+    },
+    {
+      "title": "Structured Data",
+      "content": "```json\n{\n  \"component\": \"value_network_construction\",\n  \"source_perspective\": \"IBISWorld / DSO operator view (hardware tier)\",\n  \"naics_code\": \"221122\",\n  \"naics_title\": \"Electric Power Distribution\",\n  \"sector\": \"Utilities\",\n  \"cfj_statement\": \"Deliver bulk electrical energy from the transmission interface to end-use premises at regulated voltage, frequency, reliability, and price\",\n  \"top_level\": \"L7\",\n  \"vn_type\": \"process_vn\",\n  \"product_bom_applicable\": false,\n  \"company\": {\n    \"name\": \"Mein Solar GmbH\",\n    \"product\": \"EPC für Großbatteriespeicher\",\n    \"primary_position\": {\n      \"l5_name\": \"Grid-Scale Battery Storage (Netzbooster / Feeder-Relief BESS)\",\n      \"l6_parent\": \"L6f Flexibility & Congestion Management\"\n    },\n    \"secondary_positions\": []\n  },\n  \"units\": [\n    {\"name\": \"Electric Power Distribution Ecosystem\", \"level\": \"L7\", \"bom_standard\": \"Moore 1993\", \"parent_name\": \"ROOT\", \"description\": \"End-to-end delivery of electricity from transmission interface to premises\"},\n\n    {\"name\": \"HV/MV Interface & Step-Down\", \"level\": \"L6a\", \"bom_standard\": \"Maier 1998\", \"parent_name\": \"Electric Power Distribution Ecosystem\", \"description\": \"Transform HV supply into MV distribution voltage\"},\n    {\"name\": \"Primary Distribution (MV Network)\", \"level\": \"L6a\", \"bom_standard\": \"Maier 1998\", \"parent_name\": \"Electric Power Distribution Ecosystem\", \"description\": \"Transport energy across MV feeders to secondary substations\"},\n    {\"name\": \"Secondary Distribution (LV Network)\", \"level\": \"L6a\", \"bom_standard\": \"Maier 1998\", \"parent_name\": \"Electric Power Distribution Ecosystem\", \"description\": \"Step down to LV and deliver to premises\"},\n    {\"name\": \"Connection, Metering & Billing\", \"level\": \"L6a\", \"bom_standard\": \"Maier 1998\", \"parent_name\": \"Electric Power Distribution Ecosystem\", \"description\": \"Meter energy flow and charge network tariffs\"},\n    {\"name\": \"Grid Planning & Connection Management\", \"level\": \"L6a\", \"bom_standard\": \"Maier 1998\", \"parent_name\": \"Electric Power Distribution Ecosystem\", \"description\": \"Plan capacity and admit new generators/loads\"},\n    {\"name\": \"Flexibility & Congestion Management\", \"level\": \"L6a\", \"bom_standard\": \"Maier 1998\", \"parent_name\": \"Electric Power Distribution Ecosystem\", \"description\": \"Dispatch flexibility/storage to relieve MV/LV constraints\"},\n\n    {\"name\": \"Power Quality & Protection (H)\", \"level\": \"L6a\", \"bom_standard\": \"Maier 1998\", \"parent_name\": \"Electric Power Distribution Ecosystem\", \"description\": \"Horizontal — maintain voltage, frequency, fault isolation\"},\n    {\"name\": \"Asset Maintenance & Outage Response (H)\", \"level\": \"L6a\", \"bom_standard\": \"Maier 1998\", \"parent_name\": \"Electric Power Distribution Ecosystem\", \"description\": \"Horizontal — inspect, maintain, restore assets 24/7\"},\n    {\"name\": \"OT / SCADA / DMS / ADMS (H)\", \"level\": \"L6a\", \"bom_standard\": \"Maier 1998\", \"parent_name\": \"Electric Power Distribution Ecosystem\", \"description\": \"Horizontal — real-time monitor and control\"},\n    {\"name\": \"HSE & Regulatory Compliance (H)\", \"level\": \"L6a\", \"bom_standard\": \"Maier 1998\", \"parent_name\": \"Electric Power Distribution Ecosystem\", \"description\": \"Horizontal — EnWG, VDE-AR-N, arbeitsschutz, environmental\"},\n    {\"name\": \"Customer Operations & Market Access (H)\", \"level\": \"L6a\", \"bom_standard\": \"Maier 1998\", \"parent_name\": \"Electric Power Distribution Ecosystem\", \"description\": \"Horizontal — customer service, outage comms, flex prequal\"},\n\n    {\"name\": \"HV/MV Power Transformers\", \"level\": \"L5\", \"bom_standard\": \"ISO 15288\", \"parent_name\": \"HV/MV Interface & Step-Down\", \"description\": \"Bulk HV↔MV step-down transformers\"},\n    {\"name\": \"HV Circuit Breakers & Switchgear\", \"level\": \"L5\", \"bom_standard\": \"ISO 15288\", \"parent_name\": \"HV/MV Interface & Step-Down\", \"description\": \"HV interrupters, GIS/AIS\"},\n    {\"name\": \"HV Protection Relays\", \"level\": \"L5\", \"bom_standard\": \"ISO 15288\", \"parent_name\": \"HV/MV Interface & Step-Down\", \"description\": \"Digital protection for HV feeder\"},\n\n    {\"name\": \"MV Switchgear\", \"level\": \"L5\", \"bom_standard\": \"ISO 15288\", \"parent_name\": \"Primary Distribution (MV Network)\", \"description\": \"SF6-free GIS/AIS MV switchgear\"},\n    {\"name\": \"MV Distribution Transformers\", \"level\": \"L5\", \"bom_standard\": \"ISO 15288\", \"parent_name\": \"Primary Distribution (MV Network)\", \"description\": \"MV→LV transformation\"},\n    {\"name\": \"MV Overhead Lines\", \"level\": \"L5\", \"bom_standard\": \"ISO 15288\", \"parent_name\": \"Primary Distribution (MV Network)\", \"description\": \"Overhead conductors and pylons\"},\n    {\"name\": \"MV Underground Cables\", \"level\": \"L5\", \"bom_standard\": \"ISO 15288\", \"parent_name\": \"Primary Distribution (MV Network)\", \"description\": \"XLPE MV cables\"},\n    {\"name\": \"Ring Main Units\", \"level\": \"L5\", \"bom_standard\": \"ISO 15288\", \"parent_name\": \"Primary Distribution (MV Network)\", \"description\": \"Compact MV switching for feeder rings\"},\n\n    {\"name\": \"LV Distribution Boards\", \"level\": \"L5\", \"bom_standard\": \"ISO 15288\", \"parent_name\": \"Secondary Distribution (LV Network)\", \"description\": \"LV panels, feeders\"},\n    {\"name\": \"LV Cables & Connectors\", \"level\": \"L5\", \"bom_standard\": \"ISO 15288\", \"parent_name\": \"Secondary Distribution (LV Network)\", \"description\": \"LV service cables\"},\n    {\"name\": \"Pad-Mount / Pole-Mount Transformers\", \"level\": \"L5\", \"bom_standard\": \"ISO 15288\", \"parent_name\": \"Secondary Distribution (LV Network)\", \"description\": \"Local MV/LV transformers\"},\n    {\"name\": \"Street-Cabinet Smart Controllers\", \"level\": \"L5\", \"bom_standard\": \"ISO 15288\", \"parent_name\": \"Secondary Distribution (LV Network)\", \"description\": \"LV grid observability and local control\"},\n\n    {\"name\": \"Smart Meters\", \"level\": \"L5\", \"bom_standard\": \"ISO 15288\", \"parent_name\": \"Connection, Metering & Billing\", \"description\": \"Interoperable intelligent measurement systems (iMSys)\"},\n    {\"name\": \"Meter Data Management\", \"level\": \"L5\", \"bom_standard\": \"ISO 15288\", \"parent_name\": \"Connection, Metering & Billing\", \"description\": \"MDM / billing software\"},\n    {\"name\": \"Smart Meter Gateway\", \"level\": \"L5\", \"bom_standard\": \"ISO 15288\", \"parent_name\": \"Connection, Metering & Billing\", \"description\": \"BSI-certified gateway device\"},\n\n    {\"name\": \"Grid Planning Software\", \"level\": \"L5\", \"bom_standard\": \"ISO 15288\", \"parent_name\": \"Grid Planning & Connection Management\", \"description\": \"Load-flow, hosting-capacity, reinforcement planning\"},\n    {\"name\": \"Hosting-Capacity / Feed-in-Socket Platform\", \"level\": \"L5\", \"bom_standard\": \"ISO 15288\", \"parent_name\": \"Grid Planning & Connection Management\", \"description\": \"Applicant-facing capacity discovery\"},\n    {\"name\": \"Connection Application Portal\", \"level\": \"L5\", \"bom_standard\": \"ISO 15288\", \"parent_name\": \"Grid Planning & Connection Management\", \"description\": \"Digital grid-connection workflow\"},\n\n    {\"name\": \"Grid-Scale Battery Storage (Netzbooster / Feeder-Relief BESS)\", \"level\": \"L5\", \"bom_standard\": \"ISO 15288\", \"parent_name\": \"Flexibility & Congestion Management\", \"description\": \"Multi-MW BESS procured to defer reinforcement, relieve congestion, provide ancillary support — MEIN SOLAR PRIMARY POSITION\"},\n    {\"name\": \"Flexibility Aggregation / VPP Platform\", \"level\": \"L5\", \"bom_standard\": \"ISO 15288\", \"parent_name\": \"Flexibility & Congestion Management\", \"description\": \"Aggregated DER dispatch\"},\n    {\"name\": \"Mechanical FACTS / STATCOM / SVC\", \"level\": \"L5\", \"bom_standard\": \"ISO 15288\", \"parent_name\": \"Flexibility & Congestion Management\", \"description\": \"Reactive-power compensation\"},\n    {\"name\": \"Dynamic Line Rating Sensors\", \"level\": \"L5\", \"bom_standard\": \"ISO 15288\", \"parent_name\": \"Flexibility & Congestion Management\", \"description\": \"Thermal-based dynamic feeder rating\"},\n    {\"name\": \"Redispatch 2.0 Software\", \"level\": \"L5\", \"bom_standard\": \"ISO 15288\", \"parent_name\": \"Flexibility & Congestion Management\", \"description\": \"Regulatory redispatch coordination\"},\n\n    {\"name\": \"Battery Module Rack\", \"level\": \"L4\", \"bom_standard\": \"INCOSE\", \"parent_name\": \"Grid-Scale Battery Storage (Netzbooster / Feeder-Relief BESS)\", \"description\": \"LFP prismatic racks + BMS/BAMS/BCMS\"},\n    {\"name\": \"Power Conversion System\", \"level\": \"L4\", \"bom_standard\": \"INCOSE\", \"parent_name\": \"Grid-Scale Battery Storage (Netzbooster / Feeder-Relief BESS)\", \"description\": \"4-quadrant bidirectional inverter\"},\n    {\"name\": \"MV Step-Up Transformer\", \"level\": \"L4\", \"bom_standard\": \"INCOSE\", \"parent_name\": \"Grid-Scale Battery Storage (Netzbooster / Feeder-Relief BESS)\", \"description\": \"LV-to-MV transformer adjacent to container\"},\n    {\"name\": \"MV Switchgear (Storage-Side)\", \"level\": \"L4\", \"bom_standard\": \"INCOSE\", \"parent_name\": \"Grid-Scale Battery Storage (Netzbooster / Feeder-Relief BESS)\", \"description\": \"SF6-free RMU + IEC 61850 protection\"},\n    {\"name\": \"Thermal Management\", \"level\": \"L4\", \"bom_standard\": \"INCOSE\", \"parent_name\": \"Grid-Scale Battery Storage (Netzbooster / Feeder-Relief BESS)\", \"description\": \"Liquid-cooling loop + HVAC\"},\n    {\"name\": \"Fire Suppression\", \"level\": \"L4\", \"bom_standard\": \"INCOSE\", \"parent_name\": \"Grid-Scale Battery Storage (Netzbooster / Feeder-Relief BESS)\", \"description\": \"NOVEC 1230 / aerosol + deflagration venting\"},\n    {\"name\": \"Energy Management System\", \"level\": \"L4\", \"bom_standard\": \"INCOSE\", \"parent_name\": \"Grid-Scale Battery Storage (Netzbooster / Feeder-Relief BESS)\", \"description\": \"Dispatch optimizer and DSO setpoint interface\"},\n    {\"name\": \"SCADA / DSO Uplink\", \"level\": \"L4\", \"bom_standard\": \"INCOSE\", \"parent_name\": \"Grid-Scale Battery Storage (Netzbooster / Feeder-Relief BESS)\", \"description\": \"IEC 61850 / IEC 60870-5-104 to DMS\"},\n    {\"name\": \"Civil Works (Foundation, Fencing)\", \"level\": \"L4\", \"bom_standard\": \"INCOSE\", \"parent_name\": \"Grid-Scale Battery Storage (Netzbooster / Feeder-Relief BESS)\", \"description\": \"Reinforced foundation, fencing, lightning protection\"},\n    {\"name\": \"Grid-Code Certification Dossier\", \"level\": \"L4\", \"bom_standard\": \"INCOSE\", \"parent_name\": \"Grid-Scale Battery Storage (Netzbooster / Feeder-Relief BESS)\", \"description\": \"VDE-AR-N 4110 Type B + FGW TR3/TR8\"}\n  ],\n  \"l5_alternatives_with_market_share\": {\n    \"Grid-Scale Battery Storage (Netzbooster / Feeder-Relief BESS)\": {\n      \"alternatives\": [\n        {\"name\": \"Fluence\", \"share_pct\": 30},\n        {\"name\": \"Tesla Megapack\", \"share_pct\": 15},\n        {\"name\": \"Sungrow PowerTitan\", \"share_pct\": 12},\n        {\"name\": \"Wärtsilä\", \"share_pct\": 8},\n        {\"name\": \"Nidec ASI\", \"share_pct\": 5},\n        {\"name\": \"Hitachi Energy\", \"share_pct\": 5},\n        {\"name\": \"EPC integrators (incl. Mein Solar)\", \"share_pct\": 10},\n        {\"name\": \"Other\", \"share_pct\": 15}\n      ],\n      \"confidence\": \"MEDIUM\",\n      \"source\": \"Fluence-TransnetBW Kupferzell (250 MW), ess-news 2025, EDF DSO grid-booster tender 2025\"\n    }\n  },\n  \"strategic_adjacency\": {\n    \"direct_competence_transfer_04e\": [\n      {\"unit\": \"Mechanical FACTS / STATCOM / SVC\", \"level\": \"L5\", \"has_it\": \"PARTIAL\", \"effort\": \"MEDIUM\", \"rationale\": \"MV + civil + cert skills transfer; power-electronics product IP is gap\"},\n      {\"unit\": \"Dynamic Line Rating Sensors\", \"level\": \"L5\", \"has_it\": \"PARTIAL\", \"effort\": \"MEDIUM\", \"rationale\": \"MV field install + OT integration fit; sensor OEM partnership needed\"},\n      {\"unit\": \"MV Switchgear (retrofit EPC)\", \"level\": \"L5\", \"has_it\": \"PARTIAL\", \"effort\": \"MEDIUM\", \"rationale\": \"EPC install scope, not product-build\"}\n    ],\n    \"strategic_adjacency_expansion_04f\": [\n      {\"adjacent_l5\": \"Mechanical FACTS / STATCOM / SVC\", \"incumbents\": [\"Hitachi Energy\", \"Siemens Energy\", \"GE Vernova\", \"Mitsubishi Electric\"], \"gap\": \"Power-electronics product line, reactive-power algorithms\", \"invest\": \"18-24mo, EUR 3-5M\", \"strategic_fit\": 5, \"overlap_pct\": 40, \"rationale\": \"EPC-partner role viable; OEM pivot not\"},\n      {\"adjacent_l5\": \"Flexibility Aggregation / VPP\", \"incumbents\": [\"Next Kraftwerke\", \"Entrix\", \"Enspired\", \"Flexpower\", \"Tiko\"], \"gap\": \"Wholesale/BM trading desk, software platform\", \"invest\": \"24-36mo, >EUR 5M\", \"strategic_fit\": 3, \"overlap_pct\": 15, \"rationale\": \"Excluded — below 30% overlap threshold\"},\n      {\"adjacent_l5\": \"Dynamic Line Rating Sensors\", \"incumbents\": [\"LineVision\", \"Ampacimon\", \"Heimdall\"], \"gap\": \"Sensor hardware + pattern analytics\", \"invest\": \"12-18mo, EUR 1-2M\", \"strategic_fit\": 4, \"overlap_pct\": 35, \"rationale\": \"Product-OEM pivot required\"},\n      {\"adjacent_l5\": \"Redispatch 2.0 Software\", \"incumbents\": [\"Siemens\", \"GE\", \"in-house utilities\"], \"gap\": \"Utility IT, regulated procurement\", \"invest\": \">24mo, >EUR 3M\", \"strategic_fit\": 2, \"overlap_pct\": 15, \"rationale\": \"Excluded — below 30% overlap\"}\n    ],\n    \"vertical_move_up_04g\": {\n      \"current_position\": \"L5 Grid-Scale Battery Storage under L6f\",\n      \"target_position\": \"L6f Flexibility & Congestion Management integrator\",\n      \"must_add\": [\"VPP/aggregation platform\", \"STATCOM product line\", \"DLR sensing\", \"redispatch software\", \"utility-IT/trading desk\"],\n      \"competitors_at_target\": [\"Siemens Grid Software\", \"Hitachi Energy\", \"Fluence Digital\", \"Next Kraftwerke (aggregation slice)\"],\n      \"feasibility\": \"LOW\",\n      \"economic_rationale\": \"L6f TAM ~10× L5-BESS TAM in DE but requires utility-IT + trading-desk + software-OEM org layer Mein Solar does not have. Organic move blocked; realistic path is partner-of-record inside a Siemens/Hitachi-led consortium.\"\n    }\n  },\n  \"qa\": {\n    \"cfj_industry_level\": \"PASS\",\n    \"no_orphan_nodes\": \"PASS\",\n    \"valid_transitions\": \"PASS\",\n    \"l4_per_l5_ge_2\": \"PASS\",\n    \"l7_l6_not_solution_specific\": \"PASS\",\n    \"three_question_naming\": \"PASS\",\n    \"unit_count_in_range\": \"PASS (~38)\"\n  }\n}\n```"
+    }
+  ],
+  "tables": [
+    {
+      "headers": [
+        "Field",
+        "Value"
+      ],
+      "rows": [
+        {
+          "Field": "`naics_code`",
+          "Value": "221122"
+        },
+        {
+          "Field": "`naics_title`",
+          "Value": "Electric Power Distribution"
+        },
+        {
+          "Field": "`sector`",
+          "Value": "Utilities (NAICS 22) — Service/Ecosystem"
+        },
+        {
+          "Field": "**CFJ (industry-level)**",
+          "Value": "Deliver bulk electrical energy from the transmission interface to end-use premises at regulated voltage, frequency, reliability, and price"
+        },
+        {
+          "Field": "`top_level`",
+          "Value": "L7"
+        },
+        {
+          "Field": "`vn_type`",
+          "Value": "Process VN (no Product BOM — output is a delivered service, not an artifact)"
+        }
+      ]
+    },
+    {
+      "headers": [
+        "Level",
+        "Name",
+        "Description"
+      ],
+      "rows": [
+        {
+          "Level": "L7",
+          "Name": "Electric Power Distribution Ecosystem",
+          "Description": "End-to-end delivery of electricity from transmission interface to premises, under regulated reliability/quality"
+        }
+      ]
+    },
+    {
+      "headers": [
+        "Level",
+        "Name",
+        "Job family (verb + object)",
+        "Serves"
+      ],
+      "rows": [
+        {
+          "Level": "L6a",
+          "Name": "HV/MV Interface & Step-Down",
+          "Job family (verb + object)": "Transform HV supply into MV distribution voltage",
+          "Serves": "All deliveries"
+        },
+        {
+          "Level": "L6b",
+          "Name": "Primary Distribution (MV Network)",
+          "Job family (verb + object)": "Transport energy across MV feeders to secondary substations",
+          "Serves": "All deliveries"
+        },
+        {
+          "Level": "L6c",
+          "Name": "Secondary Distribution (LV Network)",
+          "Job family (verb + object)": "Step down to LV and deliver to premises",
+          "Serves": "Residential, small C&I"
+        },
+        {
+          "Level": "L6d",
+          "Name": "Connection, Metering & Billing",
+          "Job family (verb + object)": "Meter energy flow and charge network tariffs",
+          "Serves": "All connected customers"
+        },
+        {
+          "Level": "L6e",
+          "Name": "Grid Planning & Connection Mgmt",
+          "Job family (verb + object)": "Plan capacity and admit new generators/loads",
+          "Serves": "New connections, reinforcement"
+        },
+        {
+          "Level": "L6f",
+          "Name": "**Flexibility & Congestion Mgmt**",
+          "Job family (verb + object)": "Dispatch flexibility/storage to relieve MV/LV constraints",
+          "Serves": "Congested feeders, redispatch, §14a, curtailment defer — **Mein Solar L5 sits here**"
+        }
+      ]
+    },
+    {
+      "headers": [
+        "Level",
+        "Name (H)",
+        "Job family"
+      ],
+      "rows": [
+        {
+          "Level": "L6H-PQ",
+          "Name (H)": "Power Quality & Protection (H)",
+          "Job family": "Maintain voltage, frequency, fault isolation across all core steps"
+        },
+        {
+          "Level": "L6H-MAINT",
+          "Name (H)": "Asset Maintenance & Outage Response (H)",
+          "Job family": "Inspect, maintain, and restore assets 24/7"
+        },
+        {
+          "Level": "L6H-OT",
+          "Name (H)": "OT / SCADA / DMS / ADMS (H)",
+          "Job family": "Monitor and control grid state in real time"
+        },
+        {
+          "Level": "L6H-HSE",
+          "Name (H)": "HSE & Regulatory Compliance (H)",
+          "Job family": "Ensure EnWG, VDE-AR-N, arbeitsschutz, environmental compliance"
+        },
+        {
+          "Level": "L6H-CUST",
+          "Name (H)": "Customer Operations & Market Access (H)",
+          "Job family": "Customer service, outage comms, flex-market prequal"
+        }
+      ]
+    },
+    {
+      "headers": [
+        "L5",
+        "Alternatives (share %)",
+        "Conf",
+        "Source"
+      ],
+      "rows": [
+        {
+          "L5": "HV/MV Power Transformers",
+          "Alternatives (share %)": "Siemens Energy 25%, Hitachi Energy 20%, SGB-SMIT 18%, GE Vernova 12%, Other 25%",
+          "Conf": "MED",
+          "Source": "Transformer market reports"
+        },
+        {
+          "L5": "HV Circuit Breakers & Switchgear",
+          "Alternatives (share %)": "Siemens 30%, Hitachi Energy 22%, ABB 18%, GE Vernova 12%, Other 18%",
+          "Conf": "MED",
+          "Source": "ABB/industry trade press"
+        },
+        {
+          "L5": "Protection Relays (HV)",
+          "Alternatives (share %)": "Siemens Siprotec 28%, Hitachi MicroSCADA 18%, GE Multilin 15%, SEL 20%, Other 19%",
+          "Conf": "HIGH",
+          "Source": "IEC 61850 vendor surveys"
+        }
+      ]
+    },
+    {
+      "headers": [
+        "L5",
+        "Alternatives",
+        "Conf",
+        "Source"
+      ],
+      "rows": [
+        {
+          "L5": "MV Switchgear (GIS/AIS, SF6-free)",
+          "Alternatives": "Siemens Blue 25%, ABB 22%, Schneider GM6 20%, Hitachi Energy 15%, Eaton 10%, Other 8%",
+          "Conf": "MED",
+          "Source": "DSO tender awards DE"
+        },
+        {
+          "L5": "MV Distribution Transformers",
+          "Alternatives": "SGB-SMIT 25%, Siemens 20%, Schneider 15%, ABB 12%, Ormazabal 10%, Other 18%",
+          "Conf": "MED",
+          "Source": "VIK/BDEW data"
+        },
+        {
+          "L5": "MV Overhead Lines & Pylons",
+          "Alternatives": "Bystronic, Europoles, Krampe, regional EPC — fragmented",
+          "Conf": "LOW",
+          "Source": "inference"
+        },
+        {
+          "L5": "MV Underground Cables",
+          "Alternatives": "Nexans 25%, Prysmian 22%, NKT 18%, LS Cable 8%, Other 27%",
+          "Conf": "HIGH",
+          "Source": "cable-market reports"
+        },
+        {
+          "L5": "Ring Main Units (RMU)",
+          "Alternatives": "Schneider RM6 25%, ABB SafePlus 20%, Siemens 18%, Ormazabal 15%, Eaton 10%, Other 12%",
+          "Conf": "MED",
+          "Source": ""
+        }
+      ]
+    },
+    {
+      "headers": [
+        "L5",
+        "Alternatives",
+        "Conf",
+        "Source"
+      ],
+      "rows": [
+        {
+          "L5": "LV Distribution Boards",
+          "Alternatives": "Schneider 30%, ABB 20%, Hager 18%, Siemens 15%, Eaton 10%, Other 7%",
+          "Conf": "MED",
+          "Source": ""
+        },
+        {
+          "L5": "LV Cables & Connectors",
+          "Alternatives": "Nexans, Prysmian, NKT, Lapp — commodity",
+          "Conf": "LOW",
+          "Source": ""
+        },
+        {
+          "L5": "Pole-Mounted / Pad-Mount Transformers",
+          "Alternatives": "SGB-SMIT, Siemens, Schneider — regional",
+          "Conf": "LOW",
+          "Source": ""
+        },
+        {
+          "L5": "Street-Cabinet Smart Controllers",
+          "Alternatives": "Siemens LV-Grid 30%, Gridhound 15%, Digi-Sensors 10%, Other 45%",
+          "Conf": "LOW",
+          "Source": "DE pilot programs"
+        }
+      ]
+    },
+    {
+      "headers": [
+        "L5",
+        "Alternatives",
+        "Conf",
+        "Source"
+      ],
+      "rows": [
+        {
+          "L5": "Smart Meters (iMSys)",
+          "Alternatives": "EMH 28%, Landis+Gyr 22%, Iskraemeco 15%, Itron 12%, PPC 10%, Other 13%",
+          "Conf": "HIGH",
+          "Source": "BSI iMSys rollout DE"
+        },
+        {
+          "L5": "MDM / Billing Systems",
+          "Alternatives": "SAP IS-U 35%, Kisters 15%, Schleupen 12%, In-house 20%, Other 18%",
+          "Conf": "MED",
+          "Source": ""
+        },
+        {
+          "L5": "Smart Meter Gateway (SMGW)",
+          "Alternatives": "PPC 35%, Theben 25%, Sagemcom 15%, EMH 10%, Other 15%",
+          "Conf": "HIGH",
+          "Source": "BSI certification"
+        }
+      ]
+    },
+    {
+      "headers": [
+        "L5",
+        "Alternatives",
+        "Conf",
+        "Source"
+      ],
+      "rows": [
+        {
+          "L5": "Grid Planning Software (load-flow, hosting-capacity)",
+          "Alternatives": "Siemens PSS/E 25%, DIgSILENT PowerFactory 25%, Neplan 15%, Other 35%",
+          "Conf": "HIGH",
+          "Source": "industry tool surveys"
+        },
+        {
+          "L5": "Hosting-Capacity / Feed-in-Socket Platforms",
+          "Alternatives": "envelio 30%, gridX 15%, VENIOS 10%, envalue 10%, In-house 35%",
+          "Conf": "MED",
+          "Source": "Bayernwerk/LEW pilots"
+        },
+        {
+          "L5": "Connection Application Portals",
+          "Alternatives": "In-house 60%, Next Level 15%, Schleupen 10%, Other 15%",
+          "Conf": "LOW",
+          "Source": ""
+        }
+      ]
+    },
+    {
+      "headers": [
+        "L5",
+        "Alternatives",
+        "Conf",
+        "Source"
+      ],
+      "rows": [
+        {
+          "L5": "**Grid-Scale Battery Storage (Netzbooster / Feeder-Relief BESS)**",
+          "Alternatives": "Fluence 30%, Tesla Megapack 15%, Sungrow PowerTitan 12%, Wärtsilä 8%, Nidec ASI 5%, Hitachi Energy 5%, **EPC integrators (incl. Mein Solar) 10%**, Other 15%",
+          "Conf": "MED",
+          "Source": "Fluence-Kupferzell, ess-news.com, EDF 2025 DSO tender"
+        },
+        {
+          "L5": "Flexibility Aggregation / VPP Platforms",
+          "Alternatives": "Next Kraftwerke 20%, Entrix 12%, Enspired 8%, Flexpower 8%, Tiko 6%, In-house 30%, Other 16%",
+          "Conf": "MED",
+          "Source": ""
+        },
+        {
+          "L5": "Mechanical FACTS / STATCOM / SVC",
+          "Alternatives": "Hitachi Energy 30%, Siemens Energy 25%, GE Vernova 18%, Mitsubishi 12%, Other 15%",
+          "Conf": "MED",
+          "Source": ""
+        },
+        {
+          "L5": "Dynamic Line Rating (DLR) Sensors",
+          "Alternatives": "LineVision 25%, Ampacimon 20%, Heimdall 15%, Other 40%",
+          "Conf": "LOW",
+          "Source": ""
+        },
+        {
+          "L5": "Redispatch 2.0 Software",
+          "Alternatives": "Siemens Spectrum 25%, GE PowerOn 18%, In-house 30%, Other 27%",
+          "Conf": "LOW",
+          "Source": "BNetzA redispatch"
+        }
+      ]
+    },
+    {
+      "headers": [
+        "Horizontal",
+        "L5",
+        "Sample alternatives"
+      ],
+      "rows": [
+        {
+          "Horizontal": "L6H-PQ",
+          "L5": "Digital Protection Relays",
+          "Sample alternatives": "Siemens, Hitachi, SEL, GE"
+        },
+        {
+          "Horizontal": "L6H-PQ",
+          "L5": "Power-Quality Monitors",
+          "Sample alternatives": "Dewetron, Elspec, Janitza"
+        },
+        {
+          "Horizontal": "L6H-MAINT",
+          "L5": "Condition-Monitoring Systems",
+          "Sample alternatives": "Doble, Camlin, Dynamic Ratings"
+        },
+        {
+          "Horizontal": "L6H-MAINT",
+          "L5": "Mobile Substations & Tools",
+          "Sample alternatives": "Siemens, ABB, Megger"
+        },
+        {
+          "Horizontal": "L6H-OT",
+          "L5": "SCADA/DMS/ADMS",
+          "Sample alternatives": "Siemens Spectrum, GE GridOS, Hitachi Lumada, Survalent"
+        },
+        {
+          "Horizontal": "L6H-OT",
+          "L5": "IEC 61850 Substation Automation",
+          "Sample alternatives": "Siemens, Hitachi, GE, SEL"
+        },
+        {
+          "Horizontal": "L6H-HSE",
+          "L5": "Cybersecurity (IEC 62443 / BSI KRITIS)",
+          "Sample alternatives": "Rhebo, Claroty, Nozomi, Dragos"
+        },
+        {
+          "Horizontal": "L6H-CUST",
+          "L5": "Outage & CRM",
+          "Sample alternatives": "SAP, Salesforce, In-house"
+        }
+      ]
+    },
+    {
+      "headers": [
+        "L4",
+        "Description",
+        "Typical suppliers"
+      ],
+      "rows": [
+        {
+          "L4": "Battery Module Rack",
+          "Description": "LFP prismatic racks + BMS/BAMS/BCMS",
+          "Typical suppliers": "CATL, EVE, BYD, Sungrow"
+        },
+        {
+          "L4": "Power Conversion System (PCS)",
+          "Description": "4-quadrant bidirectional inverter, 97–98% eff., grid-forming capable",
+          "Typical suppliers": "SMA Sunny Central Storage, Sungrow, Power Electronics, Ingeteam"
+        },
+        {
+          "L4": "MV Step-Up Transformer",
+          "Description": "0.4/20 kV, ≥5 MVA, container-adjacent",
+          "Typical suppliers": "SGB-SMIT, Siemens, Schneider"
+        },
+        {
+          "L4": "MV Switchgear & Protection",
+          "Description": "SF6-free RMU + IEC 61850 protection",
+          "Typical suppliers": "Schneider, ABB, Siemens"
+        },
+        {
+          "L4": "Thermal Management",
+          "Description": "Liquid-cooling loop + HVAC",
+          "Typical suppliers": "integrated in container (Sungrow, CATL EnerC)"
+        },
+        {
+          "L4": "Fire Suppression",
+          "Description": "NOVEC 1230 / aerosol + deflagration venting",
+          "Typical suppliers": "Siemens, Fike, Siex"
+        },
+        {
+          "L4": "Energy Management System (EMS)",
+          "Description": "Dispatch optimizer + SoC mgmt + market/DSO setpoint interface",
+          "Typical suppliers": "AutoGrid (Schneider), Fluence Mosaic/Nispera, Entrix, In-house"
+        },
+        {
+          "L4": "SCADA / DSO Uplink",
+          "Description": "IEC 61850 / IEC 60870-5-104 to DMS",
+          "Typical suppliers": "Siemens, Hitachi, Bachmann"
+        },
+        {
+          "L4": "Civil Works",
+          "Description": "Reinforced foundation, fencing, lightning protection",
+          "Typical suppliers": "Regional civil EPC"
+        },
+        {
+          "L4": "Grid-Code Certification Dossier",
+          "Description": "VDE-AR-N 4110 Type B plant cert, FGW TR3/TR8",
+          "Typical suppliers": "TÜV NORD, TÜV SÜD, FGH"
+        }
+      ]
+    },
+    {
+      "headers": [
+        "L6",
+        "MV feeder congestion",
+        "HV/MV bottleneck",
+        "LV voltage-band violations",
+        "New IPP/load connection",
+        "Curtailment recovery"
+      ],
+      "rows": [
+        {
+          "L6": "L6a Step-Down",
+          "MV feeder congestion": "x",
+          "HV/MV bottleneck": "x",
+          "LV voltage-band violations": "x",
+          "New IPP/load connection": "",
+          "Curtailment recovery": ""
+        },
+        {
+          "L6": "L6b Primary MV",
+          "MV feeder congestion": "x",
+          "HV/MV bottleneck": "x",
+          "LV voltage-band violations": "x",
+          "New IPP/load connection": "x",
+          "Curtailment recovery": ""
+        },
+        {
+          "L6": "L6c Secondary LV",
+          "MV feeder congestion": "x",
+          "HV/MV bottleneck": "x",
+          "LV voltage-band violations": "",
+          "New IPP/load connection": "",
+          "Curtailment recovery": ""
+        },
+        {
+          "L6": "L6d Metering",
+          "MV feeder congestion": "x",
+          "HV/MV bottleneck": "x",
+          "LV voltage-band violations": "x",
+          "New IPP/load connection": "x",
+          "Curtailment recovery": "x"
+        },
+        {
+          "L6": "L6e Planning",
+          "MV feeder congestion": "x",
+          "HV/MV bottleneck": "x",
+          "LV voltage-band violations": "x",
+          "New IPP/load connection": "x",
+          "Curtailment recovery": "x"
+        },
+        {
+          "L6": "**L6f Flex/Congestion (BESS)**",
+          "MV feeder congestion": "**x**",
+          "HV/MV bottleneck": "**x**",
+          "LV voltage-band violations": "**x**",
+          "New IPP/load connection": "**x**",
+          "Curtailment recovery": "**x**"
+        }
+      ]
+    },
+    {
+      "headers": [
+        "VN Unit",
+        "Level",
+        "Competence required",
+        "Company has?",
+        "Adapt effort",
+        "Rationale"
+      ],
+      "rows": [
+        {
+          "VN Unit": "Mechanical FACTS / STATCOM / SVC",
+          "Level": "L5",
+          "Competence required": "MV coupling, power electronics, civil, cert",
+          "Company has?": "PARTIAL",
+          "Adapt effort": "MEDIUM",
+          "Rationale": "Same MV + grid-code skills; static-VAR power electronics stack is new"
+        },
+        {
+          "VN Unit": "Dynamic Line Rating sensors",
+          "Level": "L5",
+          "Competence required": "MV field work, OT integration",
+          "Company has?": "PARTIAL",
+          "Adapt effort": "MEDIUM",
+          "Rationale": "Install skills transfer; sensor vendor partnership needed"
+        },
+        {
+          "VN Unit": "MV Switchgear (retrofit EPC)",
+          "Level": "L5",
+          "Competence required": "MV install, protection relay config",
+          "Company has?": "PARTIAL",
+          "Adapt effort": "MEDIUM",
+          "Rationale": "EPC skills apply; not a product-build capability but install-scope fit"
+        },
+        {
+          "VN Unit": "Hosting-Capacity / Feed-in-Socket platforms",
+          "Level": "L5",
+          "Competence required": "Grid-planning software, ML on load-flow",
+          "Company has?": "NO",
+          "Adapt effort": "HIGH",
+          "Rationale": "excluded"
+        },
+        {
+          "VN Unit": "Redispatch 2.0 software",
+          "Level": "L5",
+          "Competence required": "Utility IT, regulated IT procurement",
+          "Company has?": "NO",
+          "Adapt effort": "HIGH",
+          "Rationale": "excluded"
+        },
+        {
+          "VN Unit": "Smart Meter Gateway / MDM",
+          "Level": "L5",
+          "Competence required": "BSI-certified firmware, utility IT",
+          "Company has?": "NO",
+          "Adapt effort": "HIGH",
+          "Rationale": "excluded"
+        }
+      ]
+    },
+    {
+      "headers": [
+        "Adjacent L5",
+        "Current incumbents",
+        "Competence gap",
+        "Invest to bridge",
+        "Fit 1–10",
+        "Rationale (overlap %)"
+      ],
+      "rows": [
+        {
+          "Adjacent L5": "Mechanical FACTS / STATCOM / SVC",
+          "Current incumbents": "Hitachi Energy, Siemens Energy, GE, Mitsubishi",
+          "Competence gap": "Power-electronics product line, reactive-power algorithms",
+          "Invest to bridge": "18–24 mo, €3–5M",
+          "Fit 1–10": "5",
+          "Rationale (overlap %)": "~40% overlap (MV + civil + cert); product IP is gap — fit as EPC partner, not OEM"
+        },
+        {
+          "Adjacent L5": "Flexibility Aggregation / VPP",
+          "Current incumbents": "Next Kraftwerke, Entrix, Enspired, Flexpower, Tiko",
+          "Competence gap": "Wholesale/BM trading desk, software platform",
+          "Invest to bridge": "24–36 mo, >€5M",
+          "Fit 1–10": "3",
+          "Rationale (overlap %)": "~15% overlap; pure software+trading play — excluded (below 30% threshold)"
+        },
+        {
+          "Adjacent L5": "Dynamic Line Rating sensors",
+          "Current incumbents": "LineVision, Ampacimon, Heimdall",
+          "Competence gap": "Sensor hardware + pattern analytics",
+          "Invest to bridge": "12–18 mo, €1–2M",
+          "Fit 1–10": "4",
+          "Rationale (overlap %)": "~35% overlap (MV install, OT interface); product-OEM pivot required"
+        },
+        {
+          "Adjacent L5": "Redispatch 2.0 Software",
+          "Current incumbents": "Siemens, GE, in-house utilities",
+          "Competence gap": "Utility IT, regulated procurement, long sales cycle",
+          "Invest to bridge": ">24 mo, >€3M",
+          "Fit 1–10": "2",
+          "Rationale (overlap %)": "<15% overlap — excluded"
+        }
+      ]
+    },
+    {
+      "headers": [
+        "Current",
+        "Target",
+        "What must be added",
+        "Incumbents at L6f",
+        "Feasibility",
+        "Economic rationale"
+      ],
+      "rows": [
+        {
+          "Current": "L5 Netzbooster BESS (one of several alternatives)",
+          "Target": "L6f Flexibility & Congestion Mgmt integrator (owns the full DSO flex stack)",
+          "What must be added": "Aggregation/VPP platform, STATCOM line, DLR sensing, redispatch software, utility-grade trading/IT",
+          "Incumbents at L6f": "Siemens Grid Software, Hitachi Energy, Fluence Digital, Next Kraftwerke (aggregation slice)",
+          "Feasibility": "**LOW**",
+          "Economic rationale": "L6f TAM ~10× L5-BESS TAM in DE, but move-up requires utility-IT + trading-desk + software-OEM org layer Mein Solar does not have. Organic move is blocked; partner-of-record role inside a Siemens/Hitachi-led consortium is the realistic path."
+        }
+      ]
+    },
+    {
+      "headers": [
+        "#",
+        "Check",
+        "Status"
+      ],
+      "rows": [
+        {
+          "#": "Q1",
+          "Check": "CFJ industry-level (no Mein Solar, no BESS ref)",
+          "Status": "PASS"
+        },
+        {
+          "#": "Q2",
+          "Check": "No orphan nodes",
+          "Status": "PASS"
+        },
+        {
+          "#": "Q3",
+          "Check": "Valid L7→L6→L5→L4 transitions",
+          "Status": "PASS"
+        },
+        {
+          "#": "Q4",
+          "Check": "≥2 L4 children per L5 (spot-check L6f BESS: 10)",
+          "Status": "PASS"
+        },
+        {
+          "#": "Q5",
+          "Check": "L7/L6 not solution-specific",
+          "Status": "PASS"
+        },
+        {
+          "#": "Q6",
+          "Check": "Three-question naming test (spot 5)",
+          "Status": "PASS (short, industry-standard)"
+        },
+        {
+          "#": "Q7",
+          "Check": "Unit count in 15–60 range",
+          "Status": "PASS (≈38 units incl. L4)"
+        }
+      ]
+    }
+  ],
+  "entities": [
+    {
+      "component": "value_network_construction",
+      "source_perspective": "IBISWorld / DSO operator view (hardware tier)",
+      "naics_code": "221122",
+      "naics_title": "Electric Power Distribution",
+      "sector": "Utilities",
+      "cfj_statement": "Deliver bulk electrical energy from the transmission interface to end-use premises at regulated voltage, frequency, reliability, and price",
+      "top_level": "L7",
+      "vn_type": "process_vn",
+      "product_bom_applicable": false,
+      "company": {
+        "name": "Mein Solar GmbH",
+        "product": "EPC für Großbatteriespeicher",
+        "primary_position": {
+          "l5_name": "Grid-Scale Battery Storage (Netzbooster / Feeder-Relief BESS)",
+          "l6_parent": "L6f Flexibility & Congestion Management"
+        },
+        "secondary_positions": []
+      },
+      "units": [
+        {
+          "name": "Electric Power Distribution Ecosystem",
+          "level": "L7",
+          "bom_standard": "Moore 1993",
+          "parent_name": "ROOT",
+          "description": "End-to-end delivery of electricity from transmission interface to premises"
+        },
+        {
+          "name": "HV/MV Interface & Step-Down",
+          "level": "L6a",
+          "bom_standard": "Maier 1998",
+          "parent_name": "Electric Power Distribution Ecosystem",
+          "description": "Transform HV supply into MV distribution voltage"
+        },
+        {
+          "name": "Primary Distribution (MV Network)",
+          "level": "L6a",
+          "bom_standard": "Maier 1998",
+          "parent_name": "Electric Power Distribution Ecosystem",
+          "description": "Transport energy across MV feeders to secondary substations"
+        },
+        {
+          "name": "Secondary Distribution (LV Network)",
+          "level": "L6a",
+          "bom_standard": "Maier 1998",
+          "parent_name": "Electric Power Distribution Ecosystem",
+          "description": "Step down to LV and deliver to premises"
+        },
+        {
+          "name": "Connection, Metering & Billing",
+          "level": "L6a",
+          "bom_standard": "Maier 1998",
+          "parent_name": "Electric Power Distribution Ecosystem",
+          "description": "Meter energy flow and charge network tariffs"
+        },
+        {
+          "name": "Grid Planning & Connection Management",
+          "level": "L6a",
+          "bom_standard": "Maier 1998",
+          "parent_name": "Electric Power Distribution Ecosystem",
+          "description": "Plan capacity and admit new generators/loads"
+        },
+        {
+          "name": "Flexibility & Congestion Management",
+          "level": "L6a",
+          "bom_standard": "Maier 1998",
+          "parent_name": "Electric Power Distribution Ecosystem",
+          "description": "Dispatch flexibility/storage to relieve MV/LV constraints"
+        },
+        {
+          "name": "Power Quality & Protection (H)",
+          "level": "L6a",
+          "bom_standard": "Maier 1998",
+          "parent_name": "Electric Power Distribution Ecosystem",
+          "description": "Horizontal — maintain voltage, frequency, fault isolation"
+        },
+        {
+          "name": "Asset Maintenance & Outage Response (H)",
+          "level": "L6a",
+          "bom_standard": "Maier 1998",
+          "parent_name": "Electric Power Distribution Ecosystem",
+          "description": "Horizontal — inspect, maintain, restore assets 24/7"
+        },
+        {
+          "name": "OT / SCADA / DMS / ADMS (H)",
+          "level": "L6a",
+          "bom_standard": "Maier 1998",
+          "parent_name": "Electric Power Distribution Ecosystem",
+          "description": "Horizontal — real-time monitor and control"
+        },
+        {
+          "name": "HSE & Regulatory Compliance (H)",
+          "level": "L6a",
+          "bom_standard": "Maier 1998",
+          "parent_name": "Electric Power Distribution Ecosystem",
+          "description": "Horizontal — EnWG, VDE-AR-N, arbeitsschutz, environmental"
+        },
+        {
+          "name": "Customer Operations & Market Access (H)",
+          "level": "L6a",
+          "bom_standard": "Maier 1998",
+          "parent_name": "Electric Power Distribution Ecosystem",
+          "description": "Horizontal — customer service, outage comms, flex prequal"
+        },
+        {
+          "name": "HV/MV Power Transformers",
+          "level": "L5",
+          "bom_standard": "ISO 15288",
+          "parent_name": "HV/MV Interface & Step-Down",
+          "description": "Bulk HV↔MV step-down transformers"
+        },
+        {
+          "name": "HV Circuit Breakers & Switchgear",
+          "level": "L5",
+          "bom_standard": "ISO 15288",
+          "parent_name": "HV/MV Interface & Step-Down",
+          "description": "HV interrupters, GIS/AIS"
+        },
+        {
+          "name": "HV Protection Relays",
+          "level": "L5",
+          "bom_standard": "ISO 15288",
+          "parent_name": "HV/MV Interface & Step-Down",
+          "description": "Digital protection for HV feeder"
+        },
+        {
+          "name": "MV Switchgear",
+          "level": "L5",
+          "bom_standard": "ISO 15288",
+          "parent_name": "Primary Distribution (MV Network)",
+          "description": "SF6-free GIS/AIS MV switchgear"
+        },
+        {
+          "name": "MV Distribution Transformers",
+          "level": "L5",
+          "bom_standard": "ISO 15288",
+          "parent_name": "Primary Distribution (MV Network)",
+          "description": "MV→LV transformation"
+        },
+        {
+          "name": "MV Overhead Lines",
+          "level": "L5",
+          "bom_standard": "ISO 15288",
+          "parent_name": "Primary Distribution (MV Network)",
+          "description": "Overhead conductors and pylons"
+        },
+        {
+          "name": "MV Underground Cables",
+          "level": "L5",
+          "bom_standard": "ISO 15288",
+          "parent_name": "Primary Distribution (MV Network)",
+          "description": "XLPE MV cables"
+        },
+        {
+          "name": "Ring Main Units",
+          "level": "L5",
+          "bom_standard": "ISO 15288",
+          "parent_name": "Primary Distribution (MV Network)",
+          "description": "Compact MV switching for feeder rings"
+        },
+        {
+          "name": "LV Distribution Boards",
+          "level": "L5",
+          "bom_standard": "ISO 15288",
+          "parent_name": "Secondary Distribution (LV Network)",
+          "description": "LV panels, feeders"
+        },
+        {
+          "name": "LV Cables & Connectors",
+          "level": "L5",
+          "bom_standard": "ISO 15288",
+          "parent_name": "Secondary Distribution (LV Network)",
+          "description": "LV service cables"
+        },
+        {
+          "name": "Pad-Mount / Pole-Mount Transformers",
+          "level": "L5",
+          "bom_standard": "ISO 15288",
+          "parent_name": "Secondary Distribution (LV Network)",
+          "description": "Local MV/LV transformers"
+        },
+        {
+          "name": "Street-Cabinet Smart Controllers",
+          "level": "L5",
+          "bom_standard": "ISO 15288",
+          "parent_name": "Secondary Distribution (LV Network)",
+          "description": "LV grid observability and local control"
+        },
+        {
+          "name": "Smart Meters",
+          "level": "L5",
+          "bom_standard": "ISO 15288",
+          "parent_name": "Connection, Metering & Billing",
+          "description": "Interoperable intelligent measurement systems (iMSys)"
+        },
+        {
+          "name": "Meter Data Management",
+          "level": "L5",
+          "bom_standard": "ISO 15288",
+          "parent_name": "Connection, Metering & Billing",
+          "description": "MDM / billing software"
+        },
+        {
+          "name": "Smart Meter Gateway",
+          "level": "L5",
+          "bom_standard": "ISO 15288",
+          "parent_name": "Connection, Metering & Billing",
+          "description": "BSI-certified gateway device"
+        },
+        {
+          "name": "Grid Planning Software",
+          "level": "L5",
+          "bom_standard": "ISO 15288",
+          "parent_name": "Grid Planning & Connection Management",
+          "description": "Load-flow, hosting-capacity, reinforcement planning"
+        },
+        {
+          "name": "Hosting-Capacity / Feed-in-Socket Platform",
+          "level": "L5",
+          "bom_standard": "ISO 15288",
+          "parent_name": "Grid Planning & Connection Management",
+          "description": "Applicant-facing capacity discovery"
+        },
+        {
+          "name": "Connection Application Portal",
+          "level": "L5",
+          "bom_standard": "ISO 15288",
+          "parent_name": "Grid Planning & Connection Management",
+          "description": "Digital grid-connection workflow"
+        },
+        {
+          "name": "Grid-Scale Battery Storage (Netzbooster / Feeder-Relief BESS)",
+          "level": "L5",
+          "bom_standard": "ISO 15288",
+          "parent_name": "Flexibility & Congestion Management",
+          "description": "Multi-MW BESS procured to defer reinforcement, relieve congestion, provide ancillary support — MEIN SOLAR PRIMARY POSITION"
+        },
+        {
+          "name": "Flexibility Aggregation / VPP Platform",
+          "level": "L5",
+          "bom_standard": "ISO 15288",
+          "parent_name": "Flexibility & Congestion Management",
+          "description": "Aggregated DER dispatch"
+        },
+        {
+          "name": "Mechanical FACTS / STATCOM / SVC",
+          "level": "L5",
+          "bom_standard": "ISO 15288",
+          "parent_name": "Flexibility & Congestion Management",
+          "description": "Reactive-power compensation"
+        },
+        {
+          "name": "Dynamic Line Rating Sensors",
+          "level": "L5",
+          "bom_standard": "ISO 15288",
+          "parent_name": "Flexibility & Congestion Management",
+          "description": "Thermal-based dynamic feeder rating"
+        },
+        {
+          "name": "Redispatch 2.0 Software",
+          "level": "L5",
+          "bom_standard": "ISO 15288",
+          "parent_name": "Flexibility & Congestion Management",
+          "description": "Regulatory redispatch coordination"
+        },
+        {
+          "name": "Battery Module Rack",
+          "level": "L4",
+          "bom_standard": "INCOSE",
+          "parent_name": "Grid-Scale Battery Storage (Netzbooster / Feeder-Relief BESS)",
+          "description": "LFP prismatic racks + BMS/BAMS/BCMS"
+        },
+        {
+          "name": "Power Conversion System",
+          "level": "L4",
+          "bom_standard": "INCOSE",
+          "parent_name": "Grid-Scale Battery Storage (Netzbooster / Feeder-Relief BESS)",
+          "description": "4-quadrant bidirectional inverter"
+        },
+        {
+          "name": "MV Step-Up Transformer",
+          "level": "L4",
+          "bom_standard": "INCOSE",
+          "parent_name": "Grid-Scale Battery Storage (Netzbooster / Feeder-Relief BESS)",
+          "description": "LV-to-MV transformer adjacent to container"
+        },
+        {
+          "name": "MV Switchgear (Storage-Side)",
+          "level": "L4",
+          "bom_standard": "INCOSE",
+          "parent_name": "Grid-Scale Battery Storage (Netzbooster / Feeder-Relief BESS)",
+          "description": "SF6-free RMU + IEC 61850 protection"
+        },
+        {
+          "name": "Thermal Management",
+          "level": "L4",
+          "bom_standard": "INCOSE",
+          "parent_name": "Grid-Scale Battery Storage (Netzbooster / Feeder-Relief BESS)",
+          "description": "Liquid-cooling loop + HVAC"
+        },
+        {
+          "name": "Fire Suppression",
+          "level": "L4",
+          "bom_standard": "INCOSE",
+          "parent_name": "Grid-Scale Battery Storage (Netzbooster / Feeder-Relief BESS)",
+          "description": "NOVEC 1230 / aerosol + deflagration venting"
+        },
+        {
+          "name": "Energy Management System",
+          "level": "L4",
+          "bom_standard": "INCOSE",
+          "parent_name": "Grid-Scale Battery Storage (Netzbooster / Feeder-Relief BESS)",
+          "description": "Dispatch optimizer and DSO setpoint interface"
+        },
+        {
+          "name": "SCADA / DSO Uplink",
+          "level": "L4",
+          "bom_standard": "INCOSE",
+          "parent_name": "Grid-Scale Battery Storage (Netzbooster / Feeder-Relief BESS)",
+          "description": "IEC 61850 / IEC 60870-5-104 to DMS"
+        },
+        {
+          "name": "Civil Works (Foundation, Fencing)",
+          "level": "L4",
+          "bom_standard": "INCOSE",
+          "parent_name": "Grid-Scale Battery Storage (Netzbooster / Feeder-Relief BESS)",
+          "description": "Reinforced foundation, fencing, lightning protection"
+        },
+        {
+          "name": "Grid-Code Certification Dossier",
+          "level": "L4",
+          "bom_standard": "INCOSE",
+          "parent_name": "Grid-Scale Battery Storage (Netzbooster / Feeder-Relief BESS)",
+          "description": "VDE-AR-N 4110 Type B + FGW TR3/TR8"
+        }
+      ],
+      "l5_alternatives_with_market_share": {
+        "Grid-Scale Battery Storage (Netzbooster / Feeder-Relief BESS)": {
+          "alternatives": [
+            {
+              "name": "Fluence",
+              "share_pct": 30
+            },
+            {
+              "name": "Tesla Megapack",
+              "share_pct": 15
+            },
+            {
+              "name": "Sungrow PowerTitan",
+              "share_pct": 12
+            },
+            {
+              "name": "Wärtsilä",
+              "share_pct": 8
+            },
+            {
+              "name": "Nidec ASI",
+              "share_pct": 5
+            },
+            {
+              "name": "Hitachi Energy",
+              "share_pct": 5
+            },
+            {
+              "name": "EPC integrators (incl. Mein Solar)",
+              "share_pct": 10
+            },
+            {
+              "name": "Other",
+              "share_pct": 15
+            }
+          ],
+          "confidence": "MEDIUM",
+          "source": "Fluence-TransnetBW Kupferzell (250 MW), ess-news 2025, EDF DSO grid-booster tender 2025"
+        }
+      },
+      "strategic_adjacency": {
+        "direct_competence_transfer_04e": [
+          {
+            "unit": "Mechanical FACTS / STATCOM / SVC",
+            "level": "L5",
+            "has_it": "PARTIAL",
+            "effort": "MEDIUM",
+            "rationale": "MV + civil + cert skills transfer; power-electronics product IP is gap"
+          },
+          {
+            "unit": "Dynamic Line Rating Sensors",
+            "level": "L5",
+            "has_it": "PARTIAL",
+            "effort": "MEDIUM",
+            "rationale": "MV field install + OT integration fit; sensor OEM partnership needed"
+          },
+          {
+            "unit": "MV Switchgear (retrofit EPC)",
+            "level": "L5",
+            "has_it": "PARTIAL",
+            "effort": "MEDIUM",
+            "rationale": "EPC install scope, not product-build"
+          }
+        ],
+        "strategic_adjacency_expansion_04f": [
+          {
+            "adjacent_l5": "Mechanical FACTS / STATCOM / SVC",
+            "incumbents": [
+              "Hitachi Energy",
+              "Siemens Energy",
+              "GE Vernova",
+              "Mitsubishi Electric"
+            ],
+            "gap": "Power-electronics product line, reactive-power algorithms",
+            "invest": "18-24mo, EUR 3-5M",
+            "strategic_fit": 5,
+            "overlap_pct": 40,
+            "rationale": "EPC-partner role viable; OEM pivot not"
+          },
+          {
+            "adjacent_l5": "Flexibility Aggregation / VPP",
+            "incumbents": [
+              "Next Kraftwerke",
+              "Entrix",
+              "Enspired",
+              "Flexpower",
+              "Tiko"
+            ],
+            "gap": "Wholesale/BM trading desk, software platform",
+            "invest": "24-36mo, >EUR 5M",
+            "strategic_fit": 3,
+            "overlap_pct": 15,
+            "rationale": "Excluded — below 30% overlap threshold"
+          },
+          {
+            "adjacent_l5": "Dynamic Line Rating Sensors",
+            "incumbents": [
+              "LineVision",
+              "Ampacimon",
+              "Heimdall"
+            ],
+            "gap": "Sensor hardware + pattern analytics",
+            "invest": "12-18mo, EUR 1-2M",
+            "strategic_fit": 4,
+            "overlap_pct": 35,
+            "rationale": "Product-OEM pivot required"
+          },
+          {
+            "adjacent_l5": "Redispatch 2.0 Software",
+            "incumbents": [
+              "Siemens",
+              "GE",
+              "in-house utilities"
+            ],
+            "gap": "Utility IT, regulated procurement",
+            "invest": ">24mo, >EUR 3M",
+            "strategic_fit": 2,
+            "overlap_pct": 15,
+            "rationale": "Excluded — below 30% overlap"
+          }
+        ],
+        "vertical_move_up_04g": {
+          "current_position": "L5 Grid-Scale Battery Storage under L6f",
+          "target_position": "L6f Flexibility & Congestion Management integrator",
+          "must_add": [
+            "VPP/aggregation platform",
+            "STATCOM product line",
+            "DLR sensing",
+            "redispatch software",
+            "utility-IT/trading desk"
+          ],
+          "competitors_at_target": [
+            "Siemens Grid Software",
+            "Hitachi Energy",
+            "Fluence Digital",
+            "Next Kraftwerke (aggregation slice)"
+          ],
+          "feasibility": "LOW",
+          "economic_rationale": "L6f TAM ~10× L5-BESS TAM in DE but requires utility-IT + trading-desk + software-OEM org layer Mein Solar does not have. Organic move blocked; realistic path is partner-of-record inside a Siemens/Hitachi-led consortium."
+        }
+      },
+      "qa": {
+        "cfj_industry_level": "PASS",
+        "no_orphan_nodes": "PASS",
+        "valid_transitions": "PASS",
+        "l4_per_l5_ge_2": "PASS",
+        "l7_l6_not_solution_specific": "PASS",
+        "three_question_naming": "PASS",
+        "unit_count_in_range": "PASS (~38)"
+      }
+    }
+  ],
+  "has_bom": true,
+  "naics_sector_type": "non_manufacturing"
+}

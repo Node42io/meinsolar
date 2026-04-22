@@ -1,0 +1,1360 @@
+{
+  "id": "JTBD_other_electric_power_generation_bess_ref",
+  "title": "JTBD — NAICS 221118 Other Electric Power Generation (Standalone BESS / IPP)",
+  "type": "jtbd_analysis",
+  "market_slug": "other_electric_power_generation_bess_ref",
+  "is_per_market": true,
+  "sections": [
+    {
+      "title": "Phase 1 — Industry Landscape (reused from VN canvas)",
+      "content": "### 1.1 CFJ + Output Types\n\n| Field | Value |\n|---|---|\n| NAICS | 221118 Other Electric Power Generation |\n| CFJ | Deliver dispatchable multi-MWh electrical energy on demand to the power system, earning revenue from flexibility, capacity, and ancillary-service markets |\n| Output types | Standalone BESS · PV+BESS hybrid · Wind+BESS hybrid · DSO Netzbooster · C&I behind-the-meter · HPC buffer |\n| Industry offering level | L7 ecosystem (IPP sells dispatched electricity + grid services) |\n\n### 1.2 Segments (beneficiary = IPP organization type)\n\n| # | Segment | Circumstance |\n|---|---|---|\n| S1 | Pure-play BESS IPP | Fund- or developer-backed, greenfield projects, merchant or tolled revenue |\n| S2 | Utility-owned IPP arm | RWE, EnBW, Vattenfall subsidiaries; procurement-heavy, regulated risk appetite |\n| S3 | Solar/wind developer extending to storage | Brownfield retrofit onto operational renewables park; hybrid revenue |\n| S4 | Infrastructure fund / financial sponsor | Passive equity; outsources everything to owner's engineer + EPC |\n| S5 | Municipal Stadtwerke / coop | Small-scale (5–50 MWh), local grid-service focus, public procurement |\n| S6 | Aggregator-led asset ownership | Entrix / Next Kraftwerke anchor tolling, finance via SPV |\n\n### 1.3 Process VN (summary — full detail in VN ref file)\n\nL6a Site Development · L6b Engineering · L6c Procurement · **L6d Construction & Integration** · L6e Commissioning & Cert · L6f Operations · L6g Decommissioning. Horizontal: HSE, QA, Cyber, Regulatory.\n\n### 1.4 / 1.5 BOM + Edges\n\nNot derived — service/ecosystem NAICS. Service composition is documented via L5/L4 in VN file.\n\n---"
+    },
+    {
+      "title": "Phase 2 — Company Enters",
+      "content": "### 2.1 VN Anchor\n\n| Field | Value |\n|---|---|\n| Route | **PROCESS_VN** — EPC service creates the asset; does not become part of a consumable output |\n| Anchor VN unit | Turnkey BESS EPC Integration Services |\n| Anchor level | L5 |\n| Parent VN unit | Construction & Integration |\n| Parent level | L6 |\n| Job-context implication | Product exists to serve L6d's need: **convert a greenlit storage business case into a commissioned, grid-compliant, revenue-generating asset** |\n\n### 2.2 Lens\n\n| Field | Value |\n|---|---|\n| Function verb (from L6d job_family) | *Integrate & commission* |\n| Beneficiary (primary) | IPP / asset-owner company |\n| Lens statement | \"What integration-and-commissioning execution does an IPP need when converting a storage investment thesis into a running asset?\" |\n\n### 2.3 Core Job + Product Job\n\n| Field | Value |\n|---|---|\n| Core Job (customer phrasing) | \"Turn my greenlit storage business case into a safe, certified, revenue-generating asset on schedule, on budget, and without me having to integrate it myself\" |\n| Product Job statement | \"Help Construction & Integration to deliver a commissioned, VDE-AR-N 4110 / FGW TR8-certified multi-MWh BESS asset within contracted COD, CAPEX, and performance guarantees under single-source accountability\" |\n| Abstraction test | PASS — ≥3 alternatives from different categories (OEM turnkey, pure-play EPC, split-contract, defer) |\n\n### 2.4 Alternatives (5 per Core Job)\n\n| # | Alternative | UNSPSC (neutral) | Category | Inherent trade-offs | Existential? |\n|---|---|---|---|---|---|\n| A1 | **Solar-EPC extension into BESS** (Mein Solar's category: BayWa r.e., Enerparc, Goldbeck) | 72151500 | Same category | Strong grid-code / civil depth, weaker cell & EMS OEM leverage; thin BESS reference count vs. OEM giants | no |\n| A2 | **OEM-led turnkey** (Fluence, Tesla Megapack, Sungrow PowerTitan, Wärtsilä) | 72151500 | Different category | Equipment-bundled, deep cell/PCS integration; vendor lock-in, weaker local civil + permit execution, less PV-hybrid flexibility | no |\n| A3 | **Pure-play BESS EPC integrator** (Kyon Energy, GreenTech Energy, SolarEast EPC) | 72151500 | Different category | Storage-first pedigree, OEM-agnostic procurement; smaller balance sheet, no PV-hybrid history | no |\n| A4 | **Split-contract / owner-managed multi-prime** (DNV/Fichtner PMC + separate lots) | 81101513 | Different approach | Lowest price ceiling, maximum OEM choice; owner carries all interface + schedule risk | no |\n| A5 | **Defer or cancel project** (wait for cells to drop, policy clarity) | — | Status quo | Zero CAPEX + zero integration burden; forgoes revenue window + permits + grid-capacity slot (226 GW DE queue) | **yes** |\n\n### 2.5 Scenarios / Output Type Activation\n\n| Scenario | Activated output type | Notes |\n|---|---|---|\n| 10–50 MWh standalone merchant BESS | Standalone BESS IPP | Mein Solar's size class — reference fit |\n| PV-park retrofit (20–40 MWh BESS on operational PV) | PV+BESS hybrid | Differentiator-activating; PV-EPC heritage applies |\n| 100+ MWh standalone merchant | Standalone BESS IPP | Above Mein Solar's 9 MWh reference; syndication required |\n| DSO Netzbooster procurement | Netzbooster | Regulated utility customer (S2); different motion |\n| HPC buffer for charging hub | HPC buffer | FP-extension scenario; separate JTBD file |\n\n---"
+    },
+    {
+      "title": "Phase 3 — Needs Derivation",
+      "content": "### 3.1 Burleson Pyramid (per stakeholder role)\n\nStakeholders present (per Ulwick B2B deep service):\n\n| Role | Instance | Active levels |\n|---|---|---|\n| Job Beneficiary | IPP sponsor / asset-owner company | P2, P3, P4, P5 |\n| Job Executor | Owner's project director (customer-side PM) | P1 (all 5), P2 |\n| Job Overseer | Investment committee / CFO | P2, P4 |\n| Product Lifecycle Support | O&M provider (post-COD), DSO interface engineer, insurance underwriter | P1 own stage |\n| Purchase Executor | CFO / Procurement Director | P1 Acquisition |\n| Purchase Influencer | Owner's Engineer (DNV, Fichtner), Lender's Technical Advisor, FGW certifier | P4 |\n\n### 3.2 Job Map — Ulwick 8 steps × relevance\n\n| # | Step | Relevant? | Rationale |\n|---|---|---|---|\n| 1 | DEFINE | ✅ | EPC fixes scope, grid-code target, revenue-stack enablement, performance SLA |\n| 2 | LOCATE | ✅ | EPC runs grid-capacity study + Netzverträglichkeitsprüfung + equipment sourcing |\n| 3 | PREPARE | ✅ | EPC executes permitting, civil works, protection study, site logistics |\n| 4 | CONFIRM | ✅ | FAT, SAT, protection-relay setting, trip tests, pre-cert readiness |\n| 5 | EXECUTE | ✅ | Container placement, MV/LV install, energization, grid synchronization |\n| 6 | MONITOR | ✅ | Schedule, budget, HSE, Brandschutz, quality during the build |\n| 7 | MODIFY | ✅ | Change orders, grid-code adjustments, DSO-acceptance rework |\n| 8 | CONCLUDE | ✅ | FGW TR8 cert, DSO acceptance, handover dossier, performance guarantee bond |\n\nAll 8 relevant → need count target: **22–28 error statements**.\n\n### 3.3 Error Statements (22 needs × 7 error types × P1/P2/P3-P5)\n\n| # | Step | Error type | Statement | Imp | Sat | Opp | Impact | Prod-rel | Pyramid |\n|---|---|---|---|---|---|---|---|---|---|\n| 1 | DEFINE | ACCURACY | Minimize the likelihood of CAPEX-vs-actual deviation exceeding ±5% between EPC offer and final commissioned cost | 9 | 4 | 14 | cost | false | P2 |\n| 2 | DEFINE | EFFORT | Minimize the effort for the IPP sponsor to translate a business-case spreadsheet into a buildable, grid-code-compliant technical specification (<4 weeks) | 8 | 5 | 11 | time | false | P1-Acq |\n| 3 | DEFINE | CONSISTENCY | Minimize the likelihood that more than 1 interface (battery / PCS / MV / EMS) carries ambiguous responsibility between EPC and supplier scopes | 9 | 3 | 15 | reliability | true (A2/A4-caused) | P2 |\n| 4 | LOCATE | DETECTION | Minimize the likelihood of an undetected DSO capacity shortfall surfacing after FID (reducing delivered capacity >20%) | 10 | 4 | 16 | cost | false | P2 |\n| 5 | LOCATE | THROUGHPUT | Maximize the rate of equipment-lead-time parallelization so that critical-path procurement (cells, PCS, transformer) stays <10 months | 8 | 5 | 11 | time | false | P2 |\n| 6 | LOCATE | ROBUSTNESS | Minimize the likelihood of a single-vendor cell-supply concentration exposing >70% of project CAPEX to one country-of-origin tariff / CRMA risk | 7 | 4 | 10 | cost | false | P2 |\n| 7 | PREPARE | EFFORT | Minimize the number of separate Baugenehmigung, Brandschutzkonzept, and BImSchG submissions the IPP sponsor has to track (≤1 via EPC wrapper) | 7 | 4 | 10 | time | true (A4-caused) | P1-Prep |\n| 8 | PREPARE | ACCURACY | Minimize the likelihood of fire-protection design rework (additional walls, separation, hydrant runs) after local Feuerwehr review | 8 | 4 | 12 | safety | false | P2 |\n| 9 | PREPARE | ROBUSTNESS | Minimize the likelihood of civil rework (foundation, trenching) caused by late geotechnical surprises exceeding 5% of civil budget | 6 | 5 | 7 | cost | false | P2 |\n| 10 | CONFIRM | ACCURACY | Minimize the likelihood of a FAT/SAT protection-relay setting failing first trip test on energization day | 9 | 5 | 13 | reliability | false | P2 |\n| 11 | CONFIRM | DETECTION | Minimize the likelihood of an undetected unit-certificate (FGW TR3) documentation gap delaying plant-cert (TR8) submission >4 weeks | 9 | 3 | 15 | time | false | P2 |\n| 12 | EXECUTE | THROUGHPUT | Maximize the likelihood of grid-synchronization within the contracted COD window (slip ≤30 days) | 10 | 4 | 16 | cost | false | P2 |\n| 13 | EXECUTE | RECOVERY | Minimize the time to recover from a failed commissioning test without re-triggering DSO acceptance cycle (<2 weeks) | 8 | 3 | 13 | time | false | P2 |\n| 14 | EXECUTE | ACCURACY | Minimize the likelihood of PCS-to-MV-transformer phase-rotation / protection-coordination errors causing repeat energization attempts | 8 | 5 | 11 | reliability | false | P2 |\n| 15 | MONITOR | DETECTION | Minimize the likelihood of an undetected schedule-slippage signal propagating beyond 2 weeks before the IPP sponsor is notified | 7 | 4 | 10 | time | false | P1-Use |\n| 16 | MONITOR | CONSISTENCY | Minimize the variability between EPC status reports and independent owner's-engineer findings (<10% KPI divergence) | 7 | 5 | 9 | reliability | false | P4 (influencer gaze) |\n| 17 | MODIFY | EFFORT | Minimize the effort required to process a DSO-requested grid-code parameter change (<2 weeks from notice to implementation) | 7 | 4 | 10 | time | false | P2 |\n| 18 | MODIFY | ACCURACY | Minimize the likelihood of a change-order exceeding 3% of contract value through an opaque pricing mechanism | 8 | 3 | 13 | cost | true (A2-caused lock-in) | P1-Acq |\n| 19 | CONCLUDE | ACCURACY | Minimize the likelihood that the as-commissioned AC-AC round-trip efficiency falls short of guaranteed value by >1.5 pp in Year 1 | 9 | 5 | 13 | cost | false | P2 |\n| 20 | CONCLUDE | ROBUSTNESS | Minimize the likelihood of Year-1 availability shortfall below 97% triggering liquidated-damages clauses | 9 | 5 | 13 | reliability | false | P2 |\n| 21 | CONCLUDE | EFFORT | Minimize the number of separate warranty counterparties the IPP sponsor has to chase when a defect crosses battery / PCS / EMS domains (target: 1) | 8 | 3 | 13 | time | true (A4-caused) | P1-Maint |\n| 22 | CONCLUDE | DETECTION | Minimize the likelihood that performance-guarantee telemetry from EMS / SCADA cannot be reconciled with SLA evidence at annual audit | 7 | 4 | 10 | reliability | false | P2 |\n\n#### P3–P5 Bridge Needs (extracted via bridge questions)\n\n| # | Level | Retrieval | Bridge → need |\n|---|---|---|---|\n| P3-a | Role (IPP sponsor) | \"Being the operator who brought a large asset online on time\" | Maximize the visibility of milestone completion to lender / board during construction — Imp 7, Sat 5, Opp 9, image |\n| P4-a | Image (Owner's Engineer gaze) | Lender's TA must see EPC as competent | Maximize the transparency of interface-risk ownership in the EPC contract documentation — Imp 8, Sat 4, Opp 12, reliability |\n| P5-a | Emotion (sponsor) | Avoid \"rogue-asset anxiety\" (fire, blackout, reputational) | Minimize the likelihood of any Feuerwehr-attended incident occurring in the Year-1 operational window [hypothesis] — Imp 10, Sat 6, Opp 14, safety |\n\n### 3.4 ODI Scoring Summary\n\n| Classification | Count | Needs |\n|---|---|---|\n| **Underserved** (Imp >7 AND Sat <5) | 11 | #1, #3, #4, #8, #11, #12, #13, #15, #18, #20, #21 (and P4-a, P5-a) |\n| Mid-field | 11 | Rest |\n| Overserved | 0 | — |\n| **product_related=true** | 4 | #3, #7, #18, #21 (all arise from split-contract or vendor-lock alternatives) |\n| product_related=false | 18 | Market-inherent |\n| Minimize / Maximize mix | 19 / 3 | ~86 / 14 (skews minimize; needs review — Burleson expects ~60/40) |\n| Relevant steps | 8 / 8 | All Ulwick steps active |\n| Needs per step | 2–4 | ≥2 per step ✅ |\n\n**Ratio check:** Market-inherent 82% / Tech-specific 18% — **outside 60–70 / 30–40 target**. Acceptable deviation: EPC-service needs are disproportionately market-inherent because the integration problems (grid code, DSO, fire code, permits) are exogenous. The four tech-specific needs correctly map to the *alternatives' trade-offs* (split-contract interfaces, OEM lock-in).\n\n---"
+    },
+    {
+      "title": "Neo4j Write Preview",
+      "content": "```\n(Market {naics:\"221118\"}) -[:has_job_map]-> (JobMap {product_job_statement})\n(JobMap) -[:anchored_at]-> (ValueNetworkUnit {name:\"Turnkey BESS EPC Integration Services\", level:\"L5\"})\n(JobMap) -[:has_job_step]-> (JobStep) x8 (Define..Conclude)\n(JobStep) -[:has_error_statement]-> (ErrorStatement) x22\n(Market) -[:has_need]-> (ErrorStatement) x22 (+3 P3-P5)\n(Market) -[:has_incumbent_anchor]-> (IncumbentAnchor {technology:\"OEM-led turnkey (Fluence/Tesla/Sungrow)\"})\n(IncumbentAnchor) -[:anchored_at]-> (ValueNetworkUnit {name:\"Turnkey BESS EPC Integration Services\"})\n```\n\n---"
+    },
+    {
+      "title": "QA Checklist",
+      "content": "| # | Check | Status |\n|---|---|---|\n| V1 | All statements start with \"Minimize the likelihood of…\" / \"Maximize…\" + single KPI | ✅ |\n| V2 | product_related=true only if need disappears with different alternative | ✅ (4/22 map to A2/A4 trade-offs) |\n| V3 | Imp/Sat sanity — safety-critical at 10 | ✅ (#4, P5-a at 10) |\n| V4 | Impact-category match KPI | ✅ |\n| V5 | ≥2 per relevant step · duplicates zero | ✅ (2–4 per step; 22 across 8) |\n| V6 | Solution-agnostic wording (no \"lithium\", \"LFP\", \"Fluence\" in statements) | ✅ |\n| V7 | Anchor level matches abstraction (L5 for service-system) | ✅ |\n| V8 | Product job names parent VN unit | ✅ (\"Construction & Integration\") |\n\n---"
+    },
+    {
+      "title": "Structured Data",
+      "content": "```json\n{\n  \"component\": \"jtbd_analysis\",\n  \"naics_code\": \"221118\",\n  \"naics_title\": \"Other Electric Power Generation\",\n  \"market_name\": \"Standalone BESS / Independent Power Producers\",\n  \"product_name\": \"EPC für Großbatteriespeicher\",\n  \"vendor_name\": \"Mein Solar GmbH\",\n  \"route\": \"PROCESS_VN\",\n  \"anchor\": {\n    \"anchor_vn_unit\": \"Turnkey BESS EPC Integration Services\",\n    \"anchor_level\": \"L5\",\n    \"parent_vn_unit\": \"Construction & Integration\",\n    \"parent_level\": \"L6\"\n  },\n  \"cfj\": \"Deliver dispatchable multi-MWh electrical energy on demand to the power system, earning revenue from flexibility, capacity, and ancillary-service markets\",\n  \"core_job\": \"Turn my greenlit storage business case into a safe, certified, revenue-generating asset on schedule, on budget, and without me having to integrate it myself\",\n  \"product_job_statement\": \"Help Construction & Integration to deliver a commissioned, VDE-AR-N 4110 / FGW TR8-certified multi-MWh BESS asset within contracted COD, CAPEX, and performance guarantees under single-source accountability\",\n  \"segments\": [\n    {\"id\": \"S1\", \"name\": \"Pure-play BESS IPP\", \"circumstance\": \"Fund- or developer-backed, merchant or tolled revenue\"},\n    {\"id\": \"S2\", \"name\": \"Utility-owned IPP arm\", \"circumstance\": \"RWE/EnBW/Vattenfall subsidiary; regulated-risk\"},\n    {\"id\": \"S3\", \"name\": \"Solar/wind developer extending to storage\", \"circumstance\": \"Brownfield retrofit + hybrid revenue\"},\n    {\"id\": \"S4\", \"name\": \"Infrastructure fund / financial sponsor\", \"circumstance\": \"Passive equity; owner's-engineer-led\"},\n    {\"id\": \"S5\", \"name\": \"Municipal Stadtwerke / coop\", \"circumstance\": \"5–50 MWh, local grid service, public procurement\"},\n    {\"id\": \"S6\", \"name\": \"Aggregator-led asset ownership\", \"circumstance\": \"Entrix/Next Kraftwerke toll-anchored SPV\"}\n  ],\n  \"alternatives\": [\n    {\"id\": \"A1\", \"name\": \"Solar-EPC extension into BESS (Mein Solar, BayWa r.e., Enerparc, Goldbeck)\", \"unspsc\": \"72151500\", \"category\": \"same_category\", \"tradeoffs\": \"Grid-code & civil depth; thin BESS reference count vs. OEM giants\", \"existential\": false},\n    {\"id\": \"A2\", \"name\": \"OEM-led turnkey (Fluence, Tesla Megapack, Sungrow, Wärtsilä)\", \"unspsc\": \"72151500\", \"category\": \"different_category_same_outcome\", \"tradeoffs\": \"Deep cell/PCS integration; vendor lock-in; weaker local civil + permit; less PV-hybrid flexibility\", \"existential\": false},\n    {\"id\": \"A3\", \"name\": \"Pure-play BESS EPC integrator (Kyon, GreenTech, SolarEast EPC)\", \"unspsc\": \"72151500\", \"category\": \"different_category_same_outcome\", \"tradeoffs\": \"Storage-first pedigree, OEM-agnostic; smaller balance sheet; no PV-hybrid history\", \"existential\": false},\n    {\"id\": \"A4\", \"name\": \"Split-contract / owner-managed multi-prime (DNV/Fichtner PMC + separate lots)\", \"unspsc\": \"81101513\", \"category\": \"different_approach\", \"tradeoffs\": \"Lowest price ceiling; owner owns interface & schedule risk\", \"existential\": false},\n    {\"id\": \"A5\", \"name\": \"Defer or cancel project\", \"unspsc\": null, \"category\": \"status_quo\", \"tradeoffs\": \"Zero CAPEX, zero burden; forgoes revenue window, grid-queue slot (226 GW DE backlog)\", \"existential\": true}\n  ],\n  \"stakeholders\": [\n    {\"role\": \"Job Beneficiary\", \"instance\": \"IPP sponsor / asset-owner company\", \"pyramid_levels\": [\"P2\",\"P3\",\"P4\",\"P5\"]},\n    {\"role\": \"Job Executor\", \"instance\": \"Owner's project director\", \"pyramid_levels\": [\"P1-all\",\"P2\"]},\n    {\"role\": \"Job Overseer\", \"instance\": \"Investment committee / CFO\", \"pyramid_levels\": [\"P2\",\"P4\"]},\n    {\"role\": \"Product Lifecycle Support\", \"instance\": \"O&M provider, DSO interface engineer, insurance underwriter\", \"pyramid_levels\": [\"P1-own\"]},\n    {\"role\": \"Purchase Executor\", \"instance\": \"CFO / Procurement Director\", \"pyramid_levels\": [\"P1-Acq\"]},\n    {\"role\": \"Purchase Influencer\", \"instance\": \"Owner's Engineer (DNV, Fichtner), Lender's Technical Advisor, FGW certifier\", \"pyramid_levels\": [\"P4\"]}\n  ],\n  \"job_steps\": [\n    {\"step_number\": 1, \"step_name\": \"DEFINE\", \"relevant_to_product\": true, \"relevance_rationale\": \"EPC fixes scope, grid-code target, revenue-stack enablement, SLA\"},\n    {\"step_number\": 2, \"step_name\": \"LOCATE\", \"relevant_to_product\": true, \"relevance_rationale\": \"EPC runs grid-capacity study + Netzverträglichkeitsprüfung + equipment sourcing\"},\n    {\"step_number\": 3, \"step_name\": \"PREPARE\", \"relevant_to_product\": true, \"relevance_rationale\": \"EPC executes permitting, civil, protection study\"},\n    {\"step_number\": 4, \"step_name\": \"CONFIRM\", \"relevant_to_product\": true, \"relevance_rationale\": \"FAT, SAT, protection-relay setting, pre-cert readiness\"},\n    {\"step_number\": 5, \"step_name\": \"EXECUTE\", \"relevant_to_product\": true, \"relevance_rationale\": \"Container placement, MV/LV install, grid synchronization\"},\n    {\"step_number\": 6, \"step_name\": \"MONITOR\", \"relevant_to_product\": true, \"relevance_rationale\": \"Schedule, budget, HSE oversight during build\"},\n    {\"step_number\": 7, \"step_name\": \"MODIFY\", \"relevant_to_product\": true, \"relevance_rationale\": \"Change orders, DSO acceptance rework\"},\n    {\"step_number\": 8, \"step_name\": \"CONCLUDE\", \"relevant_to_product\": true, \"relevance_rationale\": \"FGW TR8 cert, handover, performance guarantee bond\"}\n  ],\n  \"error_statements\": [\n    {\"id\": 1,  \"job_step_number\": 1, \"job_step_name\": \"DEFINE\",   \"full_statement\": \"Minimize the likelihood of CAPEX-vs-actual deviation exceeding ±5% between EPC offer and final commissioned cost\", \"importance\": 9, \"satisfaction_current\": 4, \"opportunity_score\": 14, \"impact_category\": \"cost\",        \"rationale\": \"DE BESS schedule/cost risk is material given 226 GW grid queue, DSO FCA rules, supply chain FX\", \"confidence\": 0.9, \"product_related\": false, \"pyramid_level\": \"P2\"},\n    {\"id\": 2,  \"job_step_number\": 1, \"job_step_name\": \"DEFINE\",   \"full_statement\": \"Minimize the effort for the IPP sponsor to translate a business-case spreadsheet into a buildable, grid-code-compliant technical specification (<4 weeks)\",  \"importance\": 8, \"satisfaction_current\": 5, \"opportunity_score\": 11, \"impact_category\": \"time\",        \"rationale\": \"Many sponsors outsource this to owner's engineer at cost; single-source EPC can fold into offer phase\",                                        \"confidence\": 0.8, \"product_related\": false, \"pyramid_level\": \"P1_Acquisition\"},\n    {\"id\": 3,  \"job_step_number\": 1, \"job_step_name\": \"DEFINE\",   \"full_statement\": \"Minimize the likelihood that more than 1 interface (battery / PCS / MV / EMS) carries ambiguous responsibility between EPC and supplier scopes\", \"importance\": 9, \"satisfaction_current\": 3, \"opportunity_score\": 15, \"impact_category\": \"reliability\", \"rationale\": \"Interface gaps are the #1 claim driver in split-contract delivery\",                                                                         \"confidence\": 0.9, \"product_related\": true,  \"pyramid_level\": \"P2\"},\n    {\"id\": 4,  \"job_step_number\": 2, \"job_step_name\": \"LOCATE\",   \"full_statement\": \"Minimize the likelihood of an undetected DSO capacity shortfall surfacing after FID (reducing delivered capacity >20%)\", \"importance\": 10, \"satisfaction_current\": 4, \"opportunity_score\": 16, \"impact_category\": \"cost\",        \"rationale\": \"German TSO queue 226 GW; many connection agreements later curtailed under Flexible Connection Agreements\",                                 \"confidence\": 0.9, \"product_related\": false, \"pyramid_level\": \"P2\"},\n    {\"id\": 5,  \"job_step_number\": 2, \"job_step_name\": \"LOCATE\",   \"full_statement\": \"Maximize the rate of equipment-lead-time parallelization so that critical-path procurement (cells, PCS, transformer) stays <10 months\",  \"importance\": 8, \"satisfaction_current\": 5, \"opportunity_score\": 11, \"impact_category\": \"time\",        \"rationale\": \"MV transformer lead time in DE peaked at 24+ months 2023-2025; parallelization is the main lever\",                                          \"confidence\": 0.8, \"product_related\": false, \"pyramid_level\": \"P2\"},\n    {\"id\": 6,  \"job_step_number\": 2, \"job_step_name\": \"LOCATE\",   \"full_statement\": \"Minimize the likelihood of a single-vendor cell-supply concentration exposing >70% of project CAPEX to one country-of-origin tariff / CRMA risk\",         \"importance\": 7, \"satisfaction_current\": 4, \"opportunity_score\": 10, \"impact_category\": \"cost\",        \"rationale\": \"CRMA / EU Battery Reg. and CN-tariff exposure top of sponsor diligence in 2026\",                                                            \"confidence\": 0.7, \"product_related\": false, \"pyramid_level\": \"P2\"},\n    {\"id\": 7,  \"job_step_number\": 3, \"job_step_name\": \"PREPARE\",  \"full_statement\": \"Minimize the number of separate Baugenehmigung, Brandschutzkonzept, and BImSchG submissions the IPP sponsor has to track (≤1 via EPC wrapper)\", \"importance\": 7, \"satisfaction_current\": 4, \"opportunity_score\": 10, \"impact_category\": \"time\",        \"rationale\": \"Split-contract forces sponsor to coordinate permits directly\",                                                                              \"confidence\": 0.8, \"product_related\": true,  \"pyramid_level\": \"P1_Preparation\"},\n    {\"id\": 8,  \"job_step_number\": 3, \"job_step_name\": \"PREPARE\",  \"full_statement\": \"Minimize the likelihood of fire-protection design rework (additional walls, separation, hydrant runs) after local Feuerwehr review\",                        \"importance\": 8, \"satisfaction_current\": 4, \"opportunity_score\": 12, \"impact_category\": \"safety\",      \"rationale\": \"Feuerwehr guidance varies by Bundesland; rework common on first-of-kind site\",                                                              \"confidence\": 0.8, \"product_related\": false, \"pyramid_level\": \"P2\"},\n    {\"id\": 9,  \"job_step_number\": 3, \"job_step_name\": \"PREPARE\",  \"full_statement\": \"Minimize the likelihood of civil rework (foundation, trenching) caused by late geotechnical surprises exceeding 5% of civil budget\",                         \"importance\": 6, \"satisfaction_current\": 5, \"opportunity_score\": 7,  \"impact_category\": \"cost\",        \"rationale\": \"Managed via early site survey; mature industry practice\",                                                                                   \"confidence\": 0.7, \"product_related\": false, \"pyramid_level\": \"P2\"},\n    {\"id\": 10, \"job_step_number\": 4, \"job_step_name\": \"CONFIRM\",  \"full_statement\": \"Minimize the likelihood of a FAT/SAT protection-relay setting failing first trip test on energization day\",                                                 \"importance\": 9, \"satisfaction_current\": 5, \"opportunity_score\": 13, \"impact_category\": \"reliability\", \"rationale\": \"First-trip failures add 2-4 weeks + DSO re-attendance fees\",                                                                                 \"confidence\": 0.8, \"product_related\": false, \"pyramid_level\": \"P2\"},\n    {\"id\": 11, \"job_step_number\": 4, \"job_step_name\": \"CONFIRM\",  \"full_statement\": \"Minimize the likelihood of an undetected unit-certificate (FGW TR3) documentation gap delaying plant-cert (TR8) submission >4 weeks\",                        \"importance\": 9, \"satisfaction_current\": 3, \"opportunity_score\": 15, \"impact_category\": \"time\",        \"rationale\": \"FGW TR3 gaps are the #1 cert-delay cause; requires proactive dossier discipline\",                                                           \"confidence\": 0.85, \"product_related\": false, \"pyramid_level\": \"P2\"},\n    {\"id\": 12, \"job_step_number\": 5, \"job_step_name\": \"EXECUTE\",  \"full_statement\": \"Maximize the likelihood of grid-synchronization within the contracted COD window (slip ≤30 days)\",                                                          \"importance\": 10, \"satisfaction_current\": 4, \"opportunity_score\": 16, \"impact_category\": \"cost\",        \"rationale\": \"COD slip triggers lender-DSCR covenants, lost revenue window, LD clauses\",                                                                  \"confidence\": 0.9, \"product_related\": false, \"pyramid_level\": \"P2\"},\n    {\"id\": 13, \"job_step_number\": 5, \"job_step_name\": \"EXECUTE\",  \"full_statement\": \"Minimize the time to recover from a failed commissioning test without re-triggering DSO acceptance cycle (<2 weeks)\",                                        \"importance\": 8, \"satisfaction_current\": 3, \"opportunity_score\": 13, \"impact_category\": \"time\",        \"rationale\": \"Re-triggered DSO cycle can cost 6-10 weeks\",                                                                                                 \"confidence\": 0.8, \"product_related\": false, \"pyramid_level\": \"P2\"},\n    {\"id\": 14, \"job_step_number\": 5, \"job_step_name\": \"EXECUTE\",  \"full_statement\": \"Minimize the likelihood of PCS-to-MV-transformer phase-rotation / protection-coordination errors causing repeat energization attempts\",                      \"importance\": 8, \"satisfaction_current\": 5, \"opportunity_score\": 11, \"impact_category\": \"reliability\", \"rationale\": \"Common error mode on first-of-site builds; procedural fix\",                                                                                  \"confidence\": 0.8, \"product_related\": false, \"pyramid_level\": \"P2\"},\n    {\"id\": 15, \"job_step_number\": 6, \"job_step_name\": \"MONITOR\",  \"full_statement\": \"Minimize the likelihood of an undetected schedule-slippage signal propagating beyond 2 weeks before the IPP sponsor is notified\",                             \"importance\": 7, \"satisfaction_current\": 4, \"opportunity_score\": 10, \"impact_category\": \"time\",        \"rationale\": \"Late notification prevents sponsor mitigation; opacity in traditional EPC reporting\",                                                       \"confidence\": 0.75, \"product_related\": false, \"pyramid_level\": \"P1_Usage\"},\n    {\"id\": 16, \"job_step_number\": 6, \"job_step_name\": \"MONITOR\",  \"full_statement\": \"Minimize the variability between EPC status reports and independent owner's-engineer findings (<10% KPI divergence)\",                                         \"importance\": 7, \"satisfaction_current\": 5, \"opportunity_score\": 9,  \"impact_category\": \"reliability\", \"rationale\": \"Divergence erodes lender confidence and triggers extra audit cycles\",                                                                      \"confidence\": 0.7, \"product_related\": false, \"pyramid_level\": \"P4\"},\n    {\"id\": 17, \"job_step_number\": 7, \"job_step_name\": \"MODIFY\",   \"full_statement\": \"Minimize the effort required to process a DSO-requested grid-code parameter change (<2 weeks from notice to implementation)\",                                  \"importance\": 7, \"satisfaction_current\": 4, \"opportunity_score\": 10, \"impact_category\": \"time\",        \"rationale\": \"DSO parameter changes (FCA-era) now routine; slow response extends commissioning\",                                                          \"confidence\": 0.75, \"product_related\": false, \"pyramid_level\": \"P2\"},\n    {\"id\": 18, \"job_step_number\": 7, \"job_step_name\": \"MODIFY\",   \"full_statement\": \"Minimize the likelihood of a change-order exceeding 3% of contract value through an opaque pricing mechanism\",                                                \"importance\": 8, \"satisfaction_current\": 3, \"opportunity_score\": 13, \"impact_category\": \"cost\",        \"rationale\": \"OEM-led turnkey (A2) frequently price-locks the owner via equipment dependency\",                                                           \"confidence\": 0.8, \"product_related\": true,  \"pyramid_level\": \"P1_Acquisition\"},\n    {\"id\": 19, \"job_step_number\": 8, \"job_step_name\": \"CONCLUDE\", \"full_statement\": \"Minimize the likelihood that the as-commissioned AC-AC round-trip efficiency falls short of guaranteed value by >1.5 pp in Year 1\",                           \"importance\": 9, \"satisfaction_current\": 5, \"opportunity_score\": 13, \"impact_category\": \"cost\",        \"rationale\": \"Each 1 pp RTE = ~0.37% revenue; LD typically 2–4× kWh-shortfall damages\",                                                                    \"confidence\": 0.85, \"product_related\": false, \"pyramid_level\": \"P2\"},\n    {\"id\": 20, \"job_step_number\": 8, \"job_step_name\": \"CONCLUDE\", \"full_statement\": \"Minimize the likelihood of Year-1 availability shortfall below 97% triggering liquidated-damages clauses\",                                                   \"importance\": 9, \"satisfaction_current\": 5, \"opportunity_score\": 13, \"impact_category\": \"reliability\", \"rationale\": \"Availability below 97-98% breaches standard LD threshold; cost scales with downtime hours\",                                                  \"confidence\": 0.85, \"product_related\": false, \"pyramid_level\": \"P2\"},\n    {\"id\": 21, \"job_step_number\": 8, \"job_step_name\": \"CONCLUDE\", \"full_statement\": \"Minimize the number of separate warranty counterparties the IPP sponsor has to chase when a defect crosses battery / PCS / EMS domains (target: 1)\",          \"importance\": 8, \"satisfaction_current\": 3, \"opportunity_score\": 13, \"impact_category\": \"time\",        \"rationale\": \"Split-contract (A4) forces sponsor into cross-vendor dispute; single-source EPC wraps this\",                                                \"confidence\": 0.85, \"product_related\": true,  \"pyramid_level\": \"P1_Maintenance\"},\n    {\"id\": 22, \"job_step_number\": 8, \"job_step_name\": \"CONCLUDE\", \"full_statement\": \"Minimize the likelihood that performance-guarantee telemetry from EMS / SCADA cannot be reconciled with SLA evidence at annual audit\",                        \"importance\": 7, \"satisfaction_current\": 4, \"opportunity_score\": 10, \"impact_category\": \"reliability\", \"rationale\": \"SLA-audit gaps are the emerging friction point as BESS SLAs mature\",                                                                        \"confidence\": 0.75, \"product_related\": false, \"pyramid_level\": \"P2\"}\n  ],\n  \"p3_p5_needs\": [\n    {\"id\": \"P3-a\", \"level\": \"P3_Role\",    \"role_holder\": \"IPP sponsor\",      \"retrieval\": \"Being the operator who brought a large asset online on time\",       \"bridge_need\": \"Maximize the visibility of milestone completion to lender / board during construction\", \"importance\": 7,  \"satisfaction_current\": 5, \"opportunity_score\": 9,  \"impact_category\": \"reliability\", \"hypothesis\": false},\n    {\"id\": \"P4-a\", \"level\": \"P4_Image\",   \"role_holder\": \"Owner's Engineer\", \"retrieval\": \"Lender's TA must see EPC as competent\",                              \"bridge_need\": \"Maximize the transparency of interface-risk ownership in the EPC contract documentation\", \"importance\": 8,  \"satisfaction_current\": 4, \"opportunity_score\": 12, \"impact_category\": \"reliability\", \"hypothesis\": false},\n    {\"id\": \"P5-a\", \"level\": \"P5_Emotion\", \"role_holder\": \"IPP sponsor\",      \"retrieval\": \"Avoid rogue-asset anxiety (fire, blackout, reputational)\",           \"bridge_need\": \"Minimize the likelihood of any Feuerwehr-attended incident occurring in the Year-1 operational window\", \"importance\": 10, \"satisfaction_current\": 6, \"opportunity_score\": 14, \"impact_category\": \"safety\",    \"hypothesis\": true}\n  ],\n  \"incumbent_anchor\": {\n    \"technology_name\": \"OEM-led turnkey (Fluence / Tesla Megapack / Sungrow PowerTitan / Wärtsilä)\",\n    \"anchor_vn_unit\": \"Turnkey BESS EPC Integration Services\",\n    \"anchor_level\": \"L5\",\n    \"rationale\": \"Currently dominant alternative (~40% share in DE) against which Mein Solar's solar-EPC-extension positioning is evaluated\"\n  },\n  \"coverage_check\": {\n    \"total_error_statements\": 22,\n    \"plus_p3_p5\": 3,\n    \"relevant_steps\": 8,\n    \"needs_per_step_min\": 2,\n    \"needs_per_step_max\": 4,\n    \"underserved_count\": 11,\n    \"overserved_count\": 0,\n    \"product_related_true_count\": 4,\n    \"product_related_false_count\": 18,\n    \"minimize_count\": 19,\n    \"maximize_count\": 3,\n    \"market_inherent_ratio\": 0.82,\n    \"tech_specific_ratio\": 0.18,\n    \"ratio_note\": \"Outside target 60/40 — EPC-service needs are disproportionately market-inherent because integration problems are exogenous (grid code, DSO, fire)\"\n  },\n  \"qa\": {\n    \"V1_format_compliance\": \"PASS\",\n    \"V2_product_related_correct\": \"PASS\",\n    \"V3_importance_satisfaction_sanity\": \"PASS\",\n    \"V4_impact_category_match\": \"PASS\",\n    \"V5_coverage\": \"PASS\",\n    \"V6_solution_agnostic\": \"PASS\",\n    \"V7_anchor_level_correct\": \"PASS (L5 service-system)\",\n    \"V8_product_job_parent\": \"PASS (names Construction & Integration)\"\n  }\n}\n```\n\n---"
+    },
+    {
+      "title": "Sources",
+      "content": "- [Success strategies for BESS investments — Watson Farley & Williams](https://www.wfw.com/articles/success-strategies-for-bess-investments-with-regard-to-regulation-and-construction/)\n- [German large-scale BESS — FCA, grid & revenue challenges (Energy-Storage.News)](https://www.energy-storage.news/german-large-scale-bess-projects-have-built-industry-confidence-but-fca-grid-and-revenue-challenges-remain/)\n- [German TSO grid connection requests 226 GW at year-turn (ESS News)](https://www.ess-news.com/2025/01/14/german-grid-companies-had-connection-requests-for-226-gw-of-big-batteries-at-turn-of-year/)\n- [Global grid-scale BESS deployment +38% YoY through Oct 2025 (ESS News)](https://www.ess-news.com/2025/11/24/global-grid-scale-bess-deployment-up-by-38-year-on-year-through-october/)\n- [Making BESS warranties work — contracts vs. reality (ESS News)](https://www.ess-news.com/2025/09/19/making-bess-warranties-work-contracts-vs-reality/)\n- [EPC Framework for BESS Projects (arXiv)](https://arxiv.org/html/2506.13281v1)\n- [Round-Trip Efficiency as a performance guarantee (Merus Power)](https://meruspower.com/blog/round-trip-efficiency-as-a-performance-guarantee-for-battery-energy-storage-systems/)\n- [Germany to launch Inertia Service market 2026 — grid-forming BESS (HSF Kramer)](https://www.hsfkramer.com/notes/energy/2025-posts/germany-to-launch-inertia-service-market-in-2026-new-revenue-stream-for-grid-forming-bess)\n- [VDE-AR-N 4110 TCR Medium Voltage](https://www.vde.com/en/fnn/topics/technical-connection-rules/tcr-for-medium-voltage)"
+    }
+  ],
+  "tables": [
+    {
+      "headers": [
+        "Field",
+        "Value"
+      ],
+      "rows": [
+        {
+          "Field": "NAICS",
+          "Value": "221118 Other Electric Power Generation"
+        },
+        {
+          "Field": "CFJ",
+          "Value": "Deliver dispatchable multi-MWh electrical energy on demand to the power system, earning revenue from flexibility, capacity, and ancillary-service markets"
+        },
+        {
+          "Field": "Output types",
+          "Value": "Standalone BESS · PV+BESS hybrid · Wind+BESS hybrid · DSO Netzbooster · C&I behind-the-meter · HPC buffer"
+        },
+        {
+          "Field": "Industry offering level",
+          "Value": "L7 ecosystem (IPP sells dispatched electricity + grid services)"
+        }
+      ]
+    },
+    {
+      "headers": [
+        "#",
+        "Segment",
+        "Circumstance"
+      ],
+      "rows": [
+        {
+          "#": "S1",
+          "Segment": "Pure-play BESS IPP",
+          "Circumstance": "Fund- or developer-backed, greenfield projects, merchant or tolled revenue"
+        },
+        {
+          "#": "S2",
+          "Segment": "Utility-owned IPP arm",
+          "Circumstance": "RWE, EnBW, Vattenfall subsidiaries; procurement-heavy, regulated risk appetite"
+        },
+        {
+          "#": "S3",
+          "Segment": "Solar/wind developer extending to storage",
+          "Circumstance": "Brownfield retrofit onto operational renewables park; hybrid revenue"
+        },
+        {
+          "#": "S4",
+          "Segment": "Infrastructure fund / financial sponsor",
+          "Circumstance": "Passive equity; outsources everything to owner's engineer + EPC"
+        },
+        {
+          "#": "S5",
+          "Segment": "Municipal Stadtwerke / coop",
+          "Circumstance": "Small-scale (5–50 MWh), local grid-service focus, public procurement"
+        },
+        {
+          "#": "S6",
+          "Segment": "Aggregator-led asset ownership",
+          "Circumstance": "Entrix / Next Kraftwerke anchor tolling, finance via SPV"
+        }
+      ]
+    },
+    {
+      "headers": [
+        "Field",
+        "Value"
+      ],
+      "rows": [
+        {
+          "Field": "Route",
+          "Value": "**PROCESS_VN** — EPC service creates the asset; does not become part of a consumable output"
+        },
+        {
+          "Field": "Anchor VN unit",
+          "Value": "Turnkey BESS EPC Integration Services"
+        },
+        {
+          "Field": "Anchor level",
+          "Value": "L5"
+        },
+        {
+          "Field": "Parent VN unit",
+          "Value": "Construction & Integration"
+        },
+        {
+          "Field": "Parent level",
+          "Value": "L6"
+        },
+        {
+          "Field": "Job-context implication",
+          "Value": "Product exists to serve L6d's need: **convert a greenlit storage business case into a commissioned, grid-compliant, revenue-generating asset**"
+        }
+      ]
+    },
+    {
+      "headers": [
+        "Field",
+        "Value"
+      ],
+      "rows": [
+        {
+          "Field": "Function verb (from L6d job_family)",
+          "Value": "*Integrate & commission*"
+        },
+        {
+          "Field": "Beneficiary (primary)",
+          "Value": "IPP / asset-owner company"
+        },
+        {
+          "Field": "Lens statement",
+          "Value": "\"What integration-and-commissioning execution does an IPP need when converting a storage investment thesis into a running asset?\""
+        }
+      ]
+    },
+    {
+      "headers": [
+        "Field",
+        "Value"
+      ],
+      "rows": [
+        {
+          "Field": "Core Job (customer phrasing)",
+          "Value": "\"Turn my greenlit storage business case into a safe, certified, revenue-generating asset on schedule, on budget, and without me having to integrate it myself\""
+        },
+        {
+          "Field": "Product Job statement",
+          "Value": "\"Help Construction & Integration to deliver a commissioned, VDE-AR-N 4110 / FGW TR8-certified multi-MWh BESS asset within contracted COD, CAPEX, and performance guarantees under single-source accountability\""
+        },
+        {
+          "Field": "Abstraction test",
+          "Value": "PASS — ≥3 alternatives from different categories (OEM turnkey, pure-play EPC, split-contract, defer)"
+        }
+      ]
+    },
+    {
+      "headers": [
+        "#",
+        "Alternative",
+        "UNSPSC (neutral)",
+        "Category",
+        "Inherent trade-offs",
+        "Existential?"
+      ],
+      "rows": [
+        {
+          "#": "A1",
+          "Alternative": "**Solar-EPC extension into BESS** (Mein Solar's category: BayWa r.e., Enerparc, Goldbeck)",
+          "UNSPSC (neutral)": "72151500",
+          "Category": "Same category",
+          "Inherent trade-offs": "Strong grid-code / civil depth, weaker cell & EMS OEM leverage; thin BESS reference count vs. OEM giants",
+          "Existential?": "no"
+        },
+        {
+          "#": "A2",
+          "Alternative": "**OEM-led turnkey** (Fluence, Tesla Megapack, Sungrow PowerTitan, Wärtsilä)",
+          "UNSPSC (neutral)": "72151500",
+          "Category": "Different category",
+          "Inherent trade-offs": "Equipment-bundled, deep cell/PCS integration; vendor lock-in, weaker local civil + permit execution, less PV-hybrid flexibility",
+          "Existential?": "no"
+        },
+        {
+          "#": "A3",
+          "Alternative": "**Pure-play BESS EPC integrator** (Kyon Energy, GreenTech Energy, SolarEast EPC)",
+          "UNSPSC (neutral)": "72151500",
+          "Category": "Different category",
+          "Inherent trade-offs": "Storage-first pedigree, OEM-agnostic procurement; smaller balance sheet, no PV-hybrid history",
+          "Existential?": "no"
+        },
+        {
+          "#": "A4",
+          "Alternative": "**Split-contract / owner-managed multi-prime** (DNV/Fichtner PMC + separate lots)",
+          "UNSPSC (neutral)": "81101513",
+          "Category": "Different approach",
+          "Inherent trade-offs": "Lowest price ceiling, maximum OEM choice; owner carries all interface + schedule risk",
+          "Existential?": "no"
+        },
+        {
+          "#": "A5",
+          "Alternative": "**Defer or cancel project** (wait for cells to drop, policy clarity)",
+          "UNSPSC (neutral)": "—",
+          "Category": "Status quo",
+          "Inherent trade-offs": "Zero CAPEX + zero integration burden; forgoes revenue window + permits + grid-capacity slot (226 GW DE queue)",
+          "Existential?": "**yes**"
+        }
+      ]
+    },
+    {
+      "headers": [
+        "Scenario",
+        "Activated output type",
+        "Notes"
+      ],
+      "rows": [
+        {
+          "Scenario": "10–50 MWh standalone merchant BESS",
+          "Activated output type": "Standalone BESS IPP",
+          "Notes": "Mein Solar's size class — reference fit"
+        },
+        {
+          "Scenario": "PV-park retrofit (20–40 MWh BESS on operational PV)",
+          "Activated output type": "PV+BESS hybrid",
+          "Notes": "Differentiator-activating; PV-EPC heritage applies"
+        },
+        {
+          "Scenario": "100+ MWh standalone merchant",
+          "Activated output type": "Standalone BESS IPP",
+          "Notes": "Above Mein Solar's 9 MWh reference; syndication required"
+        },
+        {
+          "Scenario": "DSO Netzbooster procurement",
+          "Activated output type": "Netzbooster",
+          "Notes": "Regulated utility customer (S2); different motion"
+        },
+        {
+          "Scenario": "HPC buffer for charging hub",
+          "Activated output type": "HPC buffer",
+          "Notes": "FP-extension scenario; separate JTBD file"
+        }
+      ]
+    },
+    {
+      "headers": [
+        "Role",
+        "Instance",
+        "Active levels"
+      ],
+      "rows": [
+        {
+          "Role": "Job Beneficiary",
+          "Instance": "IPP sponsor / asset-owner company",
+          "Active levels": "P2, P3, P4, P5"
+        },
+        {
+          "Role": "Job Executor",
+          "Instance": "Owner's project director (customer-side PM)",
+          "Active levels": "P1 (all 5), P2"
+        },
+        {
+          "Role": "Job Overseer",
+          "Instance": "Investment committee / CFO",
+          "Active levels": "P2, P4"
+        },
+        {
+          "Role": "Product Lifecycle Support",
+          "Instance": "O&M provider (post-COD), DSO interface engineer, insurance underwriter",
+          "Active levels": "P1 own stage"
+        },
+        {
+          "Role": "Purchase Executor",
+          "Instance": "CFO / Procurement Director",
+          "Active levels": "P1 Acquisition"
+        },
+        {
+          "Role": "Purchase Influencer",
+          "Instance": "Owner's Engineer (DNV, Fichtner), Lender's Technical Advisor, FGW certifier",
+          "Active levels": "P4"
+        }
+      ]
+    },
+    {
+      "headers": [
+        "#",
+        "Step",
+        "Relevant?",
+        "Rationale"
+      ],
+      "rows": [
+        {
+          "#": "1",
+          "Step": "DEFINE",
+          "Relevant?": "✅",
+          "Rationale": "EPC fixes scope, grid-code target, revenue-stack enablement, performance SLA"
+        },
+        {
+          "#": "2",
+          "Step": "LOCATE",
+          "Relevant?": "✅",
+          "Rationale": "EPC runs grid-capacity study + Netzverträglichkeitsprüfung + equipment sourcing"
+        },
+        {
+          "#": "3",
+          "Step": "PREPARE",
+          "Relevant?": "✅",
+          "Rationale": "EPC executes permitting, civil works, protection study, site logistics"
+        },
+        {
+          "#": "4",
+          "Step": "CONFIRM",
+          "Relevant?": "✅",
+          "Rationale": "FAT, SAT, protection-relay setting, trip tests, pre-cert readiness"
+        },
+        {
+          "#": "5",
+          "Step": "EXECUTE",
+          "Relevant?": "✅",
+          "Rationale": "Container placement, MV/LV install, energization, grid synchronization"
+        },
+        {
+          "#": "6",
+          "Step": "MONITOR",
+          "Relevant?": "✅",
+          "Rationale": "Schedule, budget, HSE, Brandschutz, quality during the build"
+        },
+        {
+          "#": "7",
+          "Step": "MODIFY",
+          "Relevant?": "✅",
+          "Rationale": "Change orders, grid-code adjustments, DSO-acceptance rework"
+        },
+        {
+          "#": "8",
+          "Step": "CONCLUDE",
+          "Relevant?": "✅",
+          "Rationale": "FGW TR8 cert, DSO acceptance, handover dossier, performance guarantee bond"
+        }
+      ]
+    },
+    {
+      "headers": [
+        "#",
+        "Step",
+        "Error type",
+        "Statement",
+        "Imp",
+        "Sat",
+        "Opp",
+        "Impact",
+        "Prod-rel",
+        "Pyramid"
+      ],
+      "rows": [
+        {
+          "#": "1",
+          "Step": "DEFINE",
+          "Error type": "ACCURACY",
+          "Statement": "Minimize the likelihood of CAPEX-vs-actual deviation exceeding ±5% between EPC offer and final commissioned cost",
+          "Imp": "9",
+          "Sat": "4",
+          "Opp": "14",
+          "Impact": "cost",
+          "Prod-rel": "false",
+          "Pyramid": "P2"
+        },
+        {
+          "#": "2",
+          "Step": "DEFINE",
+          "Error type": "EFFORT",
+          "Statement": "Minimize the effort for the IPP sponsor to translate a business-case spreadsheet into a buildable, grid-code-compliant technical specification (<4 weeks)",
+          "Imp": "8",
+          "Sat": "5",
+          "Opp": "11",
+          "Impact": "time",
+          "Prod-rel": "false",
+          "Pyramid": "P1-Acq"
+        },
+        {
+          "#": "3",
+          "Step": "DEFINE",
+          "Error type": "CONSISTENCY",
+          "Statement": "Minimize the likelihood that more than 1 interface (battery / PCS / MV / EMS) carries ambiguous responsibility between EPC and supplier scopes",
+          "Imp": "9",
+          "Sat": "3",
+          "Opp": "15",
+          "Impact": "reliability",
+          "Prod-rel": "true (A2/A4-caused)",
+          "Pyramid": "P2"
+        },
+        {
+          "#": "4",
+          "Step": "LOCATE",
+          "Error type": "DETECTION",
+          "Statement": "Minimize the likelihood of an undetected DSO capacity shortfall surfacing after FID (reducing delivered capacity >20%)",
+          "Imp": "10",
+          "Sat": "4",
+          "Opp": "16",
+          "Impact": "cost",
+          "Prod-rel": "false",
+          "Pyramid": "P2"
+        },
+        {
+          "#": "5",
+          "Step": "LOCATE",
+          "Error type": "THROUGHPUT",
+          "Statement": "Maximize the rate of equipment-lead-time parallelization so that critical-path procurement (cells, PCS, transformer) stays <10 months",
+          "Imp": "8",
+          "Sat": "5",
+          "Opp": "11",
+          "Impact": "time",
+          "Prod-rel": "false",
+          "Pyramid": "P2"
+        },
+        {
+          "#": "6",
+          "Step": "LOCATE",
+          "Error type": "ROBUSTNESS",
+          "Statement": "Minimize the likelihood of a single-vendor cell-supply concentration exposing >70% of project CAPEX to one country-of-origin tariff / CRMA risk",
+          "Imp": "7",
+          "Sat": "4",
+          "Opp": "10",
+          "Impact": "cost",
+          "Prod-rel": "false",
+          "Pyramid": "P2"
+        },
+        {
+          "#": "7",
+          "Step": "PREPARE",
+          "Error type": "EFFORT",
+          "Statement": "Minimize the number of separate Baugenehmigung, Brandschutzkonzept, and BImSchG submissions the IPP sponsor has to track (≤1 via EPC wrapper)",
+          "Imp": "7",
+          "Sat": "4",
+          "Opp": "10",
+          "Impact": "time",
+          "Prod-rel": "true (A4-caused)",
+          "Pyramid": "P1-Prep"
+        },
+        {
+          "#": "8",
+          "Step": "PREPARE",
+          "Error type": "ACCURACY",
+          "Statement": "Minimize the likelihood of fire-protection design rework (additional walls, separation, hydrant runs) after local Feuerwehr review",
+          "Imp": "8",
+          "Sat": "4",
+          "Opp": "12",
+          "Impact": "safety",
+          "Prod-rel": "false",
+          "Pyramid": "P2"
+        },
+        {
+          "#": "9",
+          "Step": "PREPARE",
+          "Error type": "ROBUSTNESS",
+          "Statement": "Minimize the likelihood of civil rework (foundation, trenching) caused by late geotechnical surprises exceeding 5% of civil budget",
+          "Imp": "6",
+          "Sat": "5",
+          "Opp": "7",
+          "Impact": "cost",
+          "Prod-rel": "false",
+          "Pyramid": "P2"
+        },
+        {
+          "#": "10",
+          "Step": "CONFIRM",
+          "Error type": "ACCURACY",
+          "Statement": "Minimize the likelihood of a FAT/SAT protection-relay setting failing first trip test on energization day",
+          "Imp": "9",
+          "Sat": "5",
+          "Opp": "13",
+          "Impact": "reliability",
+          "Prod-rel": "false",
+          "Pyramid": "P2"
+        },
+        {
+          "#": "11",
+          "Step": "CONFIRM",
+          "Error type": "DETECTION",
+          "Statement": "Minimize the likelihood of an undetected unit-certificate (FGW TR3) documentation gap delaying plant-cert (TR8) submission >4 weeks",
+          "Imp": "9",
+          "Sat": "3",
+          "Opp": "15",
+          "Impact": "time",
+          "Prod-rel": "false",
+          "Pyramid": "P2"
+        },
+        {
+          "#": "12",
+          "Step": "EXECUTE",
+          "Error type": "THROUGHPUT",
+          "Statement": "Maximize the likelihood of grid-synchronization within the contracted COD window (slip ≤30 days)",
+          "Imp": "10",
+          "Sat": "4",
+          "Opp": "16",
+          "Impact": "cost",
+          "Prod-rel": "false",
+          "Pyramid": "P2"
+        },
+        {
+          "#": "13",
+          "Step": "EXECUTE",
+          "Error type": "RECOVERY",
+          "Statement": "Minimize the time to recover from a failed commissioning test without re-triggering DSO acceptance cycle (<2 weeks)",
+          "Imp": "8",
+          "Sat": "3",
+          "Opp": "13",
+          "Impact": "time",
+          "Prod-rel": "false",
+          "Pyramid": "P2"
+        },
+        {
+          "#": "14",
+          "Step": "EXECUTE",
+          "Error type": "ACCURACY",
+          "Statement": "Minimize the likelihood of PCS-to-MV-transformer phase-rotation / protection-coordination errors causing repeat energization attempts",
+          "Imp": "8",
+          "Sat": "5",
+          "Opp": "11",
+          "Impact": "reliability",
+          "Prod-rel": "false",
+          "Pyramid": "P2"
+        },
+        {
+          "#": "15",
+          "Step": "MONITOR",
+          "Error type": "DETECTION",
+          "Statement": "Minimize the likelihood of an undetected schedule-slippage signal propagating beyond 2 weeks before the IPP sponsor is notified",
+          "Imp": "7",
+          "Sat": "4",
+          "Opp": "10",
+          "Impact": "time",
+          "Prod-rel": "false",
+          "Pyramid": "P1-Use"
+        },
+        {
+          "#": "16",
+          "Step": "MONITOR",
+          "Error type": "CONSISTENCY",
+          "Statement": "Minimize the variability between EPC status reports and independent owner's-engineer findings (<10% KPI divergence)",
+          "Imp": "7",
+          "Sat": "5",
+          "Opp": "9",
+          "Impact": "reliability",
+          "Prod-rel": "false",
+          "Pyramid": "P4 (influencer gaze)"
+        },
+        {
+          "#": "17",
+          "Step": "MODIFY",
+          "Error type": "EFFORT",
+          "Statement": "Minimize the effort required to process a DSO-requested grid-code parameter change (<2 weeks from notice to implementation)",
+          "Imp": "7",
+          "Sat": "4",
+          "Opp": "10",
+          "Impact": "time",
+          "Prod-rel": "false",
+          "Pyramid": "P2"
+        },
+        {
+          "#": "18",
+          "Step": "MODIFY",
+          "Error type": "ACCURACY",
+          "Statement": "Minimize the likelihood of a change-order exceeding 3% of contract value through an opaque pricing mechanism",
+          "Imp": "8",
+          "Sat": "3",
+          "Opp": "13",
+          "Impact": "cost",
+          "Prod-rel": "true (A2-caused lock-in)",
+          "Pyramid": "P1-Acq"
+        },
+        {
+          "#": "19",
+          "Step": "CONCLUDE",
+          "Error type": "ACCURACY",
+          "Statement": "Minimize the likelihood that the as-commissioned AC-AC round-trip efficiency falls short of guaranteed value by >1.5 pp in Year 1",
+          "Imp": "9",
+          "Sat": "5",
+          "Opp": "13",
+          "Impact": "cost",
+          "Prod-rel": "false",
+          "Pyramid": "P2"
+        },
+        {
+          "#": "20",
+          "Step": "CONCLUDE",
+          "Error type": "ROBUSTNESS",
+          "Statement": "Minimize the likelihood of Year-1 availability shortfall below 97% triggering liquidated-damages clauses",
+          "Imp": "9",
+          "Sat": "5",
+          "Opp": "13",
+          "Impact": "reliability",
+          "Prod-rel": "false",
+          "Pyramid": "P2"
+        },
+        {
+          "#": "21",
+          "Step": "CONCLUDE",
+          "Error type": "EFFORT",
+          "Statement": "Minimize the number of separate warranty counterparties the IPP sponsor has to chase when a defect crosses battery / PCS / EMS domains (target: 1)",
+          "Imp": "8",
+          "Sat": "3",
+          "Opp": "13",
+          "Impact": "time",
+          "Prod-rel": "true (A4-caused)",
+          "Pyramid": "P1-Maint"
+        },
+        {
+          "#": "22",
+          "Step": "CONCLUDE",
+          "Error type": "DETECTION",
+          "Statement": "Minimize the likelihood that performance-guarantee telemetry from EMS / SCADA cannot be reconciled with SLA evidence at annual audit",
+          "Imp": "7",
+          "Sat": "4",
+          "Opp": "10",
+          "Impact": "reliability",
+          "Prod-rel": "false",
+          "Pyramid": "P2"
+        }
+      ]
+    },
+    {
+      "headers": [
+        "#",
+        "Level",
+        "Retrieval",
+        "Bridge → need"
+      ],
+      "rows": [
+        {
+          "#": "P3-a",
+          "Level": "Role (IPP sponsor)",
+          "Retrieval": "\"Being the operator who brought a large asset online on time\"",
+          "Bridge → need": "Maximize the visibility of milestone completion to lender / board during construction — Imp 7, Sat 5, Opp 9, image"
+        },
+        {
+          "#": "P4-a",
+          "Level": "Image (Owner's Engineer gaze)",
+          "Retrieval": "Lender's TA must see EPC as competent",
+          "Bridge → need": "Maximize the transparency of interface-risk ownership in the EPC contract documentation — Imp 8, Sat 4, Opp 12, reliability"
+        },
+        {
+          "#": "P5-a",
+          "Level": "Emotion (sponsor)",
+          "Retrieval": "Avoid \"rogue-asset anxiety\" (fire, blackout, reputational)",
+          "Bridge → need": "Minimize the likelihood of any Feuerwehr-attended incident occurring in the Year-1 operational window [hypothesis] — Imp 10, Sat 6, Opp 14, safety"
+        }
+      ]
+    },
+    {
+      "headers": [
+        "Classification",
+        "Count",
+        "Needs"
+      ],
+      "rows": [
+        {
+          "Classification": "**Underserved** (Imp >7 AND Sat <5)",
+          "Count": "11",
+          "Needs": "#1, #3, #4, #8, #11, #12, #13, #15, #18, #20, #21 (and P4-a, P5-a)"
+        },
+        {
+          "Classification": "Mid-field",
+          "Count": "11",
+          "Needs": "Rest"
+        },
+        {
+          "Classification": "Overserved",
+          "Count": "0",
+          "Needs": "—"
+        },
+        {
+          "Classification": "**product_related=true**",
+          "Count": "4",
+          "Needs": "#3, #7, #18, #21 (all arise from split-contract or vendor-lock alternatives)"
+        },
+        {
+          "Classification": "product_related=false",
+          "Count": "18",
+          "Needs": "Market-inherent"
+        },
+        {
+          "Classification": "Minimize / Maximize mix",
+          "Count": "19 / 3",
+          "Needs": "~86 / 14 (skews minimize; needs review — Burleson expects ~60/40)"
+        },
+        {
+          "Classification": "Relevant steps",
+          "Count": "8 / 8",
+          "Needs": "All Ulwick steps active"
+        },
+        {
+          "Classification": "Needs per step",
+          "Count": "2–4",
+          "Needs": "≥2 per step ✅"
+        }
+      ]
+    },
+    {
+      "headers": [
+        "#",
+        "Check",
+        "Status"
+      ],
+      "rows": [
+        {
+          "#": "V1",
+          "Check": "All statements start with \"Minimize the likelihood of…\" / \"Maximize…\" + single KPI",
+          "Status": "✅"
+        },
+        {
+          "#": "V2",
+          "Check": "product_related=true only if need disappears with different alternative",
+          "Status": "✅ (4/22 map to A2/A4 trade-offs)"
+        },
+        {
+          "#": "V3",
+          "Check": "Imp/Sat sanity — safety-critical at 10",
+          "Status": "✅ (#4, P5-a at 10)"
+        },
+        {
+          "#": "V4",
+          "Check": "Impact-category match KPI",
+          "Status": "✅"
+        },
+        {
+          "#": "V5",
+          "Check": "≥2 per relevant step · duplicates zero",
+          "Status": "✅ (2–4 per step; 22 across 8)"
+        },
+        {
+          "#": "V6",
+          "Check": "Solution-agnostic wording (no \"lithium\", \"LFP\", \"Fluence\" in statements)",
+          "Status": "✅"
+        },
+        {
+          "#": "V7",
+          "Check": "Anchor level matches abstraction (L5 for service-system)",
+          "Status": "✅"
+        },
+        {
+          "#": "V8",
+          "Check": "Product job names parent VN unit",
+          "Status": "✅ (\"Construction & Integration\")"
+        }
+      ]
+    }
+  ],
+  "entities": [
+    {
+      "component": "jtbd_analysis",
+      "naics_code": "221118",
+      "naics_title": "Other Electric Power Generation",
+      "market_name": "Standalone BESS / Independent Power Producers",
+      "product_name": "EPC für Großbatteriespeicher",
+      "vendor_name": "Mein Solar GmbH",
+      "route": "PROCESS_VN",
+      "anchor": {
+        "anchor_vn_unit": "Turnkey BESS EPC Integration Services",
+        "anchor_level": "L5",
+        "parent_vn_unit": "Construction & Integration",
+        "parent_level": "L6"
+      },
+      "cfj": "Deliver dispatchable multi-MWh electrical energy on demand to the power system, earning revenue from flexibility, capacity, and ancillary-service markets",
+      "core_job": "Turn my greenlit storage business case into a safe, certified, revenue-generating asset on schedule, on budget, and without me having to integrate it myself",
+      "product_job_statement": "Help Construction & Integration to deliver a commissioned, VDE-AR-N 4110 / FGW TR8-certified multi-MWh BESS asset within contracted COD, CAPEX, and performance guarantees under single-source accountability",
+      "segments": [
+        {
+          "id": "S1",
+          "name": "Pure-play BESS IPP",
+          "circumstance": "Fund- or developer-backed, merchant or tolled revenue"
+        },
+        {
+          "id": "S2",
+          "name": "Utility-owned IPP arm",
+          "circumstance": "RWE/EnBW/Vattenfall subsidiary; regulated-risk"
+        },
+        {
+          "id": "S3",
+          "name": "Solar/wind developer extending to storage",
+          "circumstance": "Brownfield retrofit + hybrid revenue"
+        },
+        {
+          "id": "S4",
+          "name": "Infrastructure fund / financial sponsor",
+          "circumstance": "Passive equity; owner's-engineer-led"
+        },
+        {
+          "id": "S5",
+          "name": "Municipal Stadtwerke / coop",
+          "circumstance": "5–50 MWh, local grid service, public procurement"
+        },
+        {
+          "id": "S6",
+          "name": "Aggregator-led asset ownership",
+          "circumstance": "Entrix/Next Kraftwerke toll-anchored SPV"
+        }
+      ],
+      "alternatives": [
+        {
+          "id": "A1",
+          "name": "Solar-EPC extension into BESS (Mein Solar, BayWa r.e., Enerparc, Goldbeck)",
+          "unspsc": "72151500",
+          "category": "same_category",
+          "tradeoffs": "Grid-code & civil depth; thin BESS reference count vs. OEM giants",
+          "existential": false
+        },
+        {
+          "id": "A2",
+          "name": "OEM-led turnkey (Fluence, Tesla Megapack, Sungrow, Wärtsilä)",
+          "unspsc": "72151500",
+          "category": "different_category_same_outcome",
+          "tradeoffs": "Deep cell/PCS integration; vendor lock-in; weaker local civil + permit; less PV-hybrid flexibility",
+          "existential": false
+        },
+        {
+          "id": "A3",
+          "name": "Pure-play BESS EPC integrator (Kyon, GreenTech, SolarEast EPC)",
+          "unspsc": "72151500",
+          "category": "different_category_same_outcome",
+          "tradeoffs": "Storage-first pedigree, OEM-agnostic; smaller balance sheet; no PV-hybrid history",
+          "existential": false
+        },
+        {
+          "id": "A4",
+          "name": "Split-contract / owner-managed multi-prime (DNV/Fichtner PMC + separate lots)",
+          "unspsc": "81101513",
+          "category": "different_approach",
+          "tradeoffs": "Lowest price ceiling; owner owns interface & schedule risk",
+          "existential": false
+        },
+        {
+          "id": "A5",
+          "name": "Defer or cancel project",
+          "unspsc": null,
+          "category": "status_quo",
+          "tradeoffs": "Zero CAPEX, zero burden; forgoes revenue window, grid-queue slot (226 GW DE backlog)",
+          "existential": true
+        }
+      ],
+      "stakeholders": [
+        {
+          "role": "Job Beneficiary",
+          "instance": "IPP sponsor / asset-owner company",
+          "pyramid_levels": [
+            "P2",
+            "P3",
+            "P4",
+            "P5"
+          ]
+        },
+        {
+          "role": "Job Executor",
+          "instance": "Owner's project director",
+          "pyramid_levels": [
+            "P1-all",
+            "P2"
+          ]
+        },
+        {
+          "role": "Job Overseer",
+          "instance": "Investment committee / CFO",
+          "pyramid_levels": [
+            "P2",
+            "P4"
+          ]
+        },
+        {
+          "role": "Product Lifecycle Support",
+          "instance": "O&M provider, DSO interface engineer, insurance underwriter",
+          "pyramid_levels": [
+            "P1-own"
+          ]
+        },
+        {
+          "role": "Purchase Executor",
+          "instance": "CFO / Procurement Director",
+          "pyramid_levels": [
+            "P1-Acq"
+          ]
+        },
+        {
+          "role": "Purchase Influencer",
+          "instance": "Owner's Engineer (DNV, Fichtner), Lender's Technical Advisor, FGW certifier",
+          "pyramid_levels": [
+            "P4"
+          ]
+        }
+      ],
+      "job_steps": [
+        {
+          "step_number": 1,
+          "step_name": "DEFINE",
+          "relevant_to_product": true,
+          "relevance_rationale": "EPC fixes scope, grid-code target, revenue-stack enablement, SLA"
+        },
+        {
+          "step_number": 2,
+          "step_name": "LOCATE",
+          "relevant_to_product": true,
+          "relevance_rationale": "EPC runs grid-capacity study + Netzverträglichkeitsprüfung + equipment sourcing"
+        },
+        {
+          "step_number": 3,
+          "step_name": "PREPARE",
+          "relevant_to_product": true,
+          "relevance_rationale": "EPC executes permitting, civil, protection study"
+        },
+        {
+          "step_number": 4,
+          "step_name": "CONFIRM",
+          "relevant_to_product": true,
+          "relevance_rationale": "FAT, SAT, protection-relay setting, pre-cert readiness"
+        },
+        {
+          "step_number": 5,
+          "step_name": "EXECUTE",
+          "relevant_to_product": true,
+          "relevance_rationale": "Container placement, MV/LV install, grid synchronization"
+        },
+        {
+          "step_number": 6,
+          "step_name": "MONITOR",
+          "relevant_to_product": true,
+          "relevance_rationale": "Schedule, budget, HSE oversight during build"
+        },
+        {
+          "step_number": 7,
+          "step_name": "MODIFY",
+          "relevant_to_product": true,
+          "relevance_rationale": "Change orders, DSO acceptance rework"
+        },
+        {
+          "step_number": 8,
+          "step_name": "CONCLUDE",
+          "relevant_to_product": true,
+          "relevance_rationale": "FGW TR8 cert, handover, performance guarantee bond"
+        }
+      ],
+      "error_statements": [
+        {
+          "id": 1,
+          "job_step_number": 1,
+          "job_step_name": "DEFINE",
+          "full_statement": "Minimize the likelihood of CAPEX-vs-actual deviation exceeding ±5% between EPC offer and final commissioned cost",
+          "importance": 9,
+          "satisfaction_current": 4,
+          "opportunity_score": 14,
+          "impact_category": "cost",
+          "rationale": "DE BESS schedule/cost risk is material given 226 GW grid queue, DSO FCA rules, supply chain FX",
+          "confidence": 0.9,
+          "product_related": false,
+          "pyramid_level": "P2",
+          "satisfaction_rationale": "Incumbents (Fluence/Tesla/Sungrow) offer fixed-price turnkey but embed margin buffers and change-order opacity that still leave IPP sponsors exposed to post-FID cost drift, keeping satisfaction moderate at 4/10."
+        },
+        {
+          "id": 2,
+          "job_step_number": 1,
+          "job_step_name": "DEFINE",
+          "full_statement": "Minimize the effort for the IPP sponsor to translate a business-case spreadsheet into a buildable, grid-code-compliant technical specification (<4 weeks)",
+          "importance": 8,
+          "satisfaction_current": 5,
+          "opportunity_score": 11,
+          "impact_category": "time",
+          "rationale": "Many sponsors outsource this to owner's engineer at cost; single-source EPC can fold into offer phase",
+          "confidence": 0.8,
+          "product_related": false,
+          "pyramid_level": "P1_Acquisition",
+          "satisfaction_rationale": "OEM-led turnkey packages bundle spec translation into the sales cycle, but IPP sponsors with bespoke grid-code or revenue-stacking requirements still need separate owner's-engineer input, yielding moderate satisfaction at 5/10."
+        },
+        {
+          "id": 3,
+          "job_step_number": 1,
+          "job_step_name": "DEFINE",
+          "full_statement": "Minimize the likelihood that more than 1 interface (battery / PCS / MV / EMS) carries ambiguous responsibility between EPC and supplier scopes",
+          "importance": 9,
+          "satisfaction_current": 3,
+          "opportunity_score": 15,
+          "impact_category": "reliability",
+          "rationale": "Interface gaps are the #1 claim driver in split-contract delivery",
+          "confidence": 0.9,
+          "product_related": true,
+          "pyramid_level": "P2",
+          "satisfaction_rationale": "Incumbent OEM-turnkey wraps as single counterparty but equipment-locked — partial mitigation."
+        },
+        {
+          "id": 4,
+          "job_step_number": 2,
+          "job_step_name": "LOCATE",
+          "full_statement": "Minimize the likelihood of an undetected DSO capacity shortfall surfacing after FID (reducing delivered capacity >20%)",
+          "importance": 10,
+          "satisfaction_current": 4,
+          "opportunity_score": 16,
+          "impact_category": "cost",
+          "rationale": "German TSO queue 226 GW; many connection agreements later curtailed under Flexible Connection Agreements",
+          "confidence": 0.9,
+          "product_related": false,
+          "pyramid_level": "P2",
+          "satisfaction_rationale": "DSO capacity shortfalls are a systemic German grid-queue issue (226 GW backlog) that no incumbent EPC fully mitigates; early-stage grid studies remain sponsor-driven, leaving satisfaction low at 4/10."
+        },
+        {
+          "id": 5,
+          "job_step_number": 2,
+          "job_step_name": "LOCATE",
+          "full_statement": "Maximize the rate of equipment-lead-time parallelization so that critical-path procurement (cells, PCS, transformer) stays <10 months",
+          "importance": 8,
+          "satisfaction_current": 5,
+          "opportunity_score": 11,
+          "impact_category": "time",
+          "rationale": "MV transformer lead time in DE peaked at 24+ months 2023-2025; parallelization is the main lever",
+          "confidence": 0.8,
+          "product_related": false,
+          "pyramid_level": "P2",
+          "satisfaction_rationale": "OEM vertically integrated supply chains (Tesla Megafactory, Sungrow in-house PCS) shorten some lead times, but MV transformer and BoP procurement remain market-constrained at 18-24 months, capping satisfaction at 5/10."
+        },
+        {
+          "id": 6,
+          "job_step_number": 2,
+          "job_step_name": "LOCATE",
+          "full_statement": "Minimize the likelihood of a single-vendor cell-supply concentration exposing >70% of project CAPEX to one country-of-origin tariff / CRMA risk",
+          "importance": 7,
+          "satisfaction_current": 4,
+          "opportunity_score": 10,
+          "impact_category": "cost",
+          "rationale": "CRMA / EU Battery Reg. and CN-tariff exposure top of sponsor diligence in 2026",
+          "confidence": 0.7,
+          "product_related": false,
+          "pyramid_level": "P2",
+          "satisfaction_rationale": "No incumbent OEM meaningfully diversifies LFP cell sourcing away from Chinese suppliers; CRMA and tariff exposure remains unaddressed across the market, holding satisfaction at 4/10."
+        },
+        {
+          "id": 7,
+          "job_step_number": 3,
+          "job_step_name": "PREPARE",
+          "full_statement": "Minimize the number of separate Baugenehmigung, Brandschutzkonzept, and BImSchG submissions the IPP sponsor has to track (≤1 via EPC wrapper)",
+          "importance": 7,
+          "satisfaction_current": 4,
+          "opportunity_score": 10,
+          "impact_category": "time",
+          "rationale": "Split-contract forces sponsor to coordinate permits directly",
+          "confidence": 0.8,
+          "product_related": true,
+          "pyramid_level": "P1_Preparation",
+          "satisfaction_rationale": "OEM turnkey wraps consolidate some permit responsibility but still delegate Baugenehmigung and BImSchG to local subcontractors; the sponsor coordination burden is reduced but not eliminated, yielding satisfaction of 4/10."
+        },
+        {
+          "id": 8,
+          "job_step_number": 3,
+          "job_step_name": "PREPARE",
+          "full_statement": "Minimize the likelihood of fire-protection design rework (additional walls, separation, hydrant runs) after local Feuerwehr review",
+          "importance": 8,
+          "satisfaction_current": 4,
+          "opportunity_score": 12,
+          "impact_category": "safety",
+          "rationale": "Feuerwehr guidance varies by Bundesland; rework common on first-of-kind site",
+          "confidence": 0.8,
+          "product_related": false,
+          "pyramid_level": "P2",
+          "satisfaction_rationale": "No incumbent profile has DE Feuerwehr-specific edge — hold."
+        },
+        {
+          "id": 9,
+          "job_step_number": 3,
+          "job_step_name": "PREPARE",
+          "full_statement": "Minimize the likelihood of civil rework (foundation, trenching) caused by late geotechnical surprises exceeding 5% of civil budget",
+          "importance": 6,
+          "satisfaction_current": 5,
+          "opportunity_score": 7,
+          "impact_category": "cost",
+          "rationale": "Managed via early site survey; mature industry practice",
+          "confidence": 0.7,
+          "product_related": false,
+          "pyramid_level": "P2",
+          "satisfaction_rationale": "Geotechnical risk management is mature standard practice in DE infrastructure; most EPC contractors include early site surveys, keeping civil rework rates low and satisfaction at 5/10."
+        },
+        {
+          "id": 10,
+          "job_step_number": 4,
+          "job_step_name": "CONFIRM",
+          "full_statement": "Minimize the likelihood of a FAT/SAT protection-relay setting failing first trip test on energization day",
+          "importance": 9,
+          "satisfaction_current": 5,
+          "opportunity_score": 13,
+          "impact_category": "reliability",
+          "rationale": "First-trip failures add 2-4 weeks + DSO re-attendance fees",
+          "confidence": 0.8,
+          "product_related": false,
+          "pyramid_level": "P2",
+          "satisfaction_rationale": "FAT/SAT relay-setting failures are procedural rather than systemic; incumbent OEMs with factory-tested PCS integration reduce but do not eliminate first-trip risk, leaving satisfaction moderate at 5/10."
+        },
+        {
+          "id": 11,
+          "job_step_number": 4,
+          "job_step_name": "CONFIRM",
+          "full_statement": "Minimize the likelihood of an undetected unit-certificate (FGW TR3) documentation gap delaying plant-cert (TR8) submission >4 weeks",
+          "importance": 9,
+          "satisfaction_current": 3,
+          "opportunity_score": 15,
+          "impact_category": "time",
+          "rationale": "FGW TR3 gaps are the #1 cert-delay cause; requires proactive dossier discipline",
+          "confidence": 0.85,
+          "product_related": false,
+          "pyramid_level": "P2",
+          "satisfaction_rationale": "Fluence uses local subcontractor for DE cert; OEM incumbents have no DE-cert edge — hold."
+        },
+        {
+          "id": 12,
+          "job_step_number": 5,
+          "job_step_name": "EXECUTE",
+          "full_statement": "Maximize the likelihood of grid-synchronization within the contracted COD window (slip ≤30 days)",
+          "importance": 10,
+          "satisfaction_current": 4,
+          "opportunity_score": 16,
+          "impact_category": "cost",
+          "rationale": "COD slip triggers lender-DSCR covenants, lost revenue window, LD clauses",
+          "confidence": 0.9,
+          "product_related": false,
+          "pyramid_level": "P2",
+          "satisfaction_rationale": "COD-window adherence depends on DSO scheduling, grid-queue position, and permit timelines largely outside EPC control; incumbent track records are mixed, keeping satisfaction at 4/10."
+        },
+        {
+          "id": 13,
+          "job_step_number": 5,
+          "job_step_name": "EXECUTE",
+          "full_statement": "Minimize the time to recover from a failed commissioning test without re-triggering DSO acceptance cycle (<2 weeks)",
+          "importance": 8,
+          "satisfaction_current": 3,
+          "opportunity_score": 13,
+          "impact_category": "time",
+          "rationale": "Re-triggered DSO cycle can cost 6-10 weeks",
+          "confidence": 0.8,
+          "product_related": false,
+          "pyramid_level": "P2",
+          "satisfaction_rationale": "No incumbent profile addresses DSO-test-failure recovery specifically — hold."
+        },
+        {
+          "id": 14,
+          "job_step_number": 5,
+          "job_step_name": "EXECUTE",
+          "full_statement": "Minimize the likelihood of PCS-to-MV-transformer phase-rotation / protection-coordination errors causing repeat energization attempts",
+          "importance": 8,
+          "satisfaction_current": 5,
+          "opportunity_score": 11,
+          "impact_category": "reliability",
+          "rationale": "Common error mode on first-of-site builds; procedural fix",
+          "confidence": 0.8,
+          "product_related": false,
+          "pyramid_level": "P2",
+          "satisfaction_rationale": "Phase-rotation and protection-coordination errors are well-understood failure modes with established commissioning protocols; incumbent PCS-transformer packages reduce incidence, supporting a satisfaction of 5/10."
+        },
+        {
+          "id": 15,
+          "job_step_number": 6,
+          "job_step_name": "MONITOR",
+          "full_statement": "Minimize the likelihood of an undetected schedule-slippage signal propagating beyond 2 weeks before the IPP sponsor is notified",
+          "importance": 7,
+          "satisfaction_current": 4,
+          "opportunity_score": 10,
+          "impact_category": "time",
+          "rationale": "Late notification prevents sponsor mitigation; opacity in traditional EPC reporting",
+          "confidence": 0.75,
+          "product_related": false,
+          "pyramid_level": "P1_Usage",
+          "satisfaction_rationale": "Schedule transparency varies widely across incumbent EPC providers; OEM-turnkey reporting is often opaque on subcontractor milestones, leaving IPP sponsors with limited early-warning capability at 4/10 satisfaction."
+        },
+        {
+          "id": 16,
+          "job_step_number": 6,
+          "job_step_name": "MONITOR",
+          "full_statement": "Minimize the variability between EPC status reports and independent owner's-engineer findings (<10% KPI divergence)",
+          "importance": 7,
+          "satisfaction_current": 5,
+          "opportunity_score": 9,
+          "impact_category": "reliability",
+          "rationale": "Divergence erodes lender confidence and triggers extra audit cycles",
+          "confidence": 0.7,
+          "product_related": false,
+          "pyramid_level": "P4",
+          "satisfaction_rationale": "OEM status reporting and independent owner's-engineer findings diverge primarily on BMS and thermal metrics; standardized KPI frameworks are emerging but not yet universal, yielding moderate satisfaction at 5/10."
+        },
+        {
+          "id": 17,
+          "job_step_number": 7,
+          "job_step_name": "MODIFY",
+          "full_statement": "Minimize the effort required to process a DSO-requested grid-code parameter change (<2 weeks from notice to implementation)",
+          "importance": 7,
+          "satisfaction_current": 4,
+          "opportunity_score": 10,
+          "impact_category": "time",
+          "rationale": "DSO parameter changes (FCA-era) now routine; slow response extends commissioning",
+          "confidence": 0.75,
+          "product_related": false,
+          "pyramid_level": "P2",
+          "satisfaction_rationale": "DSO grid-code parameter changes under FCA-era rules are becoming routine in DE; most EPC contractors can process changes but timelines vary by vendor responsiveness, leaving satisfaction at 4/10."
+        },
+        {
+          "id": 18,
+          "job_step_number": 7,
+          "job_step_name": "MODIFY",
+          "full_statement": "Minimize the likelihood of a change-order exceeding 3% of contract value through an opaque pricing mechanism",
+          "importance": 8,
+          "satisfaction_current": 3,
+          "opportunity_score": 13,
+          "impact_category": "cost",
+          "rationale": "OEM-led turnkey (A2) frequently price-locks the owner via equipment dependency",
+          "confidence": 0.8,
+          "product_related": true,
+          "pyramid_level": "P1_Acquisition",
+          "satisfaction_rationale": "OEM incumbent weakness; incumbent sat lowered."
+        },
+        {
+          "id": 19,
+          "job_step_number": 8,
+          "job_step_name": "CONCLUDE",
+          "full_statement": "Minimize the likelihood that the as-commissioned AC-AC round-trip efficiency falls short of guaranteed value by >1.5 pp in Year 1",
+          "importance": 9,
+          "satisfaction_current": 5,
+          "opportunity_score": 13,
+          "impact_category": "cost",
+          "rationale": "Each 1 pp RTE = ~0.37% revenue; LD typically 2–4× kWh-shortfall damages",
+          "confidence": 0.85,
+          "product_related": false,
+          "pyramid_level": "P2",
+          "satisfaction_rationale": "OEM native PCS-BMS integration tighter — raised."
+        },
+        {
+          "id": 20,
+          "job_step_number": 8,
+          "job_step_name": "CONCLUDE",
+          "full_statement": "Minimize the likelihood of Year-1 availability shortfall below 97% triggering liquidated-damages clauses",
+          "importance": 9,
+          "satisfaction_current": 5,
+          "opportunity_score": 13,
+          "impact_category": "reliability",
+          "rationale": "Availability below 97-98% breaches standard LD threshold; cost scales with downtime hours",
+          "confidence": 0.85,
+          "product_related": false,
+          "pyramid_level": "P2",
+          "satisfaction_rationale": "Year-1 availability above 97% is achievable with OEM-integrated BMS and thermal management, but first-of-kind sites and commissioning-phase teething issues still create LD exposure, keeping satisfaction at 5/10."
+        },
+        {
+          "id": 21,
+          "job_step_number": 8,
+          "job_step_name": "CONCLUDE",
+          "full_statement": "Minimize the number of separate warranty counterparties the IPP sponsor has to chase when a defect crosses battery / PCS / EMS domains (target: 1)",
+          "importance": 8,
+          "satisfaction_current": 3,
+          "opportunity_score": 13,
+          "impact_category": "time",
+          "rationale": "Split-contract (A4) forces sponsor into cross-vendor dispute; single-source EPC wraps this",
+          "confidence": 0.85,
+          "product_related": true,
+          "pyramid_level": "P1_Maintenance",
+          "satisfaction_rationale": "OEM turnkey mitigates partially (single counterparty) — raised."
+        },
+        {
+          "id": 22,
+          "job_step_number": 8,
+          "job_step_name": "CONCLUDE",
+          "full_statement": "Minimize the likelihood that performance-guarantee telemetry from EMS / SCADA cannot be reconciled with SLA evidence at annual audit",
+          "importance": 7,
+          "satisfaction_current": 4,
+          "opportunity_score": 10,
+          "impact_category": "reliability",
+          "rationale": "SLA-audit gaps are the emerging friction point as BESS SLAs mature",
+          "confidence": 0.75,
+          "product_related": false,
+          "pyramid_level": "P2",
+          "satisfaction_rationale": "OEM-native BMS telemetry better than arm's-length integrator — raised."
+        }
+      ],
+      "p3_p5_needs": [
+        {
+          "id": "P3-a",
+          "level": "P3_Role",
+          "role_holder": "IPP sponsor",
+          "retrieval": "Being the operator who brought a large asset online on time",
+          "bridge_need": "Maximize the visibility of milestone completion to lender / board during construction",
+          "importance": 7,
+          "satisfaction_current": 5,
+          "opportunity_score": 9,
+          "impact_category": "reliability",
+          "hypothesis": false
+        },
+        {
+          "id": "P4-a",
+          "level": "P4_Image",
+          "role_holder": "Owner's Engineer",
+          "retrieval": "Lender's TA must see EPC as competent",
+          "bridge_need": "Maximize the transparency of interface-risk ownership in the EPC contract documentation",
+          "importance": 8,
+          "satisfaction_current": 4,
+          "opportunity_score": 12,
+          "impact_category": "reliability",
+          "hypothesis": false
+        },
+        {
+          "id": "P5-a",
+          "level": "P5_Emotion",
+          "role_holder": "IPP sponsor",
+          "retrieval": "Avoid rogue-asset anxiety (fire, blackout, reputational)",
+          "bridge_need": "Minimize the likelihood of any Feuerwehr-attended incident occurring in the Year-1 operational window",
+          "importance": 10,
+          "satisfaction_current": 6,
+          "opportunity_score": 14,
+          "impact_category": "safety",
+          "hypothesis": true
+        }
+      ],
+      "incumbent_anchor": {
+        "technology_name": "OEM-led turnkey (Fluence / Tesla Megapack / Sungrow PowerTitan / Wärtsilä)",
+        "anchor_vn_unit": "Turnkey BESS EPC Integration Services",
+        "anchor_level": "L5",
+        "rationale": "Currently dominant alternative (~40% share in DE) against which Mein Solar's solar-EPC-extension positioning is evaluated"
+      },
+      "coverage_check": {
+        "total_error_statements": 22,
+        "plus_p3_p5": 3,
+        "relevant_steps": 8,
+        "needs_per_step_min": 2,
+        "needs_per_step_max": 4,
+        "underserved_count": 11,
+        "overserved_count": 0,
+        "product_related_true_count": 4,
+        "product_related_false_count": 18,
+        "minimize_count": 19,
+        "maximize_count": 3,
+        "market_inherent_ratio": 0.82,
+        "tech_specific_ratio": 0.18,
+        "ratio_note": "Outside target 60/40 — EPC-service needs are disproportionately market-inherent because integration problems are exogenous (grid code, DSO, fire)"
+      },
+      "qa": {
+        "V1_format_compliance": "PASS",
+        "V2_product_related_correct": "PASS",
+        "V3_importance_satisfaction_sanity": "PASS",
+        "V4_impact_category_match": "PASS",
+        "V5_coverage": "PASS",
+        "V6_solution_agnostic": "PASS",
+        "V7_anchor_level_correct": "PASS (L5 service-system)",
+        "V8_product_job_parent": "PASS (names Construction & Integration)"
+      }
+    }
+  ],
+  "has_bom": true,
+  "naics_sector_type": "non_manufacturing"
+}
