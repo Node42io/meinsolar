@@ -103,7 +103,7 @@ const staticNavItems: NavItem[] = [
     kicker: "00",
     sections: [
       { id: "ovw-question",   label: "The Question" },
-      { id: "ovw-company",    label: "About ZOLLERN" },
+      { id: "ovw-company",    label: "About the Company" },
       { id: "ovw-hierarchy",  label: "Division → Product" },
       { id: "ovw-product",    label: "Product Variants" },
       { id: "ovw-howto",      label: "How to Read" },
@@ -161,22 +161,20 @@ const staticNavItems: NavItem[] = [
     ],
   },
   { to: "/home-market", label: "Home Market", kicker: "04" },
-  { to: "/capabilities", label: "Capability Register", kicker: "05" },
-  { to: "/adjacency", label: "Adjacency Analysis", kicker: "06" },
-  { to: "/discovery", label: "Market Discovery", kicker: "07" },
-  { to: "/analysis", label: "Market Analysis", kicker: "08" },
   {
-    to: "/synthesis",
-    label: "Strategic Synthesis",
-    kicker: "09",
+    to: "/discovery",
+    label: "New Market Discovery",
+    kicker: "05",
     sections: [
-      { id: "syn-executive",      label: "Executive Summary" },
-      { id: "syn-opportunities",  label: "Top 15 Opportunities" },
-      { id: "syn-themes",         label: "Capability Themes" },
-      { id: "syn-classification", label: "Market Classification" },
-      { id: "syn-vertical",       label: "Vertical Integration" },
+      { id: "executive-summary",    label: "Executive Summary" },
+      { id: "discovery-process",    label: "Discovery Process" },
+      { id: "candidate-details",    label: "Candidate Details" },
+      { id: "architecture-distance", label: "Architecture Distance" },
+      { id: "pipeline-summary",     label: "Pipeline Summary" },
+      { id: "market-rationale",     label: "Market Rationale Cards" },
     ],
   },
+  { to: "/analysis", label: "Market Analysis", kicker: "06" },
 ];
 
 export default function Shell() {
