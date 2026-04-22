@@ -1,6 +1,6 @@
 /**
  * CompatibilityTab — Constraint × market compatibility.
- * Renders constraint assessments from generic JSON with Marquardt-style card layout.
+ * Extracts constraint assessments from generic JSON, renders as cards.
  */
 import { getMarket } from "@/data";
 import ExecutiveSummary from "@/components/ExecutiveSummary";
@@ -15,18 +15,33 @@ export default function CompatibilityTab({ marketSlug }: { marketSlug: string })
   const entity = rawData?.entities?.[0] ?? {};
   const marketName = entity.market_name ?? rawData?.marketName ?? marketSlug;
 
-  // Try to extract constraint assessments from tables
+  // Extract constraint assessments from tables
   const assessments: any[] = [];
   for (const t of tables) {
     const h = t.headers ?? [];
     if ((h.includes("Constraint") || h.includes("Name")) && (h.includes("Verdict") || h.includes("Status") || h.includes("Compatibility"))) {
-      for (const r of t.rows ?? []) {
-        assessments.push(r);
-      }
+      for (const r of t.rows ?? []) assessments.push(r);
     }
   }
 
-  if (sections.length === 0 && tables.length === 0) {
+  // Also check entities for structured assessments
+  for (const a of entity.assessments ?? entity.constraint_assessments ?? []) {
+    assessments.push({
+      Constraint: a.constraint_name ?? a.name ?? "",
+      Verdict: a.verdict ?? a.status ?? "",
+      Rationale: a.rationale ?? a.description ?? "",
+    });
+  }
+
+  function verdictColor(v: string): string {
+    const lv = (v || "").toLowerCase();
+    if (lv.includes("pass") || lv.includes("compatible") || lv.includes("✅") || lv.includes("green")) return "var(--status-high, #4ade80)";
+    if (lv.includes("conditional") || lv.includes("partial") || lv.includes("⚠") || lv.includes("amber") || lv.includes("mitigable")) return "var(--accent-yellow, #fdff98)";
+    if (lv.includes("fail") || lv.includes("incompatible") || lv.includes("❌") || lv.includes("red") || lv.includes("knockout")) return "var(--status-low, #ef4444)";
+    return "var(--text-gray-light)";
+  }
+
+  if (sections.length === 0 && tables.length === 0 && assessments.length === 0) {
     return (
       <div className="section">
         <div className="section__eyebrow">Compatibility · {marketName}</div>
@@ -36,15 +51,6 @@ export default function CompatibilityTab({ marketSlug }: { marketSlug: string })
         </p>
       </div>
     );
-  }
-
-  // Verdict color
-  function verdictColor(v: string): string {
-    const lv = (v || "").toLowerCase();
-    if (lv.includes("pass") || lv.includes("compatible") || lv.includes("✅")) return "var(--status-high, #4ade80)";
-    if (lv.includes("conditional") || lv.includes("partial") || lv.includes("⚠")) return "var(--accent-yellow, #fdff98)";
-    if (lv.includes("fail") || lv.includes("incompatible") || lv.includes("❌")) return "var(--status-low, #ef4444)";
-    return "var(--text-gray-light)";
   }
 
   return (
@@ -58,22 +64,21 @@ export default function CompatibilityTab({ marketSlug }: { marketSlug: string })
         </p>
         <ExecutiveSummary kicker="Compatibility · Summary">
           <p className="answer">
-            {assessments.length > 0
-              ? <>Tested <strong>{assessments.length} constraints</strong> against <strong>{marketName}</strong>.</>
-              : <>Constraint compatibility analysis for <strong>{marketName}</strong>.</>
-            }
+            Tested constraints against <strong>{marketName}</strong>.
+            {assessments.length > 0 && <> <strong>{assessments.length}</strong> constraints assessed.</>}
           </p>
         </ExecutiveSummary>
       </div>
 
-      {/* Assessment cards (if we extracted them from tables) */}
+      {/* Constraint assessment cards */}
       {assessments.length > 0 && (
         <div className="section">
+          <h3 style={{ fontSize: 16, fontWeight: 700, color: "var(--accent-yellow)", marginBottom: 12 }}>Constraint Assessments</h3>
           <div style={{ display: "grid", gap: 12 }}>
             {assessments.map((a, i) => {
               const name = a["Constraint"] ?? a["Name"] ?? a["constraint_name"] ?? `Constraint ${i + 1}`;
               const verdict = a["Verdict"] ?? a["Status"] ?? a["Compatibility"] ?? a["verdict"] ?? "";
-              const rationale = a["Rationale"] ?? a["rationale"] ?? a["Notes"] ?? "";
+              const rationale = a["Rationale"] ?? a["rationale"] ?? a["Notes"] ?? a["Description"] ?? "";
               return (
                 <div key={i} style={{
                   background: "var(--bg-card)",
@@ -96,8 +101,12 @@ export default function CompatibilityTab({ marketSlug }: { marketSlug: string })
         </div>
       )}
 
-      {/* Remaining sections as prose */}
-      {sections.filter(s => !s.title?.includes("Structured Data") && !s.title?.includes("Neo4j") && !s.title?.includes("QA")).map((s: any, i: number) => (
+      {/* Remaining sections */}
+      {sections.filter(s =>
+        !s.title?.includes("Structured Data") &&
+        !s.title?.includes("Neo4j") &&
+        !s.title?.includes("QA")
+      ).map((s: any, i: number) => (
         <div key={i} className="section">
           {s.title && <h3 style={{ fontSize: 16, fontWeight: 700, color: "var(--accent-yellow)", marginBottom: 8 }}>{s.title}</h3>}
           <div
@@ -109,4 +118,3 @@ export default function CompatibilityTab({ marketSlug }: { marketSlug: string })
     </div>
   );
 }
-

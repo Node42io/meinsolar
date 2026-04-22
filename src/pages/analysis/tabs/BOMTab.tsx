@@ -1,8 +1,7 @@
 /**
- * BOMTab — Bill of Materials. Tries original Marquardt viz, falls back to generic sections.
+ * BOMTab — Bill of Materials. Renders from generic {sections, tables} JSON.
  */
 import { getMarket } from "@/data";
-import GenericSectionPage from "@/components/GenericSectionPage";
 import ExecutiveSummary from "@/components/ExecutiveSummary";
 import { renderMarkdown } from "@/lib/renderMarkdown";
 
@@ -15,8 +14,6 @@ export default function BOMTab({ marketSlug }: { marketSlug: string }) {
   const entity = rawData?.entities?.[0] ?? {};
   const marketName = entity.market_name ?? rawData?.marketName ?? marketSlug;
 
-  // If domain-specific format with categories — original component would go here
-  // For generic format, render structured tables with BOM styling
   if (sections.length === 0 && tables.length === 0) {
     return (
       <div className="section">
@@ -48,8 +45,11 @@ export default function BOMTab({ marketSlug }: { marketSlug: string }) {
         </ExecutiveSummary>
       </div>
 
-      {/* Render sections */}
-      {sections.filter(s => !s.title?.includes("Structured Data") && !s.title?.includes("Neo4j") && !s.title?.includes("QA Checklist")).map((s: any, i: number) => (
+      {sections.filter(s =>
+        !s.title?.includes("Structured Data") &&
+        !s.title?.includes("Neo4j") &&
+        !s.title?.includes("QA Checklist")
+      ).map((s: any, i: number) => (
         <div key={i} className="section">
           {s.title && <h3 style={{ fontSize: 16, fontWeight: 700, color: "var(--accent-yellow)", marginBottom: 8 }}>{s.title}</h3>}
           <div
@@ -59,7 +59,6 @@ export default function BOMTab({ marketSlug }: { marketSlug: string }) {
         </div>
       ))}
 
-      {/* Render standalone tables */}
       {tables.filter(t => t.headers && t.rows?.length > 0).map((t: any, i: number) => (
         <div key={`t-${i}`} className="section" style={{ overflowX: "auto" }}>
           <table>
@@ -83,4 +82,3 @@ export default function BOMTab({ marketSlug }: { marketSlug: string }) {
     </div>
   );
 }
-
