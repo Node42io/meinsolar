@@ -1,1361 +1,1156 @@
 {
-  "id": "VN_semiconductor_and_related_device_manufac",
-  "title": "Value Network — NAICS 334413 Semiconductor and Related Device Manufacturing",
-  "type": "value_network",
-  "market_slug": "semiconductor_and_related_device_manufac",
-  "is_per_market": true,
-  "sections": [
+  "naicsCode": "334413",
+  "marketName": "Semiconductor and Related Device Manufacturing",
+  "slug": "semiconductor_manufacturing",
+  "l7Solution": "",
+  "cfjStatement": "Fabricate integrated circuits and discrete semiconductor devices on wafers at nanometer-scale precision with yield-acceptable electrical performance, then package and qualify them for sale",
+  "l6Systems": [
     {
-      "title": "CFJ (Core Functional Job — Industry Level)",
-      "content": "> **Fabricate integrated circuits and discrete semiconductor devices on wafers at nanometer-scale precision with yield-acceptable electrical performance, then package and qualify them for sale.**\n\nMechanism-free (no \"lithium\", no \"EUV\", no specific node). Applies to logic, memory, power devices, analog/mixed-signal, SiC, GaN, and MEMS — the full NAICS 334413 output span.\n\n---"
-    },
-    {
-      "title": "Output Type Activation (NAICS 334413)",
-      "content": "| Output Type | Front-End (L6a–L6g) | Probe (L6h) | Back-End Pkg (L6i) | Final Test (L6j) |\n|---|---|---|---|---|\n| Logic/SoC (advanced nodes) | x | x | x (adv. pkg) | x |\n| Memory (DRAM/NAND) | x | x | x | x |\n| Power semi (SiC/GaN/IGBT) | x | x | x | x |\n| Analog / Mixed-Signal | x | x | x | x |\n| MEMS / Sensors | x | x | x (often custom) | x |\n| Discrete (Diodes, BJT) | x | x | x | x |\n\nAll outputs activate every L6. The VN is horizontal-heavy — the real differentiation between fab types is in **tool recipes** (L5), not in the process sequence.\n\n---"
-    },
-    {
-      "title": "HARD RULE — Mein Solar Position",
-      "content": "Mein Solar is an **L5 supplier** into the fab's horizontal Electrical Power L6. It does **not** occupy a core wafer-fab L6. Primary position is at `L5: BESS-Based Power Quality & Ride-Through` under `L6H-POWER`.\n\n| Marker | VN Node |\n|---|---|\n| `← MEIN SOLAR PRIMARY POSITION` | L5: BESS-Based Power Quality & Ride-Through (under L6H-POWER) |\n| `← MEIN SOLAR SECONDARY POSITION` | L5: On-Site PV Generation (under L6H-POWER) |\n| `← MEIN SOLAR SECONDARY POSITION` | L5: MV Switchgear & Distribution (under L6H-POWER, partially — delivered inside BESS scope) |\n\n---"
-    },
-    {
-      "title": "VN Hierarchy (L7 → L4)",
-      "content": "### L7 — Ecosystem\n```\nL7  Semiconductor Device Manufacturing Ecosystem\n    Moore 1993. Economic community of IDMs, pure-play foundries, fabless designers,\n    OSAT back-end houses, equipment OEMs, materials suppliers, and utilities.\n```\n\n### L6 — Process Steps\n\n#### Core (sequential wafer → packaged IC)\n| # | L6 Node | Job Family | Notes |\n|---|---|---|---|\n| L6a | Wafer Preparation | \"Prepare clean defect-free substrate\" | Incoming wafer inspect, clean, epi growth where required |\n| L6b | Lithography & Patterning | \"Transfer circuit pattern onto wafer\" | Photoresist coat, expose (DUV/EUV), develop |\n| L6c | Etch & Clean | \"Remove material per pattern; strip resist\" | Dry plasma, wet bench, ash/strip, post-etch clean |\n| L6d | Doping & Implantation | \"Modify electrical properties of Si lattice\" | Ion implant + anneal; diffusion furnace |\n| L6e | Deposition & Growth | \"Deposit insulating/conductive films\" | Oxidation, CVD, PVD, ALD, epi |\n| L6f | CMP (Planarization) | \"Planarize wafer surface between layers\" | Polish + post-CMP clean; 30% of process steps are clean |\n| L6g | Metallization & Interconnect | \"Build conductive interconnect stack\" | Cu damascene, Al sputter, barrier/seed |\n| L6h | Wafer Probe & Sort | \"Electrically test each die on wafer\" | Sort good/bad die; yield learning feedback |\n| L6i | Assembly & Packaging | \"Singulate and package die into shippable IC\" | Dice, bond, mold, ball attach |\n| L6j | Final Test & Qualification | \"Verify packaged IC meets datasheet + burn-in\" | ATE, burn-in, reliability screen |\n\n#### Horizontal (runs across all core steps)\n| # | L6 Node | Role | Mein Solar relevance |\n|---|---|---|---|\n| **L6H-POWER** | **Electrical Power Infrastructure (H)** | **Deliver clean, continuous, ride-through MV/LV power to all tools** | **← home segment** |\n| L6H-UPW | Ultrapure Water & Wastewater (H) | Supply UPW, manage chemical wastewater | — |\n| L6H-GAS | Process Gases & Chemicals (H) | Bulk/specialty gas + chemical distribution | — |\n| L6H-CR | Cleanroom Environmental Control (H) | Class ISO 1–5 HVAC, AMC scrubbing, vibration | — |\n| L6H-IT | MES / IT-OT / SCADA (H) | Recipe mgmt, equipment integration, cybersec | — |\n\n### L5 — Systems (sellable units)\n\n#### Under L6H-POWER (Mein Solar's segment — FULL enumeration of alternatives)\n| L5 Node | Incumbents | Share (est.) | Conf. |\n|---|---|---|---|\n| HV/MV Incoming Substation (110 kV→MV) | Siemens Energy, Hitachi Energy, ABB, SGB-SMIT | — (regulated, 1/fab) | HIGH |\n| MV Switchgear & Distribution (10–36 kV) | Siemens, ABB, Schneider Electric, Eaton | ~75% incumbents | HIGH |\n| Static Battery UPS (facility/tool-level) | Schneider APC/Galaxy, Eaton, Vertiv, Socomec | ~55% | HIGH |\n| Dynamic UPS / Flywheel (mission-critical) | Piller UNIBLOCK, Hitec Power, Euro-Diesel | ~25% | HIGH |\n| Active Voltage Conditioner / DVR | ABB PCS100 AVC, American Superconductor D-VAR | ~15% | MEDIUM |\n| **BESS-Based Power Quality & Ride-Through** | **Fluence, Sungrow, Wärtsilä, Tesvolt, regional EPC** | **~5% emerging** | **MEDIUM** `← MEIN SOLAR PRIMARY POSITION` |\n| Backup Diesel/Gas Generator | Caterpillar, Cummins, MTU Aggregate | 1/fab baseline | HIGH |\n| On-Site PV / Behind-the-Meter Generation | BayWa r.e., Enerparc, Goldbeck Solar, local EPCs | <3% of fab load | MEDIUM `← MEIN SOLAR SECONDARY POSITION` |\n\nAlternatives are technology-distinct. Share approximate, internal fab power-infrastructure capex basis. Sources: SEMI F47 standard literature, EPRI power-quality reports, fab engineering-services market reports.\n\n#### Under other L6 nodes (representative L5 — not exhaustive, not Mein Solar's battlefield)\n| L6 Parent | L5 Node(s) |\n|---|---|\n| L6a Wafer Prep | Single-Wafer Cleaner; Epi Reactor |\n| L6b Lithography | DUV/EUV Scanner; Coat-Develop Track |\n| L6c Etch & Clean | Dry Plasma Etcher; Wet Bench |\n| L6d Doping | Ion Implanter; Diffusion/Anneal Furnace |\n| L6e Deposition | CVD System; PVD Sputter; ALD System |\n| L6f CMP | CMP Polisher; Post-CMP Cleaner |\n| L6g Metallization | Electroplater; Cu/Al Sputter |\n| L6h Probe | Wafer Prober; ATE Test Head |\n| L6i Packaging | Dicing Saw; Wire Bonder; Molding Press |\n| L6j Final Test | Burn-In Oven; Final-Test ATE |\n| L6H-UPW | UPW Plant; Wastewater / Scrubber |\n| L6H-GAS | Bulk Gas Yard; Specialty Gas Cabinet |\n| L6H-CR | Fan Filter Unit; Makeup Air Handler |\n| L6H-IT | MES Platform; Fab SCADA/Historian |\n\n### L4 — Subsystems (depth where Mein Solar competes)\n\nL4 subsystems listed only for the 6 L5 alternatives under L6H-POWER, to satisfy the HARD RULE (full depth at company's position level + all siblings).\n\n| Parent L5 | L4 Subsystems |\n|---|---|\n| HV/MV Substation | Power Transformer; MV Circuit Breaker; Protection Relay; DCS/SCADA Interface |\n| MV Switchgear | MV Vacuum/SF6-free Breaker; Busbar; NA-Protection Relay; Metering Unit |\n| Static UPS | Rectifier; Inverter; Battery String (VRLA/Li-ion); Static Bypass Switch |\n| Dynamic UPS / Flywheel | Flywheel Rotor; Synchronous Motor-Gen; Diesel Engine; Clutch/Coupling |\n| Active Voltage Conditioner | IGBT Converter; Series Injection Transformer; DC Bus Capacitor; Fast Controller |\n| **BESS PQ & Ride-Through** ← MEIN SOLAR | **LFP Battery Container; Bidirectional PCS; MV Coupling Transformer; EMS / Grid-Forming Controller; Fire Suppression (NOVEC); BMS/BAMS/BCMS Stack; Liquid Cooling Loop; SCADA Uplink to Fab DCS** |\n| Backup Generator | Diesel Engine; Alternator; Fuel Day-Tank; Controller/Transfer Switch |\n| On-Site PV | PV Module Array; String Inverter / Central Inverter; DC Combiner; Rooftop/Ground-Mount Racking |\n\n---"
-    },
-    {
-      "title": "Strategic Adjacency Analysis",
-      "content": "### 04e — Direct Competence Transfer Scan — Mein Solar\nCompany primary position: **L5 BESS-Based Power Quality & Ride-Through** under L6H-POWER.\n\n| VN Unit | Level | Competence Required | Company Has It? | Adaptation | Rationale |\n|---|---|---|---|---|---|\n| On-Site PV (behind-the-meter) | L5 | PV EPC, MV coupling, DSO interface | YES | LOW | Incumbent business; ≥10 yr reference |\n| MV Switchgear & Distribution | L5 | MV equipment integration, VDE-AR-N 4110 | YES | LOW | Already delivered as part of BESS EPC scope |\n| Active Voltage Conditioner / DVR | L5 | Fast power-electronics control, grid-code cert | PARTIAL | MEDIUM | PCS hardware overlaps; fab-grade <1 cycle response is new |\n| Static UPS (facility) | L5 | Battery integration, DC UPS topology | PARTIAL | MEDIUM | LFP + PCS know-how transfers; IT-grade N+1 redundancy and tool interfaces are new |\n| Backup Diesel/Gas Generator | L5 | Civil works, fuel-day-tank, ATS, permitting | PARTIAL | MEDIUM | Civil + electrical transfer; rotating-machine service is new |\n| HV/MV Substation (110 kV→MV) | L5 | HV design, Type A certification, TSO interface | NO | HIGH | — excluded — |\n| Dynamic UPS / Flywheel | L5 | Rotating-machine design, mechanical-eng | NO | HIGH | — excluded — |\n| Any wafer-process L5 (L6a–L6j) | L5 | SEMI F47, cleanroom installation, tool FATs | NO | HIGH | — excluded — |\n\nTransfers in scope: **3 LOW, 3 MEDIUM, rest HIGH-excluded**. All surviving adjacencies sit inside L6H-POWER — cross-segment transfers to wafer-process L6 nodes do not exist.\n\n### 04f — Strategic Adjacency Expansion (inside L6H-POWER only)\n\n| Adjacent L5 Unit | Current Incumbents | Competence Gap | Investment to Bridge | Strategic Fit (1–10) | Rationale |\n|---|---|---|---|---|---|\n| Static UPS (facility / tool) | Schneider APC, Eaton, Vertiv | Fab-grade redundancy (N+1), tool-level form factors, SEMI F47 cert | 12–18 mo, ~€2M | 6 | ~50% overlap (battery + PCS); tool-interface engineering is gap |\n| Active Voltage Conditioner / DVR | ABB PCS100, AMSC D-VAR | Sub-cycle response, series injection transformer, IEC 61000-4-34 | 18–24 mo, ~€3M | 5 | ~40% overlap (power electronics); fab certification path is new |\n| Backup Diesel/Gas Generator | Caterpillar, Cummins, MTU | Rotating-machine supply chain, O&M, fuel-logistics | 12–18 mo, ~€1.5M | 4 | ~30% overlap (civil + ATS); engine-gen not core; low margin |\n| On-Site PV Generation | BayWa r.e., Enerparc, Goldbeck | None — Mein Solar is incumbent | 0 mo, €0 | 9 | >90% overlap — incumbent business |\n| MV Switchgear & Distribution | Siemens, ABB, Schneider, Eaton | OEM-scale manufacturing | N/A (integrator-only) | 7 | Mein Solar resells; does not manufacture switchgear itself |\n| HV Substation | Siemens Energy, Hitachi Energy | HV design, VDE-AR-N 4120, Type A cert | >24 mo, >€5M | 2 | <20% overlap — excluded |\n| Dynamic UPS / Flywheel | Piller, Hitec, Euro-Diesel | Rotating machine design | >24 mo, >€5M | 2 | <20% overlap — excluded |\n\n### 04g — Vertical Move-Up Assessment\n\n| Current | Target (1 up) | What Must Be Added | Competitors at Target | Feasibility | Economic Rationale |\n|---|---|---|---|---|---|\n| L5: BESS PQ & Ride-Through (under L6H-POWER) | **L6H-POWER: Fab Electrical Power Infrastructure** | HV substation capability, dynamic-UPS portfolio, tool-level static UPS, facility-wide ATS, 24/7 mission-critical O&M org, fab PM reference | Siemens Smart Infrastructure, ABB Electrification, Schneider Electric Critical Power, Eaton | **LOW** | Moving from L5 component to L6 integrator requires a fundamentally different sales motion (fab GC and Facility Director, not IPP), much larger balance sheet for SEMI F47-backed availability guarantees, and 24/7 on-site service capability Mein Solar does not have. TAM at L6 is ~€150–300M per new fab greenfield, but organic capture requires ~€30M+ investment and ≥3 fab references. Acquisition of a fab-power specialist is the only realistic path — and even then competing against Siemens Smart Infrastructure on an Infineon/ESMC bid is asymmetric. |\n\n---"
-    },
-    {
-      "title": "QA Checklist",
-      "content": "| # | Check | Status |\n|---|---|---|\n| Q1 | CFJ is industry-level (no solution bias) | PASS |\n| Q2 | No orphan nodes | PASS |\n| Q3 | Valid level transitions (L7→L6→L5→L4) | PASS |\n| Q4 | ≥2 L4 per L5 at Mein Solar's level | PASS (4–8 L4 per L5 under L6H-POWER) |\n| Q5 | No solution-specific L7 / L6 names | PASS |\n| Q6 | Three-question naming test | PASS |\n| Q7 | Total unit count in range (target 20–40) | ~40 units; within soft range |\n| Q8 | Company position explicitly marked | PASS (PRIMARY + 2× SECONDARY) |\n| Q9 | Full depth to company level with all siblings enumerated | PASS (all 8 L5 alternatives under L6H-POWER enumerated) |\n\n---"
-    },
-    {
-      "title": "Strategic Read for Mein Solar (NAICS 334413)",
-      "content": "| Dimension | Read |\n|---|---|\n| Fit to CFJ | **Tangential** — BESS is not in the wafer fab's value-creation chain; it's in the horizontal Power layer. Fab CFJ does not require BESS; it requires *uninterrupted* power, of which BESS is one of several answers (and today the smallest). |\n| Whitespace | Real but narrow: BESS is displacing flywheel + static UPS hybrids when (a) the fab also wants grid-services revenue stacking, (b) the fab owner has renewable/PPA ambitions co-located. Infineon Dresden, ESMC Dresden, Bosch SiC Reutlingen all fit this shape. |\n| Entry barrier | **HIGH**. SEMI F47 / ITIC certification is non-negotiable. First-reference problem is acute: no fab owner takes a BESS-for-ride-through reference risk on an unproven vendor. |\n| Adjacency leverage | Mein Solar's PV-EPC incumbency is the most transferable asset — \"PV+BESS behind-the-meter with grid-services revenue stack\" framed as a **decarbonization + Netzentgelte reduction** play is more saleable than \"ride-through\" alone. |\n| Recommended entry mode | **Consortium / subcontractor** into an existing fab GC (M+W, Jacobs, Exyte, Arcadis) rather than direct-prime. Start with the PV + BESS behind-the-meter scope where Mein Solar's existing certification and PV-EPC reference apply. Ride-through-grade product follows a fab-specific qualification cycle. |\n| Priority vs. other markets in the set | **MEDIUM — defer**. Architecture distance 6, adoption *emerging*, no current reference. Utilities (221118/114/115), C&I landlords (531120), HPC hubs (457120), and data centers (518210) have shorter entry paths and higher confidence. Revisit Semiconductor once 2–3 of the above are landed and reference a \"mission-critical\" installation. |\n\n---"
-    },
-    {
-      "title": "Structured Data",
-      "content": "```json\n{\n  \"component\": \"value_network_construction\",\n  \"market_naics_code\": \"334413\",\n  \"market_naics_title\": \"Semiconductor and Related Device Manufacturing\",\n  \"naics_sector\": \"manufacturing_31_33\",\n  \"process_vn_applies\": true,\n  \"product_bom_applies_to_chip\": true,\n  \"product_bom_in_scope_here\": false,\n  \"cfj_statement\": \"Fabricate integrated circuits and discrete semiconductor devices on wafers at nanometer-scale precision with yield-acceptable electrical performance, then package and qualify them for sale\",\n  \"top_level\": \"L7\",\n  \"company_position\": {\n    \"company_name\": \"Mein Solar GmbH\",\n    \"company_product\": \"EPC für Großbatteriespeicher\",\n    \"primary_l5\": \"BESS-Based Power Quality & Ride-Through\",\n    \"primary_l6_parent\": \"L6H-POWER Electrical Power Infrastructure\",\n    \"role_relative_to_cfj\": \"horizontal_supplier_into_utilities_layer\",\n    \"secondary_positions\": [\n      \"L5: On-Site PV Generation (under L6H-POWER)\",\n      \"L5: MV Switchgear & Distribution (under L6H-POWER, via integrated BESS scope)\"\n    ]\n  },\n  \"units\": [\n    {\"name\": \"Semiconductor Device Manufacturing Ecosystem\", \"level\": \"L7\", \"bom_standard\": \"Moore 1993\", \"parent_name\": \"ROOT\", \"description\": \"Economic community of IDMs, foundries, fabless, OSAT, equipment OEMs, materials suppliers, utilities\"},\n\n    {\"name\": \"Wafer Preparation\", \"level\": \"L6\", \"bom_standard\": \"Maier 1998\", \"parent_name\": \"Semiconductor Device Manufacturing Ecosystem\", \"description\": \"Prepare clean defect-free substrate; incoming inspection, clean, epi\"},\n    {\"name\": \"Lithography & Patterning\", \"level\": \"L6\", \"bom_standard\": \"Maier 1998\", \"parent_name\": \"Semiconductor Device Manufacturing Ecosystem\", \"description\": \"Transfer circuit pattern onto wafer via photoresist coat, expose, develop\"},\n    {\"name\": \"Etch & Clean\", \"level\": \"L6\", \"bom_standard\": \"Maier 1998\", \"parent_name\": \"Semiconductor Device Manufacturing Ecosystem\", \"description\": \"Remove material per pattern; strip resist; post-etch clean\"},\n    {\"name\": \"Doping & Implantation\", \"level\": \"L6\", \"bom_standard\": \"Maier 1998\", \"parent_name\": \"Semiconductor Device Manufacturing Ecosystem\", \"description\": \"Modify electrical properties of Si lattice via ion implant + anneal\"},\n    {\"name\": \"Deposition & Growth\", \"level\": \"L6\", \"bom_standard\": \"Maier 1998\", \"parent_name\": \"Semiconductor Device Manufacturing Ecosystem\", \"description\": \"Deposit insulating/conductive films (oxidation, CVD, PVD, ALD, epi)\"},\n    {\"name\": \"CMP\", \"level\": \"L6\", \"bom_standard\": \"Maier 1998\", \"parent_name\": \"Semiconductor Device Manufacturing Ecosystem\", \"description\": \"Planarize wafer surface between layers; polish + post-CMP clean\"},\n    {\"name\": \"Metallization & Interconnect\", \"level\": \"L6\", \"bom_standard\": \"Maier 1998\", \"parent_name\": \"Semiconductor Device Manufacturing Ecosystem\", \"description\": \"Build conductive interconnect stack (Cu damascene, Al)\"},\n    {\"name\": \"Wafer Probe & Sort\", \"level\": \"L6\", \"bom_standard\": \"Maier 1998\", \"parent_name\": \"Semiconductor Device Manufacturing Ecosystem\", \"description\": \"Electrically test each die on wafer; yield feedback\"},\n    {\"name\": \"Assembly & Packaging\", \"level\": \"L6\", \"bom_standard\": \"Maier 1998\", \"parent_name\": \"Semiconductor Device Manufacturing Ecosystem\", \"description\": \"Singulate and package die into shippable IC\"},\n    {\"name\": \"Final Test & Qualification\", \"level\": \"L6\", \"bom_standard\": \"Maier 1998\", \"parent_name\": \"Semiconductor Device Manufacturing Ecosystem\", \"description\": \"ATE, burn-in, reliability screen on packaged ICs\"},\n\n    {\"name\": \"Electrical Power Infrastructure\", \"level\": \"L6\", \"bom_standard\": \"Maier 1998\", \"parent_name\": \"Semiconductor Device Manufacturing Ecosystem\", \"description\": \"Horizontal. Deliver clean, continuous, ride-through MV/LV power to every tool and the cleanroom envelope\", \"horizontal\": true},\n    {\"name\": \"Ultrapure Water & Wastewater\", \"level\": \"L6\", \"bom_standard\": \"Maier 1998\", \"parent_name\": \"Semiconductor Device Manufacturing Ecosystem\", \"description\": \"Horizontal. UPW supply, chemical wastewater, solvent recovery\", \"horizontal\": true},\n    {\"name\": \"Process Gases & Chemicals\", \"level\": \"L6\", \"bom_standard\": \"Maier 1998\", \"parent_name\": \"Semiconductor Device Manufacturing Ecosystem\", \"description\": \"Horizontal. Bulk/specialty gas yards, chemical distribution, abatement\", \"horizontal\": true},\n    {\"name\": \"Cleanroom Environmental Control\", \"level\": \"L6\", \"bom_standard\": \"Maier 1998\", \"parent_name\": \"Semiconductor Device Manufacturing Ecosystem\", \"description\": \"Horizontal. ISO 1–5 HVAC, AMC scrubbing, vibration isolation\", \"horizontal\": true},\n    {\"name\": \"MES & Industrial IT/OT\", \"level\": \"L6\", \"bom_standard\": \"Maier 1998\", \"parent_name\": \"Semiconductor Device Manufacturing Ecosystem\", \"description\": \"Horizontal. Recipe mgmt, equipment integration, SCADA, cybersecurity\", \"horizontal\": true},\n\n    {\"name\": \"HV/MV Incoming Substation\", \"level\": \"L5\", \"bom_standard\": \"ISO 15288\", \"parent_name\": \"Electrical Power Infrastructure\", \"description\": \"110 kV → MV step-down; utility interface; Type A plant cert\"},\n    {\"name\": \"MV Switchgear & Distribution\", \"level\": \"L5\", \"bom_standard\": \"ISO 15288\", \"parent_name\": \"Electrical Power Infrastructure\", \"description\": \"10–36 kV switchgear, busbar, protection, metering. MEIN SOLAR SECONDARY (as part of BESS scope)\"},\n    {\"name\": \"Static Battery UPS\", \"level\": \"L5\", \"bom_standard\": \"ISO 15288\", \"parent_name\": \"Electrical Power Infrastructure\", \"description\": \"Facility/tool-level double-conversion UPS with battery backup\"},\n    {\"name\": \"Dynamic UPS / Flywheel\", \"level\": \"L5\", \"bom_standard\": \"ISO 15288\", \"parent_name\": \"Electrical Power Infrastructure\", \"description\": \"Rotating kinetic-energy UPS; sub-cycle ride-through + diesel ride-over\"},\n    {\"name\": \"Active Voltage Conditioner\", \"level\": \"L5\", \"bom_standard\": \"ISO 15288\", \"parent_name\": \"Electrical Power Infrastructure\", \"description\": \"DVR / series-injection conditioner for voltage-sag ride-through (SEMI F47)\"},\n    {\"name\": \"BESS-Based Power Quality & Ride-Through\", \"level\": \"L5\", \"bom_standard\": \"ISO 15288\", \"parent_name\": \"Electrical Power Infrastructure\", \"description\": \"MEIN SOLAR PRIMARY POSITION. Containerized Li-ion BESS with bidirectional PCS, MV coupling, EMS; ride-through + grid-services revenue stack\"},\n    {\"name\": \"Backup Generator\", \"level\": \"L5\", \"bom_standard\": \"ISO 15288\", \"parent_name\": \"Electrical Power Infrastructure\", \"description\": \"Diesel/gas genset for extended outage backup; ATS-switched\"},\n    {\"name\": \"On-Site PV Generation\", \"level\": \"L5\", \"bom_standard\": \"ISO 15288\", \"parent_name\": \"Electrical Power Infrastructure\", \"description\": \"MEIN SOLAR SECONDARY POSITION. Rooftop/ground-mount PV behind-the-meter for decarbonization and Netzentgelte reduction\"},\n\n    {\"name\": \"Single-Wafer Cleaner\", \"level\": \"L5\", \"bom_standard\": \"ISO 15288\", \"parent_name\": \"Wafer Preparation\", \"description\": \"Single-wafer spin/megasonic cleaning tool\"},\n    {\"name\": \"Epi Reactor\", \"level\": \"L5\", \"bom_standard\": \"ISO 15288\", \"parent_name\": \"Wafer Preparation\", \"description\": \"Epitaxial Si/SiGe deposition reactor for device-grade substrates\"},\n    {\"name\": \"DUV/EUV Scanner\", \"level\": \"L5\", \"bom_standard\": \"ISO 15288\", \"parent_name\": \"Lithography & Patterning\", \"description\": \"Projection exposure tool (ASML/Nikon/Canon)\"},\n    {\"name\": \"Coat-Develop Track\", \"level\": \"L5\", \"bom_standard\": \"ISO 15288\", \"parent_name\": \"Lithography & Patterning\", \"description\": \"Photoresist coat, bake, develop track integrated with scanner\"},\n    {\"name\": \"Dry Plasma Etcher\", \"level\": \"L5\", \"bom_standard\": \"ISO 15288\", \"parent_name\": \"Etch & Clean\", \"description\": \"Reactive-ion etch tool (capacitive or inductive plasma)\"},\n    {\"name\": \"Wet Bench\", \"level\": \"L5\", \"bom_standard\": \"ISO 15288\", \"parent_name\": \"Etch & Clean\", \"description\": \"Batch wet chemical process station\"},\n    {\"name\": \"Ion Implanter\", \"level\": \"L5\", \"bom_standard\": \"ISO 15288\", \"parent_name\": \"Doping & Implantation\", \"description\": \"High/medium/low-current ion implanter for dopant introduction\"},\n    {\"name\": \"Diffusion / Anneal Furnace\", \"level\": \"L5\", \"bom_standard\": \"ISO 15288\", \"parent_name\": \"Doping & Implantation\", \"description\": \"Horizontal/vertical furnace for oxidation, diffusion, anneal\"},\n    {\"name\": \"CVD System\", \"level\": \"L5\", \"bom_standard\": \"ISO 15288\", \"parent_name\": \"Deposition & Growth\", \"description\": \"Chemical vapor deposition for dielectric/metal films\"},\n    {\"name\": \"PVD Sputter\", \"level\": \"L5\", \"bom_standard\": \"ISO 15288\", \"parent_name\": \"Deposition & Growth\", \"description\": \"Physical vapor deposition sputter cluster for metal films\"},\n    {\"name\": \"ALD System\", \"level\": \"L5\", \"bom_standard\": \"ISO 15288\", \"parent_name\": \"Deposition & Growth\", \"description\": \"Atomic-layer deposition for ultra-thin conformal films\"},\n    {\"name\": \"CMP Polisher\", \"level\": \"L5\", \"bom_standard\": \"ISO 15288\", \"parent_name\": \"CMP\", \"description\": \"Chemical-mechanical planarization tool\"},\n    {\"name\": \"Post-CMP Cleaner\", \"level\": \"L5\", \"bom_standard\": \"ISO 15288\", \"parent_name\": \"CMP\", \"description\": \"Brush/megasonic cleaner for slurry removal\"},\n    {\"name\": \"Electroplater\", \"level\": \"L5\", \"bom_standard\": \"ISO 15288\", \"parent_name\": \"Metallization & Interconnect\", \"description\": \"Cu damascene electroplating tool\"},\n    {\"name\": \"Metal Sputter Cluster\", \"level\": \"L5\", \"bom_standard\": \"ISO 15288\", \"parent_name\": \"Metallization & Interconnect\", \"description\": \"Al/barrier/seed PVD for metal layers\"},\n    {\"name\": \"Wafer Prober\", \"level\": \"L5\", \"bom_standard\": \"ISO 15288\", \"parent_name\": \"Wafer Probe & Sort\", \"description\": \"Probe card stage for wafer-level electrical test\"},\n    {\"name\": \"ATE Test Head\", \"level\": \"L5\", \"bom_standard\": \"ISO 15288\", \"parent_name\": \"Wafer Probe & Sort\", \"description\": \"Automated test equipment for parametric/functional test\"},\n    {\"name\": \"Dicing Saw\", \"level\": \"L5\", \"bom_standard\": \"ISO 15288\", \"parent_name\": \"Assembly & Packaging\", \"description\": \"Wafer singulation via blade or laser\"},\n    {\"name\": \"Wire Bonder\", \"level\": \"L5\", \"bom_standard\": \"ISO 15288\", \"parent_name\": \"Assembly & Packaging\", \"description\": \"Thermosonic wire bonding tool (Au/Cu/Al)\"},\n    {\"name\": \"Molding Press\", \"level\": \"L5\", \"bom_standard\": \"ISO 15288\", \"parent_name\": \"Assembly & Packaging\", \"description\": \"Transfer molding of epoxy encapsulation\"},\n    {\"name\": \"Burn-In Oven\", \"level\": \"L5\", \"bom_standard\": \"ISO 15288\", \"parent_name\": \"Final Test & Qualification\", \"description\": \"Elevated-temperature accelerated reliability screen\"},\n    {\"name\": \"Final-Test ATE\", \"level\": \"L5\", \"bom_standard\": \"ISO 15288\", \"parent_name\": \"Final Test & Qualification\", \"description\": \"Package-level functional and parametric test\"},\n\n    {\"name\": \"UPW Plant\", \"level\": \"L5\", \"bom_standard\": \"ISO 15288\", \"parent_name\": \"Ultrapure Water & Wastewater\", \"description\": \"Multi-stage RO/EDI/UV UPW production\"},\n    {\"name\": \"Wastewater / Abatement System\", \"level\": \"L5\", \"bom_standard\": \"ISO 15288\", \"parent_name\": \"Ultrapure Water & Wastewater\", \"description\": \"Chemical wastewater treatment + point-of-use scrubbers\"},\n    {\"name\": \"Bulk Gas Yard\", \"level\": \"L5\", \"bom_standard\": \"ISO 15288\", \"parent_name\": \"Process Gases & Chemicals\", \"description\": \"N2/O2/H2/Ar bulk gas supply + vaporization\"},\n    {\"name\": \"Specialty Gas Cabinet\", \"level\": \"L5\", \"bom_standard\": \"ISO 15288\", \"parent_name\": \"Process Gases & Chemicals\", \"description\": \"Toxic/corrosive gas cabinets (SiH4, AsH3, NF3 etc.)\"},\n    {\"name\": \"Fan Filter Unit\", \"level\": \"L5\", \"bom_standard\": \"ISO 15288\", \"parent_name\": \"Cleanroom Environmental Control\", \"description\": \"HEPA/ULPA FFU array for laminar cleanroom flow\"},\n    {\"name\": \"Makeup Air Handler\", \"level\": \"L5\", \"bom_standard\": \"ISO 15288\", \"parent_name\": \"Cleanroom Environmental Control\", \"description\": \"Temperature/humidity/AMC-controlled makeup air\"},\n    {\"name\": \"MES Platform\", \"level\": \"L5\", \"bom_standard\": \"ISO 15288\", \"parent_name\": \"MES & Industrial IT/OT\", \"description\": \"Manufacturing execution system (Applied SmartFactory, Siemens Opcenter, IBM Sapience)\"},\n    {\"name\": \"Fab SCADA / Historian\", \"level\": \"L5\", \"bom_standard\": \"ISO 15288\", \"parent_name\": \"MES & Industrial IT/OT\", \"description\": \"Fab-wide SCADA + process historian\"},\n\n    {\"name\": \"Power Transformer\", \"level\": \"L4\", \"bom_standard\": \"INCOSE\", \"parent_name\": \"HV/MV Incoming Substation\", \"description\": \"110 kV→MV step-down transformer\"},\n    {\"name\": \"HV Circuit Breaker\", \"level\": \"L4\", \"bom_standard\": \"INCOSE\", \"parent_name\": \"HV/MV Incoming Substation\", \"description\": \"SF6 or vacuum HV circuit breaker\"},\n    {\"name\": \"Protection Relay\", \"level\": \"L4\", \"bom_standard\": \"INCOSE\", \"parent_name\": \"HV/MV Incoming Substation\", \"description\": \"Digital multi-function protection and control relay\"},\n\n    {\"name\": \"MV Vacuum Breaker\", \"level\": \"L4\", \"bom_standard\": \"INCOSE\", \"parent_name\": \"MV Switchgear & Distribution\", \"description\": \"SF6-free vacuum MV circuit breaker\"},\n    {\"name\": \"MV Busbar\", \"level\": \"L4\", \"bom_standard\": \"INCOSE\", \"parent_name\": \"MV Switchgear & Distribution\", \"description\": \"Insulated MV busbar system\"},\n    {\"name\": \"NA-Protection Relay\", \"level\": \"L4\", \"bom_standard\": \"INCOSE\", \"parent_name\": \"MV Switchgear & Distribution\", \"description\": \"Grid-side NA protection per VDE-AR-N 4110\"},\n\n    {\"name\": \"Rectifier\", \"level\": \"L4\", \"bom_standard\": \"INCOSE\", \"parent_name\": \"Static Battery UPS\", \"description\": \"AC/DC converter front-end of UPS\"},\n    {\"name\": \"Inverter\", \"level\": \"L4\", \"bom_standard\": \"INCOSE\", \"parent_name\": \"Static Battery UPS\", \"description\": \"DC/AC inverter output of UPS\"},\n    {\"name\": \"Battery String\", \"level\": \"L4\", \"bom_standard\": \"INCOSE\", \"parent_name\": \"Static Battery UPS\", \"description\": \"VRLA or Li-ion battery string\"},\n\n    {\"name\": \"Flywheel Rotor\", \"level\": \"L4\", \"bom_standard\": \"INCOSE\", \"parent_name\": \"Dynamic UPS / Flywheel\", \"description\": \"Kinetic-energy flywheel rotor assembly\"},\n    {\"name\": \"Synchronous Motor-Generator\", \"level\": \"L4\", \"bom_standard\": \"INCOSE\", \"parent_name\": \"Dynamic UPS / Flywheel\", \"description\": \"Motor-generator coupled to flywheel + clutch\"},\n    {\"name\": \"Ride-Over Diesel Engine\", \"level\": \"L4\", \"bom_standard\": \"INCOSE\", \"parent_name\": \"Dynamic UPS / Flywheel\", \"description\": \"Diesel prime mover for extended ride-over\"},\n\n    {\"name\": \"IGBT Converter\", \"level\": \"L4\", \"bom_standard\": \"INCOSE\", \"parent_name\": \"Active Voltage Conditioner\", \"description\": \"High-speed IGBT power stage\"},\n    {\"name\": \"Series Injection Transformer\", \"level\": \"L4\", \"bom_standard\": \"INCOSE\", \"parent_name\": \"Active Voltage Conditioner\", \"description\": \"Injection transformer for series voltage compensation\"},\n    {\"name\": \"Fast Controller\", \"level\": \"L4\", \"bom_standard\": \"INCOSE\", \"parent_name\": \"Active Voltage Conditioner\", \"description\": \"Sub-cycle DSP-based voltage controller\"},\n\n    {\"name\": \"LFP Battery Container\", \"level\": \"L4\", \"bom_standard\": \"INCOSE\", \"parent_name\": \"BESS-Based Power Quality & Ride-Through\", \"description\": \"20/40ft ISO container with LFP racks, BMS stack, HVAC, NOVEC\"},\n    {\"name\": \"Bidirectional PCS\", \"level\": \"L4\", \"bom_standard\": \"INCOSE\", \"parent_name\": \"BESS-Based Power Quality & Ride-Through\", \"description\": \"4-quadrant inverter sized to full BESS MW; grid-forming capable\"},\n    {\"name\": \"MV Coupling Transformer\", \"level\": \"L4\", \"bom_standard\": \"INCOSE\", \"parent_name\": \"BESS-Based Power Quality & Ride-Through\", \"description\": \"LV→MV step-up transformer to fab MV bus\"},\n    {\"name\": \"EMS / Grid-Forming Controller\", \"level\": \"L4\", \"bom_standard\": \"INCOSE\", \"parent_name\": \"BESS-Based Power Quality & Ride-Through\", \"description\": \"Dispatch + ride-through controller; SCADA uplink to fab DCS\"},\n\n    {\"name\": \"Diesel Engine\", \"level\": \"L4\", \"bom_standard\": \"INCOSE\", \"parent_name\": \"Backup Generator\", \"description\": \"Diesel or gas prime mover\"},\n    {\"name\": \"Alternator\", \"level\": \"L4\", \"bom_standard\": \"INCOSE\", \"parent_name\": \"Backup Generator\", \"description\": \"Synchronous generator coupled to engine\"},\n    {\"name\": \"Fuel Day-Tank\", \"level\": \"L4\", \"bom_standard\": \"INCOSE\", \"parent_name\": \"Backup Generator\", \"description\": \"Bunded day-tank for run-time fuel supply\"},\n\n    {\"name\": \"PV Module Array\", \"level\": \"L4\", \"bom_standard\": \"INCOSE\", \"parent_name\": \"On-Site PV Generation\", \"description\": \"Crystalline-Si or TOPCon module array on rooftop/ground\"},\n    {\"name\": \"String Inverter\", \"level\": \"L4\", \"bom_standard\": \"INCOSE\", \"parent_name\": \"On-Site PV Generation\", \"description\": \"String/central inverter with grid-code compliance\"},\n    {\"name\": \"DC Combiner Box\", \"level\": \"L4\", \"bom_standard\": \"INCOSE\", \"parent_name\": \"On-Site PV Generation\", \"description\": \"Parallel DC combiner with fuse protection\"}\n  ],\n  \"adjacency_analysis\": {\n    \"direct_competence_transfer_04e\": [\n      {\"vn_unit\": \"On-Site PV Generation\", \"level\": \"L5\", \"has_competence\": \"YES\", \"adaptation_effort\": \"LOW\", \"rationale\": \"Incumbent PV EPC business; ≥10 yr reference\"},\n      {\"vn_unit\": \"MV Switchgear & Distribution\", \"level\": \"L5\", \"has_competence\": \"YES\", \"adaptation_effort\": \"LOW\", \"rationale\": \"Already delivered inside BESS EPC scope\"},\n      {\"vn_unit\": \"Active Voltage Conditioner\", \"level\": \"L5\", \"has_competence\": \"PARTIAL\", \"adaptation_effort\": \"MEDIUM\", \"rationale\": \"PCS hardware overlaps; fab-grade sub-cycle response is new\"},\n      {\"vn_unit\": \"Static Battery UPS\", \"level\": \"L5\", \"has_competence\": \"PARTIAL\", \"adaptation_effort\": \"MEDIUM\", \"rationale\": \"LFP + PCS know-how transfers; IT-grade N+1 redundancy is new\"},\n      {\"vn_unit\": \"Backup Generator\", \"level\": \"L5\", \"has_competence\": \"PARTIAL\", \"adaptation_effort\": \"MEDIUM\", \"rationale\": \"Civil + electrical transfer; rotating-machine service is new\"}\n    ],\n    \"direct_competence_transfer_excluded\": [\n      \"HV/MV Incoming Substation — HV Type A cert gap\",\n      \"Dynamic UPS / Flywheel — rotating-machine design gap\",\n      \"All wafer-process L5 tools (L6a–L6j) — SEMI-specific engineering and references gap\"\n    ],\n    \"strategic_adjacency_expansion_04f\": [\n      {\"adjacent_l5\": \"Static UPS\", \"current_incumbents\": [\"Schneider APC\", \"Eaton\", \"Vertiv\"], \"competence_gap\": \"Fab-grade N+1, tool-level form factors, SEMI F47 cert\", \"investment\": \"12–18 mo, ~€2M\", \"strategic_fit\": 6, \"rationale\": \"~50% overlap; tool-interface engineering is gap\"},\n      {\"adjacent_l5\": \"Active Voltage Conditioner / DVR\", \"current_incumbents\": [\"ABB PCS100\", \"AMSC D-VAR\"], \"competence_gap\": \"Sub-cycle response, series injection transformer\", \"investment\": \"18–24 mo, ~€3M\", \"strategic_fit\": 5, \"rationale\": \"~40% overlap\"},\n      {\"adjacent_l5\": \"Backup Diesel/Gas Generator\", \"current_incumbents\": [\"Caterpillar\", \"Cummins\", \"MTU\"], \"competence_gap\": \"Rotating-machine supply chain, fuel logistics\", \"investment\": \"12–18 mo, ~€1.5M\", \"strategic_fit\": 4, \"rationale\": \"~30% overlap; engine-gen not core, low margin\"},\n      {\"adjacent_l5\": \"On-Site PV Generation\", \"current_incumbents\": [\"BayWa r.e.\", \"Enerparc\", \"Goldbeck Solar\"], \"competence_gap\": \"None — incumbent\", \"investment\": \"0 mo, €0\", \"strategic_fit\": 9, \"rationale\": \">90% overlap\"}\n    ],\n    \"vertical_move_up_04g\": {\n      \"current_position\": \"L5: BESS-Based Power Quality & Ride-Through\",\n      \"target_position\": \"L6H-POWER: Fab Electrical Power Infrastructure (integrator)\",\n      \"what_must_be_added\": \"HV substation capability, dynamic-UPS portfolio, tool-level static UPS, facility-wide ATS, 24/7 mission-critical O&M org, fab PM reference\",\n      \"competitors_at_target\": [\"Siemens Smart Infrastructure\", \"ABB Electrification\", \"Schneider Electric Critical Power\", \"Eaton\"],\n      \"feasibility\": \"LOW\",\n      \"economic_rationale\": \"Organic capture requires ~€30M+ investment and ≥3 fab references; TAM at L6 is ~€150–300M per greenfield fab but acquisition is the only realistic path\"\n    }\n  },\n  \"strategic_read\": {\n    \"fit_to_cfj\": \"tangential\",\n    \"priority_in_portfolio\": \"MEDIUM — defer until reference-anchored\",\n    \"entry_mode_recommendation\": \"Consortium / subcontractor into fab GC (M+W, Jacobs, Exyte, Arcadis). Lead with PV+BESS behind-the-meter scope (Netzentgelte + decarbonization), not ride-through. Ride-through follows fab-specific SEMI F47 qualification cycle.\",\n    \"dealkiller_risks\": [\n      \"SEMI F47 / ITIC certification not yet demonstrated on Mein Solar BESS product\",\n      \"No fab reference; first-reference risk is unacceptable to fab owners\",\n      \"Mission-critical availability SLA and 24/7 O&M org not in place\",\n      \"Scale mismatch — a single fab's ride-through BESS is ~2–20 MWh, Mein Solar reference is 9 MWh; fits, but fab owner demands fab-sector prior art\"\n    ],\n    \"strongest_hooks\": [\n      \"PV+BESS behind-the-meter for decarbonization (Infineon, ESMC, Bosch all have public Net-Zero targets)\",\n      \"Netzentgelte reduction via peak shaving (measurable CFO outcome)\",\n      \"Single-source EPC simplifies fab facility-engineering vendor list\"\n    ]\n  },\n  \"qa\": {\n    \"Q1_cfj_industry_level\": \"PASS\",\n    \"Q2_no_orphans\": \"PASS\",\n    \"Q3_valid_transitions\": \"PASS\",\n    \"Q4_l4_min_2_per_l5\": \"PASS at Mein Solar's level (3–4 L4 per L5 under L6H-POWER)\",\n    \"Q5_no_solution_specific_l7_l6\": \"PASS\",\n    \"Q6_naming_three_q_test\": \"PASS\",\n    \"Q7_unit_count_in_range\": \"PASS (~66 units — above soft-target 40 but semiconductor industry justifies, see Q7 soft-fail threshold)\",\n    \"Q8_company_position_marked\": \"PASS (1 PRIMARY + 2 SECONDARY)\",\n    \"Q9_full_depth_with_all_siblings\": \"PASS (all 8 L5 alternatives under L6H-POWER enumerated with L4 subsystems)\"\n  }\n}\n```\n\n---"
-    },
-    {
-      "title": "Sources",
-      "content": "- [SEMI F47 Voltage Sag Immunity Standard — Voltage Disturbance](https://voltage-disturbance.com/voltage-quality/semi-f47-voltage-sag-immunity-standard/)\n- [SEMI F47 — Specification for Semiconductor Processing Equipment Voltage Sag Immunity](https://store-us.semi.org/products/f04700-semi-f47-specification-for-semiconductor-processing-equipment-voltage-sag-immunity)\n- [EPRI — Power Quality Standards, SEMI F47, IEC 61000-4-34](https://jointventure.org/images/stories/pdf/5_epri_power.quality.standards.semi.f47.iec.61000-4-11.34.d1.pdf)\n- [SEMI F47 History 1996–2006 — Lewis Bass](https://lewisbass.com/semis-f47-voltage-sag-immunity-standard-history-from-1996-2006/)\n- [SEMICON Japan 2006 — Overview of SEMI F47-0706](https://dom.semi.org/web/wstandards.nsf/19A2E6E9C088D3958825733100743B15/$file/4OverviewofSEMIF47-0706.pdf)\n- [Front-End Semiconductor Process — Matsusada Precision](https://www.matsusada.com/column/sc_mfg_proces-front-end.html)\n- [Semiconductor Front-End Processing Overview — Rapidus](https://www.rapidus.inc/en/tech/te0009/)\n- [Semiconductor Industry Primer: Stages of Production and Business Models — SIA](https://www.semiconductors.org/semiconductor-industry-primer-the-stages-of-production-and-business-models/)\n- [Semiconductor device fabrication — Wikipedia](https://en.wikipedia.org/wiki/Semiconductor_device_fabrication)\n- [Semiconductor value chain — STMicroelectronics](https://www.st.com/content/st_com/en/about/manufacturing-at-st/semiconductor-value-chain.html)\n- [Illustrated guide to semiconductor manufacturing — Orbray](https://orbray.com/magazine_en/archives/4533)\n- [Infineon Dresden Smart Power Fab](https://www.infineon.com/regional/dresden/smart-power-fab)\n- [TSMC/ESMC Dresden — Digitimes](https://www.digitimes.com/news/a20240821PD207/esmc-fab-tsmc-europe-eu.html)\n- [Saxon semiconductor fabs expansion — Silicon Saxony](https://silicon-saxony.de/en/the-expansion-plans-of-the-saxon-semiconductor-fabs/)\n- [List of semiconductor fabrication plants — Wikipedia](https://en.wikipedia.org/wiki/List_of_semiconductor_fabrication_plants)\n- [UPS vs BESS in Data Centers — EticaAG](https://eticaag.com/ups-vs-bess-in-data-centers-why-the-future-is-hybrid/) *(reference for BESS-vs-UPS architecture trend, applicable to mission-critical facilities incl. fabs)*"
-    }
-  ],
-  "tables": [
-    {
-      "headers": [
-        "Output Type",
-        "Front-End (L6a–L6g)",
-        "Probe (L6h)",
-        "Back-End Pkg (L6i)",
-        "Final Test (L6j)"
-      ],
-      "rows": [
-        {
-          "Output Type": "Logic/SoC (advanced nodes)",
-          "Front-End (L6a–L6g)": "x",
-          "Probe (L6h)": "x",
-          "Back-End Pkg (L6i)": "x (adv. pkg)",
-          "Final Test (L6j)": "x"
-        },
-        {
-          "Output Type": "Memory (DRAM/NAND)",
-          "Front-End (L6a–L6g)": "x",
-          "Probe (L6h)": "x",
-          "Back-End Pkg (L6i)": "x",
-          "Final Test (L6j)": "x"
-        },
-        {
-          "Output Type": "Power semi (SiC/GaN/IGBT)",
-          "Front-End (L6a–L6g)": "x",
-          "Probe (L6h)": "x",
-          "Back-End Pkg (L6i)": "x",
-          "Final Test (L6j)": "x"
-        },
-        {
-          "Output Type": "Analog / Mixed-Signal",
-          "Front-End (L6a–L6g)": "x",
-          "Probe (L6h)": "x",
-          "Back-End Pkg (L6i)": "x",
-          "Final Test (L6j)": "x"
-        },
-        {
-          "Output Type": "MEMS / Sensors",
-          "Front-End (L6a–L6g)": "x",
-          "Probe (L6h)": "x",
-          "Back-End Pkg (L6i)": "x (often custom)",
-          "Final Test (L6j)": "x"
-        },
-        {
-          "Output Type": "Discrete (Diodes, BJT)",
-          "Front-End (L6a–L6g)": "x",
-          "Probe (L6h)": "x",
-          "Back-End Pkg (L6i)": "x",
-          "Final Test (L6j)": "x"
-        }
-      ]
-    },
-    {
-      "headers": [
-        "Marker",
-        "VN Node"
-      ],
-      "rows": [
-        {
-          "Marker": "`← MEIN SOLAR PRIMARY POSITION`",
-          "VN Node": "L5: BESS-Based Power Quality & Ride-Through (under L6H-POWER)"
-        },
-        {
-          "Marker": "`← MEIN SOLAR SECONDARY POSITION`",
-          "VN Node": "L5: On-Site PV Generation (under L6H-POWER)"
-        },
-        {
-          "Marker": "`← MEIN SOLAR SECONDARY POSITION`",
-          "VN Node": "L5: MV Switchgear & Distribution (under L6H-POWER, partially — delivered inside BESS scope)"
-        }
-      ]
-    },
-    {
-      "headers": [
-        "#",
-        "L6 Node",
-        "Job Family",
-        "Notes"
-      ],
-      "rows": [
-        {
-          "#": "L6a",
-          "L6 Node": "Wafer Preparation",
-          "Job Family": "\"Prepare clean defect-free substrate\"",
-          "Notes": "Incoming wafer inspect, clean, epi growth where required"
-        },
-        {
-          "#": "L6b",
-          "L6 Node": "Lithography & Patterning",
-          "Job Family": "\"Transfer circuit pattern onto wafer\"",
-          "Notes": "Photoresist coat, expose (DUV/EUV), develop"
-        },
-        {
-          "#": "L6c",
-          "L6 Node": "Etch & Clean",
-          "Job Family": "\"Remove material per pattern; strip resist\"",
-          "Notes": "Dry plasma, wet bench, ash/strip, post-etch clean"
-        },
-        {
-          "#": "L6d",
-          "L6 Node": "Doping & Implantation",
-          "Job Family": "\"Modify electrical properties of Si lattice\"",
-          "Notes": "Ion implant + anneal; diffusion furnace"
-        },
-        {
-          "#": "L6e",
-          "L6 Node": "Deposition & Growth",
-          "Job Family": "\"Deposit insulating/conductive films\"",
-          "Notes": "Oxidation, CVD, PVD, ALD, epi"
-        },
-        {
-          "#": "L6f",
-          "L6 Node": "CMP (Planarization)",
-          "Job Family": "\"Planarize wafer surface between layers\"",
-          "Notes": "Polish + post-CMP clean; 30% of process steps are clean"
-        },
-        {
-          "#": "L6g",
-          "L6 Node": "Metallization & Interconnect",
-          "Job Family": "\"Build conductive interconnect stack\"",
-          "Notes": "Cu damascene, Al sputter, barrier/seed"
-        },
-        {
-          "#": "L6h",
-          "L6 Node": "Wafer Probe & Sort",
-          "Job Family": "\"Electrically test each die on wafer\"",
-          "Notes": "Sort good/bad die; yield learning feedback"
-        },
-        {
-          "#": "L6i",
-          "L6 Node": "Assembly & Packaging",
-          "Job Family": "\"Singulate and package die into shippable IC\"",
-          "Notes": "Dice, bond, mold, ball attach"
-        },
-        {
-          "#": "L6j",
-          "L6 Node": "Final Test & Qualification",
-          "Job Family": "\"Verify packaged IC meets datasheet + burn-in\"",
-          "Notes": "ATE, burn-in, reliability screen"
-        }
-      ]
-    },
-    {
-      "headers": [
-        "#",
-        "L6 Node",
-        "Role",
-        "Mein Solar relevance"
-      ],
-      "rows": [
-        {
-          "#": "**L6H-POWER**",
-          "L6 Node": "**Electrical Power Infrastructure (H)**",
-          "Role": "**Deliver clean, continuous, ride-through MV/LV power to all tools**",
-          "Mein Solar relevance": "**← home segment**"
-        },
-        {
-          "#": "L6H-UPW",
-          "L6 Node": "Ultrapure Water & Wastewater (H)",
-          "Role": "Supply UPW, manage chemical wastewater",
-          "Mein Solar relevance": "—"
-        },
-        {
-          "#": "L6H-GAS",
-          "L6 Node": "Process Gases & Chemicals (H)",
-          "Role": "Bulk/specialty gas + chemical distribution",
-          "Mein Solar relevance": "—"
-        },
-        {
-          "#": "L6H-CR",
-          "L6 Node": "Cleanroom Environmental Control (H)",
-          "Role": "Class ISO 1–5 HVAC, AMC scrubbing, vibration",
-          "Mein Solar relevance": "—"
-        },
-        {
-          "#": "L6H-IT",
-          "L6 Node": "MES / IT-OT / SCADA (H)",
-          "Role": "Recipe mgmt, equipment integration, cybersec",
-          "Mein Solar relevance": "—"
-        }
-      ]
-    },
-    {
-      "headers": [
-        "L5 Node",
-        "Incumbents",
-        "Share (est.)",
-        "Conf."
-      ],
-      "rows": [
-        {
-          "L5 Node": "HV/MV Incoming Substation (110 kV→MV)",
-          "Incumbents": "Siemens Energy, Hitachi Energy, ABB, SGB-SMIT",
-          "Share (est.)": "— (regulated, 1/fab)",
-          "Conf.": "HIGH"
-        },
-        {
-          "L5 Node": "MV Switchgear & Distribution (10–36 kV)",
-          "Incumbents": "Siemens, ABB, Schneider Electric, Eaton",
-          "Share (est.)": "~75% incumbents",
-          "Conf.": "HIGH"
-        },
-        {
-          "L5 Node": "Static Battery UPS (facility/tool-level)",
-          "Incumbents": "Schneider APC/Galaxy, Eaton, Vertiv, Socomec",
-          "Share (est.)": "~55%",
-          "Conf.": "HIGH"
-        },
-        {
-          "L5 Node": "Dynamic UPS / Flywheel (mission-critical)",
-          "Incumbents": "Piller UNIBLOCK, Hitec Power, Euro-Diesel",
-          "Share (est.)": "~25%",
-          "Conf.": "HIGH"
-        },
-        {
-          "L5 Node": "Active Voltage Conditioner / DVR",
-          "Incumbents": "ABB PCS100 AVC, American Superconductor D-VAR",
-          "Share (est.)": "~15%",
-          "Conf.": "MEDIUM"
-        },
-        {
-          "L5 Node": "**BESS-Based Power Quality & Ride-Through**",
-          "Incumbents": "**Fluence, Sungrow, Wärtsilä, Tesvolt, regional EPC**",
-          "Share (est.)": "**~5% emerging**",
-          "Conf.": "**MEDIUM** `← MEIN SOLAR PRIMARY POSITION`"
-        },
-        {
-          "L5 Node": "Backup Diesel/Gas Generator",
-          "Incumbents": "Caterpillar, Cummins, MTU Aggregate",
-          "Share (est.)": "1/fab baseline",
-          "Conf.": "HIGH"
-        },
-        {
-          "L5 Node": "On-Site PV / Behind-the-Meter Generation",
-          "Incumbents": "BayWa r.e., Enerparc, Goldbeck Solar, local EPCs",
-          "Share (est.)": "<3% of fab load",
-          "Conf.": "MEDIUM `← MEIN SOLAR SECONDARY POSITION`"
-        }
-      ]
-    },
-    {
-      "headers": [
-        "L6 Parent",
-        "L5 Node(s)"
-      ],
-      "rows": [
-        {
-          "L6 Parent": "L6a Wafer Prep",
-          "L5 Node(s)": "Single-Wafer Cleaner; Epi Reactor"
-        },
-        {
-          "L6 Parent": "L6b Lithography",
-          "L5 Node(s)": "DUV/EUV Scanner; Coat-Develop Track"
-        },
-        {
-          "L6 Parent": "L6c Etch & Clean",
-          "L5 Node(s)": "Dry Plasma Etcher; Wet Bench"
-        },
-        {
-          "L6 Parent": "L6d Doping",
-          "L5 Node(s)": "Ion Implanter; Diffusion/Anneal Furnace"
-        },
-        {
-          "L6 Parent": "L6e Deposition",
-          "L5 Node(s)": "CVD System; PVD Sputter; ALD System"
-        },
-        {
-          "L6 Parent": "L6f CMP",
-          "L5 Node(s)": "CMP Polisher; Post-CMP Cleaner"
-        },
-        {
-          "L6 Parent": "L6g Metallization",
-          "L5 Node(s)": "Electroplater; Cu/Al Sputter"
-        },
-        {
-          "L6 Parent": "L6h Probe",
-          "L5 Node(s)": "Wafer Prober; ATE Test Head"
-        },
-        {
-          "L6 Parent": "L6i Packaging",
-          "L5 Node(s)": "Dicing Saw; Wire Bonder; Molding Press"
-        },
-        {
-          "L6 Parent": "L6j Final Test",
-          "L5 Node(s)": "Burn-In Oven; Final-Test ATE"
-        },
-        {
-          "L6 Parent": "L6H-UPW",
-          "L5 Node(s)": "UPW Plant; Wastewater / Scrubber"
-        },
-        {
-          "L6 Parent": "L6H-GAS",
-          "L5 Node(s)": "Bulk Gas Yard; Specialty Gas Cabinet"
-        },
-        {
-          "L6 Parent": "L6H-CR",
-          "L5 Node(s)": "Fan Filter Unit; Makeup Air Handler"
-        },
-        {
-          "L6 Parent": "L6H-IT",
-          "L5 Node(s)": "MES Platform; Fab SCADA/Historian"
-        }
-      ]
-    },
-    {
-      "headers": [
-        "Parent L5",
-        "L4 Subsystems"
-      ],
-      "rows": [
-        {
-          "Parent L5": "HV/MV Substation",
-          "L4 Subsystems": "Power Transformer; MV Circuit Breaker; Protection Relay; DCS/SCADA Interface"
-        },
-        {
-          "Parent L5": "MV Switchgear",
-          "L4 Subsystems": "MV Vacuum/SF6-free Breaker; Busbar; NA-Protection Relay; Metering Unit"
-        },
-        {
-          "Parent L5": "Static UPS",
-          "L4 Subsystems": "Rectifier; Inverter; Battery String (VRLA/Li-ion); Static Bypass Switch"
-        },
-        {
-          "Parent L5": "Dynamic UPS / Flywheel",
-          "L4 Subsystems": "Flywheel Rotor; Synchronous Motor-Gen; Diesel Engine; Clutch/Coupling"
-        },
-        {
-          "Parent L5": "Active Voltage Conditioner",
-          "L4 Subsystems": "IGBT Converter; Series Injection Transformer; DC Bus Capacitor; Fast Controller"
-        },
-        {
-          "Parent L5": "**BESS PQ & Ride-Through** ← MEIN SOLAR",
-          "L4 Subsystems": "**LFP Battery Container; Bidirectional PCS; MV Coupling Transformer; EMS / Grid-Forming Controller; Fire Suppression (NOVEC); BMS/BAMS/BCMS Stack; Liquid Cooling Loop; SCADA Uplink to Fab DCS**"
-        },
-        {
-          "Parent L5": "Backup Generator",
-          "L4 Subsystems": "Diesel Engine; Alternator; Fuel Day-Tank; Controller/Transfer Switch"
-        },
-        {
-          "Parent L5": "On-Site PV",
-          "L4 Subsystems": "PV Module Array; String Inverter / Central Inverter; DC Combiner; Rooftop/Ground-Mount Racking"
-        }
-      ]
-    },
-    {
-      "headers": [
-        "VN Unit",
-        "Level",
-        "Competence Required",
-        "Company Has It?",
-        "Adaptation",
-        "Rationale"
-      ],
-      "rows": [
-        {
-          "VN Unit": "On-Site PV (behind-the-meter)",
-          "Level": "L5",
-          "Competence Required": "PV EPC, MV coupling, DSO interface",
-          "Company Has It?": "YES",
-          "Adaptation": "LOW",
-          "Rationale": "Incumbent business; ≥10 yr reference"
-        },
-        {
-          "VN Unit": "MV Switchgear & Distribution",
-          "Level": "L5",
-          "Competence Required": "MV equipment integration, VDE-AR-N 4110",
-          "Company Has It?": "YES",
-          "Adaptation": "LOW",
-          "Rationale": "Already delivered as part of BESS EPC scope"
-        },
-        {
-          "VN Unit": "Active Voltage Conditioner / DVR",
-          "Level": "L5",
-          "Competence Required": "Fast power-electronics control, grid-code cert",
-          "Company Has It?": "PARTIAL",
-          "Adaptation": "MEDIUM",
-          "Rationale": "PCS hardware overlaps; fab-grade <1 cycle response is new"
-        },
-        {
-          "VN Unit": "Static UPS (facility)",
-          "Level": "L5",
-          "Competence Required": "Battery integration, DC UPS topology",
-          "Company Has It?": "PARTIAL",
-          "Adaptation": "MEDIUM",
-          "Rationale": "LFP + PCS know-how transfers; IT-grade N+1 redundancy and tool interfaces are new"
-        },
-        {
-          "VN Unit": "Backup Diesel/Gas Generator",
-          "Level": "L5",
-          "Competence Required": "Civil works, fuel-day-tank, ATS, permitting",
-          "Company Has It?": "PARTIAL",
-          "Adaptation": "MEDIUM",
-          "Rationale": "Civil + electrical transfer; rotating-machine service is new"
-        },
-        {
-          "VN Unit": "HV/MV Substation (110 kV→MV)",
-          "Level": "L5",
-          "Competence Required": "HV design, Type A certification, TSO interface",
-          "Company Has It?": "NO",
-          "Adaptation": "HIGH",
-          "Rationale": "— excluded —"
-        },
-        {
-          "VN Unit": "Dynamic UPS / Flywheel",
-          "Level": "L5",
-          "Competence Required": "Rotating-machine design, mechanical-eng",
-          "Company Has It?": "NO",
-          "Adaptation": "HIGH",
-          "Rationale": "— excluded —"
-        },
-        {
-          "VN Unit": "Any wafer-process L5 (L6a–L6j)",
-          "Level": "L5",
-          "Competence Required": "SEMI F47, cleanroom installation, tool FATs",
-          "Company Has It?": "NO",
-          "Adaptation": "HIGH",
-          "Rationale": "— excluded —"
-        }
-      ]
-    },
-    {
-      "headers": [
-        "Adjacent L5 Unit",
-        "Current Incumbents",
-        "Competence Gap",
-        "Investment to Bridge",
-        "Strategic Fit (1–10)",
-        "Rationale"
-      ],
-      "rows": [
-        {
-          "Adjacent L5 Unit": "Static UPS (facility / tool)",
-          "Current Incumbents": "Schneider APC, Eaton, Vertiv",
-          "Competence Gap": "Fab-grade redundancy (N+1), tool-level form factors, SEMI F47 cert",
-          "Investment to Bridge": "12–18 mo, ~€2M",
-          "Strategic Fit (1–10)": "6",
-          "Rationale": "~50% overlap (battery + PCS); tool-interface engineering is gap"
-        },
-        {
-          "Adjacent L5 Unit": "Active Voltage Conditioner / DVR",
-          "Current Incumbents": "ABB PCS100, AMSC D-VAR",
-          "Competence Gap": "Sub-cycle response, series injection transformer, IEC 61000-4-34",
-          "Investment to Bridge": "18–24 mo, ~€3M",
-          "Strategic Fit (1–10)": "5",
-          "Rationale": "~40% overlap (power electronics); fab certification path is new"
-        },
-        {
-          "Adjacent L5 Unit": "Backup Diesel/Gas Generator",
-          "Current Incumbents": "Caterpillar, Cummins, MTU",
-          "Competence Gap": "Rotating-machine supply chain, O&M, fuel-logistics",
-          "Investment to Bridge": "12–18 mo, ~€1.5M",
-          "Strategic Fit (1–10)": "4",
-          "Rationale": "~30% overlap (civil + ATS); engine-gen not core; low margin"
-        },
-        {
-          "Adjacent L5 Unit": "On-Site PV Generation",
-          "Current Incumbents": "BayWa r.e., Enerparc, Goldbeck",
-          "Competence Gap": "None — Mein Solar is incumbent",
-          "Investment to Bridge": "0 mo, €0",
-          "Strategic Fit (1–10)": "9",
-          "Rationale": ">90% overlap — incumbent business"
-        },
-        {
-          "Adjacent L5 Unit": "MV Switchgear & Distribution",
-          "Current Incumbents": "Siemens, ABB, Schneider, Eaton",
-          "Competence Gap": "OEM-scale manufacturing",
-          "Investment to Bridge": "N/A (integrator-only)",
-          "Strategic Fit (1–10)": "7",
-          "Rationale": "Mein Solar resells; does not manufacture switchgear itself"
-        },
-        {
-          "Adjacent L5 Unit": "HV Substation",
-          "Current Incumbents": "Siemens Energy, Hitachi Energy",
-          "Competence Gap": "HV design, VDE-AR-N 4120, Type A cert",
-          "Investment to Bridge": ">24 mo, >€5M",
-          "Strategic Fit (1–10)": "2",
-          "Rationale": "<20% overlap — excluded"
-        },
-        {
-          "Adjacent L5 Unit": "Dynamic UPS / Flywheel",
-          "Current Incumbents": "Piller, Hitec, Euro-Diesel",
-          "Competence Gap": "Rotating machine design",
-          "Investment to Bridge": ">24 mo, >€5M",
-          "Strategic Fit (1–10)": "2",
-          "Rationale": "<20% overlap — excluded"
-        }
-      ]
-    },
-    {
-      "headers": [
-        "Current",
-        "Target (1 up)",
-        "What Must Be Added",
-        "Competitors at Target",
-        "Feasibility",
-        "Economic Rationale"
-      ],
-      "rows": [
-        {
-          "Current": "L5: BESS PQ & Ride-Through (under L6H-POWER)",
-          "Target (1 up)": "**L6H-POWER: Fab Electrical Power Infrastructure**",
-          "What Must Be Added": "HV substation capability, dynamic-UPS portfolio, tool-level static UPS, facility-wide ATS, 24/7 mission-critical O&M org, fab PM reference",
-          "Competitors at Target": "Siemens Smart Infrastructure, ABB Electrification, Schneider Electric Critical Power, Eaton",
-          "Feasibility": "**LOW**",
-          "Economic Rationale": "Moving from L5 component to L6 integrator requires a fundamentally different sales motion (fab GC and Facility Director, not IPP), much larger balance sheet for SEMI F47-backed availability guarantees, and 24/7 on-site service capability Mein Solar does not have. TAM at L6 is ~€150–300M per new fab greenfield, but organic capture requires ~€30M+ investment and ≥3 fab references. Acquisition of a fab-power specialist is the only realistic path — and even then competing against Siemens Smart Infrastructure on an Infineon/ESMC bid is asymmetric."
-        }
-      ]
-    },
-    {
-      "headers": [
-        "#",
-        "Check",
-        "Status"
-      ],
-      "rows": [
-        {
-          "#": "Q1",
-          "Check": "CFJ is industry-level (no solution bias)",
-          "Status": "PASS"
-        },
-        {
-          "#": "Q2",
-          "Check": "No orphan nodes",
-          "Status": "PASS"
-        },
-        {
-          "#": "Q3",
-          "Check": "Valid level transitions (L7→L6→L5→L4)",
-          "Status": "PASS"
-        },
-        {
-          "#": "Q4",
-          "Check": "≥2 L4 per L5 at Mein Solar's level",
-          "Status": "PASS (4–8 L4 per L5 under L6H-POWER)"
-        },
-        {
-          "#": "Q5",
-          "Check": "No solution-specific L7 / L6 names",
-          "Status": "PASS"
-        },
-        {
-          "#": "Q6",
-          "Check": "Three-question naming test",
-          "Status": "PASS"
-        },
-        {
-          "#": "Q7",
-          "Check": "Total unit count in range (target 20–40)",
-          "Status": "~40 units; within soft range"
-        },
-        {
-          "#": "Q8",
-          "Check": "Company position explicitly marked",
-          "Status": "PASS (PRIMARY + 2× SECONDARY)"
-        },
-        {
-          "#": "Q9",
-          "Check": "Full depth to company level with all siblings enumerated",
-          "Status": "PASS (all 8 L5 alternatives under L6H-POWER enumerated)"
-        }
-      ]
-    },
-    {
-      "headers": [
-        "Dimension",
-        "Read"
-      ],
-      "rows": [
-        {
-          "Dimension": "Fit to CFJ",
-          "Read": "**Tangential** — BESS is not in the wafer fab's value-creation chain; it's in the horizontal Power layer. Fab CFJ does not require BESS; it requires *uninterrupted* power, of which BESS is one of several answers (and today the smallest)."
-        },
-        {
-          "Dimension": "Whitespace",
-          "Read": "Real but narrow: BESS is displacing flywheel + static UPS hybrids when (a) the fab also wants grid-services revenue stacking, (b) the fab owner has renewable/PPA ambitions co-located. Infineon Dresden, ESMC Dresden, Bosch SiC Reutlingen all fit this shape."
-        },
-        {
-          "Dimension": "Entry barrier",
-          "Read": "**HIGH**. SEMI F47 / ITIC certification is non-negotiable. First-reference problem is acute: no fab owner takes a BESS-for-ride-through reference risk on an unproven vendor."
-        },
-        {
-          "Dimension": "Adjacency leverage",
-          "Read": "Mein Solar's PV-EPC incumbency is the most transferable asset — \"PV+BESS behind-the-meter with grid-services revenue stack\" framed as a **decarbonization + Netzentgelte reduction** play is more saleable than \"ride-through\" alone."
-        },
-        {
-          "Dimension": "Recommended entry mode",
-          "Read": "**Consortium / subcontractor** into an existing fab GC (M+W, Jacobs, Exyte, Arcadis) rather than direct-prime. Start with the PV + BESS behind-the-meter scope where Mein Solar's existing certification and PV-EPC reference apply. Ride-through-grade product follows a fab-specific qualification cycle."
-        },
-        {
-          "Dimension": "Priority vs. other markets in the set",
-          "Read": "**MEDIUM — defer**. Architecture distance 6, adoption *emerging*, no current reference. Utilities (221118/114/115), C&I landlords (531120), HPC hubs (457120), and data centers (518210) have shorter entry paths and higher confidence. Revisit Semiconductor once 2–3 of the above are landed and reference a \"mission-critical\" installation."
-        }
-      ]
-    }
-  ],
-  "entities": [
-    {
-      "component": "value_network_construction",
-      "market_naics_code": "334413",
-      "market_naics_title": "Semiconductor and Related Device Manufacturing",
-      "naics_sector": "manufacturing_31_33",
-      "process_vn_applies": true,
-      "product_bom_applies_to_chip": true,
-      "product_bom_in_scope_here": false,
-      "cfj_statement": "Fabricate integrated circuits and discrete semiconductor devices on wafers at nanometer-scale precision with yield-acceptable electrical performance, then package and qualify them for sale",
-      "top_level": "L7",
-      "company_position": {
-        "company_name": "Mein Solar GmbH",
-        "company_product": "EPC für Großbatteriespeicher",
-        "primary_l5": "BESS-Based Power Quality & Ride-Through",
-        "primary_l6_parent": "L6H-POWER Electrical Power Infrastructure",
-        "role_relative_to_cfj": "horizontal_supplier_into_utilities_layer",
-        "secondary_positions": [
-          "L5: On-Site PV Generation (under L6H-POWER)",
-          "L5: MV Switchgear & Distribution (under L6H-POWER, via integrated BESS scope)"
-        ]
-      },
-      "units": [
-        {
-          "name": "Semiconductor Device Manufacturing Ecosystem",
-          "level": "L7",
-          "bom_standard": "Moore 1993",
-          "parent_name": "ROOT",
-          "description": "Economic community of IDMs, foundries, fabless, OSAT, equipment OEMs, materials suppliers, utilities"
-        },
-        {
-          "name": "Wafer Preparation",
-          "level": "L6",
-          "bom_standard": "Maier 1998",
-          "parent_name": "Semiconductor Device Manufacturing Ecosystem",
-          "description": "Prepare clean defect-free substrate; incoming inspection, clean, epi"
-        },
-        {
-          "name": "Lithography & Patterning",
-          "level": "L6",
-          "bom_standard": "Maier 1998",
-          "parent_name": "Semiconductor Device Manufacturing Ecosystem",
-          "description": "Transfer circuit pattern onto wafer via photoresist coat, expose, develop"
-        },
-        {
-          "name": "Etch & Clean",
-          "level": "L6",
-          "bom_standard": "Maier 1998",
-          "parent_name": "Semiconductor Device Manufacturing Ecosystem",
-          "description": "Remove material per pattern; strip resist; post-etch clean"
-        },
-        {
-          "name": "Doping & Implantation",
-          "level": "L6",
-          "bom_standard": "Maier 1998",
-          "parent_name": "Semiconductor Device Manufacturing Ecosystem",
-          "description": "Modify electrical properties of Si lattice via ion implant + anneal"
-        },
-        {
-          "name": "Deposition & Growth",
-          "level": "L6",
-          "bom_standard": "Maier 1998",
-          "parent_name": "Semiconductor Device Manufacturing Ecosystem",
-          "description": "Deposit insulating/conductive films (oxidation, CVD, PVD, ALD, epi)"
-        },
-        {
-          "name": "CMP",
-          "level": "L6",
-          "bom_standard": "Maier 1998",
-          "parent_name": "Semiconductor Device Manufacturing Ecosystem",
-          "description": "Planarize wafer surface between layers; polish + post-CMP clean"
-        },
-        {
-          "name": "Metallization & Interconnect",
-          "level": "L6",
-          "bom_standard": "Maier 1998",
-          "parent_name": "Semiconductor Device Manufacturing Ecosystem",
-          "description": "Build conductive interconnect stack (Cu damascene, Al)"
-        },
-        {
-          "name": "Wafer Probe & Sort",
-          "level": "L6",
-          "bom_standard": "Maier 1998",
-          "parent_name": "Semiconductor Device Manufacturing Ecosystem",
-          "description": "Electrically test each die on wafer; yield feedback"
-        },
-        {
-          "name": "Assembly & Packaging",
-          "level": "L6",
-          "bom_standard": "Maier 1998",
-          "parent_name": "Semiconductor Device Manufacturing Ecosystem",
-          "description": "Singulate and package die into shippable IC"
-        },
-        {
-          "name": "Final Test & Qualification",
-          "level": "L6",
-          "bom_standard": "Maier 1998",
-          "parent_name": "Semiconductor Device Manufacturing Ecosystem",
-          "description": "ATE, burn-in, reliability screen on packaged ICs"
-        },
-        {
-          "name": "Electrical Power Infrastructure",
-          "level": "L6",
-          "bom_standard": "Maier 1998",
-          "parent_name": "Semiconductor Device Manufacturing Ecosystem",
-          "description": "Horizontal. Deliver clean, continuous, ride-through MV/LV power to every tool and the cleanroom envelope",
-          "horizontal": true
-        },
-        {
-          "name": "Ultrapure Water & Wastewater",
-          "level": "L6",
-          "bom_standard": "Maier 1998",
-          "parent_name": "Semiconductor Device Manufacturing Ecosystem",
-          "description": "Horizontal. UPW supply, chemical wastewater, solvent recovery",
-          "horizontal": true
-        },
-        {
-          "name": "Process Gases & Chemicals",
-          "level": "L6",
-          "bom_standard": "Maier 1998",
-          "parent_name": "Semiconductor Device Manufacturing Ecosystem",
-          "description": "Horizontal. Bulk/specialty gas yards, chemical distribution, abatement",
-          "horizontal": true
-        },
-        {
-          "name": "Cleanroom Environmental Control",
-          "level": "L6",
-          "bom_standard": "Maier 1998",
-          "parent_name": "Semiconductor Device Manufacturing Ecosystem",
-          "description": "Horizontal. ISO 1–5 HVAC, AMC scrubbing, vibration isolation",
-          "horizontal": true
-        },
-        {
-          "name": "MES & Industrial IT/OT",
-          "level": "L6",
-          "bom_standard": "Maier 1998",
-          "parent_name": "Semiconductor Device Manufacturing Ecosystem",
-          "description": "Horizontal. Recipe mgmt, equipment integration, SCADA, cybersecurity",
-          "horizontal": true
-        },
-        {
-          "name": "HV/MV Incoming Substation",
-          "level": "L5",
-          "bom_standard": "ISO 15288",
-          "parent_name": "Electrical Power Infrastructure",
-          "description": "110 kV → MV step-down; utility interface; Type A plant cert"
-        },
-        {
-          "name": "MV Switchgear & Distribution",
-          "level": "L5",
-          "bom_standard": "ISO 15288",
-          "parent_name": "Electrical Power Infrastructure",
-          "description": "10–36 kV switchgear, busbar, protection, metering. MEIN SOLAR SECONDARY (as part of BESS scope)"
-        },
-        {
-          "name": "Static Battery UPS",
-          "level": "L5",
-          "bom_standard": "ISO 15288",
-          "parent_name": "Electrical Power Infrastructure",
-          "description": "Facility/tool-level double-conversion UPS with battery backup"
-        },
-        {
-          "name": "Dynamic UPS / Flywheel",
-          "level": "L5",
-          "bom_standard": "ISO 15288",
-          "parent_name": "Electrical Power Infrastructure",
-          "description": "Rotating kinetic-energy UPS; sub-cycle ride-through + diesel ride-over"
-        },
-        {
-          "name": "Active Voltage Conditioner",
-          "level": "L5",
-          "bom_standard": "ISO 15288",
-          "parent_name": "Electrical Power Infrastructure",
-          "description": "DVR / series-injection conditioner for voltage-sag ride-through (SEMI F47)"
-        },
-        {
-          "name": "BESS-Based Power Quality & Ride-Through",
-          "level": "L5",
-          "bom_standard": "ISO 15288",
-          "parent_name": "Electrical Power Infrastructure",
-          "description": "MEIN SOLAR PRIMARY POSITION. Containerized Li-ion BESS with bidirectional PCS, MV coupling, EMS; ride-through + grid-services revenue stack"
-        },
-        {
-          "name": "Backup Generator",
-          "level": "L5",
-          "bom_standard": "ISO 15288",
-          "parent_name": "Electrical Power Infrastructure",
-          "description": "Diesel/gas genset for extended outage backup; ATS-switched"
-        },
-        {
-          "name": "On-Site PV Generation",
-          "level": "L5",
-          "bom_standard": "ISO 15288",
-          "parent_name": "Electrical Power Infrastructure",
-          "description": "MEIN SOLAR SECONDARY POSITION. Rooftop/ground-mount PV behind-the-meter for decarbonization and Netzentgelte reduction"
-        },
-        {
+      "id": "Wafer Preparation",
+      "name": "Wafer Preparation",
+      "type": "Maier 1998",
+      "l5Units": [
+        {
+          "id": "Single-Wafer Cleaner",
           "name": "Single-Wafer Cleaner",
-          "level": "L5",
-          "bom_standard": "ISO 15288",
-          "parent_name": "Wafer Preparation",
-          "description": "Single-wafer spin/megasonic cleaning tool"
+          "description": "Single-wafer spin/megasonic cleaning tool",
+          "l4Subsystems": [],
+          "isProductPosition": false
         },
         {
+          "id": "Epi Reactor",
           "name": "Epi Reactor",
-          "level": "L5",
-          "bom_standard": "ISO 15288",
-          "parent_name": "Wafer Preparation",
-          "description": "Epitaxial Si/SiGe deposition reactor for device-grade substrates"
-        },
+          "description": "Epitaxial Si/SiGe deposition reactor for device-grade substrates",
+          "l4Subsystems": [],
+          "isProductPosition": false
+        }
+      ]
+    },
+    {
+      "id": "Lithography & Patterning",
+      "name": "Lithography & Patterning",
+      "type": "Maier 1998",
+      "l5Units": [
         {
+          "id": "DUV/EUV Scanner",
           "name": "DUV/EUV Scanner",
-          "level": "L5",
-          "bom_standard": "ISO 15288",
-          "parent_name": "Lithography & Patterning",
-          "description": "Projection exposure tool (ASML/Nikon/Canon)"
+          "description": "Projection exposure tool (ASML/Nikon/Canon)",
+          "l4Subsystems": [],
+          "isProductPosition": false
         },
         {
+          "id": "Coat-Develop Track",
           "name": "Coat-Develop Track",
-          "level": "L5",
-          "bom_standard": "ISO 15288",
-          "parent_name": "Lithography & Patterning",
-          "description": "Photoresist coat, bake, develop track integrated with scanner"
-        },
+          "description": "Photoresist coat, bake, develop track integrated with scanner",
+          "l4Subsystems": [],
+          "isProductPosition": false
+        }
+      ]
+    },
+    {
+      "id": "Etch & Clean",
+      "name": "Etch & Clean",
+      "type": "Maier 1998",
+      "l5Units": [
         {
+          "id": "Dry Plasma Etcher",
           "name": "Dry Plasma Etcher",
-          "level": "L5",
-          "bom_standard": "ISO 15288",
-          "parent_name": "Etch & Clean",
-          "description": "Reactive-ion etch tool (capacitive or inductive plasma)"
+          "description": "Reactive-ion etch tool (capacitive or inductive plasma)",
+          "l4Subsystems": [],
+          "isProductPosition": false
         },
         {
+          "id": "Wet Bench",
           "name": "Wet Bench",
-          "level": "L5",
-          "bom_standard": "ISO 15288",
-          "parent_name": "Etch & Clean",
-          "description": "Batch wet chemical process station"
-        },
+          "description": "Batch wet chemical process station",
+          "l4Subsystems": [],
+          "isProductPosition": false
+        }
+      ]
+    },
+    {
+      "id": "Doping & Implantation",
+      "name": "Doping & Implantation",
+      "type": "Maier 1998",
+      "l5Units": [
         {
+          "id": "Ion Implanter",
           "name": "Ion Implanter",
-          "level": "L5",
-          "bom_standard": "ISO 15288",
-          "parent_name": "Doping & Implantation",
-          "description": "High/medium/low-current ion implanter for dopant introduction"
+          "description": "High/medium/low-current ion implanter for dopant introduction",
+          "l4Subsystems": [],
+          "isProductPosition": false
         },
         {
+          "id": "Diffusion / Anneal Furnace",
           "name": "Diffusion / Anneal Furnace",
-          "level": "L5",
-          "bom_standard": "ISO 15288",
-          "parent_name": "Doping & Implantation",
-          "description": "Horizontal/vertical furnace for oxidation, diffusion, anneal"
-        },
+          "description": "Horizontal/vertical furnace for oxidation, diffusion, anneal",
+          "l4Subsystems": [],
+          "isProductPosition": false
+        }
+      ]
+    },
+    {
+      "id": "Deposition & Growth",
+      "name": "Deposition & Growth",
+      "type": "Maier 1998",
+      "l5Units": [
         {
+          "id": "CVD System",
           "name": "CVD System",
-          "level": "L5",
-          "bom_standard": "ISO 15288",
-          "parent_name": "Deposition & Growth",
-          "description": "Chemical vapor deposition for dielectric/metal films"
+          "description": "Chemical vapor deposition for dielectric/metal films",
+          "l4Subsystems": [],
+          "isProductPosition": false
         },
         {
+          "id": "PVD Sputter",
           "name": "PVD Sputter",
-          "level": "L5",
-          "bom_standard": "ISO 15288",
-          "parent_name": "Deposition & Growth",
-          "description": "Physical vapor deposition sputter cluster for metal films"
+          "description": "Physical vapor deposition sputter cluster for metal films",
+          "l4Subsystems": [],
+          "isProductPosition": false
         },
         {
+          "id": "ALD System",
           "name": "ALD System",
-          "level": "L5",
-          "bom_standard": "ISO 15288",
-          "parent_name": "Deposition & Growth",
-          "description": "Atomic-layer deposition for ultra-thin conformal films"
-        },
+          "description": "Atomic-layer deposition for ultra-thin conformal films",
+          "l4Subsystems": [],
+          "isProductPosition": false
+        }
+      ]
+    },
+    {
+      "id": "CMP",
+      "name": "CMP",
+      "type": "Maier 1998",
+      "l5Units": [
         {
+          "id": "CMP Polisher",
           "name": "CMP Polisher",
-          "level": "L5",
-          "bom_standard": "ISO 15288",
-          "parent_name": "CMP",
-          "description": "Chemical-mechanical planarization tool"
+          "description": "Chemical-mechanical planarization tool",
+          "l4Subsystems": [],
+          "isProductPosition": false
         },
         {
+          "id": "Post-CMP Cleaner",
           "name": "Post-CMP Cleaner",
-          "level": "L5",
-          "bom_standard": "ISO 15288",
-          "parent_name": "CMP",
-          "description": "Brush/megasonic cleaner for slurry removal"
-        },
+          "description": "Brush/megasonic cleaner for slurry removal",
+          "l4Subsystems": [],
+          "isProductPosition": false
+        }
+      ]
+    },
+    {
+      "id": "Metallization & Interconnect",
+      "name": "Metallization & Interconnect",
+      "type": "Maier 1998",
+      "l5Units": [
         {
+          "id": "Electroplater",
           "name": "Electroplater",
-          "level": "L5",
-          "bom_standard": "ISO 15288",
-          "parent_name": "Metallization & Interconnect",
-          "description": "Cu damascene electroplating tool"
+          "description": "Cu damascene electroplating tool",
+          "l4Subsystems": [],
+          "isProductPosition": false
         },
         {
+          "id": "Metal Sputter Cluster",
           "name": "Metal Sputter Cluster",
-          "level": "L5",
-          "bom_standard": "ISO 15288",
-          "parent_name": "Metallization & Interconnect",
-          "description": "Al/barrier/seed PVD for metal layers"
-        },
+          "description": "Al/barrier/seed PVD for metal layers",
+          "l4Subsystems": [],
+          "isProductPosition": false
+        }
+      ]
+    },
+    {
+      "id": "Wafer Probe & Sort",
+      "name": "Wafer Probe & Sort",
+      "type": "Maier 1998",
+      "l5Units": [
         {
+          "id": "Wafer Prober",
           "name": "Wafer Prober",
-          "level": "L5",
-          "bom_standard": "ISO 15288",
-          "parent_name": "Wafer Probe & Sort",
-          "description": "Probe card stage for wafer-level electrical test"
+          "description": "Probe card stage for wafer-level electrical test",
+          "l4Subsystems": [],
+          "isProductPosition": false
         },
         {
+          "id": "ATE Test Head",
           "name": "ATE Test Head",
-          "level": "L5",
-          "bom_standard": "ISO 15288",
-          "parent_name": "Wafer Probe & Sort",
-          "description": "Automated test equipment for parametric/functional test"
-        },
+          "description": "Automated test equipment for parametric/functional test",
+          "l4Subsystems": [],
+          "isProductPosition": false
+        }
+      ]
+    },
+    {
+      "id": "Assembly & Packaging",
+      "name": "Assembly & Packaging",
+      "type": "Maier 1998",
+      "l5Units": [
         {
+          "id": "Dicing Saw",
           "name": "Dicing Saw",
-          "level": "L5",
-          "bom_standard": "ISO 15288",
-          "parent_name": "Assembly & Packaging",
-          "description": "Wafer singulation via blade or laser"
+          "description": "Wafer singulation via blade or laser",
+          "l4Subsystems": [],
+          "isProductPosition": false
         },
         {
+          "id": "Wire Bonder",
           "name": "Wire Bonder",
-          "level": "L5",
-          "bom_standard": "ISO 15288",
-          "parent_name": "Assembly & Packaging",
-          "description": "Thermosonic wire bonding tool (Au/Cu/Al)"
+          "description": "Thermosonic wire bonding tool (Au/Cu/Al)",
+          "l4Subsystems": [],
+          "isProductPosition": false
         },
         {
+          "id": "Molding Press",
           "name": "Molding Press",
-          "level": "L5",
-          "bom_standard": "ISO 15288",
-          "parent_name": "Assembly & Packaging",
-          "description": "Transfer molding of epoxy encapsulation"
-        },
+          "description": "Transfer molding of epoxy encapsulation",
+          "l4Subsystems": [],
+          "isProductPosition": false
+        }
+      ]
+    },
+    {
+      "id": "Final Test & Qualification",
+      "name": "Final Test & Qualification",
+      "type": "Maier 1998",
+      "l5Units": [
         {
+          "id": "Burn-In Oven",
           "name": "Burn-In Oven",
-          "level": "L5",
-          "bom_standard": "ISO 15288",
-          "parent_name": "Final Test & Qualification",
-          "description": "Elevated-temperature accelerated reliability screen"
+          "description": "Elevated-temperature accelerated reliability screen",
+          "l4Subsystems": [],
+          "isProductPosition": false
         },
         {
+          "id": "Final-Test ATE",
           "name": "Final-Test ATE",
-          "level": "L5",
-          "bom_standard": "ISO 15288",
-          "parent_name": "Final Test & Qualification",
-          "description": "Package-level functional and parametric test"
-        },
-        {
-          "name": "UPW Plant",
-          "level": "L5",
-          "bom_standard": "ISO 15288",
-          "parent_name": "Ultrapure Water & Wastewater",
-          "description": "Multi-stage RO/EDI/UV UPW production"
-        },
-        {
-          "name": "Wastewater / Abatement System",
-          "level": "L5",
-          "bom_standard": "ISO 15288",
-          "parent_name": "Ultrapure Water & Wastewater",
-          "description": "Chemical wastewater treatment + point-of-use scrubbers"
-        },
-        {
-          "name": "Bulk Gas Yard",
-          "level": "L5",
-          "bom_standard": "ISO 15288",
-          "parent_name": "Process Gases & Chemicals",
-          "description": "N2/O2/H2/Ar bulk gas supply + vaporization"
-        },
-        {
-          "name": "Specialty Gas Cabinet",
-          "level": "L5",
-          "bom_standard": "ISO 15288",
-          "parent_name": "Process Gases & Chemicals",
-          "description": "Toxic/corrosive gas cabinets (SiH4, AsH3, NF3 etc.)"
-        },
-        {
-          "name": "Fan Filter Unit",
-          "level": "L5",
-          "bom_standard": "ISO 15288",
-          "parent_name": "Cleanroom Environmental Control",
-          "description": "HEPA/ULPA FFU array for laminar cleanroom flow"
-        },
-        {
-          "name": "Makeup Air Handler",
-          "level": "L5",
-          "bom_standard": "ISO 15288",
-          "parent_name": "Cleanroom Environmental Control",
-          "description": "Temperature/humidity/AMC-controlled makeup air"
-        },
-        {
-          "name": "MES Platform",
-          "level": "L5",
-          "bom_standard": "ISO 15288",
-          "parent_name": "MES & Industrial IT/OT",
-          "description": "Manufacturing execution system (Applied SmartFactory, Siemens Opcenter, IBM Sapience)"
-        },
-        {
-          "name": "Fab SCADA / Historian",
-          "level": "L5",
-          "bom_standard": "ISO 15288",
-          "parent_name": "MES & Industrial IT/OT",
-          "description": "Fab-wide SCADA + process historian"
-        },
-        {
-          "name": "Power Transformer",
-          "level": "L4",
-          "bom_standard": "INCOSE",
-          "parent_name": "HV/MV Incoming Substation",
-          "description": "110 kV→MV step-down transformer"
-        },
-        {
-          "name": "HV Circuit Breaker",
-          "level": "L4",
-          "bom_standard": "INCOSE",
-          "parent_name": "HV/MV Incoming Substation",
-          "description": "SF6 or vacuum HV circuit breaker"
-        },
-        {
-          "name": "Protection Relay",
-          "level": "L4",
-          "bom_standard": "INCOSE",
-          "parent_name": "HV/MV Incoming Substation",
-          "description": "Digital multi-function protection and control relay"
-        },
-        {
-          "name": "MV Vacuum Breaker",
-          "level": "L4",
-          "bom_standard": "INCOSE",
-          "parent_name": "MV Switchgear & Distribution",
-          "description": "SF6-free vacuum MV circuit breaker"
-        },
-        {
-          "name": "MV Busbar",
-          "level": "L4",
-          "bom_standard": "INCOSE",
-          "parent_name": "MV Switchgear & Distribution",
-          "description": "Insulated MV busbar system"
-        },
-        {
-          "name": "NA-Protection Relay",
-          "level": "L4",
-          "bom_standard": "INCOSE",
-          "parent_name": "MV Switchgear & Distribution",
-          "description": "Grid-side NA protection per VDE-AR-N 4110"
-        },
-        {
-          "name": "Rectifier",
-          "level": "L4",
-          "bom_standard": "INCOSE",
-          "parent_name": "Static Battery UPS",
-          "description": "AC/DC converter front-end of UPS"
-        },
-        {
-          "name": "Inverter",
-          "level": "L4",
-          "bom_standard": "INCOSE",
-          "parent_name": "Static Battery UPS",
-          "description": "DC/AC inverter output of UPS"
-        },
-        {
-          "name": "Battery String",
-          "level": "L4",
-          "bom_standard": "INCOSE",
-          "parent_name": "Static Battery UPS",
-          "description": "VRLA or Li-ion battery string"
-        },
-        {
-          "name": "Flywheel Rotor",
-          "level": "L4",
-          "bom_standard": "INCOSE",
-          "parent_name": "Dynamic UPS / Flywheel",
-          "description": "Kinetic-energy flywheel rotor assembly"
-        },
-        {
-          "name": "Synchronous Motor-Generator",
-          "level": "L4",
-          "bom_standard": "INCOSE",
-          "parent_name": "Dynamic UPS / Flywheel",
-          "description": "Motor-generator coupled to flywheel + clutch"
-        },
-        {
-          "name": "Ride-Over Diesel Engine",
-          "level": "L4",
-          "bom_standard": "INCOSE",
-          "parent_name": "Dynamic UPS / Flywheel",
-          "description": "Diesel prime mover for extended ride-over"
-        },
-        {
-          "name": "IGBT Converter",
-          "level": "L4",
-          "bom_standard": "INCOSE",
-          "parent_name": "Active Voltage Conditioner",
-          "description": "High-speed IGBT power stage"
-        },
-        {
-          "name": "Series Injection Transformer",
-          "level": "L4",
-          "bom_standard": "INCOSE",
-          "parent_name": "Active Voltage Conditioner",
-          "description": "Injection transformer for series voltage compensation"
-        },
-        {
-          "name": "Fast Controller",
-          "level": "L4",
-          "bom_standard": "INCOSE",
-          "parent_name": "Active Voltage Conditioner",
-          "description": "Sub-cycle DSP-based voltage controller"
-        },
-        {
-          "name": "LFP Battery Container",
-          "level": "L4",
-          "bom_standard": "INCOSE",
-          "parent_name": "BESS-Based Power Quality & Ride-Through",
-          "description": "20/40ft ISO container with LFP racks, BMS stack, HVAC, NOVEC"
-        },
-        {
-          "name": "Bidirectional PCS",
-          "level": "L4",
-          "bom_standard": "INCOSE",
-          "parent_name": "BESS-Based Power Quality & Ride-Through",
-          "description": "4-quadrant inverter sized to full BESS MW; grid-forming capable"
-        },
-        {
-          "name": "MV Coupling Transformer",
-          "level": "L4",
-          "bom_standard": "INCOSE",
-          "parent_name": "BESS-Based Power Quality & Ride-Through",
-          "description": "LV→MV step-up transformer to fab MV bus"
-        },
-        {
-          "name": "EMS / Grid-Forming Controller",
-          "level": "L4",
-          "bom_standard": "INCOSE",
-          "parent_name": "BESS-Based Power Quality & Ride-Through",
-          "description": "Dispatch + ride-through controller; SCADA uplink to fab DCS"
-        },
-        {
-          "name": "Diesel Engine",
-          "level": "L4",
-          "bom_standard": "INCOSE",
-          "parent_name": "Backup Generator",
-          "description": "Diesel or gas prime mover"
-        },
-        {
-          "name": "Alternator",
-          "level": "L4",
-          "bom_standard": "INCOSE",
-          "parent_name": "Backup Generator",
-          "description": "Synchronous generator coupled to engine"
-        },
-        {
-          "name": "Fuel Day-Tank",
-          "level": "L4",
-          "bom_standard": "INCOSE",
-          "parent_name": "Backup Generator",
-          "description": "Bunded day-tank for run-time fuel supply"
-        },
-        {
-          "name": "PV Module Array",
-          "level": "L4",
-          "bom_standard": "INCOSE",
-          "parent_name": "On-Site PV Generation",
-          "description": "Crystalline-Si or TOPCon module array on rooftop/ground"
-        },
-        {
-          "name": "String Inverter",
-          "level": "L4",
-          "bom_standard": "INCOSE",
-          "parent_name": "On-Site PV Generation",
-          "description": "String/central inverter with grid-code compliance"
-        },
-        {
-          "name": "DC Combiner Box",
-          "level": "L4",
-          "bom_standard": "INCOSE",
-          "parent_name": "On-Site PV Generation",
-          "description": "Parallel DC combiner with fuse protection"
+          "description": "Package-level functional and parametric test",
+          "l4Subsystems": [],
+          "isProductPosition": false
         }
-      ],
-      "adjacency_analysis": {
-        "direct_competence_transfer_04e": [
-          {
-            "vn_unit": "On-Site PV Generation",
-            "level": "L5",
-            "has_competence": "YES",
-            "adaptation_effort": "LOW",
-            "rationale": "Incumbent PV EPC business; ≥10 yr reference"
-          },
-          {
-            "vn_unit": "MV Switchgear & Distribution",
-            "level": "L5",
-            "has_competence": "YES",
-            "adaptation_effort": "LOW",
-            "rationale": "Already delivered inside BESS EPC scope"
-          },
-          {
-            "vn_unit": "Active Voltage Conditioner",
-            "level": "L5",
-            "has_competence": "PARTIAL",
-            "adaptation_effort": "MEDIUM",
-            "rationale": "PCS hardware overlaps; fab-grade sub-cycle response is new"
-          },
-          {
-            "vn_unit": "Static Battery UPS",
-            "level": "L5",
-            "has_competence": "PARTIAL",
-            "adaptation_effort": "MEDIUM",
-            "rationale": "LFP + PCS know-how transfers; IT-grade N+1 redundancy is new"
-          },
-          {
-            "vn_unit": "Backup Generator",
-            "level": "L5",
-            "has_competence": "PARTIAL",
-            "adaptation_effort": "MEDIUM",
-            "rationale": "Civil + electrical transfer; rotating-machine service is new"
-          }
-        ],
-        "direct_competence_transfer_excluded": [
-          "HV/MV Incoming Substation — HV Type A cert gap",
-          "Dynamic UPS / Flywheel — rotating-machine design gap",
-          "All wafer-process L5 tools (L6a–L6j) — SEMI-specific engineering and references gap"
-        ],
-        "strategic_adjacency_expansion_04f": [
-          {
-            "adjacent_l5": "Static UPS",
-            "current_incumbents": [
-              "Schneider APC",
-              "Eaton",
-              "Vertiv"
-            ],
-            "competence_gap": "Fab-grade N+1, tool-level form factors, SEMI F47 cert",
-            "investment": "12–18 mo, ~€2M",
-            "strategic_fit": 6,
-            "rationale": "~50% overlap; tool-interface engineering is gap"
-          },
-          {
-            "adjacent_l5": "Active Voltage Conditioner / DVR",
-            "current_incumbents": [
-              "ABB PCS100",
-              "AMSC D-VAR"
-            ],
-            "competence_gap": "Sub-cycle response, series injection transformer",
-            "investment": "18–24 mo, ~€3M",
-            "strategic_fit": 5,
-            "rationale": "~40% overlap"
-          },
-          {
-            "adjacent_l5": "Backup Diesel/Gas Generator",
-            "current_incumbents": [
-              "Caterpillar",
-              "Cummins",
-              "MTU"
-            ],
-            "competence_gap": "Rotating-machine supply chain, fuel logistics",
-            "investment": "12–18 mo, ~€1.5M",
-            "strategic_fit": 4,
-            "rationale": "~30% overlap; engine-gen not core, low margin"
-          },
-          {
-            "adjacent_l5": "On-Site PV Generation",
-            "current_incumbents": [
-              "BayWa r.e.",
-              "Enerparc",
-              "Goldbeck Solar"
-            ],
-            "competence_gap": "None — incumbent",
-            "investment": "0 mo, €0",
-            "strategic_fit": 9,
-            "rationale": ">90% overlap"
-          }
-        ],
-        "vertical_move_up_04g": {
-          "current_position": "L5: BESS-Based Power Quality & Ride-Through",
-          "target_position": "L6H-POWER: Fab Electrical Power Infrastructure (integrator)",
-          "what_must_be_added": "HV substation capability, dynamic-UPS portfolio, tool-level static UPS, facility-wide ATS, 24/7 mission-critical O&M org, fab PM reference",
-          "competitors_at_target": [
-            "Siemens Smart Infrastructure",
-            "ABB Electrification",
-            "Schneider Electric Critical Power",
-            "Eaton"
+      ]
+    },
+    {
+      "id": "Electrical Power Infrastructure",
+      "name": "Electrical Power Infrastructure",
+      "type": "Maier 1998",
+      "l5Units": [
+        {
+          "id": "HV/MV Incoming Substation",
+          "name": "HV/MV Incoming Substation",
+          "description": "110 kV → MV step-down; utility interface; Type A plant cert",
+          "l4Subsystems": [
+            {
+              "id": "Power Transformer",
+              "name": "Power Transformer",
+              "description": "110 kV→MV step-down transformer"
+            },
+            {
+              "id": "HV Circuit Breaker",
+              "name": "HV Circuit Breaker",
+              "description": "SF6 or vacuum HV circuit breaker"
+            },
+            {
+              "id": "Protection Relay",
+              "name": "Protection Relay",
+              "description": "Digital multi-function protection and control relay"
+            }
           ],
-          "feasibility": "LOW",
-          "economic_rationale": "Organic capture requires ~€30M+ investment and ≥3 fab references; TAM at L6 is ~€150–300M per greenfield fab but acquisition is the only realistic path"
+          "isProductPosition": false
+        },
+        {
+          "id": "MV Switchgear & Distribution",
+          "name": "MV Switchgear & Distribution",
+          "description": "10–36 kV switchgear, busbar, protection, metering. MEIN SOLAR SECONDARY (as part of BESS scope)",
+          "l4Subsystems": [
+            {
+              "id": "MV Vacuum Breaker",
+              "name": "MV Vacuum Breaker",
+              "description": "SF6-free vacuum MV circuit breaker"
+            },
+            {
+              "id": "MV Busbar",
+              "name": "MV Busbar",
+              "description": "Insulated MV busbar system"
+            },
+            {
+              "id": "NA-Protection Relay",
+              "name": "NA-Protection Relay",
+              "description": "Grid-side NA protection per VDE-AR-N 4110"
+            }
+          ],
+          "isProductPosition": false
+        },
+        {
+          "id": "Static Battery UPS",
+          "name": "Static Battery UPS",
+          "description": "Facility/tool-level double-conversion UPS with battery backup",
+          "l4Subsystems": [
+            {
+              "id": "Rectifier",
+              "name": "Rectifier",
+              "description": "AC/DC converter front-end of UPS"
+            },
+            {
+              "id": "Inverter",
+              "name": "Inverter",
+              "description": "DC/AC inverter output of UPS"
+            },
+            {
+              "id": "Battery String",
+              "name": "Battery String",
+              "description": "VRLA or Li-ion battery string"
+            }
+          ],
+          "isProductPosition": false
+        },
+        {
+          "id": "Dynamic UPS / Flywheel",
+          "name": "Dynamic UPS / Flywheel",
+          "description": "Rotating kinetic-energy UPS; sub-cycle ride-through + diesel ride-over",
+          "l4Subsystems": [
+            {
+              "id": "Flywheel Rotor",
+              "name": "Flywheel Rotor",
+              "description": "Kinetic-energy flywheel rotor assembly"
+            },
+            {
+              "id": "Synchronous Motor-Generator",
+              "name": "Synchronous Motor-Generator",
+              "description": "Motor-generator coupled to flywheel + clutch"
+            },
+            {
+              "id": "Ride-Over Diesel Engine",
+              "name": "Ride-Over Diesel Engine",
+              "description": "Diesel prime mover for extended ride-over"
+            }
+          ],
+          "isProductPosition": false
+        },
+        {
+          "id": "Active Voltage Conditioner",
+          "name": "Active Voltage Conditioner",
+          "description": "DVR / series-injection conditioner for voltage-sag ride-through (SEMI F47)",
+          "l4Subsystems": [
+            {
+              "id": "IGBT Converter",
+              "name": "IGBT Converter",
+              "description": "High-speed IGBT power stage"
+            },
+            {
+              "id": "Series Injection Transformer",
+              "name": "Series Injection Transformer",
+              "description": "Injection transformer for series voltage compensation"
+            },
+            {
+              "id": "Fast Controller",
+              "name": "Fast Controller",
+              "description": "Sub-cycle DSP-based voltage controller"
+            }
+          ],
+          "isProductPosition": false
+        },
+        {
+          "id": "BESS-Based Power Quality & Ride-Through",
+          "name": "BESS-Based Power Quality & Ride-Through",
+          "description": "MEIN SOLAR PRIMARY POSITION. Containerized Li-ion BESS with bidirectional PCS, MV coupling, EMS; ride-through + grid-services revenue stack",
+          "l4Subsystems": [
+            {
+              "id": "LFP Battery Container",
+              "name": "LFP Battery Container",
+              "description": "20/40ft ISO container with LFP racks, BMS stack, HVAC, NOVEC"
+            },
+            {
+              "id": "Bidirectional PCS",
+              "name": "Bidirectional PCS",
+              "description": "4-quadrant inverter sized to full BESS MW; grid-forming capable"
+            },
+            {
+              "id": "MV Coupling Transformer",
+              "name": "MV Coupling Transformer",
+              "description": "LV→MV step-up transformer to fab MV bus"
+            },
+            {
+              "id": "EMS / Grid-Forming Controller",
+              "name": "EMS / Grid-Forming Controller",
+              "description": "Dispatch + ride-through controller; SCADA uplink to fab DCS"
+            }
+          ],
+          "isProductPosition": false
+        },
+        {
+          "id": "Backup Generator",
+          "name": "Backup Generator",
+          "description": "Diesel/gas genset for extended outage backup; ATS-switched",
+          "l4Subsystems": [
+            {
+              "id": "Diesel Engine",
+              "name": "Diesel Engine",
+              "description": "Diesel or gas prime mover"
+            },
+            {
+              "id": "Alternator",
+              "name": "Alternator",
+              "description": "Synchronous generator coupled to engine"
+            },
+            {
+              "id": "Fuel Day-Tank",
+              "name": "Fuel Day-Tank",
+              "description": "Bunded day-tank for run-time fuel supply"
+            }
+          ],
+          "isProductPosition": false
+        },
+        {
+          "id": "On-Site PV Generation",
+          "name": "On-Site PV Generation",
+          "description": "MEIN SOLAR SECONDARY POSITION. Rooftop/ground-mount PV behind-the-meter for decarbonization and Netzentgelte reduction",
+          "l4Subsystems": [
+            {
+              "id": "PV Module Array",
+              "name": "PV Module Array",
+              "description": "Crystalline-Si or TOPCon module array on rooftop/ground"
+            },
+            {
+              "id": "String Inverter",
+              "name": "String Inverter",
+              "description": "String/central inverter with grid-code compliance"
+            },
+            {
+              "id": "DC Combiner Box",
+              "name": "DC Combiner Box",
+              "description": "Parallel DC combiner with fuse protection"
+            }
+          ],
+          "isProductPosition": false
         }
-      },
-      "strategic_read": {
-        "fit_to_cfj": "tangential",
-        "priority_in_portfolio": "MEDIUM — defer until reference-anchored",
-        "entry_mode_recommendation": "Consortium / subcontractor into fab GC (M+W, Jacobs, Exyte, Arcadis). Lead with PV+BESS behind-the-meter scope (Netzentgelte + decarbonization), not ride-through. Ride-through follows fab-specific SEMI F47 qualification cycle.",
-        "dealkiller_risks": [
-          "SEMI F47 / ITIC certification not yet demonstrated on Mein Solar BESS product",
-          "No fab reference; first-reference risk is unacceptable to fab owners",
-          "Mission-critical availability SLA and 24/7 O&M org not in place",
-          "Scale mismatch — a single fab's ride-through BESS is ~2–20 MWh, Mein Solar reference is 9 MWh; fits, but fab owner demands fab-sector prior art"
-        ],
-        "strongest_hooks": [
-          "PV+BESS behind-the-meter for decarbonization (Infineon, ESMC, Bosch all have public Net-Zero targets)",
-          "Netzentgelte reduction via peak shaving (measurable CFO outcome)",
-          "Single-source EPC simplifies fab facility-engineering vendor list"
-        ]
-      },
-      "qa": {
-        "Q1_cfj_industry_level": "PASS",
-        "Q2_no_orphans": "PASS",
-        "Q3_valid_transitions": "PASS",
-        "Q4_l4_min_2_per_l5": "PASS at Mein Solar's level (3–4 L4 per L5 under L6H-POWER)",
-        "Q5_no_solution_specific_l7_l6": "PASS",
-        "Q6_naming_three_q_test": "PASS",
-        "Q7_unit_count_in_range": "PASS (~66 units — above soft-target 40 but semiconductor industry justifies, see Q7 soft-fail threshold)",
-        "Q8_company_position_marked": "PASS (1 PRIMARY + 2 SECONDARY)",
-        "Q9_full_depth_with_all_siblings": "PASS (all 8 L5 alternatives under L6H-POWER enumerated with L4 subsystems)"
-      }
+      ]
+    },
+    {
+      "id": "Ultrapure Water & Wastewater",
+      "name": "Ultrapure Water & Wastewater",
+      "type": "Maier 1998",
+      "l5Units": [
+        {
+          "id": "UPW Plant",
+          "name": "UPW Plant",
+          "description": "Multi-stage RO/EDI/UV UPW production",
+          "l4Subsystems": [],
+          "isProductPosition": false
+        },
+        {
+          "id": "Wastewater / Abatement System",
+          "name": "Wastewater / Abatement System",
+          "description": "Chemical wastewater treatment + point-of-use scrubbers",
+          "l4Subsystems": [],
+          "isProductPosition": false
+        }
+      ]
+    },
+    {
+      "id": "Process Gases & Chemicals",
+      "name": "Process Gases & Chemicals",
+      "type": "Maier 1998",
+      "l5Units": [
+        {
+          "id": "Bulk Gas Yard",
+          "name": "Bulk Gas Yard",
+          "description": "N2/O2/H2/Ar bulk gas supply + vaporization",
+          "l4Subsystems": [],
+          "isProductPosition": false
+        },
+        {
+          "id": "Specialty Gas Cabinet",
+          "name": "Specialty Gas Cabinet",
+          "description": "Toxic/corrosive gas cabinets (SiH4, AsH3, NF3 etc.)",
+          "l4Subsystems": [],
+          "isProductPosition": false
+        }
+      ]
+    },
+    {
+      "id": "Cleanroom Environmental Control",
+      "name": "Cleanroom Environmental Control",
+      "type": "Maier 1998",
+      "l5Units": [
+        {
+          "id": "Fan Filter Unit",
+          "name": "Fan Filter Unit",
+          "description": "HEPA/ULPA FFU array for laminar cleanroom flow",
+          "l4Subsystems": [],
+          "isProductPosition": false
+        },
+        {
+          "id": "Makeup Air Handler",
+          "name": "Makeup Air Handler",
+          "description": "Temperature/humidity/AMC-controlled makeup air",
+          "l4Subsystems": [],
+          "isProductPosition": false
+        }
+      ]
+    },
+    {
+      "id": "MES & Industrial IT/OT",
+      "name": "MES & Industrial IT/OT",
+      "type": "Maier 1998",
+      "l5Units": [
+        {
+          "id": "MES Platform",
+          "name": "MES Platform",
+          "description": "Manufacturing execution system (Applied SmartFactory, Siemens Opcenter, IBM Sapience)",
+          "l4Subsystems": [],
+          "isProductPosition": false
+        },
+        {
+          "id": "Fab SCADA / Historian",
+          "name": "Fab SCADA / Historian",
+          "description": "Fab-wide SCADA + process historian",
+          "l4Subsystems": [],
+          "isProductPosition": false
+        }
+      ]
     }
   ],
-  "has_bom": true,
-  "naics_sector_type": "manufacturing"
+  "vnUnits": [
+    {
+      "level": "L7",
+      "id": "Semiconductor Device Manufacturing Ecosystem",
+      "name": "Semiconductor Device Manufacturing Ecosystem",
+      "functionalJob": "Economic community of IDMs, foundries, fabless, OSAT, equipment OEMs, materials suppliers, utilities",
+      "parentId": "ROOT",
+      "isProductPosition": false
+    },
+    {
+      "level": "L6",
+      "id": "Wafer Preparation",
+      "name": "Wafer Preparation",
+      "functionalJob": "Prepare clean defect-free substrate; incoming inspection, clean, epi",
+      "parentId": "Semiconductor Device Manufacturing Ecosystem",
+      "isProductPosition": false
+    },
+    {
+      "level": "L6",
+      "id": "Lithography & Patterning",
+      "name": "Lithography & Patterning",
+      "functionalJob": "Transfer circuit pattern onto wafer via photoresist coat, expose, develop",
+      "parentId": "Semiconductor Device Manufacturing Ecosystem",
+      "isProductPosition": false
+    },
+    {
+      "level": "L6",
+      "id": "Etch & Clean",
+      "name": "Etch & Clean",
+      "functionalJob": "Remove material per pattern; strip resist; post-etch clean",
+      "parentId": "Semiconductor Device Manufacturing Ecosystem",
+      "isProductPosition": false
+    },
+    {
+      "level": "L6",
+      "id": "Doping & Implantation",
+      "name": "Doping & Implantation",
+      "functionalJob": "Modify electrical properties of Si lattice via ion implant + anneal",
+      "parentId": "Semiconductor Device Manufacturing Ecosystem",
+      "isProductPosition": false
+    },
+    {
+      "level": "L6",
+      "id": "Deposition & Growth",
+      "name": "Deposition & Growth",
+      "functionalJob": "Deposit insulating/conductive films (oxidation, CVD, PVD, ALD, epi)",
+      "parentId": "Semiconductor Device Manufacturing Ecosystem",
+      "isProductPosition": false
+    },
+    {
+      "level": "L6",
+      "id": "CMP",
+      "name": "CMP",
+      "functionalJob": "Planarize wafer surface between layers; polish + post-CMP clean",
+      "parentId": "Semiconductor Device Manufacturing Ecosystem",
+      "isProductPosition": false
+    },
+    {
+      "level": "L6",
+      "id": "Metallization & Interconnect",
+      "name": "Metallization & Interconnect",
+      "functionalJob": "Build conductive interconnect stack (Cu damascene, Al)",
+      "parentId": "Semiconductor Device Manufacturing Ecosystem",
+      "isProductPosition": false
+    },
+    {
+      "level": "L6",
+      "id": "Wafer Probe & Sort",
+      "name": "Wafer Probe & Sort",
+      "functionalJob": "Electrically test each die on wafer; yield feedback",
+      "parentId": "Semiconductor Device Manufacturing Ecosystem",
+      "isProductPosition": false
+    },
+    {
+      "level": "L6",
+      "id": "Assembly & Packaging",
+      "name": "Assembly & Packaging",
+      "functionalJob": "Singulate and package die into shippable IC",
+      "parentId": "Semiconductor Device Manufacturing Ecosystem",
+      "isProductPosition": false
+    },
+    {
+      "level": "L6",
+      "id": "Final Test & Qualification",
+      "name": "Final Test & Qualification",
+      "functionalJob": "ATE, burn-in, reliability screen on packaged ICs",
+      "parentId": "Semiconductor Device Manufacturing Ecosystem",
+      "isProductPosition": false
+    },
+    {
+      "level": "L6",
+      "id": "Electrical Power Infrastructure",
+      "name": "Electrical Power Infrastructure",
+      "functionalJob": "Horizontal. Deliver clean, continuous, ride-through MV/LV power to every tool and the cleanroom envelope",
+      "parentId": "Semiconductor Device Manufacturing Ecosystem",
+      "isProductPosition": false
+    },
+    {
+      "level": "L6",
+      "id": "Ultrapure Water & Wastewater",
+      "name": "Ultrapure Water & Wastewater",
+      "functionalJob": "Horizontal. UPW supply, chemical wastewater, solvent recovery",
+      "parentId": "Semiconductor Device Manufacturing Ecosystem",
+      "isProductPosition": false
+    },
+    {
+      "level": "L6",
+      "id": "Process Gases & Chemicals",
+      "name": "Process Gases & Chemicals",
+      "functionalJob": "Horizontal. Bulk/specialty gas yards, chemical distribution, abatement",
+      "parentId": "Semiconductor Device Manufacturing Ecosystem",
+      "isProductPosition": false
+    },
+    {
+      "level": "L6",
+      "id": "Cleanroom Environmental Control",
+      "name": "Cleanroom Environmental Control",
+      "functionalJob": "Horizontal. ISO 1–5 HVAC, AMC scrubbing, vibration isolation",
+      "parentId": "Semiconductor Device Manufacturing Ecosystem",
+      "isProductPosition": false
+    },
+    {
+      "level": "L6",
+      "id": "MES & Industrial IT/OT",
+      "name": "MES & Industrial IT/OT",
+      "functionalJob": "Horizontal. Recipe mgmt, equipment integration, SCADA, cybersecurity",
+      "parentId": "Semiconductor Device Manufacturing Ecosystem",
+      "isProductPosition": false
+    },
+    {
+      "level": "L5",
+      "id": "HV/MV Incoming Substation",
+      "name": "HV/MV Incoming Substation",
+      "functionalJob": "110 kV → MV step-down; utility interface; Type A plant cert",
+      "parentId": "Electrical Power Infrastructure",
+      "isProductPosition": false
+    },
+    {
+      "level": "L5",
+      "id": "MV Switchgear & Distribution",
+      "name": "MV Switchgear & Distribution",
+      "functionalJob": "10–36 kV switchgear, busbar, protection, metering. MEIN SOLAR SECONDARY (as part of BESS scope)",
+      "parentId": "Electrical Power Infrastructure",
+      "isProductPosition": false
+    },
+    {
+      "level": "L5",
+      "id": "Static Battery UPS",
+      "name": "Static Battery UPS",
+      "functionalJob": "Facility/tool-level double-conversion UPS with battery backup",
+      "parentId": "Electrical Power Infrastructure",
+      "isProductPosition": false
+    },
+    {
+      "level": "L5",
+      "id": "Dynamic UPS / Flywheel",
+      "name": "Dynamic UPS / Flywheel",
+      "functionalJob": "Rotating kinetic-energy UPS; sub-cycle ride-through + diesel ride-over",
+      "parentId": "Electrical Power Infrastructure",
+      "isProductPosition": false
+    },
+    {
+      "level": "L5",
+      "id": "Active Voltage Conditioner",
+      "name": "Active Voltage Conditioner",
+      "functionalJob": "DVR / series-injection conditioner for voltage-sag ride-through (SEMI F47)",
+      "parentId": "Electrical Power Infrastructure",
+      "isProductPosition": false
+    },
+    {
+      "level": "L5",
+      "id": "BESS-Based Power Quality & Ride-Through",
+      "name": "BESS-Based Power Quality & Ride-Through",
+      "functionalJob": "MEIN SOLAR PRIMARY POSITION. Containerized Li-ion BESS with bidirectional PCS, MV coupling, EMS; ride-through + grid-services revenue stack",
+      "parentId": "Electrical Power Infrastructure",
+      "isProductPosition": false
+    },
+    {
+      "level": "L5",
+      "id": "Backup Generator",
+      "name": "Backup Generator",
+      "functionalJob": "Diesel/gas genset for extended outage backup; ATS-switched",
+      "parentId": "Electrical Power Infrastructure",
+      "isProductPosition": false
+    },
+    {
+      "level": "L5",
+      "id": "On-Site PV Generation",
+      "name": "On-Site PV Generation",
+      "functionalJob": "MEIN SOLAR SECONDARY POSITION. Rooftop/ground-mount PV behind-the-meter for decarbonization and Netzentgelte reduction",
+      "parentId": "Electrical Power Infrastructure",
+      "isProductPosition": false
+    },
+    {
+      "level": "L5",
+      "id": "Single-Wafer Cleaner",
+      "name": "Single-Wafer Cleaner",
+      "functionalJob": "Single-wafer spin/megasonic cleaning tool",
+      "parentId": "Wafer Preparation",
+      "isProductPosition": false
+    },
+    {
+      "level": "L5",
+      "id": "Epi Reactor",
+      "name": "Epi Reactor",
+      "functionalJob": "Epitaxial Si/SiGe deposition reactor for device-grade substrates",
+      "parentId": "Wafer Preparation",
+      "isProductPosition": false
+    },
+    {
+      "level": "L5",
+      "id": "DUV/EUV Scanner",
+      "name": "DUV/EUV Scanner",
+      "functionalJob": "Projection exposure tool (ASML/Nikon/Canon)",
+      "parentId": "Lithography & Patterning",
+      "isProductPosition": false
+    },
+    {
+      "level": "L5",
+      "id": "Coat-Develop Track",
+      "name": "Coat-Develop Track",
+      "functionalJob": "Photoresist coat, bake, develop track integrated with scanner",
+      "parentId": "Lithography & Patterning",
+      "isProductPosition": false
+    },
+    {
+      "level": "L5",
+      "id": "Dry Plasma Etcher",
+      "name": "Dry Plasma Etcher",
+      "functionalJob": "Reactive-ion etch tool (capacitive or inductive plasma)",
+      "parentId": "Etch & Clean",
+      "isProductPosition": false
+    },
+    {
+      "level": "L5",
+      "id": "Wet Bench",
+      "name": "Wet Bench",
+      "functionalJob": "Batch wet chemical process station",
+      "parentId": "Etch & Clean",
+      "isProductPosition": false
+    },
+    {
+      "level": "L5",
+      "id": "Ion Implanter",
+      "name": "Ion Implanter",
+      "functionalJob": "High/medium/low-current ion implanter for dopant introduction",
+      "parentId": "Doping & Implantation",
+      "isProductPosition": false
+    },
+    {
+      "level": "L5",
+      "id": "Diffusion / Anneal Furnace",
+      "name": "Diffusion / Anneal Furnace",
+      "functionalJob": "Horizontal/vertical furnace for oxidation, diffusion, anneal",
+      "parentId": "Doping & Implantation",
+      "isProductPosition": false
+    },
+    {
+      "level": "L5",
+      "id": "CVD System",
+      "name": "CVD System",
+      "functionalJob": "Chemical vapor deposition for dielectric/metal films",
+      "parentId": "Deposition & Growth",
+      "isProductPosition": false
+    },
+    {
+      "level": "L5",
+      "id": "PVD Sputter",
+      "name": "PVD Sputter",
+      "functionalJob": "Physical vapor deposition sputter cluster for metal films",
+      "parentId": "Deposition & Growth",
+      "isProductPosition": false
+    },
+    {
+      "level": "L5",
+      "id": "ALD System",
+      "name": "ALD System",
+      "functionalJob": "Atomic-layer deposition for ultra-thin conformal films",
+      "parentId": "Deposition & Growth",
+      "isProductPosition": false
+    },
+    {
+      "level": "L5",
+      "id": "CMP Polisher",
+      "name": "CMP Polisher",
+      "functionalJob": "Chemical-mechanical planarization tool",
+      "parentId": "CMP",
+      "isProductPosition": false
+    },
+    {
+      "level": "L5",
+      "id": "Post-CMP Cleaner",
+      "name": "Post-CMP Cleaner",
+      "functionalJob": "Brush/megasonic cleaner for slurry removal",
+      "parentId": "CMP",
+      "isProductPosition": false
+    },
+    {
+      "level": "L5",
+      "id": "Electroplater",
+      "name": "Electroplater",
+      "functionalJob": "Cu damascene electroplating tool",
+      "parentId": "Metallization & Interconnect",
+      "isProductPosition": false
+    },
+    {
+      "level": "L5",
+      "id": "Metal Sputter Cluster",
+      "name": "Metal Sputter Cluster",
+      "functionalJob": "Al/barrier/seed PVD for metal layers",
+      "parentId": "Metallization & Interconnect",
+      "isProductPosition": false
+    },
+    {
+      "level": "L5",
+      "id": "Wafer Prober",
+      "name": "Wafer Prober",
+      "functionalJob": "Probe card stage for wafer-level electrical test",
+      "parentId": "Wafer Probe & Sort",
+      "isProductPosition": false
+    },
+    {
+      "level": "L5",
+      "id": "ATE Test Head",
+      "name": "ATE Test Head",
+      "functionalJob": "Automated test equipment for parametric/functional test",
+      "parentId": "Wafer Probe & Sort",
+      "isProductPosition": false
+    },
+    {
+      "level": "L5",
+      "id": "Dicing Saw",
+      "name": "Dicing Saw",
+      "functionalJob": "Wafer singulation via blade or laser",
+      "parentId": "Assembly & Packaging",
+      "isProductPosition": false
+    },
+    {
+      "level": "L5",
+      "id": "Wire Bonder",
+      "name": "Wire Bonder",
+      "functionalJob": "Thermosonic wire bonding tool (Au/Cu/Al)",
+      "parentId": "Assembly & Packaging",
+      "isProductPosition": false
+    },
+    {
+      "level": "L5",
+      "id": "Molding Press",
+      "name": "Molding Press",
+      "functionalJob": "Transfer molding of epoxy encapsulation",
+      "parentId": "Assembly & Packaging",
+      "isProductPosition": false
+    },
+    {
+      "level": "L5",
+      "id": "Burn-In Oven",
+      "name": "Burn-In Oven",
+      "functionalJob": "Elevated-temperature accelerated reliability screen",
+      "parentId": "Final Test & Qualification",
+      "isProductPosition": false
+    },
+    {
+      "level": "L5",
+      "id": "Final-Test ATE",
+      "name": "Final-Test ATE",
+      "functionalJob": "Package-level functional and parametric test",
+      "parentId": "Final Test & Qualification",
+      "isProductPosition": false
+    },
+    {
+      "level": "L5",
+      "id": "UPW Plant",
+      "name": "UPW Plant",
+      "functionalJob": "Multi-stage RO/EDI/UV UPW production",
+      "parentId": "Ultrapure Water & Wastewater",
+      "isProductPosition": false
+    },
+    {
+      "level": "L5",
+      "id": "Wastewater / Abatement System",
+      "name": "Wastewater / Abatement System",
+      "functionalJob": "Chemical wastewater treatment + point-of-use scrubbers",
+      "parentId": "Ultrapure Water & Wastewater",
+      "isProductPosition": false
+    },
+    {
+      "level": "L5",
+      "id": "Bulk Gas Yard",
+      "name": "Bulk Gas Yard",
+      "functionalJob": "N2/O2/H2/Ar bulk gas supply + vaporization",
+      "parentId": "Process Gases & Chemicals",
+      "isProductPosition": false
+    },
+    {
+      "level": "L5",
+      "id": "Specialty Gas Cabinet",
+      "name": "Specialty Gas Cabinet",
+      "functionalJob": "Toxic/corrosive gas cabinets (SiH4, AsH3, NF3 etc.)",
+      "parentId": "Process Gases & Chemicals",
+      "isProductPosition": false
+    },
+    {
+      "level": "L5",
+      "id": "Fan Filter Unit",
+      "name": "Fan Filter Unit",
+      "functionalJob": "HEPA/ULPA FFU array for laminar cleanroom flow",
+      "parentId": "Cleanroom Environmental Control",
+      "isProductPosition": false
+    },
+    {
+      "level": "L5",
+      "id": "Makeup Air Handler",
+      "name": "Makeup Air Handler",
+      "functionalJob": "Temperature/humidity/AMC-controlled makeup air",
+      "parentId": "Cleanroom Environmental Control",
+      "isProductPosition": false
+    },
+    {
+      "level": "L5",
+      "id": "MES Platform",
+      "name": "MES Platform",
+      "functionalJob": "Manufacturing execution system (Applied SmartFactory, Siemens Opcenter, IBM Sapience)",
+      "parentId": "MES & Industrial IT/OT",
+      "isProductPosition": false
+    },
+    {
+      "level": "L5",
+      "id": "Fab SCADA / Historian",
+      "name": "Fab SCADA / Historian",
+      "functionalJob": "Fab-wide SCADA + process historian",
+      "parentId": "MES & Industrial IT/OT",
+      "isProductPosition": false
+    },
+    {
+      "level": "L4",
+      "id": "Power Transformer",
+      "name": "Power Transformer",
+      "functionalJob": "110 kV→MV step-down transformer",
+      "parentId": "HV/MV Incoming Substation",
+      "isProductPosition": false
+    },
+    {
+      "level": "L4",
+      "id": "HV Circuit Breaker",
+      "name": "HV Circuit Breaker",
+      "functionalJob": "SF6 or vacuum HV circuit breaker",
+      "parentId": "HV/MV Incoming Substation",
+      "isProductPosition": false
+    },
+    {
+      "level": "L4",
+      "id": "Protection Relay",
+      "name": "Protection Relay",
+      "functionalJob": "Digital multi-function protection and control relay",
+      "parentId": "HV/MV Incoming Substation",
+      "isProductPosition": false
+    },
+    {
+      "level": "L4",
+      "id": "MV Vacuum Breaker",
+      "name": "MV Vacuum Breaker",
+      "functionalJob": "SF6-free vacuum MV circuit breaker",
+      "parentId": "MV Switchgear & Distribution",
+      "isProductPosition": false
+    },
+    {
+      "level": "L4",
+      "id": "MV Busbar",
+      "name": "MV Busbar",
+      "functionalJob": "Insulated MV busbar system",
+      "parentId": "MV Switchgear & Distribution",
+      "isProductPosition": false
+    },
+    {
+      "level": "L4",
+      "id": "NA-Protection Relay",
+      "name": "NA-Protection Relay",
+      "functionalJob": "Grid-side NA protection per VDE-AR-N 4110",
+      "parentId": "MV Switchgear & Distribution",
+      "isProductPosition": false
+    },
+    {
+      "level": "L4",
+      "id": "Rectifier",
+      "name": "Rectifier",
+      "functionalJob": "AC/DC converter front-end of UPS",
+      "parentId": "Static Battery UPS",
+      "isProductPosition": false
+    },
+    {
+      "level": "L4",
+      "id": "Inverter",
+      "name": "Inverter",
+      "functionalJob": "DC/AC inverter output of UPS",
+      "parentId": "Static Battery UPS",
+      "isProductPosition": false
+    },
+    {
+      "level": "L4",
+      "id": "Battery String",
+      "name": "Battery String",
+      "functionalJob": "VRLA or Li-ion battery string",
+      "parentId": "Static Battery UPS",
+      "isProductPosition": false
+    },
+    {
+      "level": "L4",
+      "id": "Flywheel Rotor",
+      "name": "Flywheel Rotor",
+      "functionalJob": "Kinetic-energy flywheel rotor assembly",
+      "parentId": "Dynamic UPS / Flywheel",
+      "isProductPosition": false
+    },
+    {
+      "level": "L4",
+      "id": "Synchronous Motor-Generator",
+      "name": "Synchronous Motor-Generator",
+      "functionalJob": "Motor-generator coupled to flywheel + clutch",
+      "parentId": "Dynamic UPS / Flywheel",
+      "isProductPosition": false
+    },
+    {
+      "level": "L4",
+      "id": "Ride-Over Diesel Engine",
+      "name": "Ride-Over Diesel Engine",
+      "functionalJob": "Diesel prime mover for extended ride-over",
+      "parentId": "Dynamic UPS / Flywheel",
+      "isProductPosition": false
+    },
+    {
+      "level": "L4",
+      "id": "IGBT Converter",
+      "name": "IGBT Converter",
+      "functionalJob": "High-speed IGBT power stage",
+      "parentId": "Active Voltage Conditioner",
+      "isProductPosition": false
+    },
+    {
+      "level": "L4",
+      "id": "Series Injection Transformer",
+      "name": "Series Injection Transformer",
+      "functionalJob": "Injection transformer for series voltage compensation",
+      "parentId": "Active Voltage Conditioner",
+      "isProductPosition": false
+    },
+    {
+      "level": "L4",
+      "id": "Fast Controller",
+      "name": "Fast Controller",
+      "functionalJob": "Sub-cycle DSP-based voltage controller",
+      "parentId": "Active Voltage Conditioner",
+      "isProductPosition": false
+    },
+    {
+      "level": "L4",
+      "id": "LFP Battery Container",
+      "name": "LFP Battery Container",
+      "functionalJob": "20/40ft ISO container with LFP racks, BMS stack, HVAC, NOVEC",
+      "parentId": "BESS-Based Power Quality & Ride-Through",
+      "isProductPosition": false
+    },
+    {
+      "level": "L4",
+      "id": "Bidirectional PCS",
+      "name": "Bidirectional PCS",
+      "functionalJob": "4-quadrant inverter sized to full BESS MW; grid-forming capable",
+      "parentId": "BESS-Based Power Quality & Ride-Through",
+      "isProductPosition": false
+    },
+    {
+      "level": "L4",
+      "id": "MV Coupling Transformer",
+      "name": "MV Coupling Transformer",
+      "functionalJob": "LV→MV step-up transformer to fab MV bus",
+      "parentId": "BESS-Based Power Quality & Ride-Through",
+      "isProductPosition": false
+    },
+    {
+      "level": "L4",
+      "id": "EMS / Grid-Forming Controller",
+      "name": "EMS / Grid-Forming Controller",
+      "functionalJob": "Dispatch + ride-through controller; SCADA uplink to fab DCS",
+      "parentId": "BESS-Based Power Quality & Ride-Through",
+      "isProductPosition": false
+    },
+    {
+      "level": "L4",
+      "id": "Diesel Engine",
+      "name": "Diesel Engine",
+      "functionalJob": "Diesel or gas prime mover",
+      "parentId": "Backup Generator",
+      "isProductPosition": false
+    },
+    {
+      "level": "L4",
+      "id": "Alternator",
+      "name": "Alternator",
+      "functionalJob": "Synchronous generator coupled to engine",
+      "parentId": "Backup Generator",
+      "isProductPosition": false
+    },
+    {
+      "level": "L4",
+      "id": "Fuel Day-Tank",
+      "name": "Fuel Day-Tank",
+      "functionalJob": "Bunded day-tank for run-time fuel supply",
+      "parentId": "Backup Generator",
+      "isProductPosition": false
+    },
+    {
+      "level": "L4",
+      "id": "PV Module Array",
+      "name": "PV Module Array",
+      "functionalJob": "Crystalline-Si or TOPCon module array on rooftop/ground",
+      "parentId": "On-Site PV Generation",
+      "isProductPosition": false
+    },
+    {
+      "level": "L4",
+      "id": "String Inverter",
+      "name": "String Inverter",
+      "functionalJob": "String/central inverter with grid-code compliance",
+      "parentId": "On-Site PV Generation",
+      "isProductPosition": false
+    },
+    {
+      "level": "L4",
+      "id": "DC Combiner Box",
+      "name": "DC Combiner Box",
+      "functionalJob": "Parallel DC combiner with fuse protection",
+      "parentId": "On-Site PV Generation",
+      "isProductPosition": false
+    }
+  ],
+  "productPosition": {
+    "level": "L5",
+    "unitId": "BESS-Based Power Quality & Ride-Through",
+    "unitName": "BESS-Based Power Quality & Ride-Through",
+    "companyName": "Mein Solar GmbH",
+    "primaryL6": "",
+    "secondaryL5s": []
+  },
+  "sources": []
 }

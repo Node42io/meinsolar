@@ -2,6 +2,18 @@
   "slug": "bess_power_generation",
   "name": "Battery Energy Storage Systems (Other Electric Power Generation)",
   "shortName": "BESS / Power Generation",
-  "naics": "221118",
-  "isReference": true
+  "naicsCode": "221118",
+  "isReference": true,
+  "rank": 1,
+  "scores": {
+    "odi": 4.95,
+    "featureFit": 6.5,
+    "constraintCompatibility": 9.0,
+    "jobCoverage": 10.0,
+    "vnHierarchy": 9.0,
+    "incumbentVulnerability": 3.5,
+    "composite": 6.66
+  },
+  "recommendation": "investigate",
+  "rationale": "Max job coverage (10.0) and customer-facing VN (9.0) anchored by clean constraint sheet (9.0); held back by lowest ODI (4.95 — IPPs well-served by Tesla/Sungrow/Fluence) and weakest incumbent vulnerability (3.5)."
 }

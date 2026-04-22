@@ -1034,8 +1034,7 @@
           "impact_category": "cost",
           "product_related": false,
           "confidence": 0.85,
-          "rationale": "Modelers split between EPEX arbitrage, peak-shaving, FCR, §19; mis-ratio between MW and MWh is the #1 post-COD regret",
-          "satisfaction_rationale": "Satisfaction at 4/10 reflects that revenue-stack modeling tools exist but the multi-variable optimization (EPEX arbitrage, FCR, peak-shaving, Section 19 StromNEV) still produces mis-sizing errors in 20-30% of projects, especially where C-rate assumptions diverge from actual dispatch profiles."
+          "rationale": "Modelers split between EPEX arbitrage, peak-shaving, FCR, §19; mis-ratio between MW and MWh is the #1 post-COD regret"
         },
         {
           "id": 2,
@@ -1048,8 +1047,7 @@
           "impact_category": "time",
           "product_related": false,
           "confidence": 0.9,
-          "rationale": "Borderline cases (HV vs. MV, generation vs. storage category) cause avoidable resubmissions",
-          "satisfaction_rationale": "Satisfaction at 5/10 reflects that VDE-AR-N 4110/4120 classification rules are published and understood by experienced EPCs, but borderline cases (HV vs. MV threshold, generation-plus-storage hybrid classification) still cause avoidable resubmissions at the DSO interface."
+          "rationale": "Borderline cases (HV vs. MV, generation vs. storage category) cause avoidable resubmissions"
         },
         {
           "id": 3,
@@ -1062,8 +1060,7 @@
           "impact_category": "cost",
           "product_related": false,
           "confidence": 0.9,
-          "rationale": "Senior-debt tenor capped at 8-12 yr; break-even CAPEX sensitive; FX on CN cells adds volatility",
-          "satisfaction_rationale": "Satisfaction at 5/10 reflects that LFP CAPEX has trended toward the EUR 250-400/kWh band, but persistent FX volatility on CN-sourced cells, EU Battery Regulation compliance costs, and CRMA tariff uncertainty keep the financing envelope fragile for mid-sized projects."
+          "rationale": "Senior-debt tenor capped at 8-12 yr; break-even CAPEX sensitive; FX on CN cells adds volatility"
         },
         {
           "id": 4,
@@ -1076,8 +1073,7 @@
           "impact_category": "cost",
           "product_related": false,
           "confidence": 0.88,
-          "rationale": "Saturated DE MV feeders; §8a EEG shared connection helps but does not eliminate",
-          "satisfaction_rationale": "Satisfaction at 3/10 reflects systemic DSO MV feeder saturation across rural Germany; even with Section 8a EEG shared-connection provisions, grid-upgrade denial remains the single most unpredictable project-killer that no incumbent EPC can resolve unilaterally."
+          "rationale": "Saturated DE MV feeders; §8a EEG shared connection helps but does not eliminate"
         },
         {
           "id": 5,
@@ -1090,8 +1086,7 @@
           "impact_category": "time",
           "product_related": false,
           "confidence": 0.9,
-          "rationale": "DE transformer lead times 40-60 weeks in 2026; PCS 20-30 weeks",
-          "satisfaction_rationale": "Satisfaction at 4/10 reflects that DE MV transformer lead times remain at 40-60 weeks and PCS at 20-30 weeks in 2026; experienced EPCs mitigate through early procurement but delivery windows still slip past energisation targets on 25-30% of projects."
+          "rationale": "DE transformer lead times 40-60 weeks in 2026; PCS 20-30 weeks"
         },
         {
           "id": 6,
@@ -1104,8 +1099,7 @@
           "impact_category": "time",
           "product_related": false,
           "confidence": 0.8,
-          "rationale": "Local Feuerwehr heterogeneity; VdS separation-wall rules for >3 MWh clusters",
-          "satisfaction_rationale": "Satisfaction at 5/10 reflects that established EPCs with German-market heritage understand local Feuerwehr and VdS separation-wall rules, but regional heterogeneity in fire-clearance interpretation still generates objections that delay groundbreaking by one quarter on 10-15% of applications."
+          "rationale": "Local Feuerwehr heterogeneity; VdS separation-wall rules for >3 MWh clusters"
         },
         {
           "id": 7,
@@ -1118,8 +1112,7 @@
           "impact_category": "cost",
           "product_related": false,
           "confidence": 0.78,
-          "rationale": "Interface between civil and equipment design often under-coordinated",
-          "satisfaction_rationale": "Satisfaction at 5/10 reflects that civil-equipment interface coordination is a solved engineering problem in principle, but in practice the container-load and cable-routing specs arrive late from OEMs, causing rework on roughly 15% of projects; incumbents at mid-level competence manage this acceptably."
+          "rationale": "Interface between civil and equipment design often under-coordinated"
         },
         {
           "id": 8,
@@ -1132,8 +1125,7 @@
           "impact_category": "safety",
           "product_related": false,
           "confidence": 0.82,
-          "rationale": "Post-pour moves cost €50-200k and weeks; regional fire-code variance is the trigger",
-          "satisfaction_rationale": "Satisfaction at 4/10 reflects that post-pour container repositioning from fire-clearance rejection costs EUR 50-200k and weeks of delay; regional fire-code variance is the trigger and even experienced EPCs encounter this on 15-20% of BESS projects exceeding the 3 MWh Li cluster threshold."
+          "rationale": "Post-pour moves cost €50-200k and weeks; regional fire-code variance is the trigger"
         },
         {
           "id": 9,
@@ -1146,8 +1138,7 @@
           "impact_category": "time",
           "product_related": false,
           "confidence": 0.9,
-          "rationale": "Certifier queues (TÜV NORD, DNV, Dekra) are the critical-path binding constraint in DE",
-          "satisfaction_rationale": "Satisfaction at 4/10 reflects that FGW TR8 plant-certificate issuance is the critical-path binding constraint in DE due to certifier queue depths (TUV NORD, DNV, Dekra at 6-12 month lead); peer EPC slip rates remain elevated despite process maturity."
+          "rationale": "Certifier queues (TÜV NORD, DNV, Dekra) are the critical-path binding constraint in DE"
         },
         {
           "id": 10,
@@ -1160,8 +1151,7 @@
           "impact_category": "time",
           "product_related": false,
           "confidence": 0.85,
-          "rationale": "Protection-coordination studies for BESS+PV shared bay are the usual retest driver",
-          "satisfaction_rationale": "Satisfaction at 5/10 reflects that DSO acceptance testing (VRT, reactive-power, protection coordination) for PV+BESS shared bays is well-understood by experienced EPCs, but protection-coordination studies for hybrid configurations still drive retests on 10-15% of first attempts."
+          "rationale": "Protection-coordination studies for BESS+PV shared bay are the usual retest driver"
         },
         {
           "id": 11,
@@ -1174,8 +1164,7 @@
           "impact_category": "reliability",
           "product_related": true,
           "confidence": 0.85,
-          "rationale": "Hybrid-specific failure mode; disappears if PV and BESS are separate connections",
-          "satisfaction_rationale": "Satisfaction at 3/10 reflects that PV+BESS shared MV bay interoperability is a hybrid-specific failure mode where protection mis-coordination and EMS conflicts at first energise remain poorly addressed by incumbents; the failure disappears entirely when PV and BESS have separate grid connections."
+          "rationale": "Hybrid-specific failure mode; disappears if PV and BESS are separate connections"
         },
         {
           "id": 12,
@@ -1188,8 +1177,7 @@
           "impact_category": "time",
           "product_related": false,
           "confidence": 0.9,
-          "rationale": "Financing covenants often tie COD to PPA start; slippage triggers penalties",
-          "satisfaction_rationale": "Satisfaction at 5/10 reflects that COD date compliance is achievable for experienced EPCs with mature scheduling practices, but financing-covenant penalties for slippage and the cascading dependencies across permitting, procurement, and grid-code certification make the +/-2 week target challenging on 30% of projects."
+          "rationale": "Financing covenants often tie COD to PPA start; slippage triggers penalties"
         },
         {
           "id": 13,
@@ -1202,8 +1190,7 @@
           "impact_category": "reliability",
           "product_related": true,
           "confidence": 0.8,
-          "rationale": "Li-ion-specific; flow batteries and other media present different defect modes",
-          "satisfaction_rationale": "Satisfaction at 4/10 reflects that standard commissioning protocols detect most cell/BMS defects but latent Li-ion defects (soft shorts, early capacity fade) can escape detection until the SLA clock starts, creating warranty disputes; the problem is technology-specific to Li-ion chemistry."
+          "rationale": "Li-ion-specific; flow batteries and other media present different defect modes"
         },
         {
           "id": 14,
@@ -1216,8 +1203,7 @@
           "impact_category": "safety",
           "product_related": true,
           "confidence": 0.9,
-          "rationale": "Li-ion-specific safety need; different media would not have this",
-          "satisfaction_rationale": "Satisfaction at 5/10 reflects that cell-level thermal monitoring via BMS string-level sensing exists in all tier-1 container systems, but detection granularity at the individual cell/module level before rack-level propagation remains an evolving capability, especially in dense LFP rack configurations."
+          "rationale": "Li-ion-specific safety need; different media would not have this"
         },
         {
           "id": 15,
@@ -1230,8 +1216,7 @@
           "impact_category": "safety",
           "product_related": false,
           "confidence": 0.72,
-          "rationale": "IEC 62443 and NIS2 pressure on grid-connected assets",
-          "satisfaction_rationale": "Satisfaction at 4/10 reflects growing IEC 62443 and NIS2 compliance pressure on grid-connected BESS assets; SCADA/EMS cyber-hardening during commissioning is nascent in the DE solar+BESS segment, with most EPCs relying on OEM default configurations rather than site-specific security postures."
+          "rationale": "IEC 62443 and NIS2 pressure on grid-connected assets"
         },
         {
           "id": 16,
@@ -1244,8 +1229,7 @@
           "impact_category": "time",
           "product_related": false,
           "confidence": 0.85,
-          "rationale": "Exactly the Alt 4 failure mode — owner-led GC structures",
-          "satisfaction_rationale": "Satisfaction at 3/10 reflects that split-contract (Alt 4) delay cascades are a structural problem: when the IPP acts as GC with 4-6 separate vendors, a single equipment delay (e.g., PCS or MV transformer) cascades across all downstream work packages with no single-party accountability."
+          "rationale": "Exactly the Alt 4 failure mode — owner-led GC structures"
         },
         {
           "id": 17,
@@ -1258,8 +1242,7 @@
           "impact_category": "time",
           "product_related": true,
           "confidence": 0.7,
-          "rationale": "Lithium-container-centric dossier is sensitive to model swaps; modular chemistries would be less brittle",
-          "satisfaction_rationale": "Satisfaction at 4/10 reflects that PCS/container substitution mid-project typically forces a re-opening of the FGW TR8 grid-code dossier because the plant certificate is tied to specific equipment models; modular certification pathways are not yet established in the DE regulatory framework."
+          "rationale": "Lithium-container-centric dossier is sensitive to model swaps; modular chemistries would be less brittle"
         },
         {
           "id": 18,
@@ -1272,8 +1255,7 @@
           "impact_category": "cost",
           "product_related": false,
           "confidence": 0.9,
-          "rationale": "Multi-vendor BESS is the structural cause; single-source EPC closes it",
-          "satisfaction_rationale": "Satisfaction at 3/10 reflects that multi-vendor BESS projects structurally create warranty gaps at battery/PCS/EMS/MV interface boundaries after COD; finger-pointing between vendors is the norm and single-source EPC wraps are the primary market mechanism to close this gap."
+          "rationale": "Multi-vendor BESS is the structural cause; single-source EPC closes it"
         },
         {
           "id": 19,
@@ -1286,8 +1268,7 @@
           "impact_category": "reliability",
           "product_related": false,
           "confidence": 0.82,
-          "rationale": "Most DE sites run with patchwork O&M across battery/PCS/grid",
-          "satisfaction_rationale": "Satisfaction at 5/10 reflects that most DE BESS sites still operate with patchwork O&M across battery, PCS, and grid-interface vendors; transitioning to a single-point-of-contact 10-year SLA at COD is achievable for vertically integrated EPCs but remains unavailable from split-contract or OEM-turnkey structures."
+          "rationale": "Most DE sites run with patchwork O&M across battery/PCS/grid"
         },
         {
           "id": 20,
@@ -1300,8 +1281,7 @@
           "impact_category": "cost",
           "product_related": false,
           "confidence": 0.78,
-          "rationale": "Tender deadlines and regulatory windows are hard; missed slots re-price the business case",
-          "satisfaction_rationale": "Satisfaction at 4/10 reflects that KfW/EU subsidy windows and Section 8a EEG overbuild deadlines are hard regulatory constraints; missed slots force complete business-case re-pricing, and EPC schedule discipline -- while improving -- still results in 20-25% of projects consuming buffer time that threatens these windows."
+          "rationale": "Tender deadlines and regulatory windows are hard; missed slots re-price the business case"
         }
       ],
       "bridge_needs_p3_p5": [

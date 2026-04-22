@@ -953,8 +953,7 @@
           "impact_category": "reliability",
           "product_related": false,
           "alternative": null,
-          "confidence": 0.85,
-          "satisfaction_rationale": "DSO planning tools remain fragmented; constraint-hour forecasting depends on Netzbetreiber load-flow models that vary widely in accuracy across distribution regions."
+          "confidence": 0.85
         },
         {
           "id": 2,
@@ -968,8 +967,7 @@
           "impact_category": "reliability",
           "product_related": false,
           "alternative": null,
-          "confidence": 0.8,
-          "satisfaction_rationale": "Incumbent EPC providers lack standardized feeder-constraint-to-dispatch mapping tools; each project requires bespoke grid studies from the DSO or an external consultant."
+          "confidence": 0.8
         },
         {
           "id": 3,
@@ -983,8 +981,7 @@
           "impact_category": "time",
           "product_related": false,
           "alternative": null,
-          "confidence": 0.8,
-          "satisfaction_rationale": "Anreizregulierung business-case templates are not standardized across DSOs, and linking reinforcement deferral value to a storage asset requires case-by-case regulatory interpretation."
+          "confidence": 0.8
         },
         {
           "id": 4,
@@ -998,8 +995,7 @@
           "impact_category": "time",
           "product_related": true,
           "alternative": "A1",
-          "confidence": 0.9,
-          "satisfaction_rationale": "Fluence relies on DE in-country cert partner; schedule-slip risk confirms low satisfaction among incumbents."
+          "confidence": 0.9
         },
         {
           "id": 5,
@@ -1013,8 +1009,7 @@
           "impact_category": "cost",
           "product_related": false,
           "alternative": null,
-          "confidence": 0.85,
-          "satisfaction_rationale": "Most BESS deployments still require 2-4 separate counterparties (container OEM, PCS vendor, civil contractor, grid-connection specialist), increasing DSO coordination burden."
+          "confidence": 0.85
         },
         {
           "id": 6,
@@ -1028,8 +1023,7 @@
           "impact_category": "safety",
           "product_related": true,
           "alternative": "A1",
-          "confidence": 0.82,
-          "satisfaction_rationale": "Feuerwehr/VdS clearance risk applies to any Li-ion container, and 40-80 m2/MWh footprint constraints are structural across all containerized incumbents."
+          "confidence": 0.82
         },
         {
           "id": 7,
@@ -1043,8 +1037,7 @@
           "impact_category": "time",
           "product_related": false,
           "alternative": null,
-          "confidence": 0.7,
-          "satisfaction_rationale": "Commissioning timelines vary significantly due to site-specific MV-grid conditions, DSO inspection backlogs, and variable Baugenehmigung processing times across municipalities."
+          "confidence": 0.7
         },
         {
           "id": 8,
@@ -1058,8 +1051,7 @@
           "impact_category": "reliability",
           "product_related": false,
           "alternative": null,
-          "confidence": 0.9,
-          "satisfaction_rationale": "Tier-1 incumbents (Fluence, Tesla, Sungrow) offer 95-98% availability guarantees, but real-world DSO cycling regimes with frequent redispatch push degradation faster than pure merchant profiles."
+          "confidence": 0.9
         },
         {
           "id": 9,
@@ -1073,8 +1065,7 @@
           "impact_category": "reliability",
           "product_related": true,
           "alternative": "A1",
-          "confidence": 0.85,
-          "satisfaction_rationale": "Modern PCS units from Sungrow and SMA achieve sub-200ms response for FCR, but DSO-specific dispatch profiles with rapid polarity reversals remain less validated than TSO-grade frequency response."
+          "confidence": 0.85
         },
         {
           "id": 10,
@@ -1088,8 +1079,7 @@
           "impact_category": "safety",
           "product_related": true,
           "alternative": "A1",
-          "confidence": 0.9,
-          "satisfaction_rationale": "Moss Landing 2024 and McMicken propagation incidents demonstrate tier-1 container protection is weaker than originally estimated."
+          "confidence": 0.9
         },
         {
           "id": 11,
@@ -1103,8 +1093,7 @@
           "impact_category": "reliability",
           "product_related": true,
           "alternative": "A1",
-          "confidence": 0.8,
-          "satisfaction_rationale": "DSO-specific redispatch logic is less mature than arbitrage dispatch; no incumbent has closed this gap."
+          "confidence": 0.8
         },
         {
           "id": 12,
@@ -1118,8 +1107,7 @@
           "impact_category": "reliability",
           "product_related": false,
           "alternative": null,
-          "confidence": 0.8,
-          "satisfaction_rationale": "Grid-forming inverter capabilities from Fluence and Wartsila GEMS address voltage regulation, but most DSO BESS installations still operate in grid-following mode with limited voltage support."
+          "confidence": 0.8
         },
         {
           "id": 13,
@@ -1133,8 +1121,7 @@
           "impact_category": "skill",
           "product_related": false,
           "alternative": null,
-          "confidence": 0.75,
-          "satisfaction_rationale": "Incumbent EMS platforms (Fluence Mosaic, Tesla Autobidder) automate most dispatch events, but DSO-specific alarm handling and redispatch override logic still require manual intervention in edge cases."
+          "confidence": 0.75
         },
         {
           "id": 14,
@@ -1148,8 +1135,7 @@
           "impact_category": "safety",
           "product_related": false,
           "alternative": null,
-          "confidence": 0.85,
-          "satisfaction_rationale": "BSI-KRITIS requirements for energy storage are still being operationalized; no incumbent has achieved full IEC 62443 SL2+ certification specifically for DSO-connected BESS assets."
+          "confidence": 0.85
         },
         {
           "id": 15,
@@ -1163,8 +1149,7 @@
           "impact_category": "reliability",
           "product_related": true,
           "alternative": "A1",
-          "confidence": 0.82,
-          "satisfaction_rationale": "Fluence Mosaic and Tesla Autobidder include degradation-aware monitoring, raising incumbent satisfaction."
+          "confidence": 0.82
         },
         {
           "id": 16,
@@ -1178,8 +1163,7 @@
           "impact_category": "safety",
           "product_related": true,
           "alternative": "A1",
-          "confidence": 0.8,
-          "satisfaction_rationale": "BMS-to-SCADA signal integrity varies across container OEMs; field experience shows false-OK rates of 0.5-2% in multi-vendor BESS installations without independent signal validation."
+          "confidence": 0.8
         },
         {
           "id": 17,
@@ -1193,8 +1177,7 @@
           "impact_category": "reliability",
           "product_related": true,
           "alternative": "A1",
-          "confidence": 0.75,
-          "satisfaction_rationale": "Residual-life forecasting for LFP cells under DSO cycling regimes lacks validated models; most warranty curves assume merchant or FCR profiles, not DSO redispatch duty cycles."
+          "confidence": 0.75
         },
         {
           "id": 18,
@@ -1208,8 +1191,7 @@
           "impact_category": "reliability",
           "product_related": true,
           "alternative": "A1",
-          "confidence": 0.8,
-          "satisfaction_rationale": "Hot-swap module and PCS N+1 redundancy offered by Sungrow/Fluence provide parity-level restoration."
+          "confidence": 0.8
         },
         {
           "id": 19,
@@ -1223,8 +1205,7 @@
           "impact_category": "skill",
           "product_related": true,
           "alternative": "A1",
-          "confidence": 0.72,
-          "satisfaction_rationale": "Most BESS container OEMs require factory-certified technicians for cell-level interventions, creating a bottleneck in rural DSO regions where PV/MV-EPC crews are the available workforce."
+          "confidence": 0.72
         },
         {
           "id": 20,
@@ -1238,8 +1219,7 @@
           "impact_category": "cost",
           "product_related": false,
           "alternative": null,
-          "confidence": 0.7,
-          "satisfaction_rationale": "FX, tariff, and CRMA cell-price volatility persists across all incumbents without mitigation."
+          "confidence": 0.7
         },
         {
           "id": 21,
@@ -1253,8 +1233,7 @@
           "impact_category": "cost",
           "product_related": true,
           "alternative": "A1",
-          "confidence": 0.78,
-          "satisfaction_rationale": "Fluence and Tesla ship 10-year 85% RTE performance guarantees, raising incumbent satisfaction."
+          "confidence": 0.78
         },
         {
           "id": 22,
@@ -1268,8 +1247,7 @@
           "impact_category": "cost",
           "product_related": true,
           "alternative": "A1",
-          "confidence": 0.7,
-          "satisfaction_rationale": "EU Battery Regulation recycling infrastructure remains nascent; no incumbent has a mature compliance pathway."
+          "confidence": 0.7
         }
       ],
       "p3_p5_hypotheses": [

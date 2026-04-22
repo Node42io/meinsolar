@@ -1,16 +1,19 @@
 /**
- * NewMarketDiscovery — Page 04 (renumbered; home market removed)
+ * NewMarketDiscovery — Market Discovery & Ranking page.
  *
  * Combines discovery + ranking into a single scrollable React page:
  *   1. Executive Summary
  *   2. Market Definition (NAICS explainer)
  *   3. Discovery Process (Phase 02a search config + candidates table)
- *   4. Architecture Distance (Phase 02b)
+ *   4. Architecture Distance (Phase 02b — if data exists)
  *   5. Scoring Criteria (with exec summary)
  *   6. Pipeline Summary
- *   7. Final Ranking Table (all 10 markets)
+ *   7. Final Ranking Table
  *   8. Per-market Rationale Cards
  *   9. Sources
+ *
+ * Handles both domain-specific (candidates[], rankedMarkets[]) and
+ * generic ({sections, tables, entities}) data formats.
  */
 
 import PageHeader from "@/components/PageHeader";
@@ -19,9 +22,9 @@ import ClickableCode from "@/components/ClickableCode";
 import ConfidenceBadge from "@/components/ConfidenceBadge";
 import SectionAnchor from "@/components/SectionAnchor";
 import SourceList from "@/components/SourceList";
+import GenericSectionPage from "@/components/GenericSectionPage";
 
-import marketDiscovery from "@/data/marketDiscovery.json";
-import ranking from "@/data/ranking.json";
+import { marketDiscovery, ranking } from "@/data";
 import type { ArchDistanceRow, CandidateDetail } from "@/types";
 
 import MarketDefinition from "./discovery/MarketDefinition";
@@ -56,81 +59,159 @@ const DISTANCE_BADGE: Record<string, string> = {
   LOW: "badge badge--weak",
 };
 
-/* Collect all source IDs used on this page */
-const PAGE_SOURCE_IDS = [
-  "MD-S01", "MD-S02", "MD-S03", "MD-S04",
-  "PROD-S03", "PROD-S05", "PROD-S09", "PROD-S10",
-];
-
 /* ---- component ---- */
 
 export default function NewMarketDiscovery() {
-  const rankedMarkets = ((ranking as any).rankedMarkets ?? []) as RankedMarket[];
-  const candidates = (marketDiscovery as any).candidates ?? [];
+  const disc = marketDiscovery as any;
+  const rank = ranking as any;
 
-  /* guard against missing data */
-  if (!rankedMarkets.length) {
+  // Domain-specific format: candidates[] + rankedMarkets[]
+  const candidates: any[] = disc.candidates ?? [];
+  const rankedMarkets: RankedMarket[] = (rank.rankedMarkets ?? []) as RankedMarket[];
+  const hasDomainData = candidates.length > 0 || rankedMarkets.length > 0;
+
+  // Generic format: sections / tables / entities
+  const hasGenericData = !!(disc.sections || disc.tables || disc.entities);
+
+  // If neither format has data, show placeholder
+  if (!hasDomainData && !hasGenericData) {
     return (
       <>
-        <p style={{ color: "var(--text-gray)" }}>Data pending — ranking data not available.</p>
+        <PageHeader
+          kicker="Market Discovery & Ranking"
+          title="New Market Discovery"
+          description="Data pending — discovery data not available."
+        />
+        <p style={{ color: "var(--text-gray)", padding: "48px 56px" }}>
+          Data pending — market discovery data not available.
+        </p>
       </>
     );
   }
 
+  // If only generic format, render through GenericSectionPage
+  if (!hasDomainData && hasGenericData) {
+    return (
+      <>
+        <PageHeader
+          kicker="Market Discovery & Ranking"
+          title="New Market Discovery"
+          description={rank.executiveSummary ?? ""}
+        />
+        <GenericSectionPage data={disc} />
+      </>
+    );
+  }
+
+  // --- Domain-specific rendering below ---
+
+  // Build source IDs from available sources in discovery data
+  const discoverySources: string[] = (disc.sources ?? []).map((s: any) => s.id ?? s.prefixedId ?? "").filter(Boolean);
+
+  // Derive product/vendor info from ranking data
+  const productName = rank.productName ?? "";
+  const vendorName = rank.vendorName ?? "";
+  const commodityFP = disc.commodityFP ?? rank.commodityFunctionalPromise ?? "";
+  const executiveSummary = rank.executiveSummary ?? "";
+  const totalEvaluated = rank.totalMarketsEvaluated ?? rankedMarkets.length;
+  const eliminated = rank.marketsEliminatedByConstraints ?? 0;
+  const totalDiscovered = disc.totalNaicsDiscovered ?? candidates.length;
+
+  // Derive UNSPSC context from discovery data
+  const unspscContext = disc.unspscContext ?? "";
+
+  // FP extensions — handle both fpExtension (string) and fpExtensions (array)
+  const fpExtensions: string[] = Array.isArray(disc.fpExtensions)
+    ? disc.fpExtensions
+    : disc.fpExtension
+    ? [disc.fpExtension]
+    : [];
+
+  const extensionDomains = disc.extensionDomains ?? "";
+
+  // Architecture distance data (may not exist for all projects)
+  const archDistanceData: ArchDistanceRow[] =
+    (disc as any).archDistanceData ?? [];
+
+  // Candidate details (may not exist for all projects)
+  const candidateDetails: CandidateDetail[] =
+    (disc as any).candidateDetails ?? [];
+
+  // Excluded markets info
+  const excludedMarkets: any[] = disc.excludedMarkets ?? [];
+
+  // Recommendation distribution
+  const recDist = rank.recommendationDistribution ?? {};
+  const pursueCount = recDist.pursue ?? 0;
+  const investigateCount = recDist.investigate ?? 0;
+
+  // Top 3 markets for executive summary
+  const top3 = rankedMarkets.slice(0, 3);
+
   return (
     <>
-      {/* ── Page Header ─────────────────────────────────────────────── */}
+      {/* == Page Header ====================================================== */}
       <PageHeader
-        kicker="Step 02a + 02b / NAICS Discovery & Architecture Distance / New Markets for an Existing Product"
+        kicker="NAICS Discovery & Architecture Distance / New Markets for an Existing Product"
         title="New Market Discovery"
-        description="Candidate markets discovered, scored by architecture distance, and ranked by 6-factor composite scoring for the GfS Türwächter IoT."
+        description={`Candidate markets discovered, scored by architecture distance, and ranked by 6-factor composite scoring${productName ? ` for ${productName}` : ""}${vendorName ? ` (${vendorName})` : ""}.`}
       />
 
-      {/* ── 1. Executive Summary ─────────────────────────────────────── */}
+      {/* == 1. Executive Summary ============================================= */}
       <section id="executive-summary" className="container">
         <SectionAnchor id="executive-summary" title="Executive Summary" />
         <div className="md">
-        <ExecutiveSummary title="What You're Looking At">
-          <p className="answer">
-            This page covers the full new-market discovery pipeline for the
-            GfS Türwächter IoT (Exit Control 179/1125) — Emergency Exit Security Devices
-            with Remote Monitoring. The pipeline discovered <strong>{candidates.length} candidate
-            markets</strong> via commodity functional promise search and FP extension
-            cross-classification, ranked them by architecture distance, carried{" "}
-            {rankedMarkets.length} through full constraint and fit analysis, and produced
-            a <strong>6-factor composite score</strong> for each.
-          </p>
-          <p className="answer">
-            What you learn here: which NAICS industry adjacencies scored
-            best, why they scored the way they did across ODI opportunity (unmet customer needs),
-            feature fit, constraint compatibility, job coverage, value-network
-            position, and incumbent vulnerability — and what specific
-            go-to-market moves are recommended for each.
-          </p>
-          <p className="answer">
-            What's next: all {rankedMarkets.length} surviving markets fall in the{" "}
-            <strong>investigate</strong> band (5.0–7.5 composite). The top
-            three — <strong>Hotels &amp; Motels</strong> (6.95),{" "}
-            <strong>Continuing Care Retirement</strong> (6.80), and{" "}
-            <strong>Elementary &amp; Secondary Schools</strong> (6.61) —
-            are recommended for customer-discovery sprints before resource
-            allocation. Deep-dive analysis for each market (JTBD, ODI matrix,
-            feature-market fit, value network) lives on the{" "}
-            <strong>Market Analysis</strong> page.
-          </p>
-        </ExecutiveSummary>
+          <ExecutiveSummary title="What You're Looking At">
+            <p className="answer">
+              This page covers the full new-market discovery pipeline
+              {productName ? ` for ${productName}` : ""}
+              {vendorName ? ` (${vendorName})` : ""}. The pipeline
+              discovered <strong>{totalDiscovered} candidate markets</strong> via
+              commodity functional promise search and cross-classification,
+              ranked them by architecture distance, carried{" "}
+              {totalEvaluated} through full constraint and fit analysis, and produced
+              a <strong>6-factor composite score</strong> for each.
+            </p>
+            <p className="answer">
+              What you learn here: which NAICS industry adjacencies scored
+              best, why they scored the way they did across ODI opportunity (unmet customer needs),
+              feature fit, constraint compatibility, job coverage, value-network
+              position, and incumbent vulnerability — and what specific
+              go-to-market moves are recommended for each.
+            </p>
+            {top3.length > 0 && (
+              <p className="answer">
+                What's next: the top markets are{" "}
+                {top3.map((m, i) => (
+                  <span key={m.slug}>
+                    {i > 0 && (i === top3.length - 1 ? ", and " : ", ")}
+                    <strong>{m.marketName}</strong> ({m.scores.composite.toFixed(2)})
+                  </span>
+                ))}
+                {" — "}
+                {pursueCount > 0
+                  ? `${pursueCount} recommended to pursue, ${investigateCount} to investigate.`
+                  : `all ${rankedMarkets.length} fall in the investigate band (5.0\u20137.5 composite).`}
+                {" "}Deep-dive analysis for each market lives on the{" "}
+                <strong>Market Analysis</strong> page.
+              </p>
+            )}
+            {executiveSummary && (
+              <p className="answer">{executiveSummary}</p>
+            )}
+          </ExecutiveSummary>
         </div>
       </section>
 
-      {/* ── 2. Market Definition ─────────────────────────────────────── */}
+      {/* == 2. Market Definition ============================================= */}
       <MarketDefinition />
 
-      {/* ── 3. Discovery Process — Phase 02a ─────────────────────────── */}
+      {/* == 3. Discovery Process — Phase 02a ================================= */}
       <section id="discovery-process" className="container">
         <SectionAnchor
           id="discovery-process"
           title="Discovery Process — Phase 02a"
-          kicker="Commodity FP → NAICS Cross-Classification"
+          kicker="Commodity FP Search & Cross-Classification"
         />
         <div className="md">
           <h3>Search Configuration</h3>
@@ -142,57 +223,75 @@ export default function NewMarketDiscovery() {
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td><strong>Commodity Functional Promise</strong></td>
-                <td>{marketDiscovery.commodityFP}</td>
-              </tr>
-              <tr>
-                <td><strong>Custom Product Group</strong></td>
-                <td>
-                  Emergency Exit Door Alarm Guards (no exact UNSPSC 8-digit match;
-                  nearest class: 46171500 Locks and security hardware)
-                </td>
-              </tr>
-              <tr>
-                <td><strong>Functional Promise Extension</strong></td>
-                <td>{marketDiscovery.fpExtension}</td>
-              </tr>
-              <tr>
-                <td><strong>Extension Domains</strong></td>
-                <td>{marketDiscovery.extensionDomains}</td>
-              </tr>
-              <tr>
-                <td><strong>Excluded Markets</strong></td>
-                <td>
-                  <ClickableCode kind="naics" code="332321" /> — Metal Window and
-                  Door Manufacturing (manufacturer's home NAICS — GfS Rettungswegtechnik)
-                </td>
-              </tr>
+              {commodityFP && (
+                <tr>
+                  <td><strong>Commodity Functional Promise</strong></td>
+                  <td>{commodityFP}</td>
+                </tr>
+              )}
+              {unspscContext && (
+                <tr>
+                  <td><strong>Product Classification</strong></td>
+                  <td>{unspscContext}</td>
+                </tr>
+              )}
+              {fpExtensions.length > 0 && (
+                <tr>
+                  <td><strong>FP Extension{fpExtensions.length > 1 ? "s" : ""}</strong></td>
+                  <td>
+                    {fpExtensions.length === 1
+                      ? fpExtensions[0]
+                      : (
+                        <ul style={{ margin: 0, paddingLeft: 16 }}>
+                          {fpExtensions.map((ext, i) => (
+                            <li key={i}>{ext}</li>
+                          ))}
+                        </ul>
+                      )}
+                  </td>
+                </tr>
+              )}
+              {extensionDomains && (
+                <tr>
+                  <td><strong>Extension Domains</strong></td>
+                  <td>{extensionDomains}</td>
+                </tr>
+              )}
+              {excludedMarkets.length > 0 && (
+                <tr>
+                  <td><strong>Excluded Markets</strong></td>
+                  <td>
+                    {excludedMarkets.map((em: any, i: number) => (
+                      <div key={i} style={{ marginBottom: i < excludedMarkets.length - 1 ? 4 : 0 }}>
+                        <ClickableCode kind="naics" code={em.naics ?? em.code ?? ""} />
+                        {" "}{em.title ?? em.name ?? em.reason ?? ""}
+                      </div>
+                    ))}
+                  </td>
+                </tr>
+              )}
+              {disc.scoringType && (
+                <tr>
+                  <td><strong>Scoring Type</strong></td>
+                  <td>{disc.scoringType}</td>
+                </tr>
+              )}
+              {disc.tieredDiscoveryUsed != null && (
+                <tr>
+                  <td><strong>Tiered Discovery</strong></td>
+                  <td>
+                    {disc.tieredDiscoveryUsed
+                      ? `Used (${totalDiscovered} candidates, max ${disc.maxMarketsSelected ?? "N/A"} selected)`
+                      : `Not used (${totalDiscovered} candidates)`}
+                  </td>
+                </tr>
+              )}
             </tbody>
           </table>
 
-          <h3>Primary Functional Promise Search Query</h3>
-          <pre>
-            <code>{`"What 6-digit NAICS industries need to prevent unauthorized use of
- emergency exit doors while maintaining unimpeded escape capability?
- Broad sector sweep: healthcare, education, hospitality, transportation,
- government, retail, industrial, logistics, food service, cultural
- institutions, senior living, data infrastructure, and defense.
- Return specific industry names and 6-digit NAICS codes."`}</code>
-          </pre>
-
-          <h3>Functional Promise Extension Search Query</h3>
-          <pre>
-            <code>{`"What 6-digit NAICS industries manage distributed passive safety-critical
- devices requiring wireless monitoring without mains power?
- Fire suppression, emergency lighting, industrial safety valves,
- building safety hardware fleets.
- Return specific industry names and 6-digit NAICS codes."`}</code>
-          </pre>
-
           <h3>
-            Candidates ({candidates.length} discovered, 1 excluded as home
-            market)
+            Candidates ({candidates.length} discovered
+            {excludedMarkets.length > 0 ? `, ${excludedMarkets.length} excluded` : ""})
           </h3>
 
           {/* Confidence legend */}
@@ -254,7 +353,7 @@ export default function NewMarketDiscovery() {
                   <td>
                     <ClickableCode kind="naics" code={c.naics} />
                   </td>
-                  <td>{c.title}</td>
+                  <td>{c.title ?? c.marketName ?? ""}</td>
                   <td>
                     <span className={FIT_BADGE[c.fpFit] ?? "badge badge--neutral"}>
                       {c.fpFit}
@@ -286,210 +385,241 @@ export default function NewMarketDiscovery() {
         </div>
       </section>
 
-      {/* ── 3b. Candidate Details (Phase 02a) ───────────────────────── */}
-      <section id="candidate-details" className="container">
-        <SectionAnchor id="candidate-details" title="Candidate Details" kicker="Phase 02a" />
-        <div className="md">
-          <p>
-            The cards below summarise why each NAICS code was selected:
-            the primary job to be done, why emergency exit security is required, what
-            alternatives exist, and our best-available market size estimate.
-          </p>
+      {/* == 3b. Candidate Details (if available) ============================= */}
+      {candidateDetails.length > 0 && (
+        <section id="candidate-details" className="container">
+          <SectionAnchor id="candidate-details" title="Candidate Details" kicker="Phase 02a" />
+          <div className="md">
+            <p>
+              The cards below summarise why each NAICS code was selected:
+              the primary job to be done, why the product is relevant, what
+              alternatives exist, and our best-available market size estimate.
+            </p>
 
-          {((marketDiscovery as unknown as { candidateDetails?: CandidateDetail[] }).candidateDetails ?? []).map((d, i) => (
-            <div
-              key={d.naics}
-              style={{
-                background: "var(--bg-card)",
-                border: "1px solid var(--border-subtle)",
-                borderRadius: 10,
-                padding: "20px 24px",
-                marginBottom: 16,
-              }}
-            >
-              <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 12 }}>
-                <span
-                  style={{
-                    fontFamily: "var(--font-mono)",
-                    fontSize: 11,
-                    color: "var(--accent-yellow)",
-                    fontWeight: 600,
-                  }}
-                >
-                  #{i + 1}
-                </span>
-                <ClickableCode kind="naics" code={d.naics} />
-                <span style={{ fontSize: 15, fontWeight: 500, color: "var(--text-white)" }}>
-                  {d.title}
-                </span>
+            {candidateDetails.map((d, i) => (
+              <div
+                key={d.naics}
+                style={{
+                  background: "var(--bg-card)",
+                  border: "1px solid var(--border-subtle)",
+                  borderRadius: 10,
+                  padding: "20px 24px",
+                  marginBottom: 16,
+                }}
+              >
+                <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 12 }}>
+                  <span
+                    style={{
+                      fontFamily: "var(--font-mono)",
+                      fontSize: 11,
+                      color: "var(--accent-yellow)",
+                      fontWeight: 600,
+                    }}
+                  >
+                    #{i + 1}
+                  </span>
+                  <ClickableCode kind="naics" code={d.naics} />
+                  <span style={{ fontSize: 15, fontWeight: 500, color: "var(--text-white)" }}>
+                    {d.title}
+                  </span>
+                </div>
+                <table style={{ marginTop: 0, marginBottom: 0 }}>
+                  <tbody>
+                    <tr>
+                      <td style={{ width: 160 }}><strong>Job</strong></td>
+                      <td>{d.job}</td>
+                    </tr>
+                    <tr>
+                      <td><strong>Why needed</strong></td>
+                      <td>{d.whyNeeded}</td>
+                    </tr>
+                    <tr>
+                      <td><strong>Alternatives</strong></td>
+                      <td>{d.alternatives}</td>
+                    </tr>
+                    <tr>
+                      <td><strong>Market size est.</strong></td>
+                      <td>
+                        {d.marketSize}{" "}
+                        <ConfidenceBadge level={confidenceLevel(d.confidence)} />
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
               </div>
-              <table style={{ marginTop: 0, marginBottom: 0 }}>
-                <tbody>
-                  <tr>
-                    <td style={{ width: 160 }}><strong>Job</strong></td>
-                    <td>{d.job}</td>
-                  </tr>
-                  <tr>
-                    <td><strong>Why needed</strong></td>
-                    <td>{d.whyNeeded}</td>
-                  </tr>
-                  <tr>
-                    <td><strong>Alternatives</strong></td>
-                    <td>{d.alternatives}</td>
-                  </tr>
-                  <tr>
-                    <td><strong>Market size est.</strong></td>
-                    <td>
-                      {d.marketSize}{" "}
-                      <ConfidenceBadge level={confidenceLevel(d.confidence)} />
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-          ))}
-        </div>
-      </section>
+            ))}
+          </div>
+        </section>
+      )}
 
-      {/* ── 4. Phase 02b — Architecture Distance ────────────────────── */}
-      <section id="architecture-distance" className="container">
-        <SectionAnchor
-          id="architecture-distance"
-          title="Architecture Distance Ranking"
-          kicker="Phase 02b — Prioritization Filter"
-        />
-        <div className="md">
-          <h3>Scoring Configuration</h3>
-          <table>
-            <thead>
-              <tr>
-                <th>Field</th>
-                <th>Value</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><strong>Product</strong></td>
-                <td>GfS Türwächter IoT (Exit Control 179/1125)</td>
-              </tr>
-              <tr>
-                <td><strong>Technology Class</strong></td>
-                <td>Emergency Exit Security Devices with Remote Monitoring</td>
-              </tr>
-              <tr>
-                <td><strong>Mechanism</strong></td>
-                <td>Spring-loaded mechanical door-handle guard with piezoelectric alarm horn (95 dB) + 868 MHz EasyWave wireless</td>
-              </tr>
-              <tr>
-                <td><strong>Key Specs</strong></td>
-                <td>95 dB alarm, 868 MHz EasyWave, 9V battery, surface-mount, ~30m range, EN 179/1125, ~730 EUR (IoT variant)</td>
-              </tr>
-              <tr>
-                <td><strong>Scoring Type</strong></td>
-                <td>Hardware components (L1–L4) — criteria U1–U5 + H1–H4</td>
-              </tr>
-              <tr>
-                <td><strong>Tiered Discovery</strong></td>
-                <td>Not used ({candidates.length} candidates &lt; 20 threshold)</td>
-              </tr>
-            </tbody>
-          </table>
-
-          <h3>Scoring Criteria</h3>
-          <h4>Universal (U1–U5)</h4>
-          <ul>
-            <li><strong>U1:</strong> Operating environment similarity</li>
-            <li><strong>U2:</strong> Regulatory regime distance</li>
-            <li><strong>U3:</strong> Customer type similarity</li>
-            <li><strong>U4:</strong> Integration architecture</li>
-            <li><strong>U5:</strong> Price point alignment</li>
-          </ul>
-          <h4>Hardware-Specific (H1–H4)</h4>
-          <ul>
-            <li><strong>H1:</strong> Physical envelope match (size, mounting, interfaces)</li>
-            <li><strong>H2:</strong> Media / material compatibility</li>
-            <li><strong>H3:</strong> Performance specification match (alarm volume, range, battery life)</li>
-            <li><strong>H4:</strong> Certification transferability (EN 179/1125, CE)</li>
-          </ul>
-          <p>
-            <em>Scale: 1 = nearly identical to current use case, 10 = completely different.</em>
-          </p>
-
-          <h3>Ranked Results</h3>
-          <table>
-            <thead>
-              <tr>
-                <th>#</th>
-                <th>NAICS</th>
-                <th>Title</th>
-                <th style={{ textAlign: "center" }}>Distance</th>
-                <th style={{ textAlign: "center" }}>Uses Tech</th>
-                <th>Functional Promise Fit</th>
-                <th>Priority</th>
-              </tr>
-            </thead>
-            <tbody>
-              {((marketDiscovery as unknown as { archDistanceData?: ArchDistanceRow[] }).archDistanceData ?? []).map((row, i) => (
-                <tr key={row.naics}>
-                  <td
-                    style={{
-                      fontFamily: "var(--font-mono)",
-                      textAlign: "center",
-                      color: "var(--text-gray)",
-                    }}
-                  >
-                    {i + 1}
-                  </td>
-                  <td>
-                    <ClickableCode kind="naics" code={row.naics} />
-                  </td>
-                  <td>{row.title}</td>
-                  <td
-                    style={{
-                      textAlign: "center",
-                      fontFamily: "var(--font-mono)",
-                      fontWeight: 700,
-                      color: "var(--text-white)",
-                    }}
-                  >
-                    {row.distance}
-                  </td>
-                  <td style={{ textAlign: "center" }}>
-                    <span
+      {/* == 4. Phase 02b — Architecture Distance (if data exists) ============ */}
+      {archDistanceData.length > 0 && (
+        <section id="architecture-distance" className="container">
+          <SectionAnchor
+            id="architecture-distance"
+            title="Architecture Distance Ranking"
+            kicker="Phase 02b — Prioritization Filter"
+          />
+          <div className="md">
+            <h3>Ranked Results</h3>
+            <table>
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>NAICS</th>
+                  <th>Title</th>
+                  <th style={{ textAlign: "center" }}>Distance</th>
+                  <th style={{ textAlign: "center" }}>Uses Tech</th>
+                  <th>Functional Promise Fit</th>
+                  <th>Priority</th>
+                </tr>
+              </thead>
+              <tbody>
+                {archDistanceData.map((row, i) => (
+                  <tr key={row.naics}>
+                    <td
                       style={{
                         fontFamily: "var(--font-mono)",
-                        fontSize: 11,
-                        color: row.usesTech ? "var(--status-high)" : "var(--text-gray)",
+                        textAlign: "center",
+                        color: "var(--text-gray)",
                       }}
                     >
-                      {row.usesTech ? "yes" : "no"}
-                    </span>
-                  </td>
-                  <td>
-                    <span className={FIT_BADGE[row.fpFit] ?? "badge badge--neutral"}>
-                      {row.fpFit}
-                    </span>
-                  </td>
-                  <td>
-                    <span
-                      className={
-                        DISTANCE_BADGE[row.priority] ?? "badge badge--neutral"
-                      }
+                      {i + 1}
+                    </td>
+                    <td>
+                      <ClickableCode kind="naics" code={row.naics} />
+                    </td>
+                    <td>{row.title}</td>
+                    <td
+                      style={{
+                        textAlign: "center",
+                        fontFamily: "var(--font-mono)",
+                        fontWeight: 700,
+                        color: "var(--text-white)",
+                      }}
                     >
-                      {row.priority}
-                    </span>
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-      </section>
+                      {row.distance}
+                    </td>
+                    <td style={{ textAlign: "center" }}>
+                      <span
+                        style={{
+                          fontFamily: "var(--font-mono)",
+                          fontSize: 11,
+                          color: row.usesTech ? "var(--status-high)" : "var(--text-gray)",
+                        }}
+                      >
+                        {row.usesTech ? "yes" : "no"}
+                      </span>
+                    </td>
+                    <td>
+                      <span className={FIT_BADGE[row.fpFit] ?? "badge badge--neutral"}>
+                        {row.fpFit}
+                      </span>
+                    </td>
+                    <td>
+                      <span
+                        className={
+                          DISTANCE_BADGE[row.priority] ?? "badge badge--neutral"
+                        }
+                      >
+                        {row.priority}
+                      </span>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </section>
+      )}
 
-      {/* ── 5. Scoring Criteria ─────────────────────────────────────── */}
+      {/* == 4b. Inline architecture distance from candidates (if no separate data) == */}
+      {archDistanceData.length === 0 && candidates.some((c: any) => c.architectureDistance != null) && (
+        <section id="architecture-distance" className="container">
+          <SectionAnchor
+            id="architecture-distance"
+            title="Architecture Distance Ranking"
+            kicker="Phase 02b — Prioritization Filter"
+          />
+          <div className="md">
+            <h3>Ranked Results</h3>
+            <table>
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>NAICS</th>
+                  <th>Title</th>
+                  <th style={{ textAlign: "center" }}>Distance</th>
+                  <th style={{ textAlign: "center" }}>Uses Tech</th>
+                  <th>Functional Promise Fit</th>
+                  <th>Priority</th>
+                </tr>
+              </thead>
+              <tbody>
+                {[...candidates]
+                  .sort((a: any, b: any) => (a.architectureDistance ?? 99) - (b.architectureDistance ?? 99))
+                  .map((c: any, i: number) => (
+                    <tr key={c.naics}>
+                      <td
+                        style={{
+                          fontFamily: "var(--font-mono)",
+                          textAlign: "center",
+                          color: "var(--text-gray)",
+                        }}
+                      >
+                        {i + 1}
+                      </td>
+                      <td>
+                        <ClickableCode kind="naics" code={c.naics} />
+                      </td>
+                      <td>{c.title ?? c.marketName ?? ""}</td>
+                      <td
+                        style={{
+                          textAlign: "center",
+                          fontFamily: "var(--font-mono)",
+                          fontWeight: 700,
+                          color: "var(--text-white)",
+                        }}
+                      >
+                        {c.architectureDistance}
+                      </td>
+                      <td style={{ textAlign: "center" }}>
+                        <span
+                          style={{
+                            fontFamily: "var(--font-mono)",
+                            fontSize: 11,
+                            color: c.alreadyUsesTechnology ? "var(--status-high)" : "var(--text-gray)",
+                          }}
+                        >
+                          {c.alreadyUsesTechnology ? "yes" : "no"}
+                        </span>
+                      </td>
+                      <td>
+                        <span className={FIT_BADGE[c.fpFit] ?? "badge badge--neutral"}>
+                          {c.fpFit}
+                        </span>
+                      </td>
+                      <td>
+                        <span
+                          className={
+                            DISTANCE_BADGE[c.marketPriority] ?? "badge badge--neutral"
+                          }
+                        >
+                          {c.marketPriority}
+                        </span>
+                      </td>
+                    </tr>
+                  ))}
+              </tbody>
+            </table>
+          </div>
+        </section>
+      )}
+
+      {/* == 5. Scoring Criteria ============================================== */}
       <ScoringCriteria />
 
-      {/* ── 6. Pipeline Summary ─────────────────────────────────────── */}
+      {/* == 6. Pipeline Summary ============================================== */}
       <section id="pipeline-summary" className="container">
         <SectionAnchor id="pipeline-summary" title="Pipeline Summary" />
         <div className="md">
@@ -502,71 +632,80 @@ export default function NewMarketDiscovery() {
             </thead>
             <tbody>
               <tr>
-                <td><strong>Markets Discovered (Phase 02a)</strong></td>
-                <td>{candidates.length}</td>
+                <td><strong>Markets Discovered</strong></td>
+                <td>{totalDiscovered}</td>
               </tr>
-              <tr>
-                <td><strong>Home Market Excluded</strong></td>
-                <td>
-                  1 (<ClickableCode kind="naics" code="332321" /> — Metal Window and Door Manufacturing)
-                </td>
-              </tr>
+              {excludedMarkets.length > 0 && (
+                <tr>
+                  <td><strong>Excluded Markets</strong></td>
+                  <td>
+                    {excludedMarkets.length} (
+                    {excludedMarkets.map((em: any) => em.title ?? em.name ?? em.naics).join(", ")}
+                    )
+                  </td>
+                </tr>
+              )}
               <tr>
                 <td><strong>Carried Through Full Analysis</strong></td>
-                <td>{rankedMarkets.length} candidate markets</td>
+                <td>{totalEvaluated} candidate markets</td>
               </tr>
               <tr>
                 <td><strong>Eliminated by Constraint Knockout</strong></td>
-                <td>0 (no absolute constraint violations across any market)</td>
+                <td>{eliminated}</td>
               </tr>
               <tr>
                 <td><strong>Markets Ranked</strong></td>
                 <td>{rankedMarkets.length}</td>
               </tr>
-              <tr>
-                <td><strong>Not Analyzed Downstream</strong></td>
-                <td>
-                  5 (Airports, Refrigerated Warehousing, Pharma Manufacturing,
-                  Food Manufacturing, Fire Protection — below priority threshold
-                  or insufficient data for full deep-dive)
-                </td>
-              </tr>
+              {totalDiscovered > rankedMarkets.length && (
+                <tr>
+                  <td><strong>Not Analyzed Downstream</strong></td>
+                  <td>
+                    {totalDiscovered - rankedMarkets.length} markets outside pipeline scope
+                  </td>
+                </tr>
+              )}
             </tbody>
           </table>
         </div>
       </section>
 
-      {/* ── 7. Final Ranking Table ───────────────────────────────────── */}
-      <RankingTable markets={rankedMarkets} />
+      {/* == 7. Final Ranking Table =========================================== */}
+      {rankedMarkets.length > 0 && (
+        <RankingTable markets={rankedMarkets} />
+      )}
 
-      {/* ── 8. Per-market Rationale Cards ───────────────────────────── */}
-      <section id="market-rationale" className="container">
-        <SectionAnchor
-          id="market-rationale"
-          title="Per-Market Rationale"
-          kicker="Strategic Synthesis"
-        />
-        <div className="md" style={{ marginBottom: 24 }}>
-          <p>
-            Each card below details the recommendation rationale, entry
-            strategy, time and investment estimates for one candidate market.
-            Click the link at the bottom of any card to open the full
-            market-level deep-dive (JTBD, ODI matrix, Kano, Value Network,
-            BOM, Compatibility, Alternatives) on the Analysis page.
-          </p>
-        </div>
-        {rankedMarkets.map((m) => (
-          <MarketRationaleCard key={m.slug} market={m} />
-        ))}
-      </section>
+      {/* == 8. Per-market Rationale Cards ===================================== */}
+      {rankedMarkets.length > 0 && (
+        <section id="market-rationale" className="container">
+          <SectionAnchor
+            id="market-rationale"
+            title="Per-Market Rationale"
+            kicker="Strategic Synthesis"
+          />
+          <div className="md" style={{ marginBottom: 24 }}>
+            <p>
+              Each card below details the recommendation rationale, entry
+              strategy, time and investment estimates for one candidate market.
+              Click the link at the bottom of any card to open the full
+              market-level deep-dive on the Analysis page.
+            </p>
+          </div>
+          {rankedMarkets.map((m) => (
+            <MarketRationaleCard key={m.slug} market={m} />
+          ))}
+        </section>
+      )}
 
-      {/* ── 9. Sources ───────────────────────────────────────────────── */}
-      <section id="sources" className="container">
-        <SourceList
-          sourceIds={PAGE_SOURCE_IDS}
-          title="Sources — Market Discovery & Ranking"
-        />
-      </section>
+      {/* == 9. Sources ======================================================= */}
+      {discoverySources.length > 0 && (
+        <section id="sources" className="container">
+          <SourceList
+            sourceIds={discoverySources}
+            title="Sources — Market Discovery & Ranking"
+          />
+        </section>
+      )}
     </>
   );
 }

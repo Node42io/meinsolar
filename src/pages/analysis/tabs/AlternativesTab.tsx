@@ -1,151 +1,158 @@
 /**
- * AlternativesTab — Competing technologies / feature-market fit.
- * Extracts alternatives and feature scores from generic JSON, renders Marquardt-style cards.
+ * AlternativesTab — competing technologies and alternative solutions analysis.
+ *
+ * Handles BOTH domain-specific format (has .alternatives[] array with
+ * { name, unspsc, tradeoffs, category?, existential? }) AND generic format
+ * ({sections, tables, entities} from json_exporter).
+ *
+ * Renders AlternativeCard for each alternative entry.
  */
+
 import { getMarket } from "@/data";
+
 import ExecutiveSummary from "@/components/ExecutiveSummary";
-import { renderMarkdown } from "@/lib/renderMarkdown";
+import ClickableCode from "@/components/ClickableCode";
+import SectionAnchor from "@/components/SectionAnchor";
+
+import AlternativeCard from "./alternatives/AlternativeCard";
+
+/* ─── Helpers ─────────────────────────────────────────────────────────────── */
+
+interface AlternativeEntry {
+  name: string;
+  unspsc: string;
+  tradeoffs: string;
+  category?: string;
+  existential?: boolean;
+}
+
+/** Extract alternatives from generic-format tables */
+function extractAlternativesFromGeneric(rawData: any): AlternativeEntry[] {
+  const tables: any[] = rawData?.tables ?? [];
+  const results: AlternativeEntry[] = [];
+  for (const t of tables) {
+    const h: string[] = t.headers ?? [];
+    if (h.includes("Alternative") || h.includes("Technology") || h.includes("Name")) {
+      for (const r of t.rows ?? []) {
+        results.push({
+          name: r["Alternative"] ?? r["Technology"] ?? r["Name"] ?? "",
+          unspsc: r["UNSPSC (neutral)"] ?? r["UNSPSC"] ?? "",
+          tradeoffs: r["Inherent trade-offs"] ?? r["Tradeoffs"] ?? r["Weaknesses"] ?? "",
+          category: r["Category"] ?? "",
+        });
+      }
+    }
+  }
+  // Also check entities[0].incumbents or entities[0].alternatives
+  const entity = rawData?.entities?.[0];
+  if (entity?.alternatives && Array.isArray(entity.alternatives)) {
+    for (const a of entity.alternatives) {
+      results.push({
+        name: a.name ?? "",
+        unspsc: a.unspsc ?? "",
+        tradeoffs: a.tradeoffs ?? "",
+        category: a.category ?? "",
+        existential: a.existential,
+      });
+    }
+  }
+  return results;
+}
+
+/* ─── Main component ──────────────────────────────────────────────────────── */
 
 export default function AlternativesTab({ marketSlug }: { marketSlug: string }) {
   let rawData: any = {};
   try { rawData = getMarket(marketSlug).alternatives; } catch { /* */ }
 
-  const sections: any[] = rawData?.sections ?? [];
-  const tables: any[] = rawData?.tables ?? [];
-  const entity = rawData?.entities?.[0] ?? {};
-  const marketName = entity.market_name ?? rawData?.marketName ?? marketSlug;
+  const marketName: string =
+    rawData?.marketName ?? rawData?.entities?.[0]?.market_name ?? marketSlug;
+  const naicsCode: string = rawData?.naicsCode ?? "";
 
-  // Extract alternatives from tables (look for Alternative/Technology/Name + tradeoffs/strengths)
-  const alternatives: any[] = [];
-  for (const t of tables) {
-    const h = t.headers ?? [];
-    if (h.includes("Alternative") || h.includes("Technology") || h.includes("Feature")) {
-      for (const r of t.rows ?? []) {
-        alternatives.push(r);
-      }
-    }
-  }
+  // Domain-specific: .alternatives[] array
+  const domainAlternatives: AlternativeEntry[] =
+    Array.isArray(rawData?.alternatives) && rawData.alternatives.length > 0
+      ? rawData.alternatives
+      : [];
 
-  // Extract feature-fit scores
-  const featureScores: any[] = [];
-  for (const t of tables) {
-    const h = t.headers ?? [];
-    if ((h.includes("Score") || h.includes("Fit")) && (h.includes("Feature") || h.includes("Dimension"))) {
-      for (const r of t.rows ?? []) {
-        featureScores.push(r);
-      }
-    }
-  }
+  // Fallback: extract from generic tables/entities
+  const alternatives: AlternativeEntry[] =
+    domainAlternatives.length > 0
+      ? domainAlternatives
+      : extractAlternativesFromGeneric(rawData);
 
-  if (sections.length === 0 && tables.length === 0) {
-    return (
-      <div className="section">
-        <div className="section__eyebrow">Alternatives · {marketName}</div>
-        <h2 className="section__title">Alternative Solutions & Feature-Market Fit</h2>
-        <p className="section__sub" style={{ fontStyle: "italic" }}>
-          Alternatives data pending for this market.
-        </p>
-      </div>
-    );
-  }
+  const hasData = alternatives.length > 0;
 
   return (
-    <div>
-      <div className="section">
-        <div className="section__eyebrow">Feature-Market Fit · {marketName}</div>
-        <h2 className="section__title">Alternative Solutions & Feature-Market Fit</h2>
-        <p className="section__sub">
-          This section maps competing technologies and alternative solutions available in this
-          market, and scores how well each product feature fits the market's needs.
-        </p>
-        <ExecutiveSummary kicker="Alternatives · Summary">
-          <p className="answer">
-            Analysis of <strong>{marketName}</strong>
-            {alternatives.length > 0 && <> identified <strong>{alternatives.length} alternatives</strong></>}
-            {featureScores.length > 0 && <> and scored <strong>{featureScores.length} feature dimensions</strong></>}
-            .
-          </p>
-        </ExecutiveSummary>
+    <div className="section">
+      {/* Eyebrow */}
+      <div className="section__eyebrow">
+        Competitive Landscape · Alternatives &amp; Competing Technologies · {marketName}
       </div>
 
-      {/* Feature scores table */}
-      {featureScores.length > 0 && (
-        <div className="section">
-          <h3 style={{ fontSize: 16, fontWeight: 700, color: "var(--accent-yellow)", marginBottom: 12 }}>Feature-Market Fit Scores</h3>
-          <table>
-            <thead>
-              <tr>
-                {Object.keys(featureScores[0]).map((k, i) => <th key={i}>{k}</th>)}
-              </tr>
-            </thead>
-            <tbody>
-              {featureScores.map((r, i) => (
-                <tr key={i}>
-                  {Object.values(r).map((v: any, ci) => {
-                    const num = parseFloat(String(v));
-                    const isScore = !isNaN(num) && num >= 0 && num <= 10;
-                    return (
-                      <td key={ci} style={{
-                        fontSize: 12,
-                        fontWeight: isScore ? 600 : 400,
-                        color: isScore ? (num >= 7 ? "var(--status-high)" : num >= 5 ? "var(--accent-yellow)" : "var(--status-low)") : undefined,
-                        fontFamily: isScore ? "var(--font-mono)" : undefined,
-                      }}>{String(v)}</td>
-                    );
-                  })}
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-      )}
+      {/* Title */}
+      <h2 className="section__title">Competing Technologies</h2>
+
+      {/* Executive summary */}
+      <ExecutiveSummary kicker="Alternatives / Executive Summary">
+        <p className="answer">
+          This tab maps the <strong>competing supply options</strong> that customers in{" "}
+          <strong>{marketName}</strong>
+          {naicsCode && (
+            <>
+              {" "}(<ClickableCode kind="naics" code={naicsCode} />)
+            </>
+          )}{" "}
+          could use <em>instead of</em> the subject product to fulfil their
+          functional need. An &ldquo;alternative&rdquo; here means any technology, process, or
+          existing supply arrangement that satisfies the same functional requirement.
+        </p>
+        {hasData && (
+          <p className="answer">
+            <strong>{alternatives.length} alternative{alternatives.length !== 1 ? "s" : ""}</strong>{" "}
+            identified in this market.
+            {alternatives.some(a => a.existential) && (
+              <> Some are flagged as <strong>existential</strong> threats that could structurally
+              displace the subject approach.</>
+            )}
+          </p>
+        )}
+      </ExecutiveSummary>
 
       {/* Alternative cards */}
-      {alternatives.length > 0 && (
-        <div className="section">
-          <h3 style={{ fontSize: 16, fontWeight: 700, color: "var(--accent-yellow)", marginBottom: 12 }}>Competing Alternatives</h3>
-          <div style={{ display: "grid", gap: 12 }}>
-            {alternatives.map((a, i) => {
-              const name = a["Alternative"] ?? a["Technology"] ?? a["Name"] ?? `Alternative ${i + 1}`;
-              const tradeoffs = a["Inherent trade-offs"] ?? a["Tradeoffs"] ?? a["Weaknesses"] ?? "";
-              const unspsc = a["UNSPSC (neutral)"] ?? a["UNSPSC"] ?? "";
-              const category = a["Category"] ?? "";
-              return (
-                <div key={i} style={{
-                  background: "var(--bg-card)",
-                  border: "1px solid var(--border-subtle)",
-                  borderRadius: 10,
-                  padding: "16px 20px",
-                }}>
-                  <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 8 }}>
-                    <span style={{ fontFamily: "var(--font-mono)", fontSize: 10, color: "var(--text-gray-dark)" }}>A{i + 1}</span>
-                    <strong style={{ fontSize: 14, color: "var(--text-white)" }}>{name}</strong>
-                    {category && <span className="badge badge--neutral" style={{ fontSize: 9 }}>{category}</span>}
-                  </div>
-                  {unspsc && (
-                    <div style={{ fontFamily: "var(--font-mono)", fontSize: 10, color: "var(--text-gray-dark)", marginBottom: 6 }}>UNSPSC: {unspsc}</div>
-                  )}
-                  {tradeoffs && (
-                    <p style={{ fontSize: 12, color: "var(--text-gray-light)", lineHeight: 1.6, margin: 0 }}>{tradeoffs}</p>
-                  )}
-                </div>
-              );
-            })}
+      {!hasData ? (
+        <p style={{ color: "var(--text-gray)", fontStyle: "italic", fontSize: 13 }}>
+          Data pending — alternative technology data for {marketName} has not yet been generated.
+        </p>
+      ) : (
+        <div>
+          <SectionAnchor id={`alternatives-techs-${marketSlug}`}>
+            <h3
+              style={{
+                fontFamily: "var(--font-mono)",
+                fontSize: "0.9rem",
+                textTransform: "uppercase",
+                letterSpacing: "0.08em",
+                color: "var(--text-gray)",
+                marginBottom: 16,
+                marginTop: 8,
+              }}
+            >
+              Competing Technologies in {marketName} ({alternatives.length})
+            </h3>
+          </SectionAnchor>
+
+          <div className="alternatives-grid">
+            {alternatives.map((alt, i) => (
+              <AlternativeCard
+                key={alt.name || i}
+                alternative={alt}
+                rank={i + 1}
+              />
+            ))}
           </div>
         </div>
       )}
-
-      {/* Remaining sections as prose */}
-      {sections.filter(s => !s.title?.includes("Structured Data") && !s.title?.includes("Neo4j") && !s.title?.includes("QA")).map((s: any, i: number) => (
-        <div key={i} className="section">
-          {s.title && <h3 style={{ fontSize: 16, fontWeight: 700, color: "var(--accent-yellow)", marginBottom: 8 }}>{s.title}</h3>}
-          <div
-            style={{ fontSize: 13, color: "var(--text-gray-light)", lineHeight: 1.75 }}
-            dangerouslySetInnerHTML={{ __html: renderMarkdown(s.content) }}
-          />
-        </div>
-      ))}
     </div>
   );
 }
-

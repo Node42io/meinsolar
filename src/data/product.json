@@ -1,655 +1,232 @@
 {
-  "id": "01_product_decomposition",
-  "title": "01 — Product Decomposition",
-  "type": "product_decomposition",
-  "market_slug": null,
-  "is_per_market": false,
-  "sections": [
+  "productName": "EPC für Großbatteriespeicher",
+  "vendorName": "Mein Solar GmbH",
+  "offeringType": "project_business",
+  "christensen": {
+    "mechanism": "Turnkey systems integration of containerized Li-ion BESS, bidirectional PCS, MV grid coupling, and EMS dispatch, delivered under single-source EPC contract with VDE-AR-N 4110 / FGW TR8 certification",
+    "function": "Deliver grid-compliant, dispatchable multi-MWh electrical energy storage as a turnkey capital asset with single-source responsibility from site study to commissioning",
+    "outcome": "as a turnkey capital asset with single-source responsibility from site study to commissioning"
+  },
+  "technology": {
+    "class": "Large-Scale Battery Energy Storage System EPC",
+    "underlyingMechanism": "Turnkey systems integration of containerized Li-ion BESS, bidirectional PCS, MV grid coupling, and EMS dispatch, delivered under single-source EPC contract with VDE-AR-N 4110 / FGW TR8 certification",
+    "unspscCode": "",
+    "unspscTitle": "",
+    "customProductGroup": "Battery Energy Storage System EPC Services"
+  },
+  "functionalPromise": {
+    "statement": "Deliver grid-compliant, dispatchable multi-MWh electrical energy storage as a turnkey capital asset with single-source responsibility from site study to commissioning",
+    "verb": "Deliver",
+    "object": "grid-compliant, dispatchable multi-MWh electrical energy storage",
+    "context": "as a turnkey capital asset with single-source responsibility from site study to commissioning"
+  },
+  "commodityFunctionalPromise": "Deliver operational grid-connected electrical energy storage assets as turnkey capital projects with single-source engineering, procurement, construction, and grid-code certification",
+  "differentiators": [
+    "Single-point EPC accountability vs. split-contract approach",
+    "Integrated PV+BESS design authority from incumbent PV-EPC practice",
+    "Native VDE-AR-N 4110 / FGW TR8 certification path",
+    "Proven industrial scale (4.5 MW / 9 MWh reference)"
+  ],
+  "features": [
     {
-      "title": "01a — Web research summary",
-      "content": "| Area | Key findings |\n|---|---|\n| Containerized BESS norms | 20ft/40ft HC containers, 1–5 MWh per unit, Grade-A LFP cells, liquid cooling, IP54, NOVEC 1230 fire suppression, BMS/BAMS/BCMS stack |\n| German grid compliance | VDE-AR-N 4110 (MV, >100 kW or ≥1 kV), VDE-AR-N 4105 (LV), FGW TR8 plant certification (type B), TAR Hochspannung VDE-AR-N 4120 for ≥110 kV |\n| C&I payback DE | 3.5–5 years (driven by Netzentgelte reduction, peak shaving, intraday arbitrage, atypical network usage §19 StromNEV) |\n| Scale reference | 1 MWh container ≈ 20ft; Mein Solar reference 4.5 MW / 9 MWh = ~9× 1 MWh containers, C-rate 0.5 |\n| System integration | PCS (bidirectional inverter), MV transformer, MV switchgear, protection relays, EMS software, SCADA link to DSO |\n\nSources: [VDE-AR-N 4110](https://www.vde.com/en/fnn/topics/technical-connection-rules/tcr-for-medium-voltage), [TÜV NORD grid cert](https://www.tuev-nord.de/en/dienstleistungen/auditierung-und-zertifizierung/tne-ces/grid-connection/), [SolarEast BESS](https://www.solareastbess.com/company-news/solareast-bess-europe-2026-1-2-6mwh-industrial-energy-storage-cases.html), [GreenTech EPC](https://greentech.energy/epc/), [Voltfang Großbatteriespeicher](https://voltfang.de/batteriespeicher-industrie/grossbatteriespeicher/).\n\n---"
+      "scope": "technology",
+      "name": "Containerized Li-ion BESS Integration",
+      "short": "Integrate LFP battery modules, BMS, HVAC, and fire suppression inside ISO container envelope",
+      "longDescription": "20ft/40ft ISO high-cube containers pre-fitted with Grade-A LFP battery racks, BMS/BAMS/BCMS stack, liquid-cooling loop, HVAC, and NOVEC 1230 suppression. IP54 envelope. Requires craned foundation placement and internal commissioning wiring.",
+      "category": "performance"
     },
     {
-      "title": "01b — Structured decomposition",
-      "content": "### Technology class & mechanism\n\n| Field | Value |\n|---|---|\n| `technology_class` | Large-Scale Battery Energy Storage System EPC |\n| `underlying_mechanism` | Turnkey systems integration: containerized Li-ion BESS + bidirectional PCS + MV grid coupling + EMS dispatch, delivered under single-source EPC contract with grid-code certification |\n\n### Functional Promise (product-level)\n\n| Part | Value |\n|---|---|\n| Statement | Deliver grid-compliant, dispatchable multi-MWh electrical energy storage as a turnkey capital asset with single-source responsibility from site study to commissioning |\n| Verb | Deliver |\n| Object | grid-compliant, dispatchable multi-MWh electrical energy storage |\n| Context | as a turnkey capital asset with single-source responsibility from site study to commissioning |\n| Differentiators | Single-point EPC accountability vs. split-contract approach; integrated PV+BESS design authority; native VDE-AR-N 4110 / FGW TR8 certification path; PV-EPC craftsmanship carried into BESS delivery |\n\n### Features\n\n| # | Name | Scope | Category | Short description |\n|---|---|---|---|---|\n| 1 | Containerized Li-ion BESS Integration | technology | performance | Integrate LFP battery modules, BMS, HVAC, and fire suppression inside ISO container envelope |\n| 2 | Bidirectional Power Conversion System | technology | performance | Convert between DC battery and AC grid via 4-quadrant inverter with reactive power capability |\n| 3 | Medium-Voltage Grid Coupling | technology | integration | Connect storage asset to 10/20 kV DSO grid via MV transformer, switchgear, and protection relays |\n| 4 | Energy Management System (EMS) | technology | integration | Dispatch charge/discharge against peak shaving, arbitrage, or ancillary-service objectives |\n| 5 | Grid-Code Certification Delivery | technology | safety | Produce VDE-AR-N 4110 plant certificate (type B) per FGW TR8 with DSO acceptance |\n| 6 | Co-located PV+BESS Hybrid Design | vendor | integration | Mein Solar carries PV EPC authority into BESS design, sizing PV array and BESS as one coupled asset |\n| 7 | EV-Charging Buffer Configuration | vendor | integration | Size BESS as buffer for HPC stations to avoid costly grid upgrade at site with weak connection |\n| 8 | Civil Works & Site Preparation | technology | usability | Foundation, container placement, cable trenching, fencing, and access provisioning |\n| 9 | Single-Source EPC Contract Vehicle | vendor | usability | One contract, one schedule, one warranty wrapper covering battery, PCS, grid, software, civil |\n\nFeatures 6, 7, 9 are **vendor-scoped** (Mein Solar's specific positioning). All others are **technology-scoped** (any BESS EPC delivers these).\n\n### Specifications\n\n| Name | Value | Unit | Test condition |\n|---|---|---|---|\n| Project power rating (reference) | 4.5 | MW | Mein Solar Großbatteriespeicher reference installation |\n| Project energy capacity (reference) | 9 | MWh | C-rate 0.5, 2h discharge |\n| Minimum system threshold | ≥500 kW / ≥1 MWh | — | EPC-scale threshold vs. C&I packaged units |\n| Cell chemistry | LFP (LiFePO₄) | — | Grade-A prismatic cells, standard for stationary storage |\n| Container form factor | 20ft / 40ft ISO HC | — | IP54, liquid-cooled |\n| Grid connection | VDE-AR-N 4110 | — | Medium voltage 1–60 kV |\n| Plant certification basis | FGW TR8 | — | Type B simplified plant certificate |\n| Roundtrip efficiency (AC-AC) | 85–90 | % | Including PCS and auxiliary loads |\n| Calendar lifetime | ≥10 | years | LFP at controlled 25 °C ambient |\n| Cycle lifetime | ≥6,000 | cycles | 80% DoD, LFP typical |\n\n### Constraints\n\n| Name | Type | Severity | Threshold | Description |\n|---|---|---|---|---|\n| MV grid connection capacity | operational | hard | — | DSO must have spare MV capacity; grid upgrade required where saturated (common bottleneck in German DE rural grids) |\n| Land footprint and siting | physical | hard | ~40–80 m²/MWh | Container footprint + safety clearances + fire-service access; municipal building permit required |\n| Fire-protection clearance | regulatory | hard | per VdS / local Feuerwehr | Minimum distance to buildings/property line, hydrant access, separation walls for >3 MWh clusters |\n| Li-ion thermal runaway hazard | physical | hard | — | Requires NOVEC/aerosol suppression, compartmentalization, deflagration venting — cannot be eliminated, only contained |\n| Grid code certification lead time | regulatory | soft | 6–12 months | Type B plant certificate and DSO acceptance lengthen schedule; parallelizable but on critical path |\n| Battery supply chain concentration | economic | soft | — | LFP cells concentrated in CN suppliers; FX/tariff exposure; CRMA and EU Battery Regulation add compliance overhead |\n| Ambient temperature envelope | physical | soft | -20 to +50 °C | HVAC maintains internal setpoint; extremes reduce roundtrip efficiency and cycle life |\n| Round-trip energy losses | physical | hard | 10–15% | Thermodynamic floor from PCS switching, battery internal resistance, and auxiliary HVAC load |\n| CAPEX threshold for viability | economic | soft | ~€250–400/kWh installed | Below this the arbitrage/peak-shaving business case closes; above, payback exceeds 7 years |\n\n---"
+      "scope": "technology",
+      "name": "Bidirectional Power Conversion System",
+      "short": "Convert between DC battery and AC grid via 4-quadrant inverter with reactive power capability",
+      "longDescription": "String or central PCS rated to full BESS MW capacity, operating in all four PQ quadrants. Enables peak shaving, arbitrage, and Q(U) / cos-phi support. Efficiency typ. 97–98%; controls response under 100 ms for FCR-grade dispatch.",
+      "category": "performance"
     },
     {
-      "title": "01c — Validation notes",
-      "content": "- Functional Promise is solution-agnostic: no vendor name, no \"Mein Solar\" in the statement, no mechanism words (\"lithium\", \"ultrasonic\").\n- Features are scoped correctly: technology-generic features (1–5, 8) apply to any BESS EPC; features 6, 7, 9 are Mein Solar's specific positioning (PV heritage, EV-charging niche, single-source contract vehicle).\n- Constraints are concrete and testable (MV capacity, m²/MWh, °C envelope, €/kWh threshold).\n- Offering-type reinterpretation (Project Business): Mechanism level describes the **EPC execution methodology** (single-source integration), not a single physical artifact. This matches the Christensen table in the component doc.\n\n---"
+      "scope": "technology",
+      "name": "Medium-Voltage Grid Coupling",
+      "short": "Connect storage asset to 10/20 kV DSO grid via MV transformer, switchgear, and protection relays",
+      "longDescription": "MV step-up transformer, SF6-free RMU switchgear, digital protection relays, metering, and NA-protection. Designed to VDE-AR-N 4110. Includes DSO-interface cabinet, remote trip, and SCADA uplink.",
+      "category": "integration"
     },
     {
-      "title": "01d — UNSPSC commodity classification",
-      "content": "Candidate codes evaluated:\n\n| Code | Name | Confidence | Reasoning |\n|---|---|---|---|\n| 26111711 | Lithium batteries | 45% | Describes the **battery cells only**, not the EPC service or the integrated system — sub-component match |\n| 26111700 | Batteries and cells and accessories (class) | 40% | Class-level, not commodity; too generic |\n| 81101513 | Electrical engineering | 55% | Covers engineering portion only, misses procurement and construction |\n| 72151500 | Specialized trade construction services | 50% | Covers civil and install, misses engineering and equipment |\n| 83101800 | Electric utilities services | 35% | Demand-side utility services, not asset delivery |\n\n**No code reaches ≥80% confidence.** EPC-for-BESS is a bundled project-delivery offering that UNSPSC does not cleanly cover with one 8-digit commodity.\n\n**Fallback:** `suggested_product_group = \"Battery Energy Storage System EPC Services\"`\n\n---"
+      "scope": "technology",
+      "name": "Energy Management System (EMS)",
+      "short": "Dispatch charge/discharge against peak shaving, arbitrage, or ancillary-service objectives",
+      "longDescription": "Software layer receiving setpoints from market, load, and grid signals; solving optimization to issue PCS commands. Supports forecasting, SoC management, and degradation-aware cycling. API to aggregators/VPPs.",
+      "category": "integration"
     },
     {
-      "title": "01e — Commodity-level Functional Promise",
-      "content": "| Field | Value |\n|---|---|\n| `commodity_or_group` | Battery Energy Storage System EPC Services |\n| `functional_promise` | Deliver operational grid-connected electrical energy storage assets as turnkey capital projects with single-source engineering, procurement, construction, and grid-code certification |\n| `reasoning` | All BESS EPC providers — pure-play integrators, utility IPPs, solar EPCs extending into storage, and OEM-led turnkey offers — share this function: converting a storage business case into a commissioned, grid-compliant asset. The mechanism varies (self-perform vs. subcontract, PV-integrated vs. standalone), the function does not. |\n\n---"
+      "scope": "technology",
+      "name": "Grid-Code Certification Delivery",
+      "short": "Produce VDE-AR-N 4110 plant certificate (type B) per FGW TR8 with DSO acceptance",
+      "longDescription": "Certification dossier prepared and submitted by EPC; includes FGW TR3 unit cert handover, TR8 plant cert, commissioning test protocols, and DSO acceptance inspection. Governs when the asset is allowed to energize.",
+      "category": "safety"
     },
     {
-      "title": "01f — Neo4j write preview",
-      "content": "```\n(WorkflowRun {run_id})\n   -[:analyzes]-> (NeutralProductGroup {name: \"Large-Scale Battery Energy Storage System EPC\"})\n(NeutralProductGroup)\n   -[:has_functional_promise]-> (FunctionalPromise {statement, verb, object, context, differentiators})\n   -[:has_neutral_feature]-> (Feature) x6  (technology-scoped)\n   -[:has_constraint]-> (Constraint) x9\n(Product {name: \"EPC für Großbatteriespeicher\", company_name: \"Mein Solar GmbH\"})\n   -[:has_feature]-> (Feature) x3  (vendor-scoped: 6, 7, 9)\n```\n\n- `unspsc_code = null`, `unspsc_title = null`\n- `custom_product_group = \"Battery Energy Storage System EPC Services\"`\n- `commodity_functional_promise` set from 01e\n\n---"
+      "scope": "vendor",
+      "name": "Co-located PV+BESS Hybrid Design",
+      "short": "Mein Solar carries PV EPC authority into BESS design, sizing PV array and BESS as one coupled asset",
+      "longDescription": "Joint sizing of PV generator and BESS for self-consumption, curtailment recovery, or solar shifting. Single grid-connection point, shared EMS, shared MV switchgear — lower BoS cost and one grid-code certification vs. separate assets.",
+      "category": "integration"
     },
     {
-      "title": "Structured Data",
-      "content": "```json\n{\n  \"product_name\": \"EPC für Großbatteriespeicher\",\n  \"vendor_name\": \"Mein Solar GmbH\",\n  \"offering_type\": \"project_business\",\n  \"technology_class\": \"Large-Scale Battery Energy Storage System EPC\",\n  \"underlying_mechanism\": \"Turnkey systems integration of containerized Li-ion BESS, bidirectional PCS, MV grid coupling, and EMS dispatch, delivered under single-source EPC contract with VDE-AR-N 4110 / FGW TR8 certification\",\n  \"functional_promise\": {\n    \"statement\": \"Deliver grid-compliant, dispatchable multi-MWh electrical energy storage as a turnkey capital asset with single-source responsibility from site study to commissioning\",\n    \"verb\": \"Deliver\",\n    \"object\": \"grid-compliant, dispatchable multi-MWh electrical energy storage\",\n    \"context\": \"as a turnkey capital asset with single-source responsibility from site study to commissioning\",\n    \"differentiators\": [\n      \"Single-point EPC accountability vs. split-contract approach\",\n      \"Integrated PV+BESS design authority from incumbent PV-EPC practice\",\n      \"Native VDE-AR-N 4110 / FGW TR8 certification path\",\n      \"Proven industrial scale (4.5 MW / 9 MWh reference)\"\n    ]\n  },\n  \"features\": [\n    {\"name\": \"Containerized Li-ion BESS Integration\", \"description\": \"Integrate LFP battery modules, BMS, HVAC, and fire suppression inside ISO container envelope\", \"long_description\": \"20ft/40ft ISO high-cube containers pre-fitted with Grade-A LFP battery racks, BMS/BAMS/BCMS stack, liquid-cooling loop, HVAC, and NOVEC 1230 suppression. IP54 envelope. Requires craned foundation placement and internal commissioning wiring.\", \"scope\": \"technology\", \"category\": \"performance\"},\n    {\"name\": \"Bidirectional Power Conversion System\", \"description\": \"Convert between DC battery and AC grid via 4-quadrant inverter with reactive power capability\", \"long_description\": \"String or central PCS rated to full BESS MW capacity, operating in all four PQ quadrants. Enables peak shaving, arbitrage, and Q(U) / cos-phi support. Efficiency typ. 97–98%; controls response under 100 ms for FCR-grade dispatch.\", \"scope\": \"technology\", \"category\": \"performance\"},\n    {\"name\": \"Medium-Voltage Grid Coupling\", \"description\": \"Connect storage asset to 10/20 kV DSO grid via MV transformer, switchgear, and protection relays\", \"long_description\": \"MV step-up transformer, SF6-free RMU switchgear, digital protection relays, metering, and NA-protection. Designed to VDE-AR-N 4110. Includes DSO-interface cabinet, remote trip, and SCADA uplink.\", \"scope\": \"technology\", \"category\": \"integration\"},\n    {\"name\": \"Energy Management System (EMS)\", \"description\": \"Dispatch charge/discharge against peak shaving, arbitrage, or ancillary-service objectives\", \"long_description\": \"Software layer receiving setpoints from market, load, and grid signals; solving optimization to issue PCS commands. Supports forecasting, SoC management, and degradation-aware cycling. API to aggregators/VPPs.\", \"scope\": \"technology\", \"category\": \"integration\"},\n    {\"name\": \"Grid-Code Certification Delivery\", \"description\": \"Produce VDE-AR-N 4110 plant certificate (type B) per FGW TR8 with DSO acceptance\", \"long_description\": \"Certification dossier prepared and submitted by EPC; includes FGW TR3 unit cert handover, TR8 plant cert, commissioning test protocols, and DSO acceptance inspection. Governs when the asset is allowed to energize.\", \"scope\": \"technology\", \"category\": \"safety\"},\n    {\"name\": \"Co-located PV+BESS Hybrid Design\", \"description\": \"Mein Solar carries PV EPC authority into BESS design, sizing PV array and BESS as one coupled asset\", \"long_description\": \"Joint sizing of PV generator and BESS for self-consumption, curtailment recovery, or solar shifting. Single grid-connection point, shared EMS, shared MV switchgear — lower BoS cost and one grid-code certification vs. separate assets.\", \"scope\": \"vendor\", \"category\": \"integration\"},\n    {\"name\": \"EV-Charging Buffer Configuration\", \"description\": \"Size BESS as buffer for HPC stations to avoid costly grid upgrade at site with weak connection\", \"long_description\": \"BESS sized to supply peak HPC power (150–350 kW per dispenser) while drawing smoothed average from the grid. Enables HPC deployment on sites where DSO upgrade is economically or temporally blocked.\", \"scope\": \"vendor\", \"category\": \"integration\"},\n    {\"name\": \"Civil Works & Site Preparation\", \"description\": \"Foundation, container placement, cable trenching, fencing, and access provisioning\", \"long_description\": \"Reinforced concrete pads sized to container load + seismic, cable trenches to MV cabinet, perimeter fencing, fire-service access, and lightning protection. Coordinated with local building permit (Baugenehmigung).\", \"scope\": \"technology\", \"category\": \"usability\"},\n    {\"name\": \"Single-Source EPC Contract Vehicle\", \"description\": \"One contract, one schedule, one warranty wrapper covering battery, PCS, grid, software, civil\", \"long_description\": \"Mein Solar acts as single legal counterparty for the whole asset. Performance guarantee (kWh throughput, roundtrip efficiency, availability) wrapped across multi-vendor equipment. Lifts interface-risk burden from the asset owner.\", \"scope\": \"vendor\", \"category\": \"usability\"}\n  ],\n  \"specifications\": [\n    {\"name\": \"Project Power Rating (reference)\", \"value\": \"4.5\", \"unit\": \"MW\", \"test_condition\": \"Mein Solar Großbatteriespeicher reference installation\"},\n    {\"name\": \"Project Energy Capacity (reference)\", \"value\": \"9\", \"unit\": \"MWh\", \"test_condition\": \"C-rate 0.5, 2h discharge\"},\n    {\"name\": \"Minimum Project Scale Threshold\", \"value\": \"≥500 / ≥1\", \"unit\": \"kW / MWh\", \"test_condition\": \"EPC-scale vs. C&I packaged units\"},\n    {\"name\": \"Cell Chemistry\", \"value\": \"LFP (LiFePO4)\", \"unit\": null, \"test_condition\": \"Grade-A prismatic, stationary-grade\"},\n    {\"name\": \"Container Form Factor\", \"value\": \"20ft / 40ft ISO HC\", \"unit\": null, \"test_condition\": \"IP54, liquid-cooled\"},\n    {\"name\": \"Grid Connection Rule\", \"value\": \"VDE-AR-N 4110\", \"unit\": null, \"test_condition\": \"Medium voltage 1–60 kV\"},\n    {\"name\": \"Plant Certification Basis\", \"value\": \"FGW TR8\", \"unit\": null, \"test_condition\": \"Type B simplified plant certificate\"},\n    {\"name\": \"Roundtrip Efficiency (AC-AC)\", \"value\": \"85-90\", \"unit\": \"%\", \"test_condition\": \"Including PCS and auxiliary loads\"},\n    {\"name\": \"Calendar Lifetime\", \"value\": \"≥10\", \"unit\": \"years\", \"test_condition\": \"LFP at controlled 25 °C ambient\"},\n    {\"name\": \"Cycle Lifetime\", \"value\": \"≥6000\", \"unit\": \"cycles\", \"test_condition\": \"80% DoD, LFP typical\"}\n  ],\n  \"constraints\": [\n    {\"name\": \"MV Grid Connection Capacity\", \"constraint_type\": \"operational\", \"description\": \"DSO must have spare MV feeder capacity; where grid is saturated (common in rural DE), a grid upgrade is required and may be denied or cost-prohibitive\", \"severity\": \"hard\", \"threshold_value\": null, \"threshold_unit\": null},\n    {\"name\": \"Land Footprint and Siting\", \"constraint_type\": \"physical\", \"description\": \"Container footprint plus safety clearances and fire-service access; approx. 40–80 m²/MWh; municipal Baugenehmigung required\", \"severity\": \"hard\", \"threshold_value\": \"40-80\", \"threshold_unit\": \"m2_per_MWh\"},\n    {\"name\": \"Fire-Protection Clearance\", \"constraint_type\": \"regulatory\", \"description\": \"Minimum distance to buildings and property line, hydrant access, separation walls for >3 MWh clusters per VdS and local Feuerwehr guidance\", \"severity\": \"hard\", \"threshold_value\": null, \"threshold_unit\": null},\n    {\"name\": \"Li-Ion Thermal Runaway Hazard\", \"constraint_type\": \"physical\", \"description\": \"Inherent chemistry risk; cannot be eliminated — only contained via NOVEC/aerosol suppression, compartmentalization, and deflagration venting\", \"severity\": \"hard\", \"threshold_value\": null, \"threshold_unit\": null},\n    {\"name\": \"Grid Code Certification Lead Time\", \"constraint_type\": \"regulatory\", \"description\": \"FGW TR8 type B plant certificate and DSO acceptance lengthen the schedule by 6–12 months; parallelizable with procurement but always on the critical path\", \"severity\": \"soft\", \"threshold_value\": \"6-12\", \"threshold_unit\": \"months\"},\n    {\"name\": \"Battery Supply Chain Concentration\", \"constraint_type\": \"economic\", \"description\": \"LFP cells concentrated in Chinese suppliers; FX, tariff, and CRMA/EU Battery Regulation compliance exposure\", \"severity\": \"soft\", \"threshold_value\": null, \"threshold_unit\": null},\n    {\"name\": \"Ambient Temperature Envelope\", \"constraint_type\": \"environmental\", \"description\": \"HVAC maintains internal setpoint; operation at extremes reduces roundtrip efficiency and cycle life\", \"severity\": \"soft\", \"threshold_value\": \"-20 to +50\", \"threshold_unit\": \"C\"},\n    {\"name\": \"Round-Trip Energy Losses\", \"constraint_type\": \"physical\", \"description\": \"Thermodynamic floor from PCS switching losses, battery internal resistance, and auxiliary HVAC load\", \"severity\": \"hard\", \"threshold_value\": \"10-15\", \"threshold_unit\": \"%\"},\n    {\"name\": \"CAPEX Viability Threshold\", \"constraint_type\": \"economic\", \"description\": \"Below ~€250–400/kWh installed the arbitrage/peak-shaving business case closes; above, payback exceeds 7 years and investors walk\", \"severity\": \"soft\", \"threshold_value\": \"250-400\", \"threshold_unit\": \"EUR_per_kWh\"}\n  ],\n  \"unspsc_classification\": {\n    \"chosen_code\": null,\n    \"chosen_title\": null,\n    \"custom_product_group\": \"Battery Energy Storage System EPC Services\",\n    \"evaluations\": [\n      {\"commodity_code\": \"81101513\", \"commodity_name\": \"Electrical engineering\", \"confidence_pct\": 55, \"reasoning\": \"Covers engineering portion only; misses procurement and construction scope\"},\n      {\"commodity_code\": \"72151500\", \"commodity_name\": \"Specialized trade construction services\", \"confidence_pct\": 50, \"reasoning\": \"Covers civil and install only; misses engineering and equipment\"},\n      {\"commodity_code\": \"26111711\", \"commodity_name\": \"Lithium batteries\", \"confidence_pct\": 45, \"reasoning\": \"Describes battery cells only; sub-component match, not the integrated EPC offering\"},\n      {\"commodity_code\": \"26111700\", \"commodity_name\": \"Batteries and cells and accessories\", \"confidence_pct\": 40, \"reasoning\": \"Class-level, not commodity; too generic\"},\n      {\"commodity_code\": \"83101800\", \"commodity_name\": \"Electric utilities services\", \"confidence_pct\": 35, \"reasoning\": \"Demand-side utility services, not asset delivery\"}\n    ],\n    \"reason_for_fallback\": \"EPC-for-BESS is a bundled project-delivery offering that UNSPSC does not cleanly cover with a single 8-digit commodity at ≥80% confidence\"\n  },\n  \"commodity_functional_promise\": {\n    \"commodity_or_group\": \"Battery Energy Storage System EPC Services\",\n    \"functional_promise\": \"Deliver operational grid-connected electrical energy storage assets as turnkey capital projects with single-source engineering, procurement, construction, and grid-code certification\",\n    \"reasoning\": \"All BESS EPC providers — pure-play integrators, utility IPPs, solar EPCs extending into storage, and OEM-led turnkey offers — share this function: converting a storage business case into a commissioned, grid-compliant asset. The mechanism varies (self-perform vs. subcontract, PV-integrated vs. standalone); the function does not.\"\n  }\n}\n```"
+      "scope": "vendor",
+      "name": "EV-Charging Buffer Configuration",
+      "short": "Size BESS as buffer for HPC stations to avoid costly grid upgrade at site with weak connection",
+      "longDescription": "BESS sized to supply peak HPC power (150–350 kW per dispenser) while drawing smoothed average from the grid. Enables HPC deployment on sites where DSO upgrade is economically or temporally blocked.",
+      "category": "integration"
+    },
+    {
+      "scope": "technology",
+      "name": "Civil Works & Site Preparation",
+      "short": "Foundation, container placement, cable trenching, fencing, and access provisioning",
+      "longDescription": "Reinforced concrete pads sized to container load + seismic, cable trenches to MV cabinet, perimeter fencing, fire-service access, and lightning protection. Coordinated with local building permit (Baugenehmigung).",
+      "category": "usability"
+    },
+    {
+      "scope": "vendor",
+      "name": "Single-Source EPC Contract Vehicle",
+      "short": "One contract, one schedule, one warranty wrapper covering battery, PCS, grid, software, civil",
+      "longDescription": "Mein Solar acts as single legal counterparty for the whole asset. Performance guarantee (kWh throughput, roundtrip efficiency, availability) wrapped across multi-vendor equipment. Lifts interface-risk burden from the asset owner.",
+      "category": "usability"
     }
   ],
-  "tables": [
+  "specifications": [
     {
-      "headers": [
-        "Area",
-        "Key findings"
-      ],
-      "rows": [
-        {
-          "Area": "Containerized BESS norms",
-          "Key findings": "20ft/40ft HC containers, 1–5 MWh per unit, Grade-A LFP cells, liquid cooling, IP54, NOVEC 1230 fire suppression, BMS/BAMS/BCMS stack"
-        },
-        {
-          "Area": "German grid compliance",
-          "Key findings": "VDE-AR-N 4110 (MV, >100 kW or ≥1 kV), VDE-AR-N 4105 (LV), FGW TR8 plant certification (type B), TAR Hochspannung VDE-AR-N 4120 for ≥110 kV"
-        },
-        {
-          "Area": "C&I payback DE",
-          "Key findings": "3.5–5 years (driven by Netzentgelte reduction, peak shaving, intraday arbitrage, atypical network usage §19 StromNEV)"
-        },
-        {
-          "Area": "Scale reference",
-          "Key findings": "1 MWh container ≈ 20ft; Mein Solar reference 4.5 MW / 9 MWh = ~9× 1 MWh containers, C-rate 0.5"
-        },
-        {
-          "Area": "System integration",
-          "Key findings": "PCS (bidirectional inverter), MV transformer, MV switchgear, protection relays, EMS software, SCADA link to DSO"
-        }
-      ]
+      "name": "Project Power Rating (reference)",
+      "value": "4.5",
+      "unit": "MW",
+      "note": "Mein Solar Großbatteriespeicher reference installation"
     },
     {
-      "headers": [
-        "Field",
-        "Value"
-      ],
-      "rows": [
-        {
-          "Field": "`technology_class`",
-          "Value": "Large-Scale Battery Energy Storage System EPC"
-        },
-        {
-          "Field": "`underlying_mechanism`",
-          "Value": "Turnkey systems integration: containerized Li-ion BESS + bidirectional PCS + MV grid coupling + EMS dispatch, delivered under single-source EPC contract with grid-code certification"
-        }
-      ]
+      "name": "Project Energy Capacity (reference)",
+      "value": "9",
+      "unit": "MWh",
+      "note": "C-rate 0.5, 2h discharge"
     },
     {
-      "headers": [
-        "Part",
-        "Value"
-      ],
-      "rows": [
-        {
-          "Part": "Statement",
-          "Value": "Deliver grid-compliant, dispatchable multi-MWh electrical energy storage as a turnkey capital asset with single-source responsibility from site study to commissioning"
-        },
-        {
-          "Part": "Verb",
-          "Value": "Deliver"
-        },
-        {
-          "Part": "Object",
-          "Value": "grid-compliant, dispatchable multi-MWh electrical energy storage"
-        },
-        {
-          "Part": "Context",
-          "Value": "as a turnkey capital asset with single-source responsibility from site study to commissioning"
-        },
-        {
-          "Part": "Differentiators",
-          "Value": "Single-point EPC accountability vs. split-contract approach; integrated PV+BESS design authority; native VDE-AR-N 4110 / FGW TR8 certification path; PV-EPC craftsmanship carried into BESS delivery"
-        }
-      ]
+      "name": "Minimum Project Scale Threshold",
+      "value": "≥500 / ≥1",
+      "unit": "kW / MWh",
+      "note": "EPC-scale vs. C&I packaged units"
     },
     {
-      "headers": [
-        "#",
-        "Name",
-        "Scope",
-        "Category",
-        "Short description"
-      ],
-      "rows": [
-        {
-          "#": "1",
-          "Name": "Containerized Li-ion BESS Integration",
-          "Scope": "technology",
-          "Category": "performance",
-          "Short description": "Integrate LFP battery modules, BMS, HVAC, and fire suppression inside ISO container envelope"
-        },
-        {
-          "#": "2",
-          "Name": "Bidirectional Power Conversion System",
-          "Scope": "technology",
-          "Category": "performance",
-          "Short description": "Convert between DC battery and AC grid via 4-quadrant inverter with reactive power capability"
-        },
-        {
-          "#": "3",
-          "Name": "Medium-Voltage Grid Coupling",
-          "Scope": "technology",
-          "Category": "integration",
-          "Short description": "Connect storage asset to 10/20 kV DSO grid via MV transformer, switchgear, and protection relays"
-        },
-        {
-          "#": "4",
-          "Name": "Energy Management System (EMS)",
-          "Scope": "technology",
-          "Category": "integration",
-          "Short description": "Dispatch charge/discharge against peak shaving, arbitrage, or ancillary-service objectives"
-        },
-        {
-          "#": "5",
-          "Name": "Grid-Code Certification Delivery",
-          "Scope": "technology",
-          "Category": "safety",
-          "Short description": "Produce VDE-AR-N 4110 plant certificate (type B) per FGW TR8 with DSO acceptance"
-        },
-        {
-          "#": "6",
-          "Name": "Co-located PV+BESS Hybrid Design",
-          "Scope": "vendor",
-          "Category": "integration",
-          "Short description": "Mein Solar carries PV EPC authority into BESS design, sizing PV array and BESS as one coupled asset"
-        },
-        {
-          "#": "7",
-          "Name": "EV-Charging Buffer Configuration",
-          "Scope": "vendor",
-          "Category": "integration",
-          "Short description": "Size BESS as buffer for HPC stations to avoid costly grid upgrade at site with weak connection"
-        },
-        {
-          "#": "8",
-          "Name": "Civil Works & Site Preparation",
-          "Scope": "technology",
-          "Category": "usability",
-          "Short description": "Foundation, container placement, cable trenching, fencing, and access provisioning"
-        },
-        {
-          "#": "9",
-          "Name": "Single-Source EPC Contract Vehicle",
-          "Scope": "vendor",
-          "Category": "usability",
-          "Short description": "One contract, one schedule, one warranty wrapper covering battery, PCS, grid, software, civil"
-        }
-      ]
+      "name": "Cell Chemistry",
+      "value": "LFP (LiFePO4)",
+      "unit": "",
+      "note": "Grade-A prismatic, stationary-grade"
     },
     {
-      "headers": [
-        "Name",
-        "Value",
-        "Unit",
-        "Test condition"
-      ],
-      "rows": [
-        {
-          "Name": "Project power rating (reference)",
-          "Value": "4.5",
-          "Unit": "MW",
-          "Test condition": "Mein Solar Großbatteriespeicher reference installation"
-        },
-        {
-          "Name": "Project energy capacity (reference)",
-          "Value": "9",
-          "Unit": "MWh",
-          "Test condition": "C-rate 0.5, 2h discharge"
-        },
-        {
-          "Name": "Minimum system threshold",
-          "Value": "≥500 kW / ≥1 MWh",
-          "Unit": "—",
-          "Test condition": "EPC-scale threshold vs. C&I packaged units"
-        },
-        {
-          "Name": "Cell chemistry",
-          "Value": "LFP (LiFePO₄)",
-          "Unit": "—",
-          "Test condition": "Grade-A prismatic cells, standard for stationary storage"
-        },
-        {
-          "Name": "Container form factor",
-          "Value": "20ft / 40ft ISO HC",
-          "Unit": "—",
-          "Test condition": "IP54, liquid-cooled"
-        },
-        {
-          "Name": "Grid connection",
-          "Value": "VDE-AR-N 4110",
-          "Unit": "—",
-          "Test condition": "Medium voltage 1–60 kV"
-        },
-        {
-          "Name": "Plant certification basis",
-          "Value": "FGW TR8",
-          "Unit": "—",
-          "Test condition": "Type B simplified plant certificate"
-        },
-        {
-          "Name": "Roundtrip efficiency (AC-AC)",
-          "Value": "85–90",
-          "Unit": "%",
-          "Test condition": "Including PCS and auxiliary loads"
-        },
-        {
-          "Name": "Calendar lifetime",
-          "Value": "≥10",
-          "Unit": "years",
-          "Test condition": "LFP at controlled 25 °C ambient"
-        },
-        {
-          "Name": "Cycle lifetime",
-          "Value": "≥6,000",
-          "Unit": "cycles",
-          "Test condition": "80% DoD, LFP typical"
-        }
-      ]
+      "name": "Container Form Factor",
+      "value": "20ft / 40ft ISO HC",
+      "unit": "",
+      "note": "IP54, liquid-cooled"
     },
     {
-      "headers": [
-        "Name",
-        "Type",
-        "Severity",
-        "Threshold",
-        "Description"
-      ],
-      "rows": [
-        {
-          "Name": "MV grid connection capacity",
-          "Type": "operational",
-          "Severity": "hard",
-          "Threshold": "—",
-          "Description": "DSO must have spare MV capacity; grid upgrade required where saturated (common bottleneck in German DE rural grids)"
-        },
-        {
-          "Name": "Land footprint and siting",
-          "Type": "physical",
-          "Severity": "hard",
-          "Threshold": "~40–80 m²/MWh",
-          "Description": "Container footprint + safety clearances + fire-service access; municipal building permit required"
-        },
-        {
-          "Name": "Fire-protection clearance",
-          "Type": "regulatory",
-          "Severity": "hard",
-          "Threshold": "per VdS / local Feuerwehr",
-          "Description": "Minimum distance to buildings/property line, hydrant access, separation walls for >3 MWh clusters"
-        },
-        {
-          "Name": "Li-ion thermal runaway hazard",
-          "Type": "physical",
-          "Severity": "hard",
-          "Threshold": "—",
-          "Description": "Requires NOVEC/aerosol suppression, compartmentalization, deflagration venting — cannot be eliminated, only contained"
-        },
-        {
-          "Name": "Grid code certification lead time",
-          "Type": "regulatory",
-          "Severity": "soft",
-          "Threshold": "6–12 months",
-          "Description": "Type B plant certificate and DSO acceptance lengthen schedule; parallelizable but on critical path"
-        },
-        {
-          "Name": "Battery supply chain concentration",
-          "Type": "economic",
-          "Severity": "soft",
-          "Threshold": "—",
-          "Description": "LFP cells concentrated in CN suppliers; FX/tariff exposure; CRMA and EU Battery Regulation add compliance overhead"
-        },
-        {
-          "Name": "Ambient temperature envelope",
-          "Type": "physical",
-          "Severity": "soft",
-          "Threshold": "-20 to +50 °C",
-          "Description": "HVAC maintains internal setpoint; extremes reduce roundtrip efficiency and cycle life"
-        },
-        {
-          "Name": "Round-trip energy losses",
-          "Type": "physical",
-          "Severity": "hard",
-          "Threshold": "10–15%",
-          "Description": "Thermodynamic floor from PCS switching, battery internal resistance, and auxiliary HVAC load"
-        },
-        {
-          "Name": "CAPEX threshold for viability",
-          "Type": "economic",
-          "Severity": "soft",
-          "Threshold": "~€250–400/kWh installed",
-          "Description": "Below this the arbitrage/peak-shaving business case closes; above, payback exceeds 7 years"
-        }
-      ]
+      "name": "Grid Connection Rule",
+      "value": "VDE-AR-N 4110",
+      "unit": "",
+      "note": "Medium voltage 1–60 kV"
     },
     {
-      "headers": [
-        "Code",
-        "Name",
-        "Confidence",
-        "Reasoning"
-      ],
-      "rows": [
-        {
-          "Code": "26111711",
-          "Name": "Lithium batteries",
-          "Confidence": "45%",
-          "Reasoning": "Describes the **battery cells only**, not the EPC service or the integrated system — sub-component match"
-        },
-        {
-          "Code": "26111700",
-          "Name": "Batteries and cells and accessories (class)",
-          "Confidence": "40%",
-          "Reasoning": "Class-level, not commodity; too generic"
-        },
-        {
-          "Code": "81101513",
-          "Name": "Electrical engineering",
-          "Confidence": "55%",
-          "Reasoning": "Covers engineering portion only, misses procurement and construction"
-        },
-        {
-          "Code": "72151500",
-          "Name": "Specialized trade construction services",
-          "Confidence": "50%",
-          "Reasoning": "Covers civil and install, misses engineering and equipment"
-        },
-        {
-          "Code": "83101800",
-          "Name": "Electric utilities services",
-          "Confidence": "35%",
-          "Reasoning": "Demand-side utility services, not asset delivery"
-        }
-      ]
+      "name": "Plant Certification Basis",
+      "value": "FGW TR8",
+      "unit": "",
+      "note": "Type B simplified plant certificate"
     },
     {
-      "headers": [
-        "Field",
-        "Value"
-      ],
-      "rows": [
-        {
-          "Field": "`commodity_or_group`",
-          "Value": "Battery Energy Storage System EPC Services"
-        },
-        {
-          "Field": "`functional_promise`",
-          "Value": "Deliver operational grid-connected electrical energy storage assets as turnkey capital projects with single-source engineering, procurement, construction, and grid-code certification"
-        },
-        {
-          "Field": "`reasoning`",
-          "Value": "All BESS EPC providers — pure-play integrators, utility IPPs, solar EPCs extending into storage, and OEM-led turnkey offers — share this function: converting a storage business case into a commissioned, grid-compliant asset. The mechanism varies (self-perform vs. subcontract, PV-integrated vs. standalone), the function does not."
-        }
-      ]
+      "name": "Roundtrip Efficiency (AC-AC)",
+      "value": "85-90",
+      "unit": "%",
+      "note": "Including PCS and auxiliary loads"
+    },
+    {
+      "name": "Calendar Lifetime",
+      "value": "≥10",
+      "unit": "years",
+      "note": "LFP at controlled 25 °C ambient"
+    },
+    {
+      "name": "Cycle Lifetime",
+      "value": "≥6000",
+      "unit": "cycles",
+      "note": "80% DoD, LFP typical"
     }
   ],
-  "entities": [
+  "constraints": [
     {
-      "product_name": "EPC für Großbatteriespeicher",
-      "vendor_name": "Mein Solar GmbH",
-      "offering_type": "project_business",
-      "technology_class": "Large-Scale Battery Energy Storage System EPC",
-      "underlying_mechanism": "Turnkey systems integration of containerized Li-ion BESS, bidirectional PCS, MV grid coupling, and EMS dispatch, delivered under single-source EPC contract with VDE-AR-N 4110 / FGW TR8 certification",
-      "functional_promise": {
-        "statement": "Deliver grid-compliant, dispatchable multi-MWh electrical energy storage as a turnkey capital asset with single-source responsibility from site study to commissioning",
-        "verb": "Deliver",
-        "object": "grid-compliant, dispatchable multi-MWh electrical energy storage",
-        "context": "as a turnkey capital asset with single-source responsibility from site study to commissioning",
-        "differentiators": [
-          "Single-point EPC accountability vs. split-contract approach",
-          "Integrated PV+BESS design authority from incumbent PV-EPC practice",
-          "Native VDE-AR-N 4110 / FGW TR8 certification path",
-          "Proven industrial scale (4.5 MW / 9 MWh reference)"
-        ]
-      },
-      "features": [
-        {
-          "name": "Containerized Li-ion BESS Integration",
-          "description": "Integrate LFP battery modules, BMS, HVAC, and fire suppression inside ISO container envelope",
-          "long_description": "20ft/40ft ISO high-cube containers pre-fitted with Grade-A LFP battery racks, BMS/BAMS/BCMS stack, liquid-cooling loop, HVAC, and NOVEC 1230 suppression. IP54 envelope. Requires craned foundation placement and internal commissioning wiring.",
-          "scope": "technology",
-          "category": "performance"
-        },
-        {
-          "name": "Bidirectional Power Conversion System",
-          "description": "Convert between DC battery and AC grid via 4-quadrant inverter with reactive power capability",
-          "long_description": "String or central PCS rated to full BESS MW capacity, operating in all four PQ quadrants. Enables peak shaving, arbitrage, and Q(U) / cos-phi support. Efficiency typ. 97–98%; controls response under 100 ms for FCR-grade dispatch.",
-          "scope": "technology",
-          "category": "performance"
-        },
-        {
-          "name": "Medium-Voltage Grid Coupling",
-          "description": "Connect storage asset to 10/20 kV DSO grid via MV transformer, switchgear, and protection relays",
-          "long_description": "MV step-up transformer, SF6-free RMU switchgear, digital protection relays, metering, and NA-protection. Designed to VDE-AR-N 4110. Includes DSO-interface cabinet, remote trip, and SCADA uplink.",
-          "scope": "technology",
-          "category": "integration"
-        },
-        {
-          "name": "Energy Management System (EMS)",
-          "description": "Dispatch charge/discharge against peak shaving, arbitrage, or ancillary-service objectives",
-          "long_description": "Software layer receiving setpoints from market, load, and grid signals; solving optimization to issue PCS commands. Supports forecasting, SoC management, and degradation-aware cycling. API to aggregators/VPPs.",
-          "scope": "technology",
-          "category": "integration"
-        },
-        {
-          "name": "Grid-Code Certification Delivery",
-          "description": "Produce VDE-AR-N 4110 plant certificate (type B) per FGW TR8 with DSO acceptance",
-          "long_description": "Certification dossier prepared and submitted by EPC; includes FGW TR3 unit cert handover, TR8 plant cert, commissioning test protocols, and DSO acceptance inspection. Governs when the asset is allowed to energize.",
-          "scope": "technology",
-          "category": "safety"
-        },
-        {
-          "name": "Co-located PV+BESS Hybrid Design",
-          "description": "Mein Solar carries PV EPC authority into BESS design, sizing PV array and BESS as one coupled asset",
-          "long_description": "Joint sizing of PV generator and BESS for self-consumption, curtailment recovery, or solar shifting. Single grid-connection point, shared EMS, shared MV switchgear — lower BoS cost and one grid-code certification vs. separate assets.",
-          "scope": "vendor",
-          "category": "integration"
-        },
-        {
-          "name": "EV-Charging Buffer Configuration",
-          "description": "Size BESS as buffer for HPC stations to avoid costly grid upgrade at site with weak connection",
-          "long_description": "BESS sized to supply peak HPC power (150–350 kW per dispenser) while drawing smoothed average from the grid. Enables HPC deployment on sites where DSO upgrade is economically or temporally blocked.",
-          "scope": "vendor",
-          "category": "integration"
-        },
-        {
-          "name": "Civil Works & Site Preparation",
-          "description": "Foundation, container placement, cable trenching, fencing, and access provisioning",
-          "long_description": "Reinforced concrete pads sized to container load + seismic, cable trenches to MV cabinet, perimeter fencing, fire-service access, and lightning protection. Coordinated with local building permit (Baugenehmigung).",
-          "scope": "technology",
-          "category": "usability"
-        },
-        {
-          "name": "Single-Source EPC Contract Vehicle",
-          "description": "One contract, one schedule, one warranty wrapper covering battery, PCS, grid, software, civil",
-          "long_description": "Mein Solar acts as single legal counterparty for the whole asset. Performance guarantee (kWh throughput, roundtrip efficiency, availability) wrapped across multi-vendor equipment. Lifts interface-risk burden from the asset owner.",
-          "scope": "vendor",
-          "category": "usability"
-        }
-      ],
-      "specifications": [
-        {
-          "name": "Project Power Rating (reference)",
-          "value": "4.5",
-          "unit": "MW",
-          "test_condition": "Mein Solar Großbatteriespeicher reference installation"
-        },
-        {
-          "name": "Project Energy Capacity (reference)",
-          "value": "9",
-          "unit": "MWh",
-          "test_condition": "C-rate 0.5, 2h discharge"
-        },
-        {
-          "name": "Minimum Project Scale Threshold",
-          "value": "≥500 / ≥1",
-          "unit": "kW / MWh",
-          "test_condition": "EPC-scale vs. C&I packaged units"
-        },
-        {
-          "name": "Cell Chemistry",
-          "value": "LFP (LiFePO4)",
-          "unit": null,
-          "test_condition": "Grade-A prismatic, stationary-grade"
-        },
-        {
-          "name": "Container Form Factor",
-          "value": "20ft / 40ft ISO HC",
-          "unit": null,
-          "test_condition": "IP54, liquid-cooled"
-        },
-        {
-          "name": "Grid Connection Rule",
-          "value": "VDE-AR-N 4110",
-          "unit": null,
-          "test_condition": "Medium voltage 1–60 kV"
-        },
-        {
-          "name": "Plant Certification Basis",
-          "value": "FGW TR8",
-          "unit": null,
-          "test_condition": "Type B simplified plant certificate"
-        },
-        {
-          "name": "Roundtrip Efficiency (AC-AC)",
-          "value": "85-90",
-          "unit": "%",
-          "test_condition": "Including PCS and auxiliary loads"
-        },
-        {
-          "name": "Calendar Lifetime",
-          "value": "≥10",
-          "unit": "years",
-          "test_condition": "LFP at controlled 25 °C ambient"
-        },
-        {
-          "name": "Cycle Lifetime",
-          "value": "≥6000",
-          "unit": "cycles",
-          "test_condition": "80% DoD, LFP typical"
-        }
-      ],
-      "constraints": [
-        {
-          "name": "MV Grid Connection Capacity",
-          "constraint_type": "operational",
-          "description": "DSO must have spare MV feeder capacity; where grid is saturated (common in rural DE), a grid upgrade is required and may be denied or cost-prohibitive",
-          "severity": "hard",
-          "threshold_value": null,
-          "threshold_unit": null
-        },
-        {
-          "name": "Land Footprint and Siting",
-          "constraint_type": "physical",
-          "description": "Container footprint plus safety clearances and fire-service access; approx. 40–80 m²/MWh; municipal Baugenehmigung required",
-          "severity": "hard",
-          "threshold_value": "40-80",
-          "threshold_unit": "m2_per_MWh"
-        },
-        {
-          "name": "Fire-Protection Clearance",
-          "constraint_type": "regulatory",
-          "description": "Minimum distance to buildings and property line, hydrant access, separation walls for >3 MWh clusters per VdS and local Feuerwehr guidance",
-          "severity": "hard",
-          "threshold_value": null,
-          "threshold_unit": null
-        },
-        {
-          "name": "Li-Ion Thermal Runaway Hazard",
-          "constraint_type": "physical",
-          "description": "Inherent chemistry risk; cannot be eliminated — only contained via NOVEC/aerosol suppression, compartmentalization, and deflagration venting",
-          "severity": "hard",
-          "threshold_value": null,
-          "threshold_unit": null
-        },
-        {
-          "name": "Grid Code Certification Lead Time",
-          "constraint_type": "regulatory",
-          "description": "FGW TR8 type B plant certificate and DSO acceptance lengthen the schedule by 6–12 months; parallelizable with procurement but always on the critical path",
-          "severity": "soft",
-          "threshold_value": "6-12",
-          "threshold_unit": "months"
-        },
-        {
-          "name": "Battery Supply Chain Concentration",
-          "constraint_type": "economic",
-          "description": "LFP cells concentrated in Chinese suppliers; FX, tariff, and CRMA/EU Battery Regulation compliance exposure",
-          "severity": "soft",
-          "threshold_value": null,
-          "threshold_unit": null
-        },
-        {
-          "name": "Ambient Temperature Envelope",
-          "constraint_type": "environmental",
-          "description": "HVAC maintains internal setpoint; operation at extremes reduces roundtrip efficiency and cycle life",
-          "severity": "soft",
-          "threshold_value": "-20 to +50",
-          "threshold_unit": "C"
-        },
-        {
-          "name": "Round-Trip Energy Losses",
-          "constraint_type": "physical",
-          "description": "Thermodynamic floor from PCS switching losses, battery internal resistance, and auxiliary HVAC load",
-          "severity": "hard",
-          "threshold_value": "10-15",
-          "threshold_unit": "%"
-        },
-        {
-          "name": "CAPEX Viability Threshold",
-          "constraint_type": "economic",
-          "description": "Below ~€250–400/kWh installed the arbitrage/peak-shaving business case closes; above, payback exceeds 7 years and investors walk",
-          "severity": "soft",
-          "threshold_value": "250-400",
-          "threshold_unit": "EUR_per_kWh"
-        }
-      ],
-      "unspsc_classification": {
-        "chosen_code": null,
-        "chosen_title": null,
-        "custom_product_group": "Battery Energy Storage System EPC Services",
-        "evaluations": [
-          {
-            "commodity_code": "81101513",
-            "commodity_name": "Electrical engineering",
-            "confidence_pct": 55,
-            "reasoning": "Covers engineering portion only; misses procurement and construction scope"
-          },
-          {
-            "commodity_code": "72151500",
-            "commodity_name": "Specialized trade construction services",
-            "confidence_pct": 50,
-            "reasoning": "Covers civil and install only; misses engineering and equipment"
-          },
-          {
-            "commodity_code": "26111711",
-            "commodity_name": "Lithium batteries",
-            "confidence_pct": 45,
-            "reasoning": "Describes battery cells only; sub-component match, not the integrated EPC offering"
-          },
-          {
-            "commodity_code": "26111700",
-            "commodity_name": "Batteries and cells and accessories",
-            "confidence_pct": 40,
-            "reasoning": "Class-level, not commodity; too generic"
-          },
-          {
-            "commodity_code": "83101800",
-            "commodity_name": "Electric utilities services",
-            "confidence_pct": 35,
-            "reasoning": "Demand-side utility services, not asset delivery"
-          }
-        ],
-        "reason_for_fallback": "EPC-for-BESS is a bundled project-delivery offering that UNSPSC does not cleanly cover with a single 8-digit commodity at ≥80% confidence"
-      },
-      "commodity_functional_promise": {
-        "commodity_or_group": "Battery Energy Storage System EPC Services",
-        "functional_promise": "Deliver operational grid-connected electrical energy storage assets as turnkey capital projects with single-source engineering, procurement, construction, and grid-code certification",
-        "reasoning": "All BESS EPC providers — pure-play integrators, utility IPPs, solar EPCs extending into storage, and OEM-led turnkey offers — share this function: converting a storage business case into a commissioned, grid-compliant asset. The mechanism varies (self-perform vs. subcontract, PV-integrated vs. standalone); the function does not."
-      }
+      "name": "MV Grid Connection Capacity",
+      "constraintType": "operational",
+      "severity": "hard",
+      "description": "DSO must have spare MV feeder capacity; where grid is saturated (common in rural DE), a grid upgrade is required and may be denied or cost-prohibitive",
+      "thresholdValue": "",
+      "thresholdUnit": ""
+    },
+    {
+      "name": "Land Footprint and Siting",
+      "constraintType": "physical",
+      "severity": "hard",
+      "description": "Container footprint plus safety clearances and fire-service access; approx. 40–80 m²/MWh; municipal Baugenehmigung required",
+      "thresholdValue": "40-80",
+      "thresholdUnit": "m2_per_MWh"
+    },
+    {
+      "name": "Fire-Protection Clearance",
+      "constraintType": "regulatory",
+      "severity": "hard",
+      "description": "Minimum distance to buildings and property line, hydrant access, separation walls for >3 MWh clusters per VdS and local Feuerwehr guidance",
+      "thresholdValue": "",
+      "thresholdUnit": ""
+    },
+    {
+      "name": "Li-Ion Thermal Runaway Hazard",
+      "constraintType": "physical",
+      "severity": "hard",
+      "description": "Inherent chemistry risk; cannot be eliminated — only contained via NOVEC/aerosol suppression, compartmentalization, and deflagration venting",
+      "thresholdValue": "",
+      "thresholdUnit": ""
+    },
+    {
+      "name": "Grid Code Certification Lead Time",
+      "constraintType": "regulatory",
+      "severity": "soft",
+      "description": "FGW TR8 type B plant certificate and DSO acceptance lengthen the schedule by 6–12 months; parallelizable with procurement but always on the critical path",
+      "thresholdValue": "6-12",
+      "thresholdUnit": "months"
+    },
+    {
+      "name": "Battery Supply Chain Concentration",
+      "constraintType": "economic",
+      "severity": "soft",
+      "description": "LFP cells concentrated in Chinese suppliers; FX, tariff, and CRMA/EU Battery Regulation compliance exposure",
+      "thresholdValue": "",
+      "thresholdUnit": ""
+    },
+    {
+      "name": "Ambient Temperature Envelope",
+      "constraintType": "environmental",
+      "severity": "soft",
+      "description": "HVAC maintains internal setpoint; operation at extremes reduces roundtrip efficiency and cycle life",
+      "thresholdValue": "-20 to +50",
+      "thresholdUnit": "C"
+    },
+    {
+      "name": "Round-Trip Energy Losses",
+      "constraintType": "physical",
+      "severity": "hard",
+      "description": "Thermodynamic floor from PCS switching losses, battery internal resistance, and auxiliary HVAC load",
+      "thresholdValue": "10-15",
+      "thresholdUnit": "%"
+    },
+    {
+      "name": "CAPEX Viability Threshold",
+      "constraintType": "economic",
+      "severity": "soft",
+      "description": "Below ~€250–400/kWh installed the arbitrage/peak-shaving business case closes; above, payback exceeds 7 years and investors walk",
+      "thresholdValue": "250-400",
+      "thresholdUnit": "EUR_per_kWh"
     }
   ],
-  "has_bom": false
+  "sources": []
 }

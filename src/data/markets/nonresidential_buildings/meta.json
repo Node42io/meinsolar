@@ -2,6 +2,18 @@
   "slug": "nonresidential_buildings",
   "name": "Lessors of Nonresidential Buildings",
   "shortName": "Nonresidential Buildings",
-  "naics": "531120",
-  "isReference": false
+  "naicsCode": "531120",
+  "isReference": false,
+  "rank": 6,
+  "scores": {
+    "odi": 5.61,
+    "featureFit": 6.0,
+    "constraintCompatibility": 5.0,
+    "jobCoverage": 8.75,
+    "vnHierarchy": 6.0,
+    "incumbentVulnerability": 6.0,
+    "composite": 6.16
+  },
+  "recommendation": "investigate",
+  "rationale": "Strong job coverage (8.75, 7/8 steps) + fragmented incumbent landscape (6.0 — Voltfang, Tesvolt, Commeo, in-house FM all sub-scale). Heaviest mitigable load in set (5.0; 7 mitigable inc. MV headroom on retail/office + Baugenehmigung discretion). Single-source-EPC pitch resonates with landlords."
 }

@@ -1,19 +1,22 @@
 /**
  * Shell — root app layout: left nav sidebar + main content area.
  *
- * Sidebar structure:
- *   ANALYSIS
- *     01  Product Profile       ▶ (expandable section links)
- *     02  Functional Promise    ▶
- *     03  Constraints           ▶
- *     04  Market Competition
- *     05  New Market Discovery
- *     06  New Market Analysis    ← tabbed
- *     08  Strategic Synthesis    ← conclusion
+ * Sidebar navigation is fully dynamic for the new_markets archetype:
+ *   00  Overview
+ *   01  Product Profile
+ *   02  Functional Promise
+ *   03  Constraints
+ *   04  Home Market
+ *   05  New Market Discovery
+ *   06  New Market Analysis
+ *
+ * Company name is read from overview.json data (no hardcoded names).
  */
 
 import { useState, useEffect, useCallback } from "react";
 import { NavLink, Outlet, useLocation, useNavigate } from "react-router-dom";
+
+import _overview from "@/data/overview.json";
 
 interface NavSection {
   id: string;
@@ -28,74 +31,11 @@ interface NavItem {
   sections?: NavSection[];
 }
 
-/** Type labels for analysis pages from manifest */
-const TYPE_LABELS: Record<string, string> = {
-  company_profile: "Company Profile",
-  product_portfolio: "Product Portfolio",
-  product_decomposition: "Product Profile",
-  functional_promise: "Functional Promise",
-  constraints: "Constraints",
-  capability_assessment: "Capability Assessment",
-  home_market_competition: "Home Market",
-  market_discovery: "Market Discovery",
-  final_ranking: "Final Ranking",
-  product_validation: "Product Validation",
-  financial_scenarios: "Financial Scenarios",
-  implementation_roadmap: "Implementation Roadmap",
-  transition_model: "Transition Model",
-  go_no_go_decision: "Go/No-Go Decision",
-  product_ranking: "Product Ranking",
-};
+/** Read company name from overview.json data */
+const companyName: string =
+  (_overview as any)?.company?.name ?? "Company";
 
-/** Route paths for analysis page types */
-const TYPE_ROUTES: Record<string, string> = {
-  company_profile: "/overview",
-  product_portfolio: "/overview",
-  product_decomposition: "/product",
-  functional_promise: "/functional-promise",
-  constraints: "/constraints",
-  capability_assessment: "/constraints",
-  home_market_competition: "/home-market",
-  market_discovery: "/discovery",
-  final_ranking: "/overview",
-};
-
-/** Build nav items from manifest (dynamic) with fallback to static */
-function buildNavFromManifest(): NavItem[] {
-  const manifest = (window as any).__CLAYTON_MANIFEST__;
-  if (!manifest?.analysis_pages) return staticNavItems;
-
-  const items: NavItem[] = [
-    staticNavItems[0], // Overview with sections
-  ];
-
-  let idx = 1;
-  for (const page of manifest.analysis_pages) {
-    const label = TYPE_LABELS[page.type] || page.title;
-    const route = TYPE_ROUTES[page.type];
-    if (!route || route === "/overview") continue;
-    if (items.some(i => i.to === route)) continue;
-    const staticMatch = staticNavItems.find(s => s.to === route);
-    if (staticMatch) {
-      items.push({ ...staticMatch, kicker: String(idx).padStart(2, "0") });
-    } else {
-      items.push({ to: route, label, kicker: String(idx).padStart(2, "0") });
-    }
-    idx++;
-  }
-
-  if (manifest.markets?.length > 0) {
-    items.push({ to: "/analysis", label: "Market Analysis", kicker: String(idx).padStart(2, "0") });
-    idx++;
-  }
-
-  // Always append Strategic Synthesis as the final item
-  items.push({ ...staticNavItems[staticNavItems.length - 1], kicker: String(idx).padStart(2, "0") });
-
-  return items;
-}
-
-/** Static nav items with section anchors for chapter subsections */
+/** Static nav items for new_markets archetype */
 const staticNavItems: NavItem[] = [
   {
     to: "/overview",
@@ -103,8 +43,8 @@ const staticNavItems: NavItem[] = [
     kicker: "00",
     sections: [
       { id: "ovw-question",   label: "The Question" },
-      { id: "ovw-company",    label: "About the Company" },
-      { id: "ovw-hierarchy",  label: "Division → Product" },
+      { id: "ovw-company",    label: `About ${companyName}` },
+      { id: "ovw-hierarchy",  label: "Division \u2192 Product" },
       { id: "ovw-product",    label: "Product Variants" },
       { id: "ovw-howto",      label: "How to Read" },
     ],
@@ -181,30 +121,11 @@ export default function Shell() {
   const location = useLocation();
   const navigate = useNavigate();
   const [expanded, setExpanded] = useState<Record<string, boolean>>({});
-  const [projectInfo, setProjectInfo] = useState<{company: string; division: string; archetype: string} | null>(null);
-  const [navItems, setNavItems] = useState<NavItem[]>(staticNavItems);
   const [pendingScroll, setPendingScroll] = useState<string | null>(null);
-
-  // Load project info and build dynamic nav
-  useEffect(() => {
-    fetch('./data/project.json')
-      .then(r => r.json())
-      .then(p => setProjectInfo(p))
-      .catch(() => setProjectInfo({ company: "Clayton Analysis", division: "", archetype: "Analysis" }));
-
-    const checkManifest = setInterval(() => {
-      if ((window as any).__CLAYTON_MANIFEST__) {
-        setNavItems(buildNavFromManifest());
-        clearInterval(checkManifest);
-      }
-    }, 200);
-    setTimeout(() => clearInterval(checkManifest), 5000);
-    return () => clearInterval(checkManifest);
-  }, []);
 
   // Auto-expand when the active route changes
   useEffect(() => {
-    const activeItem = navItems.find((item) =>
+    const activeItem = staticNavItems.find((item) =>
       location.pathname === item.to ||
       location.pathname.startsWith(item.to + "/") ||
       (item.to === "/overview" && location.pathname === "/")
@@ -212,7 +133,7 @@ export default function Shell() {
     if (activeItem?.sections) {
       setExpanded((prev) => ({ ...prev, [activeItem.to]: true }));
     }
-  }, [location.pathname, navItems]);
+  }, [location.pathname]);
 
   // Execute pending scroll after navigation completes and DOM updates
   useEffect(() => {
@@ -255,14 +176,14 @@ export default function Shell() {
     <div className="app-shell">
       {/* Left navigation sidebar */}
       <aside className="app-sidebar">
-        {/* Brand block — reads from project.json */}
+        {/* Brand block */}
         <div className="app-sidebar__brand">
           <div className="app-sidebar__brand-kicker">Clayton / Node42</div>
           <div className="app-sidebar__brand-title">
-            {projectInfo?.company || "Loading..."}
+            {companyName}
           </div>
           <div className="app-sidebar__brand-sub">
-            {projectInfo?.archetype || "Analysis"}
+            New Markets Analysis
           </div>
         </div>
 
@@ -270,7 +191,7 @@ export default function Shell() {
         <div className="app-sidebar__section">
           <div className="app-sidebar__section-label">Analysis</div>
           <nav>
-            {navItems.map((item) => {
+            {staticNavItems.map((item) => {
               const hasSections = item.sections && item.sections.length > 0;
               const isOpen = hasSections && !!expanded[item.to];
 
@@ -370,7 +291,7 @@ export default function Shell() {
                                 flexShrink: 0,
                               }}
                             >
-                              {sec.sub ? "└" : "·"}
+                              {sec.sub ? "\u2514" : "\u00b7"}
                             </span>
                             {sec.label}
                           </button>
@@ -398,10 +319,7 @@ export default function Shell() {
             Archetype
           </div>
           <div style={{ color: "var(--text-gray-light)", fontSize: 11 }}>
-            {projectInfo?.archetype || "Analysis"}
-          </div>
-          <div style={{ color: "var(--text-gray-light)", fontSize: 11, marginTop: 8 }}>
-            {projectInfo?.division || ""}
+            New Markets for Existing Product
           </div>
         </div>
       </aside>

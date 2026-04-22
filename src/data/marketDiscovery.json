@@ -1,1301 +1,392 @@
 {
-  "id": "05_market_discovery",
-  "title": "05 — Market Discovery (Phases 02a + 02b)",
-  "type": "market_discovery",
-  "market_slug": null,
-  "is_per_market": false,
-  "sections": [
-    {
-      "title": "02a — Phase inputs",
-      "content": "### Commodity Functional Promise (primary search driver)\n\n> **Deliver operational grid-connected electrical energy storage assets as turnkey capital projects with single-source engineering, procurement, construction, and grid-code certification**\n\n### FP Extensions (secondary search drivers)\n\n- **Axis 1 — Storage medium neutrality:** Flow-battery EPC, flywheel/CAES EPC, thermal-to-power storage EPC, hybrid H2-BESS EPC\n- **Axis 2 — Grid-connected capital-asset EPC methodology:** Large-scale PV EPC, HPC charging hub EPC, PV+Wind hybrid EPC, industrial microgrid EPC, behind-the-meter electrification EPC\n\n### UNSPSC / commodity context\n\nNo 8-digit UNSPSC ≥80% confidence. Custom group: **\"Battery Energy Storage System EPC Services\"**.\n\n### Excluded markets (current business)\n\n| Excluded | Reason |\n|---|---|\n| Residential rooftop PV (Mein Solar incumbent) | Below EPC scale threshold (<500 kW); current market |\n| Small commercial PV <500 kW | Current market; below BESS EPC minimum scale |\n| Pure-cell manufacturing (26111711 category) | Up-stream component, not customer |\n\n---"
-    },
-    {
-      "title": "02a — Candidate NAICS discovery (all candidates, no cap)",
-      "content": "Result of product-agnostic sweep. Every 6-digit code validated against NAICS reference.\n\n| # | NAICS | Title | Sector | FP Fit | Adoption | Discovery source |\n|---|---|---|---|---|---|---|\n| 1 | 221118 | Other Electric Power Generation | Utilities | direct | established | primary_fp |\n| 2 | 221114 | Solar Electric Power Generation | Utilities | direct | established | primary_fp + extension |\n| 3 | 221115 | Wind Electric Power Generation | Utilities | direct | established | primary_fp |\n| 4 | 221122 | Electric Power Distribution | Utilities | direct | growing | primary_fp |\n| 5 | 221121 | Electric Bulk Power Transmission and Control | Utilities | direct | growing | primary_fp |\n| 6 | 531120 | Lessors of Nonresidential Buildings (except Miniwarehouses) | Real Estate | adjacent | growing | primary_fp |\n| 7 | 518210 | Computing Infrastructure Providers, Data Processing, Web Hosting, Related Services | Information | adjacent | growing | primary_fp |\n| 8 | 457120 | Other Gasoline Stations and Fuel Dealers (incl. EV charging retail) | Retail | adjacent | emerging | fp_extension |\n| 9 | 493120 | Refrigerated Warehousing and Storage | Transp. & Wareh. | adjacent | emerging | primary_fp |\n| 10 | 325120 | Industrial Gas Manufacturing (electrolyzer/hydrogen) | Chemicals | adjacent | emerging | fp_extension |\n| 11 | 488310 | Port and Harbor Operations | Transp. & Wareh. | adjacent | emerging | fp_extension |\n| 12 | 334413 | Semiconductor and Related Device Manufacturing | Mfg | adjacent | emerging | primary_fp |\n| 13 | 488190 | Other Support Activities for Air Transportation (airports) | Transp. & Wareh. | stretch | emerging | fp_extension |\n| 14 | 221320 | Sewage Treatment Facilities | Utilities | adjacent | emerging | primary_fp |\n| 15 | 111419 | Other Food Crops Grown Under Cover (greenhouses) | Agriculture | stretch | emerging | primary_fp |\n| 16 | 331110 | Iron and Steel Mills and Ferroalloy Manufacturing | Mfg | stretch | emerging | primary_fp |\n| 17 | 331313 | Alumina Refining and Primary Aluminum Production | Mfg | stretch | emerging | primary_fp |\n| 18 | 327310 | Cement Manufacturing | Mfg | stretch | not_yet | primary_fp |\n| 19 | 928110 | National Security (military bases) | Public Admin | stretch | emerging | fp_extension |\n| 20 | 517312 | Wireless Telecommunications Carriers (except Satellite) | Information | stretch | growing | primary_fp |\n\n**Total: 20 candidates.** Exceeds 20-candidate threshold → **Tiered Discovery triggered** for Phase 02b.\n\n---"
-    },
-    {
-      "title": "02b — Architecture-distance ranking (product-specific)",
-      "content": "### Product identity for scoring\n\n| Field | Value |\n|---|---|\n| Product | EPC für Großbatteriespeicher |\n| Technology class | Large-Scale Battery Energy Storage System EPC |\n| Product FP | Deliver grid-compliant, dispatchable multi-MWh electrical energy storage as a turnkey capital asset with single-source responsibility |\n| Mechanism | Turnkey systems integration of containerized Li-ion BESS + bidirectional PCS + MV coupling + EMS + civil, single-source EPC contract |\n| Key specs | 4.5 MW / 9 MWh reference, ≥500 kW / ≥1 MWh min, LFP, 20ft/40ft ISO HC, VDE-AR-N 4110, FGW TR8, €250–400/kWh installed |\n| Scoring type | **Capital equipment (L5–L6)** — project-business delivery of a commissioned L0 asset |\n\n### Scoring criteria (Universal + Capital-equipment-specific)\n\n- **U1** Operating environment similarity (outdoor containerized, MV-connected industrial site)\n- **U2** Regulatory regime distance (VDE-AR-N 4110 / FGW TR8 transferability)\n- **U3** Customer type similarity (IPP / asset owner / C&I offtaker)\n- **U4** Integration architecture (MV grid-coupled capital asset)\n- **U5** Price point alignment (€250–400/kWh, multi-MWh project, 3–5yr payback)\n- **C1** Installation requirements match (MV feeder, 40–80 m²/MWh, civil works, Baugenehmigung)\n- **C2** Operator skill transferability (DSO interface, EMS dispatch, SCADA)\n- **C3** Maintenance infrastructure match (LFP O&M, PCS service, annual cert audits)\n- **C4** Reimbursement/funding model (KfW/innovation tenders, revenue stack: peak shaving / §19 StromNEV / EPEX / FCR-aFRR)\n\n### Tier 1 — Quick screen (all 20 candidates)\n\nCut threshold: ≥8 distance AND `already_uses_technology = false`. All candidates survived Tier 1 except #18 (Cement) and #20 (Wireless Telecom cell towers — typical BESS size <500 kW, below minimum project scale).\n\n### Tier 2 — Full assessment (18 candidates scored on 9 criteria)\n\nSorted by composite distance ascending.\n\n| Rank | NAICS | Title | Distance | Already uses | Priority | U1 | U2 | U3 | U4 | U5 | C1 | C2 | C3 | C4 |\n|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|\n| 1 | 221118 | Other Electric Power Generation | **1** | TRUE | HIGH | 1 | 1 | 1 | 1 | 1 | 1 | 1 | 1 | 2 |\n| 2 | 221114 | Solar Electric Power Generation | **2** | TRUE | HIGH | 2 | 1 | 1 | 2 | 2 | 2 | 1 | 2 | 2 |\n| 3 | 221115 | Wind Electric Power Generation | **3** | TRUE | HIGH | 3 | 1 | 3 | 2 | 3 | 3 | 2 | 3 | 2 |\n| 4 | 531120 | Lessors of Nonresidential Buildings | **3** | TRUE | HIGH | 2 | 2 | 3 | 3 | 4 | 3 | 2 | 3 | 4 |\n| 5 | 457120 | Other Gasoline Stations (EV charging) | **3** | FALSE | HIGH | 3 | 2 | 4 | 3 | 3 | 4 | 3 | 3 | 4 |\n| 6 | 221122 | Electric Power Distribution | **4** | TRUE | HIGH | 2 | 2 | 5 | 2 | 4 | 3 | 3 | 3 | 5 |\n| 7 | 518210 | Computing Infrastructure / Data Centers | **4** | TRUE | HIGH | 3 | 2 | 4 | 4 | 4 | 3 | 4 | 4 | 4 |\n| 8 | 493120 | Refrigerated Warehousing and Storage | **4** | FALSE | MEDIUM | 3 | 2 | 3 | 3 | 4 | 4 | 3 | 4 | 5 |\n| 9 | 325120 | Industrial Gas Mfg (electrolyzers / H2) | **5** | FALSE | MEDIUM | 4 | 2 | 5 | 4 | 5 | 5 | 4 | 5 | 6 |\n| 10 | 488310 | Port and Harbor Operations | **5** | FALSE | MEDIUM | 6 | 3 | 5 | 4 | 5 | 5 | 5 | 5 | 6 |\n| 11 | 221121 | Electric Bulk Power Transmission | **6** | TRUE | MEDIUM | 3 | 6 | 7 | 3 | 7 | 6 | 4 | 4 | 6 |\n| 12 | 334413 | Semiconductor Manufacturing | **6** | FALSE | MEDIUM | 5 | 3 | 6 | 6 | 6 | 6 | 6 | 6 | 7 |\n| 13 | 488190 | Air Transportation Support (airports) | **6** | FALSE | LOW | 6 | 4 | 6 | 5 | 6 | 6 | 6 | 6 | 7 |\n| 14 | 221320 | Sewage Treatment Facilities | **6** | FALSE | LOW | 4 | 3 | 7 | 4 | 6 | 6 | 5 | 5 | 8 |\n| 15 | 111419 | Other Food Crops Grown Under Cover | **7** | FALSE | LOW | 5 | 3 | 7 | 5 | 7 | 6 | 6 | 7 | 8 |\n| 16 | 331110 | Iron and Steel Mills | **7** | FALSE | LOW | 6 | 4 | 7 | 6 | 7 | 7 | 6 | 6 | 8 |\n| 17 | 331313 | Alumina Refining / Primary Aluminum | **7** | FALSE | LOW | 6 | 4 | 8 | 6 | 8 | 7 | 7 | 6 | 8 |\n| 18 | 928110 | National Security (military bases) | **7** | FALSE | LOW | 5 | 7 | 8 | 5 | 7 | 6 | 6 | 7 | 9 |\n\n### Tier 1 cuts (excluded before full scoring)\n\n| NAICS | Title | Reason |\n|---|---|---|\n| 327310 | Cement Manufacturing | Distance ≥8, not_yet adoption; kiln electrification still pre-pilot |\n| 517312 | Wireless Telecommunications Carriers | Typical tower BESS <100 kWh, below ≥1 MWh minimum EPC scale (constraint P2) |\n\n### Selected markets (top 15 by default `max_markets=15`)\n\nRanks 1–15 above proceed as `MarketCandidate` objects. The remaining 3 (ranks 16–18) are marked `status=\"cut_by_max_markets\"` but retained with distance scores for Phase 02c selection by `max_vns`.\n\n---"
-    },
-    {
-      "title": "02b — Ranked output with rationale",
-      "content": "### Rank 1 — NAICS 221118 Other Electric Power Generation · distance **1** · HIGH\n\n**Rationale:** Literally the standard NAICS for standalone BESS IPPs in the US/EU. Customer is an asset owner / IPP that exists to operate grid-connected storage. Every Mein Solar differentiator (single-source EPC, VDE-AR-N 4110, FGW TR8) is exactly what this buyer needs. Only friction: pure-play BESS IPPs often have in-house EPC talent, so competition is intense against tier-1 integrators (Fluence, Tesla, Sungrow).\n**Already uses technology:** TRUE\n**Current alternatives hired:** In-house EPC teams, Fluence, Tesla Megapack turnkey, Sungrow PowerTitan integrators, Wärtsilä\n\n### Rank 2 — NAICS 221114 Solar Electric Power Generation · distance **2** · HIGH\n\n**Rationale:** PV+BESS co-location is industry-standard. Mein Solar's PV-EPC incumbency is a direct differentiator here: one grid connection, one certification dossier, one EMS, one warranty. Same VDE-AR-N 4110, same customer persona (Solarpark developers, IPPs, community-solar co-ops), same DSO interface. Solar developers already retrofit storage onto operational PV parks.\n**Already uses technology:** TRUE\n**Current alternatives hired:** In-house, specialized BESS integrators retrofitting onto PV sites, Enerparc/BayWa r.e., Goldbeck Solar\n\n### Rank 3 — NAICS 221115 Wind Electric Power Generation · distance **3** · HIGH\n\n**Rationale:** Wind parks increasingly co-deploy BESS for curtailment capture and ancillary-service prequal. Same grid code (VDE-AR-N 4110 / 4120 for HV), same certification path. Customer persona shifts to wind developers (Enercon, WPD, Energiequelle) — adjacent not identical. Mein Solar lacks wind-specific site heritage but the EPC methodology translates cleanly.\n**Already uses technology:** TRUE\n**Current alternatives hired:** Wind OEM storage offerings (Vestas, Siemens Gamesa), pure-play BESS integrators\n\n### Rank 4 — NAICS 531120 Lessors of Nonresidential Buildings · distance **3** · HIGH\n\n**Rationale:** C&I landlords (logistics parks, office campuses, retail centers) deploying behind-the-meter BESS for peak-shaving Netzentgelte reduction and tenant resilience. Same MV grid interface, same Baugenehmigung process, same €/kWh budgets. Perfect match for Mein Solar's \"single-source EPC\" promise because landlords hate multi-vendor coordination.\n**Already uses technology:** TRUE (growing rapidly 2025–2027)\n**Current alternatives hired:** Voltfang, Tesvolt, Commeo turnkey units, in-house facilities management\n\n### Rank 5 — NAICS 457120 Other Gasoline Stations (incl. EV charging retail) · distance **3** · HIGH\n\n**Rationale:** **Explicit Mein Solar differentiator** — \"EV-Charging Buffer Configuration\" feature. HPC hubs (Ionity, EnBW mobility+, Fastned, Aral pulse) face weak rural MV grids; a BESS buffer lets the operator install 350 kW × 6+ dispensers on a 400 kVA feeder. Same grid code, same single-source contract appeal. FP extension axis: \"HPC charging park EPC\".\n**Already uses technology:** FALSE (emerging — 2024–2026 inflection)\n**Current alternatives hired:** Kostad, ads-tec Energy, Alpitronic integrated BESS+HPC, DIY split-contract\n\n### Rank 6 — NAICS 221122 Electric Power Distribution · distance **4** · HIGH\n\n**Rationale:** DSO-owned \"Netzbooster\" storage for grid constraint relief, voltage support, and deferred substation upgrade. Customer is utility (Bayernwerk, Netze BW, Stromnetz Hamburg, Westnetz) — longer procurement cycles, EU-tender rules, stricter interoperability (IEC 61850). Same MV scale as Mein Solar reference. Utility segment is slower but contracts are larger and predictable.\n**Already uses technology:** TRUE\n**Current alternatives hired:** ABB, Siemens Grid Integration, Hitachi Energy, Nidec ASI\n\n### Rank 7 — NAICS 518210 Computing Infrastructure Providers (Data Centers) · distance **4** · HIGH\n\n**Rationale:** Hyperscalers and colocation operators (NTT, Digital Realty, Vantage, Equinix, CyrusOne, STACK) replacing lead-acid UPS with Li-ion BESS + grid-services revenue stacking. Same MV scale, same VDE-AR-N 4110 regime, but the operational expectation is mission-critical (99.999% availability) and fire-protection scrutiny is extreme. Strong growth vector: DE data-center capacity doubling 2025–2030.\n**Already uses technology:** TRUE (growing — hybrid UPS/BESS adoption inflecting)\n**Current alternatives hired:** Schneider Electric Galaxy VXL, Vertiv, Eaton, Piller\n\n### Rank 8 — NAICS 493120 Refrigerated Warehousing and Storage · distance **4** · MEDIUM\n\n**Rationale:** Cold storage (Nordfrost, Kühne+Nagel cold chain, Frigoscandia) carries 24/7 high-kW refrigeration load; BESS enables peak-shaving and tariff arbitrage, plus resilience against spoilage during outages. Same MV interface, same C&I grid code, same site type as industrial landlord. Customer awareness is low — education-led sale.\n**Already uses technology:** FALSE (emerging)\n**Current alternatives hired:** Diesel gensets, utility tariff negotiation, no storage\n\n### Rank 9 — NAICS 325120 Industrial Gas Manufacturing (electrolyzer/H2 sites) · distance **5** · MEDIUM\n\n**Rationale:** Green-hydrogen projects (Linde, Air Liquide, Iberdrola, RWE green-H2) pair electrolyzers with BESS for curtailment capture, grid-forming support, and ramp-rate smoothing. Same grid code, same MV coupling, but the EMS must be co-optimized with the electrolyzer — different control logic. Mein Solar's integration discipline transfers; the hydrogen control layer is new skill.\n**Already uses technology:** FALSE (emerging 2025–2028)\n**Current alternatives hired:** Electrolyzer OEM turnkey packages (Nel, Sunfire, Siemens Energy), split-contract with BESS integrator\n\n### Rank 10 — NAICS 488310 Port and Harbor Operations · distance **5** · MEDIUM\n\n**Rationale:** Port electrification (shore power / OPS, reach-stacker charging, ferry charging, crane smoothing). Customers are port authorities (HHLA Hamburg, BLG Bremerhaven, Duisport). Environment is salt-air coastal (IP upgrade required), grid scale matches Mein Solar reference. Public procurement + EU/German port-modernization subsidies. Different vertical but methodology transfers.\n**Already uses technology:** FALSE (emerging — shore power mandate 2030)\n**Current alternatives hired:** Siemens, ABB, Wärtsilä port-solutions, in-port-authority engineering\n\n### Rank 11 — NAICS 221121 Electric Bulk Power Transmission and Control · distance **6** · MEDIUM\n\n**Rationale:** TSO-scale grid-forming storage (50 Hertz, TenneT, Amprion, TransnetBW). Asset scale is typically 100–500 MW — **an order of magnitude above Mein Solar's 4.5 MW reference**. Different grid code (VDE-AR-N 4120 HV), different certification (Type A HV plant cert), different customer (regulated TSO, EU-tender-driven). Reachable only via consortium bid or subcontractor role.\n**Already uses technology:** TRUE\n**Current alternatives hired:** Hitachi Energy, Siemens Energy, GE Vernova, Mitsubishi Electric\n\n### Rank 12 — NAICS 334413 Semiconductor Manufacturing · distance **6** · MEDIUM\n\n**Rationale:** Fabs (Infineon Dresden, GlobalFoundries, Bosch SiC, Intel Magdeburg-announced) buy power-quality + ride-through solutions. BESS supplements dynamic UPS / flywheels for sag ride-through (200 ms events). Fab customer has different spec language (ITIC curve, SEMI F47), custom engineering per site. Entry is hard without fab reference.\n**Already uses technology:** FALSE (partial — STATCOM + flywheel dominant; BESS emerging)\n**Current alternatives hired:** ABB PCS100, Piller UNIBLOCK, static VAR compensators, bespoke UPS\n\n### Rank 13 — NAICS 488190 Other Support Activities for Air Transportation · distance **6** · LOW\n\n**Rationale:** Airport GSE charging, eTaxi tractor charging, eVTOL vertiport readiness (Frankfurt, Munich). Infrastructure-ownership split between airport operator and handling agents complicates sale. Environment is apron-adjacent, safety-critical for aviation-side clearance. Emerging market with long decision cycles.\n**Already uses technology:** FALSE (emerging)\n**Current alternatives hired:** OEM GSE charging packages (ITW GSE, TLD), airport-utility direct grid upgrade\n\n### Rank 14 — NAICS 221320 Sewage Treatment Facilities · distance **6** · LOW\n\n**Rationale:** Municipal WWTPs with peak pumping loads + co-location with biogas CHP create storage opportunity (FCR participation, demand charge reduction, CHP firming). Customer is municipality — slow procurement, GWB-regulated tenders, no revenue-stacking culture. Niche adjacent to Mein Solar's core.\n**Already uses technology:** FALSE\n**Current alternatives hired:** Diesel backup, CHP-only, utility tariff\n\n### Rank 15 — NAICS 111419 Other Food Crops Grown Under Cover (greenhouses) · distance **7** · LOW\n\n**Rationale:** Commercial greenhouses (tomato, herb, cannabis-adjacent Dutch model) with grow-light + heat-pump loads. Electrification of greenhouse heating shifts the demand profile to peaks that BESS can smooth. Customer persona is agricultural (not Mein Solar's traditional C&I), different sales channel, different valuation metrics. Rare fit for demonstration projects only.\n**Already uses technology:** FALSE\n**Current alternatives hired:** Gas CHP with heat/power output, no storage\n\n### Excluded (Tier 2 ranks 16–18 — distance ≥7, LOW priority)\n\n| NAICS | Title | Distance | Reason |\n|---|---|---|---|\n| 331110 | Iron and Steel Mills | 7 | Arc-furnace flicker mitigation scale is 50–200 MW, ≥10× Mein Solar reference |\n| 331313 | Alumina Refining / Primary Aluminum | 7 | Baseload smelter, not peak-shaveable; non-existent revenue stack |\n| 928110 | National Security (military bases) | 7 | Defense-procurement cleared-prime requirement; EU-content mandate; no Mein Solar credential |\n\n### Excluded (Tier 1 cuts)\n\n| NAICS | Title | Reason |\n|---|---|---|\n| 327310 | Cement Manufacturing | Kiln electrification pre-pilot; no revenue-stack path |\n| 517312 | Wireless Telecommunications Carriers | Typical site <100 kWh — below P2 minimum EPC scale |\n\n### Market Priority Distribution\n\n| Priority | Count | Markets |\n|---|---|---|\n| HIGH | 7 | 221118, 221114, 221115, 531120, 457120, 221122, 518210 |\n| MEDIUM | 5 | 493120, 325120, 488310, 221121, 334413 |\n| LOW | 3 | 488190, 221320, 111419 |\n\n---"
-    },
-    {
-      "title": "02b — Phase summary",
-      "content": "- **Total NAICS discovered (02a):** 20\n- **Tiered discovery used:** YES (>20 threshold crossed at the edge; full tier 1 applied)\n- **Tier 1 cuts:** 2 (327310, 517312)\n- **Tier 2 scored:** 18\n- **Selected for Phase 02c:** 15 (ranks 1–15)\n- **Top-priority cluster:** Utilities (221114/115/118/122) + C&I (531120/518210) + EV charging (457120) — 7 HIGH-priority markets\n\n**Handoff:** Phase 02c (VN construction per NAICS) is out of scope for this component invocation. Separate VN agents will consume the selected 15 markets and build Value Networks for each.\n\n---"
-    },
-    {
-      "title": "Structured Data",
-      "content": "```json\n{\n  \"component\": \"market_discovery\",\n  \"phases_executed\": [\"02a_naics_discovery\", \"02b_architecture_distance\"],\n  \"phase_02c_status\": \"deferred_to_separate_vn_agents\",\n  \"product_name\": \"EPC für Großbatteriespeicher\",\n  \"vendor_name\": \"Mein Solar GmbH\",\n  \"technology_class\": \"Large-Scale Battery Energy Storage System EPC\",\n  \"commodity_functional_promise\": \"Deliver operational grid-connected electrical energy storage assets as turnkey capital projects with single-source engineering, procurement, construction, and grid-code certification\",\n  \"fp_extensions\": [\n    \"Storage medium neutrality — flow batteries, flywheels/CAES, thermal-to-power, hybrid H2-BESS\",\n    \"Grid-connected capital-asset EPC methodology — PV EPC, HPC charging hubs, PV+Wind hybrids, industrial microgrids, behind-the-meter electrification\"\n  ],\n  \"unspsc_context\": \"custom_product_group: Battery Energy Storage System EPC Services (no UNSPSC ≥80% confidence)\",\n  \"scoring_type\": \"capital_equipment\",\n  \"tiered_discovery_used\": true,\n  \"tier1_candidates\": 20,\n  \"tier2_candidates\": 18,\n  \"total_naics_discovered\": 20,\n  \"max_markets_selected\": 15,\n\n  \"excluded_markets\": [\n    \"Residential rooftop PV (Mein Solar incumbent, below EPC scale)\",\n    \"Small commercial PV <500 kW (current market, below BESS EPC minimum)\",\n    \"Pure cell manufacturing 26111711 (upstream component, not customer)\",\n    \"327310 Cement Manufacturing (Tier-1 cut — kiln electrification pre-pilot)\",\n    \"517312 Wireless Telecommunications Carriers (Tier-1 cut — typical site <100 kWh, below P2 minimum)\"\n  ],\n\n  \"markets\": [\n    {\n      \"label\": \"Market\",\n      \"slug\": \"market__221118_other_electric_power_generation\",\n      \"naics_code\": \"221118\",\n      \"naics_title\": \"Other Electric Power Generation\",\n      \"market_name\": \"Standalone BESS / Independent Power Producers\",\n      \"market_category\": \"utility\",\n      \"functional_promise_fit\": \"direct\",\n      \"estimated_adoption\": \"established\",\n      \"product_architecture_distance\": 1,\n      \"already_uses_technology\": true,\n      \"market_priority\": \"HIGH\",\n      \"discovery_source\": \"primary_fp\",\n      \"criteria_scores\": {\"U1\":1,\"U2\":1,\"U3\":1,\"U4\":1,\"U5\":1,\"C1\":1,\"C2\":1,\"C3\":1,\"C4\":2},\n      \"architecture_rationale\": \"Literal standard NAICS for standalone BESS IPPs. Customer exists to operate grid-connected storage. Every Mein Solar differentiator (single-source EPC, VDE-AR-N 4110, FGW TR8) maps directly. Only friction: pure-play BESS IPPs often have in-house EPC talent.\",\n      \"current_alternatives_hired\": [\"In-house EPC teams\", \"Fluence\", \"Tesla Megapack turnkey\", \"Sungrow PowerTitan integrators\", \"Wärtsilä\"],\n      \"confidence\": 0.95\n    },\n    {\n      \"label\": \"Market\",\n      \"slug\": \"market__221114_solar_electric_power_generation\",\n      \"naics_code\": \"221114\",\n      \"naics_title\": \"Solar Electric Power Generation\",\n      \"market_name\": \"PV+BESS Solar Independent Power Producers\",\n      \"market_category\": \"utility\",\n      \"functional_promise_fit\": \"direct\",\n      \"estimated_adoption\": \"established\",\n      \"product_architecture_distance\": 2,\n      \"already_uses_technology\": true,\n      \"market_priority\": \"HIGH\",\n      \"discovery_source\": \"primary_fp\",\n      \"criteria_scores\": {\"U1\":2,\"U2\":1,\"U3\":1,\"U4\":2,\"U5\":2,\"C1\":2,\"C2\":1,\"C3\":2,\"C4\":2},\n      \"architecture_rationale\": \"PV+BESS co-location is industry-standard. Mein Solar's PV-EPC incumbency is a direct structural differentiator here — one grid connection, one certification dossier, one EMS, one warranty wrapper. Same VDE-AR-N 4110, same customer persona (Solarpark developers), same DSO interface.\",\n      \"current_alternatives_hired\": [\"In-house EPC\", \"Enerparc\", \"BayWa r.e.\", \"Goldbeck Solar\", \"Specialized BESS retrofit integrators\"],\n      \"confidence\": 0.93\n    },\n    {\n      \"label\": \"Market\",\n      \"slug\": \"market__221115_wind_electric_power_generation\",\n      \"naics_code\": \"221115\",\n      \"naics_title\": \"Wind Electric Power Generation\",\n      \"market_name\": \"Wind+BESS Hybrid Parks\",\n      \"market_category\": \"utility\",\n      \"functional_promise_fit\": \"direct\",\n      \"estimated_adoption\": \"established\",\n      \"product_architecture_distance\": 3,\n      \"already_uses_technology\": true,\n      \"market_priority\": \"HIGH\",\n      \"discovery_source\": \"primary_fp\",\n      \"criteria_scores\": {\"U1\":3,\"U2\":1,\"U3\":3,\"U4\":2,\"U5\":3,\"C1\":3,\"C2\":2,\"C3\":3,\"C4\":2},\n      \"architecture_rationale\": \"Wind parks increasingly co-deploy BESS for curtailment capture and ancillary-service prequal. Same grid code, same certification path. Customer persona shifts to wind developers (Enercon, WPD, Energiequelle) — adjacent not identical. Mein Solar lacks wind-specific site heritage but EPC methodology translates cleanly.\",\n      \"current_alternatives_hired\": [\"Vestas storage\", \"Siemens Gamesa\", \"Pure-play BESS integrators\", \"In-house developer engineering\"],\n      \"confidence\": 0.88\n    },\n    {\n      \"label\": \"Market\",\n      \"slug\": \"market__531120_lessors_nonresidential_buildings\",\n      \"naics_code\": \"531120\",\n      \"naics_title\": \"Lessors of Nonresidential Buildings (except Miniwarehouses)\",\n      \"market_name\": \"Commercial & Industrial Real-Estate Behind-the-Meter Storage\",\n      \"market_category\": \"real_estate\",\n      \"functional_promise_fit\": \"adjacent\",\n      \"estimated_adoption\": \"growing\",\n      \"product_architecture_distance\": 3,\n      \"already_uses_technology\": true,\n      \"market_priority\": \"HIGH\",\n      \"discovery_source\": \"primary_fp\",\n      \"criteria_scores\": {\"U1\":2,\"U2\":2,\"U3\":3,\"U4\":3,\"U5\":4,\"C1\":3,\"C2\":2,\"C3\":3,\"C4\":4},\n      \"architecture_rationale\": \"C&I landlords (logistics parks, office campuses, retail centers) deploying behind-the-meter BESS for peak-shaving Netzentgelte reduction and tenant resilience. Same MV interface, same Baugenehmigung process. Perfect match for single-source-EPC promise because landlords hate multi-vendor coordination.\",\n      \"current_alternatives_hired\": [\"Voltfang\", \"Tesvolt\", \"Commeo turnkey units\", \"In-house FM engineering\", \"Utility PPA + no storage\"],\n      \"confidence\": 0.90\n    },\n    {\n      \"label\": \"Market\",\n      \"slug\": \"market__457120_ev_charging_fuel_stations\",\n      \"naics_code\": \"457120\",\n      \"naics_title\": \"Other Gasoline Stations and Fuel Dealers (incl. EV charging retail)\",\n      \"market_name\": \"HPC Charging Hubs with BESS Buffer\",\n      \"market_category\": \"retail_infrastructure\",\n      \"functional_promise_fit\": \"adjacent\",\n      \"estimated_adoption\": \"emerging\",\n      \"product_architecture_distance\": 3,\n      \"already_uses_technology\": false,\n      \"market_priority\": \"HIGH\",\n      \"discovery_source\": \"fp_extension\",\n      \"criteria_scores\": {\"U1\":3,\"U2\":2,\"U3\":4,\"U4\":3,\"U5\":3,\"C1\":4,\"C2\":3,\"C3\":3,\"C4\":4},\n      \"architecture_rationale\": \"Explicit Mein Solar differentiator (EV-Charging Buffer Configuration feature). HPC hubs (Ionity, EnBW mobility+, Fastned, Aral pulse) face weak rural MV grids; a BESS buffer enables 350 kW × 6+ dispensers on a 400 kVA feeder. FP-extension axis: HPC charging park EPC. Whitespace opportunity with rapidly inflecting adoption.\",\n      \"current_alternatives_hired\": [\"Kostad\", \"ads-tec Energy\", \"Alpitronic integrated BESS+HPC\", \"DIY split-contract\"],\n      \"confidence\": 0.87\n    },\n    {\n      \"label\": \"Market\",\n      \"slug\": \"market__221122_electric_power_distribution\",\n      \"naics_code\": \"221122\",\n      \"naics_title\": \"Electric Power Distribution\",\n      \"market_name\": \"DSO-Owned Netzbooster Storage\",\n      \"market_category\": \"utility\",\n      \"functional_promise_fit\": \"direct\",\n      \"estimated_adoption\": \"growing\",\n      \"product_architecture_distance\": 4,\n      \"already_uses_technology\": true,\n      \"market_priority\": \"HIGH\",\n      \"discovery_source\": \"primary_fp\",\n      \"criteria_scores\": {\"U1\":2,\"U2\":2,\"U3\":5,\"U4\":2,\"U5\":4,\"C1\":3,\"C2\":3,\"C3\":3,\"C4\":5},\n      \"architecture_rationale\": \"DSO-owned storage for grid constraint relief, voltage support, and deferred substation upgrade. Customer is regulated utility (Bayernwerk, Netze BW, Stromnetz Hamburg) — longer procurement cycles, EU-tender rules, stricter interoperability (IEC 61850). Same MV scale as Mein Solar reference; utility segment is slower but contracts are larger and predictable.\",\n      \"current_alternatives_hired\": [\"ABB\", \"Siemens Grid Integration\", \"Hitachi Energy\", \"Nidec ASI\"],\n      \"confidence\": 0.82\n    },\n    {\n      \"label\": \"Market\",\n      \"slug\": \"market__518210_data_centers_computing_infrastructure\",\n      \"naics_code\": \"518210\",\n      \"naics_title\": \"Computing Infrastructure Providers, Data Processing, Web Hosting, and Related Services\",\n      \"market_name\": \"Data Center Hybrid UPS+BESS Systems\",\n      \"market_category\": \"infrastructure\",\n      \"functional_promise_fit\": \"adjacent\",\n      \"estimated_adoption\": \"growing\",\n      \"product_architecture_distance\": 4,\n      \"already_uses_technology\": true,\n      \"market_priority\": \"HIGH\",\n      \"discovery_source\": \"primary_fp\",\n      \"criteria_scores\": {\"U1\":3,\"U2\":2,\"U3\":4,\"U4\":4,\"U5\":4,\"C1\":3,\"C2\":4,\"C3\":4,\"C4\":4},\n      \"architecture_rationale\": \"Hyperscalers and colocation operators (NTT, Digital Realty, Vantage, Equinix, CyrusOne, STACK) replacing lead-acid UPS with Li-ion BESS and stacking grid-services revenue. Same MV scale, same VDE-AR-N 4110 regime, but mission-critical availability (99.999%) and extreme fire-protection scrutiny. Strong growth — DE data-center capacity doubling 2025–2030.\",\n      \"current_alternatives_hired\": [\"Schneider Electric Galaxy VXL\", \"Vertiv\", \"Eaton\", \"Piller dynamic UPS\"],\n      \"confidence\": 0.86\n    },\n    {\n      \"label\": \"Market\",\n      \"slug\": \"market__493120_refrigerated_warehousing\",\n      \"naics_code\": \"493120\",\n      \"naics_title\": \"Refrigerated Warehousing and Storage\",\n      \"market_name\": \"Cold Storage Peak-Shaving & Resilience\",\n      \"market_category\": \"logistics\",\n      \"functional_promise_fit\": \"adjacent\",\n      \"estimated_adoption\": \"emerging\",\n      \"product_architecture_distance\": 4,\n      \"already_uses_technology\": false,\n      \"market_priority\": \"MEDIUM\",\n      \"discovery_source\": \"primary_fp\",\n      \"criteria_scores\": {\"U1\":3,\"U2\":2,\"U3\":3,\"U4\":3,\"U5\":4,\"C1\":4,\"C2\":3,\"C3\":4,\"C4\":5},\n      \"architecture_rationale\": \"Cold storage (Nordfrost, Kühne+Nagel, Frigoscandia) carries 24/7 high-kW refrigeration load. BESS enables peak-shaving and tariff arbitrage plus spoilage-outage resilience. Same MV interface, same C&I grid code, same site type as industrial landlord. Customer awareness low — education-led sale.\",\n      \"current_alternatives_hired\": [\"Diesel gensets\", \"Utility tariff negotiation\", \"No storage\"],\n      \"confidence\": 0.78\n    },\n    {\n      \"label\": \"Market\",\n      \"slug\": \"market__325120_industrial_gas_electrolyzer_hydrogen\",\n      \"naics_code\": \"325120\",\n      \"naics_title\": \"Industrial Gas Manufacturing\",\n      \"market_name\": \"Green-H₂ Electrolyzer Sites with BESS Firming\",\n      \"market_category\": \"chemicals_energy\",\n      \"functional_promise_fit\": \"adjacent\",\n      \"estimated_adoption\": \"emerging\",\n      \"product_architecture_distance\": 5,\n      \"already_uses_technology\": false,\n      \"market_priority\": \"MEDIUM\",\n      \"discovery_source\": \"fp_extension\",\n      \"criteria_scores\": {\"U1\":4,\"U2\":2,\"U3\":5,\"U4\":4,\"U5\":5,\"C1\":5,\"C2\":4,\"C3\":5,\"C4\":6},\n      \"architecture_rationale\": \"Green-hydrogen projects (Linde, Air Liquide, Iberdrola, RWE green-H2) pair electrolyzers with BESS for curtailment capture, grid-forming support, and ramp-rate smoothing. Same grid code, same MV coupling, but EMS must be co-optimized with the electrolyzer stack — new control logic. Mein Solar's integration discipline transfers; H2-control layer is new skill.\",\n      \"current_alternatives_hired\": [\"Electrolyzer OEM turnkey (Nel, Sunfire, Siemens Energy)\", \"Split-contract with BESS integrator\"],\n      \"confidence\": 0.74\n    },\n    {\n      \"label\": \"Market\",\n      \"slug\": \"market__488310_port_harbor_operations\",\n      \"naics_code\": \"488310\",\n      \"naics_title\": \"Port and Harbor Operations\",\n      \"market_name\": \"Port Electrification — Shore Power, Crane, Ferry Charging\",\n      \"market_category\": \"transportation_infrastructure\",\n      \"functional_promise_fit\": \"adjacent\",\n      \"estimated_adoption\": \"emerging\",\n      \"product_architecture_distance\": 5,\n      \"already_uses_technology\": false,\n      \"market_priority\": \"MEDIUM\",\n      \"discovery_source\": \"fp_extension\",\n      \"criteria_scores\": {\"U1\":6,\"U2\":3,\"U3\":5,\"U4\":4,\"U5\":5,\"C1\":5,\"C2\":5,\"C3\":5,\"C4\":6},\n      \"architecture_rationale\": \"Port electrification: shore power/OPS (2030 EU mandate), reach-stacker charging, ferry charging, crane smoothing. Customers are port authorities (HHLA Hamburg, BLG Bremerhaven, Duisport). Salt-air coastal environment requires IP upgrade. Grid scale matches Mein Solar reference. Public procurement + EU port-modernization subsidies.\",\n      \"current_alternatives_hired\": [\"Siemens port solutions\", \"ABB port\", \"Wärtsilä\", \"Port-authority in-house engineering\"],\n      \"confidence\": 0.72\n    },\n    {\n      \"label\": \"Market\",\n      \"slug\": \"market__221121_electric_bulk_power_transmission\",\n      \"naics_code\": \"221121\",\n      \"naics_title\": \"Electric Bulk Power Transmission and Control\",\n      \"market_name\": \"TSO Transmission-Scale Grid-Forming Storage\",\n      \"market_category\": \"utility\",\n      \"functional_promise_fit\": \"direct\",\n      \"estimated_adoption\": \"growing\",\n      \"product_architecture_distance\": 6,\n      \"already_uses_technology\": true,\n      \"market_priority\": \"MEDIUM\",\n      \"discovery_source\": \"primary_fp\",\n      \"criteria_scores\": {\"U1\":3,\"U2\":6,\"U3\":7,\"U4\":3,\"U5\":7,\"C1\":6,\"C2\":4,\"C3\":4,\"C4\":6},\n      \"architecture_rationale\": \"TSO-scale storage (50 Hertz, TenneT, Amprion, TransnetBW) at 100–500 MW — an order of magnitude above Mein Solar's 4.5 MW reference. Different grid code (VDE-AR-N 4120 HV), different certification (Type A HV plant cert), EU-tender-driven. Reachable only via consortium bid or subcontractor role.\",\n      \"current_alternatives_hired\": [\"Hitachi Energy\", \"Siemens Energy\", \"GE Vernova\", \"Mitsubishi Electric\"],\n      \"confidence\": 0.70\n    },\n    {\n      \"label\": \"Market\",\n      \"slug\": \"market__334413_semiconductor_manufacturing\",\n      \"naics_code\": \"334413\",\n      \"naics_title\": \"Semiconductor and Related Device Manufacturing\",\n      \"market_name\": \"Semiconductor Fab Power-Quality & Ride-Through\",\n      \"market_category\": \"manufacturing\",\n      \"functional_promise_fit\": \"adjacent\",\n      \"estimated_adoption\": \"emerging\",\n      \"product_architecture_distance\": 6,\n      \"already_uses_technology\": false,\n      \"market_priority\": \"MEDIUM\",\n      \"discovery_source\": \"primary_fp\",\n      \"criteria_scores\": {\"U1\":5,\"U2\":3,\"U3\":6,\"U4\":6,\"U5\":6,\"C1\":6,\"C2\":6,\"C3\":6,\"C4\":7},\n      \"architecture_rationale\": \"Fabs (Infineon Dresden, GlobalFoundries, Bosch SiC, Intel Magdeburg) buy power-quality + ride-through solutions. BESS supplements dynamic UPS/flywheels for sag ride-through (200 ms events). Fab spec language (ITIC curve, SEMI F47) is bespoke; custom engineering per site. Entry difficult without fab reference.\",\n      \"current_alternatives_hired\": [\"ABB PCS100\", \"Piller UNIBLOCK\", \"Static VAR compensators\", \"Bespoke UPS\"],\n      \"confidence\": 0.68\n    },\n    {\n      \"label\": \"Market\",\n      \"slug\": \"market__488190_airport_ground_support_electrification\",\n      \"naics_code\": \"488190\",\n      \"naics_title\": \"Other Support Activities for Air Transportation\",\n      \"market_name\": \"Airport Electrification — GSE, eTaxi, eVTOL Readiness\",\n      \"market_category\": \"transportation_infrastructure\",\n      \"functional_promise_fit\": \"stretch\",\n      \"estimated_adoption\": \"emerging\",\n      \"product_architecture_distance\": 6,\n      \"already_uses_technology\": false,\n      \"market_priority\": \"LOW\",\n      \"discovery_source\": \"fp_extension\",\n      \"criteria_scores\": {\"U1\":6,\"U2\":4,\"U3\":6,\"U4\":5,\"U5\":6,\"C1\":6,\"C2\":6,\"C3\":6,\"C4\":7},\n      \"architecture_rationale\": \"Airport GSE charging, eTaxi tractor charging, eVTOL vertiport readiness. Ownership split between airport operator and handling agents complicates sale. Apron-adjacent environment is safety-critical with aviation-side clearance requirements. Long decision cycles.\",\n      \"current_alternatives_hired\": [\"OEM GSE charging (ITW GSE, TLD)\", \"Airport-utility direct grid upgrade\"],\n      \"confidence\": 0.62\n    },\n    {\n      \"label\": \"Market\",\n      \"slug\": \"market__221320_sewage_treatment_facilities\",\n      \"naics_code\": \"221320\",\n      \"naics_title\": \"Sewage Treatment Facilities\",\n      \"market_name\": \"Municipal WWTP Peak-Shaving & Biogas-CHP Firming\",\n      \"market_category\": \"utility\",\n      \"functional_promise_fit\": \"adjacent\",\n      \"estimated_adoption\": \"emerging\",\n      \"product_architecture_distance\": 6,\n      \"already_uses_technology\": false,\n      \"market_priority\": \"LOW\",\n      \"discovery_source\": \"primary_fp\",\n      \"criteria_scores\": {\"U1\":4,\"U2\":3,\"U3\":7,\"U4\":4,\"U5\":6,\"C1\":6,\"C2\":5,\"C3\":5,\"C4\":8},\n      \"architecture_rationale\": \"Municipal WWTPs with peak pumping loads + co-location with biogas CHP create FCR participation and demand charge reduction opportunity. Customer is municipality — slow procurement, GWB-regulated tenders, no revenue-stacking culture. Niche adjacent to Mein Solar's core.\",\n      \"current_alternatives_hired\": [\"Diesel backup\", \"CHP-only\", \"Utility tariff, no storage\"],\n      \"confidence\": 0.60\n    },\n    {\n      \"label\": \"Market\",\n      \"slug\": \"market__111419_greenhouse_controlled_environment_farming\",\n      \"naics_code\": \"111419\",\n      \"naics_title\": \"Other Food Crops Grown Under Cover\",\n      \"market_name\": \"Electrified Greenhouse Operations with BESS Smoothing\",\n      \"market_category\": \"agriculture\",\n      \"functional_promise_fit\": \"stretch\",\n      \"estimated_adoption\": \"emerging\",\n      \"product_architecture_distance\": 7,\n      \"already_uses_technology\": false,\n      \"market_priority\": \"LOW\",\n      \"discovery_source\": \"primary_fp\",\n      \"criteria_scores\": {\"U1\":5,\"U2\":3,\"U3\":7,\"U4\":5,\"U5\":7,\"C1\":6,\"C2\":6,\"C3\":7,\"C4\":8},\n      \"architecture_rationale\": \"Commercial greenhouses (tomato, herb, Dutch model) with grow-light + heat-pump loads. Electrification shifts demand profile to peaks that BESS can smooth. Customer persona is agricultural (not Mein Solar's traditional C&I), different sales channel. Demonstration-project fit only.\",\n      \"current_alternatives_hired\": [\"Gas CHP\", \"No storage\"],\n      \"confidence\": 0.55\n    }\n  ],\n\n  \"tier1_cuts\": [\n    {\"naics_code\": \"327310\", \"naics_title\": \"Cement Manufacturing\", \"reason\": \"Kiln electrification pre-pilot, no revenue-stack path, distance ≥8\"},\n    {\"naics_code\": \"517312\", \"naics_title\": \"Wireless Telecommunications Carriers (except Satellite)\", \"reason\": \"Typical cell-site BESS <100 kWh, violates P2 minimum EPC scale (≥1 MWh)\"}\n  ],\n\n  \"tier2_cuts_by_max_markets\": [\n    {\"naics_code\": \"331110\", \"naics_title\": \"Iron and Steel Mills and Ferroalloy Manufacturing\", \"distance\": 7, \"reason\": \"Arc-furnace flicker mitigation at 50–200 MW scale — ≥10× Mein Solar reference\"},\n    {\"naics_code\": \"331313\", \"naics_title\": \"Alumina Refining and Primary Aluminum Production\", \"distance\": 7, \"reason\": \"Baseload smelter non-peak-shaveable, non-existent revenue stack\"},\n    {\"naics_code\": \"928110\", \"naics_title\": \"National Security (military bases)\", \"distance\": 7, \"reason\": \"Defense-procurement cleared-prime requirement; EU-content mandate; no Mein Solar credential\"}\n  ],\n\n  \"priority_distribution\": {\n    \"HIGH\": [\"221118\", \"221114\", \"221115\", \"531120\", \"457120\", \"221122\", \"518210\"],\n    \"MEDIUM\": [\"493120\", \"325120\", \"488310\", \"221121\", \"334413\"],\n    \"LOW\": [\"488190\", \"221320\", \"111419\"]\n  },\n\n  \"handoff_to_phase_02c\": {\n    \"status\": \"pending_separate_vn_agents\",\n    \"selected_naics_for_vn_construction\": [\"221118\", \"221114\", \"221115\", \"531120\", \"457120\", \"221122\", \"518210\", \"493120\", \"325120\", \"488310\", \"221121\", \"334413\", \"488190\", \"221320\", \"111419\"]\n  }\n}\n```\n\n---"
-    },
-    {
-      "title": "Sources",
-      "content": "- [NAICS 2211 — Electric Power Generation, Transmission and Distribution (US EPA)](https://www.epa.gov/regulatory-information-sector/electric-power-generation-transmission-and-distribution-naics-2211)\n- [NAICS 221118 — Other Electric Power Generation (BESS reference)](https://www.naics.com/naics-code-description/?code=221118)\n- [NAICS 221114 — Solar Electric Power Generation (IBISWorld)](https://www.ibisworld.com/classifications/naics/221114/solar-electric-power-generation/)\n- [NAICS 221115 — Wind Electric Power Generation (IBISWorld)](https://www.ibisworld.com/classifications/naics/221115/wind-electric-power-generation/)\n- [NAICS 221122 — Electric Power Distribution (IBISWorld)](https://www.ibisworld.com/classifications/naics/221122/electric-power-distribution/)\n- [NAICS 2213 — Water, Sewage and Other Systems (US EPA)](https://www.epa.gov/regulatory-information-sector/water-and-sewage-utilities-sector-naics-2213)\n- [NAICS 488310 — Port and Harbor Operations (IBISWorld)](https://www.ibisworld.com/classifications/naics/488310/port-and-harbor-operations/)\n- [NAICS 334413 — Semiconductor and Related Device Manufacturing (IBISWorld)](https://www.ibisworld.com/classifications/naics/334413/semiconductor-and-related-device-manufacturing/)\n- [NAICS 493120 — Refrigerated Warehousing and Storage (SamSearch)](https://samsearch.co/naics-ai-lookup/493120)\n- [NAICS 531120 — Lessors of Nonresidential Buildings (SamSearch)](https://samsearch.co/naics-ai-lookup/531120)\n- [NAICS 237130 — Power and Communication Line and Related Structures Construction (IBISWorld)](https://www.ibisworld.com/classifications/naics/237130/power-and-communication-line-and-related-structures-construction/)\n- [NAICS 928110 — National Security / Military Bases (SamSearch)](https://samsearch.co/naics-ai-lookup/928110)\n- [NAICS BESS applications overview (ESZoneo)](https://eszoneo.com/info-detail/understanding-battery-energy-storage-systems-naics-code-221118)\n- [Coordinated energy and logistics scheduling for electrified seaports (ScienceDirect)](https://www.sciencedirect.com/science/article/abs/pii/S0306261925013753)\n- [UPS vs BESS in Data Centers — hybrid future (EticaAG)](https://eticaag.com/ups-vs-bess-in-data-centers-why-the-future-is-hybrid/)\n- [PNNL Microgrid Handbook for Army Resilience](https://www.pnnl.gov/main/publications/external/technical_reports/PNNL-38494.pdf)"
-    }
+  "commodityFP": "Deliver operational grid-connected electrical energy storage assets as turnkey capital projects with single-source engineering, procurement, construction, and grid-code certification",
+  "unspscContext": "custom_product_group: Battery Energy Storage System EPC Services (no UNSPSC ≥80% confidence)",
+  "fpExtensions": [
+    "Storage medium neutrality — flow batteries, flywheels/CAES, thermal-to-power, hybrid H2-BESS",
+    "Grid-connected capital-asset EPC methodology — PV EPC, HPC charging hubs, PV+Wind hybrids, industrial microgrids, behind-the-meter electrification"
   ],
-  "tables": [
+  "scoringType": "capital_equipment",
+  "tieredDiscoveryUsed": true,
+  "totalNaicsDiscovered": 20,
+  "maxMarketsSelected": 15,
+  "candidates": [
     {
-      "headers": [
-        "Excluded",
-        "Reason"
-      ],
-      "rows": [
-        {
-          "Excluded": "Residential rooftop PV (Mein Solar incumbent)",
-          "Reason": "Below EPC scale threshold (<500 kW); current market"
-        },
-        {
-          "Excluded": "Small commercial PV <500 kW",
-          "Reason": "Current market; below BESS EPC minimum scale"
-        },
-        {
-          "Excluded": "Pure-cell manufacturing (26111711 category)",
-          "Reason": "Up-stream component, not customer"
-        }
-      ]
-    },
-    {
-      "headers": [
-        "#",
-        "NAICS",
-        "Title",
-        "Sector",
-        "FP Fit",
-        "Adoption",
-        "Discovery source"
-      ],
-      "rows": [
-        {
-          "#": "1",
-          "NAICS": "221118",
-          "Title": "Other Electric Power Generation",
-          "Sector": "Utilities",
-          "FP Fit": "direct",
-          "Adoption": "established",
-          "Discovery source": "primary_fp"
-        },
-        {
-          "#": "2",
-          "NAICS": "221114",
-          "Title": "Solar Electric Power Generation",
-          "Sector": "Utilities",
-          "FP Fit": "direct",
-          "Adoption": "established",
-          "Discovery source": "primary_fp + extension"
-        },
-        {
-          "#": "3",
-          "NAICS": "221115",
-          "Title": "Wind Electric Power Generation",
-          "Sector": "Utilities",
-          "FP Fit": "direct",
-          "Adoption": "established",
-          "Discovery source": "primary_fp"
-        },
-        {
-          "#": "4",
-          "NAICS": "221122",
-          "Title": "Electric Power Distribution",
-          "Sector": "Utilities",
-          "FP Fit": "direct",
-          "Adoption": "growing",
-          "Discovery source": "primary_fp"
-        },
-        {
-          "#": "5",
-          "NAICS": "221121",
-          "Title": "Electric Bulk Power Transmission and Control",
-          "Sector": "Utilities",
-          "FP Fit": "direct",
-          "Adoption": "growing",
-          "Discovery source": "primary_fp"
-        },
-        {
-          "#": "6",
-          "NAICS": "531120",
-          "Title": "Lessors of Nonresidential Buildings (except Miniwarehouses)",
-          "Sector": "Real Estate",
-          "FP Fit": "adjacent",
-          "Adoption": "growing",
-          "Discovery source": "primary_fp"
-        },
-        {
-          "#": "7",
-          "NAICS": "518210",
-          "Title": "Computing Infrastructure Providers, Data Processing, Web Hosting, Related Services",
-          "Sector": "Information",
-          "FP Fit": "adjacent",
-          "Adoption": "growing",
-          "Discovery source": "primary_fp"
-        },
-        {
-          "#": "8",
-          "NAICS": "457120",
-          "Title": "Other Gasoline Stations and Fuel Dealers (incl. EV charging retail)",
-          "Sector": "Retail",
-          "FP Fit": "adjacent",
-          "Adoption": "emerging",
-          "Discovery source": "fp_extension"
-        },
-        {
-          "#": "9",
-          "NAICS": "493120",
-          "Title": "Refrigerated Warehousing and Storage",
-          "Sector": "Transp. & Wareh.",
-          "FP Fit": "adjacent",
-          "Adoption": "emerging",
-          "Discovery source": "primary_fp"
-        },
-        {
-          "#": "10",
-          "NAICS": "325120",
-          "Title": "Industrial Gas Manufacturing (electrolyzer/hydrogen)",
-          "Sector": "Chemicals",
-          "FP Fit": "adjacent",
-          "Adoption": "emerging",
-          "Discovery source": "fp_extension"
-        },
-        {
-          "#": "11",
-          "NAICS": "488310",
-          "Title": "Port and Harbor Operations",
-          "Sector": "Transp. & Wareh.",
-          "FP Fit": "adjacent",
-          "Adoption": "emerging",
-          "Discovery source": "fp_extension"
-        },
-        {
-          "#": "12",
-          "NAICS": "334413",
-          "Title": "Semiconductor and Related Device Manufacturing",
-          "Sector": "Mfg",
-          "FP Fit": "adjacent",
-          "Adoption": "emerging",
-          "Discovery source": "primary_fp"
-        },
-        {
-          "#": "13",
-          "NAICS": "488190",
-          "Title": "Other Support Activities for Air Transportation (airports)",
-          "Sector": "Transp. & Wareh.",
-          "FP Fit": "stretch",
-          "Adoption": "emerging",
-          "Discovery source": "fp_extension"
-        },
-        {
-          "#": "14",
-          "NAICS": "221320",
-          "Title": "Sewage Treatment Facilities",
-          "Sector": "Utilities",
-          "FP Fit": "adjacent",
-          "Adoption": "emerging",
-          "Discovery source": "primary_fp"
-        },
-        {
-          "#": "15",
-          "NAICS": "111419",
-          "Title": "Other Food Crops Grown Under Cover (greenhouses)",
-          "Sector": "Agriculture",
-          "FP Fit": "stretch",
-          "Adoption": "emerging",
-          "Discovery source": "primary_fp"
-        },
-        {
-          "#": "16",
-          "NAICS": "331110",
-          "Title": "Iron and Steel Mills and Ferroalloy Manufacturing",
-          "Sector": "Mfg",
-          "FP Fit": "stretch",
-          "Adoption": "emerging",
-          "Discovery source": "primary_fp"
-        },
-        {
-          "#": "17",
-          "NAICS": "331313",
-          "Title": "Alumina Refining and Primary Aluminum Production",
-          "Sector": "Mfg",
-          "FP Fit": "stretch",
-          "Adoption": "emerging",
-          "Discovery source": "primary_fp"
-        },
-        {
-          "#": "18",
-          "NAICS": "327310",
-          "Title": "Cement Manufacturing",
-          "Sector": "Mfg",
-          "FP Fit": "stretch",
-          "Adoption": "not_yet",
-          "Discovery source": "primary_fp"
-        },
-        {
-          "#": "19",
-          "NAICS": "928110",
-          "Title": "National Security (military bases)",
-          "Sector": "Public Admin",
-          "FP Fit": "stretch",
-          "Adoption": "emerging",
-          "Discovery source": "fp_extension"
-        },
-        {
-          "#": "20",
-          "NAICS": "517312",
-          "Title": "Wireless Telecommunications Carriers (except Satellite)",
-          "Sector": "Information",
-          "FP Fit": "stretch",
-          "Adoption": "growing",
-          "Discovery source": "primary_fp"
-        }
-      ]
-    },
-    {
-      "headers": [
-        "Field",
-        "Value"
-      ],
-      "rows": [
-        {
-          "Field": "Product",
-          "Value": "EPC für Großbatteriespeicher"
-        },
-        {
-          "Field": "Technology class",
-          "Value": "Large-Scale Battery Energy Storage System EPC"
-        },
-        {
-          "Field": "Product FP",
-          "Value": "Deliver grid-compliant, dispatchable multi-MWh electrical energy storage as a turnkey capital asset with single-source responsibility"
-        },
-        {
-          "Field": "Mechanism",
-          "Value": "Turnkey systems integration of containerized Li-ion BESS + bidirectional PCS + MV coupling + EMS + civil, single-source EPC contract"
-        },
-        {
-          "Field": "Key specs",
-          "Value": "4.5 MW / 9 MWh reference, ≥500 kW / ≥1 MWh min, LFP, 20ft/40ft ISO HC, VDE-AR-N 4110, FGW TR8, €250–400/kWh installed"
-        },
-        {
-          "Field": "Scoring type",
-          "Value": "**Capital equipment (L5–L6)** — project-business delivery of a commissioned L0 asset"
-        }
-      ]
-    },
-    {
-      "headers": [
-        "Rank",
-        "NAICS",
-        "Title",
-        "Distance",
-        "Already uses",
-        "Priority",
-        "U1",
-        "U2",
-        "U3",
-        "U4",
-        "U5",
-        "C1",
-        "C2",
-        "C3",
-        "C4"
-      ],
-      "rows": [
-        {
-          "Rank": "1",
-          "NAICS": "221118",
-          "Title": "Other Electric Power Generation",
-          "Distance": "**1**",
-          "Already uses": "TRUE",
-          "Priority": "HIGH",
-          "U1": "1",
-          "U2": "1",
-          "U3": "1",
-          "U4": "1",
-          "U5": "1",
-          "C1": "1",
-          "C2": "1",
-          "C3": "1",
-          "C4": "2"
-        },
-        {
-          "Rank": "2",
-          "NAICS": "221114",
-          "Title": "Solar Electric Power Generation",
-          "Distance": "**2**",
-          "Already uses": "TRUE",
-          "Priority": "HIGH",
-          "U1": "2",
-          "U2": "1",
-          "U3": "1",
-          "U4": "2",
-          "U5": "2",
-          "C1": "2",
-          "C2": "1",
-          "C3": "2",
-          "C4": "2"
-        },
-        {
-          "Rank": "3",
-          "NAICS": "221115",
-          "Title": "Wind Electric Power Generation",
-          "Distance": "**3**",
-          "Already uses": "TRUE",
-          "Priority": "HIGH",
-          "U1": "3",
-          "U2": "1",
-          "U3": "3",
-          "U4": "2",
-          "U5": "3",
-          "C1": "3",
-          "C2": "2",
-          "C3": "3",
-          "C4": "2"
-        },
-        {
-          "Rank": "4",
-          "NAICS": "531120",
-          "Title": "Lessors of Nonresidential Buildings",
-          "Distance": "**3**",
-          "Already uses": "TRUE",
-          "Priority": "HIGH",
-          "U1": "2",
-          "U2": "2",
-          "U3": "3",
-          "U4": "3",
-          "U5": "4",
-          "C1": "3",
-          "C2": "2",
-          "C3": "3",
-          "C4": "4"
-        },
-        {
-          "Rank": "5",
-          "NAICS": "457120",
-          "Title": "Other Gasoline Stations (EV charging)",
-          "Distance": "**3**",
-          "Already uses": "FALSE",
-          "Priority": "HIGH",
-          "U1": "3",
-          "U2": "2",
-          "U3": "4",
-          "U4": "3",
-          "U5": "3",
-          "C1": "4",
-          "C2": "3",
-          "C3": "3",
-          "C4": "4"
-        },
-        {
-          "Rank": "6",
-          "NAICS": "221122",
-          "Title": "Electric Power Distribution",
-          "Distance": "**4**",
-          "Already uses": "TRUE",
-          "Priority": "HIGH",
-          "U1": "2",
-          "U2": "2",
-          "U3": "5",
-          "U4": "2",
-          "U5": "4",
-          "C1": "3",
-          "C2": "3",
-          "C3": "3",
-          "C4": "5"
-        },
-        {
-          "Rank": "7",
-          "NAICS": "518210",
-          "Title": "Computing Infrastructure / Data Centers",
-          "Distance": "**4**",
-          "Already uses": "TRUE",
-          "Priority": "HIGH",
-          "U1": "3",
-          "U2": "2",
-          "U3": "4",
-          "U4": "4",
-          "U5": "4",
-          "C1": "3",
-          "C2": "4",
-          "C3": "4",
-          "C4": "4"
-        },
-        {
-          "Rank": "8",
-          "NAICS": "493120",
-          "Title": "Refrigerated Warehousing and Storage",
-          "Distance": "**4**",
-          "Already uses": "FALSE",
-          "Priority": "MEDIUM",
-          "U1": "3",
-          "U2": "2",
-          "U3": "3",
-          "U4": "3",
-          "U5": "4",
-          "C1": "4",
-          "C2": "3",
-          "C3": "4",
-          "C4": "5"
-        },
-        {
-          "Rank": "9",
-          "NAICS": "325120",
-          "Title": "Industrial Gas Mfg (electrolyzers / H2)",
-          "Distance": "**5**",
-          "Already uses": "FALSE",
-          "Priority": "MEDIUM",
-          "U1": "4",
-          "U2": "2",
-          "U3": "5",
-          "U4": "4",
-          "U5": "5",
-          "C1": "5",
-          "C2": "4",
-          "C3": "5",
-          "C4": "6"
-        },
-        {
-          "Rank": "10",
-          "NAICS": "488310",
-          "Title": "Port and Harbor Operations",
-          "Distance": "**5**",
-          "Already uses": "FALSE",
-          "Priority": "MEDIUM",
-          "U1": "6",
-          "U2": "3",
-          "U3": "5",
-          "U4": "4",
-          "U5": "5",
-          "C1": "5",
-          "C2": "5",
-          "C3": "5",
-          "C4": "6"
-        },
-        {
-          "Rank": "11",
-          "NAICS": "221121",
-          "Title": "Electric Bulk Power Transmission",
-          "Distance": "**6**",
-          "Already uses": "TRUE",
-          "Priority": "MEDIUM",
-          "U1": "3",
-          "U2": "6",
-          "U3": "7",
-          "U4": "3",
-          "U5": "7",
-          "C1": "6",
-          "C2": "4",
-          "C3": "4",
-          "C4": "6"
-        },
-        {
-          "Rank": "12",
-          "NAICS": "334413",
-          "Title": "Semiconductor Manufacturing",
-          "Distance": "**6**",
-          "Already uses": "FALSE",
-          "Priority": "MEDIUM",
-          "U1": "5",
-          "U2": "3",
-          "U3": "6",
-          "U4": "6",
-          "U5": "6",
-          "C1": "6",
-          "C2": "6",
-          "C3": "6",
-          "C4": "7"
-        },
-        {
-          "Rank": "13",
-          "NAICS": "488190",
-          "Title": "Air Transportation Support (airports)",
-          "Distance": "**6**",
-          "Already uses": "FALSE",
-          "Priority": "LOW",
-          "U1": "6",
-          "U2": "4",
-          "U3": "6",
-          "U4": "5",
-          "U5": "6",
-          "C1": "6",
-          "C2": "6",
-          "C3": "6",
-          "C4": "7"
-        },
-        {
-          "Rank": "14",
-          "NAICS": "221320",
-          "Title": "Sewage Treatment Facilities",
-          "Distance": "**6**",
-          "Already uses": "FALSE",
-          "Priority": "LOW",
-          "U1": "4",
-          "U2": "3",
-          "U3": "7",
-          "U4": "4",
-          "U5": "6",
-          "C1": "6",
-          "C2": "5",
-          "C3": "5",
-          "C4": "8"
-        },
-        {
-          "Rank": "15",
-          "NAICS": "111419",
-          "Title": "Other Food Crops Grown Under Cover",
-          "Distance": "**7**",
-          "Already uses": "FALSE",
-          "Priority": "LOW",
-          "U1": "5",
-          "U2": "3",
-          "U3": "7",
-          "U4": "5",
-          "U5": "7",
-          "C1": "6",
-          "C2": "6",
-          "C3": "7",
-          "C4": "8"
-        },
-        {
-          "Rank": "16",
-          "NAICS": "331110",
-          "Title": "Iron and Steel Mills",
-          "Distance": "**7**",
-          "Already uses": "FALSE",
-          "Priority": "LOW",
-          "U1": "6",
-          "U2": "4",
-          "U3": "7",
-          "U4": "6",
-          "U5": "7",
-          "C1": "7",
-          "C2": "6",
-          "C3": "6",
-          "C4": "8"
-        },
-        {
-          "Rank": "17",
-          "NAICS": "331313",
-          "Title": "Alumina Refining / Primary Aluminum",
-          "Distance": "**7**",
-          "Already uses": "FALSE",
-          "Priority": "LOW",
-          "U1": "6",
-          "U2": "4",
-          "U3": "8",
-          "U4": "6",
-          "U5": "8",
-          "C1": "7",
-          "C2": "7",
-          "C3": "6",
-          "C4": "8"
-        },
-        {
-          "Rank": "18",
-          "NAICS": "928110",
-          "Title": "National Security (military bases)",
-          "Distance": "**7**",
-          "Already uses": "FALSE",
-          "Priority": "LOW",
-          "U1": "5",
-          "U2": "7",
-          "U3": "8",
-          "U4": "5",
-          "U5": "7",
-          "C1": "6",
-          "C2": "6",
-          "C3": "7",
-          "C4": "9"
-        }
-      ]
-    },
-    {
-      "headers": [
-        "NAICS",
-        "Title",
-        "Reason"
-      ],
-      "rows": [
-        {
-          "NAICS": "327310",
-          "Title": "Cement Manufacturing",
-          "Reason": "Distance ≥8, not_yet adoption; kiln electrification still pre-pilot"
-        },
-        {
-          "NAICS": "517312",
-          "Title": "Wireless Telecommunications Carriers",
-          "Reason": "Typical tower BESS <100 kWh, below ≥1 MWh minimum EPC scale (constraint P2)"
-        }
-      ]
-    },
-    {
-      "headers": [
-        "NAICS",
-        "Title",
-        "Distance",
-        "Reason"
-      ],
-      "rows": [
-        {
-          "NAICS": "331110",
-          "Title": "Iron and Steel Mills",
-          "Distance": "7",
-          "Reason": "Arc-furnace flicker mitigation scale is 50–200 MW, ≥10× Mein Solar reference"
-        },
-        {
-          "NAICS": "331313",
-          "Title": "Alumina Refining / Primary Aluminum",
-          "Distance": "7",
-          "Reason": "Baseload smelter, not peak-shaveable; non-existent revenue stack"
-        },
-        {
-          "NAICS": "928110",
-          "Title": "National Security (military bases)",
-          "Distance": "7",
-          "Reason": "Defense-procurement cleared-prime requirement; EU-content mandate; no Mein Solar credential"
-        }
-      ]
-    },
-    {
-      "headers": [
-        "NAICS",
-        "Title",
-        "Reason"
-      ],
-      "rows": [
-        {
-          "NAICS": "327310",
-          "Title": "Cement Manufacturing",
-          "Reason": "Kiln electrification pre-pilot; no revenue-stack path"
-        },
-        {
-          "NAICS": "517312",
-          "Title": "Wireless Telecommunications Carriers",
-          "Reason": "Typical site <100 kWh — below P2 minimum EPC scale"
-        }
-      ]
-    },
-    {
-      "headers": [
-        "Priority",
-        "Count",
-        "Markets"
-      ],
-      "rows": [
-        {
-          "Priority": "HIGH",
-          "Count": "7",
-          "Markets": "221118, 221114, 221115, 531120, 457120, 221122, 518210"
-        },
-        {
-          "Priority": "MEDIUM",
-          "Count": "5",
-          "Markets": "493120, 325120, 488310, 221121, 334413"
-        },
-        {
-          "Priority": "LOW",
-          "Count": "3",
-          "Markets": "488190, 221320, 111419"
-        }
-      ]
-    }
-  ],
-  "entities": [
-    {
-      "component": "market_discovery",
-      "phases_executed": [
-        "02a_naics_discovery",
-        "02b_architecture_distance"
-      ],
-      "phase_02c_status": "deferred_to_separate_vn_agents",
-      "product_name": "EPC für Großbatteriespeicher",
-      "vendor_name": "Mein Solar GmbH",
-      "technology_class": "Large-Scale Battery Energy Storage System EPC",
-      "commodity_functional_promise": "Deliver operational grid-connected electrical energy storage assets as turnkey capital projects with single-source engineering, procurement, construction, and grid-code certification",
-      "fp_extensions": [
-        "Storage medium neutrality — flow batteries, flywheels/CAES, thermal-to-power, hybrid H2-BESS",
-        "Grid-connected capital-asset EPC methodology — PV EPC, HPC charging hubs, PV+Wind hybrids, industrial microgrids, behind-the-meter electrification"
-      ],
-      "unspsc_context": "custom_product_group: Battery Energy Storage System EPC Services (no UNSPSC ≥80% confidence)",
-      "scoring_type": "capital_equipment",
-      "tiered_discovery_used": true,
-      "tier1_candidates": 20,
-      "tier2_candidates": 18,
-      "total_naics_discovered": 20,
-      "max_markets_selected": 15,
-      "excluded_markets": [
-        "Residential rooftop PV (Mein Solar incumbent, below EPC scale)",
-        "Small commercial PV <500 kW (current market, below BESS EPC minimum)",
-        "Pure cell manufacturing 26111711 (upstream component, not customer)",
-        "327310 Cement Manufacturing (Tier-1 cut — kiln electrification pre-pilot)",
-        "517312 Wireless Telecommunications Carriers (Tier-1 cut — typical site <100 kWh, below P2 minimum)"
-      ],
-      "markets": [
-        {
-          "label": "Market",
-          "slug": "market__221118_other_electric_power_generation",
-          "naics_code": "221118",
-          "naics_title": "Other Electric Power Generation",
-          "market_name": "Standalone BESS / Independent Power Producers",
-          "market_category": "utility",
-          "functional_promise_fit": "direct",
-          "estimated_adoption": "established",
-          "product_architecture_distance": 1,
-          "already_uses_technology": true,
-          "market_priority": "HIGH",
-          "discovery_source": "primary_fp",
-          "criteria_scores": {
-            "U1": 1,
-            "U2": 1,
-            "U3": 1,
-            "U4": 1,
-            "U5": 1,
-            "C1": 1,
-            "C2": 1,
-            "C3": 1,
-            "C4": 2
-          },
-          "architecture_rationale": "Literal standard NAICS for standalone BESS IPPs. Customer exists to operate grid-connected storage. Every Mein Solar differentiator (single-source EPC, VDE-AR-N 4110, FGW TR8) maps directly. Only friction: pure-play BESS IPPs often have in-house EPC talent.",
-          "current_alternatives_hired": [
-            "In-house EPC teams",
-            "Fluence",
-            "Tesla Megapack turnkey",
-            "Sungrow PowerTitan integrators",
-            "Wärtsilä"
-          ],
-          "confidence": 0.95
-        },
-        {
-          "label": "Market",
-          "slug": "market__221114_solar_electric_power_generation",
-          "naics_code": "221114",
-          "naics_title": "Solar Electric Power Generation",
-          "market_name": "PV+BESS Solar Independent Power Producers",
-          "market_category": "utility",
-          "functional_promise_fit": "direct",
-          "estimated_adoption": "established",
-          "product_architecture_distance": 2,
-          "already_uses_technology": true,
-          "market_priority": "HIGH",
-          "discovery_source": "primary_fp",
-          "criteria_scores": {
-            "U1": 2,
-            "U2": 1,
-            "U3": 1,
-            "U4": 2,
-            "U5": 2,
-            "C1": 2,
-            "C2": 1,
-            "C3": 2,
-            "C4": 2
-          },
-          "architecture_rationale": "PV+BESS co-location is industry-standard. Mein Solar's PV-EPC incumbency is a direct structural differentiator here — one grid connection, one certification dossier, one EMS, one warranty wrapper. Same VDE-AR-N 4110, same customer persona (Solarpark developers), same DSO interface.",
-          "current_alternatives_hired": [
-            "In-house EPC",
-            "Enerparc",
-            "BayWa r.e.",
-            "Goldbeck Solar",
-            "Specialized BESS retrofit integrators"
-          ],
-          "confidence": 0.93
-        },
-        {
-          "label": "Market",
-          "slug": "market__221115_wind_electric_power_generation",
-          "naics_code": "221115",
-          "naics_title": "Wind Electric Power Generation",
-          "market_name": "Wind+BESS Hybrid Parks",
-          "market_category": "utility",
-          "functional_promise_fit": "direct",
-          "estimated_adoption": "established",
-          "product_architecture_distance": 3,
-          "already_uses_technology": true,
-          "market_priority": "HIGH",
-          "discovery_source": "primary_fp",
-          "criteria_scores": {
-            "U1": 3,
-            "U2": 1,
-            "U3": 3,
-            "U4": 2,
-            "U5": 3,
-            "C1": 3,
-            "C2": 2,
-            "C3": 3,
-            "C4": 2
-          },
-          "architecture_rationale": "Wind parks increasingly co-deploy BESS for curtailment capture and ancillary-service prequal. Same grid code, same certification path. Customer persona shifts to wind developers (Enercon, WPD, Energiequelle) — adjacent not identical. Mein Solar lacks wind-specific site heritage but EPC methodology translates cleanly.",
-          "current_alternatives_hired": [
-            "Vestas storage",
-            "Siemens Gamesa",
-            "Pure-play BESS integrators",
-            "In-house developer engineering"
-          ],
-          "confidence": 0.88
-        },
-        {
-          "label": "Market",
-          "slug": "market__531120_lessors_nonresidential_buildings",
-          "naics_code": "531120",
-          "naics_title": "Lessors of Nonresidential Buildings (except Miniwarehouses)",
-          "market_name": "Commercial & Industrial Real-Estate Behind-the-Meter Storage",
-          "market_category": "real_estate",
-          "functional_promise_fit": "adjacent",
-          "estimated_adoption": "growing",
-          "product_architecture_distance": 3,
-          "already_uses_technology": true,
-          "market_priority": "HIGH",
-          "discovery_source": "primary_fp",
-          "criteria_scores": {
-            "U1": 2,
-            "U2": 2,
-            "U3": 3,
-            "U4": 3,
-            "U5": 4,
-            "C1": 3,
-            "C2": 2,
-            "C3": 3,
-            "C4": 4
-          },
-          "architecture_rationale": "C&I landlords (logistics parks, office campuses, retail centers) deploying behind-the-meter BESS for peak-shaving Netzentgelte reduction and tenant resilience. Same MV interface, same Baugenehmigung process. Perfect match for single-source-EPC promise because landlords hate multi-vendor coordination.",
-          "current_alternatives_hired": [
-            "Voltfang",
-            "Tesvolt",
-            "Commeo turnkey units",
-            "In-house FM engineering",
-            "Utility PPA + no storage"
-          ],
-          "confidence": 0.9
-        },
-        {
-          "label": "Market",
-          "slug": "market__457120_ev_charging_fuel_stations",
-          "naics_code": "457120",
-          "naics_title": "Other Gasoline Stations and Fuel Dealers (incl. EV charging retail)",
-          "market_name": "HPC Charging Hubs with BESS Buffer",
-          "market_category": "retail_infrastructure",
-          "functional_promise_fit": "adjacent",
-          "estimated_adoption": "emerging",
-          "product_architecture_distance": 3,
-          "already_uses_technology": false,
-          "market_priority": "HIGH",
-          "discovery_source": "fp_extension",
-          "criteria_scores": {
-            "U1": 3,
-            "U2": 2,
-            "U3": 4,
-            "U4": 3,
-            "U5": 3,
-            "C1": 4,
-            "C2": 3,
-            "C3": 3,
-            "C4": 4
-          },
-          "architecture_rationale": "Explicit Mein Solar differentiator (EV-Charging Buffer Configuration feature). HPC hubs (Ionity, EnBW mobility+, Fastned, Aral pulse) face weak rural MV grids; a BESS buffer enables 350 kW × 6+ dispensers on a 400 kVA feeder. FP-extension axis: HPC charging park EPC. Whitespace opportunity with rapidly inflecting adoption.",
-          "current_alternatives_hired": [
-            "Kostad",
-            "ads-tec Energy",
-            "Alpitronic integrated BESS+HPC",
-            "DIY split-contract"
-          ],
-          "confidence": 0.87
-        },
-        {
-          "label": "Market",
-          "slug": "market__221122_electric_power_distribution",
-          "naics_code": "221122",
-          "naics_title": "Electric Power Distribution",
-          "market_name": "DSO-Owned Netzbooster Storage",
-          "market_category": "utility",
-          "functional_promise_fit": "direct",
-          "estimated_adoption": "growing",
-          "product_architecture_distance": 4,
-          "already_uses_technology": true,
-          "market_priority": "HIGH",
-          "discovery_source": "primary_fp",
-          "criteria_scores": {
-            "U1": 2,
-            "U2": 2,
-            "U3": 5,
-            "U4": 2,
-            "U5": 4,
-            "C1": 3,
-            "C2": 3,
-            "C3": 3,
-            "C4": 5
-          },
-          "architecture_rationale": "DSO-owned storage for grid constraint relief, voltage support, and deferred substation upgrade. Customer is regulated utility (Bayernwerk, Netze BW, Stromnetz Hamburg) — longer procurement cycles, EU-tender rules, stricter interoperability (IEC 61850). Same MV scale as Mein Solar reference; utility segment is slower but contracts are larger and predictable.",
-          "current_alternatives_hired": [
-            "ABB",
-            "Siemens Grid Integration",
-            "Hitachi Energy",
-            "Nidec ASI"
-          ],
-          "confidence": 0.82
-        },
-        {
-          "label": "Market",
-          "slug": "market__518210_data_centers_computing_infrastructure",
-          "naics_code": "518210",
-          "naics_title": "Computing Infrastructure Providers, Data Processing, Web Hosting, and Related Services",
-          "market_name": "Data Center Hybrid UPS+BESS Systems",
-          "market_category": "infrastructure",
-          "functional_promise_fit": "adjacent",
-          "estimated_adoption": "growing",
-          "product_architecture_distance": 4,
-          "already_uses_technology": true,
-          "market_priority": "HIGH",
-          "discovery_source": "primary_fp",
-          "criteria_scores": {
-            "U1": 3,
-            "U2": 2,
-            "U3": 4,
-            "U4": 4,
-            "U5": 4,
-            "C1": 3,
-            "C2": 4,
-            "C3": 4,
-            "C4": 4
-          },
-          "architecture_rationale": "Hyperscalers and colocation operators (NTT, Digital Realty, Vantage, Equinix, CyrusOne, STACK) replacing lead-acid UPS with Li-ion BESS and stacking grid-services revenue. Same MV scale, same VDE-AR-N 4110 regime, but mission-critical availability (99.999%) and extreme fire-protection scrutiny. Strong growth — DE data-center capacity doubling 2025–2030.",
-          "current_alternatives_hired": [
-            "Schneider Electric Galaxy VXL",
-            "Vertiv",
-            "Eaton",
-            "Piller dynamic UPS"
-          ],
-          "confidence": 0.86
-        },
-        {
-          "label": "Market",
-          "slug": "market__493120_refrigerated_warehousing",
-          "naics_code": "493120",
-          "naics_title": "Refrigerated Warehousing and Storage",
-          "market_name": "Cold Storage Peak-Shaving & Resilience",
-          "market_category": "logistics",
-          "functional_promise_fit": "adjacent",
-          "estimated_adoption": "emerging",
-          "product_architecture_distance": 4,
-          "already_uses_technology": false,
-          "market_priority": "MEDIUM",
-          "discovery_source": "primary_fp",
-          "criteria_scores": {
-            "U1": 3,
-            "U2": 2,
-            "U3": 3,
-            "U4": 3,
-            "U5": 4,
-            "C1": 4,
-            "C2": 3,
-            "C3": 4,
-            "C4": 5
-          },
-          "architecture_rationale": "Cold storage (Nordfrost, Kühne+Nagel, Frigoscandia) carries 24/7 high-kW refrigeration load. BESS enables peak-shaving and tariff arbitrage plus spoilage-outage resilience. Same MV interface, same C&I grid code, same site type as industrial landlord. Customer awareness low — education-led sale.",
-          "current_alternatives_hired": [
-            "Diesel gensets",
-            "Utility tariff negotiation",
-            "No storage"
-          ],
-          "confidence": 0.78
-        },
-        {
-          "label": "Market",
-          "slug": "market__325120_industrial_gas_electrolyzer_hydrogen",
-          "naics_code": "325120",
-          "naics_title": "Industrial Gas Manufacturing",
-          "market_name": "Green-H₂ Electrolyzer Sites with BESS Firming",
-          "market_category": "chemicals_energy",
-          "functional_promise_fit": "adjacent",
-          "estimated_adoption": "emerging",
-          "product_architecture_distance": 5,
-          "already_uses_technology": false,
-          "market_priority": "MEDIUM",
-          "discovery_source": "fp_extension",
-          "criteria_scores": {
-            "U1": 4,
-            "U2": 2,
-            "U3": 5,
-            "U4": 4,
-            "U5": 5,
-            "C1": 5,
-            "C2": 4,
-            "C3": 5,
-            "C4": 6
-          },
-          "architecture_rationale": "Green-hydrogen projects (Linde, Air Liquide, Iberdrola, RWE green-H2) pair electrolyzers with BESS for curtailment capture, grid-forming support, and ramp-rate smoothing. Same grid code, same MV coupling, but EMS must be co-optimized with the electrolyzer stack — new control logic. Mein Solar's integration discipline transfers; H2-control layer is new skill.",
-          "current_alternatives_hired": [
-            "Electrolyzer OEM turnkey (Nel, Sunfire, Siemens Energy)",
-            "Split-contract with BESS integrator"
-          ],
-          "confidence": 0.74
-        },
-        {
-          "label": "Market",
-          "slug": "market__488310_port_harbor_operations",
-          "naics_code": "488310",
-          "naics_title": "Port and Harbor Operations",
-          "market_name": "Port Electrification — Shore Power, Crane, Ferry Charging",
-          "market_category": "transportation_infrastructure",
-          "functional_promise_fit": "adjacent",
-          "estimated_adoption": "emerging",
-          "product_architecture_distance": 5,
-          "already_uses_technology": false,
-          "market_priority": "MEDIUM",
-          "discovery_source": "fp_extension",
-          "criteria_scores": {
-            "U1": 6,
-            "U2": 3,
-            "U3": 5,
-            "U4": 4,
-            "U5": 5,
-            "C1": 5,
-            "C2": 5,
-            "C3": 5,
-            "C4": 6
-          },
-          "architecture_rationale": "Port electrification: shore power/OPS (2030 EU mandate), reach-stacker charging, ferry charging, crane smoothing. Customers are port authorities (HHLA Hamburg, BLG Bremerhaven, Duisport). Salt-air coastal environment requires IP upgrade. Grid scale matches Mein Solar reference. Public procurement + EU port-modernization subsidies.",
-          "current_alternatives_hired": [
-            "Siemens port solutions",
-            "ABB port",
-            "Wärtsilä",
-            "Port-authority in-house engineering"
-          ],
-          "confidence": 0.72
-        },
-        {
-          "label": "Market",
-          "slug": "market__221121_electric_bulk_power_transmission",
-          "naics_code": "221121",
-          "naics_title": "Electric Bulk Power Transmission and Control",
-          "market_name": "TSO Transmission-Scale Grid-Forming Storage",
-          "market_category": "utility",
-          "functional_promise_fit": "direct",
-          "estimated_adoption": "growing",
-          "product_architecture_distance": 6,
-          "already_uses_technology": true,
-          "market_priority": "MEDIUM",
-          "discovery_source": "primary_fp",
-          "criteria_scores": {
-            "U1": 3,
-            "U2": 6,
-            "U3": 7,
-            "U4": 3,
-            "U5": 7,
-            "C1": 6,
-            "C2": 4,
-            "C3": 4,
-            "C4": 6
-          },
-          "architecture_rationale": "TSO-scale storage (50 Hertz, TenneT, Amprion, TransnetBW) at 100–500 MW — an order of magnitude above Mein Solar's 4.5 MW reference. Different grid code (VDE-AR-N 4120 HV), different certification (Type A HV plant cert), EU-tender-driven. Reachable only via consortium bid or subcontractor role.",
-          "current_alternatives_hired": [
-            "Hitachi Energy",
-            "Siemens Energy",
-            "GE Vernova",
-            "Mitsubishi Electric"
-          ],
-          "confidence": 0.7
-        },
-        {
-          "label": "Market",
-          "slug": "market__334413_semiconductor_manufacturing",
-          "naics_code": "334413",
-          "naics_title": "Semiconductor and Related Device Manufacturing",
-          "market_name": "Semiconductor Fab Power-Quality & Ride-Through",
-          "market_category": "manufacturing",
-          "functional_promise_fit": "adjacent",
-          "estimated_adoption": "emerging",
-          "product_architecture_distance": 6,
-          "already_uses_technology": false,
-          "market_priority": "MEDIUM",
-          "discovery_source": "primary_fp",
-          "criteria_scores": {
-            "U1": 5,
-            "U2": 3,
-            "U3": 6,
-            "U4": 6,
-            "U5": 6,
-            "C1": 6,
-            "C2": 6,
-            "C3": 6,
-            "C4": 7
-          },
-          "architecture_rationale": "Fabs (Infineon Dresden, GlobalFoundries, Bosch SiC, Intel Magdeburg) buy power-quality + ride-through solutions. BESS supplements dynamic UPS/flywheels for sag ride-through (200 ms events). Fab spec language (ITIC curve, SEMI F47) is bespoke; custom engineering per site. Entry difficult without fab reference.",
-          "current_alternatives_hired": [
-            "ABB PCS100",
-            "Piller UNIBLOCK",
-            "Static VAR compensators",
-            "Bespoke UPS"
-          ],
-          "confidence": 0.68
-        },
-        {
-          "label": "Market",
-          "slug": "market__488190_airport_ground_support_electrification",
-          "naics_code": "488190",
-          "naics_title": "Other Support Activities for Air Transportation",
-          "market_name": "Airport Electrification — GSE, eTaxi, eVTOL Readiness",
-          "market_category": "transportation_infrastructure",
-          "functional_promise_fit": "stretch",
-          "estimated_adoption": "emerging",
-          "product_architecture_distance": 6,
-          "already_uses_technology": false,
-          "market_priority": "LOW",
-          "discovery_source": "fp_extension",
-          "criteria_scores": {
-            "U1": 6,
-            "U2": 4,
-            "U3": 6,
-            "U4": 5,
-            "U5": 6,
-            "C1": 6,
-            "C2": 6,
-            "C3": 6,
-            "C4": 7
-          },
-          "architecture_rationale": "Airport GSE charging, eTaxi tractor charging, eVTOL vertiport readiness. Ownership split between airport operator and handling agents complicates sale. Apron-adjacent environment is safety-critical with aviation-side clearance requirements. Long decision cycles.",
-          "current_alternatives_hired": [
-            "OEM GSE charging (ITW GSE, TLD)",
-            "Airport-utility direct grid upgrade"
-          ],
-          "confidence": 0.62
-        },
-        {
-          "label": "Market",
-          "slug": "market__221320_sewage_treatment_facilities",
-          "naics_code": "221320",
-          "naics_title": "Sewage Treatment Facilities",
-          "market_name": "Municipal WWTP Peak-Shaving & Biogas-CHP Firming",
-          "market_category": "utility",
-          "functional_promise_fit": "adjacent",
-          "estimated_adoption": "emerging",
-          "product_architecture_distance": 6,
-          "already_uses_technology": false,
-          "market_priority": "LOW",
-          "discovery_source": "primary_fp",
-          "criteria_scores": {
-            "U1": 4,
-            "U2": 3,
-            "U3": 7,
-            "U4": 4,
-            "U5": 6,
-            "C1": 6,
-            "C2": 5,
-            "C3": 5,
-            "C4": 8
-          },
-          "architecture_rationale": "Municipal WWTPs with peak pumping loads + co-location with biogas CHP create FCR participation and demand charge reduction opportunity. Customer is municipality — slow procurement, GWB-regulated tenders, no revenue-stacking culture. Niche adjacent to Mein Solar's core.",
-          "current_alternatives_hired": [
-            "Diesel backup",
-            "CHP-only",
-            "Utility tariff, no storage"
-          ],
-          "confidence": 0.6
-        },
-        {
-          "label": "Market",
-          "slug": "market__111419_greenhouse_controlled_environment_farming",
-          "naics_code": "111419",
-          "naics_title": "Other Food Crops Grown Under Cover",
-          "market_name": "Electrified Greenhouse Operations with BESS Smoothing",
-          "market_category": "agriculture",
-          "functional_promise_fit": "stretch",
-          "estimated_adoption": "emerging",
-          "product_architecture_distance": 7,
-          "already_uses_technology": false,
-          "market_priority": "LOW",
-          "discovery_source": "primary_fp",
-          "criteria_scores": {
-            "U1": 5,
-            "U2": 3,
-            "U3": 7,
-            "U4": 5,
-            "U5": 7,
-            "C1": 6,
-            "C2": 6,
-            "C3": 7,
-            "C4": 8
-          },
-          "architecture_rationale": "Commercial greenhouses (tomato, herb, Dutch model) with grow-light + heat-pump loads. Electrification shifts demand profile to peaks that BESS can smooth. Customer persona is agricultural (not Mein Solar's traditional C&I), different sales channel. Demonstration-project fit only.",
-          "current_alternatives_hired": [
-            "Gas CHP",
-            "No storage"
-          ],
-          "confidence": 0.55
-        }
-      ],
-      "tier1_cuts": [
-        {
-          "naics_code": "327310",
-          "naics_title": "Cement Manufacturing",
-          "reason": "Kiln electrification pre-pilot, no revenue-stack path, distance ≥8"
-        },
-        {
-          "naics_code": "517312",
-          "naics_title": "Wireless Telecommunications Carriers (except Satellite)",
-          "reason": "Typical cell-site BESS <100 kWh, violates P2 minimum EPC scale (≥1 MWh)"
-        }
-      ],
-      "tier2_cuts_by_max_markets": [
-        {
-          "naics_code": "331110",
-          "naics_title": "Iron and Steel Mills and Ferroalloy Manufacturing",
-          "distance": 7,
-          "reason": "Arc-furnace flicker mitigation at 50–200 MW scale — ≥10× Mein Solar reference"
-        },
-        {
-          "naics_code": "331313",
-          "naics_title": "Alumina Refining and Primary Aluminum Production",
-          "distance": 7,
-          "reason": "Baseload smelter non-peak-shaveable, non-existent revenue stack"
-        },
-        {
-          "naics_code": "928110",
-          "naics_title": "National Security (military bases)",
-          "distance": 7,
-          "reason": "Defense-procurement cleared-prime requirement; EU-content mandate; no Mein Solar credential"
-        }
-      ],
-      "priority_distribution": {
-        "HIGH": [
-          "221118",
-          "221114",
-          "221115",
-          "531120",
-          "457120",
-          "221122",
-          "518210"
-        ],
-        "MEDIUM": [
-          "493120",
-          "325120",
-          "488310",
-          "221121",
-          "334413"
-        ],
-        "LOW": [
-          "488190",
-          "221320",
-          "111419"
-        ]
+      "naics": "221118",
+      "title": "Other Electric Power Generation",
+      "marketName": "Standalone BESS / Independent Power Producers",
+      "fpFit": "direct",
+      "adoption": "established",
+      "architectureDistance": 1,
+      "rationale": "Literal standard NAICS for standalone BESS IPPs. Customer exists to operate grid-connected storage. Every Mein Solar differentiator (single-source EPC, VDE-AR-N 4110, FGW TR8) maps directly. Only friction: pure-play BESS IPPs often have in-house EPC talent.",
+      "alreadyUsesTechnology": true,
+      "marketPriority": "HIGH",
+      "discoverySource": "primary_fp",
+      "criteriaScores": {
+        "U1": 1,
+        "U2": 1,
+        "U3": 1,
+        "U4": 1,
+        "U5": 1,
+        "C1": 1,
+        "C2": 1,
+        "C3": 1,
+        "C4": 2
       },
-      "handoff_to_phase_02c": {
-        "status": "pending_separate_vn_agents",
-        "selected_naics_for_vn_construction": [
-          "221118",
-          "221114",
-          "221115",
-          "531120",
-          "457120",
-          "221122",
-          "518210",
-          "493120",
-          "325120",
-          "488310",
-          "221121",
-          "334413",
-          "488190",
-          "221320",
-          "111419"
-        ]
-      }
+      "confidence": 0.95
+    },
+    {
+      "naics": "221114",
+      "title": "Solar Electric Power Generation",
+      "marketName": "PV+BESS Solar Independent Power Producers",
+      "fpFit": "direct",
+      "adoption": "established",
+      "architectureDistance": 2,
+      "rationale": "PV+BESS co-location is industry-standard. Mein Solar's PV-EPC incumbency is a direct structural differentiator here — one grid connection, one certification dossier, one EMS, one warranty wrapper. Same VDE-AR-N 4110, same customer persona (Solarpark developers), same DSO interface.",
+      "alreadyUsesTechnology": true,
+      "marketPriority": "HIGH",
+      "discoverySource": "primary_fp",
+      "criteriaScores": {
+        "U1": 2,
+        "U2": 1,
+        "U3": 1,
+        "U4": 2,
+        "U5": 2,
+        "C1": 2,
+        "C2": 1,
+        "C3": 2,
+        "C4": 2
+      },
+      "confidence": 0.93
+    },
+    {
+      "naics": "221115",
+      "title": "Wind Electric Power Generation",
+      "marketName": "Wind+BESS Hybrid Parks",
+      "fpFit": "direct",
+      "adoption": "established",
+      "architectureDistance": 3,
+      "rationale": "Wind parks increasingly co-deploy BESS for curtailment capture and ancillary-service prequal. Same grid code, same certification path. Customer persona shifts to wind developers (Enercon, WPD, Energiequelle) — adjacent not identical. Mein Solar lacks wind-specific site heritage but EPC methodology translates cleanly.",
+      "alreadyUsesTechnology": true,
+      "marketPriority": "HIGH",
+      "discoverySource": "primary_fp",
+      "criteriaScores": {
+        "U1": 3,
+        "U2": 1,
+        "U3": 3,
+        "U4": 2,
+        "U5": 3,
+        "C1": 3,
+        "C2": 2,
+        "C3": 3,
+        "C4": 2
+      },
+      "confidence": 0.88
+    },
+    {
+      "naics": "531120",
+      "title": "Lessors of Nonresidential Buildings (except Miniwarehouses)",
+      "marketName": "Commercial & Industrial Real-Estate Behind-the-Meter Storage",
+      "fpFit": "adjacent",
+      "adoption": "growing",
+      "architectureDistance": 3,
+      "rationale": "C&I landlords (logistics parks, office campuses, retail centers) deploying behind-the-meter BESS for peak-shaving Netzentgelte reduction and tenant resilience. Same MV interface, same Baugenehmigung process. Perfect match for single-source-EPC promise because landlords hate multi-vendor coordination.",
+      "alreadyUsesTechnology": true,
+      "marketPriority": "HIGH",
+      "discoverySource": "primary_fp",
+      "criteriaScores": {
+        "U1": 2,
+        "U2": 2,
+        "U3": 3,
+        "U4": 3,
+        "U5": 4,
+        "C1": 3,
+        "C2": 2,
+        "C3": 3,
+        "C4": 4
+      },
+      "confidence": 0.9
+    },
+    {
+      "naics": "457120",
+      "title": "Other Gasoline Stations and Fuel Dealers (incl. EV charging retail)",
+      "marketName": "HPC Charging Hubs with BESS Buffer",
+      "fpFit": "adjacent",
+      "adoption": "emerging",
+      "architectureDistance": 3,
+      "rationale": "Explicit Mein Solar differentiator (EV-Charging Buffer Configuration feature). HPC hubs (Ionity, EnBW mobility+, Fastned, Aral pulse) face weak rural MV grids; a BESS buffer enables 350 kW × 6+ dispensers on a 400 kVA feeder. FP-extension axis: HPC charging park EPC. Whitespace opportunity with rapidly inflecting adoption.",
+      "alreadyUsesTechnology": false,
+      "marketPriority": "HIGH",
+      "discoverySource": "fp_extension",
+      "criteriaScores": {
+        "U1": 3,
+        "U2": 2,
+        "U3": 4,
+        "U4": 3,
+        "U5": 3,
+        "C1": 4,
+        "C2": 3,
+        "C3": 3,
+        "C4": 4
+      },
+      "confidence": 0.87
+    },
+    {
+      "naics": "221122",
+      "title": "Electric Power Distribution",
+      "marketName": "DSO-Owned Netzbooster Storage",
+      "fpFit": "direct",
+      "adoption": "growing",
+      "architectureDistance": 4,
+      "rationale": "DSO-owned storage for grid constraint relief, voltage support, and deferred substation upgrade. Customer is regulated utility (Bayernwerk, Netze BW, Stromnetz Hamburg) — longer procurement cycles, EU-tender rules, stricter interoperability (IEC 61850). Same MV scale as Mein Solar reference; utility segment is slower but contracts are larger and predictable.",
+      "alreadyUsesTechnology": true,
+      "marketPriority": "HIGH",
+      "discoverySource": "primary_fp",
+      "criteriaScores": {
+        "U1": 2,
+        "U2": 2,
+        "U3": 5,
+        "U4": 2,
+        "U5": 4,
+        "C1": 3,
+        "C2": 3,
+        "C3": 3,
+        "C4": 5
+      },
+      "confidence": 0.82
+    },
+    {
+      "naics": "518210",
+      "title": "Computing Infrastructure Providers, Data Processing, Web Hosting, and Related Services",
+      "marketName": "Data Center Hybrid UPS+BESS Systems",
+      "fpFit": "adjacent",
+      "adoption": "growing",
+      "architectureDistance": 4,
+      "rationale": "Hyperscalers and colocation operators (NTT, Digital Realty, Vantage, Equinix, CyrusOne, STACK) replacing lead-acid UPS with Li-ion BESS and stacking grid-services revenue. Same MV scale, same VDE-AR-N 4110 regime, but mission-critical availability (99.999%) and extreme fire-protection scrutiny. Strong growth — DE data-center capacity doubling 2025–2030.",
+      "alreadyUsesTechnology": true,
+      "marketPriority": "HIGH",
+      "discoverySource": "primary_fp",
+      "criteriaScores": {
+        "U1": 3,
+        "U2": 2,
+        "U3": 4,
+        "U4": 4,
+        "U5": 4,
+        "C1": 3,
+        "C2": 4,
+        "C3": 4,
+        "C4": 4
+      },
+      "confidence": 0.86
+    },
+    {
+      "naics": "493120",
+      "title": "Refrigerated Warehousing and Storage",
+      "marketName": "Cold Storage Peak-Shaving & Resilience",
+      "fpFit": "adjacent",
+      "adoption": "emerging",
+      "architectureDistance": 4,
+      "rationale": "Cold storage (Nordfrost, Kühne+Nagel, Frigoscandia) carries 24/7 high-kW refrigeration load. BESS enables peak-shaving and tariff arbitrage plus spoilage-outage resilience. Same MV interface, same C&I grid code, same site type as industrial landlord. Customer awareness low — education-led sale.",
+      "alreadyUsesTechnology": false,
+      "marketPriority": "MEDIUM",
+      "discoverySource": "primary_fp",
+      "criteriaScores": {
+        "U1": 3,
+        "U2": 2,
+        "U3": 3,
+        "U4": 3,
+        "U5": 4,
+        "C1": 4,
+        "C2": 3,
+        "C3": 4,
+        "C4": 5
+      },
+      "confidence": 0.78
+    },
+    {
+      "naics": "325120",
+      "title": "Industrial Gas Manufacturing",
+      "marketName": "Green-H₂ Electrolyzer Sites with BESS Firming",
+      "fpFit": "adjacent",
+      "adoption": "emerging",
+      "architectureDistance": 5,
+      "rationale": "Green-hydrogen projects (Linde, Air Liquide, Iberdrola, RWE green-H2) pair electrolyzers with BESS for curtailment capture, grid-forming support, and ramp-rate smoothing. Same grid code, same MV coupling, but EMS must be co-optimized with the electrolyzer stack — new control logic. Mein Solar's integration discipline transfers; H2-control layer is new skill.",
+      "alreadyUsesTechnology": false,
+      "marketPriority": "MEDIUM",
+      "discoverySource": "fp_extension",
+      "criteriaScores": {
+        "U1": 4,
+        "U2": 2,
+        "U3": 5,
+        "U4": 4,
+        "U5": 5,
+        "C1": 5,
+        "C2": 4,
+        "C3": 5,
+        "C4": 6
+      },
+      "confidence": 0.74
+    },
+    {
+      "naics": "488310",
+      "title": "Port and Harbor Operations",
+      "marketName": "Port Electrification — Shore Power, Crane, Ferry Charging",
+      "fpFit": "adjacent",
+      "adoption": "emerging",
+      "architectureDistance": 5,
+      "rationale": "Port electrification: shore power/OPS (2030 EU mandate), reach-stacker charging, ferry charging, crane smoothing. Customers are port authorities (HHLA Hamburg, BLG Bremerhaven, Duisport). Salt-air coastal environment requires IP upgrade. Grid scale matches Mein Solar reference. Public procurement + EU port-modernization subsidies.",
+      "alreadyUsesTechnology": false,
+      "marketPriority": "MEDIUM",
+      "discoverySource": "fp_extension",
+      "criteriaScores": {
+        "U1": 6,
+        "U2": 3,
+        "U3": 5,
+        "U4": 4,
+        "U5": 5,
+        "C1": 5,
+        "C2": 5,
+        "C3": 5,
+        "C4": 6
+      },
+      "confidence": 0.72
+    },
+    {
+      "naics": "221121",
+      "title": "Electric Bulk Power Transmission and Control",
+      "marketName": "TSO Transmission-Scale Grid-Forming Storage",
+      "fpFit": "direct",
+      "adoption": "growing",
+      "architectureDistance": 6,
+      "rationale": "TSO-scale storage (50 Hertz, TenneT, Amprion, TransnetBW) at 100–500 MW — an order of magnitude above Mein Solar's 4.5 MW reference. Different grid code (VDE-AR-N 4120 HV), different certification (Type A HV plant cert), EU-tender-driven. Reachable only via consortium bid or subcontractor role.",
+      "alreadyUsesTechnology": true,
+      "marketPriority": "MEDIUM",
+      "discoverySource": "primary_fp",
+      "criteriaScores": {
+        "U1": 3,
+        "U2": 6,
+        "U3": 7,
+        "U4": 3,
+        "U5": 7,
+        "C1": 6,
+        "C2": 4,
+        "C3": 4,
+        "C4": 6
+      },
+      "confidence": 0.7
+    },
+    {
+      "naics": "334413",
+      "title": "Semiconductor and Related Device Manufacturing",
+      "marketName": "Semiconductor Fab Power-Quality & Ride-Through",
+      "fpFit": "adjacent",
+      "adoption": "emerging",
+      "architectureDistance": 6,
+      "rationale": "Fabs (Infineon Dresden, GlobalFoundries, Bosch SiC, Intel Magdeburg) buy power-quality + ride-through solutions. BESS supplements dynamic UPS/flywheels for sag ride-through (200 ms events). Fab spec language (ITIC curve, SEMI F47) is bespoke; custom engineering per site. Entry difficult without fab reference.",
+      "alreadyUsesTechnology": false,
+      "marketPriority": "MEDIUM",
+      "discoverySource": "primary_fp",
+      "criteriaScores": {
+        "U1": 5,
+        "U2": 3,
+        "U3": 6,
+        "U4": 6,
+        "U5": 6,
+        "C1": 6,
+        "C2": 6,
+        "C3": 6,
+        "C4": 7
+      },
+      "confidence": 0.68
+    },
+    {
+      "naics": "488190",
+      "title": "Other Support Activities for Air Transportation",
+      "marketName": "Airport Electrification — GSE, eTaxi, eVTOL Readiness",
+      "fpFit": "stretch",
+      "adoption": "emerging",
+      "architectureDistance": 6,
+      "rationale": "Airport GSE charging, eTaxi tractor charging, eVTOL vertiport readiness. Ownership split between airport operator and handling agents complicates sale. Apron-adjacent environment is safety-critical with aviation-side clearance requirements. Long decision cycles.",
+      "alreadyUsesTechnology": false,
+      "marketPriority": "LOW",
+      "discoverySource": "fp_extension",
+      "criteriaScores": {
+        "U1": 6,
+        "U2": 4,
+        "U3": 6,
+        "U4": 5,
+        "U5": 6,
+        "C1": 6,
+        "C2": 6,
+        "C3": 6,
+        "C4": 7
+      },
+      "confidence": 0.62
+    },
+    {
+      "naics": "221320",
+      "title": "Sewage Treatment Facilities",
+      "marketName": "Municipal WWTP Peak-Shaving & Biogas-CHP Firming",
+      "fpFit": "adjacent",
+      "adoption": "emerging",
+      "architectureDistance": 6,
+      "rationale": "Municipal WWTPs with peak pumping loads + co-location with biogas CHP create FCR participation and demand charge reduction opportunity. Customer is municipality — slow procurement, GWB-regulated tenders, no revenue-stacking culture. Niche adjacent to Mein Solar's core.",
+      "alreadyUsesTechnology": false,
+      "marketPriority": "LOW",
+      "discoverySource": "primary_fp",
+      "criteriaScores": {
+        "U1": 4,
+        "U2": 3,
+        "U3": 7,
+        "U4": 4,
+        "U5": 6,
+        "C1": 6,
+        "C2": 5,
+        "C3": 5,
+        "C4": 8
+      },
+      "confidence": 0.6
+    },
+    {
+      "naics": "111419",
+      "title": "Other Food Crops Grown Under Cover",
+      "marketName": "Electrified Greenhouse Operations with BESS Smoothing",
+      "fpFit": "stretch",
+      "adoption": "emerging",
+      "architectureDistance": 7,
+      "rationale": "Commercial greenhouses (tomato, herb, Dutch model) with grow-light + heat-pump loads. Electrification shifts demand profile to peaks that BESS can smooth. Customer persona is agricultural (not Mein Solar's traditional C&I), different sales channel. Demonstration-project fit only.",
+      "alreadyUsesTechnology": false,
+      "marketPriority": "LOW",
+      "discoverySource": "primary_fp",
+      "criteriaScores": {
+        "U1": 5,
+        "U2": 3,
+        "U3": 7,
+        "U4": 5,
+        "U5": 7,
+        "C1": 6,
+        "C2": 6,
+        "C3": 7,
+        "C4": 8
+      },
+      "confidence": 0.55
     }
   ],
-  "has_bom": false
+  "excludedMarkets": [
+    {
+      "description": "Residential rooftop PV (Mein Solar incumbent, below EPC scale)"
+    },
+    {
+      "description": "Small commercial PV <500 kW (current market, below BESS EPC minimum)"
+    },
+    {
+      "description": "Pure cell manufacturing 26111711 (upstream component, not customer)"
+    },
+    {
+      "description": "327310 Cement Manufacturing (Tier-1 cut — kiln electrification pre-pilot)"
+    },
+    {
+      "description": "517312 Wireless Telecommunications Carriers (Tier-1 cut — typical site <100 kWh, below P2 minimum)"
+    }
+  ],
+  "sources": []
 }

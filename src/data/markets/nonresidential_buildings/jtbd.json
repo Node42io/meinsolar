@@ -890,8 +890,7 @@
           "impact_category": "cost",
           "product_related": false,
           "role": "Overseer",
-          "confidence": 0.85,
-          "satisfaction_rationale": "Incumbent turnkey vendors (Voltfang, Tesvolt, Commeo) provide standard sizing templates but lack building-specific 15-min load-curve integration, leaving 95th-percentile accuracy dependent on external engineering, holding satisfaction at 4/10."
+          "confidence": 0.85
         },
         {
           "id": "N2",
@@ -904,8 +903,7 @@
           "impact_category": "skill",
           "product_related": false,
           "role": "Specifier",
-          "confidence": 0.8,
-          "satisfaction_rationale": "OEM configurators translate basic load profiles into kW/kWh specs, but C&I nonresidential load diversity (EV charging, HVAC, tenant mix shifts) forces manual redesign after year 1, keeping satisfaction moderate at 4/10."
+          "confidence": 0.8
         },
         {
           "id": "N3",
@@ -918,8 +916,7 @@
           "impact_category": "safety",
           "product_related": false,
           "role": "Specifier",
-          "confidence": 0.9,
-          "satisfaction_rationale": "Incumbent turnkey vendors handle Baugenehmigung as part of scope but delegate VdS fire-clearance to subcontractors; first-submission rejection rates remain elevated for dense >3 MWh clusters, yielding satisfaction of 5/10."
+          "confidence": 0.9
         },
         {
           "id": "N4",
@@ -932,8 +929,7 @@
           "impact_category": "time",
           "product_related": true,
           "role": "Executor",
-          "confidence": 0.85,
-          "satisfaction_rationale": "Split-vendor procurement pattern (separate battery OEM, PCS supplier, civil contractor) adds 2-3 months versus single-source EPC, keeping time-to-energization satisfaction low at 4/10."
+          "confidence": 0.85
         },
         {
           "id": "N5",
@@ -946,8 +942,7 @@
           "impact_category": "cost",
           "product_related": false,
           "role": "Overseer",
-          "confidence": 0.85,
-          "satisfaction_rationale": "Incumbents do not bundle MV feeder design or HPC buffer logic into their turnkey scope, leaving the landlord exposed to DSO upgrade charges that can exceed EUR 100k per MW, holding satisfaction at 4/10."
+          "confidence": 0.85
         },
         {
           "id": "N6",
@@ -960,8 +955,7 @@
           "impact_category": "time",
           "product_related": true,
           "role": "Lifecycle",
-          "confidence": 0.82,
-          "satisfaction_rationale": "Incumbent turnkey packages consolidate some DSO coordination but still rely on third-party grid-code certification paths, leaving first-attempt acceptance rates below landlord expectations at 5/10 satisfaction."
+          "confidence": 0.82
         },
         {
           "id": "N7",
@@ -974,8 +968,7 @@
           "impact_category": "cost",
           "product_related": true,
           "role": "Overseer",
-          "confidence": 0.85,
-          "satisfaction_rationale": "VDE 2510-50 compliance documentation is not standard in incumbent EPC deliverables; landlords must commission separate auditor evidence, reducing satisfaction to 4/10."
+          "confidence": 0.85
         },
         {
           "id": "N8",
@@ -988,8 +981,7 @@
           "impact_category": "cost",
           "product_related": true,
           "role": "Influencer",
-          "confidence": 0.78,
-          "satisfaction_rationale": "Incumbent BESS installations use standard fire-suppression systems, but VdS-certified thermal-runaway containment evidence remains inconsistent across vendors, leaving insurance underwriters cautious at 5/10 satisfaction."
+          "confidence": 0.78
         },
         {
           "id": "N9",
@@ -1002,8 +994,7 @@
           "impact_category": "cost",
           "product_related": false,
           "role": "Executor",
-          "confidence": 0.88,
-          "satisfaction_rationale": "Incumbent EMS platforms (Voltfang/Tesvolt) deliver basic peak-shaving dispatch, but lack building-integrated load-prediction and Netzentgelte tariff optimization, capping capture rates below 85% and satisfaction at 5/10."
+          "confidence": 0.88
         },
         {
           "id": "N10",
@@ -1016,8 +1007,7 @@
           "impact_category": "reliability",
           "product_related": true,
           "role": "Executor",
-          "confidence": 0.82,
-          "satisfaction_rationale": "OEM-native BMS-PCS integration enforces basic SoC guardrails, but dispatch logic lacks building-context awareness (tenant demand spikes, EV charging bursts), yielding moderate satisfaction at 5/10."
+          "confidence": 0.82
         },
         {
           "id": "N11",
@@ -1030,8 +1020,7 @@
           "impact_category": "cost",
           "product_related": false,
           "role": "Overseer",
-          "confidence": 0.8,
-          "satisfaction_rationale": "Tesvolt and Voltfang EMS platforms support single-objective dispatch only; stacking peak shaving with FCR/aFRR prequalification requires third-party aggregator integration, holding satisfaction low at 3/10."
+          "confidence": 0.8
         },
         {
           "id": "N12",
@@ -1044,8 +1033,7 @@
           "impact_category": "reliability",
           "product_related": true,
           "role": "Overseer",
-          "confidence": 0.82,
-          "satisfaction_rationale": "LFP cell chemistry offers inherently better calendar ageing than NMC, but incumbent vendors provide limited SoH degradation guarantees beyond standard 10-year warranty curves, yielding moderate satisfaction at 5/10."
+          "confidence": 0.82
         },
         {
           "id": "N13",
@@ -1058,8 +1046,7 @@
           "impact_category": "safety",
           "product_related": true,
           "role": "Executor",
-          "confidence": 0.88,
-          "satisfaction_rationale": "Incumbent BMS telemetry provides cell-level voltage and temperature monitoring, but sub-60s anomaly detection with automated module-level isolation is not standard across all vendors, keeping satisfaction at 6/10."
+          "confidence": 0.88
         },
         {
           "id": "N14",
@@ -1072,8 +1059,7 @@
           "impact_category": "cost",
           "product_related": false,
           "role": "Overseer",
-          "confidence": 0.85,
-          "satisfaction_rationale": "Incumbent EMS platforms lack audited CSRD-compliant emissions export; landlords must manually aggregate energy data from multiple systems to produce EU-Taxonomy evidence, holding satisfaction low at 3/10."
+          "confidence": 0.85
         },
         {
           "id": "N15",
@@ -1086,8 +1072,7 @@
           "impact_category": "cost",
           "product_related": true,
           "role": "Lifecycle",
-          "confidence": 0.7,
-          "satisfaction_rationale": "Grid-code firmware updates are vendor-dependent with variable response times; no incumbent offers a contractual SLA for DSO-signal adaptation, leaving satisfaction at 4/10."
+          "confidence": 0.7
         },
         {
           "id": "N16",
@@ -1100,8 +1085,7 @@
           "impact_category": "time",
           "product_related": false,
           "role": "Executor",
-          "confidence": 0.75,
-          "satisfaction_rationale": "Re-tuning dispatch objectives (e.g., adding FCR to peak shaving) requires vendor firmware intervention or third-party EMS integration, with typical lead times exceeding 30 days, yielding satisfaction of 4/10."
+          "confidence": 0.75
         },
         {
           "id": "N17",
@@ -1114,8 +1098,7 @@
           "impact_category": "safety",
           "product_related": true,
           "role": "Beneficiary",
-          "confidence": 0.9,
-          "satisfaction_rationale": "Incumbent LFP-based systems have inherently lower thermal-runaway risk than NMC, and container-level fire suppression is standard, but cell-to-module propagation prevention varies across vendors, keeping satisfaction at 6/10."
+          "confidence": 0.9
         },
         {
           "id": "N18",
@@ -1128,8 +1111,7 @@
           "impact_category": "cost",
           "product_related": true,
           "role": "Overseer",
-          "confidence": 0.7,
-          "satisfaction_rationale": "EU Battery Regulation compliance for end-of-life recycling and footprint recovery is emerging; no incumbent offers a contractual decommissioning-cost cap, leaving satisfaction at 4/10."
+          "confidence": 0.7
         },
         {
           "id": "N19",
@@ -1144,8 +1126,7 @@
           "role": "Overseer",
           "confidence": 0.65,
           "pyramid_level": "P3",
-          "hypothesis": true,
-          "satisfaction_rationale": "Incumbent vendors provide basic ROI calculators but lack portfolio-level yield attribution dashboards that investment committees require for BESS asset performance reporting, holding satisfaction at 4/10."
+          "hypothesis": true
         },
         {
           "id": "N20",
@@ -1160,8 +1141,7 @@
           "role": "Overseer",
           "confidence": 0.7,
           "pyramid_level": "P4",
-          "hypothesis": true,
-          "satisfaction_rationale": "PV+BESS co-location improves GRESB energy scores, but incumbent vendors do not provide pre-certified EU Taxonomy alignment documentation, leaving the scoring uplift partially unquantified at 4/10 satisfaction."
+          "hypothesis": true
         },
         {
           "id": "N21",
@@ -1176,8 +1156,7 @@
           "role": "Beneficiary",
           "confidence": 0.55,
           "pyramid_level": "P4",
-          "hypothesis": true,
-          "satisfaction_rationale": "Container BESS aesthetics are an afterthought for industrial-focused incumbents; no vendor offers integrated Sichtschutz or architectural-grade enclosures for office/retail perimeter placement, yielding low satisfaction at 3/10."
+          "hypothesis": true
         },
         {
           "id": "N22",
@@ -1192,8 +1171,7 @@
           "role": "Overseer",
           "confidence": 0.6,
           "pyramid_level": "P5",
-          "hypothesis": true,
-          "satisfaction_rationale": "LFP chemistry obsolescence risk is lower than NMC, but rapid sodium-ion and solid-state development creates stranded-asset anxiety that no incumbent warranty structure addresses, keeping satisfaction at 3/10."
+          "hypothesis": true
         }
       ],
       "incumbent_anchor": {

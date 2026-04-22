@@ -1,993 +1,539 @@
 {
-  "id": "VN_port_and_harbor_operations_ibisworld_htt",
-  "title": "VN — NAICS 488310 Port and Harbor Operations",
-  "type": "value_network",
-  "market_slug": "port_and_harbor_operations_ibisworld_htt",
-  "is_per_market": true,
-  "sections": [
+  "naicsCode": "488310",
+  "marketName": "Port Electrification — Shore Power, Crane, Ferry Charging",
+  "slug": "port_harbor_operations",
+  "l7Solution": "Maritime Cargo & Passenger Movement Ecosystem",
+  "cfjStatement": "Transfer cargo and passengers between vessel and landside transport networks safely, lawfully, and on schedule",
+  "l6Systems": [
     {
-      "title": "CFJ (industry-level, L7)",
-      "content": "> **Transfer cargo and passengers between vessel and landside transport networks safely, lawfully, and on schedule** — from vessel arrival in the approach channel to handover onto road, rail, or inland waterway.\n\nMechanism-free. Applies to container, bulk, RoRo, liquid, cruise, ferry and inland-port operators alike.\n\n---"
+      "id": "Vessel Arrival & Berthing",
+      "name": "Vessel Arrival & Berthing",
+      "type": "Maier 1998",
+      "l5Units": []
     },
     {
-      "title": "VN hierarchy (L7 → L6 → L5 → L4)",
-      "content": "### L7 Maritime Cargo & Passenger Movement Ecosystem\n\n### L6 Core process steps (sequential)\n\n| L6 | Name | Job family (verb + object) | Activates for |\n|---|---|---|---|\n| L6a | Vessel Arrival & Berthing | Guide vessel from fairway to berth and secure alongside | All vessel classes |\n| L6b | Vessel–Shore Interface | Bridge vessel and quay for power, cargo, and passenger transfer | Container, bulk, RoRo, cruise, ferry |\n| L6c | Terminal Cargo Handling | Move cargo across quay wall between ship and yard | Container, bulk, RoRo, liquid |\n| L6d | Yard & Storage Operations | Store, stack, and track cargo units on terminal | Container, bulk, liquid |\n| L6e | Landside Interchange | Hand cargo off to road, rail, or inland waterway | All cargo classes |\n| L6f | Passenger & Vehicle Embarkation | Embark/disembark passengers and vehicles | Cruise, ferry, RoRo-pax |\n\n### L6 Horizontal (cross-cutting)\n\n| L6H | Name | Purpose |\n|---|---|---|\n| L6H-ENE | **Port Energy & Power Infrastructure** | Supply, store, and dispatch electrical power to all terminal processes · **Mein Solar L6 segment** |\n| L6H-SAF | Port Security & Safety | ISPS, port police, fire, dangerous-goods management |\n| L6H-MAINT | Maintenance & Civil Engineering | Keep quay walls, pavement, cranes, fleet operational |\n| L6H-IT | Terminal Operating Systems & Port IT | Gate, TOS, PCS, single-window customs |\n| L6H-ENV | Environmental Compliance & Emissions | Air, water, noise monitoring; EU ETS/FuelEU reporting |\n\n### L5 equipment within L6H-ENE (Mein Solar's home segment — **all sibling alternatives**)\n\n| L5 | Description | Typical size | Incumbents |\n|---|---|---|---|\n| Shore Power / OPS Systems | Cold-ironing connection allowing berthed ships to shut down auxiliary engines | 1–20 MVA per berth; 60/50 Hz conversion | Siemens, ABB, Cavotec, Schneider, Wärtsilä |\n| **Large-Scale BESS & Port Microgrid** | Containerised Li-ion BESS buffering peak loads, OPS demand, and renewables · **← Mein Solar PRIMARY POSITION** | 1–25 MWh | ABB, Wärtsilä, Fluence, Sungrow, Tesla |\n| Port-Side Solar PV Generation | Rooftop/canopy PV on warehouses, MSCs, office buildings · **← Mein Solar SECONDARY POSITION** | 0.5–10 MWp | BayWa r.e., Enerparc, Goldbeck, local EPCs |\n| MV Grid Connection & Substation | 10/20/110 kV connection to DSO/TSO, transformers, switchgear | 10–150 MVA | Siemens, ABB, Schneider, Eaton, Hitachi |\n| High-Power Charging Infrastructure | DC fast charging for reach stackers, terminal tractors, ferries, shore-vehicles · **← Mein Solar SECONDARY POSITION** | 150 kW–3 MW per dispenser | ABB E-mobility, Kempower, Alpitronic, ads-tec, Kostad |\n| Diesel Standby Generation (legacy) | Backup gensets for black-start and safety loads | 0.5–5 MVA | Caterpillar, Cummins, MTU |\n\n### L4 subsystems per L5\n\n#### L5 Shore Power / OPS Systems\n| L4 | Description |\n|---|---|\n| Frequency Converter | 50↔60 Hz static converter rated to vessel demand |\n| HV Cable Management System | Motorised reel/crane for ship connection |\n| Berth-side Connection Box | Plug, interlock, protection relay per IEC 80005-1 |\n\n#### L5 Large-Scale BESS & Port Microgrid *(Mein Solar primary)*\n| L4 | Description |\n|---|---|\n| Battery Container (LFP, BMS, HVAC, fire suppression) | 1–5 MWh containerised stack, IP54, NOVEC 1230 |\n| Bidirectional Power Conversion System (PCS) | 4-quadrant inverter, grid-forming capable for microgrid mode |\n| Energy Management System (EMS) | Dispatch logic: peak shaving, OPS support, PV firming, market bidding |\n| MV Transformer & Switchgear | Step-up to 10/20 kV, SF6-free RMU, protection |\n| Civil Works & Fire Clearance | Foundation, bund, fence, Feuerwehr access per VdS |\n\n#### L5 Port-Side Solar PV Generation *(Mein Solar secondary)*\n| L4 | Description |\n|---|---|\n| PV Modules & Mounting | Mono c-Si modules on warehouse roof or canopy |\n| String/Central Inverter | DC→AC conversion with Q(U) grid-support |\n| DC Combiner & Monitoring | String-level metering, arc-fault, isolation |\n\n#### L5 MV Grid Connection & Substation\n| L4 | Description |\n|---|---|\n| MV Transformer (oil/dry) | Step-up/down to DSO feeder voltage |\n| MV Switchgear (RMU, GIS) | Protection, isolation, remote trip |\n| Protection Relays & Metering | IEC 61850 protection, revenue metering |\n\n#### L5 High-Power Charging Infrastructure *(Mein Solar secondary)*\n| L4 | Description |\n|---|---|\n| DC Charger (CCS2/MCS) | 150 kW–3 MW output, liquid-cooled cable |\n| Charging Management System | Dispenser scheduling, auth, grid-aware dispatch |\n| Vehicle-Side Connector & Safety Interlock | Plug, earth-check, insulation monitor |\n\n#### L5 Diesel Standby Generation (legacy)\n| L4 | Description |\n|---|---|\n| Diesel Engine-Generator Set | Prime mover + alternator |\n| Fuel Tank & Bund | Day tank, bulk storage, spill containment |\n| Auto-Transfer Switch & Control | Grid-loss detection, automatic start/transfer |\n\n**Total units: ~42** (1 L7 · 6 L6 core · 5 L6H · 6 L5 · ~24 L4). Inside 20–60 target.\n\n---"
+      "id": "Vessel–Shore Interface",
+      "name": "Vessel–Shore Interface",
+      "type": "Maier 1998",
+      "l5Units": []
     },
     {
-      "title": "Phase 3 — Strategic Adjacency Analyses",
-      "content": "### 04e — Direct Competence Transfer Scan\n\n**Scope:** entire port VN. Only LOW/MEDIUM effort units listed.\n\n| VN Unit | Level | Competence Required | Mein Solar Has It? | Adaptation Effort | Rationale |\n|---|---|---|---|---|---|\n| Large-Scale BESS & Port Microgrid | L5 | Containerised Li-ion EPC, PCS, MV, EMS, VDE-AR-N 4110 | YES | LOW | Direct product fit; only incremental IP upgrade for salt-air corrosion (IP55→66, stainless fasteners) |\n| Port-Side Solar PV Generation | L5 | Rooftop PV EPC, DSO grid interface | YES | LOW | Mein Solar's incumbent PV business; same grid code |\n| HPC Charging Infrastructure | L5 | MV coupling, BESS-buffered HPC, site civil | PARTIAL | LOW | Feature #7 in product decomp covers BESS-buffered HPC; needs partnership with charger OEM (ABB, Kempower, Alpitronic) |\n| MV Grid Connection & Substation | L5 | 10/20 kV transformer, switchgear, protection, DSO acceptance | PARTIAL | MEDIUM | Mein Solar delivers MV scope as part of BESS EPC; as standalone would need to bid against T1 OEMs |\n| Shore Power / OPS Systems | L5 | 50↔60 Hz frequency conversion, HV ship-connection hardware, IEC 80005-1 | PARTIAL | MEDIUM | MV + civil + EMS scope transfers; frequency converter and ship-interface hardware (Cavotec reel, IEC 80005) are new |\n| Environmental Compliance & Emissions (L6H) | L6H | Monitoring EMS extension, renewable attribution | PARTIAL | MEDIUM | EMS can attribute clean electrons to OPS draw; sales-adjacent to BESS scope |\n\nExcluded (HIGH effort, not listed in detail): Quay cranes, vessel pilotage, stevedoring, TOS software, port security, dredging.\n\n### 04f — Strategic Adjacency Expansion (within L6H-ENE)\n\nCurrent segment: **L6H-ENE Port Energy & Power Infrastructure**\nCurrent position: **L5 Large-Scale BESS & Port Microgrid**\n\n| Adjacent L5 Unit | Current Incumbents | Competence Gap | Investment to Bridge | Strategic Fit (1-10) | Rationale |\n|---|---|---|---|---|---|\n| Port-Side Solar PV Generation | BayWa r.e., Enerparc, Goldbeck | None — incumbent business | <3 mo, <€100k sales effort | **9** | >90% overlap; simply bundle PV + BESS + MV + OPS as one EPC scope |\n| HPC Charging Infrastructure | ABB E-mobility, Kempower, Alpitronic, ads-tec, Kostad | DC charger hardware, OCPP backend, vehicle certification | 6–12 mo, €0.5–1M (channel partner, not build) | **8** | ~60% overlap; Mein Solar owns site/MV/BESS, partners with charger OEM. Directly activates feature #7 of product. |\n| MV Grid Connection & Substation | Siemens, ABB, Schneider, Hitachi | Standalone utility-scale transformer/switchgear project delivery without the BESS wrapper | 12–18 mo, €1–2M | **5** | ~40% overlap; winnable only as part of bundled scope, not standalone vs. T1 OEMs |\n| Shore Power / OPS Systems | Siemens, ABB, Cavotec, Schneider, Wärtsilä | 50↔60 Hz frequency converter, IEC 80005-1 ship-connection hardware, vessel-side interface expertise | 18–24 mo, €2–4M (freq-converter partnership or license) | **6** | ~35% overlap; MV/civil/EMS transfers, but converter + ship interface is a new product line. Strong only if bundled with BESS-for-OPS-firming play |\n\nExcluded (<30% overlap): Diesel Standby Generation (wrong fuel/tech; legacy declining).\n\n### 04g — Vertical Move-Up Assessment\n\n| Current Position | Target (1 level up) | What Must Be Added | Competitors at Target | Feasibility | Economic Rationale |\n|---|---|---|---|---|---|\n| L5 Large-Scale BESS & Port Microgrid | **L6H-ENE Port Energy & Power Infrastructure integrator** | Own full energy scope: OPS + BESS + PV + MV + HPC + EMS + O&M as one port-wide service contract | Siemens Smart Infrastructure, ABB, Wärtsilä Energy, Schneider Electric | **MEDIUM** | Mein Solar already has ~55% of the L6H-ENE scope (BESS + PV + MV + HPC-ready + EMS). Adding OPS + unified port-EMS = €2–4M R&D + 1 frequency-converter partnership. Port authority TAM (Hamburg, BLG, Duisport, NPorts) is ~€500M–1B across DE ports 2026–2032, vs. individual BESS TAM ~€50–100M. **Move-up is economically rational if Mein Solar wins 1–2 reference ports and extends into consortium bids.** Blocker is track-record credibility in public port procurement — no reference yet. |\n\n---"
+      "id": "Terminal Cargo Handling",
+      "name": "Terminal Cargo Handling",
+      "type": "Maier 1998",
+      "l5Units": []
     },
     {
-      "title": "Completeness checklist (Phase 2 gates)",
-      "content": "| Check | Status |\n|---|---|\n| CFJ industry-level (no product/tech reference) | ✅ |\n| No orphan nodes (every unit has parent) | ✅ |\n| Valid level transitions (L7→L6→L5→L4) | ✅ |\n| ≥3 L4 children per L5 | ✅ (6 L5 × 3+ L4 each) |\n| No solution-specific L7/L6 names | ✅ |\n| Three-question naming test | ✅ (domain-standard terms throughout) |\n| Unit count 15–60 | ✅ (~42) |\n| Mein Solar position marked | ✅ (PRIMARY + 2 SECONDARY) |\n\n---"
+      "id": "Yard & Storage Operations",
+      "name": "Yard & Storage Operations",
+      "type": "Maier 1998",
+      "l5Units": []
     },
     {
-      "title": "Key market context (supports Phase 3 scoring)",
-      "content": "| Fact | Value | Source |\n|---|---|---|\n| EU shore-power mandate | TEN-T core ports must offer OPS for container + cruise >5000 GT by **2030** | AFIR Reg. 2023/1804 |\n| Typical OPS demand | Cruise ship up to **16 MW**, container ship **~7.5 MW** | Hamburg Port Authority |\n| Hamburg deployment | **10 container + 4 cruise** OPS connections by 2025 | portofhamburg.com |\n| German BESS market | **842 MW added 2025**, 41 GW projected by 2037 | Modo Energy / BNetzA |\n| Port BESS reference | ABB Pier 300 Port of LA — microgrid + flywheel storage | ABB |\n| Electric reach stacker | SANY 50t with **512 kWh** pack; Kalmar 45t electric | Kalmar / SANY |\n| Environment constraint | Salt-air coastal → IP55+ / stainless hardware required on standard BESS container | VDE / IEC 60721-3 |\n\n---"
+      "id": "Landside Interchange",
+      "name": "Landside Interchange",
+      "type": "Maier 1998",
+      "l5Units": []
     },
     {
-      "title": "Structured Data",
-      "content": "```json\n{\n  \"component\": \"value_network_construction\",\n  \"naics_code\": \"488310\",\n  \"naics_title\": \"Port and Harbor Operations\",\n  \"market_name\": \"Port Electrification — Shore Power, Crane, Ferry Charging\",\n  \"market_rank\": 10,\n  \"market_priority\": \"MEDIUM\",\n  \"product_architecture_distance\": 5,\n  \"already_uses_technology\": false,\n  \"discovery_source\": \"fp_extension\",\n  \"cfj_statement\": \"Transfer cargo and passengers between vessel and landside transport networks safely, lawfully, and on schedule\",\n  \"l7_solution\": \"Maritime Cargo & Passenger Movement Ecosystem\",\n  \"top_level\": \"L7\",\n  \"company\": {\n    \"name\": \"Mein Solar GmbH\",\n    \"product\": \"EPC für Großbatteriespeicher\",\n    \"primary_position\": {\"level\": \"L5\", \"unit\": \"Large-Scale BESS & Port Microgrid\", \"parent\": \"Port Energy & Power Infrastructure\"},\n    \"secondary_positions\": [\n      {\"level\": \"L5\", \"unit\": \"Port-Side Solar PV Generation\", \"parent\": \"Port Energy & Power Infrastructure\"},\n      {\"level\": \"L5\", \"unit\": \"High-Power Charging Infrastructure\", \"parent\": \"Port Energy & Power Infrastructure\"}\n    ]\n  },\n  \"units\": [\n    {\"name\": \"Maritime Cargo & Passenger Movement Ecosystem\", \"level\": \"L7\", \"bom_standard\": \"Moore 1993\", \"parent_name\": \"ROOT\", \"description\": \"Economic community coordinating vessel, terminal, and landside actors to deliver the CFJ\"},\n\n    {\"name\": \"Vessel Arrival & Berthing\", \"level\": \"L6\", \"bom_standard\": \"Maier 1998\", \"parent_name\": \"Maritime Cargo & Passenger Movement Ecosystem\", \"description\": \"Guide vessel from fairway to berth and secure alongside\"},\n    {\"name\": \"Vessel–Shore Interface\", \"level\": \"L6\", \"bom_standard\": \"Maier 1998\", \"parent_name\": \"Maritime Cargo & Passenger Movement Ecosystem\", \"description\": \"Bridge vessel and quay for power, cargo, and passenger transfer\"},\n    {\"name\": \"Terminal Cargo Handling\", \"level\": \"L6\", \"bom_standard\": \"Maier 1998\", \"parent_name\": \"Maritime Cargo & Passenger Movement Ecosystem\", \"description\": \"Move cargo across the quay wall between ship and yard\"},\n    {\"name\": \"Yard & Storage Operations\", \"level\": \"L6\", \"bom_standard\": \"Maier 1998\", \"parent_name\": \"Maritime Cargo & Passenger Movement Ecosystem\", \"description\": \"Store, stack, and track cargo units on terminal\"},\n    {\"name\": \"Landside Interchange\", \"level\": \"L6\", \"bom_standard\": \"Maier 1998\", \"parent_name\": \"Maritime Cargo & Passenger Movement Ecosystem\", \"description\": \"Hand cargo off to road, rail, or inland waterway\"},\n    {\"name\": \"Passenger & Vehicle Embarkation\", \"level\": \"L6\", \"bom_standard\": \"Maier 1998\", \"parent_name\": \"Maritime Cargo & Passenger Movement Ecosystem\", \"description\": \"Embark and disembark passengers and vehicles for cruise, ferry, RoRo-pax\"},\n\n    {\"name\": \"Port Energy & Power Infrastructure\", \"level\": \"L6\", \"bom_standard\": \"Maier 1998\", \"parent_name\": \"Maritime Cargo & Passenger Movement Ecosystem\", \"description\": \"Horizontal: supply, store, and dispatch electrical power to all terminal processes\", \"horizontal\": true},\n    {\"name\": \"Port Security & Safety\", \"level\": \"L6\", \"bom_standard\": \"Maier 1998\", \"parent_name\": \"Maritime Cargo & Passenger Movement Ecosystem\", \"description\": \"Horizontal: ISPS compliance, port police, fire, dangerous-goods\", \"horizontal\": true},\n    {\"name\": \"Maintenance & Civil Engineering\", \"level\": \"L6\", \"bom_standard\": \"Maier 1998\", \"parent_name\": \"Maritime Cargo & Passenger Movement Ecosystem\", \"description\": \"Horizontal: keep quay walls, pavement, cranes, and fleet operational\", \"horizontal\": true},\n    {\"name\": \"Terminal Operating Systems & Port IT\", \"level\": \"L6\", \"bom_standard\": \"Maier 1998\", \"parent_name\": \"Maritime Cargo & Passenger Movement Ecosystem\", \"description\": \"Horizontal: gate, TOS, port community system, single-window customs\", \"horizontal\": true},\n    {\"name\": \"Environmental Compliance & Emissions\", \"level\": \"L6\", \"bom_standard\": \"Maier 1998\", \"parent_name\": \"Maritime Cargo & Passenger Movement Ecosystem\", \"description\": \"Horizontal: air, water, noise monitoring; EU ETS / FuelEU Maritime reporting\", \"horizontal\": true},\n\n    {\"name\": \"Shore Power / OPS Systems\", \"level\": \"L5\", \"bom_standard\": \"ISO 15288\", \"parent_name\": \"Port Energy & Power Infrastructure\", \"description\": \"Cold-ironing connection for berthed ships; 50↔60 Hz frequency conversion\"},\n    {\"name\": \"Large-Scale BESS & Port Microgrid\", \"level\": \"L5\", \"bom_standard\": \"ISO 15288\", \"parent_name\": \"Port Energy & Power Infrastructure\", \"description\": \"Containerised Li-ion BESS buffering peak loads, OPS demand, and renewables\", \"company_position\": \"primary\"},\n    {\"name\": \"Port-Side Solar PV Generation\", \"level\": \"L5\", \"bom_standard\": \"ISO 15288\", \"parent_name\": \"Port Energy & Power Infrastructure\", \"description\": \"Rooftop/canopy PV on warehouses and office buildings\", \"company_position\": \"secondary\"},\n    {\"name\": \"MV Grid Connection & Substation\", \"level\": \"L5\", \"bom_standard\": \"ISO 15288\", \"parent_name\": \"Port Energy & Power Infrastructure\", \"description\": \"10/20/110 kV DSO/TSO connection, transformers, switchgear\"},\n    {\"name\": \"High-Power Charging Infrastructure\", \"level\": \"L5\", \"bom_standard\": \"ISO 15288\", \"parent_name\": \"Port Energy & Power Infrastructure\", \"description\": \"DC fast charging for reach stackers, terminal tractors, ferries, shore vehicles\", \"company_position\": \"secondary\"},\n    {\"name\": \"Diesel Standby Generation\", \"level\": \"L5\", \"bom_standard\": \"ISO 15288\", \"parent_name\": \"Port Energy & Power Infrastructure\", \"description\": \"Legacy diesel gensets for black-start and safety-critical backup\"},\n\n    {\"name\": \"Frequency Converter\", \"level\": \"L4\", \"bom_standard\": \"INCOSE\", \"parent_name\": \"Shore Power / OPS Systems\", \"description\": \"50↔60 Hz static converter rated to vessel demand\"},\n    {\"name\": \"HV Cable Management System\", \"level\": \"L4\", \"bom_standard\": \"INCOSE\", \"parent_name\": \"Shore Power / OPS Systems\", \"description\": \"Motorised reel / crane for ship-side HV connection\"},\n    {\"name\": \"Berth-side Connection Box\", \"level\": \"L4\", \"bom_standard\": \"INCOSE\", \"parent_name\": \"Shore Power / OPS Systems\", \"description\": \"Plug, interlock, protection relay per IEC 80005-1\"},\n\n    {\"name\": \"Battery Container\", \"level\": \"L4\", \"bom_standard\": \"INCOSE\", \"parent_name\": \"Large-Scale BESS & Port Microgrid\", \"description\": \"1–5 MWh LFP stack, BMS, HVAC, NOVEC 1230 fire suppression, IP54\"},\n    {\"name\": \"Power Conversion System\", \"level\": \"L4\", \"bom_standard\": \"INCOSE\", \"parent_name\": \"Large-Scale BESS & Port Microgrid\", \"description\": \"4-quadrant bidirectional inverter, grid-forming capable for microgrid mode\"},\n    {\"name\": \"Energy Management System\", \"level\": \"L4\", \"bom_standard\": \"INCOSE\", \"parent_name\": \"Large-Scale BESS & Port Microgrid\", \"description\": \"Dispatch logic: peak shaving, OPS support, PV firming, market bidding\"},\n    {\"name\": \"MV Transformer\", \"level\": \"L4\", \"bom_standard\": \"INCOSE\", \"parent_name\": \"Large-Scale BESS & Port Microgrid\", \"description\": \"Step-up to 10/20 kV\"},\n    {\"name\": \"Civil Works & Fire Clearance\", \"level\": \"L4\", \"bom_standard\": \"INCOSE\", \"parent_name\": \"Large-Scale BESS & Port Microgrid\", \"description\": \"Foundation, bund, fence, Feuerwehr access per VdS\"},\n\n    {\"name\": \"PV Modules & Mounting\", \"level\": \"L4\", \"bom_standard\": \"INCOSE\", \"parent_name\": \"Port-Side Solar PV Generation\", \"description\": \"Mono c-Si modules on warehouse roof or canopy\"},\n    {\"name\": \"Solar Inverter\", \"level\": \"L4\", \"bom_standard\": \"INCOSE\", \"parent_name\": \"Port-Side Solar PV Generation\", \"description\": \"String or central inverter with Q(U) grid-support\"},\n    {\"name\": \"DC Combiner & Monitoring\", \"level\": \"L4\", \"bom_standard\": \"INCOSE\", \"parent_name\": \"Port-Side Solar PV Generation\", \"description\": \"String-level metering, arc-fault detection, isolation\"},\n\n    {\"name\": \"Substation Transformer\", \"level\": \"L4\", \"bom_standard\": \"INCOSE\", \"parent_name\": \"MV Grid Connection & Substation\", \"description\": \"Oil or dry MV step-up/down transformer to DSO feeder voltage\"},\n    {\"name\": \"MV Switchgear\", \"level\": \"L4\", \"bom_standard\": \"INCOSE\", \"parent_name\": \"MV Grid Connection & Substation\", \"description\": \"RMU or GIS with protection, isolation, remote trip\"},\n    {\"name\": \"Protection Relays & Metering\", \"level\": \"L4\", \"bom_standard\": \"INCOSE\", \"parent_name\": \"MV Grid Connection & Substation\", \"description\": \"IEC 61850 protection, revenue metering, NA-protection\"},\n\n    {\"name\": \"DC Fast Charger\", \"level\": \"L4\", \"bom_standard\": \"INCOSE\", \"parent_name\": \"High-Power Charging Infrastructure\", \"description\": \"150 kW–3 MW output, liquid-cooled cable, CCS2/MCS\"},\n    {\"name\": \"Charging Management System\", \"level\": \"L4\", \"bom_standard\": \"INCOSE\", \"parent_name\": \"High-Power Charging Infrastructure\", \"description\": \"Dispenser scheduling, authentication, grid-aware dispatch\"},\n    {\"name\": \"Vehicle Connector & Interlock\", \"level\": \"L4\", \"bom_standard\": \"INCOSE\", \"parent_name\": \"High-Power Charging Infrastructure\", \"description\": \"Plug, earth-check, insulation monitor, safety interlock\"},\n\n    {\"name\": \"Diesel Engine-Generator Set\", \"level\": \"L4\", \"bom_standard\": \"INCOSE\", \"parent_name\": \"Diesel Standby Generation\", \"description\": \"Prime mover with alternator\"},\n    {\"name\": \"Fuel Tank & Bund\", \"level\": \"L4\", \"bom_standard\": \"INCOSE\", \"parent_name\": \"Diesel Standby Generation\", \"description\": \"Day tank, bulk storage, spill containment\"},\n    {\"name\": \"Auto-Transfer Switch\", \"level\": \"L4\", \"bom_standard\": \"INCOSE\", \"parent_name\": \"Diesel Standby Generation\", \"description\": \"Grid-loss detection, automatic start and load transfer\"}\n  ],\n\n  \"direct_competence_transfer_scan\": [\n    {\"vn_unit\": \"Large-Scale BESS & Port Microgrid\", \"level\": \"L5\", \"has_it\": \"YES\", \"effort\": \"LOW\", \"rationale\": \"Direct product fit; only incremental IP upgrade for salt-air corrosion\"},\n    {\"vn_unit\": \"Port-Side Solar PV Generation\", \"level\": \"L5\", \"has_it\": \"YES\", \"effort\": \"LOW\", \"rationale\": \"Mein Solar incumbent PV EPC business; identical grid code\"},\n    {\"vn_unit\": \"High-Power Charging Infrastructure\", \"level\": \"L5\", \"has_it\": \"PARTIAL\", \"effort\": \"LOW\", \"rationale\": \"Feature #7 covers BESS-buffered HPC; needs charger-OEM partnership\"},\n    {\"vn_unit\": \"MV Grid Connection & Substation\", \"level\": \"L5\", \"has_it\": \"PARTIAL\", \"effort\": \"MEDIUM\", \"rationale\": \"Delivered today as part of BESS EPC; standalone would require bidding vs. T1 OEMs\"},\n    {\"vn_unit\": \"Shore Power / OPS Systems\", \"level\": \"L5\", \"has_it\": \"PARTIAL\", \"effort\": \"MEDIUM\", \"rationale\": \"MV + civil + EMS transfer; 50↔60 Hz frequency converter and IEC 80005-1 ship interface are new\"},\n    {\"vn_unit\": \"Environmental Compliance & Emissions\", \"level\": \"L6H\", \"has_it\": \"PARTIAL\", \"effort\": \"MEDIUM\", \"rationale\": \"EMS extension to attribute renewable electrons to OPS consumption\"}\n  ],\n\n  \"strategic_adjacency_expansion\": {\n    \"current_segment\": \"Port Energy & Power Infrastructure\",\n    \"current_position\": \"Large-Scale BESS & Port Microgrid\",\n    \"adjacencies\": [\n      {\"l5_unit\": \"Port-Side Solar PV Generation\", \"incumbents\": [\"BayWa r.e.\", \"Enerparc\", \"Goldbeck\"], \"gap\": \"None — incumbent business\", \"investment\": \"<3 mo, <€100k sales\", \"fit\": 9, \"overlap_pct\": 90, \"rationale\": \"Bundle PV + BESS + MV + OPS as single EPC scope\"},\n      {\"l5_unit\": \"High-Power Charging Infrastructure\", \"incumbents\": [\"ABB E-mobility\", \"Kempower\", \"Alpitronic\", \"ads-tec\", \"Kostad\"], \"gap\": \"DC charger hardware, OCPP backend, vehicle cert\", \"investment\": \"6–12 mo, €0.5–1M (channel partnership)\", \"fit\": 8, \"overlap_pct\": 60, \"rationale\": \"Mein Solar owns site/MV/BESS scope, partners with charger OEM; activates feature #7\"},\n      {\"l5_unit\": \"MV Grid Connection & Substation\", \"incumbents\": [\"Siemens\", \"ABB\", \"Schneider\", \"Hitachi\"], \"gap\": \"Standalone utility-scale substation delivery\", \"investment\": \"12–18 mo, €1–2M\", \"fit\": 5, \"overlap_pct\": 40, \"rationale\": \"Winnable only bundled, not standalone vs. T1 OEMs\"},\n      {\"l5_unit\": \"Shore Power / OPS Systems\", \"incumbents\": [\"Siemens\", \"ABB\", \"Cavotec\", \"Schneider\", \"Wärtsilä\"], \"gap\": \"Frequency converter, IEC 80005-1 interface hardware, vessel-side expertise\", \"investment\": \"18–24 mo, €2–4M\", \"fit\": 6, \"overlap_pct\": 35, \"rationale\": \"MV/civil/EMS transfer; converter + ship interface new; strong bundled with BESS-for-OPS-firming\"}\n    ],\n    \"excluded\": [\n      {\"l5_unit\": \"Diesel Standby Generation\", \"reason\": \"Wrong fuel/technology; declining legacy segment; <30% overlap\"}\n    ]\n  },\n\n  \"vertical_move_up\": {\n    \"current_position\": \"L5 Large-Scale BESS & Port Microgrid (under L6H-ENE)\",\n    \"target_position\": \"L6H-ENE Port Energy & Power Infrastructure integrator\",\n    \"additions_required\": [\"Shore Power / OPS (frequency converter + ship interface)\", \"Unified port-wide EMS integrating OPS + BESS + PV + HPC + DSO\", \"O&M service arm with 24/7 SLA for port customers\", \"Public-procurement track record (VOB/VgV tender credentials)\"],\n    \"competitors_at_target\": [\"Siemens Smart Infrastructure\", \"ABB Ports & Terminals\", \"Wärtsilä Energy\", \"Schneider Electric\"],\n    \"feasibility\": \"MEDIUM\",\n    \"capability_pct_today\": 55,\n    \"economic_rationale\": \"DE port-energy TAM 2026–2032 ≈ €500M–1B across Hamburg/BLG/Duisport/NPorts; single-BESS TAM ≈ €50–100M. Move-up rational IF Mein Solar wins 1–2 reference ports and extends via consortium bids. Blocker: zero public-port procurement references today.\",\n    \"acquisition_alternative_flag\": \"If organic build stalls, acquiring a mid-size port-electrification integrator (Cavotec subsidiary, specialist Nordic OPS firm) is the faster path.\"\n  },\n\n  \"completeness\": {\n    \"cfj_industry_level\": true,\n    \"no_orphans\": true,\n    \"valid_transitions\": true,\n    \"min_3_l4_per_l5\": true,\n    \"no_solution_specific_l7_l6\": true,\n    \"naming_test_pass\": true,\n    \"unit_count\": 42,\n    \"company_position_marked\": true\n  },\n\n  \"sources\": [\n    {\"title\": \"IBISWorld — NAICS 488310 Port and Harbor Operations\", \"url\": \"https://www.ibisworld.com/classifications/naics/488310/port-and-harbor-operations/\"},\n    {\"title\": \"EU AFIR Reg. 2023/1804 — Ports face 2030 deadline for shore power\", \"url\": \"https://bunkerindex.com/articles/article.php?a=22230\"},\n    {\"title\": \"Port of Hamburg — Shore power rollout and ship power demand\", \"url\": \"https://www.hafen-hamburg.de/en/port-of-hamburg-magazine/energy-hub/shore-power-for-ships/\"},\n    {\"title\": \"Hamburg Port Authority — SmartPORT shore power programme\", \"url\": \"https://www.hamburg-port-authority.de/en/hpa-360/smartport/shorepower\"},\n    {\"title\": \"ABB — Pier 300 Port of Los Angeles microgrid + flywheel storage\", \"url\": \"https://new.abb.com/news/detail/6996/abb-microgrid-and-battery-energy-storage-systems-provide-innovative-solutions-in-the-us\"},\n    {\"title\": \"Electrek — SANY 50t electric reach stacker with 512 kWh pack at Houston Terminal\", \"url\": \"https://electrek.co/2025/12/05/new-electric-sany-reach-stacker-gets-to-work-at-houston-terminal/\"},\n    {\"title\": \"Kalmar — Electric reach stacker up to 45t\", \"url\": \"https://www.kalmarglobal.com/equipment/reachstackers/electric-reachstacker/\"},\n    {\"title\": \"Energy-Storage.News — 2026 German BESS regulatory agenda\", \"url\": \"https://www.energy-storage.news/moment-of-truth-the-2026-regulatory-agenda-for-large-battery-storage-in-germany/\"},\n    {\"title\": \"ScienceDirect — Coordinated energy and logistics scheduling for electrified seaports\", \"url\": \"https://www.sciencedirect.com/science/article/abs/pii/S0306261925013753\"}\n  ]\n}\n```"
-    }
-  ],
-  "tables": [
-    {
-      "headers": [
-        "L6",
-        "Name",
-        "Job family (verb + object)",
-        "Activates for"
-      ],
-      "rows": [
-        {
-          "L6": "L6a",
-          "Name": "Vessel Arrival & Berthing",
-          "Job family (verb + object)": "Guide vessel from fairway to berth and secure alongside",
-          "Activates for": "All vessel classes"
-        },
-        {
-          "L6": "L6b",
-          "Name": "Vessel–Shore Interface",
-          "Job family (verb + object)": "Bridge vessel and quay for power, cargo, and passenger transfer",
-          "Activates for": "Container, bulk, RoRo, cruise, ferry"
-        },
-        {
-          "L6": "L6c",
-          "Name": "Terminal Cargo Handling",
-          "Job family (verb + object)": "Move cargo across quay wall between ship and yard",
-          "Activates for": "Container, bulk, RoRo, liquid"
-        },
-        {
-          "L6": "L6d",
-          "Name": "Yard & Storage Operations",
-          "Job family (verb + object)": "Store, stack, and track cargo units on terminal",
-          "Activates for": "Container, bulk, liquid"
-        },
-        {
-          "L6": "L6e",
-          "Name": "Landside Interchange",
-          "Job family (verb + object)": "Hand cargo off to road, rail, or inland waterway",
-          "Activates for": "All cargo classes"
-        },
-        {
-          "L6": "L6f",
-          "Name": "Passenger & Vehicle Embarkation",
-          "Job family (verb + object)": "Embark/disembark passengers and vehicles",
-          "Activates for": "Cruise, ferry, RoRo-pax"
-        }
-      ]
+      "id": "Passenger & Vehicle Embarkation",
+      "name": "Passenger & Vehicle Embarkation",
+      "type": "Maier 1998",
+      "l5Units": []
     },
     {
-      "headers": [
-        "L6H",
-        "Name",
-        "Purpose"
-      ],
-      "rows": [
-        {
-          "L6H": "L6H-ENE",
-          "Name": "**Port Energy & Power Infrastructure**",
-          "Purpose": "Supply, store, and dispatch electrical power to all terminal processes · **Mein Solar L6 segment**"
-        },
-        {
-          "L6H": "L6H-SAF",
-          "Name": "Port Security & Safety",
-          "Purpose": "ISPS, port police, fire, dangerous-goods management"
-        },
-        {
-          "L6H": "L6H-MAINT",
-          "Name": "Maintenance & Civil Engineering",
-          "Purpose": "Keep quay walls, pavement, cranes, fleet operational"
-        },
-        {
-          "L6H": "L6H-IT",
-          "Name": "Terminal Operating Systems & Port IT",
-          "Purpose": "Gate, TOS, PCS, single-window customs"
-        },
-        {
-          "L6H": "L6H-ENV",
-          "Name": "Environmental Compliance & Emissions",
-          "Purpose": "Air, water, noise monitoring; EU ETS/FuelEU reporting"
-        }
-      ]
-    },
-    {
-      "headers": [
-        "L5",
-        "Description",
-        "Typical size",
-        "Incumbents"
-      ],
-      "rows": [
-        {
-          "L5": "Shore Power / OPS Systems",
-          "Description": "Cold-ironing connection allowing berthed ships to shut down auxiliary engines",
-          "Typical size": "1–20 MVA per berth; 60/50 Hz conversion",
-          "Incumbents": "Siemens, ABB, Cavotec, Schneider, Wärtsilä"
-        },
-        {
-          "L5": "**Large-Scale BESS & Port Microgrid**",
-          "Description": "Containerised Li-ion BESS buffering peak loads, OPS demand, and renewables · **← Mein Solar PRIMARY POSITION**",
-          "Typical size": "1–25 MWh",
-          "Incumbents": "ABB, Wärtsilä, Fluence, Sungrow, Tesla"
-        },
-        {
-          "L5": "Port-Side Solar PV Generation",
-          "Description": "Rooftop/canopy PV on warehouses, MSCs, office buildings · **← Mein Solar SECONDARY POSITION**",
-          "Typical size": "0.5–10 MWp",
-          "Incumbents": "BayWa r.e., Enerparc, Goldbeck, local EPCs"
-        },
-        {
-          "L5": "MV Grid Connection & Substation",
-          "Description": "10/20/110 kV connection to DSO/TSO, transformers, switchgear",
-          "Typical size": "10–150 MVA",
-          "Incumbents": "Siemens, ABB, Schneider, Eaton, Hitachi"
-        },
-        {
-          "L5": "High-Power Charging Infrastructure",
-          "Description": "DC fast charging for reach stackers, terminal tractors, ferries, shore-vehicles · **← Mein Solar SECONDARY POSITION**",
-          "Typical size": "150 kW–3 MW per dispenser",
-          "Incumbents": "ABB E-mobility, Kempower, Alpitronic, ads-tec, Kostad"
-        },
-        {
-          "L5": "Diesel Standby Generation (legacy)",
-          "Description": "Backup gensets for black-start and safety loads",
-          "Typical size": "0.5–5 MVA",
-          "Incumbents": "Caterpillar, Cummins, MTU"
-        }
-      ]
-    },
-    {
-      "headers": [
-        "L4",
-        "Description"
-      ],
-      "rows": [
-        {
-          "L4": "Frequency Converter",
-          "Description": "50↔60 Hz static converter rated to vessel demand"
-        },
-        {
-          "L4": "HV Cable Management System",
-          "Description": "Motorised reel/crane for ship connection"
-        },
-        {
-          "L4": "Berth-side Connection Box",
-          "Description": "Plug, interlock, protection relay per IEC 80005-1"
-        }
-      ]
-    },
-    {
-      "headers": [
-        "L4",
-        "Description"
-      ],
-      "rows": [
-        {
-          "L4": "Battery Container (LFP, BMS, HVAC, fire suppression)",
-          "Description": "1–5 MWh containerised stack, IP54, NOVEC 1230"
-        },
-        {
-          "L4": "Bidirectional Power Conversion System (PCS)",
-          "Description": "4-quadrant inverter, grid-forming capable for microgrid mode"
-        },
-        {
-          "L4": "Energy Management System (EMS)",
-          "Description": "Dispatch logic: peak shaving, OPS support, PV firming, market bidding"
-        },
-        {
-          "L4": "MV Transformer & Switchgear",
-          "Description": "Step-up to 10/20 kV, SF6-free RMU, protection"
-        },
-        {
-          "L4": "Civil Works & Fire Clearance",
-          "Description": "Foundation, bund, fence, Feuerwehr access per VdS"
-        }
-      ]
-    },
-    {
-      "headers": [
-        "L4",
-        "Description"
-      ],
-      "rows": [
-        {
-          "L4": "PV Modules & Mounting",
-          "Description": "Mono c-Si modules on warehouse roof or canopy"
-        },
-        {
-          "L4": "String/Central Inverter",
-          "Description": "DC→AC conversion with Q(U) grid-support"
-        },
-        {
-          "L4": "DC Combiner & Monitoring",
-          "Description": "String-level metering, arc-fault, isolation"
-        }
-      ]
-    },
-    {
-      "headers": [
-        "L4",
-        "Description"
-      ],
-      "rows": [
-        {
-          "L4": "MV Transformer (oil/dry)",
-          "Description": "Step-up/down to DSO feeder voltage"
-        },
-        {
-          "L4": "MV Switchgear (RMU, GIS)",
-          "Description": "Protection, isolation, remote trip"
-        },
-        {
-          "L4": "Protection Relays & Metering",
-          "Description": "IEC 61850 protection, revenue metering"
-        }
-      ]
-    },
-    {
-      "headers": [
-        "L4",
-        "Description"
-      ],
-      "rows": [
-        {
-          "L4": "DC Charger (CCS2/MCS)",
-          "Description": "150 kW–3 MW output, liquid-cooled cable"
-        },
-        {
-          "L4": "Charging Management System",
-          "Description": "Dispenser scheduling, auth, grid-aware dispatch"
-        },
-        {
-          "L4": "Vehicle-Side Connector & Safety Interlock",
-          "Description": "Plug, earth-check, insulation monitor"
-        }
-      ]
-    },
-    {
-      "headers": [
-        "L4",
-        "Description"
-      ],
-      "rows": [
-        {
-          "L4": "Diesel Engine-Generator Set",
-          "Description": "Prime mover + alternator"
-        },
-        {
-          "L4": "Fuel Tank & Bund",
-          "Description": "Day tank, bulk storage, spill containment"
-        },
-        {
-          "L4": "Auto-Transfer Switch & Control",
-          "Description": "Grid-loss detection, automatic start/transfer"
-        }
-      ]
-    },
-    {
-      "headers": [
-        "VN Unit",
-        "Level",
-        "Competence Required",
-        "Mein Solar Has It?",
-        "Adaptation Effort",
-        "Rationale"
-      ],
-      "rows": [
-        {
-          "VN Unit": "Large-Scale BESS & Port Microgrid",
-          "Level": "L5",
-          "Competence Required": "Containerised Li-ion EPC, PCS, MV, EMS, VDE-AR-N 4110",
-          "Mein Solar Has It?": "YES",
-          "Adaptation Effort": "LOW",
-          "Rationale": "Direct product fit; only incremental IP upgrade for salt-air corrosion (IP55→66, stainless fasteners)"
-        },
-        {
-          "VN Unit": "Port-Side Solar PV Generation",
-          "Level": "L5",
-          "Competence Required": "Rooftop PV EPC, DSO grid interface",
-          "Mein Solar Has It?": "YES",
-          "Adaptation Effort": "LOW",
-          "Rationale": "Mein Solar's incumbent PV business; same grid code"
-        },
-        {
-          "VN Unit": "HPC Charging Infrastructure",
-          "Level": "L5",
-          "Competence Required": "MV coupling, BESS-buffered HPC, site civil",
-          "Mein Solar Has It?": "PARTIAL",
-          "Adaptation Effort": "LOW",
-          "Rationale": "Feature #7 in product decomp covers BESS-buffered HPC; needs partnership with charger OEM (ABB, Kempower, Alpitronic)"
-        },
-        {
-          "VN Unit": "MV Grid Connection & Substation",
-          "Level": "L5",
-          "Competence Required": "10/20 kV transformer, switchgear, protection, DSO acceptance",
-          "Mein Solar Has It?": "PARTIAL",
-          "Adaptation Effort": "MEDIUM",
-          "Rationale": "Mein Solar delivers MV scope as part of BESS EPC; as standalone would need to bid against T1 OEMs"
-        },
-        {
-          "VN Unit": "Shore Power / OPS Systems",
-          "Level": "L5",
-          "Competence Required": "50↔60 Hz frequency conversion, HV ship-connection hardware, IEC 80005-1",
-          "Mein Solar Has It?": "PARTIAL",
-          "Adaptation Effort": "MEDIUM",
-          "Rationale": "MV + civil + EMS scope transfers; frequency converter and ship-interface hardware (Cavotec reel, IEC 80005) are new"
-        },
-        {
-          "VN Unit": "Environmental Compliance & Emissions (L6H)",
-          "Level": "L6H",
-          "Competence Required": "Monitoring EMS extension, renewable attribution",
-          "Mein Solar Has It?": "PARTIAL",
-          "Adaptation Effort": "MEDIUM",
-          "Rationale": "EMS can attribute clean electrons to OPS draw; sales-adjacent to BESS scope"
-        }
-      ]
-    },
-    {
-      "headers": [
-        "Adjacent L5 Unit",
-        "Current Incumbents",
-        "Competence Gap",
-        "Investment to Bridge",
-        "Strategic Fit (1-10)",
-        "Rationale"
-      ],
-      "rows": [
-        {
-          "Adjacent L5 Unit": "Port-Side Solar PV Generation",
-          "Current Incumbents": "BayWa r.e., Enerparc, Goldbeck",
-          "Competence Gap": "None — incumbent business",
-          "Investment to Bridge": "<3 mo, <€100k sales effort",
-          "Strategic Fit (1-10)": "**9**",
-          "Rationale": ">90% overlap; simply bundle PV + BESS + MV + OPS as one EPC scope"
-        },
-        {
-          "Adjacent L5 Unit": "HPC Charging Infrastructure",
-          "Current Incumbents": "ABB E-mobility, Kempower, Alpitronic, ads-tec, Kostad",
-          "Competence Gap": "DC charger hardware, OCPP backend, vehicle certification",
-          "Investment to Bridge": "6–12 mo, €0.5–1M (channel partner, not build)",
-          "Strategic Fit (1-10)": "**8**",
-          "Rationale": "~60% overlap; Mein Solar owns site/MV/BESS, partners with charger OEM. Directly activates feature #7 of product."
-        },
-        {
-          "Adjacent L5 Unit": "MV Grid Connection & Substation",
-          "Current Incumbents": "Siemens, ABB, Schneider, Hitachi",
-          "Competence Gap": "Standalone utility-scale transformer/switchgear project delivery without the BESS wrapper",
-          "Investment to Bridge": "12–18 mo, €1–2M",
-          "Strategic Fit (1-10)": "**5**",
-          "Rationale": "~40% overlap; winnable only as part of bundled scope, not standalone vs. T1 OEMs"
-        },
-        {
-          "Adjacent L5 Unit": "Shore Power / OPS Systems",
-          "Current Incumbents": "Siemens, ABB, Cavotec, Schneider, Wärtsilä",
-          "Competence Gap": "50↔60 Hz frequency converter, IEC 80005-1 ship-connection hardware, vessel-side interface expertise",
-          "Investment to Bridge": "18–24 mo, €2–4M (freq-converter partnership or license)",
-          "Strategic Fit (1-10)": "**6**",
-          "Rationale": "~35% overlap; MV/civil/EMS transfers, but converter + ship interface is a new product line. Strong only if bundled with BESS-for-OPS-firming play"
-        }
-      ]
-    },
-    {
-      "headers": [
-        "Current Position",
-        "Target (1 level up)",
-        "What Must Be Added",
-        "Competitors at Target",
-        "Feasibility",
-        "Economic Rationale"
-      ],
-      "rows": [
-        {
-          "Current Position": "L5 Large-Scale BESS & Port Microgrid",
-          "Target (1 level up)": "**L6H-ENE Port Energy & Power Infrastructure integrator**",
-          "What Must Be Added": "Own full energy scope: OPS + BESS + PV + MV + HPC + EMS + O&M as one port-wide service contract",
-          "Competitors at Target": "Siemens Smart Infrastructure, ABB, Wärtsilä Energy, Schneider Electric",
-          "Feasibility": "**MEDIUM**",
-          "Economic Rationale": "Mein Solar already has ~55% of the L6H-ENE scope (BESS + PV + MV + HPC-ready + EMS). Adding OPS + unified port-EMS = €2–4M R&D + 1 frequency-converter partnership. Port authority TAM (Hamburg, BLG, Duisport, NPorts) is ~€500M–1B across DE ports 2026–2032, vs. individual BESS TAM ~€50–100M. **Move-up is economically rational if Mein Solar wins 1–2 reference ports and extends into consortium bids.** Blocker is track-record credibility in public port procurement — no reference yet."
-        }
-      ]
-    },
-    {
-      "headers": [
-        "Check",
-        "Status"
-      ],
-      "rows": [
-        {
-          "Check": "CFJ industry-level (no product/tech reference)",
-          "Status": "✅"
-        },
-        {
-          "Check": "No orphan nodes (every unit has parent)",
-          "Status": "✅"
-        },
-        {
-          "Check": "Valid level transitions (L7→L6→L5→L4)",
-          "Status": "✅"
-        },
-        {
-          "Check": "≥3 L4 children per L5",
-          "Status": "✅ (6 L5 × 3+ L4 each)"
-        },
-        {
-          "Check": "No solution-specific L7/L6 names",
-          "Status": "✅"
-        },
-        {
-          "Check": "Three-question naming test",
-          "Status": "✅ (domain-standard terms throughout)"
-        },
-        {
-          "Check": "Unit count 15–60",
-          "Status": "✅ (~42)"
-        },
-        {
-          "Check": "Mein Solar position marked",
-          "Status": "✅ (PRIMARY + 2 SECONDARY)"
-        }
-      ]
-    },
-    {
-      "headers": [
-        "Fact",
-        "Value",
-        "Source"
-      ],
-      "rows": [
-        {
-          "Fact": "EU shore-power mandate",
-          "Value": "TEN-T core ports must offer OPS for container + cruise >5000 GT by **2030**",
-          "Source": "AFIR Reg. 2023/1804"
-        },
-        {
-          "Fact": "Typical OPS demand",
-          "Value": "Cruise ship up to **16 MW**, container ship **~7.5 MW**",
-          "Source": "Hamburg Port Authority"
-        },
-        {
-          "Fact": "Hamburg deployment",
-          "Value": "**10 container + 4 cruise** OPS connections by 2025",
-          "Source": "portofhamburg.com"
-        },
-        {
-          "Fact": "German BESS market",
-          "Value": "**842 MW added 2025**, 41 GW projected by 2037",
-          "Source": "Modo Energy / BNetzA"
-        },
-        {
-          "Fact": "Port BESS reference",
-          "Value": "ABB Pier 300 Port of LA — microgrid + flywheel storage",
-          "Source": "ABB"
-        },
-        {
-          "Fact": "Electric reach stacker",
-          "Value": "SANY 50t with **512 kWh** pack; Kalmar 45t electric",
-          "Source": "Kalmar / SANY"
-        },
-        {
-          "Fact": "Environment constraint",
-          "Value": "Salt-air coastal → IP55+ / stainless hardware required on standard BESS container",
-          "Source": "VDE / IEC 60721-3"
-        }
-      ]
-    }
-  ],
-  "entities": [
-    {
-      "component": "value_network_construction",
-      "naics_code": "488310",
-      "naics_title": "Port and Harbor Operations",
-      "market_name": "Port Electrification — Shore Power, Crane, Ferry Charging",
-      "market_rank": 10,
-      "market_priority": "MEDIUM",
-      "product_architecture_distance": 5,
-      "already_uses_technology": false,
-      "discovery_source": "fp_extension",
-      "cfj_statement": "Transfer cargo and passengers between vessel and landside transport networks safely, lawfully, and on schedule",
-      "l7_solution": "Maritime Cargo & Passenger Movement Ecosystem",
-      "top_level": "L7",
-      "company": {
-        "name": "Mein Solar GmbH",
-        "product": "EPC für Großbatteriespeicher",
-        "primary_position": {
-          "level": "L5",
-          "unit": "Large-Scale BESS & Port Microgrid",
-          "parent": "Port Energy & Power Infrastructure"
-        },
-        "secondary_positions": [
-          {
-            "level": "L5",
-            "unit": "Port-Side Solar PV Generation",
-            "parent": "Port Energy & Power Infrastructure"
-          },
-          {
-            "level": "L5",
-            "unit": "High-Power Charging Infrastructure",
-            "parent": "Port Energy & Power Infrastructure"
-          }
-        ]
-      },
-      "units": [
-        {
-          "name": "Maritime Cargo & Passenger Movement Ecosystem",
-          "level": "L7",
-          "bom_standard": "Moore 1993",
-          "parent_name": "ROOT",
-          "description": "Economic community coordinating vessel, terminal, and landside actors to deliver the CFJ"
-        },
-        {
-          "name": "Vessel Arrival & Berthing",
-          "level": "L6",
-          "bom_standard": "Maier 1998",
-          "parent_name": "Maritime Cargo & Passenger Movement Ecosystem",
-          "description": "Guide vessel from fairway to berth and secure alongside"
-        },
-        {
-          "name": "Vessel–Shore Interface",
-          "level": "L6",
-          "bom_standard": "Maier 1998",
-          "parent_name": "Maritime Cargo & Passenger Movement Ecosystem",
-          "description": "Bridge vessel and quay for power, cargo, and passenger transfer"
-        },
-        {
-          "name": "Terminal Cargo Handling",
-          "level": "L6",
-          "bom_standard": "Maier 1998",
-          "parent_name": "Maritime Cargo & Passenger Movement Ecosystem",
-          "description": "Move cargo across the quay wall between ship and yard"
-        },
-        {
-          "name": "Yard & Storage Operations",
-          "level": "L6",
-          "bom_standard": "Maier 1998",
-          "parent_name": "Maritime Cargo & Passenger Movement Ecosystem",
-          "description": "Store, stack, and track cargo units on terminal"
-        },
-        {
-          "name": "Landside Interchange",
-          "level": "L6",
-          "bom_standard": "Maier 1998",
-          "parent_name": "Maritime Cargo & Passenger Movement Ecosystem",
-          "description": "Hand cargo off to road, rail, or inland waterway"
-        },
-        {
-          "name": "Passenger & Vehicle Embarkation",
-          "level": "L6",
-          "bom_standard": "Maier 1998",
-          "parent_name": "Maritime Cargo & Passenger Movement Ecosystem",
-          "description": "Embark and disembark passengers and vehicles for cruise, ferry, RoRo-pax"
-        },
-        {
-          "name": "Port Energy & Power Infrastructure",
-          "level": "L6",
-          "bom_standard": "Maier 1998",
-          "parent_name": "Maritime Cargo & Passenger Movement Ecosystem",
-          "description": "Horizontal: supply, store, and dispatch electrical power to all terminal processes",
-          "horizontal": true
-        },
-        {
-          "name": "Port Security & Safety",
-          "level": "L6",
-          "bom_standard": "Maier 1998",
-          "parent_name": "Maritime Cargo & Passenger Movement Ecosystem",
-          "description": "Horizontal: ISPS compliance, port police, fire, dangerous-goods",
-          "horizontal": true
-        },
-        {
-          "name": "Maintenance & Civil Engineering",
-          "level": "L6",
-          "bom_standard": "Maier 1998",
-          "parent_name": "Maritime Cargo & Passenger Movement Ecosystem",
-          "description": "Horizontal: keep quay walls, pavement, cranes, and fleet operational",
-          "horizontal": true
-        },
-        {
-          "name": "Terminal Operating Systems & Port IT",
-          "level": "L6",
-          "bom_standard": "Maier 1998",
-          "parent_name": "Maritime Cargo & Passenger Movement Ecosystem",
-          "description": "Horizontal: gate, TOS, port community system, single-window customs",
-          "horizontal": true
-        },
-        {
-          "name": "Environmental Compliance & Emissions",
-          "level": "L6",
-          "bom_standard": "Maier 1998",
-          "parent_name": "Maritime Cargo & Passenger Movement Ecosystem",
-          "description": "Horizontal: air, water, noise monitoring; EU ETS / FuelEU Maritime reporting",
-          "horizontal": true
-        },
-        {
+      "id": "Port Energy & Power Infrastructure",
+      "name": "Port Energy & Power Infrastructure",
+      "type": "Maier 1998",
+      "l5Units": [
+        {
+          "id": "Shore Power / OPS Systems",
           "name": "Shore Power / OPS Systems",
-          "level": "L5",
-          "bom_standard": "ISO 15288",
-          "parent_name": "Port Energy & Power Infrastructure",
-          "description": "Cold-ironing connection for berthed ships; 50↔60 Hz frequency conversion"
+          "description": "Cold-ironing connection for berthed ships; 50↔60 Hz frequency conversion",
+          "l4Subsystems": [
+            {
+              "id": "Frequency Converter",
+              "name": "Frequency Converter",
+              "description": "50↔60 Hz static converter rated to vessel demand"
+            },
+            {
+              "id": "HV Cable Management System",
+              "name": "HV Cable Management System",
+              "description": "Motorised reel / crane for ship-side HV connection"
+            },
+            {
+              "id": "Berth-side Connection Box",
+              "name": "Berth-side Connection Box",
+              "description": "Plug, interlock, protection relay per IEC 80005-1"
+            }
+          ],
+          "isProductPosition": false
         },
         {
+          "id": "Large-Scale BESS & Port Microgrid",
           "name": "Large-Scale BESS & Port Microgrid",
-          "level": "L5",
-          "bom_standard": "ISO 15288",
-          "parent_name": "Port Energy & Power Infrastructure",
           "description": "Containerised Li-ion BESS buffering peak loads, OPS demand, and renewables",
-          "company_position": "primary"
+          "l4Subsystems": [
+            {
+              "id": "Battery Container",
+              "name": "Battery Container",
+              "description": "1–5 MWh LFP stack, BMS, HVAC, NOVEC 1230 fire suppression, IP54"
+            },
+            {
+              "id": "Power Conversion System",
+              "name": "Power Conversion System",
+              "description": "4-quadrant bidirectional inverter, grid-forming capable for microgrid mode"
+            },
+            {
+              "id": "Energy Management System",
+              "name": "Energy Management System",
+              "description": "Dispatch logic: peak shaving, OPS support, PV firming, market bidding"
+            },
+            {
+              "id": "MV Transformer",
+              "name": "MV Transformer",
+              "description": "Step-up to 10/20 kV"
+            },
+            {
+              "id": "Civil Works & Fire Clearance",
+              "name": "Civil Works & Fire Clearance",
+              "description": "Foundation, bund, fence, Feuerwehr access per VdS"
+            }
+          ],
+          "isProductPosition": "primary"
         },
         {
+          "id": "Port-Side Solar PV Generation",
           "name": "Port-Side Solar PV Generation",
-          "level": "L5",
-          "bom_standard": "ISO 15288",
-          "parent_name": "Port Energy & Power Infrastructure",
           "description": "Rooftop/canopy PV on warehouses and office buildings",
-          "company_position": "secondary"
+          "l4Subsystems": [
+            {
+              "id": "PV Modules & Mounting",
+              "name": "PV Modules & Mounting",
+              "description": "Mono c-Si modules on warehouse roof or canopy"
+            },
+            {
+              "id": "Solar Inverter",
+              "name": "Solar Inverter",
+              "description": "String or central inverter with Q(U) grid-support"
+            },
+            {
+              "id": "DC Combiner & Monitoring",
+              "name": "DC Combiner & Monitoring",
+              "description": "String-level metering, arc-fault detection, isolation"
+            }
+          ],
+          "isProductPosition": "secondary"
         },
         {
+          "id": "MV Grid Connection & Substation",
           "name": "MV Grid Connection & Substation",
-          "level": "L5",
-          "bom_standard": "ISO 15288",
-          "parent_name": "Port Energy & Power Infrastructure",
-          "description": "10/20/110 kV DSO/TSO connection, transformers, switchgear"
+          "description": "10/20/110 kV DSO/TSO connection, transformers, switchgear",
+          "l4Subsystems": [
+            {
+              "id": "Substation Transformer",
+              "name": "Substation Transformer",
+              "description": "Oil or dry MV step-up/down transformer to DSO feeder voltage"
+            },
+            {
+              "id": "MV Switchgear",
+              "name": "MV Switchgear",
+              "description": "RMU or GIS with protection, isolation, remote trip"
+            },
+            {
+              "id": "Protection Relays & Metering",
+              "name": "Protection Relays & Metering",
+              "description": "IEC 61850 protection, revenue metering, NA-protection"
+            }
+          ],
+          "isProductPosition": false
         },
         {
+          "id": "High-Power Charging Infrastructure",
           "name": "High-Power Charging Infrastructure",
-          "level": "L5",
-          "bom_standard": "ISO 15288",
-          "parent_name": "Port Energy & Power Infrastructure",
           "description": "DC fast charging for reach stackers, terminal tractors, ferries, shore vehicles",
-          "company_position": "secondary"
+          "l4Subsystems": [
+            {
+              "id": "DC Fast Charger",
+              "name": "DC Fast Charger",
+              "description": "150 kW–3 MW output, liquid-cooled cable, CCS2/MCS"
+            },
+            {
+              "id": "Charging Management System",
+              "name": "Charging Management System",
+              "description": "Dispenser scheduling, authentication, grid-aware dispatch"
+            },
+            {
+              "id": "Vehicle Connector & Interlock",
+              "name": "Vehicle Connector & Interlock",
+              "description": "Plug, earth-check, insulation monitor, safety interlock"
+            }
+          ],
+          "isProductPosition": "secondary"
         },
         {
+          "id": "Diesel Standby Generation",
           "name": "Diesel Standby Generation",
-          "level": "L5",
-          "bom_standard": "ISO 15288",
-          "parent_name": "Port Energy & Power Infrastructure",
-          "description": "Legacy diesel gensets for black-start and safety-critical backup"
-        },
-        {
-          "name": "Frequency Converter",
-          "level": "L4",
-          "bom_standard": "INCOSE",
-          "parent_name": "Shore Power / OPS Systems",
-          "description": "50↔60 Hz static converter rated to vessel demand"
-        },
-        {
-          "name": "HV Cable Management System",
-          "level": "L4",
-          "bom_standard": "INCOSE",
-          "parent_name": "Shore Power / OPS Systems",
-          "description": "Motorised reel / crane for ship-side HV connection"
-        },
-        {
-          "name": "Berth-side Connection Box",
-          "level": "L4",
-          "bom_standard": "INCOSE",
-          "parent_name": "Shore Power / OPS Systems",
-          "description": "Plug, interlock, protection relay per IEC 80005-1"
-        },
-        {
-          "name": "Battery Container",
-          "level": "L4",
-          "bom_standard": "INCOSE",
-          "parent_name": "Large-Scale BESS & Port Microgrid",
-          "description": "1–5 MWh LFP stack, BMS, HVAC, NOVEC 1230 fire suppression, IP54"
-        },
-        {
-          "name": "Power Conversion System",
-          "level": "L4",
-          "bom_standard": "INCOSE",
-          "parent_name": "Large-Scale BESS & Port Microgrid",
-          "description": "4-quadrant bidirectional inverter, grid-forming capable for microgrid mode"
-        },
-        {
-          "name": "Energy Management System",
-          "level": "L4",
-          "bom_standard": "INCOSE",
-          "parent_name": "Large-Scale BESS & Port Microgrid",
-          "description": "Dispatch logic: peak shaving, OPS support, PV firming, market bidding"
-        },
-        {
-          "name": "MV Transformer",
-          "level": "L4",
-          "bom_standard": "INCOSE",
-          "parent_name": "Large-Scale BESS & Port Microgrid",
-          "description": "Step-up to 10/20 kV"
-        },
-        {
-          "name": "Civil Works & Fire Clearance",
-          "level": "L4",
-          "bom_standard": "INCOSE",
-          "parent_name": "Large-Scale BESS & Port Microgrid",
-          "description": "Foundation, bund, fence, Feuerwehr access per VdS"
-        },
-        {
-          "name": "PV Modules & Mounting",
-          "level": "L4",
-          "bom_standard": "INCOSE",
-          "parent_name": "Port-Side Solar PV Generation",
-          "description": "Mono c-Si modules on warehouse roof or canopy"
-        },
-        {
-          "name": "Solar Inverter",
-          "level": "L4",
-          "bom_standard": "INCOSE",
-          "parent_name": "Port-Side Solar PV Generation",
-          "description": "String or central inverter with Q(U) grid-support"
-        },
-        {
-          "name": "DC Combiner & Monitoring",
-          "level": "L4",
-          "bom_standard": "INCOSE",
-          "parent_name": "Port-Side Solar PV Generation",
-          "description": "String-level metering, arc-fault detection, isolation"
-        },
-        {
-          "name": "Substation Transformer",
-          "level": "L4",
-          "bom_standard": "INCOSE",
-          "parent_name": "MV Grid Connection & Substation",
-          "description": "Oil or dry MV step-up/down transformer to DSO feeder voltage"
-        },
-        {
-          "name": "MV Switchgear",
-          "level": "L4",
-          "bom_standard": "INCOSE",
-          "parent_name": "MV Grid Connection & Substation",
-          "description": "RMU or GIS with protection, isolation, remote trip"
-        },
-        {
-          "name": "Protection Relays & Metering",
-          "level": "L4",
-          "bom_standard": "INCOSE",
-          "parent_name": "MV Grid Connection & Substation",
-          "description": "IEC 61850 protection, revenue metering, NA-protection"
-        },
-        {
-          "name": "DC Fast Charger",
-          "level": "L4",
-          "bom_standard": "INCOSE",
-          "parent_name": "High-Power Charging Infrastructure",
-          "description": "150 kW–3 MW output, liquid-cooled cable, CCS2/MCS"
-        },
-        {
-          "name": "Charging Management System",
-          "level": "L4",
-          "bom_standard": "INCOSE",
-          "parent_name": "High-Power Charging Infrastructure",
-          "description": "Dispenser scheduling, authentication, grid-aware dispatch"
-        },
-        {
-          "name": "Vehicle Connector & Interlock",
-          "level": "L4",
-          "bom_standard": "INCOSE",
-          "parent_name": "High-Power Charging Infrastructure",
-          "description": "Plug, earth-check, insulation monitor, safety interlock"
-        },
-        {
-          "name": "Diesel Engine-Generator Set",
-          "level": "L4",
-          "bom_standard": "INCOSE",
-          "parent_name": "Diesel Standby Generation",
-          "description": "Prime mover with alternator"
-        },
-        {
-          "name": "Fuel Tank & Bund",
-          "level": "L4",
-          "bom_standard": "INCOSE",
-          "parent_name": "Diesel Standby Generation",
-          "description": "Day tank, bulk storage, spill containment"
-        },
-        {
-          "name": "Auto-Transfer Switch",
-          "level": "L4",
-          "bom_standard": "INCOSE",
-          "parent_name": "Diesel Standby Generation",
-          "description": "Grid-loss detection, automatic start and load transfer"
-        }
-      ],
-      "direct_competence_transfer_scan": [
-        {
-          "vn_unit": "Large-Scale BESS & Port Microgrid",
-          "level": "L5",
-          "has_it": "YES",
-          "effort": "LOW",
-          "rationale": "Direct product fit; only incremental IP upgrade for salt-air corrosion"
-        },
-        {
-          "vn_unit": "Port-Side Solar PV Generation",
-          "level": "L5",
-          "has_it": "YES",
-          "effort": "LOW",
-          "rationale": "Mein Solar incumbent PV EPC business; identical grid code"
-        },
-        {
-          "vn_unit": "High-Power Charging Infrastructure",
-          "level": "L5",
-          "has_it": "PARTIAL",
-          "effort": "LOW",
-          "rationale": "Feature #7 covers BESS-buffered HPC; needs charger-OEM partnership"
-        },
-        {
-          "vn_unit": "MV Grid Connection & Substation",
-          "level": "L5",
-          "has_it": "PARTIAL",
-          "effort": "MEDIUM",
-          "rationale": "Delivered today as part of BESS EPC; standalone would require bidding vs. T1 OEMs"
-        },
-        {
-          "vn_unit": "Shore Power / OPS Systems",
-          "level": "L5",
-          "has_it": "PARTIAL",
-          "effort": "MEDIUM",
-          "rationale": "MV + civil + EMS transfer; 50↔60 Hz frequency converter and IEC 80005-1 ship interface are new"
-        },
-        {
-          "vn_unit": "Environmental Compliance & Emissions",
-          "level": "L6H",
-          "has_it": "PARTIAL",
-          "effort": "MEDIUM",
-          "rationale": "EMS extension to attribute renewable electrons to OPS consumption"
-        }
-      ],
-      "strategic_adjacency_expansion": {
-        "current_segment": "Port Energy & Power Infrastructure",
-        "current_position": "Large-Scale BESS & Port Microgrid",
-        "adjacencies": [
-          {
-            "l5_unit": "Port-Side Solar PV Generation",
-            "incumbents": [
-              "BayWa r.e.",
-              "Enerparc",
-              "Goldbeck"
-            ],
-            "gap": "None — incumbent business",
-            "investment": "<3 mo, <€100k sales",
-            "fit": 9,
-            "overlap_pct": 90,
-            "rationale": "Bundle PV + BESS + MV + OPS as single EPC scope"
-          },
-          {
-            "l5_unit": "High-Power Charging Infrastructure",
-            "incumbents": [
-              "ABB E-mobility",
-              "Kempower",
-              "Alpitronic",
-              "ads-tec",
-              "Kostad"
-            ],
-            "gap": "DC charger hardware, OCPP backend, vehicle cert",
-            "investment": "6–12 mo, €0.5–1M (channel partnership)",
-            "fit": 8,
-            "overlap_pct": 60,
-            "rationale": "Mein Solar owns site/MV/BESS scope, partners with charger OEM; activates feature #7"
-          },
-          {
-            "l5_unit": "MV Grid Connection & Substation",
-            "incumbents": [
-              "Siemens",
-              "ABB",
-              "Schneider",
-              "Hitachi"
-            ],
-            "gap": "Standalone utility-scale substation delivery",
-            "investment": "12–18 mo, €1–2M",
-            "fit": 5,
-            "overlap_pct": 40,
-            "rationale": "Winnable only bundled, not standalone vs. T1 OEMs"
-          },
-          {
-            "l5_unit": "Shore Power / OPS Systems",
-            "incumbents": [
-              "Siemens",
-              "ABB",
-              "Cavotec",
-              "Schneider",
-              "Wärtsilä"
-            ],
-            "gap": "Frequency converter, IEC 80005-1 interface hardware, vessel-side expertise",
-            "investment": "18–24 mo, €2–4M",
-            "fit": 6,
-            "overlap_pct": 35,
-            "rationale": "MV/civil/EMS transfer; converter + ship interface new; strong bundled with BESS-for-OPS-firming"
-          }
-        ],
-        "excluded": [
-          {
-            "l5_unit": "Diesel Standby Generation",
-            "reason": "Wrong fuel/technology; declining legacy segment; <30% overlap"
-          }
-        ]
-      },
-      "vertical_move_up": {
-        "current_position": "L5 Large-Scale BESS & Port Microgrid (under L6H-ENE)",
-        "target_position": "L6H-ENE Port Energy & Power Infrastructure integrator",
-        "additions_required": [
-          "Shore Power / OPS (frequency converter + ship interface)",
-          "Unified port-wide EMS integrating OPS + BESS + PV + HPC + DSO",
-          "O&M service arm with 24/7 SLA for port customers",
-          "Public-procurement track record (VOB/VgV tender credentials)"
-        ],
-        "competitors_at_target": [
-          "Siemens Smart Infrastructure",
-          "ABB Ports & Terminals",
-          "Wärtsilä Energy",
-          "Schneider Electric"
-        ],
-        "feasibility": "MEDIUM",
-        "capability_pct_today": 55,
-        "economic_rationale": "DE port-energy TAM 2026–2032 ≈ €500M–1B across Hamburg/BLG/Duisport/NPorts; single-BESS TAM ≈ €50–100M. Move-up rational IF Mein Solar wins 1–2 reference ports and extends via consortium bids. Blocker: zero public-port procurement references today.",
-        "acquisition_alternative_flag": "If organic build stalls, acquiring a mid-size port-electrification integrator (Cavotec subsidiary, specialist Nordic OPS firm) is the faster path."
-      },
-      "completeness": {
-        "cfj_industry_level": true,
-        "no_orphans": true,
-        "valid_transitions": true,
-        "min_3_l4_per_l5": true,
-        "no_solution_specific_l7_l6": true,
-        "naming_test_pass": true,
-        "unit_count": 42,
-        "company_position_marked": true
-      },
-      "sources": [
-        {
-          "title": "IBISWorld — NAICS 488310 Port and Harbor Operations",
-          "url": "https://www.ibisworld.com/classifications/naics/488310/port-and-harbor-operations/"
-        },
-        {
-          "title": "EU AFIR Reg. 2023/1804 — Ports face 2030 deadline for shore power",
-          "url": "https://bunkerindex.com/articles/article.php?a=22230"
-        },
-        {
-          "title": "Port of Hamburg — Shore power rollout and ship power demand",
-          "url": "https://www.hafen-hamburg.de/en/port-of-hamburg-magazine/energy-hub/shore-power-for-ships/"
-        },
-        {
-          "title": "Hamburg Port Authority — SmartPORT shore power programme",
-          "url": "https://www.hamburg-port-authority.de/en/hpa-360/smartport/shorepower"
-        },
-        {
-          "title": "ABB — Pier 300 Port of Los Angeles microgrid + flywheel storage",
-          "url": "https://new.abb.com/news/detail/6996/abb-microgrid-and-battery-energy-storage-systems-provide-innovative-solutions-in-the-us"
-        },
-        {
-          "title": "Electrek — SANY 50t electric reach stacker with 512 kWh pack at Houston Terminal",
-          "url": "https://electrek.co/2025/12/05/new-electric-sany-reach-stacker-gets-to-work-at-houston-terminal/"
-        },
-        {
-          "title": "Kalmar — Electric reach stacker up to 45t",
-          "url": "https://www.kalmarglobal.com/equipment/reachstackers/electric-reachstacker/"
-        },
-        {
-          "title": "Energy-Storage.News — 2026 German BESS regulatory agenda",
-          "url": "https://www.energy-storage.news/moment-of-truth-the-2026-regulatory-agenda-for-large-battery-storage-in-germany/"
-        },
-        {
-          "title": "ScienceDirect — Coordinated energy and logistics scheduling for electrified seaports",
-          "url": "https://www.sciencedirect.com/science/article/abs/pii/S0306261925013753"
+          "description": "Legacy diesel gensets for black-start and safety-critical backup",
+          "l4Subsystems": [
+            {
+              "id": "Diesel Engine-Generator Set",
+              "name": "Diesel Engine-Generator Set",
+              "description": "Prime mover with alternator"
+            },
+            {
+              "id": "Fuel Tank & Bund",
+              "name": "Fuel Tank & Bund",
+              "description": "Day tank, bulk storage, spill containment"
+            },
+            {
+              "id": "Auto-Transfer Switch",
+              "name": "Auto-Transfer Switch",
+              "description": "Grid-loss detection, automatic start and load transfer"
+            }
+          ],
+          "isProductPosition": false
         }
       ]
+    },
+    {
+      "id": "Port Security & Safety",
+      "name": "Port Security & Safety",
+      "type": "Maier 1998",
+      "l5Units": []
+    },
+    {
+      "id": "Maintenance & Civil Engineering",
+      "name": "Maintenance & Civil Engineering",
+      "type": "Maier 1998",
+      "l5Units": []
+    },
+    {
+      "id": "Terminal Operating Systems & Port IT",
+      "name": "Terminal Operating Systems & Port IT",
+      "type": "Maier 1998",
+      "l5Units": []
+    },
+    {
+      "id": "Environmental Compliance & Emissions",
+      "name": "Environmental Compliance & Emissions",
+      "type": "Maier 1998",
+      "l5Units": []
     }
   ],
-  "has_bom": true,
-  "naics_sector_type": "non_manufacturing"
+  "vnUnits": [
+    {
+      "level": "L7",
+      "id": "Maritime Cargo & Passenger Movement Ecosystem",
+      "name": "Maritime Cargo & Passenger Movement Ecosystem",
+      "functionalJob": "Economic community coordinating vessel, terminal, and landside actors to deliver the CFJ",
+      "parentId": "ROOT",
+      "isProductPosition": false
+    },
+    {
+      "level": "L6",
+      "id": "Vessel Arrival & Berthing",
+      "name": "Vessel Arrival & Berthing",
+      "functionalJob": "Guide vessel from fairway to berth and secure alongside",
+      "parentId": "Maritime Cargo & Passenger Movement Ecosystem",
+      "isProductPosition": false
+    },
+    {
+      "level": "L6",
+      "id": "Vessel–Shore Interface",
+      "name": "Vessel–Shore Interface",
+      "functionalJob": "Bridge vessel and quay for power, cargo, and passenger transfer",
+      "parentId": "Maritime Cargo & Passenger Movement Ecosystem",
+      "isProductPosition": false
+    },
+    {
+      "level": "L6",
+      "id": "Terminal Cargo Handling",
+      "name": "Terminal Cargo Handling",
+      "functionalJob": "Move cargo across the quay wall between ship and yard",
+      "parentId": "Maritime Cargo & Passenger Movement Ecosystem",
+      "isProductPosition": false
+    },
+    {
+      "level": "L6",
+      "id": "Yard & Storage Operations",
+      "name": "Yard & Storage Operations",
+      "functionalJob": "Store, stack, and track cargo units on terminal",
+      "parentId": "Maritime Cargo & Passenger Movement Ecosystem",
+      "isProductPosition": false
+    },
+    {
+      "level": "L6",
+      "id": "Landside Interchange",
+      "name": "Landside Interchange",
+      "functionalJob": "Hand cargo off to road, rail, or inland waterway",
+      "parentId": "Maritime Cargo & Passenger Movement Ecosystem",
+      "isProductPosition": false
+    },
+    {
+      "level": "L6",
+      "id": "Passenger & Vehicle Embarkation",
+      "name": "Passenger & Vehicle Embarkation",
+      "functionalJob": "Embark and disembark passengers and vehicles for cruise, ferry, RoRo-pax",
+      "parentId": "Maritime Cargo & Passenger Movement Ecosystem",
+      "isProductPosition": false
+    },
+    {
+      "level": "L6",
+      "id": "Port Energy & Power Infrastructure",
+      "name": "Port Energy & Power Infrastructure",
+      "functionalJob": "Horizontal: supply, store, and dispatch electrical power to all terminal processes",
+      "parentId": "Maritime Cargo & Passenger Movement Ecosystem",
+      "isProductPosition": false
+    },
+    {
+      "level": "L6",
+      "id": "Port Security & Safety",
+      "name": "Port Security & Safety",
+      "functionalJob": "Horizontal: ISPS compliance, port police, fire, dangerous-goods",
+      "parentId": "Maritime Cargo & Passenger Movement Ecosystem",
+      "isProductPosition": false
+    },
+    {
+      "level": "L6",
+      "id": "Maintenance & Civil Engineering",
+      "name": "Maintenance & Civil Engineering",
+      "functionalJob": "Horizontal: keep quay walls, pavement, cranes, and fleet operational",
+      "parentId": "Maritime Cargo & Passenger Movement Ecosystem",
+      "isProductPosition": false
+    },
+    {
+      "level": "L6",
+      "id": "Terminal Operating Systems & Port IT",
+      "name": "Terminal Operating Systems & Port IT",
+      "functionalJob": "Horizontal: gate, TOS, port community system, single-window customs",
+      "parentId": "Maritime Cargo & Passenger Movement Ecosystem",
+      "isProductPosition": false
+    },
+    {
+      "level": "L6",
+      "id": "Environmental Compliance & Emissions",
+      "name": "Environmental Compliance & Emissions",
+      "functionalJob": "Horizontal: air, water, noise monitoring; EU ETS / FuelEU Maritime reporting",
+      "parentId": "Maritime Cargo & Passenger Movement Ecosystem",
+      "isProductPosition": false
+    },
+    {
+      "level": "L5",
+      "id": "Shore Power / OPS Systems",
+      "name": "Shore Power / OPS Systems",
+      "functionalJob": "Cold-ironing connection for berthed ships; 50↔60 Hz frequency conversion",
+      "parentId": "Port Energy & Power Infrastructure",
+      "isProductPosition": false
+    },
+    {
+      "level": "L5",
+      "id": "Large-Scale BESS & Port Microgrid",
+      "name": "Large-Scale BESS & Port Microgrid",
+      "functionalJob": "Containerised Li-ion BESS buffering peak loads, OPS demand, and renewables",
+      "parentId": "Port Energy & Power Infrastructure",
+      "isProductPosition": "primary"
+    },
+    {
+      "level": "L5",
+      "id": "Port-Side Solar PV Generation",
+      "name": "Port-Side Solar PV Generation",
+      "functionalJob": "Rooftop/canopy PV on warehouses and office buildings",
+      "parentId": "Port Energy & Power Infrastructure",
+      "isProductPosition": "secondary"
+    },
+    {
+      "level": "L5",
+      "id": "MV Grid Connection & Substation",
+      "name": "MV Grid Connection & Substation",
+      "functionalJob": "10/20/110 kV DSO/TSO connection, transformers, switchgear",
+      "parentId": "Port Energy & Power Infrastructure",
+      "isProductPosition": false
+    },
+    {
+      "level": "L5",
+      "id": "High-Power Charging Infrastructure",
+      "name": "High-Power Charging Infrastructure",
+      "functionalJob": "DC fast charging for reach stackers, terminal tractors, ferries, shore vehicles",
+      "parentId": "Port Energy & Power Infrastructure",
+      "isProductPosition": "secondary"
+    },
+    {
+      "level": "L5",
+      "id": "Diesel Standby Generation",
+      "name": "Diesel Standby Generation",
+      "functionalJob": "Legacy diesel gensets for black-start and safety-critical backup",
+      "parentId": "Port Energy & Power Infrastructure",
+      "isProductPosition": false
+    },
+    {
+      "level": "L4",
+      "id": "Frequency Converter",
+      "name": "Frequency Converter",
+      "functionalJob": "50↔60 Hz static converter rated to vessel demand",
+      "parentId": "Shore Power / OPS Systems",
+      "isProductPosition": false
+    },
+    {
+      "level": "L4",
+      "id": "HV Cable Management System",
+      "name": "HV Cable Management System",
+      "functionalJob": "Motorised reel / crane for ship-side HV connection",
+      "parentId": "Shore Power / OPS Systems",
+      "isProductPosition": false
+    },
+    {
+      "level": "L4",
+      "id": "Berth-side Connection Box",
+      "name": "Berth-side Connection Box",
+      "functionalJob": "Plug, interlock, protection relay per IEC 80005-1",
+      "parentId": "Shore Power / OPS Systems",
+      "isProductPosition": false
+    },
+    {
+      "level": "L4",
+      "id": "Battery Container",
+      "name": "Battery Container",
+      "functionalJob": "1–5 MWh LFP stack, BMS, HVAC, NOVEC 1230 fire suppression, IP54",
+      "parentId": "Large-Scale BESS & Port Microgrid",
+      "isProductPosition": false
+    },
+    {
+      "level": "L4",
+      "id": "Power Conversion System",
+      "name": "Power Conversion System",
+      "functionalJob": "4-quadrant bidirectional inverter, grid-forming capable for microgrid mode",
+      "parentId": "Large-Scale BESS & Port Microgrid",
+      "isProductPosition": false
+    },
+    {
+      "level": "L4",
+      "id": "Energy Management System",
+      "name": "Energy Management System",
+      "functionalJob": "Dispatch logic: peak shaving, OPS support, PV firming, market bidding",
+      "parentId": "Large-Scale BESS & Port Microgrid",
+      "isProductPosition": false
+    },
+    {
+      "level": "L4",
+      "id": "MV Transformer",
+      "name": "MV Transformer",
+      "functionalJob": "Step-up to 10/20 kV",
+      "parentId": "Large-Scale BESS & Port Microgrid",
+      "isProductPosition": false
+    },
+    {
+      "level": "L4",
+      "id": "Civil Works & Fire Clearance",
+      "name": "Civil Works & Fire Clearance",
+      "functionalJob": "Foundation, bund, fence, Feuerwehr access per VdS",
+      "parentId": "Large-Scale BESS & Port Microgrid",
+      "isProductPosition": false
+    },
+    {
+      "level": "L4",
+      "id": "PV Modules & Mounting",
+      "name": "PV Modules & Mounting",
+      "functionalJob": "Mono c-Si modules on warehouse roof or canopy",
+      "parentId": "Port-Side Solar PV Generation",
+      "isProductPosition": false
+    },
+    {
+      "level": "L4",
+      "id": "Solar Inverter",
+      "name": "Solar Inverter",
+      "functionalJob": "String or central inverter with Q(U) grid-support",
+      "parentId": "Port-Side Solar PV Generation",
+      "isProductPosition": false
+    },
+    {
+      "level": "L4",
+      "id": "DC Combiner & Monitoring",
+      "name": "DC Combiner & Monitoring",
+      "functionalJob": "String-level metering, arc-fault detection, isolation",
+      "parentId": "Port-Side Solar PV Generation",
+      "isProductPosition": false
+    },
+    {
+      "level": "L4",
+      "id": "Substation Transformer",
+      "name": "Substation Transformer",
+      "functionalJob": "Oil or dry MV step-up/down transformer to DSO feeder voltage",
+      "parentId": "MV Grid Connection & Substation",
+      "isProductPosition": false
+    },
+    {
+      "level": "L4",
+      "id": "MV Switchgear",
+      "name": "MV Switchgear",
+      "functionalJob": "RMU or GIS with protection, isolation, remote trip",
+      "parentId": "MV Grid Connection & Substation",
+      "isProductPosition": false
+    },
+    {
+      "level": "L4",
+      "id": "Protection Relays & Metering",
+      "name": "Protection Relays & Metering",
+      "functionalJob": "IEC 61850 protection, revenue metering, NA-protection",
+      "parentId": "MV Grid Connection & Substation",
+      "isProductPosition": false
+    },
+    {
+      "level": "L4",
+      "id": "DC Fast Charger",
+      "name": "DC Fast Charger",
+      "functionalJob": "150 kW–3 MW output, liquid-cooled cable, CCS2/MCS",
+      "parentId": "High-Power Charging Infrastructure",
+      "isProductPosition": false
+    },
+    {
+      "level": "L4",
+      "id": "Charging Management System",
+      "name": "Charging Management System",
+      "functionalJob": "Dispenser scheduling, authentication, grid-aware dispatch",
+      "parentId": "High-Power Charging Infrastructure",
+      "isProductPosition": false
+    },
+    {
+      "level": "L4",
+      "id": "Vehicle Connector & Interlock",
+      "name": "Vehicle Connector & Interlock",
+      "functionalJob": "Plug, earth-check, insulation monitor, safety interlock",
+      "parentId": "High-Power Charging Infrastructure",
+      "isProductPosition": false
+    },
+    {
+      "level": "L4",
+      "id": "Diesel Engine-Generator Set",
+      "name": "Diesel Engine-Generator Set",
+      "functionalJob": "Prime mover with alternator",
+      "parentId": "Diesel Standby Generation",
+      "isProductPosition": false
+    },
+    {
+      "level": "L4",
+      "id": "Fuel Tank & Bund",
+      "name": "Fuel Tank & Bund",
+      "functionalJob": "Day tank, bulk storage, spill containment",
+      "parentId": "Diesel Standby Generation",
+      "isProductPosition": false
+    },
+    {
+      "level": "L4",
+      "id": "Auto-Transfer Switch",
+      "name": "Auto-Transfer Switch",
+      "functionalJob": "Grid-loss detection, automatic start and load transfer",
+      "parentId": "Diesel Standby Generation",
+      "isProductPosition": false
+    }
+  ],
+  "productPosition": {
+    "level": "L5",
+    "unitId": "",
+    "unitName": "",
+    "companyName": "",
+    "primaryL6": "",
+    "secondaryL5s": []
+  },
+  "sources": []
 }

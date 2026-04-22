@@ -1,987 +1,340 @@
 {
-  "id": "ODI_lessors_of_nonresidential_buildings_sams",
-  "title": "ODI Matrix — NAICS 531120 Lessors of Nonresidential Buildings",
-  "type": "odi_matrix",
-  "market_slug": "lessors_of_nonresidential_buildings_sams",
-  "is_per_market": true,
-  "sections": [
+  "naicsCode": "531120",
+  "marketName": "Commercial & Industrial Real-Estate Behind-the-Meter Storage",
+  "slug": "nonresidential_buildings",
+  "incumbentAnchor": "['Voltfang turnkey', 'Tesvolt turnkey', 'Commeo turnkey', 'split-vendor (Tesla Megapack + Schneider/Siemens + Baufirma)', 'Utility PPA / no storage']",
+  "summary": {
+    "totalNeeds": 25,
+    "underservedCount": 8,
+    "overservedCount": 0,
+    "avgOpportunityScore": 11.22
+  },
+  "needs": [
     {
-      "title": "Step 1 — Error statements gathered",
-      "content": "**Market needs (N-series, 14)** reconstructed from Step 09 JTBD cross-walk references.\n**Product-related needs (P-series, 11)** imported verbatim from Step 10 FIT doc.\n\nTotal: **25 error statements**.\n\n---"
+      "id": "N3",
+      "statement": "Minimize the likelihood that Baugenehmigung + VdS fire clearance is rejected on first submission",
+      "jobStep": "Prepare",
+      "importance": 7.5,
+      "satisfaction": 6.0,
+      "opportunity": 9.0,
+      "isUnderserved": false,
+      "isOverserved": false,
+      "productRelated": false,
+      "impactCategory": "reliability",
+      "recalibrationNote": ""
     },
     {
-      "title": "Step 2 — Satisfaction recalibration (incumbent evidence)",
-      "content": "Incumbents (Voltfang / Tesvolt / Commeo) sell **equipment + product warranty**, not EPC. Landlord still coordinates MV, civil, FGW TR8, DSO — those needs are worse-served than initial estimates. EMS depth is shallow across all three → revenue-stacking and CSRD needs recalibrated down. Battery-cell reliability and thermal suppression are mature → those satisfactions held or nudged up.\n\n| Need | Pre-cal sat | Post-cal sat | Rationale |\n|---|---|---|---|\n| N4 time-to-energize | 4.0 | 3.5 | Split-vendor pattern adds 2–3 mo vs. single-source |\n| N5 avoid DSO upgrade | 4.5 | 4.0 | Incumbents don't bundle MV design / HPC buffer logic |\n| N11 ≥2 stacked revenue | 4.0 | 3.5 | Tesvolt/Voltfang EMS one-objective dispatch only |\n| N14 CSRD evidence <4h | 4.5 | 4.0 | Incumbent EMS lacks audited emissions export |\n| All others | — | unchanged | Step 03 did not contradict initial estimate |\n\nImportance scores preserved (Ulwick \"importance stability rule\"). `product_related` flag carried through for P-series.\n\n---"
+      "id": "N4",
+      "statement": "Minimize the time from EPC contract signature to grid energization (<=9 months)",
+      "jobStep": "Execute",
+      "importance": 9.0,
+      "satisfaction": 3.5,
+      "opportunity": 14.5,
+      "isUnderserved": true,
+      "isOverserved": false,
+      "productRelated": false,
+      "impactCategory": "speed",
+      "recalibrationNote": ""
     },
     {
-      "title": "Step 3 — ODI entries (post-recalibration, deterministic scoring)",
-      "content": "Formula: `opp = importance + max(importance - satisfaction, 0)` · `is_underserved = imp > 7 AND sat < 5` · `is_overserved = imp < 3 AND sat > 7`.\n\n### Market-level needs (N-series)\n\n| # | Error statement | Imp | Sat | Opp | U | O | Job step |\n|---|---|---|---|---|---|---|---|\n| N3 | Minimize the likelihood that Baugenehmigung + VdS fire clearance is rejected on first submission | 7.5 | 6.0 | 9.00 | F | F | Prepare |\n| N4 | Minimize the time from EPC contract signature to grid energization (≤9 mo) | 9.0 | 3.5 | 14.50 | **T** | F | Execute |\n| N5 | Minimize the likelihood of a DSO upgrade charge exceeding €100k per MW | 9.0 | 4.0 | 14.00 | **T** | F | Prepare |\n| N6 | Minimize the likelihood of DSO first-attempt grid-connection-acceptance rejection | 8.5 | 4.5 | 12.50 | **T** | F | Execute |\n| N7 | Minimize the likelihood of FGW TR8 plant-certificate rework during commissioning | 8.0 | 5.0 | 11.00 | F | F | Execute |\n| N8 | Minimize the likelihood of insurance underwriter declining or surcharging the asset | 8.0 | 6.0 | 10.00 | F | F | Confirm |\n| N9 | Minimize the likelihood of peak-shave capture falling below 85% of modelled | 8.0 | 6.0 | 10.00 | F | F | Monitor |\n| N10 | Minimize the likelihood of SoC-guardrail breach eroding manufacturer warranty | 7.0 | 6.5 | 7.50 | F | F | Monitor |\n| N11 | Minimize the likelihood of operating with fewer than 2 stacked revenue streams at COD | 8.5 | 3.5 | 13.50 | **T** | F | Execute |\n| N12 | Minimize the likelihood of SoH falling below 80% before end-of-lease payback | 8.5 | 5.5 | 11.50 | F | F | Monitor |\n| N13 | Minimize the time to detect a thermal anomaly (<60 s) | 8.0 | 6.0 | 10.00 | F | F | Monitor |\n| N14 | Minimize the time to produce auditable CSRD energy/emissions evidence (<4 h) | 7.5 | 4.0 | 11.00 | **T** | F | Monitor |\n| N17 | Minimize the likelihood of a fire or thermal-runaway propagation event | 9.5 | 5.5 | 13.50 | F | F | Monitor |\n| N20 | Minimize the likelihood of GRESB score not improving post-install via PV+BESS | 7.0 | 4.0 | 10.00 | F | F | Confirm |\n\n### Product-related needs (P-series, product_related=true)\n\n| # | Error statement | Imp | Sat | Opp | U | O |\n|---|---|---|---|---|---|---|\n| P1 | Minimize likelihood of thermal-runaway propagation cell→module→container in dense Li-ion pack | 9.5 | 5.0 | 14.00 | F | F |\n| P2 | Minimize likelihood that VdS/Feuerwehr reject fire-compartment layout for >3 MWh clusters | 8.5 | 5.0 | 12.00 | F | F |\n| P3 | Minimize likelihood of DSO rejection due to insufficient MV feeder headroom at target parcel | 9.0 | 4.0 | 14.00 | **T** | F |\n| P4 | Minimize likelihood that 40–80 m²/MWh footprint + clearances exceed parcel envelope | 8.0 | 5.0 | 11.00 | F | F |\n| P5 | Minimize time to obtain FGW TR8 type-B + DSO acceptance on promised energization date | 8.5 | 4.0 | 13.00 | **T** | F |\n| P6 | Minimize likelihood of LFP cell-lot CN FX/tariff/CRMA shock invalidating fixed-price EPC | 7.0 | 4.0 | 10.00 | F | F |\n| P7 | Minimize likelihood of roundtrip-efficiency <85% at −10°C / +35°C eroding peak-shave margin | 7.0 | 5.5 | 8.50 | F | F |\n| P8 | Minimize likelihood that 10–15% AC-AC loss + aux HVAC is mis-modelled in business case | 7.5 | 6.0 | 9.00 | F | F |\n| P9 | Minimize likelihood that installed CAPEX drifts above €400/kWh during procurement | 8.0 | 4.5 | 11.50 | **T** | F |\n| P10 | Minimize time to recover footprint + remediate per EU Battery Reg at end-of-life | 6.0 | 3.5 | 8.50 | F | F |\n| P11 | Minimize likelihood of LFP calendar ageing driving SoH <80% before lease payback | 8.0 | 5.0 | 11.00 | F | F |\n\n---"
+      "id": "N5",
+      "statement": "Minimize the likelihood of a DSO upgrade charge exceeding EUR 100k per MW",
+      "jobStep": "Prepare",
+      "importance": 9.0,
+      "satisfaction": 4.0,
+      "opportunity": 14.0,
+      "isUnderserved": true,
+      "isOverserved": false,
+      "productRelated": false,
+      "impactCategory": "cost",
+      "recalibrationNote": ""
     },
     {
-      "title": "Step 4 — Market ODI summary",
-      "content": "| Metric | Value |\n|---|---|\n| total_needs | 25 |\n| underserved_count | **8** (N4, N5, N6, N11, N14, P3, P5, P9) |\n| overserved_count | **0** (no need has importance < 3) |\n| avg_opportunity_score | **11.22** |\n\n### Top 5 opportunities (descending opp_score)\n\n| Rank | Opp | Statement |\n|---|---|---|\n| 1 | 14.50 | Minimize the time from EPC contract signature to grid energization (≤9 mo) |\n| 2 | 14.00 | Minimize the likelihood of a DSO upgrade charge exceeding €100k per MW |\n| 3 | 14.00 | Minimize likelihood of thermal-runaway propagation cell→module→container in dense Li-ion pack |\n| 4 | 14.00 | Minimize likelihood of DSO rejection due to insufficient MV feeder headroom at target parcel |\n| 5 | 13.50 | Minimize the likelihood of operating with fewer than 2 stacked revenue streams at COD |\n\n---"
+      "id": "N6",
+      "statement": "Minimize the likelihood of DSO first-attempt grid-connection acceptance rejection",
+      "jobStep": "Execute",
+      "importance": 8.5,
+      "satisfaction": 4.5,
+      "opportunity": 12.5,
+      "isUnderserved": true,
+      "isOverserved": false,
+      "productRelated": false,
+      "impactCategory": "reliability",
+      "recalibrationNote": ""
     },
     {
-      "title": "Step 5 — Cross-check vs. Step 09 Feature-Market Fit",
-      "content": "| Metric | Value | Flag |\n|---|---|---|\n| ODI avg_opportunity_score | 11.22 | — |\n| Step 09 avg overall_fit (tech features) | 6.00 | — |\n| Step 11 avg vendor-feature score | 7.67 | — |\n\n**Cross-check result:** No anomaly. ODI avg (11.22) indicates meaningful unmet need; vendor-feature avg (7.67) suggests Mein Solar's three superior features (PV+BESS integrated design, HPC buffer, single-source EPC) are well-matched to underserved needs. Specifically:\n\n| Top underserved ODI need | Mein Solar vendor feature that addresses it |\n|---|---|\n| N4 time-to-energize | #9 Single-Source EPC Contract Vehicle |\n| N5 DSO upgrade avoidance | #7 HPC Buffer + #6 PV+BESS Integrated Design |\n| P3 MV feeder headroom rejection | #6 PV+BESS (shared MV) + #7 HPC Buffer |\n| N6 DSO first-attempt acceptance | #5 Grid-Code Certification + #9 Single-Source |\n| P5 FGW TR8 on-date | #5 Grid-Code Certification (tech must_be) + #9 Single-Source |\n| N11 ≥2 revenue streams | Feature gap — vendor EMS is technology-scope; no vendor-superior EMS feature |\n\n**Structural finding:** Mein Solar's differentiators (features 5, 6, 7, 9) directly address 5 of 8 underserved needs. The EMS revenue-stacking gap (N11, N14) is a **capability build** — same Kano one_dimensional feature (#4) where Mein Solar is at parity with incumbents.\n\n---"
+      "id": "N7",
+      "statement": "Minimize the likelihood of FGW TR8 plant-certificate rework during commissioning",
+      "jobStep": "Execute",
+      "importance": 8.0,
+      "satisfaction": 5.0,
+      "opportunity": 11.0,
+      "isUnderserved": false,
+      "isOverserved": false,
+      "productRelated": false,
+      "impactCategory": "reliability",
+      "recalibrationNote": ""
     },
     {
-      "title": "QA Checklist",
-      "content": "| # | Check | Result |\n|---|---|---|\n| Q1 | Formula correct on 5 spot-checks (N4, N11, P1, P5, P9) | ✅ PASS |\n| Q2 | is_underserved = imp>7 AND sat<5 — all 8 entries compliant | ✅ PASS |\n| Q3 | is_overserved = imp<3 AND sat>7 — 0 entries (no low-importance needs in set) | ✅ PASS |\n| Q4 | total ≥ Step 06 count — 25 ≥ 14, Step 10 added 11 ✓ | ✅ PASS |\n| Q5 | Top-5 sorted descending by opp_score | ✅ PASS |\n| Q6 | Cross-check vs Step 09 Feature-Fit ran | ✅ PASS |\n\n---"
+      "id": "N8",
+      "statement": "Minimize the likelihood of insurance underwriter declining or surcharging the asset",
+      "jobStep": "Confirm",
+      "importance": 8.0,
+      "satisfaction": 6.0,
+      "opportunity": 10.0,
+      "isUnderserved": false,
+      "isOverserved": false,
+      "productRelated": false,
+      "impactCategory": "cost",
+      "recalibrationNote": ""
     },
     {
-      "title": "Structured Data",
-      "content": "```json\n{\n  \"component\": \"odi_matrix\",\n  \"step\": 12,\n  \"run_id\": \"mein_solar_2026_04_20\",\n  \"market_name\": \"Commercial & Industrial Real-Estate Behind-the-Meter Storage\",\n  \"naics_code\": \"531120\",\n  \"naics_title\": \"Lessors of Nonresidential Buildings (except Miniwarehouses)\",\n  \"vendor_name\": \"Mein Solar GmbH\",\n  \"product_name\": \"EPC für Großbatteriespeicher\",\n  \"incumbent_anchor\": [\"Voltfang turnkey\", \"Tesvolt turnkey\", \"Commeo turnkey\", \"split-vendor (Tesla Megapack + Schneider/Siemens + Baufirma)\", \"Utility PPA / no storage\"],\n  \"recalibration_applied\": true,\n  \"recalibration_log\": [\n    {\"id\": \"N4\", \"sat_before\": 4.0, \"sat_after\": 3.5, \"reason\": \"split-vendor adds 2-3 mo vs single-source\"},\n    {\"id\": \"N5\", \"sat_before\": 4.5, \"sat_after\": 4.0, \"reason\": \"incumbents do not bundle MV design or HPC buffer logic\"},\n    {\"id\": \"N11\", \"sat_before\": 4.0, \"sat_after\": 3.5, \"reason\": \"Tesvolt/Voltfang EMS single-objective dispatch only\"},\n    {\"id\": \"N14\", \"sat_before\": 4.5, \"sat_after\": 4.0, \"reason\": \"incumbent EMS lacks audited CSRD emissions export\"}\n  ],\n\n  \"entries\": [\n    {\"error_statement\": \"Minimize the likelihood that Baugenehmigung + VdS fire clearance is rejected on first submission\", \"market_name\": \"Commercial & Industrial Real-Estate Behind-the-Meter Storage\", \"naics_code\": \"531120\", \"importance\": 7.5, \"satisfaction_current\": 6.0, \"opportunity_score\": 9.00, \"is_underserved\": false, \"is_overserved\": false, \"product_related\": false, \"job_step_number\": 2, \"job_step_name\": \"Prepare\", \"impact_category\": \"reliability\", \"id\": \"N3\"},\n    {\"error_statement\": \"Minimize the time from EPC contract signature to grid energization (<=9 months)\", \"market_name\": \"Commercial & Industrial Real-Estate Behind-the-Meter Storage\", \"naics_code\": \"531120\", \"importance\": 9.0, \"satisfaction_current\": 3.5, \"opportunity_score\": 14.50, \"is_underserved\": true, \"is_overserved\": false, \"product_related\": false, \"job_step_number\": 5, \"job_step_name\": \"Execute\", \"impact_category\": \"speed\", \"id\": \"N4\"},\n    {\"error_statement\": \"Minimize the likelihood of a DSO upgrade charge exceeding EUR 100k per MW\", \"market_name\": \"Commercial & Industrial Real-Estate Behind-the-Meter Storage\", \"naics_code\": \"531120\", \"importance\": 9.0, \"satisfaction_current\": 4.0, \"opportunity_score\": 14.00, \"is_underserved\": true, \"is_overserved\": false, \"product_related\": false, \"job_step_number\": 2, \"job_step_name\": \"Prepare\", \"impact_category\": \"cost\", \"id\": \"N5\"},\n    {\"error_statement\": \"Minimize the likelihood of DSO first-attempt grid-connection acceptance rejection\", \"market_name\": \"Commercial & Industrial Real-Estate Behind-the-Meter Storage\", \"naics_code\": \"531120\", \"importance\": 8.5, \"satisfaction_current\": 4.5, \"opportunity_score\": 12.50, \"is_underserved\": true, \"is_overserved\": false, \"product_related\": false, \"job_step_number\": 5, \"job_step_name\": \"Execute\", \"impact_category\": \"reliability\", \"id\": \"N6\"},\n    {\"error_statement\": \"Minimize the likelihood of FGW TR8 plant-certificate rework during commissioning\", \"market_name\": \"Commercial & Industrial Real-Estate Behind-the-Meter Storage\", \"naics_code\": \"531120\", \"importance\": 8.0, \"satisfaction_current\": 5.0, \"opportunity_score\": 11.00, \"is_underserved\": false, \"is_overserved\": false, \"product_related\": false, \"job_step_number\": 5, \"job_step_name\": \"Execute\", \"impact_category\": \"reliability\", \"id\": \"N7\"},\n    {\"error_statement\": \"Minimize the likelihood of insurance underwriter declining or surcharging the asset\", \"market_name\": \"Commercial & Industrial Real-Estate Behind-the-Meter Storage\", \"naics_code\": \"531120\", \"importance\": 8.0, \"satisfaction_current\": 6.0, \"opportunity_score\": 10.00, \"is_underserved\": false, \"is_overserved\": false, \"product_related\": false, \"job_step_number\": 6, \"job_step_name\": \"Confirm\", \"impact_category\": \"cost\", \"id\": \"N8\"},\n    {\"error_statement\": \"Minimize the likelihood of peak-shave capture falling below 85% of modelled\", \"market_name\": \"Commercial & Industrial Real-Estate Behind-the-Meter Storage\", \"naics_code\": \"531120\", \"importance\": 8.0, \"satisfaction_current\": 6.0, \"opportunity_score\": 10.00, \"is_underserved\": false, \"is_overserved\": false, \"product_related\": false, \"job_step_number\": 7, \"job_step_name\": \"Monitor\", \"impact_category\": \"cost\", \"id\": \"N9\"},\n    {\"error_statement\": \"Minimize the likelihood of SoC-guardrail breach eroding manufacturer warranty\", \"market_name\": \"Commercial & Industrial Real-Estate Behind-the-Meter Storage\", \"naics_code\": \"531120\", \"importance\": 7.0, \"satisfaction_current\": 6.5, \"opportunity_score\": 7.50, \"is_underserved\": false, \"is_overserved\": false, \"product_related\": false, \"job_step_number\": 7, \"job_step_name\": \"Monitor\", \"impact_category\": \"reliability\", \"id\": \"N10\"},\n    {\"error_statement\": \"Minimize the likelihood of operating with fewer than 2 stacked revenue streams at COD\", \"market_name\": \"Commercial & Industrial Real-Estate Behind-the-Meter Storage\", \"naics_code\": \"531120\", \"importance\": 8.5, \"satisfaction_current\": 3.5, \"opportunity_score\": 13.50, \"is_underserved\": true, \"is_overserved\": false, \"product_related\": false, \"job_step_number\": 5, \"job_step_name\": \"Execute\", \"impact_category\": \"cost\", \"id\": \"N11\"},\n    {\"error_statement\": \"Minimize the likelihood of SoH falling below 80% before end-of-lease payback\", \"market_name\": \"Commercial & Industrial Real-Estate Behind-the-Meter Storage\", \"naics_code\": \"531120\", \"importance\": 8.5, \"satisfaction_current\": 5.5, \"opportunity_score\": 11.50, \"is_underserved\": false, \"is_overserved\": false, \"product_related\": false, \"job_step_number\": 7, \"job_step_name\": \"Monitor\", \"impact_category\": \"reliability\", \"id\": \"N12\"},\n    {\"error_statement\": \"Minimize the time to detect a thermal anomaly (<60 s)\", \"market_name\": \"Commercial & Industrial Real-Estate Behind-the-Meter Storage\", \"naics_code\": \"531120\", \"importance\": 8.0, \"satisfaction_current\": 6.0, \"opportunity_score\": 10.00, \"is_underserved\": false, \"is_overserved\": false, \"product_related\": false, \"job_step_number\": 7, \"job_step_name\": \"Monitor\", \"impact_category\": \"safety\", \"id\": \"N13\"},\n    {\"error_statement\": \"Minimize the time to produce auditable CSRD energy/emissions evidence (<4 h)\", \"market_name\": \"Commercial & Industrial Real-Estate Behind-the-Meter Storage\", \"naics_code\": \"531120\", \"importance\": 7.5, \"satisfaction_current\": 4.0, \"opportunity_score\": 11.00, \"is_underserved\": true, \"is_overserved\": false, \"product_related\": false, \"job_step_number\": 7, \"job_step_name\": \"Monitor\", \"impact_category\": \"compliance\", \"id\": \"N14\"},\n    {\"error_statement\": \"Minimize the likelihood of a fire or thermal-runaway propagation event\", \"market_name\": \"Commercial & Industrial Real-Estate Behind-the-Meter Storage\", \"naics_code\": \"531120\", \"importance\": 9.5, \"satisfaction_current\": 5.5, \"opportunity_score\": 13.50, \"is_underserved\": false, \"is_overserved\": false, \"product_related\": false, \"job_step_number\": 7, \"job_step_name\": \"Monitor\", \"impact_category\": \"safety\", \"id\": \"N17\"},\n    {\"error_statement\": \"Minimize the likelihood of GRESB score not improving post-install via PV+BESS\", \"market_name\": \"Commercial & Industrial Real-Estate Behind-the-Meter Storage\", \"naics_code\": \"531120\", \"importance\": 7.0, \"satisfaction_current\": 4.0, \"opportunity_score\": 10.00, \"is_underserved\": false, \"is_overserved\": false, \"product_related\": false, \"job_step_number\": 6, \"job_step_name\": \"Confirm\", \"impact_category\": \"compliance\", \"id\": \"N20\"},\n\n    {\"error_statement\": \"Minimize the likelihood of thermal-runaway propagation from cell to module to container in a dense-population Li-ion pack\", \"market_name\": \"Commercial & Industrial Real-Estate Behind-the-Meter Storage\", \"naics_code\": \"531120\", \"importance\": 9.5, \"satisfaction_current\": 5.0, \"opportunity_score\": 14.00, \"is_underserved\": false, \"is_overserved\": false, \"product_related\": true, \"job_step_number\": 0, \"job_step_name\": \"product_constraint\", \"impact_category\": \"reliability\", \"id\": \"P1\"},\n    {\"error_statement\": \"Minimize the likelihood that VdS or local Feuerwehr reject the fire-compartment layout for >3 MWh clusters requiring separation walls\", \"market_name\": \"Commercial & Industrial Real-Estate Behind-the-Meter Storage\", \"naics_code\": \"531120\", \"importance\": 8.5, \"satisfaction_current\": 5.0, \"opportunity_score\": 12.00, \"is_underserved\": false, \"is_overserved\": false, \"product_related\": true, \"job_step_number\": 0, \"job_step_name\": \"product_constraint\", \"impact_category\": \"reliability\", \"id\": \"P2\"},\n    {\"error_statement\": \"Minimize the likelihood of a DSO rejection or conditional grid-connection offer due to insufficient MV feeder headroom at the target parcel\", \"market_name\": \"Commercial & Industrial Real-Estate Behind-the-Meter Storage\", \"naics_code\": \"531120\", \"importance\": 9.0, \"satisfaction_current\": 4.0, \"opportunity_score\": 14.00, \"is_underserved\": true, \"is_overserved\": false, \"product_related\": true, \"job_step_number\": 0, \"job_step_name\": \"product_constraint\", \"impact_category\": \"reliability\", \"id\": \"P3\"},\n    {\"error_statement\": \"Minimize the likelihood that the 40-80 m2/MWh footprint plus fire clearances exceeds the parcel's available outdoor envelope within tenant sight-lines\", \"market_name\": \"Commercial & Industrial Real-Estate Behind-the-Meter Storage\", \"naics_code\": \"531120\", \"importance\": 8.0, \"satisfaction_current\": 5.0, \"opportunity_score\": 11.00, \"is_underserved\": false, \"is_overserved\": false, \"product_related\": true, \"job_step_number\": 0, \"job_step_name\": \"product_constraint\", \"impact_category\": \"reliability\", \"id\": \"P4\"},\n    {\"error_statement\": \"Minimize the time to obtain FGW TR8 type-B plant certificate and DSO acceptance on the contractually-promised energization date\", \"market_name\": \"Commercial & Industrial Real-Estate Behind-the-Meter Storage\", \"naics_code\": \"531120\", \"importance\": 8.5, \"satisfaction_current\": 4.0, \"opportunity_score\": 13.00, \"is_underserved\": true, \"is_overserved\": false, \"product_related\": true, \"job_step_number\": 0, \"job_step_name\": \"product_constraint\", \"impact_category\": \"reliability\", \"id\": \"P5\"},\n    {\"error_statement\": \"Minimize the likelihood of LFP cell-lot exposure to Chinese FX, tariff, or CRMA compliance shocks that invalidate the signed EPC fixed-price\", \"market_name\": \"Commercial & Industrial Real-Estate Behind-the-Meter Storage\", \"naics_code\": \"531120\", \"importance\": 7.0, \"satisfaction_current\": 4.0, \"opportunity_score\": 10.00, \"is_underserved\": false, \"is_overserved\": false, \"product_related\": true, \"job_step_number\": 0, \"job_step_name\": \"product_constraint\", \"impact_category\": \"reliability\", \"id\": \"P6\"},\n    {\"error_statement\": \"Minimize the likelihood of roundtrip-efficiency degradation below 85% at -10 C or +35 C ambient that erodes peak-shaving margin\", \"market_name\": \"Commercial & Industrial Real-Estate Behind-the-Meter Storage\", \"naics_code\": \"531120\", \"importance\": 7.0, \"satisfaction_current\": 5.5, \"opportunity_score\": 8.50, \"is_underserved\": false, \"is_overserved\": false, \"product_related\": true, \"job_step_number\": 0, \"job_step_name\": \"product_constraint\", \"impact_category\": \"reliability\", \"id\": \"P7\"},\n    {\"error_statement\": \"Minimize the likelihood that 10-15% AC-AC roundtrip loss and auxiliary HVAC parasitic load are mis-modeled in the business case\", \"market_name\": \"Commercial & Industrial Real-Estate Behind-the-Meter Storage\", \"naics_code\": \"531120\", \"importance\": 7.5, \"satisfaction_current\": 6.0, \"opportunity_score\": 9.00, \"is_underserved\": false, \"is_overserved\": false, \"product_related\": true, \"job_step_number\": 0, \"job_step_name\": \"product_constraint\", \"impact_category\": \"reliability\", \"id\": \"P8\"},\n    {\"error_statement\": \"Minimize the likelihood that installed CAPEX drifts above EUR 400/kWh during procurement, pushing payback beyond the 7-year investor threshold\", \"market_name\": \"Commercial & Industrial Real-Estate Behind-the-Meter Storage\", \"naics_code\": \"531120\", \"importance\": 8.0, \"satisfaction_current\": 4.5, \"opportunity_score\": 11.50, \"is_underserved\": true, \"is_overserved\": false, \"product_related\": true, \"job_step_number\": 0, \"job_step_name\": \"product_constraint\", \"impact_category\": \"reliability\", \"id\": \"P9\"},\n    {\"error_statement\": \"Minimize the time to recover container footprint and remediate battery and electrolyte per EU Battery Regulation at end-of-life\", \"market_name\": \"Commercial & Industrial Real-Estate Behind-the-Meter Storage\", \"naics_code\": \"531120\", \"importance\": 6.0, \"satisfaction_current\": 3.5, \"opportunity_score\": 8.50, \"is_underserved\": false, \"is_overserved\": false, \"product_related\": true, \"job_step_number\": 0, \"job_step_name\": \"product_constraint\", \"impact_category\": \"reliability\", \"id\": \"P10\"},\n    {\"error_statement\": \"Minimize the likelihood of LFP calendar-ageing driving usable capacity below 80% SoH before the lease-cycle payback completes\", \"market_name\": \"Commercial & Industrial Real-Estate Behind-the-Meter Storage\", \"naics_code\": \"531120\", \"importance\": 8.0, \"satisfaction_current\": 5.0, \"opportunity_score\": 11.00, \"is_underserved\": false, \"is_overserved\": false, \"product_related\": true, \"job_step_number\": 0, \"job_step_name\": \"product_constraint\", \"impact_category\": \"reliability\", \"id\": \"P11\"}\n  ],\n\n  \"market_summary\": {\n    \"market_name\": \"Commercial & Industrial Real-Estate Behind-the-Meter Storage\",\n    \"naics_code\": \"531120\",\n    \"total_needs\": 25,\n    \"underserved_count\": 8,\n    \"overserved_count\": 0,\n    \"avg_opportunity_score\": 11.22,\n    \"top_opportunities\": [\n      \"Minimize the time from EPC contract signature to grid energization (<=9 months)\",\n      \"Minimize the likelihood of a DSO upgrade charge exceeding EUR 100k per MW\",\n      \"Minimize the likelihood of thermal-runaway propagation from cell to module to container in a dense-population Li-ion pack\",\n      \"Minimize the likelihood of a DSO rejection or conditional grid-connection offer due to insufficient MV feeder headroom at the target parcel\",\n      \"Minimize the likelihood of operating with fewer than 2 stacked revenue streams at COD\"\n    ]\n  },\n\n  \"cross_check_vs_step_09\": {\n    \"odi_avg\": 11.22,\n    \"feature_fit_tech_avg\": 6.00,\n    \"feature_fit_vendor_avg\": 7.67,\n    \"flag\": \"no_anomaly\",\n    \"interpretation\": \"Meaningful unmet need (ODI 11.22) aligns with Mein Solar vendor-feature superiority (7.67). Three of three vendor features map onto five of eight underserved needs. EMS revenue-stacking gap (N11, N14) is a capability build, not a differentiator.\",\n    \"underserved_to_feature_mapping\": [\n      {\"need_id\": \"N4\", \"addressed_by_vendor_feature\": \"Single-Source EPC Contract Vehicle\"},\n      {\"need_id\": \"N5\", \"addressed_by_vendor_feature\": \"HPC Buffer + PV+BESS Integrated Design\"},\n      {\"need_id\": \"N6\", \"addressed_by_vendor_feature\": \"Single-Source EPC + Grid-Code Certification\"},\n      {\"need_id\": \"N11\", \"addressed_by_vendor_feature\": \"GAP — technology-scope EMS parity only\"},\n      {\"need_id\": \"N14\", \"addressed_by_vendor_feature\": \"GAP — technology-scope EMS parity only\"},\n      {\"need_id\": \"P3\", \"addressed_by_vendor_feature\": \"PV+BESS Integrated Design + HPC Buffer\"},\n      {\"need_id\": \"P5\", \"addressed_by_vendor_feature\": \"Grid-Code Certification + Single-Source EPC\"},\n      {\"need_id\": \"P9\", \"addressed_by_vendor_feature\": \"Single-Source EPC (fixed-price wrap)\"}\n    ]\n  },\n\n  \"qa\": {\n    \"Q1_formula_correct\": \"PASS\",\n    \"Q2_underserved_flag_correct\": \"PASS\",\n    \"Q3_overserved_flag_correct\": \"PASS\",\n    \"Q4_need_count_preserved\": \"PASS\",\n    \"Q5_top5_ordering_correct\": \"PASS\",\n    \"Q6_cross_check_ran\": \"PASS\"\n  }\n}\n```"
+      "id": "N9",
+      "statement": "Minimize the likelihood of peak-shave capture falling below 85% of modelled",
+      "jobStep": "Monitor",
+      "importance": 8.0,
+      "satisfaction": 6.0,
+      "opportunity": 10.0,
+      "isUnderserved": false,
+      "isOverserved": false,
+      "productRelated": false,
+      "impactCategory": "cost",
+      "recalibrationNote": ""
+    },
+    {
+      "id": "N10",
+      "statement": "Minimize the likelihood of SoC-guardrail breach eroding manufacturer warranty",
+      "jobStep": "Monitor",
+      "importance": 7.0,
+      "satisfaction": 6.5,
+      "opportunity": 7.5,
+      "isUnderserved": false,
+      "isOverserved": false,
+      "productRelated": false,
+      "impactCategory": "reliability",
+      "recalibrationNote": ""
+    },
+    {
+      "id": "N11",
+      "statement": "Minimize the likelihood of operating with fewer than 2 stacked revenue streams at COD",
+      "jobStep": "Execute",
+      "importance": 8.5,
+      "satisfaction": 3.5,
+      "opportunity": 13.5,
+      "isUnderserved": true,
+      "isOverserved": false,
+      "productRelated": false,
+      "impactCategory": "cost",
+      "recalibrationNote": ""
+    },
+    {
+      "id": "N12",
+      "statement": "Minimize the likelihood of SoH falling below 80% before end-of-lease payback",
+      "jobStep": "Monitor",
+      "importance": 8.5,
+      "satisfaction": 5.5,
+      "opportunity": 11.5,
+      "isUnderserved": false,
+      "isOverserved": false,
+      "productRelated": false,
+      "impactCategory": "reliability",
+      "recalibrationNote": ""
+    },
+    {
+      "id": "N13",
+      "statement": "Minimize the time to detect a thermal anomaly (<60 s)",
+      "jobStep": "Monitor",
+      "importance": 8.0,
+      "satisfaction": 6.0,
+      "opportunity": 10.0,
+      "isUnderserved": false,
+      "isOverserved": false,
+      "productRelated": false,
+      "impactCategory": "safety",
+      "recalibrationNote": ""
+    },
+    {
+      "id": "N14",
+      "statement": "Minimize the time to produce auditable CSRD energy/emissions evidence (<4 h)",
+      "jobStep": "Monitor",
+      "importance": 7.5,
+      "satisfaction": 4.0,
+      "opportunity": 11.0,
+      "isUnderserved": true,
+      "isOverserved": false,
+      "productRelated": false,
+      "impactCategory": "compliance",
+      "recalibrationNote": ""
+    },
+    {
+      "id": "N17",
+      "statement": "Minimize the likelihood of a fire or thermal-runaway propagation event",
+      "jobStep": "Monitor",
+      "importance": 9.5,
+      "satisfaction": 5.5,
+      "opportunity": 13.5,
+      "isUnderserved": false,
+      "isOverserved": false,
+      "productRelated": false,
+      "impactCategory": "safety",
+      "recalibrationNote": ""
+    },
+    {
+      "id": "N20",
+      "statement": "Minimize the likelihood of GRESB score not improving post-install via PV+BESS",
+      "jobStep": "Confirm",
+      "importance": 7.0,
+      "satisfaction": 4.0,
+      "opportunity": 10.0,
+      "isUnderserved": false,
+      "isOverserved": false,
+      "productRelated": false,
+      "impactCategory": "compliance",
+      "recalibrationNote": ""
+    },
+    {
+      "id": "P1",
+      "statement": "Minimize the likelihood of thermal-runaway propagation from cell to module to container in a dense-population Li-ion pack",
+      "jobStep": "product_constraint",
+      "importance": 9.5,
+      "satisfaction": 5.0,
+      "opportunity": 14.0,
+      "isUnderserved": false,
+      "isOverserved": false,
+      "productRelated": true,
+      "impactCategory": "reliability",
+      "recalibrationNote": ""
+    },
+    {
+      "id": "P2",
+      "statement": "Minimize the likelihood that VdS or local Feuerwehr reject the fire-compartment layout for >3 MWh clusters requiring separation walls",
+      "jobStep": "product_constraint",
+      "importance": 8.5,
+      "satisfaction": 5.0,
+      "opportunity": 12.0,
+      "isUnderserved": false,
+      "isOverserved": false,
+      "productRelated": true,
+      "impactCategory": "reliability",
+      "recalibrationNote": ""
+    },
+    {
+      "id": "P3",
+      "statement": "Minimize the likelihood of a DSO rejection or conditional grid-connection offer due to insufficient MV feeder headroom at the target parcel",
+      "jobStep": "product_constraint",
+      "importance": 9.0,
+      "satisfaction": 4.0,
+      "opportunity": 14.0,
+      "isUnderserved": true,
+      "isOverserved": false,
+      "productRelated": true,
+      "impactCategory": "reliability",
+      "recalibrationNote": ""
+    },
+    {
+      "id": "P4",
+      "statement": "Minimize the likelihood that the 40-80 m2/MWh footprint plus fire clearances exceeds the parcel's available outdoor envelope within tenant sight-lines",
+      "jobStep": "product_constraint",
+      "importance": 8.0,
+      "satisfaction": 5.0,
+      "opportunity": 11.0,
+      "isUnderserved": false,
+      "isOverserved": false,
+      "productRelated": true,
+      "impactCategory": "reliability",
+      "recalibrationNote": ""
+    },
+    {
+      "id": "P5",
+      "statement": "Minimize the time to obtain FGW TR8 type-B plant certificate and DSO acceptance on the contractually-promised energization date",
+      "jobStep": "product_constraint",
+      "importance": 8.5,
+      "satisfaction": 4.0,
+      "opportunity": 13.0,
+      "isUnderserved": true,
+      "isOverserved": false,
+      "productRelated": true,
+      "impactCategory": "reliability",
+      "recalibrationNote": ""
+    },
+    {
+      "id": "P6",
+      "statement": "Minimize the likelihood of LFP cell-lot exposure to Chinese FX, tariff, or CRMA compliance shocks that invalidate the signed EPC fixed-price",
+      "jobStep": "product_constraint",
+      "importance": 7.0,
+      "satisfaction": 4.0,
+      "opportunity": 10.0,
+      "isUnderserved": false,
+      "isOverserved": false,
+      "productRelated": true,
+      "impactCategory": "reliability",
+      "recalibrationNote": ""
+    },
+    {
+      "id": "P7",
+      "statement": "Minimize the likelihood of roundtrip-efficiency degradation below 85% at -10 C or +35 C ambient that erodes peak-shaving margin",
+      "jobStep": "product_constraint",
+      "importance": 7.0,
+      "satisfaction": 5.5,
+      "opportunity": 8.5,
+      "isUnderserved": false,
+      "isOverserved": false,
+      "productRelated": true,
+      "impactCategory": "reliability",
+      "recalibrationNote": ""
+    },
+    {
+      "id": "P8",
+      "statement": "Minimize the likelihood that 10-15% AC-AC roundtrip loss and auxiliary HVAC parasitic load are mis-modeled in the business case",
+      "jobStep": "product_constraint",
+      "importance": 7.5,
+      "satisfaction": 6.0,
+      "opportunity": 9.0,
+      "isUnderserved": false,
+      "isOverserved": false,
+      "productRelated": true,
+      "impactCategory": "reliability",
+      "recalibrationNote": ""
+    },
+    {
+      "id": "P9",
+      "statement": "Minimize the likelihood that installed CAPEX drifts above EUR 400/kWh during procurement, pushing payback beyond the 7-year investor threshold",
+      "jobStep": "product_constraint",
+      "importance": 8.0,
+      "satisfaction": 4.5,
+      "opportunity": 11.5,
+      "isUnderserved": true,
+      "isOverserved": false,
+      "productRelated": true,
+      "impactCategory": "reliability",
+      "recalibrationNote": ""
+    },
+    {
+      "id": "P10",
+      "statement": "Minimize the time to recover container footprint and remediate battery and electrolyte per EU Battery Regulation at end-of-life",
+      "jobStep": "product_constraint",
+      "importance": 6.0,
+      "satisfaction": 3.5,
+      "opportunity": 8.5,
+      "isUnderserved": false,
+      "isOverserved": false,
+      "productRelated": true,
+      "impactCategory": "reliability",
+      "recalibrationNote": ""
+    },
+    {
+      "id": "P11",
+      "statement": "Minimize the likelihood of LFP calendar-ageing driving usable capacity below 80% SoH before the lease-cycle payback completes",
+      "jobStep": "product_constraint",
+      "importance": 8.0,
+      "satisfaction": 5.0,
+      "opportunity": 11.0,
+      "isUnderserved": false,
+      "isOverserved": false,
+      "productRelated": true,
+      "impactCategory": "reliability",
+      "recalibrationNote": ""
     }
   ],
-  "tables": [
-    {
-      "headers": [
-        "Need",
-        "Pre-cal sat",
-        "Post-cal sat",
-        "Rationale"
-      ],
-      "rows": [
-        {
-          "Need": "N4 time-to-energize",
-          "Pre-cal sat": "4.0",
-          "Post-cal sat": "3.5",
-          "Rationale": "Split-vendor pattern adds 2–3 mo vs. single-source"
-        },
-        {
-          "Need": "N5 avoid DSO upgrade",
-          "Pre-cal sat": "4.5",
-          "Post-cal sat": "4.0",
-          "Rationale": "Incumbents don't bundle MV design / HPC buffer logic"
-        },
-        {
-          "Need": "N11 ≥2 stacked revenue",
-          "Pre-cal sat": "4.0",
-          "Post-cal sat": "3.5",
-          "Rationale": "Tesvolt/Voltfang EMS one-objective dispatch only"
-        },
-        {
-          "Need": "N14 CSRD evidence <4h",
-          "Pre-cal sat": "4.5",
-          "Post-cal sat": "4.0",
-          "Rationale": "Incumbent EMS lacks audited emissions export"
-        },
-        {
-          "Need": "All others",
-          "Pre-cal sat": "—",
-          "Post-cal sat": "unchanged",
-          "Rationale": "Step 03 did not contradict initial estimate"
-        }
-      ]
-    },
-    {
-      "headers": [
-        "#",
-        "Error statement",
-        "Imp",
-        "Sat",
-        "Opp",
-        "U",
-        "O",
-        "Job step"
-      ],
-      "rows": [
-        {
-          "#": "N3",
-          "Error statement": "Minimize the likelihood that Baugenehmigung + VdS fire clearance is rejected on first submission",
-          "Imp": "7.5",
-          "Sat": "6.0",
-          "Opp": "9.00",
-          "U": "F",
-          "O": "F",
-          "Job step": "Prepare"
-        },
-        {
-          "#": "N4",
-          "Error statement": "Minimize the time from EPC contract signature to grid energization (≤9 mo)",
-          "Imp": "9.0",
-          "Sat": "3.5",
-          "Opp": "14.50",
-          "U": "**T**",
-          "O": "F",
-          "Job step": "Execute"
-        },
-        {
-          "#": "N5",
-          "Error statement": "Minimize the likelihood of a DSO upgrade charge exceeding €100k per MW",
-          "Imp": "9.0",
-          "Sat": "4.0",
-          "Opp": "14.00",
-          "U": "**T**",
-          "O": "F",
-          "Job step": "Prepare"
-        },
-        {
-          "#": "N6",
-          "Error statement": "Minimize the likelihood of DSO first-attempt grid-connection-acceptance rejection",
-          "Imp": "8.5",
-          "Sat": "4.5",
-          "Opp": "12.50",
-          "U": "**T**",
-          "O": "F",
-          "Job step": "Execute"
-        },
-        {
-          "#": "N7",
-          "Error statement": "Minimize the likelihood of FGW TR8 plant-certificate rework during commissioning",
-          "Imp": "8.0",
-          "Sat": "5.0",
-          "Opp": "11.00",
-          "U": "F",
-          "O": "F",
-          "Job step": "Execute"
-        },
-        {
-          "#": "N8",
-          "Error statement": "Minimize the likelihood of insurance underwriter declining or surcharging the asset",
-          "Imp": "8.0",
-          "Sat": "6.0",
-          "Opp": "10.00",
-          "U": "F",
-          "O": "F",
-          "Job step": "Confirm"
-        },
-        {
-          "#": "N9",
-          "Error statement": "Minimize the likelihood of peak-shave capture falling below 85% of modelled",
-          "Imp": "8.0",
-          "Sat": "6.0",
-          "Opp": "10.00",
-          "U": "F",
-          "O": "F",
-          "Job step": "Monitor"
-        },
-        {
-          "#": "N10",
-          "Error statement": "Minimize the likelihood of SoC-guardrail breach eroding manufacturer warranty",
-          "Imp": "7.0",
-          "Sat": "6.5",
-          "Opp": "7.50",
-          "U": "F",
-          "O": "F",
-          "Job step": "Monitor"
-        },
-        {
-          "#": "N11",
-          "Error statement": "Minimize the likelihood of operating with fewer than 2 stacked revenue streams at COD",
-          "Imp": "8.5",
-          "Sat": "3.5",
-          "Opp": "13.50",
-          "U": "**T**",
-          "O": "F",
-          "Job step": "Execute"
-        },
-        {
-          "#": "N12",
-          "Error statement": "Minimize the likelihood of SoH falling below 80% before end-of-lease payback",
-          "Imp": "8.5",
-          "Sat": "5.5",
-          "Opp": "11.50",
-          "U": "F",
-          "O": "F",
-          "Job step": "Monitor"
-        },
-        {
-          "#": "N13",
-          "Error statement": "Minimize the time to detect a thermal anomaly (<60 s)",
-          "Imp": "8.0",
-          "Sat": "6.0",
-          "Opp": "10.00",
-          "U": "F",
-          "O": "F",
-          "Job step": "Monitor"
-        },
-        {
-          "#": "N14",
-          "Error statement": "Minimize the time to produce auditable CSRD energy/emissions evidence (<4 h)",
-          "Imp": "7.5",
-          "Sat": "4.0",
-          "Opp": "11.00",
-          "U": "**T**",
-          "O": "F",
-          "Job step": "Monitor"
-        },
-        {
-          "#": "N17",
-          "Error statement": "Minimize the likelihood of a fire or thermal-runaway propagation event",
-          "Imp": "9.5",
-          "Sat": "5.5",
-          "Opp": "13.50",
-          "U": "F",
-          "O": "F",
-          "Job step": "Monitor"
-        },
-        {
-          "#": "N20",
-          "Error statement": "Minimize the likelihood of GRESB score not improving post-install via PV+BESS",
-          "Imp": "7.0",
-          "Sat": "4.0",
-          "Opp": "10.00",
-          "U": "F",
-          "O": "F",
-          "Job step": "Confirm"
-        }
-      ]
-    },
-    {
-      "headers": [
-        "#",
-        "Error statement",
-        "Imp",
-        "Sat",
-        "Opp",
-        "U",
-        "O"
-      ],
-      "rows": [
-        {
-          "#": "P1",
-          "Error statement": "Minimize likelihood of thermal-runaway propagation cell→module→container in dense Li-ion pack",
-          "Imp": "9.5",
-          "Sat": "5.0",
-          "Opp": "14.00",
-          "U": "F",
-          "O": "F"
-        },
-        {
-          "#": "P2",
-          "Error statement": "Minimize likelihood that VdS/Feuerwehr reject fire-compartment layout for >3 MWh clusters",
-          "Imp": "8.5",
-          "Sat": "5.0",
-          "Opp": "12.00",
-          "U": "F",
-          "O": "F"
-        },
-        {
-          "#": "P3",
-          "Error statement": "Minimize likelihood of DSO rejection due to insufficient MV feeder headroom at target parcel",
-          "Imp": "9.0",
-          "Sat": "4.0",
-          "Opp": "14.00",
-          "U": "**T**",
-          "O": "F"
-        },
-        {
-          "#": "P4",
-          "Error statement": "Minimize likelihood that 40–80 m²/MWh footprint + clearances exceed parcel envelope",
-          "Imp": "8.0",
-          "Sat": "5.0",
-          "Opp": "11.00",
-          "U": "F",
-          "O": "F"
-        },
-        {
-          "#": "P5",
-          "Error statement": "Minimize time to obtain FGW TR8 type-B + DSO acceptance on promised energization date",
-          "Imp": "8.5",
-          "Sat": "4.0",
-          "Opp": "13.00",
-          "U": "**T**",
-          "O": "F"
-        },
-        {
-          "#": "P6",
-          "Error statement": "Minimize likelihood of LFP cell-lot CN FX/tariff/CRMA shock invalidating fixed-price EPC",
-          "Imp": "7.0",
-          "Sat": "4.0",
-          "Opp": "10.00",
-          "U": "F",
-          "O": "F"
-        },
-        {
-          "#": "P7",
-          "Error statement": "Minimize likelihood of roundtrip-efficiency <85% at −10°C / +35°C eroding peak-shave margin",
-          "Imp": "7.0",
-          "Sat": "5.5",
-          "Opp": "8.50",
-          "U": "F",
-          "O": "F"
-        },
-        {
-          "#": "P8",
-          "Error statement": "Minimize likelihood that 10–15% AC-AC loss + aux HVAC is mis-modelled in business case",
-          "Imp": "7.5",
-          "Sat": "6.0",
-          "Opp": "9.00",
-          "U": "F",
-          "O": "F"
-        },
-        {
-          "#": "P9",
-          "Error statement": "Minimize likelihood that installed CAPEX drifts above €400/kWh during procurement",
-          "Imp": "8.0",
-          "Sat": "4.5",
-          "Opp": "11.50",
-          "U": "**T**",
-          "O": "F"
-        },
-        {
-          "#": "P10",
-          "Error statement": "Minimize time to recover footprint + remediate per EU Battery Reg at end-of-life",
-          "Imp": "6.0",
-          "Sat": "3.5",
-          "Opp": "8.50",
-          "U": "F",
-          "O": "F"
-        },
-        {
-          "#": "P11",
-          "Error statement": "Minimize likelihood of LFP calendar ageing driving SoH <80% before lease payback",
-          "Imp": "8.0",
-          "Sat": "5.0",
-          "Opp": "11.00",
-          "U": "F",
-          "O": "F"
-        }
-      ]
-    },
-    {
-      "headers": [
-        "Metric",
-        "Value"
-      ],
-      "rows": [
-        {
-          "Metric": "total_needs",
-          "Value": "25"
-        },
-        {
-          "Metric": "underserved_count",
-          "Value": "**8** (N4, N5, N6, N11, N14, P3, P5, P9)"
-        },
-        {
-          "Metric": "overserved_count",
-          "Value": "**0** (no need has importance < 3)"
-        },
-        {
-          "Metric": "avg_opportunity_score",
-          "Value": "**11.22**"
-        }
-      ]
-    },
-    {
-      "headers": [
-        "Rank",
-        "Opp",
-        "Statement"
-      ],
-      "rows": [
-        {
-          "Rank": "1",
-          "Opp": "14.50",
-          "Statement": "Minimize the time from EPC contract signature to grid energization (≤9 mo)"
-        },
-        {
-          "Rank": "2",
-          "Opp": "14.00",
-          "Statement": "Minimize the likelihood of a DSO upgrade charge exceeding €100k per MW"
-        },
-        {
-          "Rank": "3",
-          "Opp": "14.00",
-          "Statement": "Minimize likelihood of thermal-runaway propagation cell→module→container in dense Li-ion pack"
-        },
-        {
-          "Rank": "4",
-          "Opp": "14.00",
-          "Statement": "Minimize likelihood of DSO rejection due to insufficient MV feeder headroom at target parcel"
-        },
-        {
-          "Rank": "5",
-          "Opp": "13.50",
-          "Statement": "Minimize the likelihood of operating with fewer than 2 stacked revenue streams at COD"
-        }
-      ]
-    },
-    {
-      "headers": [
-        "Metric",
-        "Value",
-        "Flag"
-      ],
-      "rows": [
-        {
-          "Metric": "ODI avg_opportunity_score",
-          "Value": "11.22",
-          "Flag": "—"
-        },
-        {
-          "Metric": "Step 09 avg overall_fit (tech features)",
-          "Value": "6.00",
-          "Flag": "—"
-        },
-        {
-          "Metric": "Step 11 avg vendor-feature score",
-          "Value": "7.67",
-          "Flag": "—"
-        }
-      ]
-    },
-    {
-      "headers": [
-        "Top underserved ODI need",
-        "Mein Solar vendor feature that addresses it"
-      ],
-      "rows": [
-        {
-          "Top underserved ODI need": "N4 time-to-energize",
-          "Mein Solar vendor feature that addresses it": "#9 Single-Source EPC Contract Vehicle"
-        },
-        {
-          "Top underserved ODI need": "N5 DSO upgrade avoidance",
-          "Mein Solar vendor feature that addresses it": "#7 HPC Buffer + #6 PV+BESS Integrated Design"
-        },
-        {
-          "Top underserved ODI need": "P3 MV feeder headroom rejection",
-          "Mein Solar vendor feature that addresses it": "#6 PV+BESS (shared MV) + #7 HPC Buffer"
-        },
-        {
-          "Top underserved ODI need": "N6 DSO first-attempt acceptance",
-          "Mein Solar vendor feature that addresses it": "#5 Grid-Code Certification + #9 Single-Source"
-        },
-        {
-          "Top underserved ODI need": "P5 FGW TR8 on-date",
-          "Mein Solar vendor feature that addresses it": "#5 Grid-Code Certification (tech must_be) + #9 Single-Source"
-        },
-        {
-          "Top underserved ODI need": "N11 ≥2 revenue streams",
-          "Mein Solar vendor feature that addresses it": "Feature gap — vendor EMS is technology-scope; no vendor-superior EMS feature"
-        }
-      ]
-    },
-    {
-      "headers": [
-        "#",
-        "Check",
-        "Result"
-      ],
-      "rows": [
-        {
-          "#": "Q1",
-          "Check": "Formula correct on 5 spot-checks (N4, N11, P1, P5, P9)",
-          "Result": "✅ PASS"
-        },
-        {
-          "#": "Q2",
-          "Check": "is_underserved = imp>7 AND sat<5 — all 8 entries compliant",
-          "Result": "✅ PASS"
-        },
-        {
-          "#": "Q3",
-          "Check": "is_overserved = imp<3 AND sat>7 — 0 entries (no low-importance needs in set)",
-          "Result": "✅ PASS"
-        },
-        {
-          "#": "Q4",
-          "Check": "total ≥ Step 06 count — 25 ≥ 14, Step 10 added 11 ✓",
-          "Result": "✅ PASS"
-        },
-        {
-          "#": "Q5",
-          "Check": "Top-5 sorted descending by opp_score",
-          "Result": "✅ PASS"
-        },
-        {
-          "#": "Q6",
-          "Check": "Cross-check vs Step 09 Feature-Fit ran",
-          "Result": "✅ PASS"
-        }
-      ]
-    }
-  ],
-  "entities": [
-    {
-      "component": "odi_matrix",
-      "step": 12,
-      "run_id": "mein_solar_2026_04_20",
-      "market_name": "Commercial & Industrial Real-Estate Behind-the-Meter Storage",
-      "naics_code": "531120",
-      "naics_title": "Lessors of Nonresidential Buildings (except Miniwarehouses)",
-      "vendor_name": "Mein Solar GmbH",
-      "product_name": "EPC für Großbatteriespeicher",
-      "incumbent_anchor": [
-        "Voltfang turnkey",
-        "Tesvolt turnkey",
-        "Commeo turnkey",
-        "split-vendor (Tesla Megapack + Schneider/Siemens + Baufirma)",
-        "Utility PPA / no storage"
-      ],
-      "recalibration_applied": true,
-      "recalibration_log": [
-        {
-          "id": "N4",
-          "sat_before": 4.0,
-          "sat_after": 3.5,
-          "reason": "split-vendor adds 2-3 mo vs single-source"
-        },
-        {
-          "id": "N5",
-          "sat_before": 4.5,
-          "sat_after": 4.0,
-          "reason": "incumbents do not bundle MV design or HPC buffer logic"
-        },
-        {
-          "id": "N11",
-          "sat_before": 4.0,
-          "sat_after": 3.5,
-          "reason": "Tesvolt/Voltfang EMS single-objective dispatch only"
-        },
-        {
-          "id": "N14",
-          "sat_before": 4.5,
-          "sat_after": 4.0,
-          "reason": "incumbent EMS lacks audited CSRD emissions export"
-        }
-      ],
-      "entries": [
-        {
-          "error_statement": "Minimize the likelihood that Baugenehmigung + VdS fire clearance is rejected on first submission",
-          "market_name": "Commercial & Industrial Real-Estate Behind-the-Meter Storage",
-          "naics_code": "531120",
-          "importance": 7.5,
-          "satisfaction_current": 6.0,
-          "opportunity_score": 9.0,
-          "is_underserved": false,
-          "is_overserved": false,
-          "product_related": false,
-          "job_step_number": 2,
-          "job_step_name": "Prepare",
-          "impact_category": "reliability",
-          "id": "N3"
-        },
-        {
-          "error_statement": "Minimize the time from EPC contract signature to grid energization (<=9 months)",
-          "market_name": "Commercial & Industrial Real-Estate Behind-the-Meter Storage",
-          "naics_code": "531120",
-          "importance": 9.0,
-          "satisfaction_current": 3.5,
-          "opportunity_score": 14.5,
-          "is_underserved": true,
-          "is_overserved": false,
-          "product_related": false,
-          "job_step_number": 5,
-          "job_step_name": "Execute",
-          "impact_category": "speed",
-          "id": "N4"
-        },
-        {
-          "error_statement": "Minimize the likelihood of a DSO upgrade charge exceeding EUR 100k per MW",
-          "market_name": "Commercial & Industrial Real-Estate Behind-the-Meter Storage",
-          "naics_code": "531120",
-          "importance": 9.0,
-          "satisfaction_current": 4.0,
-          "opportunity_score": 14.0,
-          "is_underserved": true,
-          "is_overserved": false,
-          "product_related": false,
-          "job_step_number": 2,
-          "job_step_name": "Prepare",
-          "impact_category": "cost",
-          "id": "N5"
-        },
-        {
-          "error_statement": "Minimize the likelihood of DSO first-attempt grid-connection acceptance rejection",
-          "market_name": "Commercial & Industrial Real-Estate Behind-the-Meter Storage",
-          "naics_code": "531120",
-          "importance": 8.5,
-          "satisfaction_current": 4.5,
-          "opportunity_score": 12.5,
-          "is_underserved": true,
-          "is_overserved": false,
-          "product_related": false,
-          "job_step_number": 5,
-          "job_step_name": "Execute",
-          "impact_category": "reliability",
-          "id": "N6"
-        },
-        {
-          "error_statement": "Minimize the likelihood of FGW TR8 plant-certificate rework during commissioning",
-          "market_name": "Commercial & Industrial Real-Estate Behind-the-Meter Storage",
-          "naics_code": "531120",
-          "importance": 8.0,
-          "satisfaction_current": 5.0,
-          "opportunity_score": 11.0,
-          "is_underserved": false,
-          "is_overserved": false,
-          "product_related": false,
-          "job_step_number": 5,
-          "job_step_name": "Execute",
-          "impact_category": "reliability",
-          "id": "N7"
-        },
-        {
-          "error_statement": "Minimize the likelihood of insurance underwriter declining or surcharging the asset",
-          "market_name": "Commercial & Industrial Real-Estate Behind-the-Meter Storage",
-          "naics_code": "531120",
-          "importance": 8.0,
-          "satisfaction_current": 6.0,
-          "opportunity_score": 10.0,
-          "is_underserved": false,
-          "is_overserved": false,
-          "product_related": false,
-          "job_step_number": 6,
-          "job_step_name": "Confirm",
-          "impact_category": "cost",
-          "id": "N8"
-        },
-        {
-          "error_statement": "Minimize the likelihood of peak-shave capture falling below 85% of modelled",
-          "market_name": "Commercial & Industrial Real-Estate Behind-the-Meter Storage",
-          "naics_code": "531120",
-          "importance": 8.0,
-          "satisfaction_current": 6.0,
-          "opportunity_score": 10.0,
-          "is_underserved": false,
-          "is_overserved": false,
-          "product_related": false,
-          "job_step_number": 7,
-          "job_step_name": "Monitor",
-          "impact_category": "cost",
-          "id": "N9"
-        },
-        {
-          "error_statement": "Minimize the likelihood of SoC-guardrail breach eroding manufacturer warranty",
-          "market_name": "Commercial & Industrial Real-Estate Behind-the-Meter Storage",
-          "naics_code": "531120",
-          "importance": 7.0,
-          "satisfaction_current": 6.5,
-          "opportunity_score": 7.5,
-          "is_underserved": false,
-          "is_overserved": false,
-          "product_related": false,
-          "job_step_number": 7,
-          "job_step_name": "Monitor",
-          "impact_category": "reliability",
-          "id": "N10"
-        },
-        {
-          "error_statement": "Minimize the likelihood of operating with fewer than 2 stacked revenue streams at COD",
-          "market_name": "Commercial & Industrial Real-Estate Behind-the-Meter Storage",
-          "naics_code": "531120",
-          "importance": 8.5,
-          "satisfaction_current": 3.5,
-          "opportunity_score": 13.5,
-          "is_underserved": true,
-          "is_overserved": false,
-          "product_related": false,
-          "job_step_number": 5,
-          "job_step_name": "Execute",
-          "impact_category": "cost",
-          "id": "N11"
-        },
-        {
-          "error_statement": "Minimize the likelihood of SoH falling below 80% before end-of-lease payback",
-          "market_name": "Commercial & Industrial Real-Estate Behind-the-Meter Storage",
-          "naics_code": "531120",
-          "importance": 8.5,
-          "satisfaction_current": 5.5,
-          "opportunity_score": 11.5,
-          "is_underserved": false,
-          "is_overserved": false,
-          "product_related": false,
-          "job_step_number": 7,
-          "job_step_name": "Monitor",
-          "impact_category": "reliability",
-          "id": "N12"
-        },
-        {
-          "error_statement": "Minimize the time to detect a thermal anomaly (<60 s)",
-          "market_name": "Commercial & Industrial Real-Estate Behind-the-Meter Storage",
-          "naics_code": "531120",
-          "importance": 8.0,
-          "satisfaction_current": 6.0,
-          "opportunity_score": 10.0,
-          "is_underserved": false,
-          "is_overserved": false,
-          "product_related": false,
-          "job_step_number": 7,
-          "job_step_name": "Monitor",
-          "impact_category": "safety",
-          "id": "N13"
-        },
-        {
-          "error_statement": "Minimize the time to produce auditable CSRD energy/emissions evidence (<4 h)",
-          "market_name": "Commercial & Industrial Real-Estate Behind-the-Meter Storage",
-          "naics_code": "531120",
-          "importance": 7.5,
-          "satisfaction_current": 4.0,
-          "opportunity_score": 11.0,
-          "is_underserved": true,
-          "is_overserved": false,
-          "product_related": false,
-          "job_step_number": 7,
-          "job_step_name": "Monitor",
-          "impact_category": "compliance",
-          "id": "N14"
-        },
-        {
-          "error_statement": "Minimize the likelihood of a fire or thermal-runaway propagation event",
-          "market_name": "Commercial & Industrial Real-Estate Behind-the-Meter Storage",
-          "naics_code": "531120",
-          "importance": 9.5,
-          "satisfaction_current": 5.5,
-          "opportunity_score": 13.5,
-          "is_underserved": false,
-          "is_overserved": false,
-          "product_related": false,
-          "job_step_number": 7,
-          "job_step_name": "Monitor",
-          "impact_category": "safety",
-          "id": "N17"
-        },
-        {
-          "error_statement": "Minimize the likelihood of GRESB score not improving post-install via PV+BESS",
-          "market_name": "Commercial & Industrial Real-Estate Behind-the-Meter Storage",
-          "naics_code": "531120",
-          "importance": 7.0,
-          "satisfaction_current": 4.0,
-          "opportunity_score": 10.0,
-          "is_underserved": false,
-          "is_overserved": false,
-          "product_related": false,
-          "job_step_number": 6,
-          "job_step_name": "Confirm",
-          "impact_category": "compliance",
-          "id": "N20"
-        },
-        {
-          "error_statement": "Minimize the likelihood of thermal-runaway propagation from cell to module to container in a dense-population Li-ion pack",
-          "market_name": "Commercial & Industrial Real-Estate Behind-the-Meter Storage",
-          "naics_code": "531120",
-          "importance": 9.5,
-          "satisfaction_current": 5.0,
-          "opportunity_score": 14.0,
-          "is_underserved": false,
-          "is_overserved": false,
-          "product_related": true,
-          "job_step_number": 0,
-          "job_step_name": "product_constraint",
-          "impact_category": "reliability",
-          "id": "P1"
-        },
-        {
-          "error_statement": "Minimize the likelihood that VdS or local Feuerwehr reject the fire-compartment layout for >3 MWh clusters requiring separation walls",
-          "market_name": "Commercial & Industrial Real-Estate Behind-the-Meter Storage",
-          "naics_code": "531120",
-          "importance": 8.5,
-          "satisfaction_current": 5.0,
-          "opportunity_score": 12.0,
-          "is_underserved": false,
-          "is_overserved": false,
-          "product_related": true,
-          "job_step_number": 0,
-          "job_step_name": "product_constraint",
-          "impact_category": "reliability",
-          "id": "P2"
-        },
-        {
-          "error_statement": "Minimize the likelihood of a DSO rejection or conditional grid-connection offer due to insufficient MV feeder headroom at the target parcel",
-          "market_name": "Commercial & Industrial Real-Estate Behind-the-Meter Storage",
-          "naics_code": "531120",
-          "importance": 9.0,
-          "satisfaction_current": 4.0,
-          "opportunity_score": 14.0,
-          "is_underserved": true,
-          "is_overserved": false,
-          "product_related": true,
-          "job_step_number": 0,
-          "job_step_name": "product_constraint",
-          "impact_category": "reliability",
-          "id": "P3"
-        },
-        {
-          "error_statement": "Minimize the likelihood that the 40-80 m2/MWh footprint plus fire clearances exceeds the parcel's available outdoor envelope within tenant sight-lines",
-          "market_name": "Commercial & Industrial Real-Estate Behind-the-Meter Storage",
-          "naics_code": "531120",
-          "importance": 8.0,
-          "satisfaction_current": 5.0,
-          "opportunity_score": 11.0,
-          "is_underserved": false,
-          "is_overserved": false,
-          "product_related": true,
-          "job_step_number": 0,
-          "job_step_name": "product_constraint",
-          "impact_category": "reliability",
-          "id": "P4"
-        },
-        {
-          "error_statement": "Minimize the time to obtain FGW TR8 type-B plant certificate and DSO acceptance on the contractually-promised energization date",
-          "market_name": "Commercial & Industrial Real-Estate Behind-the-Meter Storage",
-          "naics_code": "531120",
-          "importance": 8.5,
-          "satisfaction_current": 4.0,
-          "opportunity_score": 13.0,
-          "is_underserved": true,
-          "is_overserved": false,
-          "product_related": true,
-          "job_step_number": 0,
-          "job_step_name": "product_constraint",
-          "impact_category": "reliability",
-          "id": "P5"
-        },
-        {
-          "error_statement": "Minimize the likelihood of LFP cell-lot exposure to Chinese FX, tariff, or CRMA compliance shocks that invalidate the signed EPC fixed-price",
-          "market_name": "Commercial & Industrial Real-Estate Behind-the-Meter Storage",
-          "naics_code": "531120",
-          "importance": 7.0,
-          "satisfaction_current": 4.0,
-          "opportunity_score": 10.0,
-          "is_underserved": false,
-          "is_overserved": false,
-          "product_related": true,
-          "job_step_number": 0,
-          "job_step_name": "product_constraint",
-          "impact_category": "reliability",
-          "id": "P6"
-        },
-        {
-          "error_statement": "Minimize the likelihood of roundtrip-efficiency degradation below 85% at -10 C or +35 C ambient that erodes peak-shaving margin",
-          "market_name": "Commercial & Industrial Real-Estate Behind-the-Meter Storage",
-          "naics_code": "531120",
-          "importance": 7.0,
-          "satisfaction_current": 5.5,
-          "opportunity_score": 8.5,
-          "is_underserved": false,
-          "is_overserved": false,
-          "product_related": true,
-          "job_step_number": 0,
-          "job_step_name": "product_constraint",
-          "impact_category": "reliability",
-          "id": "P7"
-        },
-        {
-          "error_statement": "Minimize the likelihood that 10-15% AC-AC roundtrip loss and auxiliary HVAC parasitic load are mis-modeled in the business case",
-          "market_name": "Commercial & Industrial Real-Estate Behind-the-Meter Storage",
-          "naics_code": "531120",
-          "importance": 7.5,
-          "satisfaction_current": 6.0,
-          "opportunity_score": 9.0,
-          "is_underserved": false,
-          "is_overserved": false,
-          "product_related": true,
-          "job_step_number": 0,
-          "job_step_name": "product_constraint",
-          "impact_category": "reliability",
-          "id": "P8"
-        },
-        {
-          "error_statement": "Minimize the likelihood that installed CAPEX drifts above EUR 400/kWh during procurement, pushing payback beyond the 7-year investor threshold",
-          "market_name": "Commercial & Industrial Real-Estate Behind-the-Meter Storage",
-          "naics_code": "531120",
-          "importance": 8.0,
-          "satisfaction_current": 4.5,
-          "opportunity_score": 11.5,
-          "is_underserved": true,
-          "is_overserved": false,
-          "product_related": true,
-          "job_step_number": 0,
-          "job_step_name": "product_constraint",
-          "impact_category": "reliability",
-          "id": "P9"
-        },
-        {
-          "error_statement": "Minimize the time to recover container footprint and remediate battery and electrolyte per EU Battery Regulation at end-of-life",
-          "market_name": "Commercial & Industrial Real-Estate Behind-the-Meter Storage",
-          "naics_code": "531120",
-          "importance": 6.0,
-          "satisfaction_current": 3.5,
-          "opportunity_score": 8.5,
-          "is_underserved": false,
-          "is_overserved": false,
-          "product_related": true,
-          "job_step_number": 0,
-          "job_step_name": "product_constraint",
-          "impact_category": "reliability",
-          "id": "P10"
-        },
-        {
-          "error_statement": "Minimize the likelihood of LFP calendar-ageing driving usable capacity below 80% SoH before the lease-cycle payback completes",
-          "market_name": "Commercial & Industrial Real-Estate Behind-the-Meter Storage",
-          "naics_code": "531120",
-          "importance": 8.0,
-          "satisfaction_current": 5.0,
-          "opportunity_score": 11.0,
-          "is_underserved": false,
-          "is_overserved": false,
-          "product_related": true,
-          "job_step_number": 0,
-          "job_step_name": "product_constraint",
-          "impact_category": "reliability",
-          "id": "P11"
-        }
-      ],
-      "market_summary": {
-        "market_name": "Commercial & Industrial Real-Estate Behind-the-Meter Storage",
-        "naics_code": "531120",
-        "total_needs": 25,
-        "underserved_count": 8,
-        "overserved_count": 0,
-        "avg_opportunity_score": 11.22,
-        "top_opportunities": [
-          "Minimize the time from EPC contract signature to grid energization (<=9 months)",
-          "Minimize the likelihood of a DSO upgrade charge exceeding EUR 100k per MW",
-          "Minimize the likelihood of thermal-runaway propagation from cell to module to container in a dense-population Li-ion pack",
-          "Minimize the likelihood of a DSO rejection or conditional grid-connection offer due to insufficient MV feeder headroom at the target parcel",
-          "Minimize the likelihood of operating with fewer than 2 stacked revenue streams at COD"
-        ]
-      },
-      "cross_check_vs_step_09": {
-        "odi_avg": 11.22,
-        "feature_fit_tech_avg": 6.0,
-        "feature_fit_vendor_avg": 7.67,
-        "flag": "no_anomaly",
-        "interpretation": "Meaningful unmet need (ODI 11.22) aligns with Mein Solar vendor-feature superiority (7.67). Three of three vendor features map onto five of eight underserved needs. EMS revenue-stacking gap (N11, N14) is a capability build, not a differentiator.",
-        "underserved_to_feature_mapping": [
-          {
-            "need_id": "N4",
-            "addressed_by_vendor_feature": "Single-Source EPC Contract Vehicle"
-          },
-          {
-            "need_id": "N5",
-            "addressed_by_vendor_feature": "HPC Buffer + PV+BESS Integrated Design"
-          },
-          {
-            "need_id": "N6",
-            "addressed_by_vendor_feature": "Single-Source EPC + Grid-Code Certification"
-          },
-          {
-            "need_id": "N11",
-            "addressed_by_vendor_feature": "GAP — technology-scope EMS parity only"
-          },
-          {
-            "need_id": "N14",
-            "addressed_by_vendor_feature": "GAP — technology-scope EMS parity only"
-          },
-          {
-            "need_id": "P3",
-            "addressed_by_vendor_feature": "PV+BESS Integrated Design + HPC Buffer"
-          },
-          {
-            "need_id": "P5",
-            "addressed_by_vendor_feature": "Grid-Code Certification + Single-Source EPC"
-          },
-          {
-            "need_id": "P9",
-            "addressed_by_vendor_feature": "Single-Source EPC (fixed-price wrap)"
-          }
-        ]
-      },
-      "qa": {
-        "Q1_formula_correct": "PASS",
-        "Q2_underserved_flag_correct": "PASS",
-        "Q3_overserved_flag_correct": "PASS",
-        "Q4_need_count_preserved": "PASS",
-        "Q5_top5_ordering_correct": "PASS",
-        "Q6_cross_check_ran": "PASS"
-      }
-    }
-  ],
-  "has_bom": true,
-  "naics_sector_type": "non_manufacturing"
+  "sources": []
 }

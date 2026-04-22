@@ -3,6 +3,7 @@
  *
  * Shows knockout count, mitigable count, and no-impact count in three
  * stat-tile style boxes, plus the overall market status verdict.
+ * All values from data — zero hardcoded text.
  */
 
 import type { CompatResult } from "@/types";
@@ -55,7 +56,11 @@ function StatBox({
 }
 
 export default function CompatSummaryBar({ result }: { result: CompatResult }) {
-  const statusIsGood = result.knockouts === 0;
+  const knockouts = result.knockouts ?? 0;
+  const mitigable = result.mitigable ?? 0;
+  const none = result.none ?? 0;
+
+  const statusIsGood = knockouts === 0;
   const statusColor = statusIsGood ? "var(--status-high)" : "var(--status-low)";
   const statusBg = statusIsGood
     ? "rgba(111,213,155,0.07)"
@@ -78,7 +83,9 @@ export default function CompatSummaryBar({ result }: { result: CompatResult }) {
           gap: 10,
         }}
       >
-        <span style={{ fontSize: 16, color: statusColor }}>{statusIsGood ? "✓" : "✗"}</span>
+        <span style={{ fontSize: 16, color: statusColor }}>
+          {statusIsGood ? "\u2713" : "\u2717"}
+        </span>
         <span
           style={{
             fontFamily: "var(--font-mono)",
@@ -101,7 +108,7 @@ export default function CompatSummaryBar({ result }: { result: CompatResult }) {
             }}
           >
             Mitigation cost: {result.totalMitigationCost}
-            {result.totalMitigationTime ? ` · ${result.totalMitigationTime}` : ""}
+            {result.totalMitigationTime ? ` \u00B7 ${result.totalMitigationTime}` : ""}
           </span>
         )}
       </div>
@@ -110,17 +117,17 @@ export default function CompatSummaryBar({ result }: { result: CompatResult }) {
       <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 12 }}>
         <StatBox
           label="Knockout constraints"
-          value={result.knockouts ?? 0}
-          accent={result.knockouts > 0 ? "var(--status-low)" : "var(--status-high)"}
+          value={knockouts}
+          accent={knockouts > 0 ? "var(--status-low)" : "var(--status-high)"}
         />
         <StatBox
           label="Mitigable constraints"
-          value={result.mitigable ?? 0}
-          accent={result.mitigable > 0 ? "var(--status-medium)" : "var(--text-gray-light)"}
+          value={mitigable}
+          accent={mitigable > 0 ? "var(--status-medium)" : "var(--text-gray-light)"}
         />
         <StatBox
           label="No-impact constraints"
-          value={result.none ?? 0}
+          value={none}
           accent="var(--text-gray-light)"
         />
       </div>

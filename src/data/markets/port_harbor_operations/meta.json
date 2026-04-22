@@ -2,6 +2,18 @@
   "slug": "port_harbor_operations",
   "name": "Port and Harbor Operations",
   "shortName": "Port & Harbor Operations",
-  "naics": "488310",
-  "isReference": false
+  "naicsCode": "488310",
+  "isReference": false,
+  "rank": 5,
+  "scores": {
+    "odi": 6.57,
+    "featureFit": 5.8,
+    "constraintCompatibility": 5.5,
+    "jobCoverage": 7.5,
+    "vnHierarchy": 6.0,
+    "incumbentVulnerability": 5.5,
+    "composite": 6.16
+  },
+  "recommendation": "investigate",
+  "rationale": "Highest ODI in set (6.57 — 18/25 needs underserved, AFIR 2030 mandate creates schedule pressure) + emerging incumbent profile (5.5). Constraint penalty 5.5 (6 mitigable inc. salt-air IP66, ISPS, EU-content cells). VOB/VgV bid capability gap is binding blocker without joint-bid partner."
 }

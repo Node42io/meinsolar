@@ -1,1538 +1,981 @@
 {
-  "id": "VN_other_electric_power_generation_bess_ref",
-  "title": "VN — NAICS 221118 Other Electric Power Generation (BESS Reference)",
-  "type": "value_network",
-  "market_slug": "other_electric_power_generation_bess_ref",
-  "is_per_market": true,
-  "sections": [
+  "naicsCode": "221118",
+  "marketName": "Standalone BESS / Independent Power Producers",
+  "slug": "bess_power_generation",
+  "l7Solution": "Grid-Connected Electrical Energy Storage Ecosystem",
+  "cfjStatement": "Deliver dispatchable multi-MWh electrical energy on demand to the power system, earning revenue from flexibility, capacity, and ancillary-service markets by absorbing grid/renewable surplus and releasing it when needed",
+  "l6Systems": [
     {
-      "title": "L7 — Ecosystem / CFJ",
-      "content": "| Field | Value |\n|---|---|\n| L7 name | Grid-Connected Electrical Energy Storage Ecosystem |\n| CFJ | Deliver dispatchable multi-MWh electrical energy on demand to the power system, earning revenue from flexibility, capacity, and ancillary-service markets by absorbing grid/renewable surplus and releasing it when needed |\n| Framework | Moore 1993 — economic community of asset owners, EPC integrators, equipment OEMs, DSOs/TSOs, regulators, aggregators, O&M providers, financiers, recyclers coordinated around grid-storage outcomes |\n\n---"
-    },
-    {
-      "title": "L6 — Process Steps (Project Lifecycle)",
-      "content": "### Core L6 (sequential)\n\n| ID | Name | Job family (verb + object) | Output types served |\n|---|---|---|---|\n| L6a | Site Development & Permitting | Secure buildable grid-connected site with Baugenehmigung + fire clearance | Standalone, PV+BESS, Wind+BESS, Netzbooster, C&I-BTM, HPC-buffer |\n| L6b | Engineering & Design | Design multi-MWh storage asset to grid code + revenue model | All |\n| L6c | Procurement & Supply | Procure battery containers, PCS, MV gear, EMS, civil materials | All |\n| L6d | Construction & Integration | Install, wire, integrate BESS + PCS + MV + EMS into commissioned asset | All |\n| L6e | Commissioning & Grid-Code Certification | Energize, test, obtain VDE-AR-N 4110 / FGW TR8 plant certificate + DSO acceptance | All |\n| L6f | Operations & Dispatch | Dispatch charge/discharge against markets + customer loads over lifetime | All |\n| L6g | Decommissioning & End-of-Life | Dismantle, ship cells to second-life or recycling per EU Battery Reg./CRMA | All |\n\n### Horizontal L6 (parallel across core)\n\n| ID | Name | Role |\n|---|---|---|\n| L6H-HSE (H) | HSE & Fire Safety | Thermal-runaway containment, Feuerwehr interface, IP rating, VdS compliance |\n| L6H-QA (H) | Quality Assurance | FAT/SAT, performance guarantee testing, availability + throughput verification |\n| L6H-CYB (H) | Cybersecurity & OT | IEC 62443 / BSI KritisV / NIS2 compliance for DSO-facing assets |\n| L6H-REG (H) | Regulatory & Market Enablement | §19 StromNEV, FCR/aFRR prequalification, EU Battery Reg., tariff design |\n\n---"
-    },
-    {
-      "title": "L5 — Sellable Units per L6",
-      "content": "Horizontal L6 L5 positions omitted for brevity except where Mein Solar could serve.\n\n### L6a Site Development & Permitting\n\n| L5 | Description | Alternatives (tech/approach) |\n|---|---|---|\n| Site Acquisition & Lease Services | Greenfield/brownfield site origination | Lease, purchase, PV-site retrofit |\n| Grid-Capacity Study & DSO Application | Feasibility + Netzverträglichkeitsprüfung | In-house developer, external engineering office, DSO consultancy |\n| Environmental & Fire Permitting | BImSchG screening, VdS fire concept, Feuerwehr plan | Specialty fire-protection engineer, TÜV, Dekra |\n\n### L6b Engineering & Design\n\n| L5 | Description | Alternatives (L5 competitors) |\n|---|---|---|\n| Owner's Engineer Services | Independent technical advisor to asset owner | DNV, TÜV SÜD, TÜV NORD, Fichtner, 8.2 Ingenieurbüro |\n| Detailed System Engineering | Battery sizing, PCS selection, SLD, protection study | In-house EPC, specialist engineering firms, OEM turnkey |\n| Grid-Code Compliance Design | VDE-AR-N 4110 / FGW TR8 design package | FGW-accredited certifier, OEM engineering, independent cert engineer |\n| Fire-Protection Engineering | Hazard analysis, suppression sizing, deflagration venting | VdS-certified engineers, Dekra, TÜV |\n\n### L6c Procurement & Supply\n\n| L5 | Description | Alternatives (dominant tech split) |\n|---|---|---|\n| BESS Container Supply | 20ft/40ft containerized LFP system | **LFP 85–90%** (CATL, EVE, BYD, Sungrow PowerTitan, Tesla Megapack, SolarEast, CATL EnerC) / **NMC 10–15% declining** |\n| PCS (Power Conversion System) Supply | Bidirectional 4-quadrant inverter | **Sungrow ~21% EU lead**, SMA, Power Electronics, Ingeteam, ABB, Dynapower, KACO |\n| MV Transformer & Switchgear Supply | 10/20 kV step-up + protection | Siemens, ABB, Schneider, Eaton, Ormazabal (SF6-free trend) |\n| EMS / Dispatch Software Supply | Charge/discharge optimization layer | OEM-embedded (Tesla Autobidder, Sungrow iSolarCloud), standalone (Fluence Mosaic, Stem PowerTrack), aggregator (Entrix, Next Kraftwerke, Flexpower, Enspired) |\n| Battery Cells (L3 upstream) | LFP prismatic cells | CATL, EVE, BYD, Gotion, REPT, SVolt — concentrated in CN |\n\n### L6d Construction & Integration ← MEIN SOLAR VN SEGMENT\n\n| L5 | Description | Alternatives (incumbent integrators) |\n|---|---|---|\n| **Turnkey BESS EPC Integration Services** | Single-source EPC — site → commissioned asset | **← MEIN SOLAR PRIMARY POSITION**. Incumbents: Fluence, Tesla turnkey, Sungrow turnkey, Wärtsilä, Wärtsilä Storage, Nidec ASI, Hitachi Energy, ENGIE, BayWa r.e., Enerparc, Goldbeck Solar, GreenTech Energy |\n| Civil Works & Site Preparation | Foundations, trenching, fencing, Brandschutz walls | Regional Tiefbau contractors, Strabag, Bauer, specialty civil |\n| Mechanical/Electrical Installation | Container placement, MV/LV cabling, SCADA wiring | Electro-contractors (Elektro-Fachbetrieb), specialty HV installers |\n| Split-Contract Integration Management | Multi-vendor coordination without wrapped EPC | Owner-self, technical consultancies (DNV, Fichtner) |\n\n### L6e Commissioning & Grid-Code Certification\n\n| L5 | Description | Alternatives |\n|---|---|---|\n| FGW TR8 Plant Certification Services | Type B plant certificate dossier + DSO acceptance | TÜV NORD, TÜV SÜD, Dekra, 8.2 Ingenieurbüro, FGW-accredited engineers |\n| Unit Certification (FGW TR3) | PCS + BESS unit certificate handover | PCS OEM (FGW TR3 cert delivered with inverter), independent test labs |\n| SCADA / DSO Interface Commissioning | IEC 60870-5-104 / IEC 61850 signal handover | DSO engineering, OEM commissioning teams, specialty OT integrators |\n\n### L6f Operations & Dispatch\n\n| L5 | Description | Alternatives |\n|---|---|---|\n| Merchant Trading / Market Optimization | Intraday, FCR, aFRR, day-ahead optimization | **Entrix (~2.8 GW / 8.1 GWh EU under contract)**, Next Kraftwerke, Flexpower, Enspired, Tiko, Baywa Trading, Statkraft |\n| Asset Management Services | Revenue tracking, reporting, compliance | In-house IPP, third-party AM (Encavis, Clean Energy Capital) |\n| O&M (BESS Operations & Maintenance) | Preventive/corrective maintenance, SoC mgmt, BMS tuning | OEM O&M (Sungrow, Tesla, CATL), independent (SEVERN, GreenTech, Mein Solar O&M) |\n| Cloud Asset Performance Platform | SCADA aggregation, alarms, SLA evidence | DERMS (Trilliant, GE Digital), APM (AspenTech, OSIsoft PI) |\n\n### L6g Decommissioning & End-of-Life\n\n| L5 | Description | Alternatives |\n|---|---|---|\n| Second-Life Repurposing Services | Grade-B cells → lower-C-rate applications | Voltfang, Beeplanet Factory, Connected Energy |\n| Battery Recycling Services | Hydro/pyro metallurgical recovery (EU Battery Reg.) | Umicore, BASF/Redux, Northvolt Revolt, Librec, Li-Cycle |\n| Dismantling & Logistics | ADR-compliant cell shipment, container recovery | Specialty hazmat logistics, cell-maker take-back |\n\n---"
-    },
-    {
-      "title": "L4 — Subsystems (≥3 per L5, highlighted for Mein Solar segment)",
-      "content": "### L5: Turnkey BESS EPC Integration Services ← MEIN SOLAR\n\n| L4 Subsystem | Role |\n|---|---|\n| Project Management Office (PMO) | Schedule, risk, interface management |\n| Design Authority / Engineering Lead | SLD, protection study, integration design |\n| Procurement & Logistics Desk | Equipment sourcing, FAT coordination, shipping |\n| Civil Site Team | Foundations, trenching, fencing |\n| MV/LV Installation Crew | Cable pulling, switchgear, terminations |\n| Commissioning & Test Team | SAT, protection relay setting, trip tests |\n| Grid-Code Certification Dossier | FGW TR3/TR8 evidence + DSO acceptance package |\n| Warranty & Performance Guarantee Wrapper | Single-source kWh throughput + availability SLA |\n\n### L5: BESS Container Supply (representative)\n\n| L4 | Role |\n|---|---|\n| LFP Battery Module | Prismatic cells in mechanical module |\n| Battery Management System (BMS/BAMS/BCMS) | Cell balance, SoC, SoH, protection |\n| Thermal Management (Liquid Cooling Loop) | Temperature uniformity ±2 °C |\n| HVAC Unit | Internal setpoint maintenance |\n| Fire Detection & NOVEC Suppression | Aerosol/clean-agent + deflagration venting |\n| DC Bus & Fuses | Module-to-string DC connection |\n| Container Envelope (20/40ft ISO HC, IP54) | Mechanical/environmental protection |\n\n### L5: PCS Supply\n\n| L4 | Role |\n|---|---|\n| IGBT/SiC Power Stage | 4-quadrant conversion |\n| DC/DC Stage (optional) | Battery-to-DC-bus conditioning |\n| Inverter Controller | Q(U), cos-phi, grid-forming logic |\n| Line Filter | Harmonic suppression |\n| Cooling System | Fan or liquid-loop cooling |\n| Transformer Cabinet Interface | AC output to MV transformer |\n\n### L5: MV Transformer & Switchgear Supply\n\n| L4 | Role |\n|---|---|\n| Step-Up Transformer (0.4/10–20 kV) | Voltage transformation |\n| Ring-Main Unit (SF6-free) | MV sectioning |\n| Protection Relays (IEC 61850) | Overcurrent, NA-protection |\n| Metering Cabinet | Billing + compliance metering |\n| DSO Interface Cabinet | Remote trip, SCADA uplink |\n\n### L5: EMS Software Supply\n\n| L4 | Role |\n|---|---|\n| Forecasting Module | Price, load, solar/wind predictions |\n| Dispatch Optimizer | MILP/heuristic scheduling |\n| SoC/Degradation Controller | Cycle-aware set-pointing |\n| Market Adapter | EPEX, FCR, aFRR API |\n| SCADA Integration Layer | IEC 60870/61850 to asset |\n\n*(L4s for remaining L5 units follow same pattern: ≥3 subsystems each — see Structured Data.)*\n\n---"
-    },
-    {
-      "title": "Valid Parent-Child Transitions Check",
-      "content": "| Transition | Used? | Valid? |\n|---|---|---|\n| L7 → L6 | 11 edges (7 core + 4 horizontal) | ✅ |\n| L6 → L5 | ~28 edges | ✅ |\n| L5 → L4 | ~90 edges | ✅ |\n| Skipped L6a-L6c Sub-SoS | No — project lifecycle is flat, no intermediate sub-grouping needed | ✅ |\n\nTotal unit count: 1 L7 + 11 L6 + ~28 L5 + ~90 L4 = **~130 units** (above code target 20–40; acceptable for a flagship VN built to full L4 depth per HARD RULE).\n\n---"
-    },
-    {
-      "title": "Phase 3 — Strategic Adjacency (Steps 04e–04g)",
-      "content": "### 04e — Direct Competence Transfer Scan (LOW/MEDIUM only)\n\nPrimary position: **L5 Turnkey BESS EPC Integration** under L6d Construction & Integration.\n\n| VN Unit | Level | Competence Required | Has It? | Effort | Rationale |\n|---|---|---|---|---|---|\n| Detailed System Engineering (L6b) | L5 | SLD, protection study, sizing | YES | LOW | Mein Solar already does this for own EPC scope; unbundle as standalone service |\n| Grid-Code Compliance Design (L6b) | L5 | VDE-AR-N 4110 / FGW TR8 authority | YES | LOW | Native competence from PV-EPC incumbency |\n| Civil Works & Site Preparation (L6d) | L5 | Foundations, trenching, fire walls | YES | LOW | Already self-performed on PV-EPC |\n| MV/LV Installation (L6d) | L5 | Cabling, switchgear termination | YES | LOW | Direct carry-over from PV-EPC |\n| Commissioning / SCADA Interface (L6e) | L5 | Protection relay, DSO signal handover | YES | LOW | Already executed per BESS reference project |\n| O&M Services (L6f) | L5 | PCS service, BMS tuning, annual cert audit | PARTIAL | MEDIUM | PV-O&M org exists; BESS O&M adds BMS + SoC discipline (6–12 mo ramp) |\n| Owner's Engineer Services (L6b) | L5 | Independent technical advisor | PARTIAL | MEDIUM | Conflict-of-interest vs. own-EPC revenue; viable as separate entity |\n| FGW TR8 Plant Certification (L6e) | L5 | FGW accreditation | PARTIAL | MEDIUM | Accreditation process ~12 mo; currently subcontracted to TÜV |\n| Grid-Capacity Study (L6a) | L5 | DSO feasibility + Netzverträglichkeit | PARTIAL | MEDIUM | Often done inside EPC kickoff; unbundle as pre-EPC offering |\n| Fire-Protection Engineering (L6b) | L5 | VdS hazard analysis, suppression sizing | PARTIAL | MEDIUM | Currently subcontracted; bring in-house with VdS-certified hire |\n| *(HIGH-effort units excluded: cell/container mfg, PCS mfg, MV equipment mfg, merchant trading, recycling)* | | | | | |\n\n### 04f — Strategic Adjacency Expansion (within L6d segment)\n\nCurrent L6d siblings to Mein Solar's L5 position:\n\n| Adjacent L5 | Incumbents | Competence Gap | Investment | Strategic Fit (1–10) | Rationale |\n|---|---|---|---|---|---|\n| Civil Works & Site Prep (standalone) | Regional Tiefbau, Strabag | None meaningful — already self-performed | <6 mo, <€0.5M | 6 | Low-margin commodity; only valuable as bundled EPC input, not standalone (~90% overlap) |\n| MV/LV Installation (standalone) | Regional Elektro-Fachbetriebe, specialty HV | None meaningful — already self-performed | <6 mo, <€0.5M | 5 | Same logic; standalone sale cannibalizes EPC margin (~85% overlap) |\n| Split-Contract Integration Management | DNV, Fichtner, 8.2 Ingenieurbüro | Owner's-engineer independence posture | 6–12 mo, €0.5–1M | 4 | Direct conflict of interest with turnkey-EPC business; unlikely viable (~40% overlap) |\n\n**Verdict:** horizontal expansion within L6d is low-value — Mein Solar already occupies the most valuable L5. Real adjacency lies **cross-segment** (covered in 04e and FP-extension markets).\n\n### 04g — Vertical Move-Up Assessment\n\n| Current | Target (one up) | Must Add | Competitors at Target | Feasibility | Economic Rationale |\n|---|---|---|---|---|---|\n| L5 Turnkey EPC under L6d | **L6d Construction & Integration (own the segment)** | Already owns most of L6d via single-source EPC — arguably already there | Fluence, Tesla turnkey, Sungrow turnkey, Wärtsilä | **HIGH** | Mein Solar is definitionally the L6d integrator for its own projects; \"moving up\" means becoming the **L6d integrator for others' projects** (tier-1 EPC-for-EPC). TAM at L6d ≈ €5–8B DE BESS EPC market 2026–2030. Plausible organic path via scale-up, references, balance sheet |\n| L6d Construction & Integration | **L7 Grid-Connected Electrical Energy Storage Ecosystem** (full asset owner / IPP) | Project finance, balance sheet, merchant trading desk, multi-GW origination | RWE, EnBW, Eco Stor, Kyon Energy, Trianel, MW Storage | **LOW** | Requires fundamentally different capital structure (~€250–400/kWh × 100s MWh), merchant-trading capability (which aggregators like Entrix now outsource), and IPP sales motion. Viable only via JV or acquisition — not organic |\n\n---"
-    },
-    {
-      "title": "Company Position Marking",
-      "content": "```\nL7  Grid-Connected Electrical Energy Storage Ecosystem\n  L6d  Construction & Integration\n    L5  Turnkey BESS EPC Integration Services          ← MEIN SOLAR PRIMARY POSITION\n    L5  Civil Works & Site Preparation                 ← MEIN SOLAR SECONDARY POSITION (bundled input)\n    L5  Mechanical/Electrical Installation             ← MEIN SOLAR SECONDARY POSITION (bundled input)\n    L5  Split-Contract Integration Management\n  L6b  Engineering & Design\n    L5  Detailed System Engineering                    ← MEIN SOLAR SECONDARY POSITION (unbundle candidate)\n    L5  Grid-Code Compliance Design                    ← MEIN SOLAR SECONDARY POSITION (unbundle candidate)\n  L6e  Commissioning & Grid-Code Certification\n    L5  SCADA / DSO Interface Commissioning            ← MEIN SOLAR SECONDARY POSITION (bundled input)\n  L6f  Operations & Dispatch\n    L5  O&M (BESS Operations & Maintenance)            ← MEIN SOLAR SECONDARY POSITION (PV-O&M carry-over)\n```\n\n---"
-    },
-    {
-      "title": "QA Checklist",
-      "content": "| # | Check | Status |\n|---|---|---|\n| Q1 | CFJ industry-level (no solution-specific terms) | ✅ |\n| Q2 | No orphan nodes (all non-L7 have parent) | ✅ |\n| Q3 | Valid level transitions (no skipping) | ✅ |\n| Q4 | L4 children ≥ 2 per L5 | ✅ (≥3 for Mein Solar segment; see Structured Data for full list) |\n| Q5 | No solution-specific L7 or L6 names | ✅ (no \"lithium\", \"LFP\" etc. at L6+) |\n| Q6 | Three-question naming test (spot-check) | ✅ |\n| Q7 | Unit count 15–60 (code target) | ⚠️ ~130 — exceeds target by design per HARD RULE (full-depth to company level + all alternatives) |\n\n---"
-    },
-    {
-      "title": "Sources",
-      "content": "- [EPC Framework for BESS Projects (arXiv)](https://arxiv.org/html/2506.13281v1)\n- [Tesla vs Sungrow BESS integrator market share 2024 (Wood Mackenzie)](https://www.woodmac.com/press-releases/tesla-remains-the-top-global-producer-of-battery-energy-storage-systems-in-2024-but-sungrow-narrows-the-gap/)\n- [Battery Storage Inverter Market — SMA leader (Intel Market Research)](https://www.intelmarketresearch.com/battery-storage-inverter-market-12389)\n- [LFP to overtake NMC as dominant stationary storage chemistry (Wood Mackenzie)](https://www.woodmac.com/press-releases/lfp-to-overtake-nmc-as-dominant-stationary-storage-chemistry-by-2030/)\n- [Entrix — 2.8 GW / 8.1 GWh under EU BESS contract](https://www.entrixenergy.com/en)\n- [Stem PowerTrack EMS 100 MWh Germany (BusinessWire)](https://www.businesswire.com/news/home/20260304194318/en/Stems-PowerTrack-EMS-Selected-for-100-MWh-of-Utility-Scale-Energy-Storage-Projects-in-Germany)\n- [Next Kraftwerke × ju:niz Energy Germany BESS toll (Energy-Storage.News)](https://www.energy-storage.news/entrix-to-optimise-meags-231mwh-fully-merchant-germany-bess/)\n- [VDE-AR-N 4110 Medium Voltage TCR](https://www.vde.com/en/fnn/topics/technical-connection-rules/tcr-for-medium-voltage)\n\n---"
-    },
-    {
-      "title": "Structured Data",
-      "content": "```json\n{\n  \"component\": \"value_network_construction\",\n  \"phase\": \"02c_plus_04_combined\",\n  \"naics_code\": \"221118\",\n  \"naics_title\": \"Other Electric Power Generation\",\n  \"market_name\": \"Standalone BESS / Independent Power Producers\",\n  \"cfj_statement\": \"Deliver dispatchable multi-MWh electrical energy on demand to the power system, earning revenue from flexibility, capacity, and ancillary-service markets by absorbing grid/renewable surplus and releasing it when needed\",\n  \"l7_solution\": \"Grid-Connected Electrical Energy Storage Ecosystem\",\n  \"top_level\": \"L7\",\n  \"company_position\": {\n    \"company_name\": \"Mein Solar GmbH\",\n    \"primary_l5\": \"Turnkey BESS EPC Integration Services\",\n    \"primary_l6\": \"Construction & Integration\",\n    \"secondary_l5s\": [\n      \"Civil Works & Site Preparation\",\n      \"Mechanical/Electrical Installation\",\n      \"Detailed System Engineering\",\n      \"Grid-Code Compliance Design\",\n      \"SCADA / DSO Interface Commissioning\",\n      \"O&M (BESS Operations & Maintenance)\"\n    ]\n  },\n\n  \"units\": [\n    {\"name\": \"Grid-Connected Electrical Energy Storage Ecosystem\", \"level\": \"L7\", \"description\": \"Economic community delivering dispatchable grid storage\", \"bom_standard\": \"Moore 1993\", \"parent_name\": \"ROOT\"},\n\n    {\"name\": \"Site Development & Permitting\", \"level\": \"L6\", \"description\": \"Secure buildable grid-connected site with permits\", \"bom_standard\": \"Maier 1998\", \"parent_name\": \"Grid-Connected Electrical Energy Storage Ecosystem\"},\n    {\"name\": \"Engineering & Design\", \"level\": \"L6\", \"description\": \"Design storage asset to grid code + revenue model\", \"bom_standard\": \"Maier 1998\", \"parent_name\": \"Grid-Connected Electrical Energy Storage Ecosystem\"},\n    {\"name\": \"Procurement & Supply\", \"level\": \"L6\", \"description\": \"Source battery, PCS, MV gear, EMS, civils\", \"bom_standard\": \"Maier 1998\", \"parent_name\": \"Grid-Connected Electrical Energy Storage Ecosystem\"},\n    {\"name\": \"Construction & Integration\", \"level\": \"L6\", \"description\": \"Install, wire, integrate into commissioned asset\", \"bom_standard\": \"Maier 1998\", \"parent_name\": \"Grid-Connected Electrical Energy Storage Ecosystem\"},\n    {\"name\": \"Commissioning & Grid-Code Certification\", \"level\": \"L6\", \"description\": \"Energize, test, obtain VDE-AR-N 4110 / FGW TR8 + DSO acceptance\", \"bom_standard\": \"Maier 1998\", \"parent_name\": \"Grid-Connected Electrical Energy Storage Ecosystem\"},\n    {\"name\": \"Operations & Dispatch\", \"level\": \"L6\", \"description\": \"Dispatch against markets + loads over lifetime\", \"bom_standard\": \"Maier 1998\", \"parent_name\": \"Grid-Connected Electrical Energy Storage Ecosystem\"},\n    {\"name\": \"Decommissioning & End-of-Life\", \"level\": \"L6\", \"description\": \"Dismantle, second-life, recycle per EU Battery Reg.\", \"bom_standard\": \"Maier 1998\", \"parent_name\": \"Grid-Connected Electrical Energy Storage Ecosystem\"},\n\n    {\"name\": \"HSE & Fire Safety (H)\", \"level\": \"L6\", \"description\": \"Horizontal — thermal runaway, Feuerwehr, VdS\", \"bom_standard\": \"Maier 1998\", \"parent_name\": \"Grid-Connected Electrical Energy Storage Ecosystem\"},\n    {\"name\": \"Quality Assurance (H)\", \"level\": \"L6\", \"description\": \"Horizontal — FAT/SAT, performance guarantees\", \"bom_standard\": \"Maier 1998\", \"parent_name\": \"Grid-Connected Electrical Energy Storage Ecosystem\"},\n    {\"name\": \"Cybersecurity & OT (H)\", \"level\": \"L6\", \"description\": \"Horizontal — IEC 62443, BSI KritisV, NIS2\", \"bom_standard\": \"Maier 1998\", \"parent_name\": \"Grid-Connected Electrical Energy Storage Ecosystem\"},\n    {\"name\": \"Regulatory & Market Enablement (H)\", \"level\": \"L6\", \"description\": \"Horizontal — §19 StromNEV, FCR/aFRR prequal, EU Battery Reg.\", \"bom_standard\": \"Maier 1998\", \"parent_name\": \"Grid-Connected Electrical Energy Storage Ecosystem\"},\n\n    {\"name\": \"Site Acquisition & Lease Services\", \"level\": \"L5\", \"description\": \"Greenfield/brownfield origination\", \"bom_standard\": \"ISO 15288\", \"parent_name\": \"Site Development & Permitting\"},\n    {\"name\": \"Grid-Capacity Study & DSO Application\", \"level\": \"L5\", \"description\": \"Netzverträglichkeitsprüfung + DSO submission\", \"bom_standard\": \"ISO 15288\", \"parent_name\": \"Site Development & Permitting\"},\n    {\"name\": \"Environmental & Fire Permitting\", \"level\": \"L5\", \"description\": \"BImSchG, VdS fire concept, Feuerwehr plan\", \"bom_standard\": \"ISO 15288\", \"parent_name\": \"Site Development & Permitting\"},\n\n    {\"name\": \"Owner's Engineer Services\", \"level\": \"L5\", \"description\": \"Independent technical advisor\", \"bom_standard\": \"ISO 15288\", \"parent_name\": \"Engineering & Design\"},\n    {\"name\": \"Detailed System Engineering\", \"level\": \"L5\", \"description\": \"Sizing, SLD, protection study\", \"bom_standard\": \"ISO 15288\", \"parent_name\": \"Engineering & Design\"},\n    {\"name\": \"Grid-Code Compliance Design\", \"level\": \"L5\", \"description\": \"VDE-AR-N 4110 / FGW TR8 design package\", \"bom_standard\": \"ISO 15288\", \"parent_name\": \"Engineering & Design\"},\n    {\"name\": \"Fire-Protection Engineering\", \"level\": \"L5\", \"description\": \"Hazard analysis + deflagration venting\", \"bom_standard\": \"ISO 15288\", \"parent_name\": \"Engineering & Design\"},\n\n    {\"name\": \"BESS Container Supply\", \"level\": \"L5\", \"description\": \"20ft/40ft LFP containerized storage\", \"bom_standard\": \"ISO 15288\", \"parent_name\": \"Procurement & Supply\"},\n    {\"name\": \"PCS Supply\", \"level\": \"L5\", \"description\": \"Bidirectional 4-quadrant inverter\", \"bom_standard\": \"ISO 15288\", \"parent_name\": \"Procurement & Supply\"},\n    {\"name\": \"MV Transformer & Switchgear Supply\", \"level\": \"L5\", \"description\": \"10/20 kV step-up + protection\", \"bom_standard\": \"ISO 15288\", \"parent_name\": \"Procurement & Supply\"},\n    {\"name\": \"EMS / Dispatch Software Supply\", \"level\": \"L5\", \"description\": \"Charge/discharge optimization layer\", \"bom_standard\": \"ISO 15288\", \"parent_name\": \"Procurement & Supply\"},\n    {\"name\": \"Battery Cells Supply\", \"level\": \"L5\", \"description\": \"LFP prismatic cells (upstream)\", \"bom_standard\": \"ISO 15288\", \"parent_name\": \"Procurement & Supply\"},\n\n    {\"name\": \"Turnkey BESS EPC Integration Services\", \"level\": \"L5\", \"description\": \"Single-source EPC — site to commissioned asset\", \"bom_standard\": \"ISO 15288\", \"parent_name\": \"Construction & Integration\"},\n    {\"name\": \"Civil Works & Site Preparation\", \"level\": \"L5\", \"description\": \"Foundations, trenching, Brandschutz walls\", \"bom_standard\": \"ISO 15288\", \"parent_name\": \"Construction & Integration\"},\n    {\"name\": \"Mechanical/Electrical Installation\", \"level\": \"L5\", \"description\": \"Container placement + cabling + SCADA wiring\", \"bom_standard\": \"ISO 15288\", \"parent_name\": \"Construction & Integration\"},\n    {\"name\": \"Split-Contract Integration Management\", \"level\": \"L5\", \"description\": \"Multi-vendor coordination sans wrapped EPC\", \"bom_standard\": \"ISO 15288\", \"parent_name\": \"Construction & Integration\"},\n\n    {\"name\": \"FGW TR8 Plant Certification Services\", \"level\": \"L5\", \"description\": \"Type B plant cert dossier + DSO acceptance\", \"bom_standard\": \"ISO 15288\", \"parent_name\": \"Commissioning & Grid-Code Certification\"},\n    {\"name\": \"Unit Certification (FGW TR3)\", \"level\": \"L5\", \"description\": \"PCS + BESS unit certificate handover\", \"bom_standard\": \"ISO 15288\", \"parent_name\": \"Commissioning & Grid-Code Certification\"},\n    {\"name\": \"SCADA / DSO Interface Commissioning\", \"level\": \"L5\", \"description\": \"IEC 60870-5-104 / 61850 signal handover\", \"bom_standard\": \"ISO 15288\", \"parent_name\": \"Commissioning & Grid-Code Certification\"},\n\n    {\"name\": \"Merchant Trading / Market Optimization\", \"level\": \"L5\", \"description\": \"Intraday, FCR, aFRR, day-ahead\", \"bom_standard\": \"ISO 15288\", \"parent_name\": \"Operations & Dispatch\"},\n    {\"name\": \"Asset Management Services\", \"level\": \"L5\", \"description\": \"Revenue tracking, reporting, compliance\", \"bom_standard\": \"ISO 15288\", \"parent_name\": \"Operations & Dispatch\"},\n    {\"name\": \"O&M (BESS Operations & Maintenance)\", \"level\": \"L5\", \"description\": \"Preventive/corrective, BMS tuning, SoC mgmt\", \"bom_standard\": \"ISO 15288\", \"parent_name\": \"Operations & Dispatch\"},\n    {\"name\": \"Cloud Asset Performance Platform\", \"level\": \"L5\", \"description\": \"SCADA aggregation, SLA evidence\", \"bom_standard\": \"ISO 15288\", \"parent_name\": \"Operations & Dispatch\"},\n\n    {\"name\": \"Second-Life Repurposing Services\", \"level\": \"L5\", \"description\": \"Grade-B cells to lower-C-rate apps\", \"bom_standard\": \"ISO 15288\", \"parent_name\": \"Decommissioning & End-of-Life\"},\n    {\"name\": \"Battery Recycling Services\", \"level\": \"L5\", \"description\": \"Hydro/pyrometallurgical recovery\", \"bom_standard\": \"ISO 15288\", \"parent_name\": \"Decommissioning & End-of-Life\"},\n    {\"name\": \"Dismantling & Logistics\", \"level\": \"L5\", \"description\": \"ADR hazmat shipment + container recovery\", \"bom_standard\": \"ISO 15288\", \"parent_name\": \"Decommissioning & End-of-Life\"},\n\n    {\"name\": \"PMO\", \"level\": \"L4\", \"description\": \"Schedule, risk, interface management\", \"bom_standard\": \"INCOSE\", \"parent_name\": \"Turnkey BESS EPC Integration Services\"},\n    {\"name\": \"Design Authority\", \"level\": \"L4\", \"description\": \"SLD, protection study, integration design\", \"bom_standard\": \"INCOSE\", \"parent_name\": \"Turnkey BESS EPC Integration Services\"},\n    {\"name\": \"Procurement & Logistics Desk\", \"level\": \"L4\", \"description\": \"Equipment sourcing, FAT, shipping\", \"bom_standard\": \"INCOSE\", \"parent_name\": \"Turnkey BESS EPC Integration Services\"},\n    {\"name\": \"Civil Site Team\", \"level\": \"L4\", \"description\": \"Foundations, trenching, fencing\", \"bom_standard\": \"INCOSE\", \"parent_name\": \"Turnkey BESS EPC Integration Services\"},\n    {\"name\": \"MV/LV Installation Crew\", \"level\": \"L4\", \"description\": \"Cables, switchgear, terminations\", \"bom_standard\": \"INCOSE\", \"parent_name\": \"Turnkey BESS EPC Integration Services\"},\n    {\"name\": \"Commissioning & Test Team\", \"level\": \"L4\", \"description\": \"SAT, protection relay, trip tests\", \"bom_standard\": \"INCOSE\", \"parent_name\": \"Turnkey BESS EPC Integration Services\"},\n    {\"name\": \"Grid-Code Certification Dossier\", \"level\": \"L4\", \"description\": \"FGW TR3/TR8 + DSO acceptance evidence\", \"bom_standard\": \"INCOSE\", \"parent_name\": \"Turnkey BESS EPC Integration Services\"},\n    {\"name\": \"Warranty & Performance Guarantee Wrapper\", \"level\": \"L4\", \"description\": \"Single-source kWh + availability SLA\", \"bom_standard\": \"INCOSE\", \"parent_name\": \"Turnkey BESS EPC Integration Services\"},\n\n    {\"name\": \"LFP Battery Module\", \"level\": \"L4\", \"description\": \"Prismatic cells in mechanical module\", \"bom_standard\": \"INCOSE\", \"parent_name\": \"BESS Container Supply\"},\n    {\"name\": \"Battery Management System\", \"level\": \"L4\", \"description\": \"BMS/BAMS/BCMS stack\", \"bom_standard\": \"INCOSE\", \"parent_name\": \"BESS Container Supply\"},\n    {\"name\": \"Thermal Management Loop\", \"level\": \"L4\", \"description\": \"Liquid cooling ±2 °C\", \"bom_standard\": \"INCOSE\", \"parent_name\": \"BESS Container Supply\"},\n    {\"name\": \"HVAC Unit\", \"level\": \"L4\", \"description\": \"Internal setpoint maintenance\", \"bom_standard\": \"INCOSE\", \"parent_name\": \"BESS Container Supply\"},\n    {\"name\": \"Fire Detection & NOVEC Suppression\", \"level\": \"L4\", \"description\": \"Aerosol + deflagration venting\", \"bom_standard\": \"INCOSE\", \"parent_name\": \"BESS Container Supply\"},\n    {\"name\": \"DC Bus & Fuses\", \"level\": \"L4\", \"description\": \"Module-to-string DC connection\", \"bom_standard\": \"INCOSE\", \"parent_name\": \"BESS Container Supply\"},\n    {\"name\": \"Container Envelope\", \"level\": \"L4\", \"description\": \"20/40ft ISO HC, IP54\", \"bom_standard\": \"INCOSE\", \"parent_name\": \"BESS Container Supply\"},\n\n    {\"name\": \"IGBT/SiC Power Stage\", \"level\": \"L4\", \"description\": \"4-quadrant conversion\", \"bom_standard\": \"INCOSE\", \"parent_name\": \"PCS Supply\"},\n    {\"name\": \"Inverter Controller\", \"level\": \"L4\", \"description\": \"Q(U), cos-phi, grid-forming\", \"bom_standard\": \"INCOSE\", \"parent_name\": \"PCS Supply\"},\n    {\"name\": \"Line Filter\", \"level\": \"L4\", \"description\": \"Harmonic suppression\", \"bom_standard\": \"INCOSE\", \"parent_name\": \"PCS Supply\"},\n    {\"name\": \"PCS Cooling System\", \"level\": \"L4\", \"description\": \"Fan or liquid loop\", \"bom_standard\": \"INCOSE\", \"parent_name\": \"PCS Supply\"},\n    {\"name\": \"Transformer Cabinet Interface\", \"level\": \"L4\", \"description\": \"AC output to MV transformer\", \"bom_standard\": \"INCOSE\", \"parent_name\": \"PCS Supply\"},\n\n    {\"name\": \"Step-Up Transformer\", \"level\": \"L4\", \"description\": \"0.4/10–20 kV transformation\", \"bom_standard\": \"INCOSE\", \"parent_name\": \"MV Transformer & Switchgear Supply\"},\n    {\"name\": \"Ring-Main Unit (SF6-free)\", \"level\": \"L4\", \"description\": \"MV sectioning\", \"bom_standard\": \"INCOSE\", \"parent_name\": \"MV Transformer & Switchgear Supply\"},\n    {\"name\": \"Protection Relays (IEC 61850)\", \"level\": \"L4\", \"description\": \"Overcurrent, NA-protection\", \"bom_standard\": \"INCOSE\", \"parent_name\": \"MV Transformer & Switchgear Supply\"},\n    {\"name\": \"Metering Cabinet\", \"level\": \"L4\", \"description\": \"Billing + compliance metering\", \"bom_standard\": \"INCOSE\", \"parent_name\": \"MV Transformer & Switchgear Supply\"},\n    {\"name\": \"DSO Interface Cabinet\", \"level\": \"L4\", \"description\": \"Remote trip, SCADA uplink\", \"bom_standard\": \"INCOSE\", \"parent_name\": \"MV Transformer & Switchgear Supply\"},\n\n    {\"name\": \"Forecasting Module\", \"level\": \"L4\", \"description\": \"Price/load/renewable predictions\", \"bom_standard\": \"INCOSE\", \"parent_name\": \"EMS / Dispatch Software Supply\"},\n    {\"name\": \"Dispatch Optimizer\", \"level\": \"L4\", \"description\": \"MILP/heuristic scheduler\", \"bom_standard\": \"INCOSE\", \"parent_name\": \"EMS / Dispatch Software Supply\"},\n    {\"name\": \"SoC/Degradation Controller\", \"level\": \"L4\", \"description\": \"Cycle-aware setpointing\", \"bom_standard\": \"INCOSE\", \"parent_name\": \"EMS / Dispatch Software Supply\"},\n    {\"name\": \"Market Adapter\", \"level\": \"L4\", \"description\": \"EPEX/FCR/aFRR API\", \"bom_standard\": \"INCOSE\", \"parent_name\": \"EMS / Dispatch Software Supply\"},\n    {\"name\": \"SCADA Integration Layer\", \"level\": \"L4\", \"description\": \"IEC 60870/61850 to asset\", \"bom_standard\": \"INCOSE\", \"parent_name\": \"EMS / Dispatch Software Supply\"}\n  ],\n\n  \"l5_equipment_alternatives\": [\n    {\n      \"l5\": \"BESS Container Supply\",\n      \"alternatives\": [\n        {\"name\": \"LFP containerized (20/40ft)\", \"share_pct\": 87, \"vendors\": [\"CATL EnerC\", \"Sungrow PowerTitan\", \"Tesla Megapack\", \"BYD Cube\", \"SolarEast\", \"EVE\"]},\n        {\"name\": \"NMC containerized\", \"share_pct\": 13, \"vendors\": [\"Samsung SDI\", \"LG Energy Solution\", \"legacy installs\"]}\n      ],\n      \"confidence\": \"HIGH\",\n      \"source\": \"Wood Mackenzie 2024 BESS integrator rankings; LFP stationary chemistry dominance trend\"\n    },\n    {\n      \"l5\": \"PCS Supply\",\n      \"alternatives\": [\n        {\"name\": \"String PCS\", \"share_pct\": 55, \"vendors\": [\"Sungrow\", \"SMA\", \"Power Electronics\", \"Ingeteam\"]},\n        {\"name\": \"Central PCS\", \"share_pct\": 45, \"vendors\": [\"ABB\", \"Dynapower\", \"KACO\", \"Nidec ASI\"]}\n      ],\n      \"confidence\": \"MEDIUM\",\n      \"source\": \"Intel Market Research Battery Storage Inverter 2025-2032; Sungrow 21% EU lead 2024 per Wood Mackenzie\"\n    },\n    {\n      \"l5\": \"MV Transformer & Switchgear Supply\",\n      \"alternatives\": [\n        {\"name\": \"SF6-based MV switchgear (legacy)\", \"share_pct\": 60, \"vendors\": [\"Siemens\", \"ABB\", \"Schneider\", \"Eaton\"]},\n        {\"name\": \"SF6-free MV switchgear (emerging)\", \"share_pct\": 40, \"vendors\": [\"Siemens Blue GIS\", \"ABB AirPlus\", \"Schneider SF6-free\", \"Ormazabal\"]}\n      ],\n      \"confidence\": \"MEDIUM\",\n      \"source\": \"EU F-gas Regulation 2024 phase-out driving SF6-free adoption\"\n    },\n    {\n      \"l5\": \"EMS / Dispatch Software Supply\",\n      \"alternatives\": [\n        {\"name\": \"OEM-embedded EMS\", \"share_pct\": 50, \"vendors\": [\"Tesla Autobidder\", \"Sungrow iSolarCloud\", \"Fluence Mosaic\"]},\n        {\"name\": \"Aggregator / merchant optimizer\", \"share_pct\": 35, \"vendors\": [\"Entrix\", \"Next Kraftwerke\", \"Flexpower\", \"Enspired\", \"Stem PowerTrack\"]},\n        {\"name\": \"Independent asset EMS\", \"share_pct\": 15, \"vendors\": [\"Nodes\", \"Eleksen\", \"greenbird\", \"kisters\"]}\n      ],\n      \"confidence\": \"MEDIUM\",\n      \"source\": \"Entrix 2.8GW/8.1GWh EU contracts; Stem PowerTrack 100MWh Germany wins 2026\"\n    },\n    {\n      \"l5\": \"Turnkey BESS EPC Integration Services\",\n      \"alternatives\": [\n        {\"name\": \"OEM-led turnkey (equipment-bundled)\", \"share_pct\": 40, \"vendors\": [\"Fluence\", \"Tesla turnkey\", \"Sungrow turnkey\", \"Wärtsilä\", \"Nidec ASI\"]},\n        {\"name\": \"Pure-play BESS EPC integrator\", \"share_pct\": 30, \"vendors\": [\"GreenTech Energy\", \"Kyon Energy (asset dev + EPC)\", \"SolarEast EPC\"]},\n        {\"name\": \"Solar-EPC extension into BESS\", \"share_pct\": 20, \"vendors\": [\"BayWa r.e.\", \"Enerparc\", \"Goldbeck Solar\", \"Mein Solar\", \"ENGIE Solutions\"]},\n        {\"name\": \"Split-contract / owner-managed\", \"share_pct\": 10, \"vendors\": [\"In-house IPP engineering\", \"DNV/Fichtner PMC-led\"]}\n      ],\n      \"confidence\": \"MEDIUM\",\n      \"source\": \"Inference from Wood Mackenzie integrator share data + DE BESS EPC market observation\"\n    }\n  ],\n\n  \"horizontal_process_activation\": {\n    \"HSE & Fire Safety\": \"activates across all 7 core L6 steps — required continuously\",\n    \"Quality Assurance\": \"activates across all 7 core L6 steps — FAT at L6c, SAT at L6d/e, performance at L6f\",\n    \"Cybersecurity & OT\": \"activates L6b design → L6f operations (BSI KritisV applies post-commissioning)\",\n    \"Regulatory & Market Enablement\": \"activates L6a permitting → L6f market participation\"\n  },\n\n  \"output_type_activation\": {\n    \"output_types\": [\"Standalone BESS IPP\", \"PV+BESS Hybrid\", \"Wind+BESS Hybrid\", \"DSO Netzbooster\", \"C&I Behind-the-Meter\", \"HPC Charging Buffer\"],\n    \"notes\": \"All 7 core L6 steps activate for every output type — same lifecycle. Variation is in L5 choices: e.g., PV+BESS uses PV-hybrid inverter at L5-PCS; Netzbooster adds grid-forming mode at L5-PCS; HPC adds DC-DC coupling at L5-PCS.\"\n  },\n\n  \"strategic_adjacency\": {\n    \"direct_competence_transfer\": [\n      {\"target_l5\": \"Detailed System Engineering\", \"level\": \"L5\", \"has_it\": \"YES\", \"effort\": \"LOW\"},\n      {\"target_l5\": \"Grid-Code Compliance Design\", \"level\": \"L5\", \"has_it\": \"YES\", \"effort\": \"LOW\"},\n      {\"target_l5\": \"Civil Works & Site Preparation\", \"level\": \"L5\", \"has_it\": \"YES\", \"effort\": \"LOW\"},\n      {\"target_l5\": \"Mechanical/Electrical Installation\", \"level\": \"L5\", \"has_it\": \"YES\", \"effort\": \"LOW\"},\n      {\"target_l5\": \"SCADA / DSO Interface Commissioning\", \"level\": \"L5\", \"has_it\": \"YES\", \"effort\": \"LOW\"},\n      {\"target_l5\": \"O&M (BESS Operations & Maintenance)\", \"level\": \"L5\", \"has_it\": \"PARTIAL\", \"effort\": \"MEDIUM\"},\n      {\"target_l5\": \"Owner's Engineer Services\", \"level\": \"L5\", \"has_it\": \"PARTIAL\", \"effort\": \"MEDIUM\", \"note\": \"COI risk vs own-EPC revenue\"},\n      {\"target_l5\": \"FGW TR8 Plant Certification Services\", \"level\": \"L5\", \"has_it\": \"PARTIAL\", \"effort\": \"MEDIUM\"},\n      {\"target_l5\": \"Grid-Capacity Study & DSO Application\", \"level\": \"L5\", \"has_it\": \"PARTIAL\", \"effort\": \"MEDIUM\"},\n      {\"target_l5\": \"Fire-Protection Engineering\", \"level\": \"L5\", \"has_it\": \"PARTIAL\", \"effort\": \"MEDIUM\"}\n    ],\n    \"horizontal_adjacency_l6d\": {\n      \"verdict\": \"low_value\",\n      \"reason\": \"Mein Solar already occupies the most valuable L5 in L6d; sibling L5 units are either already self-performed (civil, MEP) or conflict with core EPC business (owner's engineer)\"\n    },\n    \"vertical_move_up\": [\n      {\"from\": \"L5 Turnkey EPC\", \"to\": \"L6d Construction & Integration (own segment across external projects)\", \"feasibility\": \"HIGH\", \"tam_hint_eur_b\": \"5-8 DE BESS EPC 2026-2030\", \"path\": \"organic scale-up + references + balance sheet\"},\n      {\"from\": \"L6d\", \"to\": \"L7 Asset Owner / IPP\", \"feasibility\": \"LOW\", \"reason\": \"Requires fundamentally different capital structure, merchant-trading capability, IPP sales motion; viable only via JV/acquisition\"}\n    ]\n  },\n\n  \"completeness\": {\n    \"l6_core_count\": 7,\n    \"l6_horizontal_count\": 4,\n    \"l5_total\": 28,\n    \"l4_total_in_json\": 35,\n    \"l4_total_extrapolated_full\": 90,\n    \"unit_count_in_structured_data\": 81,\n    \"unit_count_target_per_code\": \"20-40\",\n    \"unit_count_rationale\": \"Exceeds code target by design — HARD RULE mandates full depth to company position level with all sibling alternatives enumerated\"\n  },\n\n  \"qa\": {\n    \"Q1_cfj_industry_level\": \"PASS\",\n    \"Q2_no_orphan_nodes\": \"PASS\",\n    \"Q3_valid_transitions\": \"PASS\",\n    \"Q4_l4_per_l5_ge2\": \"PASS for Mein Solar segment; to be enriched for remaining L5s in Step 04a\",\n    \"Q5_no_solution_specific_L7_L6_names\": \"PASS (L7/L6 names contain no chemistry/brand terms)\",\n    \"Q6_three_question_naming\": \"PASS (spot-check)\",\n    \"Q7_unit_count_15_60\": \"EXCEEDS (by design per HARD RULE)\"\n  }\n}\n```"
-    }
-  ],
-  "tables": [
-    {
-      "headers": [
-        "Field",
-        "Value"
-      ],
-      "rows": [
-        {
-          "Field": "L7 name",
-          "Value": "Grid-Connected Electrical Energy Storage Ecosystem"
-        },
-        {
-          "Field": "CFJ",
-          "Value": "Deliver dispatchable multi-MWh electrical energy on demand to the power system, earning revenue from flexibility, capacity, and ancillary-service markets by absorbing grid/renewable surplus and releasing it when needed"
-        },
-        {
-          "Field": "Framework",
-          "Value": "Moore 1993 — economic community of asset owners, EPC integrators, equipment OEMs, DSOs/TSOs, regulators, aggregators, O&M providers, financiers, recyclers coordinated around grid-storage outcomes"
-        }
-      ]
-    },
-    {
-      "headers": [
-        "ID",
-        "Name",
-        "Job family (verb + object)",
-        "Output types served"
-      ],
-      "rows": [
-        {
-          "ID": "L6a",
-          "Name": "Site Development & Permitting",
-          "Job family (verb + object)": "Secure buildable grid-connected site with Baugenehmigung + fire clearance",
-          "Output types served": "Standalone, PV+BESS, Wind+BESS, Netzbooster, C&I-BTM, HPC-buffer"
-        },
-        {
-          "ID": "L6b",
-          "Name": "Engineering & Design",
-          "Job family (verb + object)": "Design multi-MWh storage asset to grid code + revenue model",
-          "Output types served": "All"
-        },
-        {
-          "ID": "L6c",
-          "Name": "Procurement & Supply",
-          "Job family (verb + object)": "Procure battery containers, PCS, MV gear, EMS, civil materials",
-          "Output types served": "All"
-        },
-        {
-          "ID": "L6d",
-          "Name": "Construction & Integration",
-          "Job family (verb + object)": "Install, wire, integrate BESS + PCS + MV + EMS into commissioned asset",
-          "Output types served": "All"
-        },
-        {
-          "ID": "L6e",
-          "Name": "Commissioning & Grid-Code Certification",
-          "Job family (verb + object)": "Energize, test, obtain VDE-AR-N 4110 / FGW TR8 plant certificate + DSO acceptance",
-          "Output types served": "All"
-        },
-        {
-          "ID": "L6f",
-          "Name": "Operations & Dispatch",
-          "Job family (verb + object)": "Dispatch charge/discharge against markets + customer loads over lifetime",
-          "Output types served": "All"
-        },
-        {
-          "ID": "L6g",
-          "Name": "Decommissioning & End-of-Life",
-          "Job family (verb + object)": "Dismantle, ship cells to second-life or recycling per EU Battery Reg./CRMA",
-          "Output types served": "All"
-        }
-      ]
-    },
-    {
-      "headers": [
-        "ID",
-        "Name",
-        "Role"
-      ],
-      "rows": [
-        {
-          "ID": "L6H-HSE (H)",
-          "Name": "HSE & Fire Safety",
-          "Role": "Thermal-runaway containment, Feuerwehr interface, IP rating, VdS compliance"
-        },
-        {
-          "ID": "L6H-QA (H)",
-          "Name": "Quality Assurance",
-          "Role": "FAT/SAT, performance guarantee testing, availability + throughput verification"
-        },
-        {
-          "ID": "L6H-CYB (H)",
-          "Name": "Cybersecurity & OT",
-          "Role": "IEC 62443 / BSI KritisV / NIS2 compliance for DSO-facing assets"
-        },
-        {
-          "ID": "L6H-REG (H)",
-          "Name": "Regulatory & Market Enablement",
-          "Role": "§19 StromNEV, FCR/aFRR prequalification, EU Battery Reg., tariff design"
-        }
-      ]
-    },
-    {
-      "headers": [
-        "L5",
-        "Description",
-        "Alternatives (tech/approach)"
-      ],
-      "rows": [
-        {
-          "L5": "Site Acquisition & Lease Services",
-          "Description": "Greenfield/brownfield site origination",
-          "Alternatives (tech/approach)": "Lease, purchase, PV-site retrofit"
-        },
-        {
-          "L5": "Grid-Capacity Study & DSO Application",
-          "Description": "Feasibility + Netzverträglichkeitsprüfung",
-          "Alternatives (tech/approach)": "In-house developer, external engineering office, DSO consultancy"
-        },
-        {
-          "L5": "Environmental & Fire Permitting",
-          "Description": "BImSchG screening, VdS fire concept, Feuerwehr plan",
-          "Alternatives (tech/approach)": "Specialty fire-protection engineer, TÜV, Dekra"
-        }
-      ]
-    },
-    {
-      "headers": [
-        "L5",
-        "Description",
-        "Alternatives (L5 competitors)"
-      ],
-      "rows": [
-        {
-          "L5": "Owner's Engineer Services",
-          "Description": "Independent technical advisor to asset owner",
-          "Alternatives (L5 competitors)": "DNV, TÜV SÜD, TÜV NORD, Fichtner, 8.2 Ingenieurbüro"
-        },
-        {
-          "L5": "Detailed System Engineering",
-          "Description": "Battery sizing, PCS selection, SLD, protection study",
-          "Alternatives (L5 competitors)": "In-house EPC, specialist engineering firms, OEM turnkey"
-        },
-        {
-          "L5": "Grid-Code Compliance Design",
-          "Description": "VDE-AR-N 4110 / FGW TR8 design package",
-          "Alternatives (L5 competitors)": "FGW-accredited certifier, OEM engineering, independent cert engineer"
-        },
-        {
-          "L5": "Fire-Protection Engineering",
-          "Description": "Hazard analysis, suppression sizing, deflagration venting",
-          "Alternatives (L5 competitors)": "VdS-certified engineers, Dekra, TÜV"
-        }
-      ]
-    },
-    {
-      "headers": [
-        "L5",
-        "Description",
-        "Alternatives (dominant tech split)"
-      ],
-      "rows": [
-        {
-          "L5": "BESS Container Supply",
-          "Description": "20ft/40ft containerized LFP system",
-          "Alternatives (dominant tech split)": "**LFP 85–90%** (CATL, EVE, BYD, Sungrow PowerTitan, Tesla Megapack, SolarEast, CATL EnerC) / **NMC 10–15% declining**"
-        },
-        {
-          "L5": "PCS (Power Conversion System) Supply",
-          "Description": "Bidirectional 4-quadrant inverter",
-          "Alternatives (dominant tech split)": "**Sungrow ~21% EU lead**, SMA, Power Electronics, Ingeteam, ABB, Dynapower, KACO"
-        },
-        {
-          "L5": "MV Transformer & Switchgear Supply",
-          "Description": "10/20 kV step-up + protection",
-          "Alternatives (dominant tech split)": "Siemens, ABB, Schneider, Eaton, Ormazabal (SF6-free trend)"
-        },
-        {
-          "L5": "EMS / Dispatch Software Supply",
-          "Description": "Charge/discharge optimization layer",
-          "Alternatives (dominant tech split)": "OEM-embedded (Tesla Autobidder, Sungrow iSolarCloud), standalone (Fluence Mosaic, Stem PowerTrack), aggregator (Entrix, Next Kraftwerke, Flexpower, Enspired)"
-        },
-        {
-          "L5": "Battery Cells (L3 upstream)",
-          "Description": "LFP prismatic cells",
-          "Alternatives (dominant tech split)": "CATL, EVE, BYD, Gotion, REPT, SVolt — concentrated in CN"
-        }
-      ]
-    },
-    {
-      "headers": [
-        "L5",
-        "Description",
-        "Alternatives (incumbent integrators)"
-      ],
-      "rows": [
-        {
-          "L5": "**Turnkey BESS EPC Integration Services**",
-          "Description": "Single-source EPC — site → commissioned asset",
-          "Alternatives (incumbent integrators)": "**← MEIN SOLAR PRIMARY POSITION**. Incumbents: Fluence, Tesla turnkey, Sungrow turnkey, Wärtsilä, Wärtsilä Storage, Nidec ASI, Hitachi Energy, ENGIE, BayWa r.e., Enerparc, Goldbeck Solar, GreenTech Energy"
-        },
-        {
-          "L5": "Civil Works & Site Preparation",
-          "Description": "Foundations, trenching, fencing, Brandschutz walls",
-          "Alternatives (incumbent integrators)": "Regional Tiefbau contractors, Strabag, Bauer, specialty civil"
-        },
-        {
-          "L5": "Mechanical/Electrical Installation",
-          "Description": "Container placement, MV/LV cabling, SCADA wiring",
-          "Alternatives (incumbent integrators)": "Electro-contractors (Elektro-Fachbetrieb), specialty HV installers"
-        },
-        {
-          "L5": "Split-Contract Integration Management",
-          "Description": "Multi-vendor coordination without wrapped EPC",
-          "Alternatives (incumbent integrators)": "Owner-self, technical consultancies (DNV, Fichtner)"
-        }
-      ]
-    },
-    {
-      "headers": [
-        "L5",
-        "Description",
-        "Alternatives"
-      ],
-      "rows": [
-        {
-          "L5": "FGW TR8 Plant Certification Services",
-          "Description": "Type B plant certificate dossier + DSO acceptance",
-          "Alternatives": "TÜV NORD, TÜV SÜD, Dekra, 8.2 Ingenieurbüro, FGW-accredited engineers"
-        },
-        {
-          "L5": "Unit Certification (FGW TR3)",
-          "Description": "PCS + BESS unit certificate handover",
-          "Alternatives": "PCS OEM (FGW TR3 cert delivered with inverter), independent test labs"
-        },
-        {
-          "L5": "SCADA / DSO Interface Commissioning",
-          "Description": "IEC 60870-5-104 / IEC 61850 signal handover",
-          "Alternatives": "DSO engineering, OEM commissioning teams, specialty OT integrators"
-        }
-      ]
-    },
-    {
-      "headers": [
-        "L5",
-        "Description",
-        "Alternatives"
-      ],
-      "rows": [
-        {
-          "L5": "Merchant Trading / Market Optimization",
-          "Description": "Intraday, FCR, aFRR, day-ahead optimization",
-          "Alternatives": "**Entrix (~2.8 GW / 8.1 GWh EU under contract)**, Next Kraftwerke, Flexpower, Enspired, Tiko, Baywa Trading, Statkraft"
-        },
-        {
-          "L5": "Asset Management Services",
-          "Description": "Revenue tracking, reporting, compliance",
-          "Alternatives": "In-house IPP, third-party AM (Encavis, Clean Energy Capital)"
-        },
-        {
-          "L5": "O&M (BESS Operations & Maintenance)",
-          "Description": "Preventive/corrective maintenance, SoC mgmt, BMS tuning",
-          "Alternatives": "OEM O&M (Sungrow, Tesla, CATL), independent (SEVERN, GreenTech, Mein Solar O&M)"
-        },
-        {
-          "L5": "Cloud Asset Performance Platform",
-          "Description": "SCADA aggregation, alarms, SLA evidence",
-          "Alternatives": "DERMS (Trilliant, GE Digital), APM (AspenTech, OSIsoft PI)"
-        }
-      ]
-    },
-    {
-      "headers": [
-        "L5",
-        "Description",
-        "Alternatives"
-      ],
-      "rows": [
-        {
-          "L5": "Second-Life Repurposing Services",
-          "Description": "Grade-B cells → lower-C-rate applications",
-          "Alternatives": "Voltfang, Beeplanet Factory, Connected Energy"
-        },
-        {
-          "L5": "Battery Recycling Services",
-          "Description": "Hydro/pyro metallurgical recovery (EU Battery Reg.)",
-          "Alternatives": "Umicore, BASF/Redux, Northvolt Revolt, Librec, Li-Cycle"
-        },
-        {
-          "L5": "Dismantling & Logistics",
-          "Description": "ADR-compliant cell shipment, container recovery",
-          "Alternatives": "Specialty hazmat logistics, cell-maker take-back"
-        }
-      ]
-    },
-    {
-      "headers": [
-        "L4 Subsystem",
-        "Role"
-      ],
-      "rows": [
-        {
-          "L4 Subsystem": "Project Management Office (PMO)",
-          "Role": "Schedule, risk, interface management"
-        },
-        {
-          "L4 Subsystem": "Design Authority / Engineering Lead",
-          "Role": "SLD, protection study, integration design"
-        },
-        {
-          "L4 Subsystem": "Procurement & Logistics Desk",
-          "Role": "Equipment sourcing, FAT coordination, shipping"
-        },
-        {
-          "L4 Subsystem": "Civil Site Team",
-          "Role": "Foundations, trenching, fencing"
-        },
-        {
-          "L4 Subsystem": "MV/LV Installation Crew",
-          "Role": "Cable pulling, switchgear, terminations"
-        },
-        {
-          "L4 Subsystem": "Commissioning & Test Team",
-          "Role": "SAT, protection relay setting, trip tests"
-        },
-        {
-          "L4 Subsystem": "Grid-Code Certification Dossier",
-          "Role": "FGW TR3/TR8 evidence + DSO acceptance package"
-        },
-        {
-          "L4 Subsystem": "Warranty & Performance Guarantee Wrapper",
-          "Role": "Single-source kWh throughput + availability SLA"
-        }
-      ]
-    },
-    {
-      "headers": [
-        "L4",
-        "Role"
-      ],
-      "rows": [
-        {
-          "L4": "LFP Battery Module",
-          "Role": "Prismatic cells in mechanical module"
-        },
-        {
-          "L4": "Battery Management System (BMS/BAMS/BCMS)",
-          "Role": "Cell balance, SoC, SoH, protection"
-        },
-        {
-          "L4": "Thermal Management (Liquid Cooling Loop)",
-          "Role": "Temperature uniformity ±2 °C"
-        },
-        {
-          "L4": "HVAC Unit",
-          "Role": "Internal setpoint maintenance"
-        },
-        {
-          "L4": "Fire Detection & NOVEC Suppression",
-          "Role": "Aerosol/clean-agent + deflagration venting"
-        },
-        {
-          "L4": "DC Bus & Fuses",
-          "Role": "Module-to-string DC connection"
-        },
-        {
-          "L4": "Container Envelope (20/40ft ISO HC, IP54)",
-          "Role": "Mechanical/environmental protection"
-        }
-      ]
-    },
-    {
-      "headers": [
-        "L4",
-        "Role"
-      ],
-      "rows": [
-        {
-          "L4": "IGBT/SiC Power Stage",
-          "Role": "4-quadrant conversion"
-        },
-        {
-          "L4": "DC/DC Stage (optional)",
-          "Role": "Battery-to-DC-bus conditioning"
-        },
-        {
-          "L4": "Inverter Controller",
-          "Role": "Q(U), cos-phi, grid-forming logic"
-        },
-        {
-          "L4": "Line Filter",
-          "Role": "Harmonic suppression"
-        },
-        {
-          "L4": "Cooling System",
-          "Role": "Fan or liquid-loop cooling"
-        },
-        {
-          "L4": "Transformer Cabinet Interface",
-          "Role": "AC output to MV transformer"
-        }
-      ]
-    },
-    {
-      "headers": [
-        "L4",
-        "Role"
-      ],
-      "rows": [
-        {
-          "L4": "Step-Up Transformer (0.4/10–20 kV)",
-          "Role": "Voltage transformation"
-        },
-        {
-          "L4": "Ring-Main Unit (SF6-free)",
-          "Role": "MV sectioning"
-        },
-        {
-          "L4": "Protection Relays (IEC 61850)",
-          "Role": "Overcurrent, NA-protection"
-        },
-        {
-          "L4": "Metering Cabinet",
-          "Role": "Billing + compliance metering"
-        },
-        {
-          "L4": "DSO Interface Cabinet",
-          "Role": "Remote trip, SCADA uplink"
-        }
-      ]
-    },
-    {
-      "headers": [
-        "L4",
-        "Role"
-      ],
-      "rows": [
-        {
-          "L4": "Forecasting Module",
-          "Role": "Price, load, solar/wind predictions"
-        },
-        {
-          "L4": "Dispatch Optimizer",
-          "Role": "MILP/heuristic scheduling"
-        },
-        {
-          "L4": "SoC/Degradation Controller",
-          "Role": "Cycle-aware set-pointing"
-        },
-        {
-          "L4": "Market Adapter",
-          "Role": "EPEX, FCR, aFRR API"
-        },
-        {
-          "L4": "SCADA Integration Layer",
-          "Role": "IEC 60870/61850 to asset"
-        }
-      ]
-    },
-    {
-      "headers": [
-        "Transition",
-        "Used?",
-        "Valid?"
-      ],
-      "rows": [
-        {
-          "Transition": "L7 → L6",
-          "Used?": "11 edges (7 core + 4 horizontal)",
-          "Valid?": "✅"
-        },
-        {
-          "Transition": "L6 → L5",
-          "Used?": "~28 edges",
-          "Valid?": "✅"
-        },
-        {
-          "Transition": "L5 → L4",
-          "Used?": "~90 edges",
-          "Valid?": "✅"
-        },
-        {
-          "Transition": "Skipped L6a-L6c Sub-SoS",
-          "Used?": "No — project lifecycle is flat, no intermediate sub-grouping needed",
-          "Valid?": "✅"
-        }
-      ]
-    },
-    {
-      "headers": [
-        "VN Unit",
-        "Level",
-        "Competence Required",
-        "Has It?",
-        "Effort",
-        "Rationale"
-      ],
-      "rows": [
-        {
-          "VN Unit": "Detailed System Engineering (L6b)",
-          "Level": "L5",
-          "Competence Required": "SLD, protection study, sizing",
-          "Has It?": "YES",
-          "Effort": "LOW",
-          "Rationale": "Mein Solar already does this for own EPC scope; unbundle as standalone service"
-        },
-        {
-          "VN Unit": "Grid-Code Compliance Design (L6b)",
-          "Level": "L5",
-          "Competence Required": "VDE-AR-N 4110 / FGW TR8 authority",
-          "Has It?": "YES",
-          "Effort": "LOW",
-          "Rationale": "Native competence from PV-EPC incumbency"
-        },
-        {
-          "VN Unit": "Civil Works & Site Preparation (L6d)",
-          "Level": "L5",
-          "Competence Required": "Foundations, trenching, fire walls",
-          "Has It?": "YES",
-          "Effort": "LOW",
-          "Rationale": "Already self-performed on PV-EPC"
-        },
-        {
-          "VN Unit": "MV/LV Installation (L6d)",
-          "Level": "L5",
-          "Competence Required": "Cabling, switchgear termination",
-          "Has It?": "YES",
-          "Effort": "LOW",
-          "Rationale": "Direct carry-over from PV-EPC"
-        },
-        {
-          "VN Unit": "Commissioning / SCADA Interface (L6e)",
-          "Level": "L5",
-          "Competence Required": "Protection relay, DSO signal handover",
-          "Has It?": "YES",
-          "Effort": "LOW",
-          "Rationale": "Already executed per BESS reference project"
-        },
-        {
-          "VN Unit": "O&M Services (L6f)",
-          "Level": "L5",
-          "Competence Required": "PCS service, BMS tuning, annual cert audit",
-          "Has It?": "PARTIAL",
-          "Effort": "MEDIUM",
-          "Rationale": "PV-O&M org exists; BESS O&M adds BMS + SoC discipline (6–12 mo ramp)"
-        },
-        {
-          "VN Unit": "Owner's Engineer Services (L6b)",
-          "Level": "L5",
-          "Competence Required": "Independent technical advisor",
-          "Has It?": "PARTIAL",
-          "Effort": "MEDIUM",
-          "Rationale": "Conflict-of-interest vs. own-EPC revenue; viable as separate entity"
-        },
-        {
-          "VN Unit": "FGW TR8 Plant Certification (L6e)",
-          "Level": "L5",
-          "Competence Required": "FGW accreditation",
-          "Has It?": "PARTIAL",
-          "Effort": "MEDIUM",
-          "Rationale": "Accreditation process ~12 mo; currently subcontracted to TÜV"
-        },
-        {
-          "VN Unit": "Grid-Capacity Study (L6a)",
-          "Level": "L5",
-          "Competence Required": "DSO feasibility + Netzverträglichkeit",
-          "Has It?": "PARTIAL",
-          "Effort": "MEDIUM",
-          "Rationale": "Often done inside EPC kickoff; unbundle as pre-EPC offering"
-        },
-        {
-          "VN Unit": "Fire-Protection Engineering (L6b)",
-          "Level": "L5",
-          "Competence Required": "VdS hazard analysis, suppression sizing",
-          "Has It?": "PARTIAL",
-          "Effort": "MEDIUM",
-          "Rationale": "Currently subcontracted; bring in-house with VdS-certified hire"
-        },
-        {
-          "VN Unit": "*(HIGH-effort units excluded: cell/container mfg, PCS mfg, MV equipment mfg, merchant trading, recycling)*",
-          "Level": "",
-          "Competence Required": "",
-          "Has It?": "",
-          "Effort": "",
-          "Rationale": ""
-        }
-      ]
-    },
-    {
-      "headers": [
-        "Adjacent L5",
-        "Incumbents",
-        "Competence Gap",
-        "Investment",
-        "Strategic Fit (1–10)",
-        "Rationale"
-      ],
-      "rows": [
-        {
-          "Adjacent L5": "Civil Works & Site Prep (standalone)",
-          "Incumbents": "Regional Tiefbau, Strabag",
-          "Competence Gap": "None meaningful — already self-performed",
-          "Investment": "<6 mo, <€0.5M",
-          "Strategic Fit (1–10)": "6",
-          "Rationale": "Low-margin commodity; only valuable as bundled EPC input, not standalone (~90% overlap)"
-        },
-        {
-          "Adjacent L5": "MV/LV Installation (standalone)",
-          "Incumbents": "Regional Elektro-Fachbetriebe, specialty HV",
-          "Competence Gap": "None meaningful — already self-performed",
-          "Investment": "<6 mo, <€0.5M",
-          "Strategic Fit (1–10)": "5",
-          "Rationale": "Same logic; standalone sale cannibalizes EPC margin (~85% overlap)"
-        },
-        {
-          "Adjacent L5": "Split-Contract Integration Management",
-          "Incumbents": "DNV, Fichtner, 8.2 Ingenieurbüro",
-          "Competence Gap": "Owner's-engineer independence posture",
-          "Investment": "6–12 mo, €0.5–1M",
-          "Strategic Fit (1–10)": "4",
-          "Rationale": "Direct conflict of interest with turnkey-EPC business; unlikely viable (~40% overlap)"
-        }
-      ]
-    },
-    {
-      "headers": [
-        "Current",
-        "Target (one up)",
-        "Must Add",
-        "Competitors at Target",
-        "Feasibility",
-        "Economic Rationale"
-      ],
-      "rows": [
-        {
-          "Current": "L5 Turnkey EPC under L6d",
-          "Target (one up)": "**L6d Construction & Integration (own the segment)**",
-          "Must Add": "Already owns most of L6d via single-source EPC — arguably already there",
-          "Competitors at Target": "Fluence, Tesla turnkey, Sungrow turnkey, Wärtsilä",
-          "Feasibility": "**HIGH**",
-          "Economic Rationale": "Mein Solar is definitionally the L6d integrator for its own projects; \"moving up\" means becoming the **L6d integrator for others' projects** (tier-1 EPC-for-EPC). TAM at L6d ≈ €5–8B DE BESS EPC market 2026–2030. Plausible organic path via scale-up, references, balance sheet"
-        },
-        {
-          "Current": "L6d Construction & Integration",
-          "Target (one up)": "**L7 Grid-Connected Electrical Energy Storage Ecosystem** (full asset owner / IPP)",
-          "Must Add": "Project finance, balance sheet, merchant trading desk, multi-GW origination",
-          "Competitors at Target": "RWE, EnBW, Eco Stor, Kyon Energy, Trianel, MW Storage",
-          "Feasibility": "**LOW**",
-          "Economic Rationale": "Requires fundamentally different capital structure (~€250–400/kWh × 100s MWh), merchant-trading capability (which aggregators like Entrix now outsource), and IPP sales motion. Viable only via JV or acquisition — not organic"
-        }
-      ]
-    },
-    {
-      "headers": [
-        "#",
-        "Check",
-        "Status"
-      ],
-      "rows": [
-        {
-          "#": "Q1",
-          "Check": "CFJ industry-level (no solution-specific terms)",
-          "Status": "✅"
-        },
-        {
-          "#": "Q2",
-          "Check": "No orphan nodes (all non-L7 have parent)",
-          "Status": "✅"
-        },
-        {
-          "#": "Q3",
-          "Check": "Valid level transitions (no skipping)",
-          "Status": "✅"
-        },
-        {
-          "#": "Q4",
-          "Check": "L4 children ≥ 2 per L5",
-          "Status": "✅ (≥3 for Mein Solar segment; see Structured Data for full list)"
-        },
-        {
-          "#": "Q5",
-          "Check": "No solution-specific L7 or L6 names",
-          "Status": "✅ (no \"lithium\", \"LFP\" etc. at L6+)"
-        },
-        {
-          "#": "Q6",
-          "Check": "Three-question naming test (spot-check)",
-          "Status": "✅"
-        },
-        {
-          "#": "Q7",
-          "Check": "Unit count 15–60 (code target)",
-          "Status": "⚠️ ~130 — exceeds target by design per HARD RULE (full-depth to company level + all alternatives)"
-        }
-      ]
-    }
-  ],
-  "entities": [
-    {
-      "component": "value_network_construction",
-      "phase": "02c_plus_04_combined",
-      "naics_code": "221118",
-      "naics_title": "Other Electric Power Generation",
-      "market_name": "Standalone BESS / Independent Power Producers",
-      "cfj_statement": "Deliver dispatchable multi-MWh electrical energy on demand to the power system, earning revenue from flexibility, capacity, and ancillary-service markets by absorbing grid/renewable surplus and releasing it when needed",
-      "l7_solution": "Grid-Connected Electrical Energy Storage Ecosystem",
-      "top_level": "L7",
-      "company_position": {
-        "company_name": "Mein Solar GmbH",
-        "primary_l5": "Turnkey BESS EPC Integration Services",
-        "primary_l6": "Construction & Integration",
-        "secondary_l5s": [
-          "Civil Works & Site Preparation",
-          "Mechanical/Electrical Installation",
-          "Detailed System Engineering",
-          "Grid-Code Compliance Design",
-          "SCADA / DSO Interface Commissioning",
-          "O&M (BESS Operations & Maintenance)"
-        ]
-      },
-      "units": [
-        {
-          "name": "Grid-Connected Electrical Energy Storage Ecosystem",
-          "level": "L7",
-          "description": "Economic community delivering dispatchable grid storage",
-          "bom_standard": "Moore 1993",
-          "parent_name": "ROOT"
-        },
-        {
-          "name": "Site Development & Permitting",
-          "level": "L6",
-          "description": "Secure buildable grid-connected site with permits",
-          "bom_standard": "Maier 1998",
-          "parent_name": "Grid-Connected Electrical Energy Storage Ecosystem"
-        },
-        {
-          "name": "Engineering & Design",
-          "level": "L6",
-          "description": "Design storage asset to grid code + revenue model",
-          "bom_standard": "Maier 1998",
-          "parent_name": "Grid-Connected Electrical Energy Storage Ecosystem"
-        },
-        {
-          "name": "Procurement & Supply",
-          "level": "L6",
-          "description": "Source battery, PCS, MV gear, EMS, civils",
-          "bom_standard": "Maier 1998",
-          "parent_name": "Grid-Connected Electrical Energy Storage Ecosystem"
-        },
-        {
-          "name": "Construction & Integration",
-          "level": "L6",
-          "description": "Install, wire, integrate into commissioned asset",
-          "bom_standard": "Maier 1998",
-          "parent_name": "Grid-Connected Electrical Energy Storage Ecosystem"
-        },
-        {
-          "name": "Commissioning & Grid-Code Certification",
-          "level": "L6",
-          "description": "Energize, test, obtain VDE-AR-N 4110 / FGW TR8 + DSO acceptance",
-          "bom_standard": "Maier 1998",
-          "parent_name": "Grid-Connected Electrical Energy Storage Ecosystem"
-        },
-        {
-          "name": "Operations & Dispatch",
-          "level": "L6",
-          "description": "Dispatch against markets + loads over lifetime",
-          "bom_standard": "Maier 1998",
-          "parent_name": "Grid-Connected Electrical Energy Storage Ecosystem"
-        },
-        {
-          "name": "Decommissioning & End-of-Life",
-          "level": "L6",
-          "description": "Dismantle, second-life, recycle per EU Battery Reg.",
-          "bom_standard": "Maier 1998",
-          "parent_name": "Grid-Connected Electrical Energy Storage Ecosystem"
-        },
-        {
-          "name": "HSE & Fire Safety (H)",
-          "level": "L6",
-          "description": "Horizontal — thermal runaway, Feuerwehr, VdS",
-          "bom_standard": "Maier 1998",
-          "parent_name": "Grid-Connected Electrical Energy Storage Ecosystem"
-        },
-        {
-          "name": "Quality Assurance (H)",
-          "level": "L6",
-          "description": "Horizontal — FAT/SAT, performance guarantees",
-          "bom_standard": "Maier 1998",
-          "parent_name": "Grid-Connected Electrical Energy Storage Ecosystem"
-        },
-        {
-          "name": "Cybersecurity & OT (H)",
-          "level": "L6",
-          "description": "Horizontal — IEC 62443, BSI KritisV, NIS2",
-          "bom_standard": "Maier 1998",
-          "parent_name": "Grid-Connected Electrical Energy Storage Ecosystem"
-        },
-        {
-          "name": "Regulatory & Market Enablement (H)",
-          "level": "L6",
-          "description": "Horizontal — §19 StromNEV, FCR/aFRR prequal, EU Battery Reg.",
-          "bom_standard": "Maier 1998",
-          "parent_name": "Grid-Connected Electrical Energy Storage Ecosystem"
-        },
-        {
+      "id": "Site Development & Permitting",
+      "name": "Site Development & Permitting",
+      "type": "Maier 1998",
+      "l5Units": [
+        {
+          "id": "Site Acquisition & Lease Services",
           "name": "Site Acquisition & Lease Services",
-          "level": "L5",
           "description": "Greenfield/brownfield origination",
-          "bom_standard": "ISO 15288",
-          "parent_name": "Site Development & Permitting"
+          "l4Subsystems": [],
+          "isProductPosition": false
         },
         {
+          "id": "Grid-Capacity Study & DSO Application",
           "name": "Grid-Capacity Study & DSO Application",
-          "level": "L5",
           "description": "Netzverträglichkeitsprüfung + DSO submission",
-          "bom_standard": "ISO 15288",
-          "parent_name": "Site Development & Permitting"
+          "l4Subsystems": [],
+          "isProductPosition": false
         },
         {
+          "id": "Environmental & Fire Permitting",
           "name": "Environmental & Fire Permitting",
-          "level": "L5",
           "description": "BImSchG, VdS fire concept, Feuerwehr plan",
-          "bom_standard": "ISO 15288",
-          "parent_name": "Site Development & Permitting"
-        },
+          "l4Subsystems": [],
+          "isProductPosition": false
+        }
+      ]
+    },
+    {
+      "id": "Engineering & Design",
+      "name": "Engineering & Design",
+      "type": "Maier 1998",
+      "l5Units": [
         {
+          "id": "Owner's Engineer Services",
           "name": "Owner's Engineer Services",
-          "level": "L5",
           "description": "Independent technical advisor",
-          "bom_standard": "ISO 15288",
-          "parent_name": "Engineering & Design"
+          "l4Subsystems": [],
+          "isProductPosition": false
         },
         {
+          "id": "Detailed System Engineering",
           "name": "Detailed System Engineering",
-          "level": "L5",
           "description": "Sizing, SLD, protection study",
-          "bom_standard": "ISO 15288",
-          "parent_name": "Engineering & Design"
+          "l4Subsystems": [],
+          "isProductPosition": false
         },
         {
+          "id": "Grid-Code Compliance Design",
           "name": "Grid-Code Compliance Design",
-          "level": "L5",
           "description": "VDE-AR-N 4110 / FGW TR8 design package",
-          "bom_standard": "ISO 15288",
-          "parent_name": "Engineering & Design"
+          "l4Subsystems": [],
+          "isProductPosition": false
         },
         {
+          "id": "Fire-Protection Engineering",
           "name": "Fire-Protection Engineering",
-          "level": "L5",
           "description": "Hazard analysis + deflagration venting",
-          "bom_standard": "ISO 15288",
-          "parent_name": "Engineering & Design"
-        },
+          "l4Subsystems": [],
+          "isProductPosition": false
+        }
+      ]
+    },
+    {
+      "id": "Procurement & Supply",
+      "name": "Procurement & Supply",
+      "type": "Maier 1998",
+      "l5Units": [
         {
+          "id": "BESS Container Supply",
           "name": "BESS Container Supply",
-          "level": "L5",
           "description": "20ft/40ft LFP containerized storage",
-          "bom_standard": "ISO 15288",
-          "parent_name": "Procurement & Supply"
+          "l4Subsystems": [
+            {
+              "id": "LFP Battery Module",
+              "name": "LFP Battery Module",
+              "description": "Prismatic cells in mechanical module"
+            },
+            {
+              "id": "Battery Management System",
+              "name": "Battery Management System",
+              "description": "BMS/BAMS/BCMS stack"
+            },
+            {
+              "id": "Thermal Management Loop",
+              "name": "Thermal Management Loop",
+              "description": "Liquid cooling ±2 °C"
+            },
+            {
+              "id": "HVAC Unit",
+              "name": "HVAC Unit",
+              "description": "Internal setpoint maintenance"
+            },
+            {
+              "id": "Fire Detection & NOVEC Suppression",
+              "name": "Fire Detection & NOVEC Suppression",
+              "description": "Aerosol + deflagration venting"
+            },
+            {
+              "id": "DC Bus & Fuses",
+              "name": "DC Bus & Fuses",
+              "description": "Module-to-string DC connection"
+            },
+            {
+              "id": "Container Envelope",
+              "name": "Container Envelope",
+              "description": "20/40ft ISO HC, IP54"
+            }
+          ],
+          "isProductPosition": false
         },
         {
+          "id": "PCS Supply",
           "name": "PCS Supply",
-          "level": "L5",
           "description": "Bidirectional 4-quadrant inverter",
-          "bom_standard": "ISO 15288",
-          "parent_name": "Procurement & Supply"
+          "l4Subsystems": [
+            {
+              "id": "IGBT/SiC Power Stage",
+              "name": "IGBT/SiC Power Stage",
+              "description": "4-quadrant conversion"
+            },
+            {
+              "id": "Inverter Controller",
+              "name": "Inverter Controller",
+              "description": "Q(U), cos-phi, grid-forming"
+            },
+            {
+              "id": "Line Filter",
+              "name": "Line Filter",
+              "description": "Harmonic suppression"
+            },
+            {
+              "id": "PCS Cooling System",
+              "name": "PCS Cooling System",
+              "description": "Fan or liquid loop"
+            },
+            {
+              "id": "Transformer Cabinet Interface",
+              "name": "Transformer Cabinet Interface",
+              "description": "AC output to MV transformer"
+            }
+          ],
+          "isProductPosition": false
         },
         {
+          "id": "MV Transformer & Switchgear Supply",
           "name": "MV Transformer & Switchgear Supply",
-          "level": "L5",
           "description": "10/20 kV step-up + protection",
-          "bom_standard": "ISO 15288",
-          "parent_name": "Procurement & Supply"
+          "l4Subsystems": [
+            {
+              "id": "Step-Up Transformer",
+              "name": "Step-Up Transformer",
+              "description": "0.4/10–20 kV transformation"
+            },
+            {
+              "id": "Ring-Main Unit (SF6-free)",
+              "name": "Ring-Main Unit (SF6-free)",
+              "description": "MV sectioning"
+            },
+            {
+              "id": "Protection Relays (IEC 61850)",
+              "name": "Protection Relays (IEC 61850)",
+              "description": "Overcurrent, NA-protection"
+            },
+            {
+              "id": "Metering Cabinet",
+              "name": "Metering Cabinet",
+              "description": "Billing + compliance metering"
+            },
+            {
+              "id": "DSO Interface Cabinet",
+              "name": "DSO Interface Cabinet",
+              "description": "Remote trip, SCADA uplink"
+            }
+          ],
+          "isProductPosition": false
         },
         {
+          "id": "EMS / Dispatch Software Supply",
           "name": "EMS / Dispatch Software Supply",
-          "level": "L5",
           "description": "Charge/discharge optimization layer",
-          "bom_standard": "ISO 15288",
-          "parent_name": "Procurement & Supply"
+          "l4Subsystems": [
+            {
+              "id": "Forecasting Module",
+              "name": "Forecasting Module",
+              "description": "Price/load/renewable predictions"
+            },
+            {
+              "id": "Dispatch Optimizer",
+              "name": "Dispatch Optimizer",
+              "description": "MILP/heuristic scheduler"
+            },
+            {
+              "id": "SoC/Degradation Controller",
+              "name": "SoC/Degradation Controller",
+              "description": "Cycle-aware setpointing"
+            },
+            {
+              "id": "Market Adapter",
+              "name": "Market Adapter",
+              "description": "EPEX/FCR/aFRR API"
+            },
+            {
+              "id": "SCADA Integration Layer",
+              "name": "SCADA Integration Layer",
+              "description": "IEC 60870/61850 to asset"
+            }
+          ],
+          "isProductPosition": false
         },
         {
+          "id": "Battery Cells Supply",
           "name": "Battery Cells Supply",
-          "level": "L5",
           "description": "LFP prismatic cells (upstream)",
-          "bom_standard": "ISO 15288",
-          "parent_name": "Procurement & Supply"
-        },
+          "l4Subsystems": [],
+          "isProductPosition": false
+        }
+      ]
+    },
+    {
+      "id": "Construction & Integration",
+      "name": "Construction & Integration",
+      "type": "Maier 1998",
+      "l5Units": [
         {
+          "id": "Turnkey BESS EPC Integration Services",
           "name": "Turnkey BESS EPC Integration Services",
-          "level": "L5",
           "description": "Single-source EPC — site to commissioned asset",
-          "bom_standard": "ISO 15288",
-          "parent_name": "Construction & Integration"
+          "l4Subsystems": [
+            {
+              "id": "PMO",
+              "name": "PMO",
+              "description": "Schedule, risk, interface management"
+            },
+            {
+              "id": "Design Authority",
+              "name": "Design Authority",
+              "description": "SLD, protection study, integration design"
+            },
+            {
+              "id": "Procurement & Logistics Desk",
+              "name": "Procurement & Logistics Desk",
+              "description": "Equipment sourcing, FAT, shipping"
+            },
+            {
+              "id": "Civil Site Team",
+              "name": "Civil Site Team",
+              "description": "Foundations, trenching, fencing"
+            },
+            {
+              "id": "MV/LV Installation Crew",
+              "name": "MV/LV Installation Crew",
+              "description": "Cables, switchgear, terminations"
+            },
+            {
+              "id": "Commissioning & Test Team",
+              "name": "Commissioning & Test Team",
+              "description": "SAT, protection relay, trip tests"
+            },
+            {
+              "id": "Grid-Code Certification Dossier",
+              "name": "Grid-Code Certification Dossier",
+              "description": "FGW TR3/TR8 + DSO acceptance evidence"
+            },
+            {
+              "id": "Warranty & Performance Guarantee Wrapper",
+              "name": "Warranty & Performance Guarantee Wrapper",
+              "description": "Single-source kWh + availability SLA"
+            }
+          ],
+          "isProductPosition": false
         },
         {
+          "id": "Civil Works & Site Preparation",
           "name": "Civil Works & Site Preparation",
-          "level": "L5",
           "description": "Foundations, trenching, Brandschutz walls",
-          "bom_standard": "ISO 15288",
-          "parent_name": "Construction & Integration"
+          "l4Subsystems": [],
+          "isProductPosition": false
         },
         {
+          "id": "Mechanical/Electrical Installation",
           "name": "Mechanical/Electrical Installation",
-          "level": "L5",
           "description": "Container placement + cabling + SCADA wiring",
-          "bom_standard": "ISO 15288",
-          "parent_name": "Construction & Integration"
+          "l4Subsystems": [],
+          "isProductPosition": false
         },
         {
+          "id": "Split-Contract Integration Management",
           "name": "Split-Contract Integration Management",
-          "level": "L5",
           "description": "Multi-vendor coordination sans wrapped EPC",
-          "bom_standard": "ISO 15288",
-          "parent_name": "Construction & Integration"
-        },
+          "l4Subsystems": [],
+          "isProductPosition": false
+        }
+      ]
+    },
+    {
+      "id": "Commissioning & Grid-Code Certification",
+      "name": "Commissioning & Grid-Code Certification",
+      "type": "Maier 1998",
+      "l5Units": [
         {
+          "id": "FGW TR8 Plant Certification Services",
           "name": "FGW TR8 Plant Certification Services",
-          "level": "L5",
           "description": "Type B plant cert dossier + DSO acceptance",
-          "bom_standard": "ISO 15288",
-          "parent_name": "Commissioning & Grid-Code Certification"
+          "l4Subsystems": [],
+          "isProductPosition": false
         },
         {
+          "id": "Unit Certification (FGW TR3)",
           "name": "Unit Certification (FGW TR3)",
-          "level": "L5",
           "description": "PCS + BESS unit certificate handover",
-          "bom_standard": "ISO 15288",
-          "parent_name": "Commissioning & Grid-Code Certification"
+          "l4Subsystems": [],
+          "isProductPosition": false
         },
         {
+          "id": "SCADA / DSO Interface Commissioning",
           "name": "SCADA / DSO Interface Commissioning",
-          "level": "L5",
           "description": "IEC 60870-5-104 / 61850 signal handover",
-          "bom_standard": "ISO 15288",
-          "parent_name": "Commissioning & Grid-Code Certification"
-        },
+          "l4Subsystems": [],
+          "isProductPosition": false
+        }
+      ]
+    },
+    {
+      "id": "Operations & Dispatch",
+      "name": "Operations & Dispatch",
+      "type": "Maier 1998",
+      "l5Units": [
         {
+          "id": "Merchant Trading / Market Optimization",
           "name": "Merchant Trading / Market Optimization",
-          "level": "L5",
           "description": "Intraday, FCR, aFRR, day-ahead",
-          "bom_standard": "ISO 15288",
-          "parent_name": "Operations & Dispatch"
+          "l4Subsystems": [],
+          "isProductPosition": false
         },
         {
+          "id": "Asset Management Services",
           "name": "Asset Management Services",
-          "level": "L5",
           "description": "Revenue tracking, reporting, compliance",
-          "bom_standard": "ISO 15288",
-          "parent_name": "Operations & Dispatch"
+          "l4Subsystems": [],
+          "isProductPosition": false
         },
         {
+          "id": "O&M (BESS Operations & Maintenance)",
           "name": "O&M (BESS Operations & Maintenance)",
-          "level": "L5",
           "description": "Preventive/corrective, BMS tuning, SoC mgmt",
-          "bom_standard": "ISO 15288",
-          "parent_name": "Operations & Dispatch"
+          "l4Subsystems": [],
+          "isProductPosition": false
         },
         {
+          "id": "Cloud Asset Performance Platform",
           "name": "Cloud Asset Performance Platform",
-          "level": "L5",
           "description": "SCADA aggregation, SLA evidence",
-          "bom_standard": "ISO 15288",
-          "parent_name": "Operations & Dispatch"
-        },
+          "l4Subsystems": [],
+          "isProductPosition": false
+        }
+      ]
+    },
+    {
+      "id": "Decommissioning & End-of-Life",
+      "name": "Decommissioning & End-of-Life",
+      "type": "Maier 1998",
+      "l5Units": [
         {
+          "id": "Second-Life Repurposing Services",
           "name": "Second-Life Repurposing Services",
-          "level": "L5",
           "description": "Grade-B cells to lower-C-rate apps",
-          "bom_standard": "ISO 15288",
-          "parent_name": "Decommissioning & End-of-Life"
+          "l4Subsystems": [],
+          "isProductPosition": false
         },
         {
+          "id": "Battery Recycling Services",
           "name": "Battery Recycling Services",
-          "level": "L5",
           "description": "Hydro/pyrometallurgical recovery",
-          "bom_standard": "ISO 15288",
-          "parent_name": "Decommissioning & End-of-Life"
+          "l4Subsystems": [],
+          "isProductPosition": false
         },
         {
+          "id": "Dismantling & Logistics",
           "name": "Dismantling & Logistics",
-          "level": "L5",
           "description": "ADR hazmat shipment + container recovery",
-          "bom_standard": "ISO 15288",
-          "parent_name": "Decommissioning & End-of-Life"
-        },
-        {
-          "name": "PMO",
-          "level": "L4",
-          "description": "Schedule, risk, interface management",
-          "bom_standard": "INCOSE",
-          "parent_name": "Turnkey BESS EPC Integration Services"
-        },
-        {
-          "name": "Design Authority",
-          "level": "L4",
-          "description": "SLD, protection study, integration design",
-          "bom_standard": "INCOSE",
-          "parent_name": "Turnkey BESS EPC Integration Services"
-        },
-        {
-          "name": "Procurement & Logistics Desk",
-          "level": "L4",
-          "description": "Equipment sourcing, FAT, shipping",
-          "bom_standard": "INCOSE",
-          "parent_name": "Turnkey BESS EPC Integration Services"
-        },
-        {
-          "name": "Civil Site Team",
-          "level": "L4",
-          "description": "Foundations, trenching, fencing",
-          "bom_standard": "INCOSE",
-          "parent_name": "Turnkey BESS EPC Integration Services"
-        },
-        {
-          "name": "MV/LV Installation Crew",
-          "level": "L4",
-          "description": "Cables, switchgear, terminations",
-          "bom_standard": "INCOSE",
-          "parent_name": "Turnkey BESS EPC Integration Services"
-        },
-        {
-          "name": "Commissioning & Test Team",
-          "level": "L4",
-          "description": "SAT, protection relay, trip tests",
-          "bom_standard": "INCOSE",
-          "parent_name": "Turnkey BESS EPC Integration Services"
-        },
-        {
-          "name": "Grid-Code Certification Dossier",
-          "level": "L4",
-          "description": "FGW TR3/TR8 + DSO acceptance evidence",
-          "bom_standard": "INCOSE",
-          "parent_name": "Turnkey BESS EPC Integration Services"
-        },
-        {
-          "name": "Warranty & Performance Guarantee Wrapper",
-          "level": "L4",
-          "description": "Single-source kWh + availability SLA",
-          "bom_standard": "INCOSE",
-          "parent_name": "Turnkey BESS EPC Integration Services"
-        },
-        {
-          "name": "LFP Battery Module",
-          "level": "L4",
-          "description": "Prismatic cells in mechanical module",
-          "bom_standard": "INCOSE",
-          "parent_name": "BESS Container Supply"
-        },
-        {
-          "name": "Battery Management System",
-          "level": "L4",
-          "description": "BMS/BAMS/BCMS stack",
-          "bom_standard": "INCOSE",
-          "parent_name": "BESS Container Supply"
-        },
-        {
-          "name": "Thermal Management Loop",
-          "level": "L4",
-          "description": "Liquid cooling ±2 °C",
-          "bom_standard": "INCOSE",
-          "parent_name": "BESS Container Supply"
-        },
-        {
-          "name": "HVAC Unit",
-          "level": "L4",
-          "description": "Internal setpoint maintenance",
-          "bom_standard": "INCOSE",
-          "parent_name": "BESS Container Supply"
-        },
-        {
-          "name": "Fire Detection & NOVEC Suppression",
-          "level": "L4",
-          "description": "Aerosol + deflagration venting",
-          "bom_standard": "INCOSE",
-          "parent_name": "BESS Container Supply"
-        },
-        {
-          "name": "DC Bus & Fuses",
-          "level": "L4",
-          "description": "Module-to-string DC connection",
-          "bom_standard": "INCOSE",
-          "parent_name": "BESS Container Supply"
-        },
-        {
-          "name": "Container Envelope",
-          "level": "L4",
-          "description": "20/40ft ISO HC, IP54",
-          "bom_standard": "INCOSE",
-          "parent_name": "BESS Container Supply"
-        },
-        {
-          "name": "IGBT/SiC Power Stage",
-          "level": "L4",
-          "description": "4-quadrant conversion",
-          "bom_standard": "INCOSE",
-          "parent_name": "PCS Supply"
-        },
-        {
-          "name": "Inverter Controller",
-          "level": "L4",
-          "description": "Q(U), cos-phi, grid-forming",
-          "bom_standard": "INCOSE",
-          "parent_name": "PCS Supply"
-        },
-        {
-          "name": "Line Filter",
-          "level": "L4",
-          "description": "Harmonic suppression",
-          "bom_standard": "INCOSE",
-          "parent_name": "PCS Supply"
-        },
-        {
-          "name": "PCS Cooling System",
-          "level": "L4",
-          "description": "Fan or liquid loop",
-          "bom_standard": "INCOSE",
-          "parent_name": "PCS Supply"
-        },
-        {
-          "name": "Transformer Cabinet Interface",
-          "level": "L4",
-          "description": "AC output to MV transformer",
-          "bom_standard": "INCOSE",
-          "parent_name": "PCS Supply"
-        },
-        {
-          "name": "Step-Up Transformer",
-          "level": "L4",
-          "description": "0.4/10–20 kV transformation",
-          "bom_standard": "INCOSE",
-          "parent_name": "MV Transformer & Switchgear Supply"
-        },
-        {
-          "name": "Ring-Main Unit (SF6-free)",
-          "level": "L4",
-          "description": "MV sectioning",
-          "bom_standard": "INCOSE",
-          "parent_name": "MV Transformer & Switchgear Supply"
-        },
-        {
-          "name": "Protection Relays (IEC 61850)",
-          "level": "L4",
-          "description": "Overcurrent, NA-protection",
-          "bom_standard": "INCOSE",
-          "parent_name": "MV Transformer & Switchgear Supply"
-        },
-        {
-          "name": "Metering Cabinet",
-          "level": "L4",
-          "description": "Billing + compliance metering",
-          "bom_standard": "INCOSE",
-          "parent_name": "MV Transformer & Switchgear Supply"
-        },
-        {
-          "name": "DSO Interface Cabinet",
-          "level": "L4",
-          "description": "Remote trip, SCADA uplink",
-          "bom_standard": "INCOSE",
-          "parent_name": "MV Transformer & Switchgear Supply"
-        },
-        {
-          "name": "Forecasting Module",
-          "level": "L4",
-          "description": "Price/load/renewable predictions",
-          "bom_standard": "INCOSE",
-          "parent_name": "EMS / Dispatch Software Supply"
-        },
-        {
-          "name": "Dispatch Optimizer",
-          "level": "L4",
-          "description": "MILP/heuristic scheduler",
-          "bom_standard": "INCOSE",
-          "parent_name": "EMS / Dispatch Software Supply"
-        },
-        {
-          "name": "SoC/Degradation Controller",
-          "level": "L4",
-          "description": "Cycle-aware setpointing",
-          "bom_standard": "INCOSE",
-          "parent_name": "EMS / Dispatch Software Supply"
-        },
-        {
-          "name": "Market Adapter",
-          "level": "L4",
-          "description": "EPEX/FCR/aFRR API",
-          "bom_standard": "INCOSE",
-          "parent_name": "EMS / Dispatch Software Supply"
-        },
-        {
-          "name": "SCADA Integration Layer",
-          "level": "L4",
-          "description": "IEC 60870/61850 to asset",
-          "bom_standard": "INCOSE",
-          "parent_name": "EMS / Dispatch Software Supply"
+          "l4Subsystems": [],
+          "isProductPosition": false
         }
-      ],
-      "l5_equipment_alternatives": [
-        {
-          "l5": "BESS Container Supply",
-          "alternatives": [
-            {
-              "name": "LFP containerized (20/40ft)",
-              "share_pct": 87,
-              "vendors": [
-                "CATL EnerC",
-                "Sungrow PowerTitan",
-                "Tesla Megapack",
-                "BYD Cube",
-                "SolarEast",
-                "EVE"
-              ]
-            },
-            {
-              "name": "NMC containerized",
-              "share_pct": 13,
-              "vendors": [
-                "Samsung SDI",
-                "LG Energy Solution",
-                "legacy installs"
-              ]
-            }
-          ],
-          "confidence": "HIGH",
-          "source": "Wood Mackenzie 2024 BESS integrator rankings; LFP stationary chemistry dominance trend"
-        },
-        {
-          "l5": "PCS Supply",
-          "alternatives": [
-            {
-              "name": "String PCS",
-              "share_pct": 55,
-              "vendors": [
-                "Sungrow",
-                "SMA",
-                "Power Electronics",
-                "Ingeteam"
-              ]
-            },
-            {
-              "name": "Central PCS",
-              "share_pct": 45,
-              "vendors": [
-                "ABB",
-                "Dynapower",
-                "KACO",
-                "Nidec ASI"
-              ]
-            }
-          ],
-          "confidence": "MEDIUM",
-          "source": "Intel Market Research Battery Storage Inverter 2025-2032; Sungrow 21% EU lead 2024 per Wood Mackenzie"
-        },
-        {
-          "l5": "MV Transformer & Switchgear Supply",
-          "alternatives": [
-            {
-              "name": "SF6-based MV switchgear (legacy)",
-              "share_pct": 60,
-              "vendors": [
-                "Siemens",
-                "ABB",
-                "Schneider",
-                "Eaton"
-              ]
-            },
-            {
-              "name": "SF6-free MV switchgear (emerging)",
-              "share_pct": 40,
-              "vendors": [
-                "Siemens Blue GIS",
-                "ABB AirPlus",
-                "Schneider SF6-free",
-                "Ormazabal"
-              ]
-            }
-          ],
-          "confidence": "MEDIUM",
-          "source": "EU F-gas Regulation 2024 phase-out driving SF6-free adoption"
-        },
-        {
-          "l5": "EMS / Dispatch Software Supply",
-          "alternatives": [
-            {
-              "name": "OEM-embedded EMS",
-              "share_pct": 50,
-              "vendors": [
-                "Tesla Autobidder",
-                "Sungrow iSolarCloud",
-                "Fluence Mosaic"
-              ]
-            },
-            {
-              "name": "Aggregator / merchant optimizer",
-              "share_pct": 35,
-              "vendors": [
-                "Entrix",
-                "Next Kraftwerke",
-                "Flexpower",
-                "Enspired",
-                "Stem PowerTrack"
-              ]
-            },
-            {
-              "name": "Independent asset EMS",
-              "share_pct": 15,
-              "vendors": [
-                "Nodes",
-                "Eleksen",
-                "greenbird",
-                "kisters"
-              ]
-            }
-          ],
-          "confidence": "MEDIUM",
-          "source": "Entrix 2.8GW/8.1GWh EU contracts; Stem PowerTrack 100MWh Germany wins 2026"
-        },
-        {
-          "l5": "Turnkey BESS EPC Integration Services",
-          "alternatives": [
-            {
-              "name": "OEM-led turnkey (equipment-bundled)",
-              "share_pct": 40,
-              "vendors": [
-                "Fluence",
-                "Tesla turnkey",
-                "Sungrow turnkey",
-                "Wärtsilä",
-                "Nidec ASI"
-              ]
-            },
-            {
-              "name": "Pure-play BESS EPC integrator",
-              "share_pct": 30,
-              "vendors": [
-                "GreenTech Energy",
-                "Kyon Energy (asset dev + EPC)",
-                "SolarEast EPC"
-              ]
-            },
-            {
-              "name": "Solar-EPC extension into BESS",
-              "share_pct": 20,
-              "vendors": [
-                "BayWa r.e.",
-                "Enerparc",
-                "Goldbeck Solar",
-                "Mein Solar",
-                "ENGIE Solutions"
-              ]
-            },
-            {
-              "name": "Split-contract / owner-managed",
-              "share_pct": 10,
-              "vendors": [
-                "In-house IPP engineering",
-                "DNV/Fichtner PMC-led"
-              ]
-            }
-          ],
-          "confidence": "MEDIUM",
-          "source": "Inference from Wood Mackenzie integrator share data + DE BESS EPC market observation"
-        }
-      ],
-      "horizontal_process_activation": {
-        "HSE & Fire Safety": "activates across all 7 core L6 steps — required continuously",
-        "Quality Assurance": "activates across all 7 core L6 steps — FAT at L6c, SAT at L6d/e, performance at L6f",
-        "Cybersecurity & OT": "activates L6b design → L6f operations (BSI KritisV applies post-commissioning)",
-        "Regulatory & Market Enablement": "activates L6a permitting → L6f market participation"
-      },
-      "output_type_activation": {
-        "output_types": [
-          "Standalone BESS IPP",
-          "PV+BESS Hybrid",
-          "Wind+BESS Hybrid",
-          "DSO Netzbooster",
-          "C&I Behind-the-Meter",
-          "HPC Charging Buffer"
-        ],
-        "notes": "All 7 core L6 steps activate for every output type — same lifecycle. Variation is in L5 choices: e.g., PV+BESS uses PV-hybrid inverter at L5-PCS; Netzbooster adds grid-forming mode at L5-PCS; HPC adds DC-DC coupling at L5-PCS."
-      },
-      "strategic_adjacency": {
-        "direct_competence_transfer": [
-          {
-            "target_l5": "Detailed System Engineering",
-            "level": "L5",
-            "has_it": "YES",
-            "effort": "LOW"
-          },
-          {
-            "target_l5": "Grid-Code Compliance Design",
-            "level": "L5",
-            "has_it": "YES",
-            "effort": "LOW"
-          },
-          {
-            "target_l5": "Civil Works & Site Preparation",
-            "level": "L5",
-            "has_it": "YES",
-            "effort": "LOW"
-          },
-          {
-            "target_l5": "Mechanical/Electrical Installation",
-            "level": "L5",
-            "has_it": "YES",
-            "effort": "LOW"
-          },
-          {
-            "target_l5": "SCADA / DSO Interface Commissioning",
-            "level": "L5",
-            "has_it": "YES",
-            "effort": "LOW"
-          },
-          {
-            "target_l5": "O&M (BESS Operations & Maintenance)",
-            "level": "L5",
-            "has_it": "PARTIAL",
-            "effort": "MEDIUM"
-          },
-          {
-            "target_l5": "Owner's Engineer Services",
-            "level": "L5",
-            "has_it": "PARTIAL",
-            "effort": "MEDIUM",
-            "note": "COI risk vs own-EPC revenue"
-          },
-          {
-            "target_l5": "FGW TR8 Plant Certification Services",
-            "level": "L5",
-            "has_it": "PARTIAL",
-            "effort": "MEDIUM"
-          },
-          {
-            "target_l5": "Grid-Capacity Study & DSO Application",
-            "level": "L5",
-            "has_it": "PARTIAL",
-            "effort": "MEDIUM"
-          },
-          {
-            "target_l5": "Fire-Protection Engineering",
-            "level": "L5",
-            "has_it": "PARTIAL",
-            "effort": "MEDIUM"
-          }
-        ],
-        "horizontal_adjacency_l6d": {
-          "verdict": "low_value",
-          "reason": "Mein Solar already occupies the most valuable L5 in L6d; sibling L5 units are either already self-performed (civil, MEP) or conflict with core EPC business (owner's engineer)"
-        },
-        "vertical_move_up": [
-          {
-            "from": "L5 Turnkey EPC",
-            "to": "L6d Construction & Integration (own segment across external projects)",
-            "feasibility": "HIGH",
-            "tam_hint_eur_b": "5-8 DE BESS EPC 2026-2030",
-            "path": "organic scale-up + references + balance sheet"
-          },
-          {
-            "from": "L6d",
-            "to": "L7 Asset Owner / IPP",
-            "feasibility": "LOW",
-            "reason": "Requires fundamentally different capital structure, merchant-trading capability, IPP sales motion; viable only via JV/acquisition"
-          }
-        ]
-      },
-      "completeness": {
-        "l6_core_count": 7,
-        "l6_horizontal_count": 4,
-        "l5_total": 28,
-        "l4_total_in_json": 35,
-        "l4_total_extrapolated_full": 90,
-        "unit_count_in_structured_data": 81,
-        "unit_count_target_per_code": "20-40",
-        "unit_count_rationale": "Exceeds code target by design — HARD RULE mandates full depth to company position level with all sibling alternatives enumerated"
-      },
-      "qa": {
-        "Q1_cfj_industry_level": "PASS",
-        "Q2_no_orphan_nodes": "PASS",
-        "Q3_valid_transitions": "PASS",
-        "Q4_l4_per_l5_ge2": "PASS for Mein Solar segment; to be enriched for remaining L5s in Step 04a",
-        "Q5_no_solution_specific_L7_L6_names": "PASS (L7/L6 names contain no chemistry/brand terms)",
-        "Q6_three_question_naming": "PASS (spot-check)",
-        "Q7_unit_count_15_60": "EXCEEDS (by design per HARD RULE)"
-      }
+      ]
+    },
+    {
+      "id": "HSE & Fire Safety (H)",
+      "name": "HSE & Fire Safety (H)",
+      "type": "Maier 1998",
+      "l5Units": []
+    },
+    {
+      "id": "Quality Assurance (H)",
+      "name": "Quality Assurance (H)",
+      "type": "Maier 1998",
+      "l5Units": []
+    },
+    {
+      "id": "Cybersecurity & OT (H)",
+      "name": "Cybersecurity & OT (H)",
+      "type": "Maier 1998",
+      "l5Units": []
+    },
+    {
+      "id": "Regulatory & Market Enablement (H)",
+      "name": "Regulatory & Market Enablement (H)",
+      "type": "Maier 1998",
+      "l5Units": []
     }
   ],
-  "has_bom": true,
-  "naics_sector_type": "non_manufacturing"
+  "vnUnits": [
+    {
+      "level": "L7",
+      "id": "Grid-Connected Electrical Energy Storage Ecosystem",
+      "name": "Grid-Connected Electrical Energy Storage Ecosystem",
+      "functionalJob": "Economic community delivering dispatchable grid storage",
+      "parentId": "ROOT",
+      "isProductPosition": false
+    },
+    {
+      "level": "L6",
+      "id": "Site Development & Permitting",
+      "name": "Site Development & Permitting",
+      "functionalJob": "Secure buildable grid-connected site with permits",
+      "parentId": "Grid-Connected Electrical Energy Storage Ecosystem",
+      "isProductPosition": false
+    },
+    {
+      "level": "L6",
+      "id": "Engineering & Design",
+      "name": "Engineering & Design",
+      "functionalJob": "Design storage asset to grid code + revenue model",
+      "parentId": "Grid-Connected Electrical Energy Storage Ecosystem",
+      "isProductPosition": false
+    },
+    {
+      "level": "L6",
+      "id": "Procurement & Supply",
+      "name": "Procurement & Supply",
+      "functionalJob": "Source battery, PCS, MV gear, EMS, civils",
+      "parentId": "Grid-Connected Electrical Energy Storage Ecosystem",
+      "isProductPosition": false
+    },
+    {
+      "level": "L6",
+      "id": "Construction & Integration",
+      "name": "Construction & Integration",
+      "functionalJob": "Install, wire, integrate into commissioned asset",
+      "parentId": "Grid-Connected Electrical Energy Storage Ecosystem",
+      "isProductPosition": false
+    },
+    {
+      "level": "L6",
+      "id": "Commissioning & Grid-Code Certification",
+      "name": "Commissioning & Grid-Code Certification",
+      "functionalJob": "Energize, test, obtain VDE-AR-N 4110 / FGW TR8 + DSO acceptance",
+      "parentId": "Grid-Connected Electrical Energy Storage Ecosystem",
+      "isProductPosition": false
+    },
+    {
+      "level": "L6",
+      "id": "Operations & Dispatch",
+      "name": "Operations & Dispatch",
+      "functionalJob": "Dispatch against markets + loads over lifetime",
+      "parentId": "Grid-Connected Electrical Energy Storage Ecosystem",
+      "isProductPosition": false
+    },
+    {
+      "level": "L6",
+      "id": "Decommissioning & End-of-Life",
+      "name": "Decommissioning & End-of-Life",
+      "functionalJob": "Dismantle, second-life, recycle per EU Battery Reg.",
+      "parentId": "Grid-Connected Electrical Energy Storage Ecosystem",
+      "isProductPosition": false
+    },
+    {
+      "level": "L6",
+      "id": "HSE & Fire Safety (H)",
+      "name": "HSE & Fire Safety (H)",
+      "functionalJob": "Horizontal — thermal runaway, Feuerwehr, VdS",
+      "parentId": "Grid-Connected Electrical Energy Storage Ecosystem",
+      "isProductPosition": false
+    },
+    {
+      "level": "L6",
+      "id": "Quality Assurance (H)",
+      "name": "Quality Assurance (H)",
+      "functionalJob": "Horizontal — FAT/SAT, performance guarantees",
+      "parentId": "Grid-Connected Electrical Energy Storage Ecosystem",
+      "isProductPosition": false
+    },
+    {
+      "level": "L6",
+      "id": "Cybersecurity & OT (H)",
+      "name": "Cybersecurity & OT (H)",
+      "functionalJob": "Horizontal — IEC 62443, BSI KritisV, NIS2",
+      "parentId": "Grid-Connected Electrical Energy Storage Ecosystem",
+      "isProductPosition": false
+    },
+    {
+      "level": "L6",
+      "id": "Regulatory & Market Enablement (H)",
+      "name": "Regulatory & Market Enablement (H)",
+      "functionalJob": "Horizontal — §19 StromNEV, FCR/aFRR prequal, EU Battery Reg.",
+      "parentId": "Grid-Connected Electrical Energy Storage Ecosystem",
+      "isProductPosition": false
+    },
+    {
+      "level": "L5",
+      "id": "Site Acquisition & Lease Services",
+      "name": "Site Acquisition & Lease Services",
+      "functionalJob": "Greenfield/brownfield origination",
+      "parentId": "Site Development & Permitting",
+      "isProductPosition": false
+    },
+    {
+      "level": "L5",
+      "id": "Grid-Capacity Study & DSO Application",
+      "name": "Grid-Capacity Study & DSO Application",
+      "functionalJob": "Netzverträglichkeitsprüfung + DSO submission",
+      "parentId": "Site Development & Permitting",
+      "isProductPosition": false
+    },
+    {
+      "level": "L5",
+      "id": "Environmental & Fire Permitting",
+      "name": "Environmental & Fire Permitting",
+      "functionalJob": "BImSchG, VdS fire concept, Feuerwehr plan",
+      "parentId": "Site Development & Permitting",
+      "isProductPosition": false
+    },
+    {
+      "level": "L5",
+      "id": "Owner's Engineer Services",
+      "name": "Owner's Engineer Services",
+      "functionalJob": "Independent technical advisor",
+      "parentId": "Engineering & Design",
+      "isProductPosition": false
+    },
+    {
+      "level": "L5",
+      "id": "Detailed System Engineering",
+      "name": "Detailed System Engineering",
+      "functionalJob": "Sizing, SLD, protection study",
+      "parentId": "Engineering & Design",
+      "isProductPosition": false
+    },
+    {
+      "level": "L5",
+      "id": "Grid-Code Compliance Design",
+      "name": "Grid-Code Compliance Design",
+      "functionalJob": "VDE-AR-N 4110 / FGW TR8 design package",
+      "parentId": "Engineering & Design",
+      "isProductPosition": false
+    },
+    {
+      "level": "L5",
+      "id": "Fire-Protection Engineering",
+      "name": "Fire-Protection Engineering",
+      "functionalJob": "Hazard analysis + deflagration venting",
+      "parentId": "Engineering & Design",
+      "isProductPosition": false
+    },
+    {
+      "level": "L5",
+      "id": "BESS Container Supply",
+      "name": "BESS Container Supply",
+      "functionalJob": "20ft/40ft LFP containerized storage",
+      "parentId": "Procurement & Supply",
+      "isProductPosition": false
+    },
+    {
+      "level": "L5",
+      "id": "PCS Supply",
+      "name": "PCS Supply",
+      "functionalJob": "Bidirectional 4-quadrant inverter",
+      "parentId": "Procurement & Supply",
+      "isProductPosition": false
+    },
+    {
+      "level": "L5",
+      "id": "MV Transformer & Switchgear Supply",
+      "name": "MV Transformer & Switchgear Supply",
+      "functionalJob": "10/20 kV step-up + protection",
+      "parentId": "Procurement & Supply",
+      "isProductPosition": false
+    },
+    {
+      "level": "L5",
+      "id": "EMS / Dispatch Software Supply",
+      "name": "EMS / Dispatch Software Supply",
+      "functionalJob": "Charge/discharge optimization layer",
+      "parentId": "Procurement & Supply",
+      "isProductPosition": false
+    },
+    {
+      "level": "L5",
+      "id": "Battery Cells Supply",
+      "name": "Battery Cells Supply",
+      "functionalJob": "LFP prismatic cells (upstream)",
+      "parentId": "Procurement & Supply",
+      "isProductPosition": false
+    },
+    {
+      "level": "L5",
+      "id": "Turnkey BESS EPC Integration Services",
+      "name": "Turnkey BESS EPC Integration Services",
+      "functionalJob": "Single-source EPC — site to commissioned asset",
+      "parentId": "Construction & Integration",
+      "isProductPosition": false
+    },
+    {
+      "level": "L5",
+      "id": "Civil Works & Site Preparation",
+      "name": "Civil Works & Site Preparation",
+      "functionalJob": "Foundations, trenching, Brandschutz walls",
+      "parentId": "Construction & Integration",
+      "isProductPosition": false
+    },
+    {
+      "level": "L5",
+      "id": "Mechanical/Electrical Installation",
+      "name": "Mechanical/Electrical Installation",
+      "functionalJob": "Container placement + cabling + SCADA wiring",
+      "parentId": "Construction & Integration",
+      "isProductPosition": false
+    },
+    {
+      "level": "L5",
+      "id": "Split-Contract Integration Management",
+      "name": "Split-Contract Integration Management",
+      "functionalJob": "Multi-vendor coordination sans wrapped EPC",
+      "parentId": "Construction & Integration",
+      "isProductPosition": false
+    },
+    {
+      "level": "L5",
+      "id": "FGW TR8 Plant Certification Services",
+      "name": "FGW TR8 Plant Certification Services",
+      "functionalJob": "Type B plant cert dossier + DSO acceptance",
+      "parentId": "Commissioning & Grid-Code Certification",
+      "isProductPosition": false
+    },
+    {
+      "level": "L5",
+      "id": "Unit Certification (FGW TR3)",
+      "name": "Unit Certification (FGW TR3)",
+      "functionalJob": "PCS + BESS unit certificate handover",
+      "parentId": "Commissioning & Grid-Code Certification",
+      "isProductPosition": false
+    },
+    {
+      "level": "L5",
+      "id": "SCADA / DSO Interface Commissioning",
+      "name": "SCADA / DSO Interface Commissioning",
+      "functionalJob": "IEC 60870-5-104 / 61850 signal handover",
+      "parentId": "Commissioning & Grid-Code Certification",
+      "isProductPosition": false
+    },
+    {
+      "level": "L5",
+      "id": "Merchant Trading / Market Optimization",
+      "name": "Merchant Trading / Market Optimization",
+      "functionalJob": "Intraday, FCR, aFRR, day-ahead",
+      "parentId": "Operations & Dispatch",
+      "isProductPosition": false
+    },
+    {
+      "level": "L5",
+      "id": "Asset Management Services",
+      "name": "Asset Management Services",
+      "functionalJob": "Revenue tracking, reporting, compliance",
+      "parentId": "Operations & Dispatch",
+      "isProductPosition": false
+    },
+    {
+      "level": "L5",
+      "id": "O&M (BESS Operations & Maintenance)",
+      "name": "O&M (BESS Operations & Maintenance)",
+      "functionalJob": "Preventive/corrective, BMS tuning, SoC mgmt",
+      "parentId": "Operations & Dispatch",
+      "isProductPosition": false
+    },
+    {
+      "level": "L5",
+      "id": "Cloud Asset Performance Platform",
+      "name": "Cloud Asset Performance Platform",
+      "functionalJob": "SCADA aggregation, SLA evidence",
+      "parentId": "Operations & Dispatch",
+      "isProductPosition": false
+    },
+    {
+      "level": "L5",
+      "id": "Second-Life Repurposing Services",
+      "name": "Second-Life Repurposing Services",
+      "functionalJob": "Grade-B cells to lower-C-rate apps",
+      "parentId": "Decommissioning & End-of-Life",
+      "isProductPosition": false
+    },
+    {
+      "level": "L5",
+      "id": "Battery Recycling Services",
+      "name": "Battery Recycling Services",
+      "functionalJob": "Hydro/pyrometallurgical recovery",
+      "parentId": "Decommissioning & End-of-Life",
+      "isProductPosition": false
+    },
+    {
+      "level": "L5",
+      "id": "Dismantling & Logistics",
+      "name": "Dismantling & Logistics",
+      "functionalJob": "ADR hazmat shipment + container recovery",
+      "parentId": "Decommissioning & End-of-Life",
+      "isProductPosition": false
+    },
+    {
+      "level": "L4",
+      "id": "PMO",
+      "name": "PMO",
+      "functionalJob": "Schedule, risk, interface management",
+      "parentId": "Turnkey BESS EPC Integration Services",
+      "isProductPosition": false
+    },
+    {
+      "level": "L4",
+      "id": "Design Authority",
+      "name": "Design Authority",
+      "functionalJob": "SLD, protection study, integration design",
+      "parentId": "Turnkey BESS EPC Integration Services",
+      "isProductPosition": false
+    },
+    {
+      "level": "L4",
+      "id": "Procurement & Logistics Desk",
+      "name": "Procurement & Logistics Desk",
+      "functionalJob": "Equipment sourcing, FAT, shipping",
+      "parentId": "Turnkey BESS EPC Integration Services",
+      "isProductPosition": false
+    },
+    {
+      "level": "L4",
+      "id": "Civil Site Team",
+      "name": "Civil Site Team",
+      "functionalJob": "Foundations, trenching, fencing",
+      "parentId": "Turnkey BESS EPC Integration Services",
+      "isProductPosition": false
+    },
+    {
+      "level": "L4",
+      "id": "MV/LV Installation Crew",
+      "name": "MV/LV Installation Crew",
+      "functionalJob": "Cables, switchgear, terminations",
+      "parentId": "Turnkey BESS EPC Integration Services",
+      "isProductPosition": false
+    },
+    {
+      "level": "L4",
+      "id": "Commissioning & Test Team",
+      "name": "Commissioning & Test Team",
+      "functionalJob": "SAT, protection relay, trip tests",
+      "parentId": "Turnkey BESS EPC Integration Services",
+      "isProductPosition": false
+    },
+    {
+      "level": "L4",
+      "id": "Grid-Code Certification Dossier",
+      "name": "Grid-Code Certification Dossier",
+      "functionalJob": "FGW TR3/TR8 + DSO acceptance evidence",
+      "parentId": "Turnkey BESS EPC Integration Services",
+      "isProductPosition": false
+    },
+    {
+      "level": "L4",
+      "id": "Warranty & Performance Guarantee Wrapper",
+      "name": "Warranty & Performance Guarantee Wrapper",
+      "functionalJob": "Single-source kWh + availability SLA",
+      "parentId": "Turnkey BESS EPC Integration Services",
+      "isProductPosition": false
+    },
+    {
+      "level": "L4",
+      "id": "LFP Battery Module",
+      "name": "LFP Battery Module",
+      "functionalJob": "Prismatic cells in mechanical module",
+      "parentId": "BESS Container Supply",
+      "isProductPosition": false
+    },
+    {
+      "level": "L4",
+      "id": "Battery Management System",
+      "name": "Battery Management System",
+      "functionalJob": "BMS/BAMS/BCMS stack",
+      "parentId": "BESS Container Supply",
+      "isProductPosition": false
+    },
+    {
+      "level": "L4",
+      "id": "Thermal Management Loop",
+      "name": "Thermal Management Loop",
+      "functionalJob": "Liquid cooling ±2 °C",
+      "parentId": "BESS Container Supply",
+      "isProductPosition": false
+    },
+    {
+      "level": "L4",
+      "id": "HVAC Unit",
+      "name": "HVAC Unit",
+      "functionalJob": "Internal setpoint maintenance",
+      "parentId": "BESS Container Supply",
+      "isProductPosition": false
+    },
+    {
+      "level": "L4",
+      "id": "Fire Detection & NOVEC Suppression",
+      "name": "Fire Detection & NOVEC Suppression",
+      "functionalJob": "Aerosol + deflagration venting",
+      "parentId": "BESS Container Supply",
+      "isProductPosition": false
+    },
+    {
+      "level": "L4",
+      "id": "DC Bus & Fuses",
+      "name": "DC Bus & Fuses",
+      "functionalJob": "Module-to-string DC connection",
+      "parentId": "BESS Container Supply",
+      "isProductPosition": false
+    },
+    {
+      "level": "L4",
+      "id": "Container Envelope",
+      "name": "Container Envelope",
+      "functionalJob": "20/40ft ISO HC, IP54",
+      "parentId": "BESS Container Supply",
+      "isProductPosition": false
+    },
+    {
+      "level": "L4",
+      "id": "IGBT/SiC Power Stage",
+      "name": "IGBT/SiC Power Stage",
+      "functionalJob": "4-quadrant conversion",
+      "parentId": "PCS Supply",
+      "isProductPosition": false
+    },
+    {
+      "level": "L4",
+      "id": "Inverter Controller",
+      "name": "Inverter Controller",
+      "functionalJob": "Q(U), cos-phi, grid-forming",
+      "parentId": "PCS Supply",
+      "isProductPosition": false
+    },
+    {
+      "level": "L4",
+      "id": "Line Filter",
+      "name": "Line Filter",
+      "functionalJob": "Harmonic suppression",
+      "parentId": "PCS Supply",
+      "isProductPosition": false
+    },
+    {
+      "level": "L4",
+      "id": "PCS Cooling System",
+      "name": "PCS Cooling System",
+      "functionalJob": "Fan or liquid loop",
+      "parentId": "PCS Supply",
+      "isProductPosition": false
+    },
+    {
+      "level": "L4",
+      "id": "Transformer Cabinet Interface",
+      "name": "Transformer Cabinet Interface",
+      "functionalJob": "AC output to MV transformer",
+      "parentId": "PCS Supply",
+      "isProductPosition": false
+    },
+    {
+      "level": "L4",
+      "id": "Step-Up Transformer",
+      "name": "Step-Up Transformer",
+      "functionalJob": "0.4/10–20 kV transformation",
+      "parentId": "MV Transformer & Switchgear Supply",
+      "isProductPosition": false
+    },
+    {
+      "level": "L4",
+      "id": "Ring-Main Unit (SF6-free)",
+      "name": "Ring-Main Unit (SF6-free)",
+      "functionalJob": "MV sectioning",
+      "parentId": "MV Transformer & Switchgear Supply",
+      "isProductPosition": false
+    },
+    {
+      "level": "L4",
+      "id": "Protection Relays (IEC 61850)",
+      "name": "Protection Relays (IEC 61850)",
+      "functionalJob": "Overcurrent, NA-protection",
+      "parentId": "MV Transformer & Switchgear Supply",
+      "isProductPosition": false
+    },
+    {
+      "level": "L4",
+      "id": "Metering Cabinet",
+      "name": "Metering Cabinet",
+      "functionalJob": "Billing + compliance metering",
+      "parentId": "MV Transformer & Switchgear Supply",
+      "isProductPosition": false
+    },
+    {
+      "level": "L4",
+      "id": "DSO Interface Cabinet",
+      "name": "DSO Interface Cabinet",
+      "functionalJob": "Remote trip, SCADA uplink",
+      "parentId": "MV Transformer & Switchgear Supply",
+      "isProductPosition": false
+    },
+    {
+      "level": "L4",
+      "id": "Forecasting Module",
+      "name": "Forecasting Module",
+      "functionalJob": "Price/load/renewable predictions",
+      "parentId": "EMS / Dispatch Software Supply",
+      "isProductPosition": false
+    },
+    {
+      "level": "L4",
+      "id": "Dispatch Optimizer",
+      "name": "Dispatch Optimizer",
+      "functionalJob": "MILP/heuristic scheduler",
+      "parentId": "EMS / Dispatch Software Supply",
+      "isProductPosition": false
+    },
+    {
+      "level": "L4",
+      "id": "SoC/Degradation Controller",
+      "name": "SoC/Degradation Controller",
+      "functionalJob": "Cycle-aware setpointing",
+      "parentId": "EMS / Dispatch Software Supply",
+      "isProductPosition": false
+    },
+    {
+      "level": "L4",
+      "id": "Market Adapter",
+      "name": "Market Adapter",
+      "functionalJob": "EPEX/FCR/aFRR API",
+      "parentId": "EMS / Dispatch Software Supply",
+      "isProductPosition": false
+    },
+    {
+      "level": "L4",
+      "id": "SCADA Integration Layer",
+      "name": "SCADA Integration Layer",
+      "functionalJob": "IEC 60870/61850 to asset",
+      "parentId": "EMS / Dispatch Software Supply",
+      "isProductPosition": false
+    }
+  ],
+  "productPosition": {
+    "level": "L5",
+    "unitId": "Turnkey BESS EPC Integration Services",
+    "unitName": "Turnkey BESS EPC Integration Services",
+    "companyName": "Mein Solar GmbH",
+    "primaryL6": "Construction & Integration",
+    "secondaryL5s": [
+      "Civil Works & Site Preparation",
+      "Mechanical/Electrical Installation",
+      "Detailed System Engineering",
+      "Grid-Code Compliance Design",
+      "SCADA / DSO Interface Commissioning",
+      "O&M (BESS Operations & Maintenance)"
+    ]
+  },
+  "sources": []
 }

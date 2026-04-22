@@ -964,8 +964,7 @@
           "rationale": "DE BESS schedule/cost risk is material given 226 GW grid queue, DSO FCA rules, supply chain FX",
           "confidence": 0.9,
           "product_related": false,
-          "pyramid_level": "P2",
-          "satisfaction_rationale": "Incumbents (Fluence/Tesla/Sungrow) offer fixed-price turnkey but embed margin buffers and change-order opacity that still leave IPP sponsors exposed to post-FID cost drift, keeping satisfaction moderate at 4/10."
+          "pyramid_level": "P2"
         },
         {
           "id": 2,
@@ -979,8 +978,7 @@
           "rationale": "Many sponsors outsource this to owner's engineer at cost; single-source EPC can fold into offer phase",
           "confidence": 0.8,
           "product_related": false,
-          "pyramid_level": "P1_Acquisition",
-          "satisfaction_rationale": "OEM-led turnkey packages bundle spec translation into the sales cycle, but IPP sponsors with bespoke grid-code or revenue-stacking requirements still need separate owner's-engineer input, yielding moderate satisfaction at 5/10."
+          "pyramid_level": "P1_Acquisition"
         },
         {
           "id": 3,
@@ -994,8 +992,7 @@
           "rationale": "Interface gaps are the #1 claim driver in split-contract delivery",
           "confidence": 0.9,
           "product_related": true,
-          "pyramid_level": "P2",
-          "satisfaction_rationale": "Incumbent OEM-turnkey wraps as single counterparty but equipment-locked — partial mitigation."
+          "pyramid_level": "P2"
         },
         {
           "id": 4,
@@ -1009,8 +1006,7 @@
           "rationale": "German TSO queue 226 GW; many connection agreements later curtailed under Flexible Connection Agreements",
           "confidence": 0.9,
           "product_related": false,
-          "pyramid_level": "P2",
-          "satisfaction_rationale": "DSO capacity shortfalls are a systemic German grid-queue issue (226 GW backlog) that no incumbent EPC fully mitigates; early-stage grid studies remain sponsor-driven, leaving satisfaction low at 4/10."
+          "pyramid_level": "P2"
         },
         {
           "id": 5,
@@ -1024,8 +1020,7 @@
           "rationale": "MV transformer lead time in DE peaked at 24+ months 2023-2025; parallelization is the main lever",
           "confidence": 0.8,
           "product_related": false,
-          "pyramid_level": "P2",
-          "satisfaction_rationale": "OEM vertically integrated supply chains (Tesla Megafactory, Sungrow in-house PCS) shorten some lead times, but MV transformer and BoP procurement remain market-constrained at 18-24 months, capping satisfaction at 5/10."
+          "pyramid_level": "P2"
         },
         {
           "id": 6,
@@ -1039,8 +1034,7 @@
           "rationale": "CRMA / EU Battery Reg. and CN-tariff exposure top of sponsor diligence in 2026",
           "confidence": 0.7,
           "product_related": false,
-          "pyramid_level": "P2",
-          "satisfaction_rationale": "No incumbent OEM meaningfully diversifies LFP cell sourcing away from Chinese suppliers; CRMA and tariff exposure remains unaddressed across the market, holding satisfaction at 4/10."
+          "pyramid_level": "P2"
         },
         {
           "id": 7,
@@ -1054,8 +1048,7 @@
           "rationale": "Split-contract forces sponsor to coordinate permits directly",
           "confidence": 0.8,
           "product_related": true,
-          "pyramid_level": "P1_Preparation",
-          "satisfaction_rationale": "OEM turnkey wraps consolidate some permit responsibility but still delegate Baugenehmigung and BImSchG to local subcontractors; the sponsor coordination burden is reduced but not eliminated, yielding satisfaction of 4/10."
+          "pyramid_level": "P1_Preparation"
         },
         {
           "id": 8,
@@ -1069,8 +1062,7 @@
           "rationale": "Feuerwehr guidance varies by Bundesland; rework common on first-of-kind site",
           "confidence": 0.8,
           "product_related": false,
-          "pyramid_level": "P2",
-          "satisfaction_rationale": "No incumbent profile has DE Feuerwehr-specific edge — hold."
+          "pyramid_level": "P2"
         },
         {
           "id": 9,
@@ -1084,8 +1076,7 @@
           "rationale": "Managed via early site survey; mature industry practice",
           "confidence": 0.7,
           "product_related": false,
-          "pyramid_level": "P2",
-          "satisfaction_rationale": "Geotechnical risk management is mature standard practice in DE infrastructure; most EPC contractors include early site surveys, keeping civil rework rates low and satisfaction at 5/10."
+          "pyramid_level": "P2"
         },
         {
           "id": 10,
@@ -1099,8 +1090,7 @@
           "rationale": "First-trip failures add 2-4 weeks + DSO re-attendance fees",
           "confidence": 0.8,
           "product_related": false,
-          "pyramid_level": "P2",
-          "satisfaction_rationale": "FAT/SAT relay-setting failures are procedural rather than systemic; incumbent OEMs with factory-tested PCS integration reduce but do not eliminate first-trip risk, leaving satisfaction moderate at 5/10."
+          "pyramid_level": "P2"
         },
         {
           "id": 11,
@@ -1114,8 +1104,7 @@
           "rationale": "FGW TR3 gaps are the #1 cert-delay cause; requires proactive dossier discipline",
           "confidence": 0.85,
           "product_related": false,
-          "pyramid_level": "P2",
-          "satisfaction_rationale": "Fluence uses local subcontractor for DE cert; OEM incumbents have no DE-cert edge — hold."
+          "pyramid_level": "P2"
         },
         {
           "id": 12,
@@ -1129,8 +1118,7 @@
           "rationale": "COD slip triggers lender-DSCR covenants, lost revenue window, LD clauses",
           "confidence": 0.9,
           "product_related": false,
-          "pyramid_level": "P2",
-          "satisfaction_rationale": "COD-window adherence depends on DSO scheduling, grid-queue position, and permit timelines largely outside EPC control; incumbent track records are mixed, keeping satisfaction at 4/10."
+          "pyramid_level": "P2"
         },
         {
           "id": 13,
@@ -1144,8 +1132,7 @@
           "rationale": "Re-triggered DSO cycle can cost 6-10 weeks",
           "confidence": 0.8,
           "product_related": false,
-          "pyramid_level": "P2",
-          "satisfaction_rationale": "No incumbent profile addresses DSO-test-failure recovery specifically — hold."
+          "pyramid_level": "P2"
         },
         {
           "id": 14,
@@ -1159,8 +1146,7 @@
           "rationale": "Common error mode on first-of-site builds; procedural fix",
           "confidence": 0.8,
           "product_related": false,
-          "pyramid_level": "P2",
-          "satisfaction_rationale": "Phase-rotation and protection-coordination errors are well-understood failure modes with established commissioning protocols; incumbent PCS-transformer packages reduce incidence, supporting a satisfaction of 5/10."
+          "pyramid_level": "P2"
         },
         {
           "id": 15,
@@ -1174,8 +1160,7 @@
           "rationale": "Late notification prevents sponsor mitigation; opacity in traditional EPC reporting",
           "confidence": 0.75,
           "product_related": false,
-          "pyramid_level": "P1_Usage",
-          "satisfaction_rationale": "Schedule transparency varies widely across incumbent EPC providers; OEM-turnkey reporting is often opaque on subcontractor milestones, leaving IPP sponsors with limited early-warning capability at 4/10 satisfaction."
+          "pyramid_level": "P1_Usage"
         },
         {
           "id": 16,
@@ -1189,8 +1174,7 @@
           "rationale": "Divergence erodes lender confidence and triggers extra audit cycles",
           "confidence": 0.7,
           "product_related": false,
-          "pyramid_level": "P4",
-          "satisfaction_rationale": "OEM status reporting and independent owner's-engineer findings diverge primarily on BMS and thermal metrics; standardized KPI frameworks are emerging but not yet universal, yielding moderate satisfaction at 5/10."
+          "pyramid_level": "P4"
         },
         {
           "id": 17,
@@ -1204,8 +1188,7 @@
           "rationale": "DSO parameter changes (FCA-era) now routine; slow response extends commissioning",
           "confidence": 0.75,
           "product_related": false,
-          "pyramid_level": "P2",
-          "satisfaction_rationale": "DSO grid-code parameter changes under FCA-era rules are becoming routine in DE; most EPC contractors can process changes but timelines vary by vendor responsiveness, leaving satisfaction at 4/10."
+          "pyramid_level": "P2"
         },
         {
           "id": 18,
@@ -1219,8 +1202,7 @@
           "rationale": "OEM-led turnkey (A2) frequently price-locks the owner via equipment dependency",
           "confidence": 0.8,
           "product_related": true,
-          "pyramid_level": "P1_Acquisition",
-          "satisfaction_rationale": "OEM incumbent weakness; incumbent sat lowered."
+          "pyramid_level": "P1_Acquisition"
         },
         {
           "id": 19,
@@ -1234,8 +1216,7 @@
           "rationale": "Each 1 pp RTE = ~0.37% revenue; LD typically 2–4× kWh-shortfall damages",
           "confidence": 0.85,
           "product_related": false,
-          "pyramid_level": "P2",
-          "satisfaction_rationale": "OEM native PCS-BMS integration tighter — raised."
+          "pyramid_level": "P2"
         },
         {
           "id": 20,
@@ -1249,8 +1230,7 @@
           "rationale": "Availability below 97-98% breaches standard LD threshold; cost scales with downtime hours",
           "confidence": 0.85,
           "product_related": false,
-          "pyramid_level": "P2",
-          "satisfaction_rationale": "Year-1 availability above 97% is achievable with OEM-integrated BMS and thermal management, but first-of-kind sites and commissioning-phase teething issues still create LD exposure, keeping satisfaction at 5/10."
+          "pyramid_level": "P2"
         },
         {
           "id": 21,
@@ -1264,8 +1244,7 @@
           "rationale": "Split-contract (A4) forces sponsor into cross-vendor dispute; single-source EPC wraps this",
           "confidence": 0.85,
           "product_related": true,
-          "pyramid_level": "P1_Maintenance",
-          "satisfaction_rationale": "OEM turnkey mitigates partially (single counterparty) — raised."
+          "pyramid_level": "P1_Maintenance"
         },
         {
           "id": 22,
@@ -1279,8 +1258,7 @@
           "rationale": "SLA-audit gaps are the emerging friction point as BESS SLAs mature",
           "confidence": 0.75,
           "product_related": false,
-          "pyramid_level": "P2",
-          "satisfaction_rationale": "OEM-native BMS telemetry better than arm's-length integrator — raised."
+          "pyramid_level": "P2"
         }
       ],
       "p3_p5_needs": [

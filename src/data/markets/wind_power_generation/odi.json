@@ -1,1437 +1,457 @@
 {
-  "id": "ODI_wind_electric_power_generation_ibisworld",
-  "title": "ODI Matrix — NAICS 221115 Wind Electric Power Generation",
-  "type": "odi_matrix",
-  "market_slug": "wind_electric_power_generation_ibisworld",
-  "is_per_market": true,
-  "sections": [
+  "naicsCode": "221115",
+  "marketName": "Wind+BESS Hybrid Parks",
+  "slug": "wind_power_generation",
+  "incumbentAnchor": "",
+  "summary": {
+    "totalNeeds": 34,
+    "underservedCount": 13,
+    "overservedCount": 0,
+    "avgOpportunityScore": 11.5
+  },
+  "needs": [
     {
-      "title": "Step 1 — Error statements gathered",
-      "content": "| Source | Count | IDs |\n|---|---|---|\n| Step 06 market needs (P1/P2) | 21 | N1–N21 |\n| Step 06 bridge needs (P3–P5) | 3 | N22, N23, N24 |\n| Step 10 product-related needs (affected_markets ⊇ 221115) | 10 | PRN1–PRN10 |\n| **Total scored entries** | **34** | |\n\nStep-10 injections carry `job_step_number=0`, `job_step_name=\"product_constraint\"`, `impact_category=\"reliability\"`, `product_related=true`.\n\n---"
+      "id": "N1",
+      "statement": "Minimize the likelihood of undersizing BESS capacity by >15% relative to curtailment-capture potential due to incomplete site wind-yield and congestion-hour data",
+      "jobStep": "DEFINE",
+      "importance": 9.0,
+      "satisfaction": 4.0,
+      "opportunity": 14.0,
+      "isUnderserved": true,
+      "isOverserved": false,
+      "productRelated": false,
+      "impactCategory": "reliability",
+      "recalibrationNote": ""
     },
     {
-      "title": "Step 2 — Satisfaction recalibration (incumbent-anchored)",
-      "content": "**Anchors:** Fluence (BESS turnkey, grid-forming ref) · Wärtsilä GEMS (mature dispatch EMS) · Tesla Megapack (product-with-install) · Siemens Gamesa Storage (wind-OEM, grid-forming ref) · utility in-house EPC (EnBW / RWE / Vattenfall).\n\n### Recalibration deltas (only entries whose satisfaction moved)\n\n| # | Statement (short) | Sat₀ | Sat₁ | Rationale (incumbent evidence) |\n|---|---|---|---|---|\n| N2 | Bankable dispatch-revenue model | 3 | 4 | Wärtsilä GEMS / Fluence Mosaic ship revenue-stack modeling; still gap vs. bankable single-study. |\n| N12 | Grid-forming cert gap (2026 inertia) | 3 | 4 | Fluence + SGRE have public grid-forming reference plants; field is maturing. |\n| N13 | aFRR/FCR <30 s response | 6 | 7 | Mature across incumbents; productized in GEMS/Mosaic. |\n| N14 | Curtailment capture >90% | 5 | 6 | Curtailment strategies productized at utility scale (Wärtsilä, Fluence). |\n| N15 | PCS FRT trip (VDE-AR-N 4110) | 6 | 7 | Fluence / SGRE reference sites pass FRT reliably. |\n| N18 | Re-tune EMS effort | 4 | 5 | GEMS / Mosaic ship adaptive retune + rolling-horizon solvers. |\n| PRN6 | Roundtrip-loss revenue shortfall | 5 | 6 | EMS optimizers recover part of the loss via arbitrage stacking. |\n| PRN8 | TR3 grid-forming cert gap | 3 | 4 | Same rationale as N12. |\n| PRN9 | Aging-aware-cycling warranty breach | 5 | 6 | Incumbent BMS firmware includes warranty-aware cycling. |\n\nAll other entries retain their Step 06 / Step 10 satisfaction scores (incumbent evidence neither strengthens nor contradicts). Importance held constant (per spec \"importance stability rule\").\n\n---"
+      "id": "N2",
+      "statement": "Increase the ability to produce a bankable dispatch-and-revenue model linking curtailment, §19 StromNEV, intraday arbitrage, FCR/aFRR and inertia within a single sizing study",
+      "jobStep": "DEFINE",
+      "importance": 8.0,
+      "satisfaction": 4.0,
+      "opportunity": 12.0,
+      "isUnderserved": true,
+      "isOverserved": false,
+      "productRelated": false,
+      "impactCategory": "cost",
+      "recalibrationNote": ""
     },
     {
-      "title": "Step 3 — Opportunity scores (deterministic)",
-      "content": "`opportunity_score = importance + max(importance − satisfaction, 0)`\n`is_underserved = importance > 7 AND satisfaction < 5`\n`is_overserved = importance < 3 AND satisfaction > 7`\n\n### 3a — Market needs (N1–N24)\n\n| # | Step | Statement (short) | Imp | Sat | Opp | US | OS | p_rel |\n|---|---|---|---|---|---|---|---|---|\n| N1 | DEFINE | Undersize BESS vs. curtailment potential | 9 | 4 | **14.00** | ✅ | — | false |\n| N2 | DEFINE | Bankable dispatch-revenue model | 8 | 4 | **12.00** | ✅ | — | false |\n| N3 | DEFINE | Missing inertia-service revenue track | 7 | 3 | 11.00 | — | — | false |\n| N4 | LOCATE | DSO MV-capacity blocker discovered late | 10 | 4 | **16.00** | ✅ | — | false |\n| N5 | LOCATE | Fit 40–80 m²/MWh inside fence | 8 | 5 | 11.00 | — | — | true |\n| N6 | PREPARE | Time-to-RtB <9 months | 9 | 4 | **14.00** | ✅ | — | false |\n| N7 | PREPARE | BoP variance >5% cost overrun | 8 | 5 | 11.00 | — | — | false |\n| N8 | PREPARE | Feuerwehr fire-clearance redesign | 8 | 4 | **12.00** | ✅ | — | true |\n| N9 | CONFIRM | FGW TR8 re-submission | 9 | 4 | **14.00** | ✅ | — | true |\n| N10 | CONFIRM | Firmware BMS/PCS/EMS incompatibility | 9 | 3 | **15.00** | ✅ | — | true |\n| N11 | CONFIRM | Witness-test NC closure <30 d | 8 | 5 | 11.00 | — | — | false |\n| N12 | CONFIRM | Grid-forming cert gap (2026 inertia) | 9 | 4 | **14.00** | ✅ | — | true |\n| N13 | EXECUTE | aFRR/FCR <30 s response | 9 | 7 | 11.00 | — | — | false |\n| N14 | EXECUTE | Curtailment capture >90% | 9 | 6 | 12.00 | — | — | false |\n| N15 | EXECUTE | PCS trip under FRT | 10 | 7 | 13.00 | — | — | false |\n| N16 | MONITOR | Capacity fade warranty threshold | 8 | 5 | 11.00 | — | — | true |\n| N17 | MONITOR | SoC drift BMS/EMS <1%/24 h | 6 | 5 | 7.00 | — | — | true |\n| N18 | MODIFY | Re-tune EMS effort | 7 | 5 | 9.00 | — | — | false |\n| N19 | MODIFY | Aging-aware cycling breach | 8 | 5 | 11.00 | — | — | true |\n| N20 | CONCLUDE | Annual re-cert dossier | 7 | 4 | 10.00 | — | — | false |\n| N21 | CONCLUDE | EU Battery Reg disposal | 8 | 4 | **12.00** | ✅ | — | true |\n| N22 | P3_role | Revenue-accretive pitch to IC | 8 | 5 | 11.00 | — | — | false |\n| N23 | P4_image | Certifier-findings / sloppy signal | 7 | 5 | 9.00 | — | — | true |\n| N24 | P5_emotion | Single-counterparty fault-wrap | 8 | 3 | **13.00** | ✅ | — | false |\n\n### 3b — Product-related needs (PRN1–PRN10, job_step=0)\n\n| # | Statement (short) | Imp | Sat | Opp | US | OS | p_rel |\n|---|---|---|---|---|---|---|---|\n| PRN1 | Fire-clearance redesign (Li-ion deflagration) | 8 | 4 | **12.00** | ✅ | — | true |\n| PRN2 | Insurance step-up / Li-ion loss-history | 7 | 3 | 11.00 | — | — | true |\n| PRN3 | Fit inside fenced footprint (no Bplan) | 8 | 5 | 11.00 | — | — | true |\n| PRN4 | LFP CN-supplier / CRMA concentration | 7 | 4 | 11.00 | — | — | true |\n| PRN5 | Derating <−20 / >+50 °C envelope | 6 | 5 | 7.00 | — | — | true |\n| PRN6 | 10–15% roundtrip revenue shortfall | 7 | 6 | 8.00 | — | — | true |\n| PRN7 | CAPEX €250–400/kWh business-case | 7 | 5 | 9.00 | — | — | true |\n| PRN8 | TR3 grid-forming cert gap (Jan-2026 inertia) | 9 | 4 | **14.00** | ✅ | — | true |\n| PRN9 | Aging-aware-cycling warranty breach | 8 | 6 | 10.00 | — | — | true |\n| PRN10 | DSO protection-coord study on wind MV cabinet | 9 | 4 | **14.00** | ✅ | — | true |\n\n---"
+      "id": "N3",
+      "statement": "Minimize the likelihood of missing the inertia-service revenue track (EUR 8-20 k per MW per year from Jan 2026) during initial business-case definition",
+      "jobStep": "DEFINE",
+      "importance": 7.0,
+      "satisfaction": 3.0,
+      "opportunity": 11.0,
+      "isUnderserved": false,
+      "isOverserved": false,
+      "productRelated": false,
+      "impactCategory": "cost",
+      "recalibrationNote": ""
     },
     {
-      "title": "Step 4 — Market ODI summary",
-      "content": "| Field | Value |\n|---|---|\n| market_name | Wind+BESS Hybrid Parks |\n| naics_code | 221115 |\n| total_needs | 34 |\n| underserved_count | 13 |\n| overserved_count | 0 |\n| avg_opportunity_score | **11.50** |\n| top_5_opportunity_score | N4 (16.00) → N10 (15.00) → N1 / N6 / N9 (14.00) |\n\n### Top 5 opportunities (by score; ties broken by ID order)\n\n| Rank | # | Opp | Error statement |\n|---|---|---|---|\n| 1 | N4 | 16.00 | Minimize the likelihood of discovering a DSO MV-capacity blocker after permit milestone, causing >6-month project restart |\n| 2 | N10 | 15.00 | Minimize the likelihood of commissioning holdup caused by firmware-version incompatibility between BMS, PCS and EMS subsystems |\n| 3 | N1 | 14.00 | Minimize the likelihood of undersizing BESS capacity by >15% relative to curtailment-capture potential due to incomplete site wind-yield and congestion-hour data |\n| 4 | N6 | 14.00 | Minimize the time-to-Ready-to-Build from contract signature to <9 months including Baugenehmigung, DSO acceptance and procurement |\n| 5 | N9 | 14.00 | Minimize the likelihood of FGW TR8 plant-cert re-submission due to incomplete TR3 unit-cert handover from component vendors |\n\n### Other 14.0 ties (runners-up, worth reading alongside top-5)\n\nN12 (grid-forming cert gap) · PRN8 (TR3 grid-forming cert gap — product-related restatement of N12) · PRN10 (DSO protection-coord study on wind MV cabinet).\n\n### Cluster read\n\n| Lifecycle phase | Underserved count | Read |\n|---|---|---|\n| DEFINE | 2 (N1, N2) | Sales-enablement / sizing + bankable revenue model. |\n| LOCATE | 1 (N4) + PRN10 | DSO/MV-side surprises dominate. |\n| PREPARE | 2 (N6, N8) + PRN1 | Cert + fire-clearance drive RtB slip. |\n| CONFIRM | 3 (N9, N10, N12) + PRN8 | **Largest underserved cluster — all certification / handover.** |\n| CONCLUDE | 1 (N21) | End-of-life Battery-Reg reporting. |\n| Emotional anchor | N24 | Single-counterparty fault-wrap. |\n\nDEFINE + LOCATE + PREPARE + CONFIRM = **10 of 13 underserved entries** concentrated in pre-operation phases. Post-operation (EXECUTE / MONITOR / MODIFY / CONCLUDE) is appropriately served or mildly underserved.\n\n---"
+      "id": "N4",
+      "statement": "Minimize the likelihood of discovering a DSO MV-capacity blocker after permit milestone, causing >6-month project restart",
+      "jobStep": "LOCATE",
+      "importance": 10.0,
+      "satisfaction": 4.0,
+      "opportunity": 16.0,
+      "isUnderserved": true,
+      "isOverserved": false,
+      "productRelated": false,
+      "impactCategory": "time",
+      "recalibrationNote": ""
     },
     {
-      "title": "Step 5 — Cross-check vs. Step 09 Feature-Market-Fit",
-      "content": "| Metric | Value | Threshold | Trigger |\n|---|---|---|---|\n| ODI avg opportunity | 11.50 | > 12 | no |\n| FMF avg (tech features) | 6.11 | < 4 | no |\n| ODI avg | 11.50 | < 8 | no |\n| FMF avg | 6.11 | > 7 | no |\n\n**Cross-check result: no inconsistencies logged.**\n\nFeature-level read (informal, not a QA gate):\n- **Grid-Code Certification Delivery (F5, FMF=7.78)** maps to N6 / N9 / N11 / N12 / N20 / PRN8 — 4 of the top-5 underserved CONFIRM-cluster needs. Feature fit and ODI opportunity both point to cert delivery as the leverage point.\n- **EMS (F4, FMF=6.56)** maps to N2 / N14 / N18 — all appropriately-served post-recalibration. Mein Solar's V4 inferior position (vs. Wärtsilä GEMS) is visible but the needs themselves are not underserved — suggesting the EMS gap is a *vendor-vs-incumbent* gap, not a *market-unmet* gap.\n- **Containerized BESS (F1) / MV Coupling (F3) / Civil Works (F8)** all FMF 5.33–5.78, match ODI `appropriately served` entries (N5 / N7 / N16 / N17 / PRN3 / PRN5) — commodity baseline confirmed from both angles.\n\n---"
+      "id": "N5",
+      "statement": "Increase the ability to secure a buildable 40-80 m2 per MWh footprint inside existing wind-park fencing without new land lease or Bebauungsplan change",
+      "jobStep": "LOCATE",
+      "importance": 8.0,
+      "satisfaction": 5.0,
+      "opportunity": 11.0,
+      "isUnderserved": false,
+      "isOverserved": false,
+      "productRelated": true,
+      "impactCategory": "time",
+      "recalibrationNote": ""
     },
     {
-      "title": "Step 6 — Neo4j write preview (Step 12 persistence)",
-      "content": "```\nMERGE (m:Market {naics_code:\"221115\", run_id})\n  SET  m.odi_total_needs = 34,\n       m.odi_underserved_count = 13,\n       m.odi_overserved_count = 0,\n       m.odi_avg_opportunity_score = 11.50,\n       m.odi_top_opportunities = \"[\\\"...\\\", ...]\"  // JSON-encoded top-5\n\nFOREACH entry IN entries:\n  MERGE (os:OpportunityScore {\n    error_statement: substring(full_statement, 0, 80),\n    naics_code: \"221115\",\n    run_id\n  })\n    SET  os.full_statement, os.market_name, os.importance,\n         os.satisfaction_current, os.opportunity_score,\n         os.is_underserved, os.is_overserved, os.product_related\n  MERGE (m)-[:has_opportunity_score]->(os)\n```\n\n---"
+      "id": "N6",
+      "statement": "Minimize the time-to-Ready-to-Build from contract signature to under 9 months including Baugenehmigung, DSO acceptance and procurement",
+      "jobStep": "PREPARE",
+      "importance": 9.0,
+      "satisfaction": 4.0,
+      "opportunity": 14.0,
+      "isUnderserved": true,
+      "isOverserved": false,
+      "productRelated": false,
+      "impactCategory": "time",
+      "recalibrationNote": ""
     },
     {
-      "title": "QA checklist",
-      "content": "| # | Check | Status | Note |\n|---|---|---|---|\n| Q1 | Formula correct (spot-check 5) | **PASS** | N4 10+6=16 · N10 9+6=15 · N1 9+5=14 · N6 9+5=14 · N17 6+1=7. All match. |\n| Q2 | Underserved flags correct | **PASS** | All 13 entries satisfy imp>7 AND sat<5; no false positives (N3 imp=7 excluded; N5/N11 sat=5 excluded). |\n| Q3 | Overserved flags correct | **PASS** | 0 entries satisfy imp<3 AND sat>7; 0 flagged. |\n| Q4 | Need-count preservation | **PASS** | 24 Step-06 needs retained + 10 Step-10 additions = 34 ≥ 24. |\n| Q5 | Top-5 ordering | **PASS** | Descending by opp; ties broken by ID order (N1<N6<N9<N12). |\n| Q6 | Cross-check ran | **PASS** | ODI vs FMF computed; no threshold triggered. |\n\n---"
+      "id": "N7",
+      "statement": "Minimize variability between planned and as-built BoP scope (cable runs, foundations, Feuerwehr access) causing >5% cost overrun",
+      "jobStep": "PREPARE",
+      "importance": 8.0,
+      "satisfaction": 5.0,
+      "opportunity": 11.0,
+      "isUnderserved": false,
+      "isOverserved": false,
+      "productRelated": false,
+      "impactCategory": "cost",
+      "recalibrationNote": ""
     },
     {
-      "title": "Strategic implications",
-      "content": "| Signal | Implication |\n|---|---|\n| 10 of 13 underserved entries sit pre-operation (DEFINE → CONFIRM) | Mein Solar's EPC wrap is an **upstream-of-revenue** product; the sales promise is schedule + certification certainty, not operating efficiency. |\n| CONFIRM cluster (N9, N10, N12, PRN8) — 4 underserved entries, highest density | Certification + firmware-handover is the **productizable differentiator**. Own TR3 + TR8 dossier; own BMS/PCS/EMS integration-validation. |\n| N4 opp=16 (DSO MV-capacity blocker) + PRN10 opp=14 (protection-coord study) | Pre-contract DSO-feasibility study is a **billable de-risking service**, not a free pre-sale. Package it as Phase 0. |\n| N24 opp=13 (single-counterparty fault-wrap) + Step 09 V3 `superior` | Emotional anchor is validated by ODI — sell the warranty-wrap, not the equipment. |\n| PRN8 opp=14 (grid-forming TR3 cert) time-boxed Jan 2026 | Reference-plant commitment in 2026 H1 is the highest-opportunity time-boxed bet. |\n| PRN1 opp=12 (Feuerwehr redesign) | Region-indexed fire-clearance template library → priced delta on EPC contract. |\n\n---"
+      "id": "N8",
+      "statement": "Minimize the likelihood of schedule slip driven by Feuerwehr/VdS fire-protection clearance re-design after permit submission",
+      "jobStep": "PREPARE",
+      "importance": 8.0,
+      "satisfaction": 4.0,
+      "opportunity": 12.0,
+      "isUnderserved": true,
+      "isOverserved": false,
+      "productRelated": true,
+      "impactCategory": "time",
+      "recalibrationNote": ""
     },
     {
-      "title": "Structured Data",
-      "content": "```json\n{\n  \"component\": \"odi_matrix\",\n  \"naics_code\": \"221115\",\n  \"naics_title\": \"Wind Electric Power Generation\",\n  \"market_name\": \"Wind+BESS Hybrid Parks\",\n  \"vendor_name\": \"Mein Solar GmbH\",\n  \"product_name\": \"EPC für Großbatteriespeicher\",\n\n  \"incumbent_recalibration_anchors\": [\n    {\"technology_name\": \"Fluence turnkey\", \"market_share_estimate\": \"high (DE BESS integrator leader)\", \"strengths\": [\"turnkey integration\", \"grid-forming reference plants\", \"Mosaic EMS\"], \"weaknesses\": [\"subcontracts civil + MV locally\", \"interface risk left with IPP\"]},\n    {\"technology_name\": \"Wärtsilä GEMS\", \"market_share_estimate\": \"utility-scale\", \"strengths\": [\"mature dispatch optimization\", \"revenue-stack modeling\", \"adaptive EMS retune\"], \"weaknesses\": [\"not wind-OEM-native\", \"fewer DE references\"]},\n    {\"technology_name\": \"Tesla Megapack (turnkey)\", \"market_share_estimate\": \"global\", \"strengths\": [\"productized delivery\", \"fast schedule\"], \"weaknesses\": [\"install-services model, not full EPC\", \"limited DE grid-code depth\"]},\n    {\"technology_name\": \"Siemens Gamesa Storage\", \"market_share_estimate\": \"wind-OEM adjacent\", \"strengths\": [\"grid-forming reference\", \"wind-OEM design authority\"], \"weaknesses\": [\"emerging BESS scale\", \"less BESS-commercial maturity\"]},\n    {\"technology_name\": \"Utility in-house EPC (EnBW, RWE, Vattenfall)\", \"market_share_estimate\": \"portfolio captive\", \"strengths\": [\"DSO relationships\", \"proven balance-sheet\"], \"weaknesses\": [\"splits PV + BESS scope into separate GCs and TR8 dossiers\", \"not offered to third parties\"]}\n  ],\n\n  \"entries\": [\n    {\"id\": \"N1\",  \"error_statement\": \"Minimize the likelihood of undersizing BESS capacity by >15% relative to curtailment-capture potential due to incomplete site wind-yield and congestion-hour data\", \"market_name\": \"Wind+BESS Hybrid Parks\", \"naics_code\": \"221115\", \"importance\": 9.0, \"satisfaction_current\": 4.0, \"opportunity_score\": 14.00, \"is_underserved\": true,  \"is_overserved\": false, \"product_related\": false, \"job_step_number\": 1, \"job_step_name\": \"DEFINE\",             \"impact_category\": \"reliability\"},\n    {\"id\": \"N2\",  \"error_statement\": \"Increase the ability to produce a bankable dispatch-and-revenue model linking curtailment, §19 StromNEV, intraday arbitrage, FCR/aFRR and inertia within a single sizing study\", \"market_name\": \"Wind+BESS Hybrid Parks\", \"naics_code\": \"221115\", \"importance\": 8.0, \"satisfaction_current\": 4.0, \"opportunity_score\": 12.00, \"is_underserved\": true,  \"is_overserved\": false, \"product_related\": false, \"job_step_number\": 1, \"job_step_name\": \"DEFINE\",             \"impact_category\": \"cost\"},\n    {\"id\": \"N3\",  \"error_statement\": \"Minimize the likelihood of missing the inertia-service revenue track (EUR 8-20 k per MW per year from Jan 2026) during initial business-case definition\",              \"market_name\": \"Wind+BESS Hybrid Parks\", \"naics_code\": \"221115\", \"importance\": 7.0, \"satisfaction_current\": 3.0, \"opportunity_score\": 11.00, \"is_underserved\": false, \"is_overserved\": false, \"product_related\": false, \"job_step_number\": 1, \"job_step_name\": \"DEFINE\",             \"impact_category\": \"cost\"},\n    {\"id\": \"N4\",  \"error_statement\": \"Minimize the likelihood of discovering a DSO MV-capacity blocker after permit milestone, causing >6-month project restart\",                                          \"market_name\": \"Wind+BESS Hybrid Parks\", \"naics_code\": \"221115\", \"importance\": 10.0,\"satisfaction_current\": 4.0, \"opportunity_score\": 16.00, \"is_underserved\": true,  \"is_overserved\": false, \"product_related\": false, \"job_step_number\": 2, \"job_step_name\": \"LOCATE\",             \"impact_category\": \"time\"},\n    {\"id\": \"N5\",  \"error_statement\": \"Increase the ability to secure a buildable 40-80 m2 per MWh footprint inside existing wind-park fencing without new land lease or Bebauungsplan change\",           \"market_name\": \"Wind+BESS Hybrid Parks\", \"naics_code\": \"221115\", \"importance\": 8.0, \"satisfaction_current\": 5.0, \"opportunity_score\": 11.00, \"is_underserved\": false, \"is_overserved\": false, \"product_related\": true,  \"job_step_number\": 2, \"job_step_name\": \"LOCATE\",             \"impact_category\": \"time\"},\n    {\"id\": \"N6\",  \"error_statement\": \"Minimize the time-to-Ready-to-Build from contract signature to under 9 months including Baugenehmigung, DSO acceptance and procurement\",                            \"market_name\": \"Wind+BESS Hybrid Parks\", \"naics_code\": \"221115\", \"importance\": 9.0, \"satisfaction_current\": 4.0, \"opportunity_score\": 14.00, \"is_underserved\": true,  \"is_overserved\": false, \"product_related\": false, \"job_step_number\": 3, \"job_step_name\": \"PREPARE\",            \"impact_category\": \"time\"},\n    {\"id\": \"N7\",  \"error_statement\": \"Minimize variability between planned and as-built BoP scope (cable runs, foundations, Feuerwehr access) causing >5% cost overrun\",                                  \"market_name\": \"Wind+BESS Hybrid Parks\", \"naics_code\": \"221115\", \"importance\": 8.0, \"satisfaction_current\": 5.0, \"opportunity_score\": 11.00, \"is_underserved\": false, \"is_overserved\": false, \"product_related\": false, \"job_step_number\": 3, \"job_step_name\": \"PREPARE\",            \"impact_category\": \"cost\"},\n    {\"id\": \"N8\",  \"error_statement\": \"Minimize the likelihood of schedule slip driven by Feuerwehr/VdS fire-protection clearance re-design after permit submission\",                                      \"market_name\": \"Wind+BESS Hybrid Parks\", \"naics_code\": \"221115\", \"importance\": 8.0, \"satisfaction_current\": 4.0, \"opportunity_score\": 12.00, \"is_underserved\": true,  \"is_overserved\": false, \"product_related\": true,  \"job_step_number\": 3, \"job_step_name\": \"PREPARE\",            \"impact_category\": \"time\"},\n    {\"id\": \"N9\",  \"error_statement\": \"Minimize the likelihood of FGW TR8 plant-cert re-submission due to incomplete TR3 unit-cert handover from component vendors\",                                       \"market_name\": \"Wind+BESS Hybrid Parks\", \"naics_code\": \"221115\", \"importance\": 9.0, \"satisfaction_current\": 4.0, \"opportunity_score\": 14.00, \"is_underserved\": true,  \"is_overserved\": false, \"product_related\": true,  \"job_step_number\": 4, \"job_step_name\": \"CONFIRM\",            \"impact_category\": \"reliability\"},\n    {\"id\": \"N10\", \"error_statement\": \"Minimize the likelihood of commissioning holdup caused by firmware-version incompatibility between BMS, PCS and EMS subsystems\",                                    \"market_name\": \"Wind+BESS Hybrid Parks\", \"naics_code\": \"221115\", \"importance\": 9.0, \"satisfaction_current\": 3.0, \"opportunity_score\": 15.00, \"is_underserved\": true,  \"is_overserved\": false, \"product_related\": true,  \"job_step_number\": 4, \"job_step_name\": \"CONFIRM\",            \"impact_category\": \"time\"},\n    {\"id\": \"N11\", \"error_statement\": \"Minimize the time to close VDE-AR-N 4110/4120 witness-test non-conformities to under 30 days from finding\",                                                         \"market_name\": \"Wind+BESS Hybrid Parks\", \"naics_code\": \"221115\", \"importance\": 8.0, \"satisfaction_current\": 5.0, \"opportunity_score\": 11.00, \"is_underserved\": false, \"is_overserved\": false, \"product_related\": false, \"job_step_number\": 4, \"job_step_name\": \"CONFIRM\",            \"impact_category\": \"time\"},\n    {\"id\": \"N12\", \"error_statement\": \"Minimize the likelihood of grid-forming-mode certification gaps that disqualify the asset from the 2026 inertia-service product\",                                   \"market_name\": \"Wind+BESS Hybrid Parks\", \"naics_code\": \"221115\", \"importance\": 9.0, \"satisfaction_current\": 4.0, \"opportunity_score\": 14.00, \"is_underserved\": true,  \"is_overserved\": false, \"product_related\": true,  \"job_step_number\": 4, \"job_step_name\": \"CONFIRM\",            \"impact_category\": \"cost\"},\n    {\"id\": \"N13\", \"error_statement\": \"Minimize the likelihood of missing an aFRR or FCR activation command within the required response window (<30 s)\",                                                  \"market_name\": \"Wind+BESS Hybrid Parks\", \"naics_code\": \"221115\", \"importance\": 9.0, \"satisfaction_current\": 7.0, \"opportunity_score\": 11.00, \"is_underserved\": false, \"is_overserved\": false, \"product_related\": false, \"job_step_number\": 5, \"job_step_name\": \"EXECUTE\",            \"impact_category\": \"reliability\"},\n    {\"id\": \"N14\", \"error_statement\": \"Maximize the share of available curtailment-window MWh captured by the BESS to above 90% of DSO-curtailed energy\",                                                  \"market_name\": \"Wind+BESS Hybrid Parks\", \"naics_code\": \"221115\", \"importance\": 9.0, \"satisfaction_current\": 6.0, \"opportunity_score\": 12.00, \"is_underserved\": false, \"is_overserved\": false, \"product_related\": false, \"job_step_number\": 5, \"job_step_name\": \"EXECUTE\",            \"impact_category\": \"cost\"},\n    {\"id\": \"N15\", \"error_statement\": \"Minimize the likelihood of PCS trip under grid-fault ride-through conditions specified by VDE-AR-N 4110\",                                                           \"market_name\": \"Wind+BESS Hybrid Parks\", \"naics_code\": \"221115\", \"importance\": 10.0,\"satisfaction_current\": 7.0, \"opportunity_score\": 13.00, \"is_underserved\": false, \"is_overserved\": false, \"product_related\": false, \"job_step_number\": 5, \"job_step_name\": \"EXECUTE\",            \"impact_category\": \"safety\"},\n    {\"id\": \"N16\", \"error_statement\": \"Minimize the likelihood of undetected capacity fade exceeding warranty threshold prior to annual availability audit\",                                               \"market_name\": \"Wind+BESS Hybrid Parks\", \"naics_code\": \"221115\", \"importance\": 8.0, \"satisfaction_current\": 5.0, \"opportunity_score\": 11.00, \"is_underserved\": false, \"is_overserved\": false, \"product_related\": true,  \"job_step_number\": 6, \"job_step_name\": \"MONITOR\",            \"impact_category\": \"reliability\"},\n    {\"id\": \"N17\", \"error_statement\": \"Minimize SoC-reporting drift between BMS, EMS and aggregator to under 1% over a 24-hour cycle\",                                                                     \"market_name\": \"Wind+BESS Hybrid Parks\", \"naics_code\": \"221115\", \"importance\": 6.0, \"satisfaction_current\": 5.0, \"opportunity_score\": 7.00,  \"is_underserved\": false, \"is_overserved\": false, \"product_related\": true,  \"job_step_number\": 6, \"job_step_name\": \"MONITOR\",            \"impact_category\": \"reliability\"},\n    {\"id\": \"N18\", \"error_statement\": \"Minimize the operator effort to re-tune EMS dispatch policy when curtailment patterns or intraday spreads shift materially\",                                        \"market_name\": \"Wind+BESS Hybrid Parks\", \"naics_code\": \"221115\", \"importance\": 7.0, \"satisfaction_current\": 5.0, \"opportunity_score\": 9.00,  \"is_underserved\": false, \"is_overserved\": false, \"product_related\": false, \"job_step_number\": 7, \"job_step_name\": \"MODIFY\",             \"impact_category\": \"skill\"},\n    {\"id\": \"N19\", \"error_statement\": \"Minimize the likelihood that aging-aware cycling misconfiguration drives degradation exceeding contractual throughput guarantee\",                                   \"market_name\": \"Wind+BESS Hybrid Parks\", \"naics_code\": \"221115\", \"importance\": 8.0, \"satisfaction_current\": 5.0, \"opportunity_score\": 11.00, \"is_underserved\": false, \"is_overserved\": false, \"product_related\": true,  \"job_step_number\": 7, \"job_step_name\": \"MODIFY\",             \"impact_category\": \"cost\"},\n    {\"id\": \"N20\", \"error_statement\": \"Minimize the effort to execute annual FGW/DSO re-certification audits through a single pre-packaged evidence dossier\",                                              \"market_name\": \"Wind+BESS Hybrid Parks\", \"naics_code\": \"221115\", \"importance\": 7.0, \"satisfaction_current\": 4.0, \"opportunity_score\": 10.00, \"is_underserved\": false, \"is_overserved\": false, \"product_related\": false, \"job_step_number\": 8, \"job_step_name\": \"CONCLUDE\",           \"impact_category\": \"time\"},\n    {\"id\": \"N21\", \"error_statement\": \"Minimize the likelihood of end-of-life disposal non-compliance with EU Battery Regulation reporting obligations\",                                                   \"market_name\": \"Wind+BESS Hybrid Parks\", \"naics_code\": \"221115\", \"importance\": 8.0, \"satisfaction_current\": 4.0, \"opportunity_score\": 12.00, \"is_underserved\": true,  \"is_overserved\": false, \"product_related\": true,  \"job_step_number\": 8, \"job_step_name\": \"CONCLUDE\",           \"impact_category\": \"safety\"},\n    {\"id\": \"N22\", \"error_statement\": \"Increase the ability to present the BESS addition as a revenue-accretive asset with committed multi-stream dispatch evidence at investment-committee\",             \"market_name\": \"Wind+BESS Hybrid Parks\", \"naics_code\": \"221115\", \"importance\": 8.0, \"satisfaction_current\": 5.0, \"opportunity_score\": 11.00, \"is_underserved\": false, \"is_overserved\": false, \"product_related\": false, \"job_step_number\": 1, \"job_step_name\": \"DEFINE\",             \"impact_category\": \"cost\"},\n    {\"id\": \"N23\", \"error_statement\": \"Minimize the likelihood of certifier audit findings that require repeat visits or signal sloppy engineering practice\",                                              \"market_name\": \"Wind+BESS Hybrid Parks\", \"naics_code\": \"221115\", \"importance\": 7.0, \"satisfaction_current\": 5.0, \"opportunity_score\": 9.00,  \"is_underserved\": false, \"is_overserved\": false, \"product_related\": true,  \"job_step_number\": 4, \"job_step_name\": \"CONFIRM\",            \"impact_category\": \"reliability\"},\n    {\"id\": \"N24\", \"error_statement\": \"Minimize the time lost to cross-vendor root-cause dispute by ensuring a single EPC counterparty owns fault-tree triage and warranty-wrap resolution\",               \"market_name\": \"Wind+BESS Hybrid Parks\", \"naics_code\": \"221115\", \"importance\": 8.0, \"satisfaction_current\": 3.0, \"opportunity_score\": 13.00, \"is_underserved\": true,  \"is_overserved\": false, \"product_related\": false, \"job_step_number\": 5, \"job_step_name\": \"EXECUTE\",            \"impact_category\": \"time\"},\n    {\"id\": \"PRN1\",  \"error_statement\": \"Minimize the likelihood of schedule slip driven by Feuerwehr / VdS fire-clearance redesign triggered by Li-ion deflagration-venting and compartmentation rules that do not apply to non-flammable storage chemistries\", \"market_name\": \"Wind+BESS Hybrid Parks\", \"naics_code\": \"221115\", \"importance\": 8.0, \"satisfaction_current\": 4.0, \"opportunity_score\": 12.00, \"is_underserved\": true,  \"is_overserved\": false, \"product_related\": true, \"job_step_number\": 0, \"job_step_name\": \"product_constraint\", \"impact_category\": \"reliability\"},\n    {\"id\": \"PRN2\",  \"error_statement\": \"Minimize the likelihood of insurance-premium step-up or coverage denial driven by Li-ion fire-loss loss-history that flow/flywheel/CAES assets avoid\",                                                                 \"market_name\": \"Wind+BESS Hybrid Parks\", \"naics_code\": \"221115\", \"importance\": 7.0, \"satisfaction_current\": 3.0, \"opportunity_score\": 11.00, \"is_underserved\": false, \"is_overserved\": false, \"product_related\": true, \"job_step_number\": 0, \"job_step_name\": \"product_constraint\", \"impact_category\": \"reliability\"},\n    {\"id\": \"PRN3\",  \"error_statement\": \"Increase the ability to fit the storage asset inside an existing wind-park fenced footprint at 40-80 m2/MWh without a new Bebauungsplan change - a footprint a flywheel-farm or standalone condenser would not require\", \"market_name\": \"Wind+BESS Hybrid Parks\", \"naics_code\": \"221115\", \"importance\": 8.0, \"satisfaction_current\": 5.0, \"opportunity_score\": 11.00, \"is_underserved\": false, \"is_overserved\": false, \"product_related\": true, \"job_step_number\": 0, \"job_step_name\": \"product_constraint\", \"impact_category\": \"reliability\"},\n    {\"id\": \"PRN4\",  \"error_statement\": \"Minimize the likelihood of procurement disruption from LFP-cell CN-supplier concentration, FX swings, CRMA / EU Battery Regulation change - exposure absent for mechanical and thermal storage\",                        \"market_name\": \"Wind+BESS Hybrid Parks\", \"naics_code\": \"221115\", \"importance\": 7.0, \"satisfaction_current\": 4.0, \"opportunity_score\": 11.00, \"is_underserved\": false, \"is_overserved\": false, \"product_related\": true, \"job_step_number\": 0, \"job_step_name\": \"product_constraint\", \"impact_category\": \"reliability\"},\n    {\"id\": \"PRN5\",  \"error_statement\": \"Minimize the likelihood of derating or cycle-life loss when exposed ambient drifts below -20 C or above +50 C - a constraint flow-battery stacks and CAES tolerate differently\",                                       \"market_name\": \"Wind+BESS Hybrid Parks\", \"naics_code\": \"221115\", \"importance\": 6.0, \"satisfaction_current\": 5.0, \"opportunity_score\": 7.00,  \"is_underserved\": false, \"is_overserved\": false, \"product_related\": true, \"job_step_number\": 0, \"job_step_name\": \"product_constraint\", \"impact_category\": \"reliability\"},\n    {\"id\": \"PRN6\",  \"error_statement\": \"Minimize the likelihood of a revenue shortfall from 10-15% roundtrip-loss floor eating intraday-arbitrage and curtailment-capture margin - worse than pumped-hydro at comparable scale\",                                \"market_name\": \"Wind+BESS Hybrid Parks\", \"naics_code\": \"221115\", \"importance\": 7.0, \"satisfaction_current\": 6.0, \"opportunity_score\": 8.00,  \"is_underserved\": false, \"is_overserved\": false, \"product_related\": true, \"job_step_number\": 0, \"job_step_name\": \"product_constraint\", \"impact_category\": \"reliability\"},\n    {\"id\": \"PRN7\",  \"error_statement\": \"Minimize the likelihood of business-case failure when installed cost exceeds EUR 250-400 per kWh - a price envelope a thermal-storage or hybrid-H2 option clears differently\",                                         \"market_name\": \"Wind+BESS Hybrid Parks\", \"naics_code\": \"221115\", \"importance\": 7.0, \"satisfaction_current\": 5.0, \"opportunity_score\": 9.00,  \"is_underserved\": false, \"is_overserved\": false, \"product_related\": true, \"job_step_number\": 0, \"job_step_name\": \"product_constraint\", \"impact_category\": \"reliability\"},\n    {\"id\": \"PRN8\",  \"error_statement\": \"Minimize the likelihood that FGW TR8 + TR3 grid-forming-mode certification gaps disqualify the asset from the Jan-2026 TSO inertia-service product - a mechanism-specific gap a synchronous condenser would not face\",   \"market_name\": \"Wind+BESS Hybrid Parks\", \"naics_code\": \"221115\", \"importance\": 9.0, \"satisfaction_current\": 4.0, \"opportunity_score\": 14.00, \"is_underserved\": true,  \"is_overserved\": false, \"product_related\": true, \"job_step_number\": 0, \"job_step_name\": \"product_constraint\", \"impact_category\": \"reliability\"},\n    {\"id\": \"PRN9\",  \"error_statement\": \"Minimize the likelihood of warranty-throughput breach driven by aging-aware-cycling misconfiguration on LFP cells - a failure mode electromechanical stores (flywheel) and mechanical stores (CAES) do not share\",      \"market_name\": \"Wind+BESS Hybrid Parks\", \"naics_code\": \"221115\", \"importance\": 8.0, \"satisfaction_current\": 6.0, \"opportunity_score\": 10.00, \"is_underserved\": false, \"is_overserved\": false, \"product_related\": true, \"job_step_number\": 0, \"job_step_name\": \"product_constraint\", \"impact_category\": \"reliability\"},\n    {\"id\": \"PRN10\", \"error_statement\": \"Minimize the likelihood of DSO rejection when the BESS is added to a pre-energized wind MV cabinet without revised protection-coordination study - driven by BESS bidirectional PCS behaviour alien to generator-only wind connections\", \"market_name\": \"Wind+BESS Hybrid Parks\", \"naics_code\": \"221115\", \"importance\": 9.0, \"satisfaction_current\": 4.0, \"opportunity_score\": 14.00, \"is_underserved\": true, \"is_overserved\": false, \"product_related\": true, \"job_step_number\": 0, \"job_step_name\": \"product_constraint\", \"impact_category\": \"reliability\"}\n  ],\n\n  \"market_summary\": {\n    \"market_name\": \"Wind+BESS Hybrid Parks\",\n    \"naics_code\": \"221115\",\n    \"total_needs\": 34,\n    \"underserved_count\": 13,\n    \"overserved_count\": 0,\n    \"avg_opportunity_score\": 11.50,\n    \"top_opportunities\": [\n      \"Minimize the likelihood of discovering a DSO MV-capacity blocker after permit milestone, causing >6-month project restart\",\n      \"Minimize the likelihood of commissioning holdup caused by firmware-version incompatibility between BMS, PCS and EMS subsystems\",\n      \"Minimize the likelihood of undersizing BESS capacity by >15% relative to curtailment-capture potential due to incomplete site wind-yield and congestion-hour data\",\n      \"Minimize the time-to-Ready-to-Build from contract signature to under 9 months including Baugenehmigung, DSO acceptance and procurement\",\n      \"Minimize the likelihood of FGW TR8 plant-cert re-submission due to incomplete TR3 unit-cert handover from component vendors\"\n    ],\n    \"underserved_ids\": [\"N1\", \"N2\", \"N4\", \"N6\", \"N8\", \"N9\", \"N10\", \"N12\", \"N21\", \"N24\", \"PRN1\", \"PRN8\", \"PRN10\"],\n    \"overserved_ids\": [],\n    \"ties_at_top_cutoff\": {\n      \"opportunity_score\": 14.00,\n      \"ids_above_or_tied\": [\"N4\", \"N10\", \"N1\", \"N6\", \"N9\", \"N12\", \"PRN8\", \"PRN10\"],\n      \"top_5_ids_selected\": [\"N4\", \"N10\", \"N1\", \"N6\", \"N9\"],\n      \"tiebreaker_rule\": \"ascending ID order within equal opportunity_score\"\n    }\n  },\n\n  \"cross_check_vs_step_09\": {\n    \"odi_avg_opportunity_score\": 11.50,\n    \"fmf_avg_overall_fit_technology_features\": 6.11,\n    \"fmf_avg_overall_fit_vendor_features\": 6.80,\n    \"threshold_high_opp_low_fit\": {\"condition\": \"odi_avg>12 AND fmf_avg<4\", \"triggered\": false},\n    \"threshold_low_opp_high_fit\": {\"condition\": \"odi_avg<8 AND fmf_avg>7\",  \"triggered\": false},\n    \"flags\": [],\n    \"feature_level_read\": {\n      \"grid_code_certification_delivery_fmf_7_78\": \"maps to N6 / N9 / N11 / N12 / N20 / PRN8 — 4 of 5 underserved CONFIRM-cluster needs; both angles converge on certification delivery as leverage point\",\n      \"ems_fmf_6_56_vendor_v4_inferior\": \"maps to N2 / N14 / N18 — appropriately served post-recalibration; EMS gap is vendor-vs-incumbent, not market-unmet\",\n      \"commodity_features_fmf_5_33_to_5_78\": \"containerized BESS / MV coupling / civil map to appropriately-served N5 / N7 / N16 / N17 / PRN3 / PRN5 — commodity baseline\"\n    }\n  },\n\n  \"qa_checklist\": {\n    \"q1_formula_correct_spot_check\": \"PASS\",\n    \"q2_underserved_flags_correct\": \"PASS\",\n    \"q3_overserved_flags_correct\": \"PASS\",\n    \"q4_need_count_preserved\": \"PASS\",\n    \"q5_top5_ordering_correct\": \"PASS\",\n    \"q6_cross_check_vs_step_09_executed\": \"PASS\"\n  }\n}\n```"
+      "id": "N9",
+      "statement": "Minimize the likelihood of FGW TR8 plant-cert re-submission due to incomplete TR3 unit-cert handover from component vendors",
+      "jobStep": "CONFIRM",
+      "importance": 9.0,
+      "satisfaction": 4.0,
+      "opportunity": 14.0,
+      "isUnderserved": true,
+      "isOverserved": false,
+      "productRelated": true,
+      "impactCategory": "reliability",
+      "recalibrationNote": ""
+    },
+    {
+      "id": "N10",
+      "statement": "Minimize the likelihood of commissioning holdup caused by firmware-version incompatibility between BMS, PCS and EMS subsystems",
+      "jobStep": "CONFIRM",
+      "importance": 9.0,
+      "satisfaction": 3.0,
+      "opportunity": 15.0,
+      "isUnderserved": true,
+      "isOverserved": false,
+      "productRelated": true,
+      "impactCategory": "time",
+      "recalibrationNote": ""
+    },
+    {
+      "id": "N11",
+      "statement": "Minimize the time to close VDE-AR-N 4110/4120 witness-test non-conformities to under 30 days from finding",
+      "jobStep": "CONFIRM",
+      "importance": 8.0,
+      "satisfaction": 5.0,
+      "opportunity": 11.0,
+      "isUnderserved": false,
+      "isOverserved": false,
+      "productRelated": false,
+      "impactCategory": "time",
+      "recalibrationNote": ""
+    },
+    {
+      "id": "N12",
+      "statement": "Minimize the likelihood of grid-forming-mode certification gaps that disqualify the asset from the 2026 inertia-service product",
+      "jobStep": "CONFIRM",
+      "importance": 9.0,
+      "satisfaction": 4.0,
+      "opportunity": 14.0,
+      "isUnderserved": true,
+      "isOverserved": false,
+      "productRelated": true,
+      "impactCategory": "cost",
+      "recalibrationNote": ""
+    },
+    {
+      "id": "N13",
+      "statement": "Minimize the likelihood of missing an aFRR or FCR activation command within the required response window (<30 s)",
+      "jobStep": "EXECUTE",
+      "importance": 9.0,
+      "satisfaction": 7.0,
+      "opportunity": 11.0,
+      "isUnderserved": false,
+      "isOverserved": false,
+      "productRelated": false,
+      "impactCategory": "reliability",
+      "recalibrationNote": ""
+    },
+    {
+      "id": "N14",
+      "statement": "Maximize the share of available curtailment-window MWh captured by the BESS to above 90% of DSO-curtailed energy",
+      "jobStep": "EXECUTE",
+      "importance": 9.0,
+      "satisfaction": 6.0,
+      "opportunity": 12.0,
+      "isUnderserved": false,
+      "isOverserved": false,
+      "productRelated": false,
+      "impactCategory": "cost",
+      "recalibrationNote": ""
+    },
+    {
+      "id": "N15",
+      "statement": "Minimize the likelihood of PCS trip under grid-fault ride-through conditions specified by VDE-AR-N 4110",
+      "jobStep": "EXECUTE",
+      "importance": 10.0,
+      "satisfaction": 7.0,
+      "opportunity": 13.0,
+      "isUnderserved": false,
+      "isOverserved": false,
+      "productRelated": false,
+      "impactCategory": "safety",
+      "recalibrationNote": ""
+    },
+    {
+      "id": "N16",
+      "statement": "Minimize the likelihood of undetected capacity fade exceeding warranty threshold prior to annual availability audit",
+      "jobStep": "MONITOR",
+      "importance": 8.0,
+      "satisfaction": 5.0,
+      "opportunity": 11.0,
+      "isUnderserved": false,
+      "isOverserved": false,
+      "productRelated": true,
+      "impactCategory": "reliability",
+      "recalibrationNote": ""
+    },
+    {
+      "id": "N17",
+      "statement": "Minimize SoC-reporting drift between BMS, EMS and aggregator to under 1% over a 24-hour cycle",
+      "jobStep": "MONITOR",
+      "importance": 6.0,
+      "satisfaction": 5.0,
+      "opportunity": 7.0,
+      "isUnderserved": false,
+      "isOverserved": false,
+      "productRelated": true,
+      "impactCategory": "reliability",
+      "recalibrationNote": ""
+    },
+    {
+      "id": "N18",
+      "statement": "Minimize the operator effort to re-tune EMS dispatch policy when curtailment patterns or intraday spreads shift materially",
+      "jobStep": "MODIFY",
+      "importance": 7.0,
+      "satisfaction": 5.0,
+      "opportunity": 9.0,
+      "isUnderserved": false,
+      "isOverserved": false,
+      "productRelated": false,
+      "impactCategory": "skill",
+      "recalibrationNote": ""
+    },
+    {
+      "id": "N19",
+      "statement": "Minimize the likelihood that aging-aware cycling misconfiguration drives degradation exceeding contractual throughput guarantee",
+      "jobStep": "MODIFY",
+      "importance": 8.0,
+      "satisfaction": 5.0,
+      "opportunity": 11.0,
+      "isUnderserved": false,
+      "isOverserved": false,
+      "productRelated": true,
+      "impactCategory": "cost",
+      "recalibrationNote": ""
+    },
+    {
+      "id": "N20",
+      "statement": "Minimize the effort to execute annual FGW/DSO re-certification audits through a single pre-packaged evidence dossier",
+      "jobStep": "CONCLUDE",
+      "importance": 7.0,
+      "satisfaction": 4.0,
+      "opportunity": 10.0,
+      "isUnderserved": false,
+      "isOverserved": false,
+      "productRelated": false,
+      "impactCategory": "time",
+      "recalibrationNote": ""
+    },
+    {
+      "id": "N21",
+      "statement": "Minimize the likelihood of end-of-life disposal non-compliance with EU Battery Regulation reporting obligations",
+      "jobStep": "CONCLUDE",
+      "importance": 8.0,
+      "satisfaction": 4.0,
+      "opportunity": 12.0,
+      "isUnderserved": true,
+      "isOverserved": false,
+      "productRelated": true,
+      "impactCategory": "safety",
+      "recalibrationNote": ""
+    },
+    {
+      "id": "N22",
+      "statement": "Increase the ability to present the BESS addition as a revenue-accretive asset with committed multi-stream dispatch evidence at investment-committee",
+      "jobStep": "DEFINE",
+      "importance": 8.0,
+      "satisfaction": 5.0,
+      "opportunity": 11.0,
+      "isUnderserved": false,
+      "isOverserved": false,
+      "productRelated": false,
+      "impactCategory": "cost",
+      "recalibrationNote": ""
+    },
+    {
+      "id": "N23",
+      "statement": "Minimize the likelihood of certifier audit findings that require repeat visits or signal sloppy engineering practice",
+      "jobStep": "CONFIRM",
+      "importance": 7.0,
+      "satisfaction": 5.0,
+      "opportunity": 9.0,
+      "isUnderserved": false,
+      "isOverserved": false,
+      "productRelated": true,
+      "impactCategory": "reliability",
+      "recalibrationNote": ""
+    },
+    {
+      "id": "N24",
+      "statement": "Minimize the time lost to cross-vendor root-cause dispute by ensuring a single EPC counterparty owns fault-tree triage and warranty-wrap resolution",
+      "jobStep": "EXECUTE",
+      "importance": 8.0,
+      "satisfaction": 3.0,
+      "opportunity": 13.0,
+      "isUnderserved": true,
+      "isOverserved": false,
+      "productRelated": false,
+      "impactCategory": "time",
+      "recalibrationNote": ""
+    },
+    {
+      "id": "PRN1",
+      "statement": "Minimize the likelihood of schedule slip driven by Feuerwehr / VdS fire-clearance redesign triggered by Li-ion deflagration-venting and compartmentation rules that do not apply to non-flammable storage chemistries",
+      "jobStep": "product_constraint",
+      "importance": 8.0,
+      "satisfaction": 4.0,
+      "opportunity": 12.0,
+      "isUnderserved": true,
+      "isOverserved": false,
+      "productRelated": true,
+      "impactCategory": "reliability",
+      "recalibrationNote": ""
+    },
+    {
+      "id": "PRN2",
+      "statement": "Minimize the likelihood of insurance-premium step-up or coverage denial driven by Li-ion fire-loss loss-history that flow/flywheel/CAES assets avoid",
+      "jobStep": "product_constraint",
+      "importance": 7.0,
+      "satisfaction": 3.0,
+      "opportunity": 11.0,
+      "isUnderserved": false,
+      "isOverserved": false,
+      "productRelated": true,
+      "impactCategory": "reliability",
+      "recalibrationNote": ""
+    },
+    {
+      "id": "PRN3",
+      "statement": "Increase the ability to fit the storage asset inside an existing wind-park fenced footprint at 40-80 m2/MWh without a new Bebauungsplan change - a footprint a flywheel-farm or standalone condenser would not require",
+      "jobStep": "product_constraint",
+      "importance": 8.0,
+      "satisfaction": 5.0,
+      "opportunity": 11.0,
+      "isUnderserved": false,
+      "isOverserved": false,
+      "productRelated": true,
+      "impactCategory": "reliability",
+      "recalibrationNote": ""
+    },
+    {
+      "id": "PRN4",
+      "statement": "Minimize the likelihood of procurement disruption from LFP-cell CN-supplier concentration, FX swings, CRMA / EU Battery Regulation change - exposure absent for mechanical and thermal storage",
+      "jobStep": "product_constraint",
+      "importance": 7.0,
+      "satisfaction": 4.0,
+      "opportunity": 11.0,
+      "isUnderserved": false,
+      "isOverserved": false,
+      "productRelated": true,
+      "impactCategory": "reliability",
+      "recalibrationNote": ""
+    },
+    {
+      "id": "PRN5",
+      "statement": "Minimize the likelihood of derating or cycle-life loss when exposed ambient drifts below -20 C or above +50 C - a constraint flow-battery stacks and CAES tolerate differently",
+      "jobStep": "product_constraint",
+      "importance": 6.0,
+      "satisfaction": 5.0,
+      "opportunity": 7.0,
+      "isUnderserved": false,
+      "isOverserved": false,
+      "productRelated": true,
+      "impactCategory": "reliability",
+      "recalibrationNote": ""
+    },
+    {
+      "id": "PRN6",
+      "statement": "Minimize the likelihood of a revenue shortfall from 10-15% roundtrip-loss floor eating intraday-arbitrage and curtailment-capture margin - worse than pumped-hydro at comparable scale",
+      "jobStep": "product_constraint",
+      "importance": 7.0,
+      "satisfaction": 6.0,
+      "opportunity": 8.0,
+      "isUnderserved": false,
+      "isOverserved": false,
+      "productRelated": true,
+      "impactCategory": "reliability",
+      "recalibrationNote": ""
+    },
+    {
+      "id": "PRN7",
+      "statement": "Minimize the likelihood of business-case failure when installed cost exceeds EUR 250-400 per kWh - a price envelope a thermal-storage or hybrid-H2 option clears differently",
+      "jobStep": "product_constraint",
+      "importance": 7.0,
+      "satisfaction": 5.0,
+      "opportunity": 9.0,
+      "isUnderserved": false,
+      "isOverserved": false,
+      "productRelated": true,
+      "impactCategory": "reliability",
+      "recalibrationNote": ""
+    },
+    {
+      "id": "PRN8",
+      "statement": "Minimize the likelihood that FGW TR8 + TR3 grid-forming-mode certification gaps disqualify the asset from the Jan-2026 TSO inertia-service product - a mechanism-specific gap a synchronous condenser would not face",
+      "jobStep": "product_constraint",
+      "importance": 9.0,
+      "satisfaction": 4.0,
+      "opportunity": 14.0,
+      "isUnderserved": true,
+      "isOverserved": false,
+      "productRelated": true,
+      "impactCategory": "reliability",
+      "recalibrationNote": ""
+    },
+    {
+      "id": "PRN9",
+      "statement": "Minimize the likelihood of warranty-throughput breach driven by aging-aware-cycling misconfiguration on LFP cells - a failure mode electromechanical stores (flywheel) and mechanical stores (CAES) do not share",
+      "jobStep": "product_constraint",
+      "importance": 8.0,
+      "satisfaction": 6.0,
+      "opportunity": 10.0,
+      "isUnderserved": false,
+      "isOverserved": false,
+      "productRelated": true,
+      "impactCategory": "reliability",
+      "recalibrationNote": ""
+    },
+    {
+      "id": "PRN10",
+      "statement": "Minimize the likelihood of DSO rejection when the BESS is added to a pre-energized wind MV cabinet without revised protection-coordination study - driven by BESS bidirectional PCS behaviour alien to generator-only wind connections",
+      "jobStep": "product_constraint",
+      "importance": 9.0,
+      "satisfaction": 4.0,
+      "opportunity": 14.0,
+      "isUnderserved": true,
+      "isOverserved": false,
+      "productRelated": true,
+      "impactCategory": "reliability",
+      "recalibrationNote": ""
     }
   ],
-  "tables": [
-    {
-      "headers": [
-        "Source",
-        "Count",
-        "IDs"
-      ],
-      "rows": [
-        {
-          "Source": "Step 06 market needs (P1/P2)",
-          "Count": "21",
-          "IDs": "N1–N21"
-        },
-        {
-          "Source": "Step 06 bridge needs (P3–P5)",
-          "Count": "3",
-          "IDs": "N22, N23, N24"
-        },
-        {
-          "Source": "Step 10 product-related needs (affected_markets ⊇ 221115)",
-          "Count": "10",
-          "IDs": "PRN1–PRN10"
-        },
-        {
-          "Source": "**Total scored entries**",
-          "Count": "**34**",
-          "IDs": ""
-        }
-      ]
-    },
-    {
-      "headers": [
-        "#",
-        "Statement (short)",
-        "Sat₀",
-        "Sat₁",
-        "Rationale (incumbent evidence)"
-      ],
-      "rows": [
-        {
-          "#": "N2",
-          "Statement (short)": "Bankable dispatch-revenue model",
-          "Sat₀": "3",
-          "Sat₁": "4",
-          "Rationale (incumbent evidence)": "Wärtsilä GEMS / Fluence Mosaic ship revenue-stack modeling; still gap vs. bankable single-study."
-        },
-        {
-          "#": "N12",
-          "Statement (short)": "Grid-forming cert gap (2026 inertia)",
-          "Sat₀": "3",
-          "Sat₁": "4",
-          "Rationale (incumbent evidence)": "Fluence + SGRE have public grid-forming reference plants; field is maturing."
-        },
-        {
-          "#": "N13",
-          "Statement (short)": "aFRR/FCR <30 s response",
-          "Sat₀": "6",
-          "Sat₁": "7",
-          "Rationale (incumbent evidence)": "Mature across incumbents; productized in GEMS/Mosaic."
-        },
-        {
-          "#": "N14",
-          "Statement (short)": "Curtailment capture >90%",
-          "Sat₀": "5",
-          "Sat₁": "6",
-          "Rationale (incumbent evidence)": "Curtailment strategies productized at utility scale (Wärtsilä, Fluence)."
-        },
-        {
-          "#": "N15",
-          "Statement (short)": "PCS FRT trip (VDE-AR-N 4110)",
-          "Sat₀": "6",
-          "Sat₁": "7",
-          "Rationale (incumbent evidence)": "Fluence / SGRE reference sites pass FRT reliably."
-        },
-        {
-          "#": "N18",
-          "Statement (short)": "Re-tune EMS effort",
-          "Sat₀": "4",
-          "Sat₁": "5",
-          "Rationale (incumbent evidence)": "GEMS / Mosaic ship adaptive retune + rolling-horizon solvers."
-        },
-        {
-          "#": "PRN6",
-          "Statement (short)": "Roundtrip-loss revenue shortfall",
-          "Sat₀": "5",
-          "Sat₁": "6",
-          "Rationale (incumbent evidence)": "EMS optimizers recover part of the loss via arbitrage stacking."
-        },
-        {
-          "#": "PRN8",
-          "Statement (short)": "TR3 grid-forming cert gap",
-          "Sat₀": "3",
-          "Sat₁": "4",
-          "Rationale (incumbent evidence)": "Same rationale as N12."
-        },
-        {
-          "#": "PRN9",
-          "Statement (short)": "Aging-aware-cycling warranty breach",
-          "Sat₀": "5",
-          "Sat₁": "6",
-          "Rationale (incumbent evidence)": "Incumbent BMS firmware includes warranty-aware cycling."
-        }
-      ]
-    },
-    {
-      "headers": [
-        "#",
-        "Step",
-        "Statement (short)",
-        "Imp",
-        "Sat",
-        "Opp",
-        "US",
-        "OS",
-        "p_rel"
-      ],
-      "rows": [
-        {
-          "#": "N1",
-          "Step": "DEFINE",
-          "Statement (short)": "Undersize BESS vs. curtailment potential",
-          "Imp": "9",
-          "Sat": "4",
-          "Opp": "**14.00**",
-          "US": "✅",
-          "OS": "—",
-          "p_rel": "false"
-        },
-        {
-          "#": "N2",
-          "Step": "DEFINE",
-          "Statement (short)": "Bankable dispatch-revenue model",
-          "Imp": "8",
-          "Sat": "4",
-          "Opp": "**12.00**",
-          "US": "✅",
-          "OS": "—",
-          "p_rel": "false"
-        },
-        {
-          "#": "N3",
-          "Step": "DEFINE",
-          "Statement (short)": "Missing inertia-service revenue track",
-          "Imp": "7",
-          "Sat": "3",
-          "Opp": "11.00",
-          "US": "—",
-          "OS": "—",
-          "p_rel": "false"
-        },
-        {
-          "#": "N4",
-          "Step": "LOCATE",
-          "Statement (short)": "DSO MV-capacity blocker discovered late",
-          "Imp": "10",
-          "Sat": "4",
-          "Opp": "**16.00**",
-          "US": "✅",
-          "OS": "—",
-          "p_rel": "false"
-        },
-        {
-          "#": "N5",
-          "Step": "LOCATE",
-          "Statement (short)": "Fit 40–80 m²/MWh inside fence",
-          "Imp": "8",
-          "Sat": "5",
-          "Opp": "11.00",
-          "US": "—",
-          "OS": "—",
-          "p_rel": "true"
-        },
-        {
-          "#": "N6",
-          "Step": "PREPARE",
-          "Statement (short)": "Time-to-RtB <9 months",
-          "Imp": "9",
-          "Sat": "4",
-          "Opp": "**14.00**",
-          "US": "✅",
-          "OS": "—",
-          "p_rel": "false"
-        },
-        {
-          "#": "N7",
-          "Step": "PREPARE",
-          "Statement (short)": "BoP variance >5% cost overrun",
-          "Imp": "8",
-          "Sat": "5",
-          "Opp": "11.00",
-          "US": "—",
-          "OS": "—",
-          "p_rel": "false"
-        },
-        {
-          "#": "N8",
-          "Step": "PREPARE",
-          "Statement (short)": "Feuerwehr fire-clearance redesign",
-          "Imp": "8",
-          "Sat": "4",
-          "Opp": "**12.00**",
-          "US": "✅",
-          "OS": "—",
-          "p_rel": "true"
-        },
-        {
-          "#": "N9",
-          "Step": "CONFIRM",
-          "Statement (short)": "FGW TR8 re-submission",
-          "Imp": "9",
-          "Sat": "4",
-          "Opp": "**14.00**",
-          "US": "✅",
-          "OS": "—",
-          "p_rel": "true"
-        },
-        {
-          "#": "N10",
-          "Step": "CONFIRM",
-          "Statement (short)": "Firmware BMS/PCS/EMS incompatibility",
-          "Imp": "9",
-          "Sat": "3",
-          "Opp": "**15.00**",
-          "US": "✅",
-          "OS": "—",
-          "p_rel": "true"
-        },
-        {
-          "#": "N11",
-          "Step": "CONFIRM",
-          "Statement (short)": "Witness-test NC closure <30 d",
-          "Imp": "8",
-          "Sat": "5",
-          "Opp": "11.00",
-          "US": "—",
-          "OS": "—",
-          "p_rel": "false"
-        },
-        {
-          "#": "N12",
-          "Step": "CONFIRM",
-          "Statement (short)": "Grid-forming cert gap (2026 inertia)",
-          "Imp": "9",
-          "Sat": "4",
-          "Opp": "**14.00**",
-          "US": "✅",
-          "OS": "—",
-          "p_rel": "true"
-        },
-        {
-          "#": "N13",
-          "Step": "EXECUTE",
-          "Statement (short)": "aFRR/FCR <30 s response",
-          "Imp": "9",
-          "Sat": "7",
-          "Opp": "11.00",
-          "US": "—",
-          "OS": "—",
-          "p_rel": "false"
-        },
-        {
-          "#": "N14",
-          "Step": "EXECUTE",
-          "Statement (short)": "Curtailment capture >90%",
-          "Imp": "9",
-          "Sat": "6",
-          "Opp": "12.00",
-          "US": "—",
-          "OS": "—",
-          "p_rel": "false"
-        },
-        {
-          "#": "N15",
-          "Step": "EXECUTE",
-          "Statement (short)": "PCS trip under FRT",
-          "Imp": "10",
-          "Sat": "7",
-          "Opp": "13.00",
-          "US": "—",
-          "OS": "—",
-          "p_rel": "false"
-        },
-        {
-          "#": "N16",
-          "Step": "MONITOR",
-          "Statement (short)": "Capacity fade warranty threshold",
-          "Imp": "8",
-          "Sat": "5",
-          "Opp": "11.00",
-          "US": "—",
-          "OS": "—",
-          "p_rel": "true"
-        },
-        {
-          "#": "N17",
-          "Step": "MONITOR",
-          "Statement (short)": "SoC drift BMS/EMS <1%/24 h",
-          "Imp": "6",
-          "Sat": "5",
-          "Opp": "7.00",
-          "US": "—",
-          "OS": "—",
-          "p_rel": "true"
-        },
-        {
-          "#": "N18",
-          "Step": "MODIFY",
-          "Statement (short)": "Re-tune EMS effort",
-          "Imp": "7",
-          "Sat": "5",
-          "Opp": "9.00",
-          "US": "—",
-          "OS": "—",
-          "p_rel": "false"
-        },
-        {
-          "#": "N19",
-          "Step": "MODIFY",
-          "Statement (short)": "Aging-aware cycling breach",
-          "Imp": "8",
-          "Sat": "5",
-          "Opp": "11.00",
-          "US": "—",
-          "OS": "—",
-          "p_rel": "true"
-        },
-        {
-          "#": "N20",
-          "Step": "CONCLUDE",
-          "Statement (short)": "Annual re-cert dossier",
-          "Imp": "7",
-          "Sat": "4",
-          "Opp": "10.00",
-          "US": "—",
-          "OS": "—",
-          "p_rel": "false"
-        },
-        {
-          "#": "N21",
-          "Step": "CONCLUDE",
-          "Statement (short)": "EU Battery Reg disposal",
-          "Imp": "8",
-          "Sat": "4",
-          "Opp": "**12.00**",
-          "US": "✅",
-          "OS": "—",
-          "p_rel": "true"
-        },
-        {
-          "#": "N22",
-          "Step": "P3_role",
-          "Statement (short)": "Revenue-accretive pitch to IC",
-          "Imp": "8",
-          "Sat": "5",
-          "Opp": "11.00",
-          "US": "—",
-          "OS": "—",
-          "p_rel": "false"
-        },
-        {
-          "#": "N23",
-          "Step": "P4_image",
-          "Statement (short)": "Certifier-findings / sloppy signal",
-          "Imp": "7",
-          "Sat": "5",
-          "Opp": "9.00",
-          "US": "—",
-          "OS": "—",
-          "p_rel": "true"
-        },
-        {
-          "#": "N24",
-          "Step": "P5_emotion",
-          "Statement (short)": "Single-counterparty fault-wrap",
-          "Imp": "8",
-          "Sat": "3",
-          "Opp": "**13.00**",
-          "US": "✅",
-          "OS": "—",
-          "p_rel": "false"
-        }
-      ]
-    },
-    {
-      "headers": [
-        "#",
-        "Statement (short)",
-        "Imp",
-        "Sat",
-        "Opp",
-        "US",
-        "OS",
-        "p_rel"
-      ],
-      "rows": [
-        {
-          "#": "PRN1",
-          "Statement (short)": "Fire-clearance redesign (Li-ion deflagration)",
-          "Imp": "8",
-          "Sat": "4",
-          "Opp": "**12.00**",
-          "US": "✅",
-          "OS": "—",
-          "p_rel": "true"
-        },
-        {
-          "#": "PRN2",
-          "Statement (short)": "Insurance step-up / Li-ion loss-history",
-          "Imp": "7",
-          "Sat": "3",
-          "Opp": "11.00",
-          "US": "—",
-          "OS": "—",
-          "p_rel": "true"
-        },
-        {
-          "#": "PRN3",
-          "Statement (short)": "Fit inside fenced footprint (no Bplan)",
-          "Imp": "8",
-          "Sat": "5",
-          "Opp": "11.00",
-          "US": "—",
-          "OS": "—",
-          "p_rel": "true"
-        },
-        {
-          "#": "PRN4",
-          "Statement (short)": "LFP CN-supplier / CRMA concentration",
-          "Imp": "7",
-          "Sat": "4",
-          "Opp": "11.00",
-          "US": "—",
-          "OS": "—",
-          "p_rel": "true"
-        },
-        {
-          "#": "PRN5",
-          "Statement (short)": "Derating <−20 / >+50 °C envelope",
-          "Imp": "6",
-          "Sat": "5",
-          "Opp": "7.00",
-          "US": "—",
-          "OS": "—",
-          "p_rel": "true"
-        },
-        {
-          "#": "PRN6",
-          "Statement (short)": "10–15% roundtrip revenue shortfall",
-          "Imp": "7",
-          "Sat": "6",
-          "Opp": "8.00",
-          "US": "—",
-          "OS": "—",
-          "p_rel": "true"
-        },
-        {
-          "#": "PRN7",
-          "Statement (short)": "CAPEX €250–400/kWh business-case",
-          "Imp": "7",
-          "Sat": "5",
-          "Opp": "9.00",
-          "US": "—",
-          "OS": "—",
-          "p_rel": "true"
-        },
-        {
-          "#": "PRN8",
-          "Statement (short)": "TR3 grid-forming cert gap (Jan-2026 inertia)",
-          "Imp": "9",
-          "Sat": "4",
-          "Opp": "**14.00**",
-          "US": "✅",
-          "OS": "—",
-          "p_rel": "true"
-        },
-        {
-          "#": "PRN9",
-          "Statement (short)": "Aging-aware-cycling warranty breach",
-          "Imp": "8",
-          "Sat": "6",
-          "Opp": "10.00",
-          "US": "—",
-          "OS": "—",
-          "p_rel": "true"
-        },
-        {
-          "#": "PRN10",
-          "Statement (short)": "DSO protection-coord study on wind MV cabinet",
-          "Imp": "9",
-          "Sat": "4",
-          "Opp": "**14.00**",
-          "US": "✅",
-          "OS": "—",
-          "p_rel": "true"
-        }
-      ]
-    },
-    {
-      "headers": [
-        "Field",
-        "Value"
-      ],
-      "rows": [
-        {
-          "Field": "market_name",
-          "Value": "Wind+BESS Hybrid Parks"
-        },
-        {
-          "Field": "naics_code",
-          "Value": "221115"
-        },
-        {
-          "Field": "total_needs",
-          "Value": "34"
-        },
-        {
-          "Field": "underserved_count",
-          "Value": "13"
-        },
-        {
-          "Field": "overserved_count",
-          "Value": "0"
-        },
-        {
-          "Field": "avg_opportunity_score",
-          "Value": "**11.50**"
-        },
-        {
-          "Field": "top_5_opportunity_score",
-          "Value": "N4 (16.00) → N10 (15.00) → N1 / N6 / N9 (14.00)"
-        }
-      ]
-    },
-    {
-      "headers": [
-        "Rank",
-        "#",
-        "Opp",
-        "Error statement"
-      ],
-      "rows": [
-        {
-          "Rank": "1",
-          "#": "N4",
-          "Opp": "16.00",
-          "Error statement": "Minimize the likelihood of discovering a DSO MV-capacity blocker after permit milestone, causing >6-month project restart"
-        },
-        {
-          "Rank": "2",
-          "#": "N10",
-          "Opp": "15.00",
-          "Error statement": "Minimize the likelihood of commissioning holdup caused by firmware-version incompatibility between BMS, PCS and EMS subsystems"
-        },
-        {
-          "Rank": "3",
-          "#": "N1",
-          "Opp": "14.00",
-          "Error statement": "Minimize the likelihood of undersizing BESS capacity by >15% relative to curtailment-capture potential due to incomplete site wind-yield and congestion-hour data"
-        },
-        {
-          "Rank": "4",
-          "#": "N6",
-          "Opp": "14.00",
-          "Error statement": "Minimize the time-to-Ready-to-Build from contract signature to <9 months including Baugenehmigung, DSO acceptance and procurement"
-        },
-        {
-          "Rank": "5",
-          "#": "N9",
-          "Opp": "14.00",
-          "Error statement": "Minimize the likelihood of FGW TR8 plant-cert re-submission due to incomplete TR3 unit-cert handover from component vendors"
-        }
-      ]
-    },
-    {
-      "headers": [
-        "Lifecycle phase",
-        "Underserved count",
-        "Read"
-      ],
-      "rows": [
-        {
-          "Lifecycle phase": "DEFINE",
-          "Underserved count": "2 (N1, N2)",
-          "Read": "Sales-enablement / sizing + bankable revenue model."
-        },
-        {
-          "Lifecycle phase": "LOCATE",
-          "Underserved count": "1 (N4) + PRN10",
-          "Read": "DSO/MV-side surprises dominate."
-        },
-        {
-          "Lifecycle phase": "PREPARE",
-          "Underserved count": "2 (N6, N8) + PRN1",
-          "Read": "Cert + fire-clearance drive RtB slip."
-        },
-        {
-          "Lifecycle phase": "CONFIRM",
-          "Underserved count": "3 (N9, N10, N12) + PRN8",
-          "Read": "**Largest underserved cluster — all certification / handover.**"
-        },
-        {
-          "Lifecycle phase": "CONCLUDE",
-          "Underserved count": "1 (N21)",
-          "Read": "End-of-life Battery-Reg reporting."
-        },
-        {
-          "Lifecycle phase": "Emotional anchor",
-          "Underserved count": "N24",
-          "Read": "Single-counterparty fault-wrap."
-        }
-      ]
-    },
-    {
-      "headers": [
-        "Metric",
-        "Value",
-        "Threshold",
-        "Trigger"
-      ],
-      "rows": [
-        {
-          "Metric": "ODI avg opportunity",
-          "Value": "11.50",
-          "Threshold": "> 12",
-          "Trigger": "no"
-        },
-        {
-          "Metric": "FMF avg (tech features)",
-          "Value": "6.11",
-          "Threshold": "< 4",
-          "Trigger": "no"
-        },
-        {
-          "Metric": "ODI avg",
-          "Value": "11.50",
-          "Threshold": "< 8",
-          "Trigger": "no"
-        },
-        {
-          "Metric": "FMF avg",
-          "Value": "6.11",
-          "Threshold": "> 7",
-          "Trigger": "no"
-        }
-      ]
-    },
-    {
-      "headers": [
-        "#",
-        "Check",
-        "Status",
-        "Note"
-      ],
-      "rows": [
-        {
-          "#": "Q1",
-          "Check": "Formula correct (spot-check 5)",
-          "Status": "**PASS**",
-          "Note": "N4 10+6=16 · N10 9+6=15 · N1 9+5=14 · N6 9+5=14 · N17 6+1=7. All match."
-        },
-        {
-          "#": "Q2",
-          "Check": "Underserved flags correct",
-          "Status": "**PASS**",
-          "Note": "All 13 entries satisfy imp>7 AND sat<5; no false positives (N3 imp=7 excluded; N5/N11 sat=5 excluded)."
-        },
-        {
-          "#": "Q3",
-          "Check": "Overserved flags correct",
-          "Status": "**PASS**",
-          "Note": "0 entries satisfy imp<3 AND sat>7; 0 flagged."
-        },
-        {
-          "#": "Q4",
-          "Check": "Need-count preservation",
-          "Status": "**PASS**",
-          "Note": "24 Step-06 needs retained + 10 Step-10 additions = 34 ≥ 24."
-        },
-        {
-          "#": "Q5",
-          "Check": "Top-5 ordering",
-          "Status": "**PASS**",
-          "Note": "Descending by opp; ties broken by ID order (N1<N6<N9<N12)."
-        },
-        {
-          "#": "Q6",
-          "Check": "Cross-check ran",
-          "Status": "**PASS**",
-          "Note": "ODI vs FMF computed; no threshold triggered."
-        }
-      ]
-    },
-    {
-      "headers": [
-        "Signal",
-        "Implication"
-      ],
-      "rows": [
-        {
-          "Signal": "10 of 13 underserved entries sit pre-operation (DEFINE → CONFIRM)",
-          "Implication": "Mein Solar's EPC wrap is an **upstream-of-revenue** product; the sales promise is schedule + certification certainty, not operating efficiency."
-        },
-        {
-          "Signal": "CONFIRM cluster (N9, N10, N12, PRN8) — 4 underserved entries, highest density",
-          "Implication": "Certification + firmware-handover is the **productizable differentiator**. Own TR3 + TR8 dossier; own BMS/PCS/EMS integration-validation."
-        },
-        {
-          "Signal": "N4 opp=16 (DSO MV-capacity blocker) + PRN10 opp=14 (protection-coord study)",
-          "Implication": "Pre-contract DSO-feasibility study is a **billable de-risking service**, not a free pre-sale. Package it as Phase 0."
-        },
-        {
-          "Signal": "N24 opp=13 (single-counterparty fault-wrap) + Step 09 V3 `superior`",
-          "Implication": "Emotional anchor is validated by ODI — sell the warranty-wrap, not the equipment."
-        },
-        {
-          "Signal": "PRN8 opp=14 (grid-forming TR3 cert) time-boxed Jan 2026",
-          "Implication": "Reference-plant commitment in 2026 H1 is the highest-opportunity time-boxed bet."
-        },
-        {
-          "Signal": "PRN1 opp=12 (Feuerwehr redesign)",
-          "Implication": "Region-indexed fire-clearance template library → priced delta on EPC contract."
-        }
-      ]
-    }
-  ],
-  "entities": [
-    {
-      "component": "odi_matrix",
-      "naics_code": "221115",
-      "naics_title": "Wind Electric Power Generation",
-      "market_name": "Wind+BESS Hybrid Parks",
-      "vendor_name": "Mein Solar GmbH",
-      "product_name": "EPC für Großbatteriespeicher",
-      "incumbent_recalibration_anchors": [
-        {
-          "technology_name": "Fluence turnkey",
-          "market_share_estimate": "high (DE BESS integrator leader)",
-          "strengths": [
-            "turnkey integration",
-            "grid-forming reference plants",
-            "Mosaic EMS"
-          ],
-          "weaknesses": [
-            "subcontracts civil + MV locally",
-            "interface risk left with IPP"
-          ]
-        },
-        {
-          "technology_name": "Wärtsilä GEMS",
-          "market_share_estimate": "utility-scale",
-          "strengths": [
-            "mature dispatch optimization",
-            "revenue-stack modeling",
-            "adaptive EMS retune"
-          ],
-          "weaknesses": [
-            "not wind-OEM-native",
-            "fewer DE references"
-          ]
-        },
-        {
-          "technology_name": "Tesla Megapack (turnkey)",
-          "market_share_estimate": "global",
-          "strengths": [
-            "productized delivery",
-            "fast schedule"
-          ],
-          "weaknesses": [
-            "install-services model, not full EPC",
-            "limited DE grid-code depth"
-          ]
-        },
-        {
-          "technology_name": "Siemens Gamesa Storage",
-          "market_share_estimate": "wind-OEM adjacent",
-          "strengths": [
-            "grid-forming reference",
-            "wind-OEM design authority"
-          ],
-          "weaknesses": [
-            "emerging BESS scale",
-            "less BESS-commercial maturity"
-          ]
-        },
-        {
-          "technology_name": "Utility in-house EPC (EnBW, RWE, Vattenfall)",
-          "market_share_estimate": "portfolio captive",
-          "strengths": [
-            "DSO relationships",
-            "proven balance-sheet"
-          ],
-          "weaknesses": [
-            "splits PV + BESS scope into separate GCs and TR8 dossiers",
-            "not offered to third parties"
-          ]
-        }
-      ],
-      "entries": [
-        {
-          "id": "N1",
-          "error_statement": "Minimize the likelihood of undersizing BESS capacity by >15% relative to curtailment-capture potential due to incomplete site wind-yield and congestion-hour data",
-          "market_name": "Wind+BESS Hybrid Parks",
-          "naics_code": "221115",
-          "importance": 9.0,
-          "satisfaction_current": 4.0,
-          "opportunity_score": 14.0,
-          "is_underserved": true,
-          "is_overserved": false,
-          "product_related": false,
-          "job_step_number": 1,
-          "job_step_name": "DEFINE",
-          "impact_category": "reliability"
-        },
-        {
-          "id": "N2",
-          "error_statement": "Increase the ability to produce a bankable dispatch-and-revenue model linking curtailment, §19 StromNEV, intraday arbitrage, FCR/aFRR and inertia within a single sizing study",
-          "market_name": "Wind+BESS Hybrid Parks",
-          "naics_code": "221115",
-          "importance": 8.0,
-          "satisfaction_current": 4.0,
-          "opportunity_score": 12.0,
-          "is_underserved": true,
-          "is_overserved": false,
-          "product_related": false,
-          "job_step_number": 1,
-          "job_step_name": "DEFINE",
-          "impact_category": "cost"
-        },
-        {
-          "id": "N3",
-          "error_statement": "Minimize the likelihood of missing the inertia-service revenue track (EUR 8-20 k per MW per year from Jan 2026) during initial business-case definition",
-          "market_name": "Wind+BESS Hybrid Parks",
-          "naics_code": "221115",
-          "importance": 7.0,
-          "satisfaction_current": 3.0,
-          "opportunity_score": 11.0,
-          "is_underserved": false,
-          "is_overserved": false,
-          "product_related": false,
-          "job_step_number": 1,
-          "job_step_name": "DEFINE",
-          "impact_category": "cost"
-        },
-        {
-          "id": "N4",
-          "error_statement": "Minimize the likelihood of discovering a DSO MV-capacity blocker after permit milestone, causing >6-month project restart",
-          "market_name": "Wind+BESS Hybrid Parks",
-          "naics_code": "221115",
-          "importance": 10.0,
-          "satisfaction_current": 4.0,
-          "opportunity_score": 16.0,
-          "is_underserved": true,
-          "is_overserved": false,
-          "product_related": false,
-          "job_step_number": 2,
-          "job_step_name": "LOCATE",
-          "impact_category": "time"
-        },
-        {
-          "id": "N5",
-          "error_statement": "Increase the ability to secure a buildable 40-80 m2 per MWh footprint inside existing wind-park fencing without new land lease or Bebauungsplan change",
-          "market_name": "Wind+BESS Hybrid Parks",
-          "naics_code": "221115",
-          "importance": 8.0,
-          "satisfaction_current": 5.0,
-          "opportunity_score": 11.0,
-          "is_underserved": false,
-          "is_overserved": false,
-          "product_related": true,
-          "job_step_number": 2,
-          "job_step_name": "LOCATE",
-          "impact_category": "time"
-        },
-        {
-          "id": "N6",
-          "error_statement": "Minimize the time-to-Ready-to-Build from contract signature to under 9 months including Baugenehmigung, DSO acceptance and procurement",
-          "market_name": "Wind+BESS Hybrid Parks",
-          "naics_code": "221115",
-          "importance": 9.0,
-          "satisfaction_current": 4.0,
-          "opportunity_score": 14.0,
-          "is_underserved": true,
-          "is_overserved": false,
-          "product_related": false,
-          "job_step_number": 3,
-          "job_step_name": "PREPARE",
-          "impact_category": "time"
-        },
-        {
-          "id": "N7",
-          "error_statement": "Minimize variability between planned and as-built BoP scope (cable runs, foundations, Feuerwehr access) causing >5% cost overrun",
-          "market_name": "Wind+BESS Hybrid Parks",
-          "naics_code": "221115",
-          "importance": 8.0,
-          "satisfaction_current": 5.0,
-          "opportunity_score": 11.0,
-          "is_underserved": false,
-          "is_overserved": false,
-          "product_related": false,
-          "job_step_number": 3,
-          "job_step_name": "PREPARE",
-          "impact_category": "cost"
-        },
-        {
-          "id": "N8",
-          "error_statement": "Minimize the likelihood of schedule slip driven by Feuerwehr/VdS fire-protection clearance re-design after permit submission",
-          "market_name": "Wind+BESS Hybrid Parks",
-          "naics_code": "221115",
-          "importance": 8.0,
-          "satisfaction_current": 4.0,
-          "opportunity_score": 12.0,
-          "is_underserved": true,
-          "is_overserved": false,
-          "product_related": true,
-          "job_step_number": 3,
-          "job_step_name": "PREPARE",
-          "impact_category": "time"
-        },
-        {
-          "id": "N9",
-          "error_statement": "Minimize the likelihood of FGW TR8 plant-cert re-submission due to incomplete TR3 unit-cert handover from component vendors",
-          "market_name": "Wind+BESS Hybrid Parks",
-          "naics_code": "221115",
-          "importance": 9.0,
-          "satisfaction_current": 4.0,
-          "opportunity_score": 14.0,
-          "is_underserved": true,
-          "is_overserved": false,
-          "product_related": true,
-          "job_step_number": 4,
-          "job_step_name": "CONFIRM",
-          "impact_category": "reliability"
-        },
-        {
-          "id": "N10",
-          "error_statement": "Minimize the likelihood of commissioning holdup caused by firmware-version incompatibility between BMS, PCS and EMS subsystems",
-          "market_name": "Wind+BESS Hybrid Parks",
-          "naics_code": "221115",
-          "importance": 9.0,
-          "satisfaction_current": 3.0,
-          "opportunity_score": 15.0,
-          "is_underserved": true,
-          "is_overserved": false,
-          "product_related": true,
-          "job_step_number": 4,
-          "job_step_name": "CONFIRM",
-          "impact_category": "time"
-        },
-        {
-          "id": "N11",
-          "error_statement": "Minimize the time to close VDE-AR-N 4110/4120 witness-test non-conformities to under 30 days from finding",
-          "market_name": "Wind+BESS Hybrid Parks",
-          "naics_code": "221115",
-          "importance": 8.0,
-          "satisfaction_current": 5.0,
-          "opportunity_score": 11.0,
-          "is_underserved": false,
-          "is_overserved": false,
-          "product_related": false,
-          "job_step_number": 4,
-          "job_step_name": "CONFIRM",
-          "impact_category": "time"
-        },
-        {
-          "id": "N12",
-          "error_statement": "Minimize the likelihood of grid-forming-mode certification gaps that disqualify the asset from the 2026 inertia-service product",
-          "market_name": "Wind+BESS Hybrid Parks",
-          "naics_code": "221115",
-          "importance": 9.0,
-          "satisfaction_current": 4.0,
-          "opportunity_score": 14.0,
-          "is_underserved": true,
-          "is_overserved": false,
-          "product_related": true,
-          "job_step_number": 4,
-          "job_step_name": "CONFIRM",
-          "impact_category": "cost"
-        },
-        {
-          "id": "N13",
-          "error_statement": "Minimize the likelihood of missing an aFRR or FCR activation command within the required response window (<30 s)",
-          "market_name": "Wind+BESS Hybrid Parks",
-          "naics_code": "221115",
-          "importance": 9.0,
-          "satisfaction_current": 7.0,
-          "opportunity_score": 11.0,
-          "is_underserved": false,
-          "is_overserved": false,
-          "product_related": false,
-          "job_step_number": 5,
-          "job_step_name": "EXECUTE",
-          "impact_category": "reliability"
-        },
-        {
-          "id": "N14",
-          "error_statement": "Maximize the share of available curtailment-window MWh captured by the BESS to above 90% of DSO-curtailed energy",
-          "market_name": "Wind+BESS Hybrid Parks",
-          "naics_code": "221115",
-          "importance": 9.0,
-          "satisfaction_current": 6.0,
-          "opportunity_score": 12.0,
-          "is_underserved": false,
-          "is_overserved": false,
-          "product_related": false,
-          "job_step_number": 5,
-          "job_step_name": "EXECUTE",
-          "impact_category": "cost"
-        },
-        {
-          "id": "N15",
-          "error_statement": "Minimize the likelihood of PCS trip under grid-fault ride-through conditions specified by VDE-AR-N 4110",
-          "market_name": "Wind+BESS Hybrid Parks",
-          "naics_code": "221115",
-          "importance": 10.0,
-          "satisfaction_current": 7.0,
-          "opportunity_score": 13.0,
-          "is_underserved": false,
-          "is_overserved": false,
-          "product_related": false,
-          "job_step_number": 5,
-          "job_step_name": "EXECUTE",
-          "impact_category": "safety"
-        },
-        {
-          "id": "N16",
-          "error_statement": "Minimize the likelihood of undetected capacity fade exceeding warranty threshold prior to annual availability audit",
-          "market_name": "Wind+BESS Hybrid Parks",
-          "naics_code": "221115",
-          "importance": 8.0,
-          "satisfaction_current": 5.0,
-          "opportunity_score": 11.0,
-          "is_underserved": false,
-          "is_overserved": false,
-          "product_related": true,
-          "job_step_number": 6,
-          "job_step_name": "MONITOR",
-          "impact_category": "reliability"
-        },
-        {
-          "id": "N17",
-          "error_statement": "Minimize SoC-reporting drift between BMS, EMS and aggregator to under 1% over a 24-hour cycle",
-          "market_name": "Wind+BESS Hybrid Parks",
-          "naics_code": "221115",
-          "importance": 6.0,
-          "satisfaction_current": 5.0,
-          "opportunity_score": 7.0,
-          "is_underserved": false,
-          "is_overserved": false,
-          "product_related": true,
-          "job_step_number": 6,
-          "job_step_name": "MONITOR",
-          "impact_category": "reliability"
-        },
-        {
-          "id": "N18",
-          "error_statement": "Minimize the operator effort to re-tune EMS dispatch policy when curtailment patterns or intraday spreads shift materially",
-          "market_name": "Wind+BESS Hybrid Parks",
-          "naics_code": "221115",
-          "importance": 7.0,
-          "satisfaction_current": 5.0,
-          "opportunity_score": 9.0,
-          "is_underserved": false,
-          "is_overserved": false,
-          "product_related": false,
-          "job_step_number": 7,
-          "job_step_name": "MODIFY",
-          "impact_category": "skill"
-        },
-        {
-          "id": "N19",
-          "error_statement": "Minimize the likelihood that aging-aware cycling misconfiguration drives degradation exceeding contractual throughput guarantee",
-          "market_name": "Wind+BESS Hybrid Parks",
-          "naics_code": "221115",
-          "importance": 8.0,
-          "satisfaction_current": 5.0,
-          "opportunity_score": 11.0,
-          "is_underserved": false,
-          "is_overserved": false,
-          "product_related": true,
-          "job_step_number": 7,
-          "job_step_name": "MODIFY",
-          "impact_category": "cost"
-        },
-        {
-          "id": "N20",
-          "error_statement": "Minimize the effort to execute annual FGW/DSO re-certification audits through a single pre-packaged evidence dossier",
-          "market_name": "Wind+BESS Hybrid Parks",
-          "naics_code": "221115",
-          "importance": 7.0,
-          "satisfaction_current": 4.0,
-          "opportunity_score": 10.0,
-          "is_underserved": false,
-          "is_overserved": false,
-          "product_related": false,
-          "job_step_number": 8,
-          "job_step_name": "CONCLUDE",
-          "impact_category": "time"
-        },
-        {
-          "id": "N21",
-          "error_statement": "Minimize the likelihood of end-of-life disposal non-compliance with EU Battery Regulation reporting obligations",
-          "market_name": "Wind+BESS Hybrid Parks",
-          "naics_code": "221115",
-          "importance": 8.0,
-          "satisfaction_current": 4.0,
-          "opportunity_score": 12.0,
-          "is_underserved": true,
-          "is_overserved": false,
-          "product_related": true,
-          "job_step_number": 8,
-          "job_step_name": "CONCLUDE",
-          "impact_category": "safety"
-        },
-        {
-          "id": "N22",
-          "error_statement": "Increase the ability to present the BESS addition as a revenue-accretive asset with committed multi-stream dispatch evidence at investment-committee",
-          "market_name": "Wind+BESS Hybrid Parks",
-          "naics_code": "221115",
-          "importance": 8.0,
-          "satisfaction_current": 5.0,
-          "opportunity_score": 11.0,
-          "is_underserved": false,
-          "is_overserved": false,
-          "product_related": false,
-          "job_step_number": 1,
-          "job_step_name": "DEFINE",
-          "impact_category": "cost"
-        },
-        {
-          "id": "N23",
-          "error_statement": "Minimize the likelihood of certifier audit findings that require repeat visits or signal sloppy engineering practice",
-          "market_name": "Wind+BESS Hybrid Parks",
-          "naics_code": "221115",
-          "importance": 7.0,
-          "satisfaction_current": 5.0,
-          "opportunity_score": 9.0,
-          "is_underserved": false,
-          "is_overserved": false,
-          "product_related": true,
-          "job_step_number": 4,
-          "job_step_name": "CONFIRM",
-          "impact_category": "reliability"
-        },
-        {
-          "id": "N24",
-          "error_statement": "Minimize the time lost to cross-vendor root-cause dispute by ensuring a single EPC counterparty owns fault-tree triage and warranty-wrap resolution",
-          "market_name": "Wind+BESS Hybrid Parks",
-          "naics_code": "221115",
-          "importance": 8.0,
-          "satisfaction_current": 3.0,
-          "opportunity_score": 13.0,
-          "is_underserved": true,
-          "is_overserved": false,
-          "product_related": false,
-          "job_step_number": 5,
-          "job_step_name": "EXECUTE",
-          "impact_category": "time"
-        },
-        {
-          "id": "PRN1",
-          "error_statement": "Minimize the likelihood of schedule slip driven by Feuerwehr / VdS fire-clearance redesign triggered by Li-ion deflagration-venting and compartmentation rules that do not apply to non-flammable storage chemistries",
-          "market_name": "Wind+BESS Hybrid Parks",
-          "naics_code": "221115",
-          "importance": 8.0,
-          "satisfaction_current": 4.0,
-          "opportunity_score": 12.0,
-          "is_underserved": true,
-          "is_overserved": false,
-          "product_related": true,
-          "job_step_number": 0,
-          "job_step_name": "product_constraint",
-          "impact_category": "reliability"
-        },
-        {
-          "id": "PRN2",
-          "error_statement": "Minimize the likelihood of insurance-premium step-up or coverage denial driven by Li-ion fire-loss loss-history that flow/flywheel/CAES assets avoid",
-          "market_name": "Wind+BESS Hybrid Parks",
-          "naics_code": "221115",
-          "importance": 7.0,
-          "satisfaction_current": 3.0,
-          "opportunity_score": 11.0,
-          "is_underserved": false,
-          "is_overserved": false,
-          "product_related": true,
-          "job_step_number": 0,
-          "job_step_name": "product_constraint",
-          "impact_category": "reliability"
-        },
-        {
-          "id": "PRN3",
-          "error_statement": "Increase the ability to fit the storage asset inside an existing wind-park fenced footprint at 40-80 m2/MWh without a new Bebauungsplan change - a footprint a flywheel-farm or standalone condenser would not require",
-          "market_name": "Wind+BESS Hybrid Parks",
-          "naics_code": "221115",
-          "importance": 8.0,
-          "satisfaction_current": 5.0,
-          "opportunity_score": 11.0,
-          "is_underserved": false,
-          "is_overserved": false,
-          "product_related": true,
-          "job_step_number": 0,
-          "job_step_name": "product_constraint",
-          "impact_category": "reliability"
-        },
-        {
-          "id": "PRN4",
-          "error_statement": "Minimize the likelihood of procurement disruption from LFP-cell CN-supplier concentration, FX swings, CRMA / EU Battery Regulation change - exposure absent for mechanical and thermal storage",
-          "market_name": "Wind+BESS Hybrid Parks",
-          "naics_code": "221115",
-          "importance": 7.0,
-          "satisfaction_current": 4.0,
-          "opportunity_score": 11.0,
-          "is_underserved": false,
-          "is_overserved": false,
-          "product_related": true,
-          "job_step_number": 0,
-          "job_step_name": "product_constraint",
-          "impact_category": "reliability"
-        },
-        {
-          "id": "PRN5",
-          "error_statement": "Minimize the likelihood of derating or cycle-life loss when exposed ambient drifts below -20 C or above +50 C - a constraint flow-battery stacks and CAES tolerate differently",
-          "market_name": "Wind+BESS Hybrid Parks",
-          "naics_code": "221115",
-          "importance": 6.0,
-          "satisfaction_current": 5.0,
-          "opportunity_score": 7.0,
-          "is_underserved": false,
-          "is_overserved": false,
-          "product_related": true,
-          "job_step_number": 0,
-          "job_step_name": "product_constraint",
-          "impact_category": "reliability"
-        },
-        {
-          "id": "PRN6",
-          "error_statement": "Minimize the likelihood of a revenue shortfall from 10-15% roundtrip-loss floor eating intraday-arbitrage and curtailment-capture margin - worse than pumped-hydro at comparable scale",
-          "market_name": "Wind+BESS Hybrid Parks",
-          "naics_code": "221115",
-          "importance": 7.0,
-          "satisfaction_current": 6.0,
-          "opportunity_score": 8.0,
-          "is_underserved": false,
-          "is_overserved": false,
-          "product_related": true,
-          "job_step_number": 0,
-          "job_step_name": "product_constraint",
-          "impact_category": "reliability"
-        },
-        {
-          "id": "PRN7",
-          "error_statement": "Minimize the likelihood of business-case failure when installed cost exceeds EUR 250-400 per kWh - a price envelope a thermal-storage or hybrid-H2 option clears differently",
-          "market_name": "Wind+BESS Hybrid Parks",
-          "naics_code": "221115",
-          "importance": 7.0,
-          "satisfaction_current": 5.0,
-          "opportunity_score": 9.0,
-          "is_underserved": false,
-          "is_overserved": false,
-          "product_related": true,
-          "job_step_number": 0,
-          "job_step_name": "product_constraint",
-          "impact_category": "reliability"
-        },
-        {
-          "id": "PRN8",
-          "error_statement": "Minimize the likelihood that FGW TR8 + TR3 grid-forming-mode certification gaps disqualify the asset from the Jan-2026 TSO inertia-service product - a mechanism-specific gap a synchronous condenser would not face",
-          "market_name": "Wind+BESS Hybrid Parks",
-          "naics_code": "221115",
-          "importance": 9.0,
-          "satisfaction_current": 4.0,
-          "opportunity_score": 14.0,
-          "is_underserved": true,
-          "is_overserved": false,
-          "product_related": true,
-          "job_step_number": 0,
-          "job_step_name": "product_constraint",
-          "impact_category": "reliability"
-        },
-        {
-          "id": "PRN9",
-          "error_statement": "Minimize the likelihood of warranty-throughput breach driven by aging-aware-cycling misconfiguration on LFP cells - a failure mode electromechanical stores (flywheel) and mechanical stores (CAES) do not share",
-          "market_name": "Wind+BESS Hybrid Parks",
-          "naics_code": "221115",
-          "importance": 8.0,
-          "satisfaction_current": 6.0,
-          "opportunity_score": 10.0,
-          "is_underserved": false,
-          "is_overserved": false,
-          "product_related": true,
-          "job_step_number": 0,
-          "job_step_name": "product_constraint",
-          "impact_category": "reliability"
-        },
-        {
-          "id": "PRN10",
-          "error_statement": "Minimize the likelihood of DSO rejection when the BESS is added to a pre-energized wind MV cabinet without revised protection-coordination study - driven by BESS bidirectional PCS behaviour alien to generator-only wind connections",
-          "market_name": "Wind+BESS Hybrid Parks",
-          "naics_code": "221115",
-          "importance": 9.0,
-          "satisfaction_current": 4.0,
-          "opportunity_score": 14.0,
-          "is_underserved": true,
-          "is_overserved": false,
-          "product_related": true,
-          "job_step_number": 0,
-          "job_step_name": "product_constraint",
-          "impact_category": "reliability"
-        }
-      ],
-      "market_summary": {
-        "market_name": "Wind+BESS Hybrid Parks",
-        "naics_code": "221115",
-        "total_needs": 34,
-        "underserved_count": 13,
-        "overserved_count": 0,
-        "avg_opportunity_score": 11.5,
-        "top_opportunities": [
-          "Minimize the likelihood of discovering a DSO MV-capacity blocker after permit milestone, causing >6-month project restart",
-          "Minimize the likelihood of commissioning holdup caused by firmware-version incompatibility between BMS, PCS and EMS subsystems",
-          "Minimize the likelihood of undersizing BESS capacity by >15% relative to curtailment-capture potential due to incomplete site wind-yield and congestion-hour data",
-          "Minimize the time-to-Ready-to-Build from contract signature to under 9 months including Baugenehmigung, DSO acceptance and procurement",
-          "Minimize the likelihood of FGW TR8 plant-cert re-submission due to incomplete TR3 unit-cert handover from component vendors"
-        ],
-        "underserved_ids": [
-          "N1",
-          "N2",
-          "N4",
-          "N6",
-          "N8",
-          "N9",
-          "N10",
-          "N12",
-          "N21",
-          "N24",
-          "PRN1",
-          "PRN8",
-          "PRN10"
-        ],
-        "overserved_ids": [],
-        "ties_at_top_cutoff": {
-          "opportunity_score": 14.0,
-          "ids_above_or_tied": [
-            "N4",
-            "N10",
-            "N1",
-            "N6",
-            "N9",
-            "N12",
-            "PRN8",
-            "PRN10"
-          ],
-          "top_5_ids_selected": [
-            "N4",
-            "N10",
-            "N1",
-            "N6",
-            "N9"
-          ],
-          "tiebreaker_rule": "ascending ID order within equal opportunity_score"
-        }
-      },
-      "cross_check_vs_step_09": {
-        "odi_avg_opportunity_score": 11.5,
-        "fmf_avg_overall_fit_technology_features": 6.11,
-        "fmf_avg_overall_fit_vendor_features": 6.8,
-        "threshold_high_opp_low_fit": {
-          "condition": "odi_avg>12 AND fmf_avg<4",
-          "triggered": false
-        },
-        "threshold_low_opp_high_fit": {
-          "condition": "odi_avg<8 AND fmf_avg>7",
-          "triggered": false
-        },
-        "flags": [],
-        "feature_level_read": {
-          "grid_code_certification_delivery_fmf_7_78": "maps to N6 / N9 / N11 / N12 / N20 / PRN8 — 4 of 5 underserved CONFIRM-cluster needs; both angles converge on certification delivery as leverage point",
-          "ems_fmf_6_56_vendor_v4_inferior": "maps to N2 / N14 / N18 — appropriately served post-recalibration; EMS gap is vendor-vs-incumbent, not market-unmet",
-          "commodity_features_fmf_5_33_to_5_78": "containerized BESS / MV coupling / civil map to appropriately-served N5 / N7 / N16 / N17 / PRN3 / PRN5 — commodity baseline"
-        }
-      },
-      "qa_checklist": {
-        "q1_formula_correct_spot_check": "PASS",
-        "q2_underserved_flags_correct": "PASS",
-        "q3_overserved_flags_correct": "PASS",
-        "q4_need_count_preserved": "PASS",
-        "q5_top5_ordering_correct": "PASS",
-        "q6_cross_check_vs_step_09_executed": "PASS"
-      }
-    }
-  ],
-  "has_bom": true,
-  "naics_sector_type": "non_manufacturing"
+  "sources": []
 }

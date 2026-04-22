@@ -19,7 +19,7 @@ const CRITERIA = [
     weight: "15%",
     name: "Feature-Market Fit",
     description:
-      "Average of technical feature ratings × vendor positioning scores across all matched features. Measures how well ZOLLERN's steel profiles' specific capabilities align with what each market prizes.",
+      "Average of technical feature ratings × vendor positioning scores across all matched features. Measures how well the product's specific capabilities align with what each market prizes.",
   },
   {
     code: "Constraint",
@@ -33,14 +33,14 @@ const CRITERIA = [
     weight: "15%",
     name: "Job Coverage",
     description:
-      "Fraction of the 8-step job map that ZOLLERN's steel profiles directly serve in each market × 10. Markets with full coverage earn 10.00; most markets score 7.50 (6/8 steps).",
+      "Fraction of the 8-step job map that the product directly serves in each market × 10. Markets with full coverage earn 10.00.",
   },
   {
     code: "VN",
     weight: "10%",
     name: "Value Network Hierarchy",
     description:
-      "Positional score based on where ZOLLERN's steel profiles sit in each market's value chain: deep component = 3.0, mid-chain = 6.0, customer-facing = 9.0, adjusted by chain depth. Lower = more commodity risk.",
+      "Positional score based on where the product sits in each market's value chain: deep component = 3.0, mid-chain = 6.0, customer-facing = 9.0, adjusted by chain depth. Lower = more commodity risk.",
   },
   {
     code: "Incumbent",

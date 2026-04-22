@@ -2,6 +2,18 @@
   "slug": "wind_power_generation",
   "name": "Wind Electric Power Generation",
   "shortName": "Wind Power Generation",
-  "naics": "221115",
-  "isReference": false
+  "naicsCode": "221115",
+  "isReference": false,
+  "rank": 4,
+  "scores": {
+    "odi": 5.75,
+    "featureFit": 6.11,
+    "constraintCompatibility": 9.5,
+    "jobCoverage": 7.5,
+    "vnHierarchy": 6.0,
+    "incumbentVulnerability": 4.0,
+    "composite": 6.3
+  },
+  "recommendation": "investigate",
+  "rationale": "Cleanest constraint sheet in set (9.5, only grid-forming firmware cert as low mitigable) + ODI 5.75 with time-boxed catalyst (DE inertia-service prequal opens Jan 2026). Job coverage 7.5 (4 YES + 4 partial). Vestas/SGRE OEM packages limit incumbent vulnerability (4.0)."
 }

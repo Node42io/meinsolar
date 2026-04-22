@@ -1,821 +1,249 @@
 {
-  "id": "ODI_other_electric_power_generation_bess_ref",
-  "title": "ODI Matrix — NAICS 221118 Other Electric Power Generation (Standalone BESS / IPP)",
-  "type": "odi_matrix",
-  "market_slug": "other_electric_power_generation_bess_ref",
-  "is_per_market": true,
-  "sections": [
+  "naicsCode": "221118",
+  "marketName": "Standalone BESS / Independent Power Producers",
+  "slug": "bess_power_generation",
+  "incumbentAnchor": "OEM-led turnkey (Fluence / Tesla Megapack / Sungrow PowerTitan / Wärtsilä)",
+  "summary": {
+    "totalNeeds": 18,
+    "underservedCount": 5,
+    "overservedCount": 0,
+    "avgOpportunityScore": 9.89
+  },
+  "needs": [
     {
-      "title": "Step 1 — Gather error statements (merge Step 06 market + Step 10 product-related)",
-      "content": "- 6 market-level needs (from FIT Step 09 references to Step 06 needs #3, #11, #13, #18, #21, #22) → `product_related=false`, full job-step context preserved where named.\n- 12 product-related needs lifted verbatim from `FIT_other_electric_power_generation_bess_ref.md` Step 10 → `product_related=true`, `job_step_number=0`, `job_step_name=product_constraint`, `impact_category=reliability`.\n- Total entries in scope for 221118: **18**\n\n---"
+      "id": "M1",
+      "statement": "Minimize interface ambiguity between EPC contract scopes causing site delays",
+      "jobStep": "integrate",
+      "importance": 8.5,
+      "satisfaction": 4.5,
+      "opportunity": 12.5,
+      "isUnderserved": true,
+      "isOverserved": false,
+      "productRelated": false,
+      "impactCategory": "reliability",
+      "recalibrationNote": "Incumbent OEM-turnkey wraps as single counterparty but equipment-locked — partial mitigation."
     },
     {
-      "title": "Step 2 — Satisfaction recalibration vs. incumbent",
-      "content": "**Incumbent profile used for recalibration** (derived from FIT Step 11 + Product-Decomp VN section):\n\n| Incumbent | Share | Mechanism | Top strengths | Top weaknesses |\n|---|---|---|---|---|\n| Fluence / Tesla Megapack / Sungrow PowerTitan / Wärtsilä (OEM-led turnkey) | ~40% | Vertically integrated L2→L0 container + PCS + EMS | Deep BMS/thermal, factory-tested propagation containment, tight PCS↔BMS FCR response, scale €/kWh | Vendor lock-in / equipment-locked wrap, no PV heritage, cert via local subcontractor, change-order opacity |\n\n**Recalibration rule:** satisfaction raised where incumbent strength directly addresses the need (thermal containment, RTE, CAPEX scale, BMS cycle mgmt); held or lowered where incumbent weakness aligns (lock-in, DE DSO cert, single-point wrap, supply-chain alt-qual).\n\n---"
+      "id": "M2",
+      "statement": "Minimize likelihood of missing FGW TR3/TR8 dossier elements blocking DSO acceptance",
+      "jobStep": "certify",
+      "importance": 8.5,
+      "satisfaction": 3.5,
+      "opportunity": 13.5,
+      "isUnderserved": true,
+      "isOverserved": false,
+      "productRelated": false,
+      "impactCategory": "reliability",
+      "recalibrationNote": "Fluence uses local subcontractor for DE cert; OEM incumbents have no DE-cert edge — hold."
     },
     {
-      "title": "Step 3 — Scored ODIEntry table (recalibrated · deterministic opp score)",
-      "content": "| # | ID | Error statement | Src | Imp | Sat₀ | Sat_recal | Opp | Under | Over |\n|---|---|---|---|---|---|---|---|---|---|\n| 1 | M1 | Minimize interface ambiguity between EPC contract scopes causing site delays | mkt | 8.5 | 3.5 | 4.5 | **12.5** | ✅ | |\n| 2 | M2 | Minimize likelihood of missing FGW TR3/TR8 dossier elements blocking DSO acceptance | mkt | 8.5 | 3.5 | 3.5 | **13.5** | ✅ | |\n| 3 | M3 | Minimize commissioning-recovery delays after a failed DSO acceptance test | mkt | 8.0 | 4.5 | 4.5 | **11.5** | ✅ | |\n| 4 | M4 | Minimize change-order opacity under single-vendor OEM equipment lock-in | mkt | 7.5 | 4.5 | 4.0 | **11.0** | ✅ | |\n| 5 | M5 | Minimize multi-vendor warranty-chase time across battery / PCS / grid / civil | mkt | 7.5 | 4.5 | 5.5 | 9.5 | | |\n| 6 | M6 | Minimize SLA-evidence gap from BMS telemetry for availability and throughput reporting | mkt | 7.0 | 5.0 | 6.0 | 8.0 | | |\n| 7 | PR1 | Minimize propagating thermal-runaway in an LFP cell triggering Feuerwehr-attended container write-off | prod | 9.5 | 5.0 | 6.5 | **12.5** | | |\n| 8 | PR2 | Minimize NOVEC 1230 / aerosol false-discharge causing unplanned container decommissioning | prod | 6.5 | 5.5 | 5.5 | 7.5 | | |\n| 9 | PR3 | Minimize Brandschutzkonzept rework from >3 MWh cluster separation walls missed in first Feuerwehr review | prod | 7.5 | 4.0 | 4.0 | **11.0** | ✅ | |\n| 10 | PR4 | Minimize LFP container footprint (40–80 m²/MWh) disqualifying otherwise viable sites | prod | 6.0 | 5.0 | 5.0 | 7.0 | | |\n| 11 | PR5 | Minimize LFP-cell single-country tariff / CRMA exposure exceeding 70% of project CAPEX | prod | 7.0 | 4.0 | 4.0 | 10.0 | | |\n| 12 | PR6 | Minimize time to re-qualify an alternate LFP cell supplier (FAT, UN38.3, IEC 62619) after disruption | prod | 6.5 | 3.5 | 3.5 | 9.5 | | |\n| 13 | PR7 | Minimize LFP capacity derating reducing dispatch revenue at ambient <−10 °C or >+40 °C beyond HVAC | prod | 7.0 | 5.5 | 6.5 | 7.5 | | |\n| 14 | PR8 | Minimize HVAC parasitic load exceeding 3% of throughput across the annual temperature envelope | prod | 6.0 | 5.0 | 6.0 | 6.0 | | |\n| 15 | PR9 | Minimize likelihood AC-AC RTE falls below 85% on a 10-year degradation curve | prod | 8.0 | 5.5 | 6.5 | 9.5 | | |\n| 16 | PR10 | Minimize LFP capacity fade (SoH <80% before Year 10) shortening revenue life vs. PPA term | prod | 8.5 | 5.0 | 6.0 | **11.0** | | |\n| 17 | PR11 | Minimize installed €/kWh exceeding the 250–400 band that gates the arbitrage / peak-shaving case | prod | 8.0 | 4.5 | 5.5 | 10.5 | | |\n| 18 | PR12 | Minimize LFP cell-price volatility (±20% YoY) invalidating the EPC offer between FID and procurement lock | prod | 7.0 | 4.0 | 4.0 | 10.0 | | |\n\n**Formula spot-check (Q1):** M2 → 8.5 + max(8.5−3.5,0) = 13.5 ✅ · PR1 → 9.5 + max(9.5−6.5,0) = 12.5 ✅ · PR8 → 6.0 + max(6.0−6.0,0) = 6.0 ✅ · M5 → 7.5 + max(7.5−5.5,0) = 9.5 ✅ · PR11 → 8.0 + max(8.0−5.5,0) = 10.5 ✅\n\n**Recalibration rationale (selected):**\n- PR1, PR7, PR10 → raised: OEM vertical integration (Tesla / Sungrow) = factory-tested thermal-propagation containment + deeper BMS cycle mgmt → incumbent delivers above initial LLM estimate.\n- PR9 → raised: OEM PCS-BMS native integration tighter than arm's-length PCS procurement.\n- PR11 → raised: OEM scale economics beat EPC-integrator BoM cost for pure containers.\n- M4 → lowered: OEM wrap is specifically equipment-locked; change-order opacity worse than original estimate.\n- M1, M2, M3, PR3, PR5, PR6, PR12 → held: DSO/DE-cert/Brandschutz/supply-alt-qual not meaningfully addressed by any incumbent profile.\n\n---"
+      "id": "M3",
+      "statement": "Minimize commissioning-recovery delays after a failed DSO acceptance test",
+      "jobStep": "commission",
+      "importance": 8.0,
+      "satisfaction": 4.5,
+      "opportunity": 11.5,
+      "isUnderserved": true,
+      "isOverserved": false,
+      "productRelated": false,
+      "impactCategory": "reliability",
+      "recalibrationNote": "No incumbent profile addresses DSO-test-failure recovery specifically — hold."
     },
     {
-      "title": "Step 4 — MarketODISummary (NAICS 221118)",
-      "content": "| Field | Value |\n|---|---|\n| market_name | Standalone BESS / Independent Power Producers |\n| naics_code | 221118 |\n| total_needs | **18** |\n| underserved_count | **5** (M1, M2, M3, M4, PR3) |\n| overserved_count | **0** |\n| avg_opportunity_score | **9.89** |\n\n### Top 5 opportunities (by opp score, descending)\n\n| Rank | Opp | Statement |\n|---|---|---|\n| 1 | 13.5 | Minimize likelihood of missing FGW TR3/TR8 dossier elements blocking DSO acceptance |\n| 2 | 12.5 | Minimize interface ambiguity between EPC contract scopes causing site delays |\n| 3 | 12.5 | Minimize propagating thermal-runaway in an LFP cell triggering Feuerwehr-attended container write-off |\n| 4 | 11.5 | Minimize commissioning-recovery delays after a failed DSO acceptance test |\n| 5 | 11.0 | Minimize change-order opacity under single-vendor OEM equipment lock-in |\n\n---"
+      "id": "M4",
+      "statement": "Minimize change-order opacity under single-vendor OEM equipment lock-in",
+      "jobStep": "procure",
+      "importance": 7.5,
+      "satisfaction": 4.0,
+      "opportunity": 11.0,
+      "isUnderserved": true,
+      "isOverserved": false,
+      "productRelated": false,
+      "impactCategory": "financial",
+      "recalibrationNote": "OEM incumbent weakness; incumbent sat lowered."
     },
     {
-      "title": "Step 5 — Cross-check vs. Feature-Market Fit (Step 09 in FIT doc)",
-      "content": "| Check | ODI avg | Feat-Fit avg | Finding |\n|---|---|---|---|\n| 221118 | **9.89** | **6.50** (Step 09 mean of 6 tech features: 6.11, 6.22, 6.11, 6.89, 8.11, 5.56) | No flag. ODI in 8–12 band, Feat-Fit in 4–7 band → no \"high opportunity / low fit\" (>12 vs <4) or \"low opportunity / high fit\" (<8 vs >7) trip. Step 09 strongest feature (Grid-Code Cert, 8.11) directly maps to the top-ranked ODI opportunity (M2 TR8 dossier gap, 13.5) — coherent. |\n\n**ODI ↔ Step 11 vendor-fit alignment:**\n- Top ODI opp M2 (TR3/TR8 dossier) ↔ Vendor Grid-Code Cert parity vs. Fluence (native DE PV-EPC practice). **Mein Solar can convert this opportunity without a capability gap.**\n- M1, M4 (interface ambiguity, change-order opacity) ↔ Vendor Single-Source EPC (parity, gap ≤1 with lower lock-in). **Convertible with lock-in-free wrap positioning.**\n- PR1 (thermal-runaway) ↔ Vendor Containerized Integration **inferior** (6 vs 9 vs Tesla/Sungrow). **Opp exists but vendor weaker than OEM incumbent — do not position on thermal-propagation claims.**\n\n---"
+      "id": "M5",
+      "statement": "Minimize multi-vendor warranty-chase time across battery / PCS / grid / civil",
+      "jobStep": "operate",
+      "importance": 7.5,
+      "satisfaction": 5.5,
+      "opportunity": 9.5,
+      "isUnderserved": false,
+      "isOverserved": false,
+      "productRelated": false,
+      "impactCategory": "reliability",
+      "recalibrationNote": "OEM turnkey mitigates partially (single counterparty) — raised."
     },
     {
-      "title": "QA Checklist",
-      "content": "| # | Check | Status |\n|---|---|---|\n| Q1 | Formula correct (5 spot-checks) | ✅ HARD PASS |\n| Q2 | Underserved flags correct (I>7 AND S<5 ⟺ ✅) | ✅ HARD PASS — 5 entries flagged, no false positives/negatives |\n| Q3 | Overserved flags correct (I<3 AND S>7) | ✅ HARD PASS — 0 entries qualify, 0 flagged |\n| Q4 | Need count preserved (≥ Step 06 count) | ✅ HARD PASS — 18 entries (6 market + 12 product-related from Step 10) |\n| Q5 | Top-5 ordered descending by opp | ✅ SOFT PASS |\n| Q6 | Cross-check vs. Feat-Fit ran | ✅ SOFT PASS |\n\n---"
+      "id": "M6",
+      "statement": "Minimize SLA-evidence gap from BMS telemetry for availability and throughput reporting",
+      "jobStep": "monitor",
+      "importance": 7.0,
+      "satisfaction": 6.0,
+      "opportunity": 8.0,
+      "isUnderserved": false,
+      "isOverserved": false,
+      "productRelated": false,
+      "impactCategory": "usability",
+      "recalibrationNote": "OEM-native BMS telemetry better than arm's-length integrator — raised."
     },
     {
-      "title": "Structured Data",
-      "content": "```json\n{\n  \"component\": \"odi_matrix\",\n  \"step\": 12,\n  \"naics_code\": \"221118\",\n  \"market_name\": \"Standalone BESS / Independent Power Producers\",\n  \"product_name\": \"EPC für Großbatteriespeicher\",\n  \"vendor_name\": \"Mein Solar GmbH\",\n  \"incumbent_anchor\": \"OEM-led turnkey (Fluence / Tesla Megapack / Sungrow PowerTitan / Wärtsilä)\",\n  \"recalibration_mode\": \"llm_equivalent_deterministic_reasoning\",\n  \"formula\": \"opp = importance + max(importance - satisfaction, 0)\",\n\n  \"entries\": [\n    {\"id\":\"M1\",\"error_statement\":\"Minimize interface ambiguity between EPC contract scopes causing site delays\",\"market_name\":\"Standalone BESS / Independent Power Producers\",\"naics_code\":\"221118\",\"importance\":8.5,\"satisfaction_initial\":3.5,\"satisfaction_current\":4.5,\"opportunity_score\":12.5,\"is_underserved\":true,\"is_overserved\":false,\"product_related\":false,\"job_step_number\":null,\"job_step_name\":\"integrate\",\"impact_category\":\"reliability\",\"recalibration_note\":\"Incumbent OEM-turnkey wraps as single counterparty but equipment-locked — partial mitigation.\"},\n    {\"id\":\"M2\",\"error_statement\":\"Minimize likelihood of missing FGW TR3/TR8 dossier elements blocking DSO acceptance\",\"market_name\":\"Standalone BESS / Independent Power Producers\",\"naics_code\":\"221118\",\"importance\":8.5,\"satisfaction_initial\":3.5,\"satisfaction_current\":3.5,\"opportunity_score\":13.5,\"is_underserved\":true,\"is_overserved\":false,\"product_related\":false,\"job_step_number\":null,\"job_step_name\":\"certify\",\"impact_category\":\"reliability\",\"recalibration_note\":\"Fluence uses local subcontractor for DE cert; OEM incumbents have no DE-cert edge — hold.\"},\n    {\"id\":\"M3\",\"error_statement\":\"Minimize commissioning-recovery delays after a failed DSO acceptance test\",\"market_name\":\"Standalone BESS / Independent Power Producers\",\"naics_code\":\"221118\",\"importance\":8.0,\"satisfaction_initial\":4.5,\"satisfaction_current\":4.5,\"opportunity_score\":11.5,\"is_underserved\":true,\"is_overserved\":false,\"product_related\":false,\"job_step_number\":null,\"job_step_name\":\"commission\",\"impact_category\":\"reliability\",\"recalibration_note\":\"No incumbent profile addresses DSO-test-failure recovery specifically — hold.\"},\n    {\"id\":\"M4\",\"error_statement\":\"Minimize change-order opacity under single-vendor OEM equipment lock-in\",\"market_name\":\"Standalone BESS / Independent Power Producers\",\"naics_code\":\"221118\",\"importance\":7.5,\"satisfaction_initial\":4.5,\"satisfaction_current\":4.0,\"opportunity_score\":11.0,\"is_underserved\":true,\"is_overserved\":false,\"product_related\":false,\"job_step_number\":null,\"job_step_name\":\"procure\",\"impact_category\":\"financial\",\"recalibration_note\":\"OEM incumbent weakness; incumbent sat lowered.\"},\n    {\"id\":\"M5\",\"error_statement\":\"Minimize multi-vendor warranty-chase time across battery / PCS / grid / civil\",\"market_name\":\"Standalone BESS / Independent Power Producers\",\"naics_code\":\"221118\",\"importance\":7.5,\"satisfaction_initial\":4.5,\"satisfaction_current\":5.5,\"opportunity_score\":9.5,\"is_underserved\":false,\"is_overserved\":false,\"product_related\":false,\"job_step_number\":null,\"job_step_name\":\"operate\",\"impact_category\":\"reliability\",\"recalibration_note\":\"OEM turnkey mitigates partially (single counterparty) — raised.\"},\n    {\"id\":\"M6\",\"error_statement\":\"Minimize SLA-evidence gap from BMS telemetry for availability and throughput reporting\",\"market_name\":\"Standalone BESS / Independent Power Producers\",\"naics_code\":\"221118\",\"importance\":7.0,\"satisfaction_initial\":5.0,\"satisfaction_current\":6.0,\"opportunity_score\":8.0,\"is_underserved\":false,\"is_overserved\":false,\"product_related\":false,\"job_step_number\":null,\"job_step_name\":\"monitor\",\"impact_category\":\"usability\",\"recalibration_note\":\"OEM-native BMS telemetry better than arm's-length integrator — raised.\"},\n    {\"id\":\"PR1\",\"error_statement\":\"Minimize propagating thermal-runaway in an LFP cell triggering Feuerwehr-attended container write-off\",\"market_name\":\"Standalone BESS / Independent Power Producers\",\"naics_code\":\"221118\",\"importance\":9.5,\"satisfaction_initial\":5.0,\"satisfaction_current\":6.5,\"opportunity_score\":12.5,\"is_underserved\":false,\"is_overserved\":false,\"product_related\":true,\"job_step_number\":0,\"job_step_name\":\"product_constraint\",\"impact_category\":\"reliability\",\"source_constraint\":\"Li-Ion Thermal Runaway Hazard\",\"recalibration_note\":\"Tesla/Sungrow factory-tested propagation containment lifts incumbent sat.\"},\n    {\"id\":\"PR2\",\"error_statement\":\"Minimize NOVEC 1230 / aerosol false-discharge causing unplanned container decommissioning\",\"market_name\":\"Standalone BESS / Independent Power Producers\",\"naics_code\":\"221118\",\"importance\":6.5,\"satisfaction_initial\":5.5,\"satisfaction_current\":5.5,\"opportunity_score\":7.5,\"is_underserved\":false,\"is_overserved\":false,\"product_related\":true,\"job_step_number\":0,\"job_step_name\":\"product_constraint\",\"impact_category\":\"reliability\",\"source_constraint\":\"Li-Ion Thermal Runaway Hazard\"},\n    {\"id\":\"PR3\",\"error_statement\":\"Minimize Brandschutzkonzept rework from >3 MWh cluster separation walls missed in first Feuerwehr review\",\"market_name\":\"Standalone BESS / Independent Power Producers\",\"naics_code\":\"221118\",\"importance\":7.5,\"satisfaction_initial\":4.0,\"satisfaction_current\":4.0,\"opportunity_score\":11.0,\"is_underserved\":true,\"is_overserved\":false,\"product_related\":true,\"job_step_number\":0,\"job_step_name\":\"product_constraint\",\"impact_category\":\"reliability\",\"source_constraint\":\"Fire-Protection Clearance\",\"recalibration_note\":\"No incumbent profile has DE Feuerwehr-specific edge — hold.\"},\n    {\"id\":\"PR4\",\"error_statement\":\"Minimize LFP container footprint (40-80 m2/MWh) disqualifying otherwise viable sites\",\"market_name\":\"Standalone BESS / Independent Power Producers\",\"naics_code\":\"221118\",\"importance\":6.0,\"satisfaction_initial\":5.0,\"satisfaction_current\":5.0,\"opportunity_score\":7.0,\"is_underserved\":false,\"is_overserved\":false,\"product_related\":true,\"job_step_number\":0,\"job_step_name\":\"product_constraint\",\"impact_category\":\"reliability\",\"source_constraint\":\"Land Footprint and Siting\"},\n    {\"id\":\"PR5\",\"error_statement\":\"Minimize LFP-cell single-country tariff / CRMA exposure exceeding 70% of project CAPEX\",\"market_name\":\"Standalone BESS / Independent Power Producers\",\"naics_code\":\"221118\",\"importance\":7.0,\"satisfaction_initial\":4.0,\"satisfaction_current\":4.0,\"opportunity_score\":10.0,\"is_underserved\":false,\"is_overserved\":false,\"product_related\":true,\"job_step_number\":0,\"job_step_name\":\"product_constraint\",\"impact_category\":\"reliability\",\"source_constraint\":\"Battery Supply Chain Concentration\"},\n    {\"id\":\"PR6\",\"error_statement\":\"Minimize time to re-qualify an alternate LFP cell supplier (FAT, UN38.3, IEC 62619) after disruption\",\"market_name\":\"Standalone BESS / Independent Power Producers\",\"naics_code\":\"221118\",\"importance\":6.5,\"satisfaction_initial\":3.5,\"satisfaction_current\":3.5,\"opportunity_score\":9.5,\"is_underserved\":false,\"is_overserved\":false,\"product_related\":true,\"job_step_number\":0,\"job_step_name\":\"product_constraint\",\"impact_category\":\"reliability\",\"source_constraint\":\"Battery Supply Chain Concentration\",\"recalibration_note\":\"OEM vertical integration is a weakness here (single-source lock) — hold.\"},\n    {\"id\":\"PR7\",\"error_statement\":\"Minimize LFP capacity derating reducing dispatch revenue at ambient <-10 C or >+40 C beyond HVAC\",\"market_name\":\"Standalone BESS / Independent Power Producers\",\"naics_code\":\"221118\",\"importance\":7.0,\"satisfaction_initial\":5.5,\"satisfaction_current\":6.5,\"opportunity_score\":7.5,\"is_underserved\":false,\"is_overserved\":false,\"product_related\":true,\"job_step_number\":0,\"job_step_name\":\"product_constraint\",\"impact_category\":\"reliability\",\"source_constraint\":\"Ambient Temperature Envelope\",\"recalibration_note\":\"OEM tighter thermal control — raised.\"},\n    {\"id\":\"PR8\",\"error_statement\":\"Minimize HVAC parasitic load exceeding 3% of throughput across the annual temperature envelope\",\"market_name\":\"Standalone BESS / Independent Power Producers\",\"naics_code\":\"221118\",\"importance\":6.0,\"satisfaction_initial\":5.0,\"satisfaction_current\":6.0,\"opportunity_score\":6.0,\"is_underserved\":false,\"is_overserved\":false,\"product_related\":true,\"job_step_number\":0,\"job_step_name\":\"product_constraint\",\"impact_category\":\"reliability\",\"source_constraint\":\"Ambient Temperature Envelope\",\"recalibration_note\":\"OEM tighter thermal control — raised.\"},\n    {\"id\":\"PR9\",\"error_statement\":\"Minimize likelihood AC-AC RTE falls below 85% on a 10-year degradation curve\",\"market_name\":\"Standalone BESS / Independent Power Producers\",\"naics_code\":\"221118\",\"importance\":8.0,\"satisfaction_initial\":5.5,\"satisfaction_current\":6.5,\"opportunity_score\":9.5,\"is_underserved\":false,\"is_overserved\":false,\"product_related\":true,\"job_step_number\":0,\"job_step_name\":\"product_constraint\",\"impact_category\":\"reliability\",\"source_constraint\":\"Round-Trip Energy Losses\",\"recalibration_note\":\"OEM native PCS-BMS integration tighter — raised.\"},\n    {\"id\":\"PR10\",\"error_statement\":\"Minimize LFP capacity fade (SoH <80% before Year 10) shortening revenue life vs. PPA term\",\"market_name\":\"Standalone BESS / Independent Power Producers\",\"naics_code\":\"221118\",\"importance\":8.5,\"satisfaction_initial\":5.0,\"satisfaction_current\":6.0,\"opportunity_score\":11.0,\"is_underserved\":false,\"is_overserved\":false,\"product_related\":true,\"job_step_number\":0,\"job_step_name\":\"product_constraint\",\"impact_category\":\"reliability\",\"source_constraint\":\"Round-Trip Energy Losses\",\"recalibration_note\":\"OEM deeper BMS cycle mgmt — raised.\"},\n    {\"id\":\"PR11\",\"error_statement\":\"Minimize installed EUR/kWh exceeding the 250-400 band that gates the arbitrage / peak-shaving case\",\"market_name\":\"Standalone BESS / Independent Power Producers\",\"naics_code\":\"221118\",\"importance\":8.0,\"satisfaction_initial\":4.5,\"satisfaction_current\":5.5,\"opportunity_score\":10.5,\"is_underserved\":false,\"is_overserved\":false,\"product_related\":true,\"job_step_number\":0,\"job_step_name\":\"product_constraint\",\"impact_category\":\"reliability\",\"source_constraint\":\"CAPEX Viability Threshold\",\"recalibration_note\":\"OEM scale economics on cell + container — raised.\"},\n    {\"id\":\"PR12\",\"error_statement\":\"Minimize LFP cell-price volatility (+/-20% YoY) invalidating the EPC offer between FID and procurement lock\",\"market_name\":\"Standalone BESS / Independent Power Producers\",\"naics_code\":\"221118\",\"importance\":7.0,\"satisfaction_initial\":4.0,\"satisfaction_current\":4.0,\"opportunity_score\":10.0,\"is_underserved\":false,\"is_overserved\":false,\"product_related\":true,\"job_step_number\":0,\"job_step_name\":\"product_constraint\",\"impact_category\":\"reliability\",\"source_constraint\":\"CAPEX Viability Threshold\"}\n  ],\n\n  \"market_summary\": {\n    \"market_name\": \"Standalone BESS / Independent Power Producers\",\n    \"naics_code\": \"221118\",\n    \"total_needs\": 18,\n    \"underserved_count\": 5,\n    \"overserved_count\": 0,\n    \"avg_opportunity_score\": 9.89,\n    \"top_opportunities\": [\n      \"Minimize likelihood of missing FGW TR3/TR8 dossier elements blocking DSO acceptance\",\n      \"Minimize interface ambiguity between EPC contract scopes causing site delays\",\n      \"Minimize propagating thermal-runaway in an LFP cell triggering Feuerwehr-attended container write-off\",\n      \"Minimize commissioning-recovery delays after a failed DSO acceptance test\",\n      \"Minimize change-order opacity under single-vendor OEM equipment lock-in\"\n    ]\n  },\n\n  \"cross_check_feature_fit\": {\n    \"odi_avg\": 9.89,\n    \"feature_fit_avg\": 6.50,\n    \"feature_fit_source\": \"FIT_other_electric_power_generation_bess_ref.md Step 09 (mean of 6 tech features)\",\n    \"flag_high_opp_low_fit\": false,\n    \"flag_low_opp_high_fit\": false,\n    \"coherence_note\": \"Top ODI opportunity (M2 TR8 dossier, opp 13.5) maps directly to Step 09 strongest feature (Grid-Code Cert, overall_fit 8.11) — internally consistent.\"\n  },\n\n  \"vendor_conversion_signals\": {\n    \"convertible_high_opp\": [\n      {\"id\":\"M2\",\"opp\":13.5,\"vendor_feature\":\"Grid-Code Certification Delivery\",\"vendor_advantage\":\"parity\",\"note\":\"Native DE VDE-AR-N 4110 / FGW TR8 practice from PV EPC — Mein Solar can convert without capability gap.\"},\n      {\"id\":\"M1\",\"opp\":12.5,\"vendor_feature\":\"Single-Source EPC Contract Vehicle\",\"vendor_advantage\":\"parity\",\"note\":\"Lock-in-free wrap differentiates vs. OEM equipment-locked wraps.\"},\n      {\"id\":\"M4\",\"opp\":11.0,\"vendor_feature\":\"Single-Source EPC Contract Vehicle\",\"vendor_advantage\":\"parity\",\"note\":\"Change-order transparency enabled by non-OEM BoM.\"}\n    ],\n    \"risk_high_opp_vendor_inferior\": [\n      {\"id\":\"PR1\",\"opp\":12.5,\"vendor_feature\":\"Containerized Li-ion BESS Integration\",\"vendor_advantage\":\"inferior\",\"note\":\"Tesla/Sungrow factory-tested propagation containment outperforms third-party integration. Do not position on thermal-propagation claims in S1/S2 pure-play IPP segments.\"}\n    ]\n  },\n\n  \"qa\": {\n    \"q1_formula_spot_checks\": \"PASS\",\n    \"q2_underserved_flags\": \"PASS\",\n    \"q3_overserved_flags\": \"PASS\",\n    \"q4_need_count_preserved\": \"PASS\",\n    \"q5_top5_ordering\": \"PASS\",\n    \"q6_cross_check_ran\": \"PASS\"\n  },\n\n  \"neo4j_write_preview\": {\n    \"opportunity_score_node_key\": [\"error_statement[0:80]\", \"naics_code\", \"run_id\"],\n    \"market_node_set_props\": {\n      \"odi_total_needs\": 18,\n      \"odi_underserved_count\": 5,\n      \"odi_overserved_count\": 0,\n      \"odi_avg_opportunity_score\": 9.89,\n      \"odi_top_opportunities_json\": \"[\\\"Minimize likelihood of missing FGW TR3/TR8 dossier elements...\\\", \\\"...\\\"]\"\n    },\n    \"relationship\": \"(Market {naics_code:'221118', run_id})-[:has_opportunity_score]->(OpportunityScore)\"\n  }\n}\n```"
+      "id": "PR1",
+      "statement": "Minimize propagating thermal-runaway in an LFP cell triggering Feuerwehr-attended container write-off",
+      "jobStep": "product_constraint",
+      "importance": 9.5,
+      "satisfaction": 6.5,
+      "opportunity": 12.5,
+      "isUnderserved": false,
+      "isOverserved": false,
+      "productRelated": true,
+      "impactCategory": "reliability",
+      "recalibrationNote": "Tesla/Sungrow factory-tested propagation containment lifts incumbent sat."
+    },
+    {
+      "id": "PR2",
+      "statement": "Minimize NOVEC 1230 / aerosol false-discharge causing unplanned container decommissioning",
+      "jobStep": "product_constraint",
+      "importance": 6.5,
+      "satisfaction": 5.5,
+      "opportunity": 7.5,
+      "isUnderserved": false,
+      "isOverserved": false,
+      "productRelated": true,
+      "impactCategory": "reliability",
+      "recalibrationNote": ""
+    },
+    {
+      "id": "PR3",
+      "statement": "Minimize Brandschutzkonzept rework from >3 MWh cluster separation walls missed in first Feuerwehr review",
+      "jobStep": "product_constraint",
+      "importance": 7.5,
+      "satisfaction": 4.0,
+      "opportunity": 11.0,
+      "isUnderserved": true,
+      "isOverserved": false,
+      "productRelated": true,
+      "impactCategory": "reliability",
+      "recalibrationNote": "No incumbent profile has DE Feuerwehr-specific edge — hold."
+    },
+    {
+      "id": "PR4",
+      "statement": "Minimize LFP container footprint (40-80 m2/MWh) disqualifying otherwise viable sites",
+      "jobStep": "product_constraint",
+      "importance": 6.0,
+      "satisfaction": 5.0,
+      "opportunity": 7.0,
+      "isUnderserved": false,
+      "isOverserved": false,
+      "productRelated": true,
+      "impactCategory": "reliability",
+      "recalibrationNote": ""
+    },
+    {
+      "id": "PR5",
+      "statement": "Minimize LFP-cell single-country tariff / CRMA exposure exceeding 70% of project CAPEX",
+      "jobStep": "product_constraint",
+      "importance": 7.0,
+      "satisfaction": 4.0,
+      "opportunity": 10.0,
+      "isUnderserved": false,
+      "isOverserved": false,
+      "productRelated": true,
+      "impactCategory": "reliability",
+      "recalibrationNote": ""
+    },
+    {
+      "id": "PR6",
+      "statement": "Minimize time to re-qualify an alternate LFP cell supplier (FAT, UN38.3, IEC 62619) after disruption",
+      "jobStep": "product_constraint",
+      "importance": 6.5,
+      "satisfaction": 3.5,
+      "opportunity": 9.5,
+      "isUnderserved": false,
+      "isOverserved": false,
+      "productRelated": true,
+      "impactCategory": "reliability",
+      "recalibrationNote": "OEM vertical integration is a weakness here (single-source lock) — hold."
+    },
+    {
+      "id": "PR7",
+      "statement": "Minimize LFP capacity derating reducing dispatch revenue at ambient <-10 C or >+40 C beyond HVAC",
+      "jobStep": "product_constraint",
+      "importance": 7.0,
+      "satisfaction": 6.5,
+      "opportunity": 7.5,
+      "isUnderserved": false,
+      "isOverserved": false,
+      "productRelated": true,
+      "impactCategory": "reliability",
+      "recalibrationNote": "OEM tighter thermal control — raised."
+    },
+    {
+      "id": "PR8",
+      "statement": "Minimize HVAC parasitic load exceeding 3% of throughput across the annual temperature envelope",
+      "jobStep": "product_constraint",
+      "importance": 6.0,
+      "satisfaction": 6.0,
+      "opportunity": 6.0,
+      "isUnderserved": false,
+      "isOverserved": false,
+      "productRelated": true,
+      "impactCategory": "reliability",
+      "recalibrationNote": "OEM tighter thermal control — raised."
+    },
+    {
+      "id": "PR9",
+      "statement": "Minimize likelihood AC-AC RTE falls below 85% on a 10-year degradation curve",
+      "jobStep": "product_constraint",
+      "importance": 8.0,
+      "satisfaction": 6.5,
+      "opportunity": 9.5,
+      "isUnderserved": false,
+      "isOverserved": false,
+      "productRelated": true,
+      "impactCategory": "reliability",
+      "recalibrationNote": "OEM native PCS-BMS integration tighter — raised."
+    },
+    {
+      "id": "PR10",
+      "statement": "Minimize LFP capacity fade (SoH <80% before Year 10) shortening revenue life vs. PPA term",
+      "jobStep": "product_constraint",
+      "importance": 8.5,
+      "satisfaction": 6.0,
+      "opportunity": 11.0,
+      "isUnderserved": false,
+      "isOverserved": false,
+      "productRelated": true,
+      "impactCategory": "reliability",
+      "recalibrationNote": "OEM deeper BMS cycle mgmt — raised."
+    },
+    {
+      "id": "PR11",
+      "statement": "Minimize installed EUR/kWh exceeding the 250-400 band that gates the arbitrage / peak-shaving case",
+      "jobStep": "product_constraint",
+      "importance": 8.0,
+      "satisfaction": 5.5,
+      "opportunity": 10.5,
+      "isUnderserved": false,
+      "isOverserved": false,
+      "productRelated": true,
+      "impactCategory": "reliability",
+      "recalibrationNote": "OEM scale economics on cell + container — raised."
+    },
+    {
+      "id": "PR12",
+      "statement": "Minimize LFP cell-price volatility (+/-20% YoY) invalidating the EPC offer between FID and procurement lock",
+      "jobStep": "product_constraint",
+      "importance": 7.0,
+      "satisfaction": 4.0,
+      "opportunity": 10.0,
+      "isUnderserved": false,
+      "isOverserved": false,
+      "productRelated": true,
+      "impactCategory": "reliability",
+      "recalibrationNote": ""
     }
   ],
-  "tables": [
-    {
-      "headers": [
-        "Incumbent",
-        "Share",
-        "Mechanism",
-        "Top strengths",
-        "Top weaknesses"
-      ],
-      "rows": [
-        {
-          "Incumbent": "Fluence / Tesla Megapack / Sungrow PowerTitan / Wärtsilä (OEM-led turnkey)",
-          "Share": "~40%",
-          "Mechanism": "Vertically integrated L2→L0 container + PCS + EMS",
-          "Top strengths": "Deep BMS/thermal, factory-tested propagation containment, tight PCS↔BMS FCR response, scale €/kWh",
-          "Top weaknesses": "Vendor lock-in / equipment-locked wrap, no PV heritage, cert via local subcontractor, change-order opacity"
-        }
-      ]
-    },
-    {
-      "headers": [
-        "#",
-        "ID",
-        "Error statement",
-        "Src",
-        "Imp",
-        "Sat₀",
-        "Sat_recal",
-        "Opp",
-        "Under",
-        "Over"
-      ],
-      "rows": [
-        {
-          "#": "1",
-          "ID": "M1",
-          "Error statement": "Minimize interface ambiguity between EPC contract scopes causing site delays",
-          "Src": "mkt",
-          "Imp": "8.5",
-          "Sat₀": "3.5",
-          "Sat_recal": "4.5",
-          "Opp": "**12.5**",
-          "Under": "✅",
-          "Over": ""
-        },
-        {
-          "#": "2",
-          "ID": "M2",
-          "Error statement": "Minimize likelihood of missing FGW TR3/TR8 dossier elements blocking DSO acceptance",
-          "Src": "mkt",
-          "Imp": "8.5",
-          "Sat₀": "3.5",
-          "Sat_recal": "3.5",
-          "Opp": "**13.5**",
-          "Under": "✅",
-          "Over": ""
-        },
-        {
-          "#": "3",
-          "ID": "M3",
-          "Error statement": "Minimize commissioning-recovery delays after a failed DSO acceptance test",
-          "Src": "mkt",
-          "Imp": "8.0",
-          "Sat₀": "4.5",
-          "Sat_recal": "4.5",
-          "Opp": "**11.5**",
-          "Under": "✅",
-          "Over": ""
-        },
-        {
-          "#": "4",
-          "ID": "M4",
-          "Error statement": "Minimize change-order opacity under single-vendor OEM equipment lock-in",
-          "Src": "mkt",
-          "Imp": "7.5",
-          "Sat₀": "4.5",
-          "Sat_recal": "4.0",
-          "Opp": "**11.0**",
-          "Under": "✅",
-          "Over": ""
-        },
-        {
-          "#": "5",
-          "ID": "M5",
-          "Error statement": "Minimize multi-vendor warranty-chase time across battery / PCS / grid / civil",
-          "Src": "mkt",
-          "Imp": "7.5",
-          "Sat₀": "4.5",
-          "Sat_recal": "5.5",
-          "Opp": "9.5",
-          "Under": "",
-          "Over": ""
-        },
-        {
-          "#": "6",
-          "ID": "M6",
-          "Error statement": "Minimize SLA-evidence gap from BMS telemetry for availability and throughput reporting",
-          "Src": "mkt",
-          "Imp": "7.0",
-          "Sat₀": "5.0",
-          "Sat_recal": "6.0",
-          "Opp": "8.0",
-          "Under": "",
-          "Over": ""
-        },
-        {
-          "#": "7",
-          "ID": "PR1",
-          "Error statement": "Minimize propagating thermal-runaway in an LFP cell triggering Feuerwehr-attended container write-off",
-          "Src": "prod",
-          "Imp": "9.5",
-          "Sat₀": "5.0",
-          "Sat_recal": "6.5",
-          "Opp": "**12.5**",
-          "Under": "",
-          "Over": ""
-        },
-        {
-          "#": "8",
-          "ID": "PR2",
-          "Error statement": "Minimize NOVEC 1230 / aerosol false-discharge causing unplanned container decommissioning",
-          "Src": "prod",
-          "Imp": "6.5",
-          "Sat₀": "5.5",
-          "Sat_recal": "5.5",
-          "Opp": "7.5",
-          "Under": "",
-          "Over": ""
-        },
-        {
-          "#": "9",
-          "ID": "PR3",
-          "Error statement": "Minimize Brandschutzkonzept rework from >3 MWh cluster separation walls missed in first Feuerwehr review",
-          "Src": "prod",
-          "Imp": "7.5",
-          "Sat₀": "4.0",
-          "Sat_recal": "4.0",
-          "Opp": "**11.0**",
-          "Under": "✅",
-          "Over": ""
-        },
-        {
-          "#": "10",
-          "ID": "PR4",
-          "Error statement": "Minimize LFP container footprint (40–80 m²/MWh) disqualifying otherwise viable sites",
-          "Src": "prod",
-          "Imp": "6.0",
-          "Sat₀": "5.0",
-          "Sat_recal": "5.0",
-          "Opp": "7.0",
-          "Under": "",
-          "Over": ""
-        },
-        {
-          "#": "11",
-          "ID": "PR5",
-          "Error statement": "Minimize LFP-cell single-country tariff / CRMA exposure exceeding 70% of project CAPEX",
-          "Src": "prod",
-          "Imp": "7.0",
-          "Sat₀": "4.0",
-          "Sat_recal": "4.0",
-          "Opp": "10.0",
-          "Under": "",
-          "Over": ""
-        },
-        {
-          "#": "12",
-          "ID": "PR6",
-          "Error statement": "Minimize time to re-qualify an alternate LFP cell supplier (FAT, UN38.3, IEC 62619) after disruption",
-          "Src": "prod",
-          "Imp": "6.5",
-          "Sat₀": "3.5",
-          "Sat_recal": "3.5",
-          "Opp": "9.5",
-          "Under": "",
-          "Over": ""
-        },
-        {
-          "#": "13",
-          "ID": "PR7",
-          "Error statement": "Minimize LFP capacity derating reducing dispatch revenue at ambient <−10 °C or >+40 °C beyond HVAC",
-          "Src": "prod",
-          "Imp": "7.0",
-          "Sat₀": "5.5",
-          "Sat_recal": "6.5",
-          "Opp": "7.5",
-          "Under": "",
-          "Over": ""
-        },
-        {
-          "#": "14",
-          "ID": "PR8",
-          "Error statement": "Minimize HVAC parasitic load exceeding 3% of throughput across the annual temperature envelope",
-          "Src": "prod",
-          "Imp": "6.0",
-          "Sat₀": "5.0",
-          "Sat_recal": "6.0",
-          "Opp": "6.0",
-          "Under": "",
-          "Over": ""
-        },
-        {
-          "#": "15",
-          "ID": "PR9",
-          "Error statement": "Minimize likelihood AC-AC RTE falls below 85% on a 10-year degradation curve",
-          "Src": "prod",
-          "Imp": "8.0",
-          "Sat₀": "5.5",
-          "Sat_recal": "6.5",
-          "Opp": "9.5",
-          "Under": "",
-          "Over": ""
-        },
-        {
-          "#": "16",
-          "ID": "PR10",
-          "Error statement": "Minimize LFP capacity fade (SoH <80% before Year 10) shortening revenue life vs. PPA term",
-          "Src": "prod",
-          "Imp": "8.5",
-          "Sat₀": "5.0",
-          "Sat_recal": "6.0",
-          "Opp": "**11.0**",
-          "Under": "",
-          "Over": ""
-        },
-        {
-          "#": "17",
-          "ID": "PR11",
-          "Error statement": "Minimize installed €/kWh exceeding the 250–400 band that gates the arbitrage / peak-shaving case",
-          "Src": "prod",
-          "Imp": "8.0",
-          "Sat₀": "4.5",
-          "Sat_recal": "5.5",
-          "Opp": "10.5",
-          "Under": "",
-          "Over": ""
-        },
-        {
-          "#": "18",
-          "ID": "PR12",
-          "Error statement": "Minimize LFP cell-price volatility (±20% YoY) invalidating the EPC offer between FID and procurement lock",
-          "Src": "prod",
-          "Imp": "7.0",
-          "Sat₀": "4.0",
-          "Sat_recal": "4.0",
-          "Opp": "10.0",
-          "Under": "",
-          "Over": ""
-        }
-      ]
-    },
-    {
-      "headers": [
-        "Field",
-        "Value"
-      ],
-      "rows": [
-        {
-          "Field": "market_name",
-          "Value": "Standalone BESS / Independent Power Producers"
-        },
-        {
-          "Field": "naics_code",
-          "Value": "221118"
-        },
-        {
-          "Field": "total_needs",
-          "Value": "**18**"
-        },
-        {
-          "Field": "underserved_count",
-          "Value": "**5** (M1, M2, M3, M4, PR3)"
-        },
-        {
-          "Field": "overserved_count",
-          "Value": "**0**"
-        },
-        {
-          "Field": "avg_opportunity_score",
-          "Value": "**9.89**"
-        }
-      ]
-    },
-    {
-      "headers": [
-        "Rank",
-        "Opp",
-        "Statement"
-      ],
-      "rows": [
-        {
-          "Rank": "1",
-          "Opp": "13.5",
-          "Statement": "Minimize likelihood of missing FGW TR3/TR8 dossier elements blocking DSO acceptance"
-        },
-        {
-          "Rank": "2",
-          "Opp": "12.5",
-          "Statement": "Minimize interface ambiguity between EPC contract scopes causing site delays"
-        },
-        {
-          "Rank": "3",
-          "Opp": "12.5",
-          "Statement": "Minimize propagating thermal-runaway in an LFP cell triggering Feuerwehr-attended container write-off"
-        },
-        {
-          "Rank": "4",
-          "Opp": "11.5",
-          "Statement": "Minimize commissioning-recovery delays after a failed DSO acceptance test"
-        },
-        {
-          "Rank": "5",
-          "Opp": "11.0",
-          "Statement": "Minimize change-order opacity under single-vendor OEM equipment lock-in"
-        }
-      ]
-    },
-    {
-      "headers": [
-        "Check",
-        "ODI avg",
-        "Feat-Fit avg",
-        "Finding"
-      ],
-      "rows": [
-        {
-          "Check": "221118",
-          "ODI avg": "**9.89**",
-          "Feat-Fit avg": "**6.50** (Step 09 mean of 6 tech features: 6.11, 6.22, 6.11, 6.89, 8.11, 5.56)",
-          "Finding": "No flag. ODI in 8–12 band, Feat-Fit in 4–7 band → no \"high opportunity / low fit\" (>12 vs <4) or \"low opportunity / high fit\" (<8 vs >7) trip. Step 09 strongest feature (Grid-Code Cert, 8.11) directly maps to the top-ranked ODI opportunity (M2 TR8 dossier gap, 13.5) — coherent."
-        }
-      ]
-    },
-    {
-      "headers": [
-        "#",
-        "Check",
-        "Status"
-      ],
-      "rows": [
-        {
-          "#": "Q1",
-          "Check": "Formula correct (5 spot-checks)",
-          "Status": "✅ HARD PASS"
-        },
-        {
-          "#": "Q2",
-          "Check": "Underserved flags correct (I>7 AND S<5 ⟺ ✅)",
-          "Status": "✅ HARD PASS — 5 entries flagged, no false positives/negatives"
-        },
-        {
-          "#": "Q3",
-          "Check": "Overserved flags correct (I<3 AND S>7)",
-          "Status": "✅ HARD PASS — 0 entries qualify, 0 flagged"
-        },
-        {
-          "#": "Q4",
-          "Check": "Need count preserved (≥ Step 06 count)",
-          "Status": "✅ HARD PASS — 18 entries (6 market + 12 product-related from Step 10)"
-        },
-        {
-          "#": "Q5",
-          "Check": "Top-5 ordered descending by opp",
-          "Status": "✅ SOFT PASS"
-        },
-        {
-          "#": "Q6",
-          "Check": "Cross-check vs. Feat-Fit ran",
-          "Status": "✅ SOFT PASS"
-        }
-      ]
-    }
-  ],
-  "entities": [
-    {
-      "component": "odi_matrix",
-      "step": 12,
-      "naics_code": "221118",
-      "market_name": "Standalone BESS / Independent Power Producers",
-      "product_name": "EPC für Großbatteriespeicher",
-      "vendor_name": "Mein Solar GmbH",
-      "incumbent_anchor": "OEM-led turnkey (Fluence / Tesla Megapack / Sungrow PowerTitan / Wärtsilä)",
-      "recalibration_mode": "llm_equivalent_deterministic_reasoning",
-      "formula": "opp = importance + max(importance - satisfaction, 0)",
-      "entries": [
-        {
-          "id": "M1",
-          "error_statement": "Minimize interface ambiguity between EPC contract scopes causing site delays",
-          "market_name": "Standalone BESS / Independent Power Producers",
-          "naics_code": "221118",
-          "importance": 8.5,
-          "satisfaction_initial": 3.5,
-          "satisfaction_current": 4.5,
-          "opportunity_score": 12.5,
-          "is_underserved": true,
-          "is_overserved": false,
-          "product_related": false,
-          "job_step_number": null,
-          "job_step_name": "integrate",
-          "impact_category": "reliability",
-          "recalibration_note": "Incumbent OEM-turnkey wraps as single counterparty but equipment-locked — partial mitigation."
-        },
-        {
-          "id": "M2",
-          "error_statement": "Minimize likelihood of missing FGW TR3/TR8 dossier elements blocking DSO acceptance",
-          "market_name": "Standalone BESS / Independent Power Producers",
-          "naics_code": "221118",
-          "importance": 8.5,
-          "satisfaction_initial": 3.5,
-          "satisfaction_current": 3.5,
-          "opportunity_score": 13.5,
-          "is_underserved": true,
-          "is_overserved": false,
-          "product_related": false,
-          "job_step_number": null,
-          "job_step_name": "certify",
-          "impact_category": "reliability",
-          "recalibration_note": "Fluence uses local subcontractor for DE cert; OEM incumbents have no DE-cert edge — hold."
-        },
-        {
-          "id": "M3",
-          "error_statement": "Minimize commissioning-recovery delays after a failed DSO acceptance test",
-          "market_name": "Standalone BESS / Independent Power Producers",
-          "naics_code": "221118",
-          "importance": 8.0,
-          "satisfaction_initial": 4.5,
-          "satisfaction_current": 4.5,
-          "opportunity_score": 11.5,
-          "is_underserved": true,
-          "is_overserved": false,
-          "product_related": false,
-          "job_step_number": null,
-          "job_step_name": "commission",
-          "impact_category": "reliability",
-          "recalibration_note": "No incumbent profile addresses DSO-test-failure recovery specifically — hold."
-        },
-        {
-          "id": "M4",
-          "error_statement": "Minimize change-order opacity under single-vendor OEM equipment lock-in",
-          "market_name": "Standalone BESS / Independent Power Producers",
-          "naics_code": "221118",
-          "importance": 7.5,
-          "satisfaction_initial": 4.5,
-          "satisfaction_current": 4.0,
-          "opportunity_score": 11.0,
-          "is_underserved": true,
-          "is_overserved": false,
-          "product_related": false,
-          "job_step_number": null,
-          "job_step_name": "procure",
-          "impact_category": "financial",
-          "recalibration_note": "OEM incumbent weakness; incumbent sat lowered."
-        },
-        {
-          "id": "M5",
-          "error_statement": "Minimize multi-vendor warranty-chase time across battery / PCS / grid / civil",
-          "market_name": "Standalone BESS / Independent Power Producers",
-          "naics_code": "221118",
-          "importance": 7.5,
-          "satisfaction_initial": 4.5,
-          "satisfaction_current": 5.5,
-          "opportunity_score": 9.5,
-          "is_underserved": false,
-          "is_overserved": false,
-          "product_related": false,
-          "job_step_number": null,
-          "job_step_name": "operate",
-          "impact_category": "reliability",
-          "recalibration_note": "OEM turnkey mitigates partially (single counterparty) — raised."
-        },
-        {
-          "id": "M6",
-          "error_statement": "Minimize SLA-evidence gap from BMS telemetry for availability and throughput reporting",
-          "market_name": "Standalone BESS / Independent Power Producers",
-          "naics_code": "221118",
-          "importance": 7.0,
-          "satisfaction_initial": 5.0,
-          "satisfaction_current": 6.0,
-          "opportunity_score": 8.0,
-          "is_underserved": false,
-          "is_overserved": false,
-          "product_related": false,
-          "job_step_number": null,
-          "job_step_name": "monitor",
-          "impact_category": "usability",
-          "recalibration_note": "OEM-native BMS telemetry better than arm's-length integrator — raised."
-        },
-        {
-          "id": "PR1",
-          "error_statement": "Minimize propagating thermal-runaway in an LFP cell triggering Feuerwehr-attended container write-off",
-          "market_name": "Standalone BESS / Independent Power Producers",
-          "naics_code": "221118",
-          "importance": 9.5,
-          "satisfaction_initial": 5.0,
-          "satisfaction_current": 6.5,
-          "opportunity_score": 12.5,
-          "is_underserved": false,
-          "is_overserved": false,
-          "product_related": true,
-          "job_step_number": 0,
-          "job_step_name": "product_constraint",
-          "impact_category": "reliability",
-          "source_constraint": "Li-Ion Thermal Runaway Hazard",
-          "recalibration_note": "Tesla/Sungrow factory-tested propagation containment lifts incumbent sat."
-        },
-        {
-          "id": "PR2",
-          "error_statement": "Minimize NOVEC 1230 / aerosol false-discharge causing unplanned container decommissioning",
-          "market_name": "Standalone BESS / Independent Power Producers",
-          "naics_code": "221118",
-          "importance": 6.5,
-          "satisfaction_initial": 5.5,
-          "satisfaction_current": 5.5,
-          "opportunity_score": 7.5,
-          "is_underserved": false,
-          "is_overserved": false,
-          "product_related": true,
-          "job_step_number": 0,
-          "job_step_name": "product_constraint",
-          "impact_category": "reliability",
-          "source_constraint": "Li-Ion Thermal Runaway Hazard"
-        },
-        {
-          "id": "PR3",
-          "error_statement": "Minimize Brandschutzkonzept rework from >3 MWh cluster separation walls missed in first Feuerwehr review",
-          "market_name": "Standalone BESS / Independent Power Producers",
-          "naics_code": "221118",
-          "importance": 7.5,
-          "satisfaction_initial": 4.0,
-          "satisfaction_current": 4.0,
-          "opportunity_score": 11.0,
-          "is_underserved": true,
-          "is_overserved": false,
-          "product_related": true,
-          "job_step_number": 0,
-          "job_step_name": "product_constraint",
-          "impact_category": "reliability",
-          "source_constraint": "Fire-Protection Clearance",
-          "recalibration_note": "No incumbent profile has DE Feuerwehr-specific edge — hold."
-        },
-        {
-          "id": "PR4",
-          "error_statement": "Minimize LFP container footprint (40-80 m2/MWh) disqualifying otherwise viable sites",
-          "market_name": "Standalone BESS / Independent Power Producers",
-          "naics_code": "221118",
-          "importance": 6.0,
-          "satisfaction_initial": 5.0,
-          "satisfaction_current": 5.0,
-          "opportunity_score": 7.0,
-          "is_underserved": false,
-          "is_overserved": false,
-          "product_related": true,
-          "job_step_number": 0,
-          "job_step_name": "product_constraint",
-          "impact_category": "reliability",
-          "source_constraint": "Land Footprint and Siting"
-        },
-        {
-          "id": "PR5",
-          "error_statement": "Minimize LFP-cell single-country tariff / CRMA exposure exceeding 70% of project CAPEX",
-          "market_name": "Standalone BESS / Independent Power Producers",
-          "naics_code": "221118",
-          "importance": 7.0,
-          "satisfaction_initial": 4.0,
-          "satisfaction_current": 4.0,
-          "opportunity_score": 10.0,
-          "is_underserved": false,
-          "is_overserved": false,
-          "product_related": true,
-          "job_step_number": 0,
-          "job_step_name": "product_constraint",
-          "impact_category": "reliability",
-          "source_constraint": "Battery Supply Chain Concentration"
-        },
-        {
-          "id": "PR6",
-          "error_statement": "Minimize time to re-qualify an alternate LFP cell supplier (FAT, UN38.3, IEC 62619) after disruption",
-          "market_name": "Standalone BESS / Independent Power Producers",
-          "naics_code": "221118",
-          "importance": 6.5,
-          "satisfaction_initial": 3.5,
-          "satisfaction_current": 3.5,
-          "opportunity_score": 9.5,
-          "is_underserved": false,
-          "is_overserved": false,
-          "product_related": true,
-          "job_step_number": 0,
-          "job_step_name": "product_constraint",
-          "impact_category": "reliability",
-          "source_constraint": "Battery Supply Chain Concentration",
-          "recalibration_note": "OEM vertical integration is a weakness here (single-source lock) — hold."
-        },
-        {
-          "id": "PR7",
-          "error_statement": "Minimize LFP capacity derating reducing dispatch revenue at ambient <-10 C or >+40 C beyond HVAC",
-          "market_name": "Standalone BESS / Independent Power Producers",
-          "naics_code": "221118",
-          "importance": 7.0,
-          "satisfaction_initial": 5.5,
-          "satisfaction_current": 6.5,
-          "opportunity_score": 7.5,
-          "is_underserved": false,
-          "is_overserved": false,
-          "product_related": true,
-          "job_step_number": 0,
-          "job_step_name": "product_constraint",
-          "impact_category": "reliability",
-          "source_constraint": "Ambient Temperature Envelope",
-          "recalibration_note": "OEM tighter thermal control — raised."
-        },
-        {
-          "id": "PR8",
-          "error_statement": "Minimize HVAC parasitic load exceeding 3% of throughput across the annual temperature envelope",
-          "market_name": "Standalone BESS / Independent Power Producers",
-          "naics_code": "221118",
-          "importance": 6.0,
-          "satisfaction_initial": 5.0,
-          "satisfaction_current": 6.0,
-          "opportunity_score": 6.0,
-          "is_underserved": false,
-          "is_overserved": false,
-          "product_related": true,
-          "job_step_number": 0,
-          "job_step_name": "product_constraint",
-          "impact_category": "reliability",
-          "source_constraint": "Ambient Temperature Envelope",
-          "recalibration_note": "OEM tighter thermal control — raised."
-        },
-        {
-          "id": "PR9",
-          "error_statement": "Minimize likelihood AC-AC RTE falls below 85% on a 10-year degradation curve",
-          "market_name": "Standalone BESS / Independent Power Producers",
-          "naics_code": "221118",
-          "importance": 8.0,
-          "satisfaction_initial": 5.5,
-          "satisfaction_current": 6.5,
-          "opportunity_score": 9.5,
-          "is_underserved": false,
-          "is_overserved": false,
-          "product_related": true,
-          "job_step_number": 0,
-          "job_step_name": "product_constraint",
-          "impact_category": "reliability",
-          "source_constraint": "Round-Trip Energy Losses",
-          "recalibration_note": "OEM native PCS-BMS integration tighter — raised."
-        },
-        {
-          "id": "PR10",
-          "error_statement": "Minimize LFP capacity fade (SoH <80% before Year 10) shortening revenue life vs. PPA term",
-          "market_name": "Standalone BESS / Independent Power Producers",
-          "naics_code": "221118",
-          "importance": 8.5,
-          "satisfaction_initial": 5.0,
-          "satisfaction_current": 6.0,
-          "opportunity_score": 11.0,
-          "is_underserved": false,
-          "is_overserved": false,
-          "product_related": true,
-          "job_step_number": 0,
-          "job_step_name": "product_constraint",
-          "impact_category": "reliability",
-          "source_constraint": "Round-Trip Energy Losses",
-          "recalibration_note": "OEM deeper BMS cycle mgmt — raised."
-        },
-        {
-          "id": "PR11",
-          "error_statement": "Minimize installed EUR/kWh exceeding the 250-400 band that gates the arbitrage / peak-shaving case",
-          "market_name": "Standalone BESS / Independent Power Producers",
-          "naics_code": "221118",
-          "importance": 8.0,
-          "satisfaction_initial": 4.5,
-          "satisfaction_current": 5.5,
-          "opportunity_score": 10.5,
-          "is_underserved": false,
-          "is_overserved": false,
-          "product_related": true,
-          "job_step_number": 0,
-          "job_step_name": "product_constraint",
-          "impact_category": "reliability",
-          "source_constraint": "CAPEX Viability Threshold",
-          "recalibration_note": "OEM scale economics on cell + container — raised."
-        },
-        {
-          "id": "PR12",
-          "error_statement": "Minimize LFP cell-price volatility (+/-20% YoY) invalidating the EPC offer between FID and procurement lock",
-          "market_name": "Standalone BESS / Independent Power Producers",
-          "naics_code": "221118",
-          "importance": 7.0,
-          "satisfaction_initial": 4.0,
-          "satisfaction_current": 4.0,
-          "opportunity_score": 10.0,
-          "is_underserved": false,
-          "is_overserved": false,
-          "product_related": true,
-          "job_step_number": 0,
-          "job_step_name": "product_constraint",
-          "impact_category": "reliability",
-          "source_constraint": "CAPEX Viability Threshold"
-        }
-      ],
-      "market_summary": {
-        "market_name": "Standalone BESS / Independent Power Producers",
-        "naics_code": "221118",
-        "total_needs": 18,
-        "underserved_count": 5,
-        "overserved_count": 0,
-        "avg_opportunity_score": 9.89,
-        "top_opportunities": [
-          "Minimize likelihood of missing FGW TR3/TR8 dossier elements blocking DSO acceptance",
-          "Minimize interface ambiguity between EPC contract scopes causing site delays",
-          "Minimize propagating thermal-runaway in an LFP cell triggering Feuerwehr-attended container write-off",
-          "Minimize commissioning-recovery delays after a failed DSO acceptance test",
-          "Minimize change-order opacity under single-vendor OEM equipment lock-in"
-        ]
-      },
-      "cross_check_feature_fit": {
-        "odi_avg": 9.89,
-        "feature_fit_avg": 6.5,
-        "feature_fit_source": "FIT_other_electric_power_generation_bess_ref.md Step 09 (mean of 6 tech features)",
-        "flag_high_opp_low_fit": false,
-        "flag_low_opp_high_fit": false,
-        "coherence_note": "Top ODI opportunity (M2 TR8 dossier, opp 13.5) maps directly to Step 09 strongest feature (Grid-Code Cert, overall_fit 8.11) — internally consistent."
-      },
-      "vendor_conversion_signals": {
-        "convertible_high_opp": [
-          {
-            "id": "M2",
-            "opp": 13.5,
-            "vendor_feature": "Grid-Code Certification Delivery",
-            "vendor_advantage": "parity",
-            "note": "Native DE VDE-AR-N 4110 / FGW TR8 practice from PV EPC — Mein Solar can convert without capability gap."
-          },
-          {
-            "id": "M1",
-            "opp": 12.5,
-            "vendor_feature": "Single-Source EPC Contract Vehicle",
-            "vendor_advantage": "parity",
-            "note": "Lock-in-free wrap differentiates vs. OEM equipment-locked wraps."
-          },
-          {
-            "id": "M4",
-            "opp": 11.0,
-            "vendor_feature": "Single-Source EPC Contract Vehicle",
-            "vendor_advantage": "parity",
-            "note": "Change-order transparency enabled by non-OEM BoM."
-          }
-        ],
-        "risk_high_opp_vendor_inferior": [
-          {
-            "id": "PR1",
-            "opp": 12.5,
-            "vendor_feature": "Containerized Li-ion BESS Integration",
-            "vendor_advantage": "inferior",
-            "note": "Tesla/Sungrow factory-tested propagation containment outperforms third-party integration. Do not position on thermal-propagation claims in S1/S2 pure-play IPP segments."
-          }
-        ]
-      },
-      "qa": {
-        "q1_formula_spot_checks": "PASS",
-        "q2_underserved_flags": "PASS",
-        "q3_overserved_flags": "PASS",
-        "q4_need_count_preserved": "PASS",
-        "q5_top5_ordering": "PASS",
-        "q6_cross_check_ran": "PASS"
-      },
-      "neo4j_write_preview": {
-        "opportunity_score_node_key": [
-          "error_statement[0:80]",
-          "naics_code",
-          "run_id"
-        ],
-        "market_node_set_props": {
-          "odi_total_needs": 18,
-          "odi_underserved_count": 5,
-          "odi_overserved_count": 0,
-          "odi_avg_opportunity_score": 9.89,
-          "odi_top_opportunities_json": "[\"Minimize likelihood of missing FGW TR3/TR8 dossier elements...\", \"...\"]"
-        },
-        "relationship": "(Market {naics_code:'221118', run_id})-[:has_opportunity_score]->(OpportunityScore)"
-      }
-    }
-  ],
-  "has_bom": true,
-  "naics_sector_type": "non_manufacturing"
+  "sources": []
 }

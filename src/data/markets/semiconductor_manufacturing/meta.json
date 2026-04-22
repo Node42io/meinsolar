@@ -2,6 +2,18 @@
   "slug": "semiconductor_manufacturing",
   "name": "Semiconductor and Related Device Manufacturing",
   "shortName": "Semiconductor Manufacturing",
-  "naics": "334413",
-  "isReference": false
+  "naicsCode": "334413",
+  "isReference": false,
+  "rank": 7,
+  "scores": {
+    "odi": 6.21,
+    "featureFit": 4.69,
+    "constraintCompatibility": 3.5,
+    "jobCoverage": 7.5,
+    "vnHierarchy": 3.0,
+    "incumbentVulnerability": 4.5,
+    "composite": 5.11
+  },
+  "recommendation": "investigate",
+  "rationale": "Lowest-but-passing — high ODI (6.21, cert dossier + ITIC ride-through underserved) but lowest feature fit (4.69 — Mein Solar features designed for energy markets, not millisecond ride-through), worst constraint sheet (3.5; 6 mitigable inc. 1 high CAPEX-narrative + 4 medium FM Global), worst VN position (3.0 deep component). No fab reference = effectively blocked."
 }

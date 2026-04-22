@@ -1,1076 +1,366 @@
 {
-  "id": "ODI_solar_electric_power_generation_ibisworl",
-  "title": "ODI Matrix — NAICS 221114 Solar Electric Power Generation",
-  "type": "odi_matrix",
-  "market_slug": "solar_electric_power_generation_ibisworl",
-  "is_per_market": true,
-  "sections": [
+  "naicsCode": "221114",
+  "marketName": "Solar Electric Power Generation",
+  "slug": "solar_power_generation",
+  "incumbentAnchor": "",
+  "summary": {
+    "totalNeeds": 27,
+    "underservedCount": 14,
+    "overservedCount": 0,
+    "avgOpportunityScore": 11.39
+  },
+  "needs": [
     {
-      "title": "Step 1 — Error statements gathered",
-      "content": "- Market needs from Step 06 JTBD: **18** (derived from references in FIT file — needs #1, #2, #4, #5, #7, #8, #9, #10, #11, #13, #14 explicitly cited with opportunity cues)\n- Product-related needs from Step 10: **9** (P1–P9, after P10 removed by litmus test)\n- **Total entries: 27**\n\n---"
+      "id": "",
+      "statement": "Minimize the likelihood of Li-ion thermal runaway propagation from a single failed cell across the container rack",
+      "jobStep": "product_constraint",
+      "importance": 10.0,
+      "satisfaction": 4.0,
+      "opportunity": 16.0,
+      "isUnderserved": true,
+      "isOverserved": false,
+      "productRelated": true,
+      "impactCategory": "reliability",
+      "recalibrationNote": ""
     },
     {
-      "title": "Step 2 — Satisfaction recalibration (incumbent-anchored)",
-      "content": "### Incumbents in 221114\n\n| Tier | Incumbent | Role | Strengths | Weaknesses |\n|---|---|---|---|---|\n| Solar-EPC peers | BayWa r.e. · Enerparc · Goldbeck Solar | PV+BESS hybrid EPC at 20–100 MW | Scale procurement, repeat FGW TR8 delivery, VPP partnerships | Multi-project queue; hybrid cert dossier coupling |\n| BESS integrators | Sungrow PowerTitan · Tesla Megapack · CATL EnerC | L2 container supply | OEM firmware, BMS quality, priority allocation | Split contract if not EPC'd |\n| PCS | SMA · Sungrow · Power Electronics · Ingeteam | 4-quadrant inverters | Q(U)/cos-phi, <100 ms response | MV-bay interop per site |\n| Cert bodies | TÜV NORD · Dekra (FGW-accredited) | Type B plant cert | Recognized by DSOs | 6–12 mo lead |\n| VPP/aggregators | Next Kraftwerke · Entrix · Flexpower | EMS dispatch + revenue stack | Mature market access | Single-site owners under-served |\n\n### Recalibration moves vs. Step 06 originals\n\n| Direction | Needs | Reason |\n|---|---|---|\n| ↓ Satisfaction | P1 Li thermal cascade, P9 CAPEX band, M4 DSO capacity, M9 TR8 slip | Research shows incumbents still leave gap — field cascade events + DSO denials persist at peer scale |\n| ≈ Satisfaction | M5 transformer lead, M8 Feuerwehr, M13 BMS | Peer incumbents credibly at mid-level |\n| ↑ Satisfaction | M16 FCR prequal, M17 revenue stack | VPP partners (Next Kraftwerke, Entrix) close gap for peers |\n\n---"
+      "id": "",
+      "statement": "Minimize the likelihood of DSO capacity denial at the planned feeder forcing a grid-upgrade cost that invalidates the project",
+      "jobStep": "Define",
+      "importance": 9.5,
+      "satisfaction": 3.0,
+      "opportunity": 16.0,
+      "isUnderserved": true,
+      "isOverserved": false,
+      "productRelated": false,
+      "impactCategory": "feasibility",
+      "recalibrationNote": ""
     },
     {
-      "title": "Step 3 — Opportunity scores (deterministic recompute)",
-      "content": "### All entries (sorted by opportunity_score desc)\n\n| Rank | ID | Error statement (truncated) | Src | Imp | Sat | Opp | UnderS | OverS |\n|---|---|---|---|---|---|---|---|---|\n| 1 | P1 | Minimize Li-ion thermal runaway propagation across rack | P-rel | 10.0 | 4.0 | **16.00** | ✓ | |\n| 2 | M4 | Minimize DSO capacity denial at planned feeder | JTBD | 9.5 | 3.0 | **16.00** | ✓ | |\n| 3 | M9 | Minimize FGW TR8 plant-cert slip on critical path | JTBD | 9.0 | 3.0 | **15.00** | ✓ | |\n| 4 | M14 | Minimize cell-level thermal event undetected until propagation | JTBD | 9.0 | 4.0 | **14.00** | ✓ | |\n| 5 | P3 | Minimize VdS/Feuerwehr separation-wall trigger at 3 MWh cluster | P-rel | 9.0 | 4.0 | **14.00** | ✓ | |\n| 6 | P9 | Minimize installed CAPEX outside €250–400/kWh LFP viability band | P-rel | 9.0 | 4.0 | **14.00** | ✓ | |\n| 7 | M1 | Minimize BESS power/energy mis-sizing vs. revenue model | JTBD | 8.5 | 4.0 | **13.00** | ✓ | |\n| 8 | P7 | Minimize LFP supply disruption (CN concentration, CRMA, tariffs) | P-rel | 8.0 | 3.0 | **13.00** | ✓ | |\n| 9 | M2 | Minimize grid-code misclassification (Type A vs B) | JTBD | 8.0 | 4.0 | **12.00** | ✓ | |\n| 10 | M5 | Minimize MV transformer lead-time overrun | JTBD | 8.0 | 4.0 | **12.00** | ✓ | |\n| 11 | P2 | Minimize container-footprint overrun of 40–80 m²/MWh envelope | P-rel | 8.0 | 4.0 | **12.00** | ✓ | |\n| 12 | P5 | Minimize cycle-life erosion below 6 000 cycles at 80% DoD | P-rel | 8.0 | 4.0 | **12.00** | ✓ | |\n| 13 | P4 | Minimize RTE degradation below 85% AC–AC at year-1 testing | P-rel | 8.0 | 4.5 | **11.50** | ✓ | |\n| 14 | M6 | Minimize PV-retrofit interference with existing plant cert | JTBD | 7.5 | 4.0 | **11.00** | ✓ | |\n| 15 | M8 | Minimize Feuerwehr clearance rejection at planning | JTBD | 8.0 | 5.0 | **11.00** | | |\n| 16 | M13 | Minimize undetected BMS defects compromising availability | JTBD | 8.0 | 5.0 | **11.00** | | |\n| 17 | M15 | Minimize availability-SLA shortfall in first operational year | JTBD | 8.0 | 5.0 | **11.00** | | |\n| 18 | M11 | Minimize MV-bay interop failure (PCS / switchgear / DSO) | JTBD | 7.5 | 5.0 | **10.00** | | |\n| 19 | M17 | Minimize revenue-stack under-capture of market spreads | JTBD | 7.5 | 5.0 | **10.00** | | |\n| 20 | P8 | Minimize FGW TR8 re-opening when PCS/container substituted | P-rel | 7.0 | 4.0 | **10.00** | | |\n| 21 | M3 | Minimize PPA terms mis-aligning PV/BESS dispatch rights | JTBD | 7.0 | 5.0 | **9.00** | | |\n| 22 | M10 | Minimize VRT/reactive-power retest after commissioning | JTBD | 7.0 | 5.0 | **9.00** | | |\n| 23 | P6 | Minimize ambient-temp excursions outside −20/+50 °C | P-rel | 7.0 | 5.0 | **9.00** | | |\n| 24 | M7 | Minimize foundation design mismatch to container load | JTBD | 7.0 | 6.0 | **8.00** | | |\n| 25 | M12 | Minimize SCADA/IEC 61850 integration gaps with DSO | JTBD | 7.0 | 6.0 | **8.00** | | |\n| 26 | M16 | Minimize FCR/aFRR prequal failure | JTBD | 7.0 | 6.0 | **8.00** | | |\n| 27 | M18 | Minimize curtailment-capture miss during high-PV hours | JTBD | 7.0 | 6.0 | **8.00** | | |\n\n**Formula spot-check (Q1):** P1 = 10 + max(10−4,0) = 16 ✓ · M4 = 9.5 + max(9.5−3,0) = 16 ✓ · M14 = 9 + max(9−4,0) = 14 ✓ · P4 = 8 + max(8−4.5,0) = 11.5 ✓ · M7 = 7 + max(7−6,0) = 8 ✓\n\n---"
+      "id": "",
+      "statement": "Minimize the likelihood of FGW TR8 plant-certificate slip landing on the critical path and delaying COD",
+      "jobStep": "Conclude",
+      "importance": 9.0,
+      "satisfaction": 3.0,
+      "opportunity": 15.0,
+      "isUnderserved": true,
+      "isOverserved": false,
+      "productRelated": false,
+      "impactCategory": "time",
+      "recalibrationNote": ""
     },
     {
-      "title": "Step 4 — Market ODI summary",
-      "content": "| Metric | Value |\n|---|---|\n| Market | PV+BESS Solar IPPs |\n| NAICS | 221114 |\n| Total needs | 27 |\n| Underserved count (imp>7 ∧ sat<5) | **14** |\n| Overserved count (imp<3 ∧ sat>7) | **0** |\n| Avg opportunity score | **11.39** |\n| Top-5 opportunities | P1, M4, M9, M14, P3 |\n\n### Top-5 error statements\n\n1. Minimize the likelihood of Li-ion thermal runaway propagation from a single failed cell across the container rack (16.00)\n2. Minimize the likelihood of DSO capacity denial at the planned feeder, forcing a grid-upgrade cost that invalidates the project (16.00)\n3. Minimize the likelihood of FGW TR8 plant-certificate slip landing on the critical path and delaying COD (15.00)\n4. Minimize the likelihood of a cell-level thermal event going undetected until propagation reaches neighbouring modules (14.00)\n5. Minimize the likelihood of VdS / Feuerwehr separation-wall requirement triggering once total storage exceeds the 3 MWh Li cluster threshold (14.00)\n\n---"
+      "id": "",
+      "statement": "Minimize the likelihood of a cell-level thermal event going undetected until propagation reaches neighbouring modules",
+      "jobStep": "Monitor",
+      "importance": 9.0,
+      "satisfaction": 4.0,
+      "opportunity": 14.0,
+      "isUnderserved": true,
+      "isOverserved": false,
+      "productRelated": false,
+      "impactCategory": "safety",
+      "recalibrationNote": ""
     },
     {
-      "title": "Step 5 — Cross-check vs. Feature-Market Fit (Step 09)",
-      "content": "| Check | Value | Flag |\n|---|---|---|\n| ODI avg | 11.39 | in 8–12 band |\n| Feature-Fit avg (F1,F2,F3,F4,F5,F8) | 6.45 | in 4–7 band |\n| `ODI>12 ∧ FFit<4` | — | no flag |\n| `ODI<8 ∧ FFit>7` | — | no flag |\n| **Result** | no inconsistency logged | PASS |\n\n**Directional read:** Top ODI opportunities map cleanly to top-scoring features. FGW TR8 slip (M9, opp=15) ↔ F5 Grid-Code Certification Delivery (fit=7.78). Cell-thermal (M14, opp=14) ↔ F1 Containerized Li-ion BESS Integration (reliability=9, safety=8). BESS mis-sizing (M1, opp=13) ↔ F4 EMS (cost=9, stress=7).\n\n---"
+      "id": "",
+      "statement": "Minimize the likelihood of VdS / Feuerwehr separation-wall requirement triggering once total storage exceeds the 3 MWh Li cluster threshold",
+      "jobStep": "product_constraint",
+      "importance": 9.0,
+      "satisfaction": 4.0,
+      "opportunity": 14.0,
+      "isUnderserved": true,
+      "isOverserved": false,
+      "productRelated": true,
+      "impactCategory": "reliability",
+      "recalibrationNote": ""
     },
     {
-      "title": "Neo4j write preview",
-      "content": "```\n(Market {naics_code:\"221114\", run_id}) SET\n  odi_total_needs=27, odi_underserved_count=14, odi_overserved_count=0,\n  odi_avg_opportunity_score=11.39, odi_top_opportunities=<JSON>\n(Market) -[:has_opportunity_score]-> (OpportunityScore) × 27\n  key = { error_statement[:80], naics_code, run_id }\n```\n\n---"
+      "id": "",
+      "statement": "Minimize the likelihood of installed CAPEX closing outside the 250-400 EUR/kWh viability band specific to Li LFP stationary deployments",
+      "jobStep": "product_constraint",
+      "importance": 9.0,
+      "satisfaction": 4.0,
+      "opportunity": 14.0,
+      "isUnderserved": true,
+      "isOverserved": false,
+      "productRelated": true,
+      "impactCategory": "reliability",
+      "recalibrationNote": ""
     },
     {
-      "title": "QA Checklist",
-      "content": "| # | Check | Status |\n|---|---|---|\n| Q1 | Formula correct (5 spot-checks above) | ✅ HARD |\n| Q2 | Underserved flags correct (14/14 match imp>7 ∧ sat<5) | ✅ HARD |\n| Q3 | Overserved flags correct (0, no false positives) | ✅ HARD |\n| Q4 | Need count ≥ Step 06 market count (18≥18, +9 product) | ✅ HARD |\n| Q5 | Top-5 sorted by opp desc | ✅ SOFT |\n| Q6 | Feature-Fit cross-check ran | ✅ SOFT |\n\n---"
+      "id": "",
+      "statement": "Minimize the likelihood of BESS power/energy mis-sizing versus the revenue-stack model",
+      "jobStep": "Plan",
+      "importance": 8.5,
+      "satisfaction": 4.0,
+      "opportunity": 13.0,
+      "isUnderserved": true,
+      "isOverserved": false,
+      "productRelated": false,
+      "impactCategory": "cost",
+      "recalibrationNote": ""
     },
     {
-      "title": "Structured Data",
-      "content": "```json\n{\n  \"component\": \"odi_matrix\",\n  \"market_name\": \"Solar Electric Power Generation\",\n  \"naics_code\": \"221114\",\n  \"vendor_name\": \"Mein Solar GmbH\",\n  \"vendor_product\": \"EPC für Großbatteriespeicher\",\n  \"run_context\": \"Step 12 — recalibrated against Step 03 incumbent profiles (BayWa r.e., Enerparc, Goldbeck Solar, Sungrow PowerTitan, Tesla Megapack, CATL EnerC, Next Kraftwerke)\",\n  \"formula\": \"opp = importance + max(importance - satisfaction, 0)\",\n\n  \"entries\": [\n    {\"error_statement\": \"Minimize the likelihood of Li-ion thermal runaway propagation from a single failed cell across the container rack\", \"market_name\": \"Solar Electric Power Generation\", \"naics_code\": \"221114\", \"importance\": 10.0, \"satisfaction_current\": 4.0, \"opportunity_score\": 16.00, \"is_underserved\": true, \"is_overserved\": false, \"product_related\": true, \"job_step_number\": 0, \"job_step_name\": \"product_constraint\", \"impact_category\": \"reliability\"},\n    {\"error_statement\": \"Minimize the likelihood of DSO capacity denial at the planned feeder forcing a grid-upgrade cost that invalidates the project\", \"market_name\": \"Solar Electric Power Generation\", \"naics_code\": \"221114\", \"importance\": 9.5, \"satisfaction_current\": 3.0, \"opportunity_score\": 16.00, \"is_underserved\": true, \"is_overserved\": false, \"product_related\": false, \"job_step_number\": 1, \"job_step_name\": \"Define\", \"impact_category\": \"feasibility\"},\n    {\"error_statement\": \"Minimize the likelihood of FGW TR8 plant-certificate slip landing on the critical path and delaying COD\", \"market_name\": \"Solar Electric Power Generation\", \"naics_code\": \"221114\", \"importance\": 9.0, \"satisfaction_current\": 3.0, \"opportunity_score\": 15.00, \"is_underserved\": true, \"is_overserved\": false, \"product_related\": false, \"job_step_number\": 7, \"job_step_name\": \"Conclude\", \"impact_category\": \"time\"},\n    {\"error_statement\": \"Minimize the likelihood of a cell-level thermal event going undetected until propagation reaches neighbouring modules\", \"market_name\": \"Solar Electric Power Generation\", \"naics_code\": \"221114\", \"importance\": 9.0, \"satisfaction_current\": 4.0, \"opportunity_score\": 14.00, \"is_underserved\": true, \"is_overserved\": false, \"product_related\": false, \"job_step_number\": 6, \"job_step_name\": \"Monitor\", \"impact_category\": \"safety\"},\n    {\"error_statement\": \"Minimize the likelihood of VdS / Feuerwehr separation-wall requirement triggering once total storage exceeds the 3 MWh Li cluster threshold\", \"market_name\": \"Solar Electric Power Generation\", \"naics_code\": \"221114\", \"importance\": 9.0, \"satisfaction_current\": 4.0, \"opportunity_score\": 14.00, \"is_underserved\": true, \"is_overserved\": false, \"product_related\": true, \"job_step_number\": 0, \"job_step_name\": \"product_constraint\", \"impact_category\": \"reliability\"},\n    {\"error_statement\": \"Minimize the likelihood of installed CAPEX closing outside the 250-400 EUR/kWh viability band specific to Li LFP stationary deployments\", \"market_name\": \"Solar Electric Power Generation\", \"naics_code\": \"221114\", \"importance\": 9.0, \"satisfaction_current\": 4.0, \"opportunity_score\": 14.00, \"is_underserved\": true, \"is_overserved\": false, \"product_related\": true, \"job_step_number\": 0, \"job_step_name\": \"product_constraint\", \"impact_category\": \"reliability\"},\n    {\"error_statement\": \"Minimize the likelihood of BESS power/energy mis-sizing versus the revenue-stack model\", \"market_name\": \"Solar Electric Power Generation\", \"naics_code\": \"221114\", \"importance\": 8.5, \"satisfaction_current\": 4.0, \"opportunity_score\": 13.00, \"is_underserved\": true, \"is_overserved\": false, \"product_related\": false, \"job_step_number\": 2, \"job_step_name\": \"Plan\", \"impact_category\": \"cost\"},\n    {\"error_statement\": \"Minimize the likelihood of LFP cell supply disruption from CN-concentrated supply chain (FX, tariffs, CRMA, EU Battery Regulation) during the procurement window\", \"market_name\": \"Solar Electric Power Generation\", \"naics_code\": \"221114\", \"importance\": 8.0, \"satisfaction_current\": 3.0, \"opportunity_score\": 13.00, \"is_underserved\": true, \"is_overserved\": false, \"product_related\": true, \"job_step_number\": 0, \"job_step_name\": \"product_constraint\", \"impact_category\": \"reliability\"},\n    {\"error_statement\": \"Minimize the likelihood of grid-code misclassification between VDE-AR-N Type A and Type B\", \"market_name\": \"Solar Electric Power Generation\", \"naics_code\": \"221114\", \"importance\": 8.0, \"satisfaction_current\": 4.0, \"opportunity_score\": 12.00, \"is_underserved\": true, \"is_overserved\": false, \"product_related\": false, \"job_step_number\": 2, \"job_step_name\": \"Plan\", \"impact_category\": \"feasibility\"},\n    {\"error_statement\": \"Minimize the likelihood of MV transformer procurement lead-time exceeding the critical-path schedule\", \"market_name\": \"Solar Electric Power Generation\", \"naics_code\": \"221114\", \"importance\": 8.0, \"satisfaction_current\": 4.0, \"opportunity_score\": 12.00, \"is_underserved\": true, \"is_overserved\": false, \"product_related\": false, \"job_step_number\": 4, \"job_step_name\": \"Prepare\", \"impact_category\": \"time\"},\n    {\"error_statement\": \"Minimize the likelihood of container-footprint overrun exceeding the 40-80 m2/MWh site envelope once fire-clearance setbacks are applied\", \"market_name\": \"Solar Electric Power Generation\", \"naics_code\": \"221114\", \"importance\": 8.0, \"satisfaction_current\": 4.0, \"opportunity_score\": 12.00, \"is_underserved\": true, \"is_overserved\": false, \"product_related\": true, \"job_step_number\": 0, \"job_step_name\": \"product_constraint\", \"impact_category\": \"reliability\"},\n    {\"error_statement\": \"Minimize the likelihood of cycle-life erosion below 6000 cycles at 80% DoD from aggressive revenue-stack cycling\", \"market_name\": \"Solar Electric Power Generation\", \"naics_code\": \"221114\", \"importance\": 8.0, \"satisfaction_current\": 4.0, \"opportunity_score\": 12.00, \"is_underserved\": true, \"is_overserved\": false, \"product_related\": true, \"job_step_number\": 0, \"job_step_name\": \"product_constraint\", \"impact_category\": \"reliability\"},\n    {\"error_statement\": \"Minimize the likelihood of roundtrip-efficiency degradation below 85% AC-AC at first-year testing invalidating pro-forma revenue assumptions\", \"market_name\": \"Solar Electric Power Generation\", \"naics_code\": \"221114\", \"importance\": 8.0, \"satisfaction_current\": 4.5, \"opportunity_score\": 11.50, \"is_underserved\": true, \"is_overserved\": false, \"product_related\": true, \"job_step_number\": 0, \"job_step_name\": \"product_constraint\", \"impact_category\": \"reliability\"},\n    {\"error_statement\": \"Minimize the likelihood of PV-retrofit interfering with the existing plant-certification envelope\", \"market_name\": \"Solar Electric Power Generation\", \"naics_code\": \"221114\", \"importance\": 7.5, \"satisfaction_current\": 4.0, \"opportunity_score\": 11.00, \"is_underserved\": true, \"is_overserved\": false, \"product_related\": false, \"job_step_number\": 3, \"job_step_name\": \"Confirm\", \"impact_category\": \"feasibility\"},\n    {\"error_statement\": \"Minimize the likelihood of Feuerwehr clearance rejection at planning stage\", \"market_name\": \"Solar Electric Power Generation\", \"naics_code\": \"221114\", \"importance\": 8.0, \"satisfaction_current\": 5.0, \"opportunity_score\": 11.00, \"is_underserved\": false, \"is_overserved\": false, \"product_related\": false, \"job_step_number\": 3, \"job_step_name\": \"Confirm\", \"impact_category\": \"safety\"},\n    {\"error_statement\": \"Minimize the likelihood of undetected BMS defects compromising availability\", \"market_name\": \"Solar Electric Power Generation\", \"naics_code\": \"221114\", \"importance\": 8.0, \"satisfaction_current\": 5.0, \"opportunity_score\": 11.00, \"is_underserved\": false, \"is_overserved\": false, \"product_related\": false, \"job_step_number\": 6, \"job_step_name\": \"Monitor\", \"impact_category\": \"reliability\"},\n    {\"error_statement\": \"Minimize the likelihood of availability-SLA shortfall in the first operational year\", \"market_name\": \"Solar Electric Power Generation\", \"naics_code\": \"221114\", \"importance\": 8.0, \"satisfaction_current\": 5.0, \"opportunity_score\": 11.00, \"is_underserved\": false, \"is_overserved\": false, \"product_related\": false, \"job_step_number\": 6, \"job_step_name\": \"Monitor\", \"impact_category\": \"reliability\"},\n    {\"error_statement\": \"Minimize the likelihood of MV-bay interoperability failure between PCS switchgear and DSO interface\", \"market_name\": \"Solar Electric Power Generation\", \"naics_code\": \"221114\", \"importance\": 7.5, \"satisfaction_current\": 5.0, \"opportunity_score\": 10.00, \"is_underserved\": false, \"is_overserved\": false, \"product_related\": false, \"job_step_number\": 5, \"job_step_name\": \"Execute\", \"impact_category\": \"reliability\"},\n    {\"error_statement\": \"Minimize the likelihood of revenue-stack optimization under-capturing EPEX/FCR market spreads\", \"market_name\": \"Solar Electric Power Generation\", \"naics_code\": \"221114\", \"importance\": 7.5, \"satisfaction_current\": 5.0, \"opportunity_score\": 10.00, \"is_underserved\": false, \"is_overserved\": false, \"product_related\": false, \"job_step_number\": 6, \"job_step_name\": \"Monitor\", \"impact_category\": \"cost\"},\n    {\"error_statement\": \"Minimize the likelihood of FGW TR8 plant-certificate re-opening when a PCS or container model is substituted mid-project\", \"market_name\": \"Solar Electric Power Generation\", \"naics_code\": \"221114\", \"importance\": 7.0, \"satisfaction_current\": 4.0, \"opportunity_score\": 10.00, \"is_underserved\": false, \"is_overserved\": false, \"product_related\": true, \"job_step_number\": 0, \"job_step_name\": \"product_constraint\", \"impact_category\": \"reliability\"},\n    {\"error_statement\": \"Minimize the likelihood of PPA terms mis-aligning PV and BESS dispatch rights\", \"market_name\": \"Solar Electric Power Generation\", \"naics_code\": \"221114\", \"importance\": 7.0, \"satisfaction_current\": 5.0, \"opportunity_score\": 9.00, \"is_underserved\": false, \"is_overserved\": false, \"product_related\": false, \"job_step_number\": 2, \"job_step_name\": \"Plan\", \"impact_category\": \"cost\"},\n    {\"error_statement\": \"Minimize the likelihood of voltage-ride-through or reactive-power retest after commissioning\", \"market_name\": \"Solar Electric Power Generation\", \"naics_code\": \"221114\", \"importance\": 7.0, \"satisfaction_current\": 5.0, \"opportunity_score\": 9.00, \"is_underserved\": false, \"is_overserved\": false, \"product_related\": false, \"job_step_number\": 5, \"job_step_name\": \"Execute\", \"impact_category\": \"reliability\"},\n    {\"error_statement\": \"Minimize the likelihood of ambient temperature excursions outside -20 to +50 C degrading HVAC duty and cell calendar lifetime\", \"market_name\": \"Solar Electric Power Generation\", \"naics_code\": \"221114\", \"importance\": 7.0, \"satisfaction_current\": 5.0, \"opportunity_score\": 9.00, \"is_underserved\": false, \"is_overserved\": false, \"product_related\": true, \"job_step_number\": 0, \"job_step_name\": \"product_constraint\", \"impact_category\": \"reliability\"},\n    {\"error_statement\": \"Minimize the likelihood of foundation design mismatching container load or seismic requirements\", \"market_name\": \"Solar Electric Power Generation\", \"naics_code\": \"221114\", \"importance\": 7.0, \"satisfaction_current\": 6.0, \"opportunity_score\": 8.00, \"is_underserved\": false, \"is_overserved\": false, \"product_related\": false, \"job_step_number\": 4, \"job_step_name\": \"Prepare\", \"impact_category\": \"reliability\"},\n    {\"error_statement\": \"Minimize the likelihood of SCADA / IEC 61850 integration gaps with DSO SCADA\", \"market_name\": \"Solar Electric Power Generation\", \"naics_code\": \"221114\", \"importance\": 7.0, \"satisfaction_current\": 6.0, \"opportunity_score\": 8.00, \"is_underserved\": false, \"is_overserved\": false, \"product_related\": false, \"job_step_number\": 5, \"job_step_name\": \"Execute\", \"impact_category\": \"reliability\"},\n    {\"error_statement\": \"Minimize the likelihood of FCR / aFRR prequalification failure on first attempt\", \"market_name\": \"Solar Electric Power Generation\", \"naics_code\": \"221114\", \"importance\": 7.0, \"satisfaction_current\": 6.0, \"opportunity_score\": 8.00, \"is_underserved\": false, \"is_overserved\": false, \"product_related\": false, \"job_step_number\": 7, \"job_step_name\": \"Conclude\", \"impact_category\": \"feasibility\"},\n    {\"error_statement\": \"Minimize the likelihood of curtailment-capture targets being missed during high-PV-generation hours\", \"market_name\": \"Solar Electric Power Generation\", \"naics_code\": \"221114\", \"importance\": 7.0, \"satisfaction_current\": 6.0, \"opportunity_score\": 8.00, \"is_underserved\": false, \"is_overserved\": false, \"product_related\": false, \"job_step_number\": 6, \"job_step_name\": \"Monitor\", \"impact_category\": \"cost\"}\n  ],\n\n  \"market_summary\": {\n    \"market_name\": \"Solar Electric Power Generation\",\n    \"naics_code\": \"221114\",\n    \"total_needs\": 27,\n    \"underserved_count\": 14,\n    \"overserved_count\": 0,\n    \"avg_opportunity_score\": 11.39,\n    \"top_opportunities\": [\n      \"Minimize the likelihood of Li-ion thermal runaway propagation from a single failed cell across the container rack\",\n      \"Minimize the likelihood of DSO capacity denial at the planned feeder forcing a grid-upgrade cost that invalidates the project\",\n      \"Minimize the likelihood of FGW TR8 plant-certificate slip landing on the critical path and delaying COD\",\n      \"Minimize the likelihood of a cell-level thermal event going undetected until propagation reaches neighbouring modules\",\n      \"Minimize the likelihood of VdS / Feuerwehr separation-wall requirement triggering once total storage exceeds the 3 MWh Li cluster threshold\"\n    ]\n  },\n\n  \"recalibration_summary\": {\n    \"incumbents_used\": [\n      {\"name\": \"BayWa r.e.\", \"role\": \"Solar+BESS EPC peer\", \"share_estimate\": \"tier-1 DE\", \"strengths\": [\"scale procurement\", \"VPP partnerships\", \"repeat FGW TR8 delivery\"], \"weaknesses\": [\"project queue depth\", \"hybrid-cert dossier coupling\"]},\n      {\"name\": \"Enerparc\", \"role\": \"Solar+BESS EPC peer\", \"share_estimate\": \"tier-1 DE\", \"strengths\": [\">2 GW DE solar installed\", \"single-source construct\"], \"weaknesses\": [\"BESS-retrofit track record younger than core PV\"]},\n      {\"name\": \"Goldbeck Solar\", \"role\": \"Solar EPC extending to BESS\", \"share_estimate\": \"mid-tier DE\", \"strengths\": [\"civil/EPC discipline\"], \"weaknesses\": [\"BESS-specific hazard mitigation depth\"]},\n      {\"name\": \"Sungrow PowerTitan\", \"role\": \"L2 container integrator\", \"share_estimate\": \"global tier-1\", \"strengths\": [\"OEM firmware access\", \"priority allocation\"], \"weaknesses\": [\"limited EPC wrap\"]},\n      {\"name\": \"Tesla Megapack\", \"role\": \"L2 turnkey integrator\", \"share_estimate\": \"global tier-1\", \"strengths\": [\"BMS quality\", \"bundled delivery\"], \"weaknesses\": [\"supply-allocation volatility\"]},\n      {\"name\": \"CATL EnerC\", \"role\": \"L2 container/cell\", \"share_estimate\": \"global tier-1\", \"strengths\": [\"cell cost leadership\"], \"weaknesses\": [\"CN concentration risk\"]},\n      {\"name\": \"Next Kraftwerke / Entrix\", \"role\": \"VPP/aggregator\", \"share_estimate\": \"DE VPP tier-1\", \"strengths\": [\"EPEX/FCR prequal path\"], \"weaknesses\": [\"single-site owner underservice\"]}\n    ],\n    \"adjustments\": [\n      {\"need_id\": \"P1\", \"direction\": \"down\", \"reason\": \"Li-cascade field events still observed even in tier-1 peer projects\"},\n      {\"need_id\": \"M4\", \"direction\": \"down\", \"reason\": \"DSO saturation is systemic in rural DE MV feeders — incumbents cannot resolve\"},\n      {\"need_id\": \"M9\", \"direction\": \"down\", \"reason\": \"Peer cert-slip rate remains elevated due to FGW-body capacity\"},\n      {\"need_id\": \"M16\", \"direction\": \"up\", \"reason\": \"VPP partnerships (Next Kraftwerke, Entrix) meaningfully close the prequal gap for tier-1 peers\"},\n      {\"need_id\": \"M17\", \"direction\": \"up\", \"reason\": \"Revenue-stack optimization is table-stakes among VPP partners for tier-1 peers\"}\n    ],\n    \"llm_fallback_used\": false\n  },\n\n  \"cross_check_step_09\": {\n    \"odi_avg\": 11.39,\n    \"feature_fit_avg\": 6.45,\n    \"flag_high_odi_low_fit\": false,\n    \"flag_low_odi_high_fit\": false,\n    \"alignment_notes\": [\n      \"M9 (TR8 slip, opp=15) aligns with F5 Grid-Code Certification Delivery (fit=7.78)\",\n      \"M14 (cell-thermal, opp=14) aligns with F1 Containerized BESS Integration (safety=8, reliability=9)\",\n      \"M1 (BESS mis-sizing, opp=13) aligns with F4 EMS (cost=9)\"\n    ]\n  },\n\n  \"qa\": {\n    \"Q1_formula_correct\": true,\n    \"Q2_underserved_flags_correct\": true,\n    \"Q3_overserved_flags_correct\": true,\n    \"Q4_need_count_preserved\": true,\n    \"Q5_top_5_ordering_correct\": true,\n    \"Q6_feature_fit_cross_check_ran\": true\n  }\n}\n```"
+      "id": "",
+      "statement": "Minimize the likelihood of LFP cell supply disruption from CN-concentrated supply chain (FX, tariffs, CRMA, EU Battery Regulation) during the procurement window",
+      "jobStep": "product_constraint",
+      "importance": 8.0,
+      "satisfaction": 3.0,
+      "opportunity": 13.0,
+      "isUnderserved": true,
+      "isOverserved": false,
+      "productRelated": true,
+      "impactCategory": "reliability",
+      "recalibrationNote": ""
+    },
+    {
+      "id": "",
+      "statement": "Minimize the likelihood of grid-code misclassification between VDE-AR-N Type A and Type B",
+      "jobStep": "Plan",
+      "importance": 8.0,
+      "satisfaction": 4.0,
+      "opportunity": 12.0,
+      "isUnderserved": true,
+      "isOverserved": false,
+      "productRelated": false,
+      "impactCategory": "feasibility",
+      "recalibrationNote": ""
+    },
+    {
+      "id": "",
+      "statement": "Minimize the likelihood of MV transformer procurement lead-time exceeding the critical-path schedule",
+      "jobStep": "Prepare",
+      "importance": 8.0,
+      "satisfaction": 4.0,
+      "opportunity": 12.0,
+      "isUnderserved": true,
+      "isOverserved": false,
+      "productRelated": false,
+      "impactCategory": "time",
+      "recalibrationNote": ""
+    },
+    {
+      "id": "",
+      "statement": "Minimize the likelihood of container-footprint overrun exceeding the 40-80 m2/MWh site envelope once fire-clearance setbacks are applied",
+      "jobStep": "product_constraint",
+      "importance": 8.0,
+      "satisfaction": 4.0,
+      "opportunity": 12.0,
+      "isUnderserved": true,
+      "isOverserved": false,
+      "productRelated": true,
+      "impactCategory": "reliability",
+      "recalibrationNote": ""
+    },
+    {
+      "id": "",
+      "statement": "Minimize the likelihood of cycle-life erosion below 6000 cycles at 80% DoD from aggressive revenue-stack cycling",
+      "jobStep": "product_constraint",
+      "importance": 8.0,
+      "satisfaction": 4.0,
+      "opportunity": 12.0,
+      "isUnderserved": true,
+      "isOverserved": false,
+      "productRelated": true,
+      "impactCategory": "reliability",
+      "recalibrationNote": ""
+    },
+    {
+      "id": "",
+      "statement": "Minimize the likelihood of roundtrip-efficiency degradation below 85% AC-AC at first-year testing invalidating pro-forma revenue assumptions",
+      "jobStep": "product_constraint",
+      "importance": 8.0,
+      "satisfaction": 4.5,
+      "opportunity": 11.5,
+      "isUnderserved": true,
+      "isOverserved": false,
+      "productRelated": true,
+      "impactCategory": "reliability",
+      "recalibrationNote": ""
+    },
+    {
+      "id": "",
+      "statement": "Minimize the likelihood of PV-retrofit interfering with the existing plant-certification envelope",
+      "jobStep": "Confirm",
+      "importance": 7.5,
+      "satisfaction": 4.0,
+      "opportunity": 11.0,
+      "isUnderserved": true,
+      "isOverserved": false,
+      "productRelated": false,
+      "impactCategory": "feasibility",
+      "recalibrationNote": ""
+    },
+    {
+      "id": "",
+      "statement": "Minimize the likelihood of Feuerwehr clearance rejection at planning stage",
+      "jobStep": "Confirm",
+      "importance": 8.0,
+      "satisfaction": 5.0,
+      "opportunity": 11.0,
+      "isUnderserved": false,
+      "isOverserved": false,
+      "productRelated": false,
+      "impactCategory": "safety",
+      "recalibrationNote": ""
+    },
+    {
+      "id": "",
+      "statement": "Minimize the likelihood of undetected BMS defects compromising availability",
+      "jobStep": "Monitor",
+      "importance": 8.0,
+      "satisfaction": 5.0,
+      "opportunity": 11.0,
+      "isUnderserved": false,
+      "isOverserved": false,
+      "productRelated": false,
+      "impactCategory": "reliability",
+      "recalibrationNote": ""
+    },
+    {
+      "id": "",
+      "statement": "Minimize the likelihood of availability-SLA shortfall in the first operational year",
+      "jobStep": "Monitor",
+      "importance": 8.0,
+      "satisfaction": 5.0,
+      "opportunity": 11.0,
+      "isUnderserved": false,
+      "isOverserved": false,
+      "productRelated": false,
+      "impactCategory": "reliability",
+      "recalibrationNote": ""
+    },
+    {
+      "id": "",
+      "statement": "Minimize the likelihood of MV-bay interoperability failure between PCS switchgear and DSO interface",
+      "jobStep": "Execute",
+      "importance": 7.5,
+      "satisfaction": 5.0,
+      "opportunity": 10.0,
+      "isUnderserved": false,
+      "isOverserved": false,
+      "productRelated": false,
+      "impactCategory": "reliability",
+      "recalibrationNote": ""
+    },
+    {
+      "id": "",
+      "statement": "Minimize the likelihood of revenue-stack optimization under-capturing EPEX/FCR market spreads",
+      "jobStep": "Monitor",
+      "importance": 7.5,
+      "satisfaction": 5.0,
+      "opportunity": 10.0,
+      "isUnderserved": false,
+      "isOverserved": false,
+      "productRelated": false,
+      "impactCategory": "cost",
+      "recalibrationNote": ""
+    },
+    {
+      "id": "",
+      "statement": "Minimize the likelihood of FGW TR8 plant-certificate re-opening when a PCS or container model is substituted mid-project",
+      "jobStep": "product_constraint",
+      "importance": 7.0,
+      "satisfaction": 4.0,
+      "opportunity": 10.0,
+      "isUnderserved": false,
+      "isOverserved": false,
+      "productRelated": true,
+      "impactCategory": "reliability",
+      "recalibrationNote": ""
+    },
+    {
+      "id": "",
+      "statement": "Minimize the likelihood of PPA terms mis-aligning PV and BESS dispatch rights",
+      "jobStep": "Plan",
+      "importance": 7.0,
+      "satisfaction": 5.0,
+      "opportunity": 9.0,
+      "isUnderserved": false,
+      "isOverserved": false,
+      "productRelated": false,
+      "impactCategory": "cost",
+      "recalibrationNote": ""
+    },
+    {
+      "id": "",
+      "statement": "Minimize the likelihood of voltage-ride-through or reactive-power retest after commissioning",
+      "jobStep": "Execute",
+      "importance": 7.0,
+      "satisfaction": 5.0,
+      "opportunity": 9.0,
+      "isUnderserved": false,
+      "isOverserved": false,
+      "productRelated": false,
+      "impactCategory": "reliability",
+      "recalibrationNote": ""
+    },
+    {
+      "id": "",
+      "statement": "Minimize the likelihood of ambient temperature excursions outside -20 to +50 C degrading HVAC duty and cell calendar lifetime",
+      "jobStep": "product_constraint",
+      "importance": 7.0,
+      "satisfaction": 5.0,
+      "opportunity": 9.0,
+      "isUnderserved": false,
+      "isOverserved": false,
+      "productRelated": true,
+      "impactCategory": "reliability",
+      "recalibrationNote": ""
+    },
+    {
+      "id": "",
+      "statement": "Minimize the likelihood of foundation design mismatching container load or seismic requirements",
+      "jobStep": "Prepare",
+      "importance": 7.0,
+      "satisfaction": 6.0,
+      "opportunity": 8.0,
+      "isUnderserved": false,
+      "isOverserved": false,
+      "productRelated": false,
+      "impactCategory": "reliability",
+      "recalibrationNote": ""
+    },
+    {
+      "id": "",
+      "statement": "Minimize the likelihood of SCADA / IEC 61850 integration gaps with DSO SCADA",
+      "jobStep": "Execute",
+      "importance": 7.0,
+      "satisfaction": 6.0,
+      "opportunity": 8.0,
+      "isUnderserved": false,
+      "isOverserved": false,
+      "productRelated": false,
+      "impactCategory": "reliability",
+      "recalibrationNote": ""
+    },
+    {
+      "id": "",
+      "statement": "Minimize the likelihood of FCR / aFRR prequalification failure on first attempt",
+      "jobStep": "Conclude",
+      "importance": 7.0,
+      "satisfaction": 6.0,
+      "opportunity": 8.0,
+      "isUnderserved": false,
+      "isOverserved": false,
+      "productRelated": false,
+      "impactCategory": "feasibility",
+      "recalibrationNote": ""
+    },
+    {
+      "id": "",
+      "statement": "Minimize the likelihood of curtailment-capture targets being missed during high-PV-generation hours",
+      "jobStep": "Monitor",
+      "importance": 7.0,
+      "satisfaction": 6.0,
+      "opportunity": 8.0,
+      "isUnderserved": false,
+      "isOverserved": false,
+      "productRelated": false,
+      "impactCategory": "cost",
+      "recalibrationNote": ""
     }
   ],
-  "tables": [
-    {
-      "headers": [
-        "Tier",
-        "Incumbent",
-        "Role",
-        "Strengths",
-        "Weaknesses"
-      ],
-      "rows": [
-        {
-          "Tier": "Solar-EPC peers",
-          "Incumbent": "BayWa r.e. · Enerparc · Goldbeck Solar",
-          "Role": "PV+BESS hybrid EPC at 20–100 MW",
-          "Strengths": "Scale procurement, repeat FGW TR8 delivery, VPP partnerships",
-          "Weaknesses": "Multi-project queue; hybrid cert dossier coupling"
-        },
-        {
-          "Tier": "BESS integrators",
-          "Incumbent": "Sungrow PowerTitan · Tesla Megapack · CATL EnerC",
-          "Role": "L2 container supply",
-          "Strengths": "OEM firmware, BMS quality, priority allocation",
-          "Weaknesses": "Split contract if not EPC'd"
-        },
-        {
-          "Tier": "PCS",
-          "Incumbent": "SMA · Sungrow · Power Electronics · Ingeteam",
-          "Role": "4-quadrant inverters",
-          "Strengths": "Q(U)/cos-phi, <100 ms response",
-          "Weaknesses": "MV-bay interop per site"
-        },
-        {
-          "Tier": "Cert bodies",
-          "Incumbent": "TÜV NORD · Dekra (FGW-accredited)",
-          "Role": "Type B plant cert",
-          "Strengths": "Recognized by DSOs",
-          "Weaknesses": "6–12 mo lead"
-        },
-        {
-          "Tier": "VPP/aggregators",
-          "Incumbent": "Next Kraftwerke · Entrix · Flexpower",
-          "Role": "EMS dispatch + revenue stack",
-          "Strengths": "Mature market access",
-          "Weaknesses": "Single-site owners under-served"
-        }
-      ]
-    },
-    {
-      "headers": [
-        "Direction",
-        "Needs",
-        "Reason"
-      ],
-      "rows": [
-        {
-          "Direction": "↓ Satisfaction",
-          "Needs": "P1 Li thermal cascade, P9 CAPEX band, M4 DSO capacity, M9 TR8 slip",
-          "Reason": "Research shows incumbents still leave gap — field cascade events + DSO denials persist at peer scale"
-        },
-        {
-          "Direction": "≈ Satisfaction",
-          "Needs": "M5 transformer lead, M8 Feuerwehr, M13 BMS",
-          "Reason": "Peer incumbents credibly at mid-level"
-        },
-        {
-          "Direction": "↑ Satisfaction",
-          "Needs": "M16 FCR prequal, M17 revenue stack",
-          "Reason": "VPP partners (Next Kraftwerke, Entrix) close gap for peers"
-        }
-      ]
-    },
-    {
-      "headers": [
-        "Rank",
-        "ID",
-        "Error statement (truncated)",
-        "Src",
-        "Imp",
-        "Sat",
-        "Opp",
-        "UnderS",
-        "OverS"
-      ],
-      "rows": [
-        {
-          "Rank": "1",
-          "ID": "P1",
-          "Error statement (truncated)": "Minimize Li-ion thermal runaway propagation across rack",
-          "Src": "P-rel",
-          "Imp": "10.0",
-          "Sat": "4.0",
-          "Opp": "**16.00**",
-          "UnderS": "✓",
-          "OverS": ""
-        },
-        {
-          "Rank": "2",
-          "ID": "M4",
-          "Error statement (truncated)": "Minimize DSO capacity denial at planned feeder",
-          "Src": "JTBD",
-          "Imp": "9.5",
-          "Sat": "3.0",
-          "Opp": "**16.00**",
-          "UnderS": "✓",
-          "OverS": ""
-        },
-        {
-          "Rank": "3",
-          "ID": "M9",
-          "Error statement (truncated)": "Minimize FGW TR8 plant-cert slip on critical path",
-          "Src": "JTBD",
-          "Imp": "9.0",
-          "Sat": "3.0",
-          "Opp": "**15.00**",
-          "UnderS": "✓",
-          "OverS": ""
-        },
-        {
-          "Rank": "4",
-          "ID": "M14",
-          "Error statement (truncated)": "Minimize cell-level thermal event undetected until propagation",
-          "Src": "JTBD",
-          "Imp": "9.0",
-          "Sat": "4.0",
-          "Opp": "**14.00**",
-          "UnderS": "✓",
-          "OverS": ""
-        },
-        {
-          "Rank": "5",
-          "ID": "P3",
-          "Error statement (truncated)": "Minimize VdS/Feuerwehr separation-wall trigger at 3 MWh cluster",
-          "Src": "P-rel",
-          "Imp": "9.0",
-          "Sat": "4.0",
-          "Opp": "**14.00**",
-          "UnderS": "✓",
-          "OverS": ""
-        },
-        {
-          "Rank": "6",
-          "ID": "P9",
-          "Error statement (truncated)": "Minimize installed CAPEX outside €250–400/kWh LFP viability band",
-          "Src": "P-rel",
-          "Imp": "9.0",
-          "Sat": "4.0",
-          "Opp": "**14.00**",
-          "UnderS": "✓",
-          "OverS": ""
-        },
-        {
-          "Rank": "7",
-          "ID": "M1",
-          "Error statement (truncated)": "Minimize BESS power/energy mis-sizing vs. revenue model",
-          "Src": "JTBD",
-          "Imp": "8.5",
-          "Sat": "4.0",
-          "Opp": "**13.00**",
-          "UnderS": "✓",
-          "OverS": ""
-        },
-        {
-          "Rank": "8",
-          "ID": "P7",
-          "Error statement (truncated)": "Minimize LFP supply disruption (CN concentration, CRMA, tariffs)",
-          "Src": "P-rel",
-          "Imp": "8.0",
-          "Sat": "3.0",
-          "Opp": "**13.00**",
-          "UnderS": "✓",
-          "OverS": ""
-        },
-        {
-          "Rank": "9",
-          "ID": "M2",
-          "Error statement (truncated)": "Minimize grid-code misclassification (Type A vs B)",
-          "Src": "JTBD",
-          "Imp": "8.0",
-          "Sat": "4.0",
-          "Opp": "**12.00**",
-          "UnderS": "✓",
-          "OverS": ""
-        },
-        {
-          "Rank": "10",
-          "ID": "M5",
-          "Error statement (truncated)": "Minimize MV transformer lead-time overrun",
-          "Src": "JTBD",
-          "Imp": "8.0",
-          "Sat": "4.0",
-          "Opp": "**12.00**",
-          "UnderS": "✓",
-          "OverS": ""
-        },
-        {
-          "Rank": "11",
-          "ID": "P2",
-          "Error statement (truncated)": "Minimize container-footprint overrun of 40–80 m²/MWh envelope",
-          "Src": "P-rel",
-          "Imp": "8.0",
-          "Sat": "4.0",
-          "Opp": "**12.00**",
-          "UnderS": "✓",
-          "OverS": ""
-        },
-        {
-          "Rank": "12",
-          "ID": "P5",
-          "Error statement (truncated)": "Minimize cycle-life erosion below 6 000 cycles at 80% DoD",
-          "Src": "P-rel",
-          "Imp": "8.0",
-          "Sat": "4.0",
-          "Opp": "**12.00**",
-          "UnderS": "✓",
-          "OverS": ""
-        },
-        {
-          "Rank": "13",
-          "ID": "P4",
-          "Error statement (truncated)": "Minimize RTE degradation below 85% AC–AC at year-1 testing",
-          "Src": "P-rel",
-          "Imp": "8.0",
-          "Sat": "4.5",
-          "Opp": "**11.50**",
-          "UnderS": "✓",
-          "OverS": ""
-        },
-        {
-          "Rank": "14",
-          "ID": "M6",
-          "Error statement (truncated)": "Minimize PV-retrofit interference with existing plant cert",
-          "Src": "JTBD",
-          "Imp": "7.5",
-          "Sat": "4.0",
-          "Opp": "**11.00**",
-          "UnderS": "✓",
-          "OverS": ""
-        },
-        {
-          "Rank": "15",
-          "ID": "M8",
-          "Error statement (truncated)": "Minimize Feuerwehr clearance rejection at planning",
-          "Src": "JTBD",
-          "Imp": "8.0",
-          "Sat": "5.0",
-          "Opp": "**11.00**",
-          "UnderS": "",
-          "OverS": ""
-        },
-        {
-          "Rank": "16",
-          "ID": "M13",
-          "Error statement (truncated)": "Minimize undetected BMS defects compromising availability",
-          "Src": "JTBD",
-          "Imp": "8.0",
-          "Sat": "5.0",
-          "Opp": "**11.00**",
-          "UnderS": "",
-          "OverS": ""
-        },
-        {
-          "Rank": "17",
-          "ID": "M15",
-          "Error statement (truncated)": "Minimize availability-SLA shortfall in first operational year",
-          "Src": "JTBD",
-          "Imp": "8.0",
-          "Sat": "5.0",
-          "Opp": "**11.00**",
-          "UnderS": "",
-          "OverS": ""
-        },
-        {
-          "Rank": "18",
-          "ID": "M11",
-          "Error statement (truncated)": "Minimize MV-bay interop failure (PCS / switchgear / DSO)",
-          "Src": "JTBD",
-          "Imp": "7.5",
-          "Sat": "5.0",
-          "Opp": "**10.00**",
-          "UnderS": "",
-          "OverS": ""
-        },
-        {
-          "Rank": "19",
-          "ID": "M17",
-          "Error statement (truncated)": "Minimize revenue-stack under-capture of market spreads",
-          "Src": "JTBD",
-          "Imp": "7.5",
-          "Sat": "5.0",
-          "Opp": "**10.00**",
-          "UnderS": "",
-          "OverS": ""
-        },
-        {
-          "Rank": "20",
-          "ID": "P8",
-          "Error statement (truncated)": "Minimize FGW TR8 re-opening when PCS/container substituted",
-          "Src": "P-rel",
-          "Imp": "7.0",
-          "Sat": "4.0",
-          "Opp": "**10.00**",
-          "UnderS": "",
-          "OverS": ""
-        },
-        {
-          "Rank": "21",
-          "ID": "M3",
-          "Error statement (truncated)": "Minimize PPA terms mis-aligning PV/BESS dispatch rights",
-          "Src": "JTBD",
-          "Imp": "7.0",
-          "Sat": "5.0",
-          "Opp": "**9.00**",
-          "UnderS": "",
-          "OverS": ""
-        },
-        {
-          "Rank": "22",
-          "ID": "M10",
-          "Error statement (truncated)": "Minimize VRT/reactive-power retest after commissioning",
-          "Src": "JTBD",
-          "Imp": "7.0",
-          "Sat": "5.0",
-          "Opp": "**9.00**",
-          "UnderS": "",
-          "OverS": ""
-        },
-        {
-          "Rank": "23",
-          "ID": "P6",
-          "Error statement (truncated)": "Minimize ambient-temp excursions outside −20/+50 °C",
-          "Src": "P-rel",
-          "Imp": "7.0",
-          "Sat": "5.0",
-          "Opp": "**9.00**",
-          "UnderS": "",
-          "OverS": ""
-        },
-        {
-          "Rank": "24",
-          "ID": "M7",
-          "Error statement (truncated)": "Minimize foundation design mismatch to container load",
-          "Src": "JTBD",
-          "Imp": "7.0",
-          "Sat": "6.0",
-          "Opp": "**8.00**",
-          "UnderS": "",
-          "OverS": ""
-        },
-        {
-          "Rank": "25",
-          "ID": "M12",
-          "Error statement (truncated)": "Minimize SCADA/IEC 61850 integration gaps with DSO",
-          "Src": "JTBD",
-          "Imp": "7.0",
-          "Sat": "6.0",
-          "Opp": "**8.00**",
-          "UnderS": "",
-          "OverS": ""
-        },
-        {
-          "Rank": "26",
-          "ID": "M16",
-          "Error statement (truncated)": "Minimize FCR/aFRR prequal failure",
-          "Src": "JTBD",
-          "Imp": "7.0",
-          "Sat": "6.0",
-          "Opp": "**8.00**",
-          "UnderS": "",
-          "OverS": ""
-        },
-        {
-          "Rank": "27",
-          "ID": "M18",
-          "Error statement (truncated)": "Minimize curtailment-capture miss during high-PV hours",
-          "Src": "JTBD",
-          "Imp": "7.0",
-          "Sat": "6.0",
-          "Opp": "**8.00**",
-          "UnderS": "",
-          "OverS": ""
-        }
-      ]
-    },
-    {
-      "headers": [
-        "Metric",
-        "Value"
-      ],
-      "rows": [
-        {
-          "Metric": "Market",
-          "Value": "PV+BESS Solar IPPs"
-        },
-        {
-          "Metric": "NAICS",
-          "Value": "221114"
-        },
-        {
-          "Metric": "Total needs",
-          "Value": "27"
-        },
-        {
-          "Metric": "Underserved count (imp>7 ∧ sat<5)",
-          "Value": "**14**"
-        },
-        {
-          "Metric": "Overserved count (imp<3 ∧ sat>7)",
-          "Value": "**0**"
-        },
-        {
-          "Metric": "Avg opportunity score",
-          "Value": "**11.39**"
-        },
-        {
-          "Metric": "Top-5 opportunities",
-          "Value": "P1, M4, M9, M14, P3"
-        }
-      ]
-    },
-    {
-      "headers": [
-        "Check",
-        "Value",
-        "Flag"
-      ],
-      "rows": [
-        {
-          "Check": "ODI avg",
-          "Value": "11.39",
-          "Flag": "in 8–12 band"
-        },
-        {
-          "Check": "Feature-Fit avg (F1,F2,F3,F4,F5,F8)",
-          "Value": "6.45",
-          "Flag": "in 4–7 band"
-        },
-        {
-          "Check": "`ODI>12 ∧ FFit<4`",
-          "Value": "—",
-          "Flag": "no flag"
-        },
-        {
-          "Check": "`ODI<8 ∧ FFit>7`",
-          "Value": "—",
-          "Flag": "no flag"
-        },
-        {
-          "Check": "**Result**",
-          "Value": "no inconsistency logged",
-          "Flag": "PASS"
-        }
-      ]
-    },
-    {
-      "headers": [
-        "#",
-        "Check",
-        "Status"
-      ],
-      "rows": [
-        {
-          "#": "Q1",
-          "Check": "Formula correct (5 spot-checks above)",
-          "Status": "✅ HARD"
-        },
-        {
-          "#": "Q2",
-          "Check": "Underserved flags correct (14/14 match imp>7 ∧ sat<5)",
-          "Status": "✅ HARD"
-        },
-        {
-          "#": "Q3",
-          "Check": "Overserved flags correct (0, no false positives)",
-          "Status": "✅ HARD"
-        },
-        {
-          "#": "Q4",
-          "Check": "Need count ≥ Step 06 market count (18≥18, +9 product)",
-          "Status": "✅ HARD"
-        },
-        {
-          "#": "Q5",
-          "Check": "Top-5 sorted by opp desc",
-          "Status": "✅ SOFT"
-        },
-        {
-          "#": "Q6",
-          "Check": "Feature-Fit cross-check ran",
-          "Status": "✅ SOFT"
-        }
-      ]
-    }
-  ],
-  "entities": [
-    {
-      "component": "odi_matrix",
-      "market_name": "Solar Electric Power Generation",
-      "naics_code": "221114",
-      "vendor_name": "Mein Solar GmbH",
-      "vendor_product": "EPC für Großbatteriespeicher",
-      "run_context": "Step 12 — recalibrated against Step 03 incumbent profiles (BayWa r.e., Enerparc, Goldbeck Solar, Sungrow PowerTitan, Tesla Megapack, CATL EnerC, Next Kraftwerke)",
-      "formula": "opp = importance + max(importance - satisfaction, 0)",
-      "entries": [
-        {
-          "error_statement": "Minimize the likelihood of Li-ion thermal runaway propagation from a single failed cell across the container rack",
-          "market_name": "Solar Electric Power Generation",
-          "naics_code": "221114",
-          "importance": 10.0,
-          "satisfaction_current": 4.0,
-          "opportunity_score": 16.0,
-          "is_underserved": true,
-          "is_overserved": false,
-          "product_related": true,
-          "job_step_number": 0,
-          "job_step_name": "product_constraint",
-          "impact_category": "reliability"
-        },
-        {
-          "error_statement": "Minimize the likelihood of DSO capacity denial at the planned feeder forcing a grid-upgrade cost that invalidates the project",
-          "market_name": "Solar Electric Power Generation",
-          "naics_code": "221114",
-          "importance": 9.5,
-          "satisfaction_current": 3.0,
-          "opportunity_score": 16.0,
-          "is_underserved": true,
-          "is_overserved": false,
-          "product_related": false,
-          "job_step_number": 1,
-          "job_step_name": "Define",
-          "impact_category": "feasibility"
-        },
-        {
-          "error_statement": "Minimize the likelihood of FGW TR8 plant-certificate slip landing on the critical path and delaying COD",
-          "market_name": "Solar Electric Power Generation",
-          "naics_code": "221114",
-          "importance": 9.0,
-          "satisfaction_current": 3.0,
-          "opportunity_score": 15.0,
-          "is_underserved": true,
-          "is_overserved": false,
-          "product_related": false,
-          "job_step_number": 7,
-          "job_step_name": "Conclude",
-          "impact_category": "time"
-        },
-        {
-          "error_statement": "Minimize the likelihood of a cell-level thermal event going undetected until propagation reaches neighbouring modules",
-          "market_name": "Solar Electric Power Generation",
-          "naics_code": "221114",
-          "importance": 9.0,
-          "satisfaction_current": 4.0,
-          "opportunity_score": 14.0,
-          "is_underserved": true,
-          "is_overserved": false,
-          "product_related": false,
-          "job_step_number": 6,
-          "job_step_name": "Monitor",
-          "impact_category": "safety"
-        },
-        {
-          "error_statement": "Minimize the likelihood of VdS / Feuerwehr separation-wall requirement triggering once total storage exceeds the 3 MWh Li cluster threshold",
-          "market_name": "Solar Electric Power Generation",
-          "naics_code": "221114",
-          "importance": 9.0,
-          "satisfaction_current": 4.0,
-          "opportunity_score": 14.0,
-          "is_underserved": true,
-          "is_overserved": false,
-          "product_related": true,
-          "job_step_number": 0,
-          "job_step_name": "product_constraint",
-          "impact_category": "reliability"
-        },
-        {
-          "error_statement": "Minimize the likelihood of installed CAPEX closing outside the 250-400 EUR/kWh viability band specific to Li LFP stationary deployments",
-          "market_name": "Solar Electric Power Generation",
-          "naics_code": "221114",
-          "importance": 9.0,
-          "satisfaction_current": 4.0,
-          "opportunity_score": 14.0,
-          "is_underserved": true,
-          "is_overserved": false,
-          "product_related": true,
-          "job_step_number": 0,
-          "job_step_name": "product_constraint",
-          "impact_category": "reliability"
-        },
-        {
-          "error_statement": "Minimize the likelihood of BESS power/energy mis-sizing versus the revenue-stack model",
-          "market_name": "Solar Electric Power Generation",
-          "naics_code": "221114",
-          "importance": 8.5,
-          "satisfaction_current": 4.0,
-          "opportunity_score": 13.0,
-          "is_underserved": true,
-          "is_overserved": false,
-          "product_related": false,
-          "job_step_number": 2,
-          "job_step_name": "Plan",
-          "impact_category": "cost"
-        },
-        {
-          "error_statement": "Minimize the likelihood of LFP cell supply disruption from CN-concentrated supply chain (FX, tariffs, CRMA, EU Battery Regulation) during the procurement window",
-          "market_name": "Solar Electric Power Generation",
-          "naics_code": "221114",
-          "importance": 8.0,
-          "satisfaction_current": 3.0,
-          "opportunity_score": 13.0,
-          "is_underserved": true,
-          "is_overserved": false,
-          "product_related": true,
-          "job_step_number": 0,
-          "job_step_name": "product_constraint",
-          "impact_category": "reliability"
-        },
-        {
-          "error_statement": "Minimize the likelihood of grid-code misclassification between VDE-AR-N Type A and Type B",
-          "market_name": "Solar Electric Power Generation",
-          "naics_code": "221114",
-          "importance": 8.0,
-          "satisfaction_current": 4.0,
-          "opportunity_score": 12.0,
-          "is_underserved": true,
-          "is_overserved": false,
-          "product_related": false,
-          "job_step_number": 2,
-          "job_step_name": "Plan",
-          "impact_category": "feasibility"
-        },
-        {
-          "error_statement": "Minimize the likelihood of MV transformer procurement lead-time exceeding the critical-path schedule",
-          "market_name": "Solar Electric Power Generation",
-          "naics_code": "221114",
-          "importance": 8.0,
-          "satisfaction_current": 4.0,
-          "opportunity_score": 12.0,
-          "is_underserved": true,
-          "is_overserved": false,
-          "product_related": false,
-          "job_step_number": 4,
-          "job_step_name": "Prepare",
-          "impact_category": "time"
-        },
-        {
-          "error_statement": "Minimize the likelihood of container-footprint overrun exceeding the 40-80 m2/MWh site envelope once fire-clearance setbacks are applied",
-          "market_name": "Solar Electric Power Generation",
-          "naics_code": "221114",
-          "importance": 8.0,
-          "satisfaction_current": 4.0,
-          "opportunity_score": 12.0,
-          "is_underserved": true,
-          "is_overserved": false,
-          "product_related": true,
-          "job_step_number": 0,
-          "job_step_name": "product_constraint",
-          "impact_category": "reliability"
-        },
-        {
-          "error_statement": "Minimize the likelihood of cycle-life erosion below 6000 cycles at 80% DoD from aggressive revenue-stack cycling",
-          "market_name": "Solar Electric Power Generation",
-          "naics_code": "221114",
-          "importance": 8.0,
-          "satisfaction_current": 4.0,
-          "opportunity_score": 12.0,
-          "is_underserved": true,
-          "is_overserved": false,
-          "product_related": true,
-          "job_step_number": 0,
-          "job_step_name": "product_constraint",
-          "impact_category": "reliability"
-        },
-        {
-          "error_statement": "Minimize the likelihood of roundtrip-efficiency degradation below 85% AC-AC at first-year testing invalidating pro-forma revenue assumptions",
-          "market_name": "Solar Electric Power Generation",
-          "naics_code": "221114",
-          "importance": 8.0,
-          "satisfaction_current": 4.5,
-          "opportunity_score": 11.5,
-          "is_underserved": true,
-          "is_overserved": false,
-          "product_related": true,
-          "job_step_number": 0,
-          "job_step_name": "product_constraint",
-          "impact_category": "reliability"
-        },
-        {
-          "error_statement": "Minimize the likelihood of PV-retrofit interfering with the existing plant-certification envelope",
-          "market_name": "Solar Electric Power Generation",
-          "naics_code": "221114",
-          "importance": 7.5,
-          "satisfaction_current": 4.0,
-          "opportunity_score": 11.0,
-          "is_underserved": true,
-          "is_overserved": false,
-          "product_related": false,
-          "job_step_number": 3,
-          "job_step_name": "Confirm",
-          "impact_category": "feasibility"
-        },
-        {
-          "error_statement": "Minimize the likelihood of Feuerwehr clearance rejection at planning stage",
-          "market_name": "Solar Electric Power Generation",
-          "naics_code": "221114",
-          "importance": 8.0,
-          "satisfaction_current": 5.0,
-          "opportunity_score": 11.0,
-          "is_underserved": false,
-          "is_overserved": false,
-          "product_related": false,
-          "job_step_number": 3,
-          "job_step_name": "Confirm",
-          "impact_category": "safety"
-        },
-        {
-          "error_statement": "Minimize the likelihood of undetected BMS defects compromising availability",
-          "market_name": "Solar Electric Power Generation",
-          "naics_code": "221114",
-          "importance": 8.0,
-          "satisfaction_current": 5.0,
-          "opportunity_score": 11.0,
-          "is_underserved": false,
-          "is_overserved": false,
-          "product_related": false,
-          "job_step_number": 6,
-          "job_step_name": "Monitor",
-          "impact_category": "reliability"
-        },
-        {
-          "error_statement": "Minimize the likelihood of availability-SLA shortfall in the first operational year",
-          "market_name": "Solar Electric Power Generation",
-          "naics_code": "221114",
-          "importance": 8.0,
-          "satisfaction_current": 5.0,
-          "opportunity_score": 11.0,
-          "is_underserved": false,
-          "is_overserved": false,
-          "product_related": false,
-          "job_step_number": 6,
-          "job_step_name": "Monitor",
-          "impact_category": "reliability"
-        },
-        {
-          "error_statement": "Minimize the likelihood of MV-bay interoperability failure between PCS switchgear and DSO interface",
-          "market_name": "Solar Electric Power Generation",
-          "naics_code": "221114",
-          "importance": 7.5,
-          "satisfaction_current": 5.0,
-          "opportunity_score": 10.0,
-          "is_underserved": false,
-          "is_overserved": false,
-          "product_related": false,
-          "job_step_number": 5,
-          "job_step_name": "Execute",
-          "impact_category": "reliability"
-        },
-        {
-          "error_statement": "Minimize the likelihood of revenue-stack optimization under-capturing EPEX/FCR market spreads",
-          "market_name": "Solar Electric Power Generation",
-          "naics_code": "221114",
-          "importance": 7.5,
-          "satisfaction_current": 5.0,
-          "opportunity_score": 10.0,
-          "is_underserved": false,
-          "is_overserved": false,
-          "product_related": false,
-          "job_step_number": 6,
-          "job_step_name": "Monitor",
-          "impact_category": "cost"
-        },
-        {
-          "error_statement": "Minimize the likelihood of FGW TR8 plant-certificate re-opening when a PCS or container model is substituted mid-project",
-          "market_name": "Solar Electric Power Generation",
-          "naics_code": "221114",
-          "importance": 7.0,
-          "satisfaction_current": 4.0,
-          "opportunity_score": 10.0,
-          "is_underserved": false,
-          "is_overserved": false,
-          "product_related": true,
-          "job_step_number": 0,
-          "job_step_name": "product_constraint",
-          "impact_category": "reliability"
-        },
-        {
-          "error_statement": "Minimize the likelihood of PPA terms mis-aligning PV and BESS dispatch rights",
-          "market_name": "Solar Electric Power Generation",
-          "naics_code": "221114",
-          "importance": 7.0,
-          "satisfaction_current": 5.0,
-          "opportunity_score": 9.0,
-          "is_underserved": false,
-          "is_overserved": false,
-          "product_related": false,
-          "job_step_number": 2,
-          "job_step_name": "Plan",
-          "impact_category": "cost"
-        },
-        {
-          "error_statement": "Minimize the likelihood of voltage-ride-through or reactive-power retest after commissioning",
-          "market_name": "Solar Electric Power Generation",
-          "naics_code": "221114",
-          "importance": 7.0,
-          "satisfaction_current": 5.0,
-          "opportunity_score": 9.0,
-          "is_underserved": false,
-          "is_overserved": false,
-          "product_related": false,
-          "job_step_number": 5,
-          "job_step_name": "Execute",
-          "impact_category": "reliability"
-        },
-        {
-          "error_statement": "Minimize the likelihood of ambient temperature excursions outside -20 to +50 C degrading HVAC duty and cell calendar lifetime",
-          "market_name": "Solar Electric Power Generation",
-          "naics_code": "221114",
-          "importance": 7.0,
-          "satisfaction_current": 5.0,
-          "opportunity_score": 9.0,
-          "is_underserved": false,
-          "is_overserved": false,
-          "product_related": true,
-          "job_step_number": 0,
-          "job_step_name": "product_constraint",
-          "impact_category": "reliability"
-        },
-        {
-          "error_statement": "Minimize the likelihood of foundation design mismatching container load or seismic requirements",
-          "market_name": "Solar Electric Power Generation",
-          "naics_code": "221114",
-          "importance": 7.0,
-          "satisfaction_current": 6.0,
-          "opportunity_score": 8.0,
-          "is_underserved": false,
-          "is_overserved": false,
-          "product_related": false,
-          "job_step_number": 4,
-          "job_step_name": "Prepare",
-          "impact_category": "reliability"
-        },
-        {
-          "error_statement": "Minimize the likelihood of SCADA / IEC 61850 integration gaps with DSO SCADA",
-          "market_name": "Solar Electric Power Generation",
-          "naics_code": "221114",
-          "importance": 7.0,
-          "satisfaction_current": 6.0,
-          "opportunity_score": 8.0,
-          "is_underserved": false,
-          "is_overserved": false,
-          "product_related": false,
-          "job_step_number": 5,
-          "job_step_name": "Execute",
-          "impact_category": "reliability"
-        },
-        {
-          "error_statement": "Minimize the likelihood of FCR / aFRR prequalification failure on first attempt",
-          "market_name": "Solar Electric Power Generation",
-          "naics_code": "221114",
-          "importance": 7.0,
-          "satisfaction_current": 6.0,
-          "opportunity_score": 8.0,
-          "is_underserved": false,
-          "is_overserved": false,
-          "product_related": false,
-          "job_step_number": 7,
-          "job_step_name": "Conclude",
-          "impact_category": "feasibility"
-        },
-        {
-          "error_statement": "Minimize the likelihood of curtailment-capture targets being missed during high-PV-generation hours",
-          "market_name": "Solar Electric Power Generation",
-          "naics_code": "221114",
-          "importance": 7.0,
-          "satisfaction_current": 6.0,
-          "opportunity_score": 8.0,
-          "is_underserved": false,
-          "is_overserved": false,
-          "product_related": false,
-          "job_step_number": 6,
-          "job_step_name": "Monitor",
-          "impact_category": "cost"
-        }
-      ],
-      "market_summary": {
-        "market_name": "Solar Electric Power Generation",
-        "naics_code": "221114",
-        "total_needs": 27,
-        "underserved_count": 14,
-        "overserved_count": 0,
-        "avg_opportunity_score": 11.39,
-        "top_opportunities": [
-          "Minimize the likelihood of Li-ion thermal runaway propagation from a single failed cell across the container rack",
-          "Minimize the likelihood of DSO capacity denial at the planned feeder forcing a grid-upgrade cost that invalidates the project",
-          "Minimize the likelihood of FGW TR8 plant-certificate slip landing on the critical path and delaying COD",
-          "Minimize the likelihood of a cell-level thermal event going undetected until propagation reaches neighbouring modules",
-          "Minimize the likelihood of VdS / Feuerwehr separation-wall requirement triggering once total storage exceeds the 3 MWh Li cluster threshold"
-        ]
-      },
-      "recalibration_summary": {
-        "incumbents_used": [
-          {
-            "name": "BayWa r.e.",
-            "role": "Solar+BESS EPC peer",
-            "share_estimate": "tier-1 DE",
-            "strengths": [
-              "scale procurement",
-              "VPP partnerships",
-              "repeat FGW TR8 delivery"
-            ],
-            "weaknesses": [
-              "project queue depth",
-              "hybrid-cert dossier coupling"
-            ]
-          },
-          {
-            "name": "Enerparc",
-            "role": "Solar+BESS EPC peer",
-            "share_estimate": "tier-1 DE",
-            "strengths": [
-              ">2 GW DE solar installed",
-              "single-source construct"
-            ],
-            "weaknesses": [
-              "BESS-retrofit track record younger than core PV"
-            ]
-          },
-          {
-            "name": "Goldbeck Solar",
-            "role": "Solar EPC extending to BESS",
-            "share_estimate": "mid-tier DE",
-            "strengths": [
-              "civil/EPC discipline"
-            ],
-            "weaknesses": [
-              "BESS-specific hazard mitigation depth"
-            ]
-          },
-          {
-            "name": "Sungrow PowerTitan",
-            "role": "L2 container integrator",
-            "share_estimate": "global tier-1",
-            "strengths": [
-              "OEM firmware access",
-              "priority allocation"
-            ],
-            "weaknesses": [
-              "limited EPC wrap"
-            ]
-          },
-          {
-            "name": "Tesla Megapack",
-            "role": "L2 turnkey integrator",
-            "share_estimate": "global tier-1",
-            "strengths": [
-              "BMS quality",
-              "bundled delivery"
-            ],
-            "weaknesses": [
-              "supply-allocation volatility"
-            ]
-          },
-          {
-            "name": "CATL EnerC",
-            "role": "L2 container/cell",
-            "share_estimate": "global tier-1",
-            "strengths": [
-              "cell cost leadership"
-            ],
-            "weaknesses": [
-              "CN concentration risk"
-            ]
-          },
-          {
-            "name": "Next Kraftwerke / Entrix",
-            "role": "VPP/aggregator",
-            "share_estimate": "DE VPP tier-1",
-            "strengths": [
-              "EPEX/FCR prequal path"
-            ],
-            "weaknesses": [
-              "single-site owner underservice"
-            ]
-          }
-        ],
-        "adjustments": [
-          {
-            "need_id": "P1",
-            "direction": "down",
-            "reason": "Li-cascade field events still observed even in tier-1 peer projects"
-          },
-          {
-            "need_id": "M4",
-            "direction": "down",
-            "reason": "DSO saturation is systemic in rural DE MV feeders — incumbents cannot resolve"
-          },
-          {
-            "need_id": "M9",
-            "direction": "down",
-            "reason": "Peer cert-slip rate remains elevated due to FGW-body capacity"
-          },
-          {
-            "need_id": "M16",
-            "direction": "up",
-            "reason": "VPP partnerships (Next Kraftwerke, Entrix) meaningfully close the prequal gap for tier-1 peers"
-          },
-          {
-            "need_id": "M17",
-            "direction": "up",
-            "reason": "Revenue-stack optimization is table-stakes among VPP partners for tier-1 peers"
-          }
-        ],
-        "llm_fallback_used": false
-      },
-      "cross_check_step_09": {
-        "odi_avg": 11.39,
-        "feature_fit_avg": 6.45,
-        "flag_high_odi_low_fit": false,
-        "flag_low_odi_high_fit": false,
-        "alignment_notes": [
-          "M9 (TR8 slip, opp=15) aligns with F5 Grid-Code Certification Delivery (fit=7.78)",
-          "M14 (cell-thermal, opp=14) aligns with F1 Containerized BESS Integration (safety=8, reliability=9)",
-          "M1 (BESS mis-sizing, opp=13) aligns with F4 EMS (cost=9)"
-        ]
-      },
-      "qa": {
-        "Q1_formula_correct": true,
-        "Q2_underserved_flags_correct": true,
-        "Q3_overserved_flags_correct": true,
-        "Q4_need_count_preserved": true,
-        "Q5_top_5_ordering_correct": true,
-        "Q6_feature_fit_cross_check_ran": true
-      }
-    }
-  ],
-  "has_bom": true,
-  "naics_sector_type": "non_manufacturing"
+  "sources": []
 }

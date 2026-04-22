@@ -7,6 +7,7 @@
  *   - Left accent border colored by confidence tier
  *   - Hover: tooltip with functional role; click: popover with full details
  *
+ * Anchor detection uses `isProductAnchor` from data or `productAnchorIds[]`.
  * Uses .bom-variant-card CSS classes from bom.css.
  */
 
@@ -22,12 +23,27 @@ export interface VariantCardProps {
   functionalRole?: string;
   /** Extra detail shown in click popover */
   detail?: string;
+  /** Product anchor IDs for cross-checking */
+  productAnchorIds?: string[];
+}
+
+/**
+ * Check if an alternative is the focal company's product.
+ */
+function isAlternativeAnchor(
+  alt: BOMAlternative,
+  productAnchorIds: string[] = []
+): boolean {
+  if (alt.isProductAnchor === true) return true;
+  if (alt.isMarquardt === true) return true;
+  if (alt.name && productAnchorIds.includes(alt.name)) return true;
+  return false;
 }
 
 function trendLabel(trend: string): string {
-  if (trend === "growing") return "↑ Growing";
-  if (trend === "declining") return "↓ Declining";
-  return "→ Stable";
+  if (trend === "growing") return "\u2191 Growing";
+  if (trend === "declining") return "\u2193 Declining";
+  return "\u2192 Stable";
 }
 
 /** Popover detail panel */
@@ -36,11 +52,14 @@ function VariantDetailPanel({
   confidence,
   functionalRole,
   detail,
+  productAnchorIds = [],
 }: VariantCardProps) {
+  const isAnchor = isAlternativeAnchor(alternative, productAnchorIds);
+
   return (
     <div className="r-popover__body bom-detail-popover">
       <div className="r-popover__header" style={{ display: "flex", alignItems: "center", gap: 8 }}>
-        {alternative.isMarquardt && (
+        {isAnchor && (
           <span
             style={{
               fontFamily: "var(--font-mono)",
@@ -55,7 +74,7 @@ function VariantDetailPanel({
               padding: "2px 5px",
             }}
           >
-            ZOLLERN
+            PRODUCT
           </span>
         )}
         {alternative.name}
@@ -95,12 +114,15 @@ export default function VariantCard({
   confidence,
   functionalRole,
   detail,
+  productAnchorIds = [],
 }: VariantCardProps) {
   const pct = Math.min(100, Math.max(0, alternative.sharePct));
+  const isAnchor = isAlternativeAnchor(alternative, productAnchorIds);
+
   const cardCls = [
     "bom-variant-card",
     `bom-variant-card--${confidence}`,
-    alternative.isMarquardt ? "bom-variant-card--marquardt" : "",
+    isAnchor ? "bom-variant-card--anchor" : "",
   ]
     .filter(Boolean)
     .join(" ");
@@ -117,7 +139,7 @@ export default function VariantCard({
             role="button"
             tabIndex={0}
             style={
-              alternative.isMarquardt
+              isAnchor
                 ? {
                     borderLeft: "2px solid var(--accent-yellow)",
                     background: "rgba(253,255,152,0.05)",
@@ -144,6 +166,7 @@ export default function VariantCard({
           confidence={confidence}
           functionalRole={functionalRole}
           detail={detail}
+          productAnchorIds={productAnchorIds}
         />
       }
     />

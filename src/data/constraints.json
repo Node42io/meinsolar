@@ -1,984 +1,410 @@
 {
-  "id": "03_constraints",
-  "title": "03 — Constraints Analysis",
-  "type": "constraints",
-  "market_slug": null,
-  "is_per_market": false,
-  "sections": [
+  "productName": "EPC für Großbatteriespeicher",
+  "technologyClass": "Large-Scale Battery Energy Storage System EPC",
+  "taxonomyCounts": {
+    "physical": 4,
+    "chemical": 2,
+    "operational": 4,
+    "economic": 3,
+    "regulatory": 5,
+    "environmental": 3,
+    "total": 21,
+    "absolute": 4,
+    "mitigable": 17
+  },
+  "constraints": [
     {
-      "title": "03a — Constraint taxonomy coverage",
-      "content": "| Type | # constraints | Absolute | Mitigable |\n|---|---|---|---|\n| physical | 4 | 2 | 2 |\n| chemical | 2 | 2 | 0 |\n| operational | 4 | 0 | 4 |\n| economic | 3 | 0 | 3 |\n| regulatory | 5 | 0 | 5 |\n| environmental | 3 | 0 | 3 |\n| **Total** | **21** | **4** | **17** |\n\nAll six types represented. Absolutes are physics/chemistry only (runaway chemistry, thermodynamic floor, electrolyte flammability, footprint floor). Every regulatory constraint has a certification path → mitigable per component rules.\n\n---"
-    },
-    {
-      "title": "03b — Enriched constraints (Step 07)",
-      "content": "### Physical (4)\n\n| # | Name | Threshold | Absolute | Description |\n|---|---|---|---|---|\n| P1 | Land Footprint and Siting | 40–80 m²/MWh | false | Container footprint + safety clearances + Feuerwehr access; mitigable via multi-deck stacking, off-site lease, or project downsize. |\n| P2 | Minimum EPC Project Scale | ≥500 kW / ≥1 MWh | false | Below this threshold, EPC overhead (grid cert, civil, project mgmt) exceeds equipment cost; mitigable by aggregating small sites into one contract. |\n| P3 | Round-Trip Energy Loss Floor | 10–15 % | true | Thermodynamic floor: PCS switching + cell internal resistance + HVAC parasitic. Cannot go below ~10% AC-AC with current LFP+PCS stack. |\n| P4 | Grid-Scale Power Density | 1 MWh per 20ft container | true | Volumetric limit of LFP (~160 Wh/L pack level); dictates site area per MWh — physics of cell chemistry. |\n\n### Chemical (2)\n\n| # | Name | Threshold | Absolute | Description |\n|---|---|---|---|---|\n| C1 | Li-Ion Thermal Runaway Onset | ~150–200 °C cell surface | true | Exothermic decomposition of cathode + electrolyte once onset reached. Cannot be eliminated — only contained via NOVEC/aerosol suppression, compartmentalization, and deflagration venting (VdS 3103). |\n| C2 | Organic Electrolyte Flammability | flash-point ~30 °C (EMC/DMC) | true | Carbonate electrolytes are combustible; mandates fire-rated container, suppression, and gas-venting. Chemistry-inherent. |\n\n### Operational (4)\n\n| # | Name | Threshold | Absolute | Description |\n|---|---|---|---|---|\n| O1 | MV Grid Connection Capacity (DSO) | site-specific kVA headroom | false | DSO must grant MV feeder capacity under VDE-AR-N 4110; where saturated, grid upgrade required (cost and schedule risk) or reduced project size. |\n| O2 | Grid-Code Certification Lead Time | 6–12 months (TR8 Type B) | false | FGW TR8 plant cert and DSO acceptance on critical path. Parallelizable with procurement; partial mitigation via simplified Type B or early DSO engagement. |\n| O3 | Minimum Duty Cycle for Business Case | ≥200 full-cycles/year | false | Below this throughput, revenue doesn't cover O&M + degradation amortization. Mitigable by stacking revenue streams (peak shaving + FCR + arbitrage). |\n| O4 | SCADA/EMS Communication Link | IEC 61850 or IEC 60870-5-104 | false | DSO and aggregator dispatch require standards-compliant uplink; cellular or fiber dependency at remote sites. |\n\n### Economic (3)\n\n| # | Name | Threshold | Absolute | Description |\n|---|---|---|---|---|\n| E1 | CAPEX Viability Ceiling | €250–400 /kWh installed | false | Above this, peak-shaving/arbitrage business case closes at >7-yr payback. Mitigable by revenue stacking or subsidy (KfW 293/270, innovation tenders). |\n| E2 | Battery Supply Chain Concentration | >80% LFP cells from CN | false | FX, tariff, CRMA, and EU Battery Regulation compliance risk. Mitigable via multi-vendor qualification and EU-origin cell premium. |\n| E3 | Minimum Revenue-Stream Access | ≥1 active monetization path | false | Peak shaving, §19 StromNEV, EPEX arbitrage, FCR/aFRR prequal. Without revenue pathway the asset is stranded. Mitigable via aggregator contract. |\n\n### Regulatory (5)\n\n| # | Name | Threshold | Absolute | Description |\n|---|---|---|---|---|\n| R1 | VDE-AR-N 4110 MV Grid Code | mandatory for ≥1 kV or >100 kW | false | Certification path is standard Mein Solar scope. Blocker only where DSO refuses feeder. |\n| R2 | FGW TR8 Plant Certification | Type B plant cert mandatory | false | Accredited certifier (TÜV, DEKRA) required. Certification path exists and proven. |\n| R3 | Fire-Protection Clearance (VdS 3103 / Feuerwehr) | separation walls for >3 MWh | false | Local Feuerwehr acceptance needed; clearances dictate siting but always engineerable. |\n| R4 | Baugenehmigung (Municipal Building Permit) | varies by Bundesland | false | Container = building under most LBO. 3–9 month permit cycle; commune discretion is the risk, not the rule. |\n| R5 | EU Battery Regulation + CRMA | Passport + due diligence mandatory from 2027 | false | Carbon footprint declaration, supply-chain due diligence, recycling chain required. Compliance effort, not a legal barrier. |\n\n### Environmental (3)\n\n| # | Name | Threshold | Absolute | Description |\n|---|---|---|---|---|\n| V1 | Ambient Temperature Envelope | -20 to +50 °C | false | HVAC holds internal setpoint; extremes reduce RTE and cycle life. Mitigable via upgraded cooling or heated enclosure. |\n| V2 | Altitude Derating | >1000 m ASL | false | PCS and MV transformer require derating factor above 1000 m; standard OEM option but reduces effective MW. |\n| V3 | Seismic / Flood Site Risk | DIN 4149 zone, HQ100 floodplain | false | Foundation design and elevated plinth mitigate. Restricts siting, doesn't prevent it. |\n\n---"
-    },
-    {
-      "title": "03c — Affected-market hints (constraint → candidate NAICS domains)",
-      "content": "Maps each constraint to 2–5 industry/domain hints for Step 08. Step 02 market list will be filtered against this.\n\n| # | Constraint | Affected market hints |\n|---|---|---|\n| P1 | Land Footprint | Urban industrial campuses, data centers, airports, dense retail, rooftop-only C&I |\n| P2 | Minimum EPC Scale | Small commercial (<500 kW), single-family residential, agri-PV micro-sites, SME retail |\n| P3 | RTE Floor | High-frequency arbitrage, short-duration FCR, thin-margin utility dispatch |\n| P4 | Power Density | Underground/vaulted substations, confined brownfield sites |\n| C1 | Thermal Runaway Onset | Hospitals, schools, data centers, high-occupancy buildings, co-located with H2 |\n| C2 | Electrolyte Flammability | Petrochemical sites (ATEX zones), fuel terminals, co-located flammable-storage |\n| O1 | MV Grid Capacity | Rural DE (Brandenburg, MV, Niedersachsen), saturated urban feeders, weak-grid islands |\n| O2 | Certification Lead Time | Time-critical projects (<6 months), emergency backup deployments |\n| O3 | Duty Cycle | Pure-backup UPS substitution, extreme-seasonal-only loads |\n| O4 | SCADA Link | Remote off-grid sites, sites without fiber/cellular coverage |\n| E1 | CAPEX Ceiling | Markets with <€0.10/kWh price spread, flat tariff structures, regulated monopoly grids |\n| E2 | Supply Chain | EU-content-mandated public procurement (defense, critical infra) |\n| E3 | Revenue Streams | Monopoly utility territories with no arbitrage/ancillary market |\n| R1 | VDE-AR-N 4110 | Non-DE markets (AT uses TOR-E; CH uses NA/EEA; FR uses Enedis code) |\n| R2 | FGW TR8 | Non-DE; outside DACH |\n| R3 | Fire Clearance | Dense urban, co-located with residential, tunnel/underground sites |\n| R4 | Baugenehmigung | Conservation zones (Denkmalschutz), Natura-2000 sites, protected landscapes |\n| R5 | EU Battery Reg | EU-external deployments (UK post-Brexit, CH, non-EU exports) |\n| V1 | Ambient Temp | Desert solar (Middle East/N. Africa), Arctic/sub-Arctic, outdoor marine |\n| V2 | Altitude | Alpine hydro sites, high-altitude mining, Andean/Himalayan grids |\n| V3 | Seismic/Flood | Coastal flood zones, DIN 4149 zones 2–3, fault-line territories |\n\n---"
-    },
-    {
-      "title": "03d — Knockout-prone patterns (pre-Step-08 guidance)",
-      "content": "Flags which constraint-market pairs would likely be genuine **knockouts** vs. **mitigable** once Step 02 markets arrive. Applied as decision rules in Step 08a.\n\n| Pattern | Verdict | Rationale |\n|---|---|---|\n| Non-DE / non-DACH market × R1–R2 | **mitigable** | Different grid code regime required (AT TOR, CH NA/EEA, FR Enedis). Engineering effort but not impossible. |\n| Non-EU export market × R5 | **none** | EU Battery Regulation does not bind outside EU. |\n| Site <500 kW peak load × P2 | **knockout** | Below minimum EPC project scale — business economics vanish below 1 MWh regardless of revenue. *Exception*: aggregated multi-site portfolios → mitigable. |\n| Market with routine >50 °C ambient × V1 | **mitigable** | Extended-temp HVAC packages exist (Middle East BESS deployments prove feasibility). |\n| Market with routine <-30 °C ambient × V1 | **mitigable** | Heated enclosure + battery pre-conditioning (Nordic projects prove feasibility). |\n| Hydrogen-refueling co-location × C2 | **mitigable** | Requires additional ATEX zoning and separation; engineering solvable. |\n| ATEX Zone 0/1 co-located installation × C2 | **knockout** | Lithium+organic electrolyte inherently non-ATEX; separation distance is the only answer, and if site topology forbids separation → genuine physics block. |\n| Market requiring <3-month delivery × O2 | **knockout** | TR8 Type B cert cannot compress below ~6 months; cert is prerequisite to energization. |\n| Market with zero revenue stream access × E3 | **knockout** | No monetization path = no business case. Mitigable only if regulatory reform is on a known timeline. |\n| Denkmalschutz / UNESCO heritage site × R4 | **knockout** | Containerized industrial asset incompatible with heritage protection. No mitigation path. |\n| Market with no DSO feeder capacity AND no upgrade path × O1 | **knockout** | If DSO formally refuses connection AND no alternative POI exists, project is infeasible. |\n| All other regulatory constraints × any market | **mitigable** | Every cert (ATEX adjacency, CE, VdS, building permit) has an engineering path. |\n\n**Cost/performance are never knockouts** — CAPEX exceedance is mitigable (E1), RTE floor is a none/mitigable (P3). Applied per component doc false-positive rules.\n\n---"
-    },
-    {
-      "title": "03e — Extension-axis constraint overrides",
-      "content": "Constraints differ across the FP-extension axes from Step 02e. Same EPC methodology, different asset → different physics.\n\n| Extension domain | Constraints that drop | Constraints that change |\n|---|---|---|\n| Flow-battery EPC (vanadium, iron-salt) | C1 (runaway), C2 (flammability) — aqueous electrolyte non-flammable | P4 density relaxes (lower kWh/m²); R5 unchanged |\n| Flywheel / CAES EPC | C1, C2, E2 (no cells), R5 (no battery) | P1 footprint per MWh much larger; P3 RTE floor higher (~30–40%) |\n| Thermal-to-power storage EPC | C1, C2, R5 | Adds thermal-insulation and heat-source constraints |\n| HPC charging hub EPC (no BESS) | C1, C2, R5, E2 | R1, R2, O1 still apply; P1 footprint per dispenser instead of per MWh |\n| Large-scale PV EPC | C1, C2, R5 | R1, R2, O1, R4 apply; P1 footprint dominated by modules (10–15 MW/ha) |\n| Industrial microgrid EPC | — | Adds R-islanding, black-start, and protection-coordination constraints |\n\n**Implication:** Markets knocked out by BESS-specific constraints (C1, C2, R5) may still be addressable via the extension axes. Step 08 must run per-product-scope; Mein Solar's broader EPC capability is a second-pass pipeline.\n\n---"
-    },
-    {
-      "title": "03f — Validation notes (Step 07c equivalent)",
-      "content": "| Check | Status |\n|---|---|\n| All 6 constraint types represented | ✅ (4/2/4/3/5/3) |\n| is_absolute=true limited to physics/chemistry | ✅ (P3, P4, C1, C2 only) |\n| No regulation classified as absolute | ✅ (all R* have cert path) |\n| Thresholds use numeric values + units | ✅ (all quantified thresholds numeric; qualitative constraints carry explicit threshold narrative) |\n| Environmental vs. chemical separated | ✅ (V1–V3 = ambient; C1–C2 = cells/electrolyte) |\n| Cost never treated as knockout | ✅ (E1 is mitigable) |\n| Knockout-prone patterns flagged | ✅ (§03d) |\n| Extension axes cross-referenced | ✅ (§03e) |\n\n---"
-    },
-    {
-      "title": "03g — Neo4j write preview",
-      "content": "```\n(NeutralProductGroup {name:\"Large-Scale Battery Energy Storage System EPC\"})\n   -[:has_constraint]-> (Constraint {constraint_type:\"physical\"})   x4\n   -[:has_constraint]-> (Constraint {constraint_type:\"chemical\"})   x2\n   -[:has_constraint]-> (Constraint {constraint_type:\"operational\"})x4\n   -[:has_constraint]-> (Constraint {constraint_type:\"economic\"})   x3\n   -[:has_constraint]-> (Constraint {constraint_type:\"regulatory\"}) x5\n   -[:has_constraint]-> (Constraint {constraint_type:\"environmental\"}) x3\n\n// Step 08 deferred — requires MarketDiscoveryResult from Step 02.\n// (Constraint)-[:incompatible_with {compatibility,rationale,...}]->(Market)\n// Market.status = \"eliminated_by_constraint\"  for knocked-out markets\n```\n\n---"
-    },
-    {
-      "title": "Structured Data",
-      "content": "```json\n{\n  \"product_name\": \"EPC für Großbatteriespeicher\",\n  \"technology_class\": \"Large-Scale Battery Energy Storage System EPC\",\n  \"constraint_taxonomy_counts\": {\n    \"physical\": 4, \"chemical\": 2, \"operational\": 4,\n    \"economic\": 3, \"regulatory\": 5, \"environmental\": 3,\n    \"total\": 21, \"absolute\": 4, \"mitigable\": 17\n  },\n  \"constraints\": [\n    {\n      \"name\": \"Land Footprint and Siting\",\n      \"constraint_type\": \"physical\",\n      \"description\": \"Container footprint plus safety clearances and Feuerwehr access driven by site layout; mitigable via stacked decks, off-site lease, or project resizing.\",\n      \"threshold_value\": \"40-80\",\n      \"threshold_unit\": \"m2_per_MWh\",\n      \"is_absolute\": false,\n      \"affected_markets_hint\": [\"Urban industrial campuses\", \"Data centers\", \"Airports\", \"Dense retail\", \"Rooftop-only C&I\"]\n    },\n    {\n      \"name\": \"Minimum EPC Project Scale\",\n      \"constraint_type\": \"physical\",\n      \"description\": \"Below ~1 MWh the EPC overhead (cert, civil, PM) exceeds equipment cost; project-delivery model breaks even only at grid-scale.\",\n      \"threshold_value\": \"500 / 1\",\n      \"threshold_unit\": \"kW / MWh\",\n      \"is_absolute\": false,\n      \"affected_markets_hint\": [\"Residential PV+storage\", \"Small commercial <500 kW\", \"Agri-PV micro\", \"SME retail\"]\n    },\n    {\n      \"name\": \"Round-Trip Energy Loss Floor\",\n      \"constraint_type\": \"physical\",\n      \"description\": \"Thermodynamic floor from PCS switching, cell internal resistance, and HVAC parasitic. Cannot drop below ~10% AC-AC with current LFP+PCS stack.\",\n      \"threshold_value\": \"10-15\",\n      \"threshold_unit\": \"%_loss\",\n      \"is_absolute\": true,\n      \"affected_markets_hint\": [\"High-frequency arbitrage\", \"Short-duration FCR\", \"Thin-margin utility dispatch\"]\n    },\n    {\n      \"name\": \"Grid-Scale Power Density Limit\",\n      \"constraint_type\": \"physical\",\n      \"description\": \"LFP pack-level energy density ~160 Wh/L; 1 MWh per 20ft container is the practical limit for containerized stationary storage.\",\n      \"threshold_value\": \"1\",\n      \"threshold_unit\": \"MWh_per_20ft_container\",\n      \"is_absolute\": true,\n      \"affected_markets_hint\": [\"Vaulted/underground substations\", \"Confined brownfield sites\"]\n    },\n    {\n      \"name\": \"Li-Ion Thermal Runaway Onset\",\n      \"constraint_type\": \"chemical\",\n      \"description\": \"Exothermic cathode+electrolyte decomposition once onset reached. Cannot be eliminated, only contained via NOVEC/aerosol, compartmentalization, and deflagration venting (VdS 3103).\",\n      \"threshold_value\": \"150-200\",\n      \"threshold_unit\": \"degC_cell_surface\",\n      \"is_absolute\": true,\n      \"affected_markets_hint\": [\"Hospitals\", \"Schools\", \"Data centers\", \"High-occupancy buildings\", \"H2-adjacent sites\"]\n    },\n    {\n      \"name\": \"Organic Electrolyte Flammability\",\n      \"constraint_type\": \"chemical\",\n      \"description\": \"Carbonate electrolytes (EMC/DMC/EC) are combustible with flash points near ambient; mandates fire-rated envelope and suppression. Chemistry-inherent.\",\n      \"threshold_value\": \"30\",\n      \"threshold_unit\": \"degC_flash_point\",\n      \"is_absolute\": true,\n      \"affected_markets_hint\": [\"Petrochemical (ATEX zones)\", \"Fuel terminals\", \"Flammable-storage co-location\"]\n    },\n    {\n      \"name\": \"MV Grid Connection Capacity (DSO)\",\n      \"constraint_type\": \"operational\",\n      \"description\": \"DSO must grant MV feeder capacity under VDE-AR-N 4110; saturated grids force upgrade or downsizing; in rare cases DSO refuses connection outright.\",\n      \"threshold_value\": null,\n      \"threshold_unit\": \"kVA_site_specific\",\n      \"is_absolute\": false,\n      \"affected_markets_hint\": [\"Rural DE (Brandenburg, MV, Niedersachsen)\", \"Saturated urban feeders\", \"Weak-grid island territories\"]\n    },\n    {\n      \"name\": \"Grid-Code Certification Lead Time\",\n      \"constraint_type\": \"operational\",\n      \"description\": \"FGW TR8 Type B plant certificate and DSO acceptance lengthen schedule; parallelizable with procurement but always on the critical path.\",\n      \"threshold_value\": \"6-12\",\n      \"threshold_unit\": \"months\",\n      \"is_absolute\": false,\n      \"affected_markets_hint\": [\"Time-critical projects <6 months\", \"Emergency backup deployments\"]\n    },\n    {\n      \"name\": \"Minimum Duty Cycle for Business Case\",\n      \"constraint_type\": \"operational\",\n      \"description\": \"Below ~200 full-cycles/yr revenue does not cover O&M + degradation amortization. Mitigable by stacking revenue streams.\",\n      \"threshold_value\": \"200\",\n      \"threshold_unit\": \"full_cycles_per_year\",\n      \"is_absolute\": false,\n      \"affected_markets_hint\": [\"Pure-backup UPS\", \"Extreme-seasonal-only loads\"]\n    },\n    {\n      \"name\": \"SCADA/EMS Communication Link\",\n      \"constraint_type\": \"operational\",\n      \"description\": \"DSO and aggregator dispatch require standards-compliant IEC 61850 or IEC 60870-5-104 uplink; cellular or fiber dependency at remote sites.\",\n      \"threshold_value\": null,\n      \"threshold_unit\": \"IEC_protocol\",\n      \"is_absolute\": false,\n      \"affected_markets_hint\": [\"Remote off-grid sites\", \"Sites without fiber/cellular coverage\"]\n    },\n    {\n      \"name\": \"CAPEX Viability Ceiling\",\n      \"constraint_type\": \"economic\",\n      \"description\": \"Above €400/kWh installed the peak-shaving/arbitrage case closes at >7-yr payback. Mitigable via revenue stacking or KfW/innovation subsidies.\",\n      \"threshold_value\": \"250-400\",\n      \"threshold_unit\": \"EUR_per_kWh_installed\",\n      \"is_absolute\": false,\n      \"affected_markets_hint\": [\"Markets with <€0.10/kWh price spread\", \"Flat-tariff structures\", \"Regulated monopoly grids\"]\n    },\n    {\n      \"name\": \"Battery Supply Chain Concentration\",\n      \"constraint_type\": \"economic\",\n      \"description\": \"LFP cells concentrated in CN suppliers; FX, tariff, CRMA and EU Battery Reg compliance risk. Mitigable via multi-vendor qualification.\",\n      \"threshold_value\": \"80\",\n      \"threshold_unit\": \"%_CN_share\",\n      \"is_absolute\": false,\n      \"affected_markets_hint\": [\"EU-content-mandated public procurement\", \"Defense\", \"Critical infrastructure\"]\n    },\n    {\n      \"name\": \"Minimum Revenue-Stream Access\",\n      \"constraint_type\": \"economic\",\n      \"description\": \"Need at least one monetization path (peak shaving, §19 StromNEV, EPEX arbitrage, FCR/aFRR prequal). No revenue = stranded asset.\",\n      \"threshold_value\": \"1\",\n      \"threshold_unit\": \"active_revenue_stream\",\n      \"is_absolute\": false,\n      \"affected_markets_hint\": [\"Monopoly utility territories\", \"Markets with no ancillary-service market\"]\n    },\n    {\n      \"name\": \"VDE-AR-N 4110 MV Grid Code Compliance\",\n      \"constraint_type\": \"regulatory\",\n      \"description\": \"Mandatory for connections ≥1 kV or >100 kW in Germany. Certification path is standard Mein Solar scope.\",\n      \"threshold_value\": \"1 kV / 100 kW\",\n      \"threshold_unit\": \"connection_voltage_power\",\n      \"is_absolute\": false,\n      \"affected_markets_hint\": [\"Non-DE markets (AT TOR-E, CH NA/EEA, FR Enedis)\", \"Any MV-connected industrial site\"]\n    },\n    {\n      \"name\": \"FGW TR8 Plant Certification\",\n      \"constraint_type\": \"regulatory\",\n      \"description\": \"Type B simplified plant certificate mandatory for MV-connected storage plants; accredited certifier (TÜV, DEKRA) required.\",\n      \"threshold_value\": \"Type B\",\n      \"threshold_unit\": \"FGW_TR8_class\",\n      \"is_absolute\": false,\n      \"affected_markets_hint\": [\"Non-DACH markets\", \"Utility-interconnected generation/storage\"]\n    },\n    {\n      \"name\": \"Fire-Protection Clearance (VdS 3103 / Feuerwehr)\",\n      \"constraint_type\": \"regulatory\",\n      \"description\": \"Minimum distance to buildings/property line, hydrant access, separation walls for >3 MWh clusters per VdS 3103 and local Feuerwehr guidance.\",\n      \"threshold_value\": \"3\",\n      \"threshold_unit\": \"MWh_cluster_threshold\",\n      \"is_absolute\": false,\n      \"affected_markets_hint\": [\"Dense urban\", \"Co-located with residential\", \"Tunnel/underground sites\"]\n    },\n    {\n      \"name\": \"Baugenehmigung (Municipal Building Permit)\",\n      \"constraint_type\": \"regulatory\",\n      \"description\": \"Container = building under most Landesbauordnung. 3–9 month permit cycle; municipal discretion is the schedule risk.\",\n      \"threshold_value\": \"3-9\",\n      \"threshold_unit\": \"months\",\n      \"is_absolute\": false,\n      \"affected_markets_hint\": [\"Conservation zones (Denkmalschutz)\", \"Natura-2000\", \"Protected landscapes\"]\n    },\n    {\n      \"name\": \"EU Battery Regulation + CRMA Compliance\",\n      \"constraint_type\": \"regulatory\",\n      \"description\": \"Digital battery passport, carbon footprint declaration, supply-chain due diligence, and recycling chain mandatory from 2027. Compliance effort, not a legal barrier.\",\n      \"threshold_value\": \"2027\",\n      \"threshold_unit\": \"year_effective\",\n      \"is_absolute\": false,\n      \"affected_markets_hint\": [\"EU-external deployments (UK, CH, non-EU export)\", \"EU stationary-storage markets\"]\n    },\n    {\n      \"name\": \"Ambient Temperature Envelope\",\n      \"constraint_type\": \"environmental\",\n      \"description\": \"HVAC maintains internal setpoint; extremes reduce RTE and cycle life. Mitigable via upgraded cooling or heated enclosure packages.\",\n      \"threshold_value\": \"-20 to +50\",\n      \"threshold_unit\": \"degC_ambient\",\n      \"is_absolute\": false,\n      \"affected_markets_hint\": [\"Desert solar (MENA)\", \"Arctic/sub-Arctic\", \"Outdoor marine\"]\n    },\n    {\n      \"name\": \"Altitude Derating\",\n      \"constraint_type\": \"environmental\",\n      \"description\": \"PCS and MV transformer require derating above 1000 m ASL (standard OEM option) — reduces effective MW rating.\",\n      \"threshold_value\": \"1000\",\n      \"threshold_unit\": \"m_ASL\",\n      \"is_absolute\": false,\n      \"affected_markets_hint\": [\"Alpine hydro sites\", \"High-altitude mining\", \"Andean/Himalayan grids\"]\n    },\n    {\n      \"name\": \"Seismic / Flood Site Risk\",\n      \"constraint_type\": \"environmental\",\n      \"description\": \"Foundation design (DIN 4149 zones) and elevated plinth (HQ100 floodplain) mitigate; restricts siting, doesn't prevent it.\",\n      \"threshold_value\": null,\n      \"threshold_unit\": \"DIN_4149_zone_HQ100\",\n      \"is_absolute\": false,\n      \"affected_markets_hint\": [\"Coastal flood zones\", \"DIN 4149 zones 2-3\", \"Fault-line territories\"]\n    }\n  ],\n  \"knockout_prone_patterns\": [\n    {\"pattern\": \"Site peak load <500 kW single-site\", \"constraint_ref\": \"P2\", \"verdict\": \"knockout\", \"rationale\": \"Below EPC economic floor; no business case irrespective of revenue stacking.\"},\n    {\"pattern\": \"ATEX Zone 0/1 co-located, no separation distance available\", \"constraint_ref\": \"C2\", \"verdict\": \"knockout\", \"rationale\": \"Lithium electrolyte chemistry is inherently non-ATEX; if site topology forbids separation distance, no engineering path exists.\"},\n    {\"pattern\": \"Delivery window <3 months to energization\", \"constraint_ref\": \"O2\", \"verdict\": \"knockout\", \"rationale\": \"FGW TR8 Type B cert floor is ~6 months and cannot be compressed; cert is mandatory prerequisite to grid connection.\"},\n    {\"pattern\": \"Zero revenue-stream access (no arbitrage, no ancillary, no peak-shaving tariff)\", \"constraint_ref\": \"E3\", \"verdict\": \"knockout\", \"rationale\": \"Without monetization the business case fails; mitigable only if regulatory reform is on a known timeline.\"},\n    {\"pattern\": \"Denkmalschutz / UNESCO heritage site\", \"constraint_ref\": \"R4\", \"verdict\": \"knockout\", \"rationale\": \"Containerized industrial asset incompatible with heritage-protection regime.\"},\n    {\"pattern\": \"DSO formally refuses connection AND no alternative POI\", \"constraint_ref\": \"O1\", \"verdict\": \"knockout\", \"rationale\": \"Without a grid connection point the asset cannot operate; grid upgrade must be either possible or cost-tolerable.\"},\n    {\"pattern\": \"Non-DE / non-DACH market\", \"constraint_ref\": \"R1,R2\", \"verdict\": \"mitigable\", \"rationale\": \"Different grid-code regime (AT, CH, FR, etc.) requires engineering effort but is not impossible; certification path exists everywhere.\"},\n    {\"pattern\": \"Ambient >50°C or <-30°C\", \"constraint_ref\": \"V1\", \"verdict\": \"mitigable\", \"rationale\": \"Extended-temp HVAC or heated enclosure packages are standard OEM options; MENA and Nordic BESS deployments prove feasibility.\"},\n    {\"pattern\": \"CAPEX above €400/kWh target\", \"constraint_ref\": \"E1\", \"verdict\": \"mitigable\", \"rationale\": \"Cost is never a knockout; mitigable via subsidies, revenue stacking, or project resizing.\"}\n  ],\n  \"extension_axis_overrides\": [\n    {\"extension_domain\": \"Flow-battery storage EPC\", \"constraints_dropped\": [\"C1\", \"C2\"], \"constraints_modified\": [\"P4 density relaxes\"]},\n    {\"extension_domain\": \"Mechanical storage EPC (flywheel, CAES)\", \"constraints_dropped\": [\"C1\", \"C2\", \"E2\", \"R5\"], \"constraints_modified\": [\"P1 footprint larger\", \"P3 RTE floor ~30-40%\"]},\n    {\"extension_domain\": \"Thermal-to-power storage EPC\", \"constraints_dropped\": [\"C1\", \"C2\", \"R5\"], \"constraints_modified\": [\"Adds thermal-insulation + heat-source constraints\"]},\n    {\"extension_domain\": \"HPC charging hub EPC (no BESS)\", \"constraints_dropped\": [\"C1\", \"C2\", \"R5\", \"E2\"], \"constraints_modified\": [\"P1 footprint per dispenser instead of per MWh\"]},\n    {\"extension_domain\": \"Large-scale PV EPC\", \"constraints_dropped\": [\"C1\", \"C2\", \"R5\"], \"constraints_modified\": [\"P1 footprint ~10-15 MW/ha dominated by modules\"]},\n    {\"extension_domain\": \"Industrial microgrid EPC\", \"constraints_dropped\": [], \"constraints_modified\": [\"Adds islanding, black-start, protection-coordination constraints\"]}\n  ],\n  \"step_08_status\": \"deferred_pending_step_02_market_discovery\",\n  \"step_08_deterministic_inputs_ready\": true\n}\n```"
-    }
-  ],
-  "tables": [
-    {
-      "headers": [
-        "Type",
-        "# constraints",
-        "Absolute",
-        "Mitigable"
-      ],
-      "rows": [
-        {
-          "Type": "physical",
-          "# constraints": "4",
-          "Absolute": "2",
-          "Mitigable": "2"
-        },
-        {
-          "Type": "chemical",
-          "# constraints": "2",
-          "Absolute": "2",
-          "Mitigable": "0"
-        },
-        {
-          "Type": "operational",
-          "# constraints": "4",
-          "Absolute": "0",
-          "Mitigable": "4"
-        },
-        {
-          "Type": "economic",
-          "# constraints": "3",
-          "Absolute": "0",
-          "Mitigable": "3"
-        },
-        {
-          "Type": "regulatory",
-          "# constraints": "5",
-          "Absolute": "0",
-          "Mitigable": "5"
-        },
-        {
-          "Type": "environmental",
-          "# constraints": "3",
-          "Absolute": "0",
-          "Mitigable": "3"
-        },
-        {
-          "Type": "**Total**",
-          "# constraints": "**21**",
-          "Absolute": "**4**",
-          "Mitigable": "**17**"
-        }
+      "name": "Land Footprint and Siting",
+      "constraintType": "physical",
+      "description": "Container footprint plus safety clearances and Feuerwehr access driven by site layout; mitigable via stacked decks, off-site lease, or project resizing.",
+      "thresholdValue": "40-80",
+      "thresholdUnit": "m2_per_MWh",
+      "isAbsolute": false,
+      "affectedMarketsHint": [
+        "Urban industrial campuses",
+        "Data centers",
+        "Airports",
+        "Dense retail",
+        "Rooftop-only C&I"
       ]
     },
     {
-      "headers": [
-        "#",
-        "Name",
-        "Threshold",
-        "Absolute",
-        "Description"
-      ],
-      "rows": [
-        {
-          "#": "P1",
-          "Name": "Land Footprint and Siting",
-          "Threshold": "40–80 m²/MWh",
-          "Absolute": "false",
-          "Description": "Container footprint + safety clearances + Feuerwehr access; mitigable via multi-deck stacking, off-site lease, or project downsize."
-        },
-        {
-          "#": "P2",
-          "Name": "Minimum EPC Project Scale",
-          "Threshold": "≥500 kW / ≥1 MWh",
-          "Absolute": "false",
-          "Description": "Below this threshold, EPC overhead (grid cert, civil, project mgmt) exceeds equipment cost; mitigable by aggregating small sites into one contract."
-        },
-        {
-          "#": "P3",
-          "Name": "Round-Trip Energy Loss Floor",
-          "Threshold": "10–15 %",
-          "Absolute": "true",
-          "Description": "Thermodynamic floor: PCS switching + cell internal resistance + HVAC parasitic. Cannot go below ~10% AC-AC with current LFP+PCS stack."
-        },
-        {
-          "#": "P4",
-          "Name": "Grid-Scale Power Density",
-          "Threshold": "1 MWh per 20ft container",
-          "Absolute": "true",
-          "Description": "Volumetric limit of LFP (~160 Wh/L pack level); dictates site area per MWh — physics of cell chemistry."
-        }
+      "name": "Minimum EPC Project Scale",
+      "constraintType": "physical",
+      "description": "Below ~1 MWh the EPC overhead (cert, civil, PM) exceeds equipment cost; project-delivery model breaks even only at grid-scale.",
+      "thresholdValue": "500 / 1",
+      "thresholdUnit": "kW / MWh",
+      "isAbsolute": false,
+      "affectedMarketsHint": [
+        "Residential PV+storage",
+        "Small commercial <500 kW",
+        "Agri-PV micro",
+        "SME retail"
       ]
     },
     {
-      "headers": [
-        "#",
-        "Name",
-        "Threshold",
-        "Absolute",
-        "Description"
-      ],
-      "rows": [
-        {
-          "#": "C1",
-          "Name": "Li-Ion Thermal Runaway Onset",
-          "Threshold": "~150–200 °C cell surface",
-          "Absolute": "true",
-          "Description": "Exothermic decomposition of cathode + electrolyte once onset reached. Cannot be eliminated — only contained via NOVEC/aerosol suppression, compartmentalization, and deflagration venting (VdS 3103)."
-        },
-        {
-          "#": "C2",
-          "Name": "Organic Electrolyte Flammability",
-          "Threshold": "flash-point ~30 °C (EMC/DMC)",
-          "Absolute": "true",
-          "Description": "Carbonate electrolytes are combustible; mandates fire-rated container, suppression, and gas-venting. Chemistry-inherent."
-        }
+      "name": "Round-Trip Energy Loss Floor",
+      "constraintType": "physical",
+      "description": "Thermodynamic floor from PCS switching, cell internal resistance, and HVAC parasitic. Cannot drop below ~10% AC-AC with current LFP+PCS stack.",
+      "thresholdValue": "10-15",
+      "thresholdUnit": "%_loss",
+      "isAbsolute": true,
+      "affectedMarketsHint": [
+        "High-frequency arbitrage",
+        "Short-duration FCR",
+        "Thin-margin utility dispatch"
       ]
     },
     {
-      "headers": [
-        "#",
-        "Name",
-        "Threshold",
-        "Absolute",
-        "Description"
-      ],
-      "rows": [
-        {
-          "#": "O1",
-          "Name": "MV Grid Connection Capacity (DSO)",
-          "Threshold": "site-specific kVA headroom",
-          "Absolute": "false",
-          "Description": "DSO must grant MV feeder capacity under VDE-AR-N 4110; where saturated, grid upgrade required (cost and schedule risk) or reduced project size."
-        },
-        {
-          "#": "O2",
-          "Name": "Grid-Code Certification Lead Time",
-          "Threshold": "6–12 months (TR8 Type B)",
-          "Absolute": "false",
-          "Description": "FGW TR8 plant cert and DSO acceptance on critical path. Parallelizable with procurement; partial mitigation via simplified Type B or early DSO engagement."
-        },
-        {
-          "#": "O3",
-          "Name": "Minimum Duty Cycle for Business Case",
-          "Threshold": "≥200 full-cycles/year",
-          "Absolute": "false",
-          "Description": "Below this throughput, revenue doesn't cover O&M + degradation amortization. Mitigable by stacking revenue streams (peak shaving + FCR + arbitrage)."
-        },
-        {
-          "#": "O4",
-          "Name": "SCADA/EMS Communication Link",
-          "Threshold": "IEC 61850 or IEC 60870-5-104",
-          "Absolute": "false",
-          "Description": "DSO and aggregator dispatch require standards-compliant uplink; cellular or fiber dependency at remote sites."
-        }
+      "name": "Grid-Scale Power Density Limit",
+      "constraintType": "physical",
+      "description": "LFP pack-level energy density ~160 Wh/L; 1 MWh per 20ft container is the practical limit for containerized stationary storage.",
+      "thresholdValue": "1",
+      "thresholdUnit": "MWh_per_20ft_container",
+      "isAbsolute": true,
+      "affectedMarketsHint": [
+        "Vaulted/underground substations",
+        "Confined brownfield sites"
       ]
     },
     {
-      "headers": [
-        "#",
-        "Name",
-        "Threshold",
-        "Absolute",
-        "Description"
-      ],
-      "rows": [
-        {
-          "#": "E1",
-          "Name": "CAPEX Viability Ceiling",
-          "Threshold": "€250–400 /kWh installed",
-          "Absolute": "false",
-          "Description": "Above this, peak-shaving/arbitrage business case closes at >7-yr payback. Mitigable by revenue stacking or subsidy (KfW 293/270, innovation tenders)."
-        },
-        {
-          "#": "E2",
-          "Name": "Battery Supply Chain Concentration",
-          "Threshold": ">80% LFP cells from CN",
-          "Absolute": "false",
-          "Description": "FX, tariff, CRMA, and EU Battery Regulation compliance risk. Mitigable via multi-vendor qualification and EU-origin cell premium."
-        },
-        {
-          "#": "E3",
-          "Name": "Minimum Revenue-Stream Access",
-          "Threshold": "≥1 active monetization path",
-          "Absolute": "false",
-          "Description": "Peak shaving, §19 StromNEV, EPEX arbitrage, FCR/aFRR prequal. Without revenue pathway the asset is stranded. Mitigable via aggregator contract."
-        }
+      "name": "Li-Ion Thermal Runaway Onset",
+      "constraintType": "chemical",
+      "description": "Exothermic cathode+electrolyte decomposition once onset reached. Cannot be eliminated, only contained via NOVEC/aerosol, compartmentalization, and deflagration venting (VdS 3103).",
+      "thresholdValue": "150-200",
+      "thresholdUnit": "degC_cell_surface",
+      "isAbsolute": true,
+      "affectedMarketsHint": [
+        "Hospitals",
+        "Schools",
+        "Data centers",
+        "High-occupancy buildings",
+        "H2-adjacent sites"
       ]
     },
     {
-      "headers": [
-        "#",
-        "Name",
-        "Threshold",
-        "Absolute",
-        "Description"
-      ],
-      "rows": [
-        {
-          "#": "R1",
-          "Name": "VDE-AR-N 4110 MV Grid Code",
-          "Threshold": "mandatory for ≥1 kV or >100 kW",
-          "Absolute": "false",
-          "Description": "Certification path is standard Mein Solar scope. Blocker only where DSO refuses feeder."
-        },
-        {
-          "#": "R2",
-          "Name": "FGW TR8 Plant Certification",
-          "Threshold": "Type B plant cert mandatory",
-          "Absolute": "false",
-          "Description": "Accredited certifier (TÜV, DEKRA) required. Certification path exists and proven."
-        },
-        {
-          "#": "R3",
-          "Name": "Fire-Protection Clearance (VdS 3103 / Feuerwehr)",
-          "Threshold": "separation walls for >3 MWh",
-          "Absolute": "false",
-          "Description": "Local Feuerwehr acceptance needed; clearances dictate siting but always engineerable."
-        },
-        {
-          "#": "R4",
-          "Name": "Baugenehmigung (Municipal Building Permit)",
-          "Threshold": "varies by Bundesland",
-          "Absolute": "false",
-          "Description": "Container = building under most LBO. 3–9 month permit cycle; commune discretion is the risk, not the rule."
-        },
-        {
-          "#": "R5",
-          "Name": "EU Battery Regulation + CRMA",
-          "Threshold": "Passport + due diligence mandatory from 2027",
-          "Absolute": "false",
-          "Description": "Carbon footprint declaration, supply-chain due diligence, recycling chain required. Compliance effort, not a legal barrier."
-        }
+      "name": "Organic Electrolyte Flammability",
+      "constraintType": "chemical",
+      "description": "Carbonate electrolytes (EMC/DMC/EC) are combustible with flash points near ambient; mandates fire-rated envelope and suppression. Chemistry-inherent.",
+      "thresholdValue": "30",
+      "thresholdUnit": "degC_flash_point",
+      "isAbsolute": true,
+      "affectedMarketsHint": [
+        "Petrochemical (ATEX zones)",
+        "Fuel terminals",
+        "Flammable-storage co-location"
       ]
     },
     {
-      "headers": [
-        "#",
-        "Name",
-        "Threshold",
-        "Absolute",
-        "Description"
-      ],
-      "rows": [
-        {
-          "#": "V1",
-          "Name": "Ambient Temperature Envelope",
-          "Threshold": "-20 to +50 °C",
-          "Absolute": "false",
-          "Description": "HVAC holds internal setpoint; extremes reduce RTE and cycle life. Mitigable via upgraded cooling or heated enclosure."
-        },
-        {
-          "#": "V2",
-          "Name": "Altitude Derating",
-          "Threshold": ">1000 m ASL",
-          "Absolute": "false",
-          "Description": "PCS and MV transformer require derating factor above 1000 m; standard OEM option but reduces effective MW."
-        },
-        {
-          "#": "V3",
-          "Name": "Seismic / Flood Site Risk",
-          "Threshold": "DIN 4149 zone, HQ100 floodplain",
-          "Absolute": "false",
-          "Description": "Foundation design and elevated plinth mitigate. Restricts siting, doesn't prevent it."
-        }
+      "name": "MV Grid Connection Capacity (DSO)",
+      "constraintType": "operational",
+      "description": "DSO must grant MV feeder capacity under VDE-AR-N 4110; saturated grids force upgrade or downsizing; in rare cases DSO refuses connection outright.",
+      "thresholdValue": "",
+      "thresholdUnit": "kVA_site_specific",
+      "isAbsolute": false,
+      "affectedMarketsHint": [
+        "Rural DE (Brandenburg, MV, Niedersachsen)",
+        "Saturated urban feeders",
+        "Weak-grid island territories"
       ]
     },
     {
-      "headers": [
-        "#",
-        "Constraint",
-        "Affected market hints"
-      ],
-      "rows": [
-        {
-          "#": "P1",
-          "Constraint": "Land Footprint",
-          "Affected market hints": "Urban industrial campuses, data centers, airports, dense retail, rooftop-only C&I"
-        },
-        {
-          "#": "P2",
-          "Constraint": "Minimum EPC Scale",
-          "Affected market hints": "Small commercial (<500 kW), single-family residential, agri-PV micro-sites, SME retail"
-        },
-        {
-          "#": "P3",
-          "Constraint": "RTE Floor",
-          "Affected market hints": "High-frequency arbitrage, short-duration FCR, thin-margin utility dispatch"
-        },
-        {
-          "#": "P4",
-          "Constraint": "Power Density",
-          "Affected market hints": "Underground/vaulted substations, confined brownfield sites"
-        },
-        {
-          "#": "C1",
-          "Constraint": "Thermal Runaway Onset",
-          "Affected market hints": "Hospitals, schools, data centers, high-occupancy buildings, co-located with H2"
-        },
-        {
-          "#": "C2",
-          "Constraint": "Electrolyte Flammability",
-          "Affected market hints": "Petrochemical sites (ATEX zones), fuel terminals, co-located flammable-storage"
-        },
-        {
-          "#": "O1",
-          "Constraint": "MV Grid Capacity",
-          "Affected market hints": "Rural DE (Brandenburg, MV, Niedersachsen), saturated urban feeders, weak-grid islands"
-        },
-        {
-          "#": "O2",
-          "Constraint": "Certification Lead Time",
-          "Affected market hints": "Time-critical projects (<6 months), emergency backup deployments"
-        },
-        {
-          "#": "O3",
-          "Constraint": "Duty Cycle",
-          "Affected market hints": "Pure-backup UPS substitution, extreme-seasonal-only loads"
-        },
-        {
-          "#": "O4",
-          "Constraint": "SCADA Link",
-          "Affected market hints": "Remote off-grid sites, sites without fiber/cellular coverage"
-        },
-        {
-          "#": "E1",
-          "Constraint": "CAPEX Ceiling",
-          "Affected market hints": "Markets with <€0.10/kWh price spread, flat tariff structures, regulated monopoly grids"
-        },
-        {
-          "#": "E2",
-          "Constraint": "Supply Chain",
-          "Affected market hints": "EU-content-mandated public procurement (defense, critical infra)"
-        },
-        {
-          "#": "E3",
-          "Constraint": "Revenue Streams",
-          "Affected market hints": "Monopoly utility territories with no arbitrage/ancillary market"
-        },
-        {
-          "#": "R1",
-          "Constraint": "VDE-AR-N 4110",
-          "Affected market hints": "Non-DE markets (AT uses TOR-E; CH uses NA/EEA; FR uses Enedis code)"
-        },
-        {
-          "#": "R2",
-          "Constraint": "FGW TR8",
-          "Affected market hints": "Non-DE; outside DACH"
-        },
-        {
-          "#": "R3",
-          "Constraint": "Fire Clearance",
-          "Affected market hints": "Dense urban, co-located with residential, tunnel/underground sites"
-        },
-        {
-          "#": "R4",
-          "Constraint": "Baugenehmigung",
-          "Affected market hints": "Conservation zones (Denkmalschutz), Natura-2000 sites, protected landscapes"
-        },
-        {
-          "#": "R5",
-          "Constraint": "EU Battery Reg",
-          "Affected market hints": "EU-external deployments (UK post-Brexit, CH, non-EU exports)"
-        },
-        {
-          "#": "V1",
-          "Constraint": "Ambient Temp",
-          "Affected market hints": "Desert solar (Middle East/N. Africa), Arctic/sub-Arctic, outdoor marine"
-        },
-        {
-          "#": "V2",
-          "Constraint": "Altitude",
-          "Affected market hints": "Alpine hydro sites, high-altitude mining, Andean/Himalayan grids"
-        },
-        {
-          "#": "V3",
-          "Constraint": "Seismic/Flood",
-          "Affected market hints": "Coastal flood zones, DIN 4149 zones 2–3, fault-line territories"
-        }
+      "name": "Grid-Code Certification Lead Time",
+      "constraintType": "operational",
+      "description": "FGW TR8 Type B plant certificate and DSO acceptance lengthen schedule; parallelizable with procurement but always on the critical path.",
+      "thresholdValue": "6-12",
+      "thresholdUnit": "months",
+      "isAbsolute": false,
+      "affectedMarketsHint": [
+        "Time-critical projects <6 months",
+        "Emergency backup deployments"
       ]
     },
     {
-      "headers": [
-        "Pattern",
-        "Verdict",
-        "Rationale"
-      ],
-      "rows": [
-        {
-          "Pattern": "Non-DE / non-DACH market × R1–R2",
-          "Verdict": "**mitigable**",
-          "Rationale": "Different grid code regime required (AT TOR, CH NA/EEA, FR Enedis). Engineering effort but not impossible."
-        },
-        {
-          "Pattern": "Non-EU export market × R5",
-          "Verdict": "**none**",
-          "Rationale": "EU Battery Regulation does not bind outside EU."
-        },
-        {
-          "Pattern": "Site <500 kW peak load × P2",
-          "Verdict": "**knockout**",
-          "Rationale": "Below minimum EPC project scale — business economics vanish below 1 MWh regardless of revenue. *Exception*: aggregated multi-site portfolios → mitigable."
-        },
-        {
-          "Pattern": "Market with routine >50 °C ambient × V1",
-          "Verdict": "**mitigable**",
-          "Rationale": "Extended-temp HVAC packages exist (Middle East BESS deployments prove feasibility)."
-        },
-        {
-          "Pattern": "Market with routine <-30 °C ambient × V1",
-          "Verdict": "**mitigable**",
-          "Rationale": "Heated enclosure + battery pre-conditioning (Nordic projects prove feasibility)."
-        },
-        {
-          "Pattern": "Hydrogen-refueling co-location × C2",
-          "Verdict": "**mitigable**",
-          "Rationale": "Requires additional ATEX zoning and separation; engineering solvable."
-        },
-        {
-          "Pattern": "ATEX Zone 0/1 co-located installation × C2",
-          "Verdict": "**knockout**",
-          "Rationale": "Lithium+organic electrolyte inherently non-ATEX; separation distance is the only answer, and if site topology forbids separation → genuine physics block."
-        },
-        {
-          "Pattern": "Market requiring <3-month delivery × O2",
-          "Verdict": "**knockout**",
-          "Rationale": "TR8 Type B cert cannot compress below ~6 months; cert is prerequisite to energization."
-        },
-        {
-          "Pattern": "Market with zero revenue stream access × E3",
-          "Verdict": "**knockout**",
-          "Rationale": "No monetization path = no business case. Mitigable only if regulatory reform is on a known timeline."
-        },
-        {
-          "Pattern": "Denkmalschutz / UNESCO heritage site × R4",
-          "Verdict": "**knockout**",
-          "Rationale": "Containerized industrial asset incompatible with heritage protection. No mitigation path."
-        },
-        {
-          "Pattern": "Market with no DSO feeder capacity AND no upgrade path × O1",
-          "Verdict": "**knockout**",
-          "Rationale": "If DSO formally refuses connection AND no alternative POI exists, project is infeasible."
-        },
-        {
-          "Pattern": "All other regulatory constraints × any market",
-          "Verdict": "**mitigable**",
-          "Rationale": "Every cert (ATEX adjacency, CE, VdS, building permit) has an engineering path."
-        }
+      "name": "Minimum Duty Cycle for Business Case",
+      "constraintType": "operational",
+      "description": "Below ~200 full-cycles/yr revenue does not cover O&M + degradation amortization. Mitigable by stacking revenue streams.",
+      "thresholdValue": "200",
+      "thresholdUnit": "full_cycles_per_year",
+      "isAbsolute": false,
+      "affectedMarketsHint": [
+        "Pure-backup UPS",
+        "Extreme-seasonal-only loads"
       ]
     },
     {
-      "headers": [
-        "Extension domain",
-        "Constraints that drop",
-        "Constraints that change"
-      ],
-      "rows": [
-        {
-          "Extension domain": "Flow-battery EPC (vanadium, iron-salt)",
-          "Constraints that drop": "C1 (runaway), C2 (flammability) — aqueous electrolyte non-flammable",
-          "Constraints that change": "P4 density relaxes (lower kWh/m²); R5 unchanged"
-        },
-        {
-          "Extension domain": "Flywheel / CAES EPC",
-          "Constraints that drop": "C1, C2, E2 (no cells), R5 (no battery)",
-          "Constraints that change": "P1 footprint per MWh much larger; P3 RTE floor higher (~30–40%)"
-        },
-        {
-          "Extension domain": "Thermal-to-power storage EPC",
-          "Constraints that drop": "C1, C2, R5",
-          "Constraints that change": "Adds thermal-insulation and heat-source constraints"
-        },
-        {
-          "Extension domain": "HPC charging hub EPC (no BESS)",
-          "Constraints that drop": "C1, C2, R5, E2",
-          "Constraints that change": "R1, R2, O1 still apply; P1 footprint per dispenser instead of per MWh"
-        },
-        {
-          "Extension domain": "Large-scale PV EPC",
-          "Constraints that drop": "C1, C2, R5",
-          "Constraints that change": "R1, R2, O1, R4 apply; P1 footprint dominated by modules (10–15 MW/ha)"
-        },
-        {
-          "Extension domain": "Industrial microgrid EPC",
-          "Constraints that drop": "—",
-          "Constraints that change": "Adds R-islanding, black-start, and protection-coordination constraints"
-        }
+      "name": "SCADA/EMS Communication Link",
+      "constraintType": "operational",
+      "description": "DSO and aggregator dispatch require standards-compliant IEC 61850 or IEC 60870-5-104 uplink; cellular or fiber dependency at remote sites.",
+      "thresholdValue": "",
+      "thresholdUnit": "IEC_protocol",
+      "isAbsolute": false,
+      "affectedMarketsHint": [
+        "Remote off-grid sites",
+        "Sites without fiber/cellular coverage"
       ]
     },
     {
-      "headers": [
-        "Check",
-        "Status"
-      ],
-      "rows": [
-        {
-          "Check": "All 6 constraint types represented",
-          "Status": "✅ (4/2/4/3/5/3)"
-        },
-        {
-          "Check": "is_absolute=true limited to physics/chemistry",
-          "Status": "✅ (P3, P4, C1, C2 only)"
-        },
-        {
-          "Check": "No regulation classified as absolute",
-          "Status": "✅ (all R* have cert path)"
-        },
-        {
-          "Check": "Thresholds use numeric values + units",
-          "Status": "✅ (all quantified thresholds numeric; qualitative constraints carry explicit threshold narrative)"
-        },
-        {
-          "Check": "Environmental vs. chemical separated",
-          "Status": "✅ (V1–V3 = ambient; C1–C2 = cells/electrolyte)"
-        },
-        {
-          "Check": "Cost never treated as knockout",
-          "Status": "✅ (E1 is mitigable)"
-        },
-        {
-          "Check": "Knockout-prone patterns flagged",
-          "Status": "✅ (§03d)"
-        },
-        {
-          "Check": "Extension axes cross-referenced",
-          "Status": "✅ (§03e)"
-        }
+      "name": "CAPEX Viability Ceiling",
+      "constraintType": "economic",
+      "description": "Above €400/kWh installed the peak-shaving/arbitrage case closes at >7-yr payback. Mitigable via revenue stacking or KfW/innovation subsidies.",
+      "thresholdValue": "250-400",
+      "thresholdUnit": "EUR_per_kWh_installed",
+      "isAbsolute": false,
+      "affectedMarketsHint": [
+        "Markets with <€0.10/kWh price spread",
+        "Flat-tariff structures",
+        "Regulated monopoly grids"
+      ]
+    },
+    {
+      "name": "Battery Supply Chain Concentration",
+      "constraintType": "economic",
+      "description": "LFP cells concentrated in CN suppliers; FX, tariff, CRMA and EU Battery Reg compliance risk. Mitigable via multi-vendor qualification.",
+      "thresholdValue": "80",
+      "thresholdUnit": "%_CN_share",
+      "isAbsolute": false,
+      "affectedMarketsHint": [
+        "EU-content-mandated public procurement",
+        "Defense",
+        "Critical infrastructure"
+      ]
+    },
+    {
+      "name": "Minimum Revenue-Stream Access",
+      "constraintType": "economic",
+      "description": "Need at least one monetization path (peak shaving, §19 StromNEV, EPEX arbitrage, FCR/aFRR prequal). No revenue = stranded asset.",
+      "thresholdValue": "1",
+      "thresholdUnit": "active_revenue_stream",
+      "isAbsolute": false,
+      "affectedMarketsHint": [
+        "Monopoly utility territories",
+        "Markets with no ancillary-service market"
+      ]
+    },
+    {
+      "name": "VDE-AR-N 4110 MV Grid Code Compliance",
+      "constraintType": "regulatory",
+      "description": "Mandatory for connections ≥1 kV or >100 kW in Germany. Certification path is standard Mein Solar scope.",
+      "thresholdValue": "1 kV / 100 kW",
+      "thresholdUnit": "connection_voltage_power",
+      "isAbsolute": false,
+      "affectedMarketsHint": [
+        "Non-DE markets (AT TOR-E, CH NA/EEA, FR Enedis)",
+        "Any MV-connected industrial site"
+      ]
+    },
+    {
+      "name": "FGW TR8 Plant Certification",
+      "constraintType": "regulatory",
+      "description": "Type B simplified plant certificate mandatory for MV-connected storage plants; accredited certifier (TÜV, DEKRA) required.",
+      "thresholdValue": "Type B",
+      "thresholdUnit": "FGW_TR8_class",
+      "isAbsolute": false,
+      "affectedMarketsHint": [
+        "Non-DACH markets",
+        "Utility-interconnected generation/storage"
+      ]
+    },
+    {
+      "name": "Fire-Protection Clearance (VdS 3103 / Feuerwehr)",
+      "constraintType": "regulatory",
+      "description": "Minimum distance to buildings/property line, hydrant access, separation walls for >3 MWh clusters per VdS 3103 and local Feuerwehr guidance.",
+      "thresholdValue": "3",
+      "thresholdUnit": "MWh_cluster_threshold",
+      "isAbsolute": false,
+      "affectedMarketsHint": [
+        "Dense urban",
+        "Co-located with residential",
+        "Tunnel/underground sites"
+      ]
+    },
+    {
+      "name": "Baugenehmigung (Municipal Building Permit)",
+      "constraintType": "regulatory",
+      "description": "Container = building under most Landesbauordnung. 3–9 month permit cycle; municipal discretion is the schedule risk.",
+      "thresholdValue": "3-9",
+      "thresholdUnit": "months",
+      "isAbsolute": false,
+      "affectedMarketsHint": [
+        "Conservation zones (Denkmalschutz)",
+        "Natura-2000",
+        "Protected landscapes"
+      ]
+    },
+    {
+      "name": "EU Battery Regulation + CRMA Compliance",
+      "constraintType": "regulatory",
+      "description": "Digital battery passport, carbon footprint declaration, supply-chain due diligence, and recycling chain mandatory from 2027. Compliance effort, not a legal barrier.",
+      "thresholdValue": "2027",
+      "thresholdUnit": "year_effective",
+      "isAbsolute": false,
+      "affectedMarketsHint": [
+        "EU-external deployments (UK, CH, non-EU export)",
+        "EU stationary-storage markets"
+      ]
+    },
+    {
+      "name": "Ambient Temperature Envelope",
+      "constraintType": "environmental",
+      "description": "HVAC maintains internal setpoint; extremes reduce RTE and cycle life. Mitigable via upgraded cooling or heated enclosure packages.",
+      "thresholdValue": "-20 to +50",
+      "thresholdUnit": "degC_ambient",
+      "isAbsolute": false,
+      "affectedMarketsHint": [
+        "Desert solar (MENA)",
+        "Arctic/sub-Arctic",
+        "Outdoor marine"
+      ]
+    },
+    {
+      "name": "Altitude Derating",
+      "constraintType": "environmental",
+      "description": "PCS and MV transformer require derating above 1000 m ASL (standard OEM option) — reduces effective MW rating.",
+      "thresholdValue": "1000",
+      "thresholdUnit": "m_ASL",
+      "isAbsolute": false,
+      "affectedMarketsHint": [
+        "Alpine hydro sites",
+        "High-altitude mining",
+        "Andean/Himalayan grids"
+      ]
+    },
+    {
+      "name": "Seismic / Flood Site Risk",
+      "constraintType": "environmental",
+      "description": "Foundation design (DIN 4149 zones) and elevated plinth (HQ100 floodplain) mitigate; restricts siting, doesn't prevent it.",
+      "thresholdValue": "",
+      "thresholdUnit": "DIN_4149_zone_HQ100",
+      "isAbsolute": false,
+      "affectedMarketsHint": [
+        "Coastal flood zones",
+        "DIN 4149 zones 2-3",
+        "Fault-line territories"
       ]
     }
   ],
-  "entities": [
+  "knockoutPronePatterns": [
     {
-      "product_name": "EPC für Großbatteriespeicher",
-      "technology_class": "Large-Scale Battery Energy Storage System EPC",
-      "constraint_taxonomy_counts": {
-        "physical": 4,
-        "chemical": 2,
-        "operational": 4,
-        "economic": 3,
-        "regulatory": 5,
-        "environmental": 3,
-        "total": 21,
-        "absolute": 4,
-        "mitigable": 17
-      },
-      "constraints": [
-        {
-          "name": "Land Footprint and Siting",
-          "constraint_type": "physical",
-          "description": "Container footprint plus safety clearances and Feuerwehr access driven by site layout; mitigable via stacked decks, off-site lease, or project resizing.",
-          "threshold_value": "40-80",
-          "threshold_unit": "m2_per_MWh",
-          "is_absolute": false,
-          "affected_markets_hint": [
-            "Urban industrial campuses",
-            "Data centers",
-            "Airports",
-            "Dense retail",
-            "Rooftop-only C&I"
-          ]
-        },
-        {
-          "name": "Minimum EPC Project Scale",
-          "constraint_type": "physical",
-          "description": "Below ~1 MWh the EPC overhead (cert, civil, PM) exceeds equipment cost; project-delivery model breaks even only at grid-scale.",
-          "threshold_value": "500 / 1",
-          "threshold_unit": "kW / MWh",
-          "is_absolute": false,
-          "affected_markets_hint": [
-            "Residential PV+storage",
-            "Small commercial <500 kW",
-            "Agri-PV micro",
-            "SME retail"
-          ]
-        },
-        {
-          "name": "Round-Trip Energy Loss Floor",
-          "constraint_type": "physical",
-          "description": "Thermodynamic floor from PCS switching, cell internal resistance, and HVAC parasitic. Cannot drop below ~10% AC-AC with current LFP+PCS stack.",
-          "threshold_value": "10-15",
-          "threshold_unit": "%_loss",
-          "is_absolute": true,
-          "affected_markets_hint": [
-            "High-frequency arbitrage",
-            "Short-duration FCR",
-            "Thin-margin utility dispatch"
-          ]
-        },
-        {
-          "name": "Grid-Scale Power Density Limit",
-          "constraint_type": "physical",
-          "description": "LFP pack-level energy density ~160 Wh/L; 1 MWh per 20ft container is the practical limit for containerized stationary storage.",
-          "threshold_value": "1",
-          "threshold_unit": "MWh_per_20ft_container",
-          "is_absolute": true,
-          "affected_markets_hint": [
-            "Vaulted/underground substations",
-            "Confined brownfield sites"
-          ]
-        },
-        {
-          "name": "Li-Ion Thermal Runaway Onset",
-          "constraint_type": "chemical",
-          "description": "Exothermic cathode+electrolyte decomposition once onset reached. Cannot be eliminated, only contained via NOVEC/aerosol, compartmentalization, and deflagration venting (VdS 3103).",
-          "threshold_value": "150-200",
-          "threshold_unit": "degC_cell_surface",
-          "is_absolute": true,
-          "affected_markets_hint": [
-            "Hospitals",
-            "Schools",
-            "Data centers",
-            "High-occupancy buildings",
-            "H2-adjacent sites"
-          ]
-        },
-        {
-          "name": "Organic Electrolyte Flammability",
-          "constraint_type": "chemical",
-          "description": "Carbonate electrolytes (EMC/DMC/EC) are combustible with flash points near ambient; mandates fire-rated envelope and suppression. Chemistry-inherent.",
-          "threshold_value": "30",
-          "threshold_unit": "degC_flash_point",
-          "is_absolute": true,
-          "affected_markets_hint": [
-            "Petrochemical (ATEX zones)",
-            "Fuel terminals",
-            "Flammable-storage co-location"
-          ]
-        },
-        {
-          "name": "MV Grid Connection Capacity (DSO)",
-          "constraint_type": "operational",
-          "description": "DSO must grant MV feeder capacity under VDE-AR-N 4110; saturated grids force upgrade or downsizing; in rare cases DSO refuses connection outright.",
-          "threshold_value": null,
-          "threshold_unit": "kVA_site_specific",
-          "is_absolute": false,
-          "affected_markets_hint": [
-            "Rural DE (Brandenburg, MV, Niedersachsen)",
-            "Saturated urban feeders",
-            "Weak-grid island territories"
-          ]
-        },
-        {
-          "name": "Grid-Code Certification Lead Time",
-          "constraint_type": "operational",
-          "description": "FGW TR8 Type B plant certificate and DSO acceptance lengthen schedule; parallelizable with procurement but always on the critical path.",
-          "threshold_value": "6-12",
-          "threshold_unit": "months",
-          "is_absolute": false,
-          "affected_markets_hint": [
-            "Time-critical projects <6 months",
-            "Emergency backup deployments"
-          ]
-        },
-        {
-          "name": "Minimum Duty Cycle for Business Case",
-          "constraint_type": "operational",
-          "description": "Below ~200 full-cycles/yr revenue does not cover O&M + degradation amortization. Mitigable by stacking revenue streams.",
-          "threshold_value": "200",
-          "threshold_unit": "full_cycles_per_year",
-          "is_absolute": false,
-          "affected_markets_hint": [
-            "Pure-backup UPS",
-            "Extreme-seasonal-only loads"
-          ]
-        },
-        {
-          "name": "SCADA/EMS Communication Link",
-          "constraint_type": "operational",
-          "description": "DSO and aggregator dispatch require standards-compliant IEC 61850 or IEC 60870-5-104 uplink; cellular or fiber dependency at remote sites.",
-          "threshold_value": null,
-          "threshold_unit": "IEC_protocol",
-          "is_absolute": false,
-          "affected_markets_hint": [
-            "Remote off-grid sites",
-            "Sites without fiber/cellular coverage"
-          ]
-        },
-        {
-          "name": "CAPEX Viability Ceiling",
-          "constraint_type": "economic",
-          "description": "Above €400/kWh installed the peak-shaving/arbitrage case closes at >7-yr payback. Mitigable via revenue stacking or KfW/innovation subsidies.",
-          "threshold_value": "250-400",
-          "threshold_unit": "EUR_per_kWh_installed",
-          "is_absolute": false,
-          "affected_markets_hint": [
-            "Markets with <€0.10/kWh price spread",
-            "Flat-tariff structures",
-            "Regulated monopoly grids"
-          ]
-        },
-        {
-          "name": "Battery Supply Chain Concentration",
-          "constraint_type": "economic",
-          "description": "LFP cells concentrated in CN suppliers; FX, tariff, CRMA and EU Battery Reg compliance risk. Mitigable via multi-vendor qualification.",
-          "threshold_value": "80",
-          "threshold_unit": "%_CN_share",
-          "is_absolute": false,
-          "affected_markets_hint": [
-            "EU-content-mandated public procurement",
-            "Defense",
-            "Critical infrastructure"
-          ]
-        },
-        {
-          "name": "Minimum Revenue-Stream Access",
-          "constraint_type": "economic",
-          "description": "Need at least one monetization path (peak shaving, §19 StromNEV, EPEX arbitrage, FCR/aFRR prequal). No revenue = stranded asset.",
-          "threshold_value": "1",
-          "threshold_unit": "active_revenue_stream",
-          "is_absolute": false,
-          "affected_markets_hint": [
-            "Monopoly utility territories",
-            "Markets with no ancillary-service market"
-          ]
-        },
-        {
-          "name": "VDE-AR-N 4110 MV Grid Code Compliance",
-          "constraint_type": "regulatory",
-          "description": "Mandatory for connections ≥1 kV or >100 kW in Germany. Certification path is standard Mein Solar scope.",
-          "threshold_value": "1 kV / 100 kW",
-          "threshold_unit": "connection_voltage_power",
-          "is_absolute": false,
-          "affected_markets_hint": [
-            "Non-DE markets (AT TOR-E, CH NA/EEA, FR Enedis)",
-            "Any MV-connected industrial site"
-          ]
-        },
-        {
-          "name": "FGW TR8 Plant Certification",
-          "constraint_type": "regulatory",
-          "description": "Type B simplified plant certificate mandatory for MV-connected storage plants; accredited certifier (TÜV, DEKRA) required.",
-          "threshold_value": "Type B",
-          "threshold_unit": "FGW_TR8_class",
-          "is_absolute": false,
-          "affected_markets_hint": [
-            "Non-DACH markets",
-            "Utility-interconnected generation/storage"
-          ]
-        },
-        {
-          "name": "Fire-Protection Clearance (VdS 3103 / Feuerwehr)",
-          "constraint_type": "regulatory",
-          "description": "Minimum distance to buildings/property line, hydrant access, separation walls for >3 MWh clusters per VdS 3103 and local Feuerwehr guidance.",
-          "threshold_value": "3",
-          "threshold_unit": "MWh_cluster_threshold",
-          "is_absolute": false,
-          "affected_markets_hint": [
-            "Dense urban",
-            "Co-located with residential",
-            "Tunnel/underground sites"
-          ]
-        },
-        {
-          "name": "Baugenehmigung (Municipal Building Permit)",
-          "constraint_type": "regulatory",
-          "description": "Container = building under most Landesbauordnung. 3–9 month permit cycle; municipal discretion is the schedule risk.",
-          "threshold_value": "3-9",
-          "threshold_unit": "months",
-          "is_absolute": false,
-          "affected_markets_hint": [
-            "Conservation zones (Denkmalschutz)",
-            "Natura-2000",
-            "Protected landscapes"
-          ]
-        },
-        {
-          "name": "EU Battery Regulation + CRMA Compliance",
-          "constraint_type": "regulatory",
-          "description": "Digital battery passport, carbon footprint declaration, supply-chain due diligence, and recycling chain mandatory from 2027. Compliance effort, not a legal barrier.",
-          "threshold_value": "2027",
-          "threshold_unit": "year_effective",
-          "is_absolute": false,
-          "affected_markets_hint": [
-            "EU-external deployments (UK, CH, non-EU export)",
-            "EU stationary-storage markets"
-          ]
-        },
-        {
-          "name": "Ambient Temperature Envelope",
-          "constraint_type": "environmental",
-          "description": "HVAC maintains internal setpoint; extremes reduce RTE and cycle life. Mitigable via upgraded cooling or heated enclosure packages.",
-          "threshold_value": "-20 to +50",
-          "threshold_unit": "degC_ambient",
-          "is_absolute": false,
-          "affected_markets_hint": [
-            "Desert solar (MENA)",
-            "Arctic/sub-Arctic",
-            "Outdoor marine"
-          ]
-        },
-        {
-          "name": "Altitude Derating",
-          "constraint_type": "environmental",
-          "description": "PCS and MV transformer require derating above 1000 m ASL (standard OEM option) — reduces effective MW rating.",
-          "threshold_value": "1000",
-          "threshold_unit": "m_ASL",
-          "is_absolute": false,
-          "affected_markets_hint": [
-            "Alpine hydro sites",
-            "High-altitude mining",
-            "Andean/Himalayan grids"
-          ]
-        },
-        {
-          "name": "Seismic / Flood Site Risk",
-          "constraint_type": "environmental",
-          "description": "Foundation design (DIN 4149 zones) and elevated plinth (HQ100 floodplain) mitigate; restricts siting, doesn't prevent it.",
-          "threshold_value": null,
-          "threshold_unit": "DIN_4149_zone_HQ100",
-          "is_absolute": false,
-          "affected_markets_hint": [
-            "Coastal flood zones",
-            "DIN 4149 zones 2-3",
-            "Fault-line territories"
-          ]
-        }
-      ],
-      "knockout_prone_patterns": [
-        {
-          "pattern": "Site peak load <500 kW single-site",
-          "constraint_ref": "P2",
-          "verdict": "knockout",
-          "rationale": "Below EPC economic floor; no business case irrespective of revenue stacking."
-        },
-        {
-          "pattern": "ATEX Zone 0/1 co-located, no separation distance available",
-          "constraint_ref": "C2",
-          "verdict": "knockout",
-          "rationale": "Lithium electrolyte chemistry is inherently non-ATEX; if site topology forbids separation distance, no engineering path exists."
-        },
-        {
-          "pattern": "Delivery window <3 months to energization",
-          "constraint_ref": "O2",
-          "verdict": "knockout",
-          "rationale": "FGW TR8 Type B cert floor is ~6 months and cannot be compressed; cert is mandatory prerequisite to grid connection."
-        },
-        {
-          "pattern": "Zero revenue-stream access (no arbitrage, no ancillary, no peak-shaving tariff)",
-          "constraint_ref": "E3",
-          "verdict": "knockout",
-          "rationale": "Without monetization the business case fails; mitigable only if regulatory reform is on a known timeline."
-        },
-        {
-          "pattern": "Denkmalschutz / UNESCO heritage site",
-          "constraint_ref": "R4",
-          "verdict": "knockout",
-          "rationale": "Containerized industrial asset incompatible with heritage-protection regime."
-        },
-        {
-          "pattern": "DSO formally refuses connection AND no alternative POI",
-          "constraint_ref": "O1",
-          "verdict": "knockout",
-          "rationale": "Without a grid connection point the asset cannot operate; grid upgrade must be either possible or cost-tolerable."
-        },
-        {
-          "pattern": "Non-DE / non-DACH market",
-          "constraint_ref": "R1,R2",
-          "verdict": "mitigable",
-          "rationale": "Different grid-code regime (AT, CH, FR, etc.) requires engineering effort but is not impossible; certification path exists everywhere."
-        },
-        {
-          "pattern": "Ambient >50°C or <-30°C",
-          "constraint_ref": "V1",
-          "verdict": "mitigable",
-          "rationale": "Extended-temp HVAC or heated enclosure packages are standard OEM options; MENA and Nordic BESS deployments prove feasibility."
-        },
-        {
-          "pattern": "CAPEX above €400/kWh target",
-          "constraint_ref": "E1",
-          "verdict": "mitigable",
-          "rationale": "Cost is never a knockout; mitigable via subsidies, revenue stacking, or project resizing."
-        }
-      ],
-      "extension_axis_overrides": [
-        {
-          "extension_domain": "Flow-battery storage EPC",
-          "constraints_dropped": [
-            "C1",
-            "C2"
-          ],
-          "constraints_modified": [
-            "P4 density relaxes"
-          ]
-        },
-        {
-          "extension_domain": "Mechanical storage EPC (flywheel, CAES)",
-          "constraints_dropped": [
-            "C1",
-            "C2",
-            "E2",
-            "R5"
-          ],
-          "constraints_modified": [
-            "P1 footprint larger",
-            "P3 RTE floor ~30-40%"
-          ]
-        },
-        {
-          "extension_domain": "Thermal-to-power storage EPC",
-          "constraints_dropped": [
-            "C1",
-            "C2",
-            "R5"
-          ],
-          "constraints_modified": [
-            "Adds thermal-insulation + heat-source constraints"
-          ]
-        },
-        {
-          "extension_domain": "HPC charging hub EPC (no BESS)",
-          "constraints_dropped": [
-            "C1",
-            "C2",
-            "R5",
-            "E2"
-          ],
-          "constraints_modified": [
-            "P1 footprint per dispenser instead of per MWh"
-          ]
-        },
-        {
-          "extension_domain": "Large-scale PV EPC",
-          "constraints_dropped": [
-            "C1",
-            "C2",
-            "R5"
-          ],
-          "constraints_modified": [
-            "P1 footprint ~10-15 MW/ha dominated by modules"
-          ]
-        },
-        {
-          "extension_domain": "Industrial microgrid EPC",
-          "constraints_dropped": [],
-          "constraints_modified": [
-            "Adds islanding, black-start, protection-coordination constraints"
-          ]
-        }
-      ],
-      "step_08_status": "deferred_pending_step_02_market_discovery",
-      "step_08_deterministic_inputs_ready": true
+      "pattern": "Site peak load <500 kW single-site",
+      "constraint_ref": "P2",
+      "verdict": "knockout",
+      "rationale": "Below EPC economic floor; no business case irrespective of revenue stacking."
+    },
+    {
+      "pattern": "ATEX Zone 0/1 co-located, no separation distance available",
+      "constraint_ref": "C2",
+      "verdict": "knockout",
+      "rationale": "Lithium electrolyte chemistry is inherently non-ATEX; if site topology forbids separation distance, no engineering path exists."
+    },
+    {
+      "pattern": "Delivery window <3 months to energization",
+      "constraint_ref": "O2",
+      "verdict": "knockout",
+      "rationale": "FGW TR8 Type B cert floor is ~6 months and cannot be compressed; cert is mandatory prerequisite to grid connection."
+    },
+    {
+      "pattern": "Zero revenue-stream access (no arbitrage, no ancillary, no peak-shaving tariff)",
+      "constraint_ref": "E3",
+      "verdict": "knockout",
+      "rationale": "Without monetization the business case fails; mitigable only if regulatory reform is on a known timeline."
+    },
+    {
+      "pattern": "Denkmalschutz / UNESCO heritage site",
+      "constraint_ref": "R4",
+      "verdict": "knockout",
+      "rationale": "Containerized industrial asset incompatible with heritage-protection regime."
+    },
+    {
+      "pattern": "DSO formally refuses connection AND no alternative POI",
+      "constraint_ref": "O1",
+      "verdict": "knockout",
+      "rationale": "Without a grid connection point the asset cannot operate; grid upgrade must be either possible or cost-tolerable."
+    },
+    {
+      "pattern": "Non-DE / non-DACH market",
+      "constraint_ref": "R1,R2",
+      "verdict": "mitigable",
+      "rationale": "Different grid-code regime (AT, CH, FR, etc.) requires engineering effort but is not impossible; certification path exists everywhere."
+    },
+    {
+      "pattern": "Ambient >50°C or <-30°C",
+      "constraint_ref": "V1",
+      "verdict": "mitigable",
+      "rationale": "Extended-temp HVAC or heated enclosure packages are standard OEM options; MENA and Nordic BESS deployments prove feasibility."
+    },
+    {
+      "pattern": "CAPEX above €400/kWh target",
+      "constraint_ref": "E1",
+      "verdict": "mitigable",
+      "rationale": "Cost is never a knockout; mitigable via subsidies, revenue stacking, or project resizing."
     }
   ],
-  "has_bom": false
+  "extensionAxisOverrides": [
+    {
+      "extension_domain": "Flow-battery storage EPC",
+      "constraints_dropped": [
+        "C1",
+        "C2"
+      ],
+      "constraints_modified": [
+        "P4 density relaxes"
+      ]
+    },
+    {
+      "extension_domain": "Mechanical storage EPC (flywheel, CAES)",
+      "constraints_dropped": [
+        "C1",
+        "C2",
+        "E2",
+        "R5"
+      ],
+      "constraints_modified": [
+        "P1 footprint larger",
+        "P3 RTE floor ~30-40%"
+      ]
+    },
+    {
+      "extension_domain": "Thermal-to-power storage EPC",
+      "constraints_dropped": [
+        "C1",
+        "C2",
+        "R5"
+      ],
+      "constraints_modified": [
+        "Adds thermal-insulation + heat-source constraints"
+      ]
+    },
+    {
+      "extension_domain": "HPC charging hub EPC (no BESS)",
+      "constraints_dropped": [
+        "C1",
+        "C2",
+        "R5",
+        "E2"
+      ],
+      "constraints_modified": [
+        "P1 footprint per dispenser instead of per MWh"
+      ]
+    },
+    {
+      "extension_domain": "Large-scale PV EPC",
+      "constraints_dropped": [
+        "C1",
+        "C2",
+        "R5"
+      ],
+      "constraints_modified": [
+        "P1 footprint ~10-15 MW/ha dominated by modules"
+      ]
+    },
+    {
+      "extension_domain": "Industrial microgrid EPC",
+      "constraints_dropped": [],
+      "constraints_modified": [
+        "Adds islanding, black-start, protection-coordination constraints"
+      ]
+    }
+  ],
+  "sources": []
 }

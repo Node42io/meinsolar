@@ -1,5 +1,5 @@
 // ─────────────────────────────────────────────────────────────────────────────
-// Marquardt US Sensor — Shared TypeScript Interfaces
+// Shared TypeScript Interfaces
 // Source of truth: app/src/data/*.json + app/src/data/markets/{slug}/*.json
 // ─────────────────────────────────────────────────────────────────────────────
 
@@ -438,8 +438,19 @@ export interface L6System {
   scope?: string;
   /** "core" | "horizontal" — present for Format B markets. */
   category?: string;
-  /** L5 child units pre-linked here (reserved for future use; always [] currently). */
-  l5Units?: unknown[];
+  /** L5 child units pre-linked here. */
+  l5Units?: VNL5Unit[];
+}
+
+/** L5 unit nested inside an L6System (new format from orchestrator_v2). */
+export interface VNL5Unit {
+  id: string;
+  name: string;
+  description?: string;
+  /** L4 subsystems nested below this L5 unit. */
+  l4Subsystems?: { id: string; name: string; description?: string }[];
+  /** True when the focal company's product/service sits at this position. */
+  isProductPosition?: boolean;
 }
 
 export interface VNUnit {
@@ -448,23 +459,54 @@ export interface VNUnit {
   name: string;
   functionalJob: string;
   description: string;
-  dependencies: string[];
+  dependencies?: string[];
+  /** Parent L6 system ID for grouping. */
+  parentId?: string;
+  /** True when the focal company's product/service sits at this position. */
+  isProductPosition?: boolean;
+}
+
+/** Generic section format (markdown-based fallback). */
+export interface VNSection {
+  title?: string;
+  content: string;
+}
+
+/** Generic table format (markdown-based fallback). */
+export interface VNTable {
+  headers: string[];
+  rows: Record<string, string>[];
 }
 
 export interface ValueNetworkData {
   naicsCode: string;
   marketName: string;
   slug: string;
-  coreJobStatement: string;
-  outputTypes: string[];
-  hierarchy: string;
-  architectureDistance: number;
-  marketSize: string;
-  l6Systems: L6System[];
-  vnUnits: VNUnit[];
-  marquardtPosition: string;
-  strategicPosition: Record<string, unknown> | null;
-  sources: Source[];
+  coreJobStatement?: string;
+  outputTypes?: string[];
+  hierarchy?: string;
+  architectureDistance?: number;
+  marketSize?: string;
+  l6Systems?: L6System[];
+  vnUnits?: VNUnit[];
+  /** Generic: company strategic position text (replaces marquardtPosition/zollernPosition). */
+  strategicPositionNote?: string;
+  /** @deprecated Use strategicPositionNote. Legacy field kept for backward compat. */
+  marquardtPosition?: string;
+  strategicPosition?: Record<string, unknown> | null;
+  sources?: Source[];
+  /** Focal company metadata — present in orchestrator_v2 output. */
+  focalCompany?: { name: string; product: string };
+  /** Generic markdown sections fallback (when no L6/vnUnit data). */
+  sections?: VNSection[];
+  /** Generic markdown tables fallback. */
+  tables?: VNTable[];
+  /** Entity records from generic format. */
+  entities?: Record<string, unknown>[];
+  /** L7 solution name. */
+  l7Solution?: string;
+  /** Core functional job statement (alternative name). */
+  cfjStatement?: string;
 }
 
 // ─── Kano / Feature-Market Fit ────────────────────────────────────────────────
@@ -593,16 +635,20 @@ export type BOMConfidence = "high" | "medium" | "low";
 export interface BOMOutputType {
   id: string;
   name: string;
-  hydronic: boolean;
-  sensorFit: "primary" | "secondary" | "none";
-  notes: string;
+  hydronic?: boolean;
+  sensorFit?: "primary" | "secondary" | "none";
+  notes?: string;
+  /** New format: whether the focal company is present in this output type. */
+  focalCompanyPresent?: boolean;
 }
 
 export interface BOMAlternative {
   name: string;
   sharePct: number;
-  trend: "growing" | "stable" | "declining" | "growing" | string;
-  /** True when this alternative is the subject product or technology */
+  trend: "growing" | "stable" | "declining" | string;
+  /** True when this alternative is the focal company's product or technology. */
+  isProductAnchor?: boolean;
+  /** @deprecated Use isProductAnchor. Kept for backward compat with older data. */
   isMarquardt?: boolean;
 }
 
@@ -630,7 +676,10 @@ export interface BOML2Component {
 export interface BOMModule {
   id: string;
   name: string;
-  isMarquardtAnchor: boolean;
+  /** True when focal company product is anchored in this module. */
+  isProductAnchor?: boolean;
+  /** @deprecated Use isProductAnchor. Kept for backward compat. */
+  isMarquardtAnchor?: boolean;
   /** Short note shown in product-anchor badge */
   sensorNote?: string;
   alternatives: BOMAlternative[];
@@ -643,25 +692,51 @@ export interface BOMModule {
 export interface BOML4Subsystem {
   id: string;
   name: string;
-  costSharePct: number;
-  keyDesignChoice: string;
-  isMarquardtAnchor: boolean;
-  confidence: BOMConfidence;
-  alternatives: BOMAlternative[];
-  modules: BOMModule[];
+  description?: string;
+  costSharePct?: number | null;
+  keyDesignChoice?: string;
+  /** True when focal company product is anchored in this subsystem. */
+  isProductAnchor?: boolean;
+  /** @deprecated Use isProductAnchor. Kept for backward compat. */
+  isMarquardtAnchor?: boolean;
+  confidence?: BOMConfidence;
+  alternatives?: BOMAlternative[];
+  modules?: BOMModule[];
+  /** L3 modules — alternative key used by orchestrator_v2 output. */
+  l3Modules?: BOMModule[];
+}
+
+/** Focal company metadata embedded in bom.json. */
+export interface BOMFocalCompany {
+  name: string;
+  product: string;
+  bomPositionLevel?: string;
+  positionRationale?: string;
 }
 
 export interface BOMData {
   slug: string;
   marketName: string;
   naicsCode: string;
-  confidence: BOMConfidence;
-  /** True when no BOM markdown has been generated for this market yet */
-  dataPending: boolean;
-  sensorNote: string;
-  outputTypes: BOMOutputType[];
-  marquardtAnchorIds: string[];
-  l4Subsystems: BOML4Subsystem[];
+  confidence?: BOMConfidence;
+  /** True when no BOM breakdown has been generated for this market yet */
+  dataPending?: boolean;
+  sensorNote?: string;
+  outputTypes?: BOMOutputType[];
+  /** Product anchor IDs from JSON data. */
+  productAnchorIds?: string[];
+  /** @deprecated Use productAnchorIds. Kept for backward compat. */
+  marquardtAnchorIds?: string[];
+  l4Subsystems?: BOML4Subsystem[];
+  /** Focal company metadata. */
+  focalCompany?: BOMFocalCompany;
+  sources?: Source[];
+  /** Generic markdown sections fallback. */
+  sections?: VNSection[];
+  /** Generic markdown tables fallback. */
+  tables?: VNTable[];
+  /** Entity records from generic format. */
+  entities?: Record<string, unknown>[];
 }
 
 // ─── Sources Registry ─────────────────────────────────────────────────────────

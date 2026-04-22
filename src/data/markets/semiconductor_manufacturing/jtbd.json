@@ -869,8 +869,7 @@
           "importance": 10,
           "satisfaction_current": 5,
           "opportunity_score": 15,
-          "confidence": 0.85,
-          "satisfaction_rationale": "Incumbent flywheel/DVR vendors provide SEMI F47 compliance data, but sag-envelope specification remains manual and fab-specific, leaving moderate gaps in coverage definition"
+          "confidence": 0.85
         },
         {
           "id": "N02",
@@ -884,8 +883,7 @@
           "importance": 7,
           "satisfaction_current": 3,
           "opportunity_score": 11,
-          "confidence": 0.7,
-          "satisfaction_rationale": "No incumbent BESS solution reliably resolves the dual-use conflict between grid-revenue dispatch and instantaneous ride-through reserve; fabs must choose one priority"
+          "confidence": 0.7
         },
         {
           "id": "N03",
@@ -899,8 +897,7 @@
           "importance": 9,
           "satisfaction_current": 4,
           "opportunity_score": 14,
-          "confidence": 0.8,
-          "satisfaction_rationale": "Grid operators and BESS EPC providers offer MV connection studies, but German Netzanschluss lead times and capacity constraints leave most greenfield fab sites with uncertain feeder headroom"
+          "confidence": 0.8
         },
         {
           "id": "N04",
@@ -914,8 +911,7 @@
           "importance": 6,
           "satisfaction_current": 3,
           "opportunity_score": 9,
-          "confidence": 0.75,
-          "satisfaction_rationale": "Li-ion BESS fire-clearance setback requirements (VdS, local Bauordnung) frequently trigger layout rework; no standardised pre-approved zoning template exists for fab-adjacent installations"
+          "confidence": 0.75
         },
         {
           "id": "N05",
@@ -929,8 +925,7 @@
           "importance": 10,
           "satisfaction_current": 3,
           "opportunity_score": 17,
-          "confidence": 0.88,
-          "satisfaction_rationale": "German grid-connection and BImSchG certification paths for MW-scale BESS at fab sites lack precedent; no incumbent consistently delivers <60-day cert-to-COD timelines"
+          "confidence": 0.88
         },
         {
           "id": "N06",
@@ -944,8 +939,7 @@
           "importance": 9,
           "satisfaction_current": 4,
           "opportunity_score": 14,
-          "confidence": 0.8,
-          "satisfaction_rationale": "EPC contractors offer parallel-tracking of Netzanschluss and process-equipment certs, but coordination across VNB, TUeV, and fab GC remains fragmented, routinely adding months"
+          "confidence": 0.8
         },
         {
           "id": "N07",
@@ -959,8 +953,7 @@
           "importance": 6,
           "satisfaction_current": 5,
           "opportunity_score": 7,
-          "confidence": 0.65,
-          "satisfaction_rationale": "Major BESS OEMs (Fluence, Sungrow) ship factory-tested racks with <3% DOA module rates; commissioning swap counts are manageable but not eliminated"
+          "confidence": 0.65
         },
         {
           "id": "N08",
@@ -974,8 +967,7 @@
           "importance": 10,
           "satisfaction_current": 4,
           "opportunity_score": 16,
-          "confidence": 0.85,
-          "satisfaction_rationale": "S raised 4→6; Piller/Hitec flywheel incumbents deliver sub-50ms in S1 fabs"
+          "confidence": 0.85
         },
         {
           "id": "N09",
@@ -989,8 +981,7 @@
           "importance": 7,
           "satisfaction_current": 4,
           "opportunity_score": 10,
-          "confidence": 0.7,
-          "satisfaction_rationale": "BESS EMS-to-DCS integration requires custom Modbus/OPC-UA mapping per fab; no turnkey SEMI-protocol handshake package exists, causing repeated commissioning iterations"
+          "confidence": 0.7
         },
         {
           "id": "N10",
@@ -1004,8 +995,7 @@
           "importance": 10,
           "satisfaction_current": 4,
           "opportunity_score": 16,
-          "confidence": 0.9,
-          "satisfaction_rationale": "S raised 4→5; Piller-protected fabs show documented scrap avoidance"
+          "confidence": 0.9
         },
         {
           "id": "N11",
@@ -1019,8 +1009,7 @@
           "importance": 9,
           "satisfaction_current": 2,
           "opportunity_score": 16,
-          "confidence": 0.78,
-          "satisfaction_rationale": "No incumbent BESS EMS guarantees that dispatch SoC never conflicts with ride-through reserve; dual-use scheduling algorithms remain unproven at fab-grade reliability"
+          "confidence": 0.78
         },
         {
           "id": "N12",
@@ -1034,8 +1023,7 @@
           "importance": 10,
           "satisfaction_current": 4,
           "opportunity_score": 16,
-          "confidence": 0.82,
-          "satisfaction_rationale": "S raised 4→6; rotating-mass flywheel source transition is intrinsically <16 ms"
+          "confidence": 0.82
         },
         {
           "id": "N13",
@@ -1049,8 +1037,7 @@
           "importance": 10,
           "satisfaction_current": 5,
           "opportunity_score": 15,
-          "confidence": 0.85,
-          "satisfaction_rationale": "S raised 5→6; flywheel/DVR incumbents carry zero fire-risk envelope"
+          "confidence": 0.85
         },
         {
           "id": "N14",
@@ -1064,8 +1051,7 @@
           "importance": 8,
           "satisfaction_current": 4,
           "opportunity_score": 12,
-          "confidence": 0.75,
-          "satisfaction_rationale": "BESS vendors provide SoH dashboards, but predictive autonomy-degradation alerting tied to contracted ride-through thresholds is not standard; fabs rely on periodic manual capacity tests"
+          "confidence": 0.75
         },
         {
           "id": "N15",
@@ -1079,8 +1065,7 @@
           "importance": 7,
           "satisfaction_current": 4,
           "opportunity_score": 10,
-          "confidence": 0.72,
-          "satisfaction_rationale": "Inverter-based BESS controllers have higher false-trip rates than flywheel systems due to grid-forming firmware maturity; fab-grade discrimination algorithms are still emerging"
+          "confidence": 0.72
         },
         {
           "id": "N16",
@@ -1094,8 +1079,7 @@
           "importance": 6,
           "satisfaction_current": 5,
           "opportunity_score": 7,
-          "confidence": 0.65,
-          "satisfaction_rationale": "Leading BESS vendors support rolling firmware updates on redundant rack strings, keeping downtime near 2 h; full hot-patch capability without any ride-through gap is not yet standard"
+          "confidence": 0.65
         },
         {
           "id": "N17",
@@ -1110,8 +1094,7 @@
           "satisfaction_current": 4,
           "opportunity_score": 10,
           "confidence": 0.68,
-          "pyramid_level": "P3",
-          "satisfaction_rationale": "BESS EMS platforms log events but lack fab-specific audit formatting (SEMI E10/E79 templates); facility engineers must manually reconcile BESS logs with DCS event records"
+          "pyramid_level": "P3"
         },
         {
           "id": "N18",
@@ -1126,8 +1109,7 @@
           "satisfaction_current": 3,
           "opportunity_score": 13,
           "confidence": 0.72,
-          "pyramid_level": "P4",
-          "satisfaction_rationale": "No incumbent BESS vendor provides auditor-ready joint Netzentgelte + CO2 savings reporting; fabs must build bespoke dashboards bridging EMS dispatch data and utility billing"
+          "pyramid_level": "P4"
         }
       ],
       "incumbent_anchors": [

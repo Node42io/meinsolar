@@ -1,450 +1,184 @@
 {
-  "id": "10_final_ranking",
-  "title": "10 — Final Market Ranking (PCM Step 14)",
-  "type": "final_ranking",
-  "market_slug": null,
-  "is_per_market": false,
-  "sections": [
+  "productName": "EPC für Großbatteriespeicher",
+  "vendorName": "Mein Solar GmbH",
+  "commodityFunctionalPromise": "Deliver operational grid-connected electrical energy storage assets as turnkey capital projects with single-source engineering, procurement, construction, and grid-code certification",
+  "totalMarketsEvaluated": 8,
+  "marketsEliminatedByConstraints": 0,
+  "executiveSummary": "8 markets cleared Step 08 with zero knockouts. No market clears the 7.5 pursue threshold; all 8 fall in the 5.0-7.5 investigate band. Top cluster led by 221118 IPP (6.66), 221114 PV+BESS (6.62) and 493120 Refrigerated Warehousing (6.41) — a barbell of incumbent-dense utility markets where Mein Solar has native capability and a wide-open emerging market with no real storage incumbents. Biggest cross-market risk is incumbent intensity in the established utility tier (Tesla, Sungrow, Fluence, ABB) — IPP and DSO scores dragged down by 2+ dominant integrators. Recommended next step: parallel customer-discovery sprints in 221118, 221114 and 493120 before committing CAPEX to fab/port verticals that need 18+ month references.",
+  "weights": {
+    "odi_opportunity": 0.25,
+    "feature_fit": 0.15,
+    "constraint_compatibility": 0.15,
+    "job_coverage": 0.15,
+    "vn_hierarchy": 0.1,
+    "incumbent_vulnerability": 0.2
+  },
+  "recommendationDistribution": {
+    "pursue": 0,
+    "investigate": 8,
+    "defer": 0,
+    "no_go": 0
+  },
+  "rankedMarkets": [
     {
-      "title": "Executive summary",
-      "content": "8 markets cleared Step 08 with zero knockouts — Mein Solar's BESS-EPC product is technically deployable in every NAICS surfaced. **No market clears the 7.5 pursue threshold; all 8 fall in the 5.0–7.5 investigate band.** The top cluster is led by **221118 Other Electric Power Generation (IPP, 6.66)**, **221114 Solar+BESS (6.62)** and **493120 Refrigerated Warehousing (6.41)** — a barbell of incumbent-dense utility markets where Mein Solar has native capability and a wide-open emerging market with no real storage incumbents. The biggest cross-market risk is **incumbent intensity in the established utility tier** (Tesla, Sungrow, Fluence, ABB) — IPP and DSO scores are dragged down by 2+ dominant integrators. **Recommended next step:** parallel customer-discovery sprints in 221118 (PV-EPC heritage as flank attack), 221114 (PV-EPC incumbency as moat) and 493120 (education-led greenfield) before committing CAPEX to fab/port verticals that need 18+ month references.\n\n---"
-    },
-    {
-      "title": "Ranked output",
-      "content": "| # | Market | NAICS | ODI | Fit | Constr | Job | VN | Incum | **Comp** | Rec |\n|---|---|---|---|---|---|---|---|---|---|---|\n| 1 | Other Electric Power Generation (Standalone BESS / IPP) | 221118 | 4.95 | 6.50 | 9.00 | 10.00 | 9.00 | 3.50 | **6.66** | investigate |\n| 2 | Solar Electric Power Generation (PV+BESS) | 221114 | 5.70 | 6.45 | 7.50 | 10.00 | 6.00 | 5.00 | **6.62** | investigate |\n| 3 | Refrigerated Warehousing & Storage | 493120 | 6.05 | 5.81 | 6.00 | 7.50 | 6.00 | 7.00 | **6.41** | investigate |\n| 4 | Wind Electric Power Generation (Wind+BESS) | 221115 | 5.75 | 6.11 | 9.50 | 7.50 | 6.00 | 4.00 | **6.30** | investigate |\n| 5 | Port and Harbor Operations | 488310 | 6.57 | 5.80 | 5.50 | 7.50 | 6.00 | 5.50 | **6.16** | investigate |\n| 6 | Lessors of Nonresidential Buildings (C&I BTM) | 531120 | 5.61 | 6.00 | 5.00 | 8.75 | 6.00 | 6.00 | **6.16** | investigate |\n| 7 | Semiconductor & Related Device Mfg (Fab PQ) | 334413 | 6.21 | 4.69 | 3.50 | 7.50 | 3.00 | 4.50 | **5.11** | investigate |\n| 8 | Electric Power Distribution (DSO Netzbooster) | 221122 | 5.66 | 5.58 | 4.50 | 5.00 | 6.00 | 4.00 | **5.08** | investigate |\n\n---"
-    },
-    {
-      "title": "Component score derivation (1-line each)",
-      "content": "| Market | ODI source | Fit source | Constraint deductions | Job coverage | VN position | Incumbent rationale |\n|---|---|---|---|---|---|---|\n| 221118 | avg opp 9.89/20 | 6 features avg 6.50 | 1 mitigable medium → −1.0 | 8/8 steps YES | L5 customer_facing (BESS = whole asset) +0 depth | very_high switching, 2+ dominant (Tesla/Sungrow/Fluence); est. mkt |\n| 221114 | avg opp 11.39/20 | 6 features avg 6.45 | 4 mitigable (1m,3l) → −2.5 | 8/8 steps YES | L5 mid_chain (BESS adjacent to PV) | est. mkt; PV-EPC heritage = differentiator vs Enerparc/BayWa r.e. |\n| 221115 | avg opp 11.50/20 | 6 features avg 6.11 | 1 mitigable low → −0.5 | 4 YES + 4 partial = 6/8 | L5 mid_chain (retrofit/co-loc) | est. mkt; Vestas/SGRE OEM dominance |\n| 531120 | avg opp 11.22/20 | 6 features avg 6.00 | 7 mitigable (3m,4l) → −5.0 | 7/8 steps YES | L5 mid_chain (building infra) | growing; fragmented (Voltfang, Tesvolt, Commeo) |\n| 221122 | avg opp 11.31/20 | 6 features avg 5.58 | 6 mitigable (1h,2m,3l) → −5.5 | 4/8 steps (DEFINE/PREPARE/EXECUTE/MONITOR) | L5 mid_chain under L6f Flex/Congestion | growing; ABB/Siemens/Hitachi dominant DSO procurement |\n| 488310 | avg opp 13.14/20 | 6 features avg 5.80 | 6 mitigable (3m,3l) → −4.5 | 4 YES + 4 partial = 6/8 | L5 mid_chain under L6H-ENE | emerging (AFIR 2030 mandate); Siemens/ABB present, no BESS specialist |\n| 493120 | avg opp 12.10/20 | 6 features avg 5.81 | 5 mitigable (3m,2l) → −4.0 | 6 YES + 2 false = 6/8 | L5 mid_chain (utility plant addition) | emerging; **no incumbent storage** (diesel/tariff/none) |\n| 334413 | avg opp 12.42/20 | 6 features avg 4.69 | 6 mitigable (1h,4m,1l) → −6.5 | 6 YES + 2 false = 6/8 | L5 deep_component under L6H-POWER | emerging-for-BESS but ABB PCS100/Piller dominate adjacent PQ |\n\n---"
-    },
-    {
-      "title": "Per-market strategic synthesis",
-      "content": "### Rank 1 — NAICS 221118 Other Electric Power Generation · Composite 6.66 · investigate\n\n**Rationale.** Composite 6.66 driven by max job coverage (10.0 — every Ulwick step served), strong VN position (9.0 customer-facing, BESS *is* the asset), and clean constraint sheet (9.0, only EU Battery Reg compliance overhead). Held back by lowest ODI in the set (4.95 — IPPs are sophisticated buyers, most needs are well-served by Tesla/Sungrow/Fluence) and the weakest incumbent vulnerability (3.5 — three Tier-1 turnkey integrators dominate).\n**Entry strategy.** 1) Target 2–3 mid-tier IPP developers without in-house EPC (Eco Stor merchant projects, Encavis BESS arm, Trianel storage portfolio) at 5–20 MWh project size. 2) Prove FGW TR8 dossier turnaround <8 months as the wedge metric — the documented #1 underserved need (opp 13.5). 3) Partner with merchant-trader (Entrix, Suena, Next Kraftwerke) to bundle revenue-stack underwriting into the EPC bid. 4) Publish reference case + cost-of-capital comparison vs. Tesla/Sungrow turnkey.\n**Time to entry:** 9–15 months (PV-adjacent customer base already addressable; first BESS-only standalone reference 2026 H2).\n**Investment:** €300K–800K (cert-team capacity, merchant-stack partnership setup, dual-source LFP qualification).\n\n### Rank 2 — NAICS 221114 Solar Electric Power Generation · Composite 6.62 · investigate\n\n**Rationale.** Composite 6.62 reflects the cleanest strategic fit — full job coverage (10.0), Mein Solar's PV-EPC incumbency directly differentiates against BESS pure-plays, and the F5 Grid-Code Cert Delivery feature scores 7.78 (highest in any market). ODI is moderate (5.70 — solar developers are well-served on the PV side but underserved on co-located BESS retrofits, opp 16 on FGW TR8 slip). Constraint sheet light (7.5).\n**Entry strategy.** 1) Target Mein Solar's existing PV customer base for retrofit BESS on operational solar parks (warmest list in DE). 2) Lead with single-grid-connection / single-cert-dossier value prop vs. split-contract (PV existing + BESS retrofit by third party). 3) Productize a \"PV+BESS hybrid uplift\" SKU: standardized 4.5 MW / 9 MWh container, fixed FGW TR8 schedule, 12-week installation. 4) Co-market with merchant trader for revenue stacking on existing PV PPA tail.\n**Time to entry:** 3–6 months (incumbent customer base, no new sales motion required).\n**Investment:** €150K–400K (productization, hybrid-EMS firmware, marketing).\n\n### Rank 3 — NAICS 493120 Refrigerated Warehousing · Composite 6.41 · investigate\n\n**Rationale.** Composite 6.41 is the highest among emerging markets — driven by best-in-set incumbent vulnerability (7.0, no real storage incumbent — diesel gensets and \"no storage\" are the only alternatives) plus solid ODI (6.05) and good job coverage (7.5). 24/7 high-kW refrigeration is structurally an excellent peak-shaving target. Held back by low feature fit (5.81 — features designed for utility, not C&I-storage education) and 5 mitigable constraints (3 medium incl. CAPEX education).\n**Entry strategy.** 1) Target 3–5 mid-tier German cold-chain operators (Nordfrost, NewCold, Frigoscandia DACH) — payback-driven CFOs, single-decision-maker procurement. 2) Lead with quantified §19 StromNEV peak-shaving + spoilage-resilience case, *not* arbitrage. 3) Offer BESS-as-a-Service (BaaS) + KfW 295/296 financing to remove CAPEX education barrier. 4) Build first reference site as flagship case study; publish at Logistikkongress / VDKL.\n**Time to entry:** 12–18 months (education-led sale, first reference 2026 H2 / 2027 H1).\n**Investment:** €400K–900K (sales education, BaaS structuring, first-of-kind project subsidy).\n\n### Rank 4 — NAICS 221115 Wind Electric Power Generation · Composite 6.30 · investigate\n\n**Rationale.** Composite 6.30 anchored by an exceptionally clean constraint sheet (9.5, only grid-forming firmware cert as low mitigable) and ODI 5.75 with a time-boxed catalyst — DE inertia-service prequal opens **Jan 2026**, opening a 12-month window for grid-forming-cert-ready BESS retrofit on operational wind parks. Job coverage 7.5 (4 YES + 4 partial, EPC owns DEFINE→CONFIRM, operator owns dispatch). Vestas/SGRE OEM packages limit incumbent vulnerability (4.0).\n**Entry strategy.** 1) Target 2 mid-size onshore wind developers (Energiequelle, WPD, ABO Wind) with operational parks 30–80 MW. 2) Prove FGW TR3 grid-forming + FGW TR8 plant cert delivery in <9 months as the inertia-service-window wedge. 3) Partner with PCS firmware vendor (Sungrow Power Stack, SMA) for grid-forming-ready stack. 4) Bid the inertia-service Festpreis tender Q2 2026.\n**Time to entry:** 12–18 months (cert + PCS firmware lead time).\n**Investment:** €250K–600K (grid-forming cert qualification, wind-developer partnerships).\n\n### Rank 5 — NAICS 488310 Port and Harbor Operations · Composite 6.16 · investigate\n\n**Rationale.** Composite 6.16 driven by the highest ODI in the set (6.57 — 18/25 needs underserved, AFIR 2030 mandate creates schedule pressure) and emerging-market incumbent profile (5.5). Constraint sheet at 5.5 (6 mitigable: salt-air IP66, ISPS security, EU-content cells). Job coverage 7.5 (4 YES + 4 partial). Held back by VOB/VgV public-tender bid capability gap and lack of port reference.\n**Entry strategy.** 1) Joint-bid with a Tier-1 port system integrator (Siemens Mobility, ABB Marine, Cavotec) on the next HHLA / NPorts / BLG OPS tender — Mein Solar supplies the BESS scope, partner brings the ISPS + port-reference. 2) Productize \"OPS Buffer + EV-Crane Hybrid Storage\" SKU at 4.5–9 MW. 3) Pre-engineer salt-air hardening package (IP66, C5-M coatings, stainless fasteners) as standard-offer add-on. 4) Pre-wire EU Battery Passport into EPC contract template.\n**Time to entry:** 18–30 months (public-tender procurement cycle + AFIR 2030 mandate ramp).\n**Investment:** €600K–1.5M (joint-bid setup, salt-air package engineering, port-reference subsidy).\n\n### Rank 6 — NAICS 531120 Lessors of Nonresidential Buildings · Composite 6.16 · investigate\n\n**Rationale.** Composite 6.16 — strong job coverage (8.75, 7/8 steps), moderate fit (6.00) and fragmented incumbent landscape (6.0 — Voltfang, Tesvolt, Commeo, in-house FM all sub-scale). Held back by the heaviest mitigable constraint load in the set (5.0; 7 mitigable inc. MV grid headroom on retail/office sites + Baugenehmigung discretion). Single-source-EPC pitch resonates with landlords averse to multi-vendor coordination.\n**Entry strategy.** 1) Target 2–3 mid-cap logistics-park / retail-park lessors (CTP, GARBE, Panattoni DE, Real I.S.) with portfolios of 5–15 sites. 2) Bundle BESS into PV+BESS+EV-charging \"tenant resilience\" package — landlord recoups via Netzentgelte split + tenant ESG margin. 3) Productize portfolio-deal SKU: same 4.5 MW / 9 MWh container, repeated across sites, single MSA. 4) Use first deployment as ESG case study at Expo Real / IFM marketing.\n**Time to entry:** 9–15 months (existing PV+BESS playbook, landlord procurement is fast).\n**Investment:** €200K–500K (portfolio-deal sales motion, MSA template, landlord references).\n\n### Rank 7 — NAICS 334413 Semiconductor Manufacturing · Composite 5.11 · investigate\n\n**Rationale.** Composite 5.11 lowest-but-passing — high ODI (6.21 — fab PQ underserved, esp. cert dossier and ITIC ride-through gap) but the lowest feature fit (4.69 — Mein Solar features designed for energy markets, not millisecond ride-through), worst constraint sheet (3.5; 6 mitigable inc. 1 high CAPEX-narrative + 4 medium FM Global / fab-grade fire), worst VN position (3.0 deep_component into fab utilities horizontal). Entry blocked without fab reference + SEMI F47 qualification.\n**Entry strategy.** 1) DEFER as standalone vertical. 2) Pursue opportunistically only if approached by a fab GC (Wolfspeed, ESMC, Infineon Dresden) for PV+BESS self-consumption add-on (not ride-through). 3) If pursued: invest in SEMI F47 qual + FM Global DS 5-33 fire study + ITIC curve compliance test bench. 4) Consider channel partnership with ABB PCS100 / Piller as BESS-supply role only.\n**Time to entry:** 24–36 months (fab build cycles + qualification).\n**Investment:** €1M–3M (qualification testing, SEMI F47, fab-grade fire study, reference subsidy).\n\n### Rank 8 — NAICS 221122 Electric Power Distribution (DSO Netzbooster) · Composite 5.08 · investigate\n\n**Rationale.** Composite 5.08 the lowest — strong ODI (5.66) and predictable contracts but crushed by low job coverage (5.0 — DSO owns all dispatch and asset O&M; EPC role limited to DEFINE/PREPARE/EXECUTE/MONITOR), the highest constraint cost penalty after fab (4.5; 6 mitigable inc. 1 high CAPEX requiring §11 EnWG regulatory recognition), and ABB/Siemens/Hitachi/Nidec near-monopoly on DSO procurement (4.0).\n**Entry strategy.** 1) Target 2 mid-size DSOs (Bayernwerk, Stromnetz Hamburg, LEW Verteilnetz) for Netzbooster pilots <10 MWh — below T1 procurement threshold. 2) Lead with §14a EnWG flex-procurement use case (avoiding rate-base CAPEX). 3) Subcontract role to a T1 incumbent (Hitachi Energy, Nidec ASI) on EU-tender bids as project-EPC subsidiary. 4) DEFER until §11 EnWG Netzbooster regulatory clarity (BNetzA decision expected late 2026).\n**Time to entry:** 24–36 months (DSO procurement cycle + regulatory).\n**Investment:** €500K–1.5M (DSO sales motion, IEC 61850 interop dossier, Hitachi/Nidec partnership).\n\n---"
-    },
-    {
-      "title": "Cross-cutting observations",
-      "content": "| Observation | Detail |\n|---|---|\n| **No pursue-grade markets** | All 8 in 5.0–7.5 band. Indicates Mein Solar's product is broadly applicable but lacks a dominant breakout vertical. Strategic R&D on grid-forming + PV-hybrid packaging would lift 221118 and 221114 toward 7.5+. |\n| **Top-3 cluster is barbell** | Established utility (221118, 221114) + greenfield emerging (493120) — different sales motions, low cannibalization. Run as parallel sprints. |\n| **Incumbent vulnerability is the dragnet** | very_high switching cost (10–20 yr asset life) + 2+ dominant Tier-1 integrators in every utility-tier market = consistent –2 to –3 composite penalty across 4 markets. |\n| **Grid-Code Certification Delivery (F5)** | Highest-overall-fit feature in 7 of 8 markets (6.33–8.11). Cert-as-the-product is the through-line marketing message. |\n| **AFIR 2030 + Inertia 2026** | Two time-boxed regulatory catalysts in 488310 (port shore-power 2030) and 221115 (DE inertia-service prequal Jan 2026). Window to act ≤24 months. |\n| **No knockouts** | All 8 markets cleared Step 08. Per-market constraint deductions concentrate in 334413 (–6.5), 221122 (–5.5), 531120 (–5.0) where mitigation costs compound. |\n\n---"
-    },
-    {
-      "title": "Structured Data",
-      "content": "```json\n{\n  \"component\": \"market_prioritization_final_ranking\",\n  \"step\": \"14_final_ranking\",\n  \"product_name\": \"EPC für Großbatteriespeicher\",\n  \"vendor_name\": \"Mein Solar GmbH\",\n  \"technology_class\": \"Large-Scale Battery Energy Storage System EPC\",\n  \"unspsc_code\": null,\n  \"unspsc_title\": null,\n  \"custom_product_group\": \"Battery Energy Storage System EPC Services\",\n  \"commodity_functional_promise\": \"Deliver operational grid-connected electrical energy storage assets as turnkey capital projects with single-source engineering, procurement, construction, and grid-code certification\",\n  \"weights\": {\n    \"odi_opportunity\": 0.25,\n    \"feature_fit\": 0.15,\n    \"constraint_compatibility\": 0.15,\n    \"job_coverage\": 0.15,\n    \"vn_hierarchy\": 0.10,\n    \"incumbent_vulnerability\": 0.20\n  },\n  \"total_markets_evaluated\": 8,\n  \"markets_eliminated_by_constraints\": 0,\n  \"ranked_markets\": [\n    {\n      \"rank\": 1,\n      \"market_name\": \"Standalone BESS / Independent Power Producers\",\n      \"naics_code\": \"221118\",\n      \"odi_opportunity_score\": 4.95,\n      \"feature_fit_score\": 6.50,\n      \"constraint_compatibility_score\": 9.00,\n      \"job_coverage_score\": 10.00,\n      \"vn_hierarchy_score\": 9.00,\n      \"incumbent_vulnerability_score\": 3.50,\n      \"composite_score\": 6.66,\n      \"recommendation\": \"investigate\",\n      \"recommendation_rationale\": \"Max job coverage (10.0) and customer-facing VN (9.0) anchored by clean constraint sheet (9.0); held back by lowest ODI (4.95 — IPPs well-served by Tesla/Sungrow/Fluence) and weakest incumbent vulnerability (3.5).\",\n      \"entry_strategy_sketch\": \"1. Target 2-3 mid-tier IPP developers without in-house EPC (Eco Stor merchant, Encavis BESS, Trianel) at 5-20 MWh. 2. Prove FGW TR8 dossier <8 months as wedge metric. 3. Partner with merchant trader (Entrix, Suena, Next Kraftwerke) for revenue-stack underwriting. 4. Publish reference + cost-of-capital comparison vs. turnkey OEMs.\",\n      \"estimated_time_to_entry\": \"9-15 months\",\n      \"estimated_investment\": \"EUR 300K-800K\"\n    },\n    {\n      \"rank\": 2,\n      \"market_name\": \"PV+BESS Solar Independent Power Producers\",\n      \"naics_code\": \"221114\",\n      \"odi_opportunity_score\": 5.70,\n      \"feature_fit_score\": 6.45,\n      \"constraint_compatibility_score\": 7.50,\n      \"job_coverage_score\": 10.00,\n      \"vn_hierarchy_score\": 6.00,\n      \"incumbent_vulnerability_score\": 5.00,\n      \"composite_score\": 6.62,\n      \"recommendation\": \"investigate\",\n      \"recommendation_rationale\": \"Cleanest strategic fit — full job coverage (10.0), Mein Solar PV-EPC incumbency differentiates vs. BESS pure-plays, and F5 Grid-Code Cert Delivery scores 7.78 (highest of any market). ODI 5.70 reflects retrofit-BESS opportunity on operational PV (need #9 FGW TR8 slip, opp 16).\",\n      \"entry_strategy_sketch\": \"1. Target Mein Solar's existing PV customer base for retrofit BESS on operational parks. 2. Lead with single-grid-connection / single-cert-dossier vs. split-contract. 3. Productize PV+BESS hybrid uplift SKU (4.5 MW / 9 MWh, fixed TR8 schedule, 12-week install). 4. Co-market with merchant trader for revenue stacking on PV PPA tail.\",\n      \"estimated_time_to_entry\": \"3-6 months\",\n      \"estimated_investment\": \"EUR 150K-400K\"\n    },\n    {\n      \"rank\": 3,\n      \"market_name\": \"Cold Storage Peak-Shaving & Resilience\",\n      \"naics_code\": \"493120\",\n      \"odi_opportunity_score\": 6.05,\n      \"feature_fit_score\": 5.81,\n      \"constraint_compatibility_score\": 6.00,\n      \"job_coverage_score\": 7.50,\n      \"vn_hierarchy_score\": 6.00,\n      \"incumbent_vulnerability_score\": 7.00,\n      \"composite_score\": 6.41,\n      \"recommendation\": \"investigate\",\n      \"recommendation_rationale\": \"Best incumbent vulnerability in set (7.0 — no storage incumbent, only diesel/tariff/none) + solid ODI (6.05) + good job coverage (7.5). 24/7 refrigeration is structurally excellent peak-shaving target. Held back by C&I education gap (5 mitigable, 3 medium inc. CAPEX education).\",\n      \"entry_strategy_sketch\": \"1. Target 3-5 mid-tier DE cold-chain operators (Nordfrost, NewCold, Frigoscandia DACH). 2. Lead with quantified Section 19 StromNEV peak-shaving + spoilage-resilience case, not arbitrage. 3. Offer BESS-as-a-Service + KfW 295/296 financing to remove CAPEX education barrier. 4. Build first reference site as flagship; publish at Logistikkongress/VDKL.\",\n      \"estimated_time_to_entry\": \"12-18 months\",\n      \"estimated_investment\": \"EUR 400K-900K\"\n    },\n    {\n      \"rank\": 4,\n      \"market_name\": \"Wind+BESS Hybrid Parks\",\n      \"naics_code\": \"221115\",\n      \"odi_opportunity_score\": 5.75,\n      \"feature_fit_score\": 6.11,\n      \"constraint_compatibility_score\": 9.50,\n      \"job_coverage_score\": 7.50,\n      \"vn_hierarchy_score\": 6.00,\n      \"incumbent_vulnerability_score\": 4.00,\n      \"composite_score\": 6.30,\n      \"recommendation\": \"investigate\",\n      \"recommendation_rationale\": \"Cleanest constraint sheet in set (9.5, only grid-forming firmware cert as low mitigable) + ODI 5.75 with time-boxed catalyst (DE inertia-service prequal opens Jan 2026). Job coverage 7.5 (4 YES + 4 partial). Vestas/SGRE OEM packages limit incumbent vulnerability (4.0).\",\n      \"entry_strategy_sketch\": \"1. Target 2 mid-size onshore wind developers (Energiequelle, WPD, ABO Wind) with 30-80 MW operational parks. 2. Prove FGW TR3 grid-forming + TR8 plant cert delivery <9 months as inertia-service wedge. 3. Partner with PCS firmware vendor (Sungrow Power Stack, SMA) for grid-forming stack. 4. Bid inertia-service Festpreis tender Q2 2026.\",\n      \"estimated_time_to_entry\": \"12-18 months\",\n      \"estimated_investment\": \"EUR 250K-600K\"\n    },\n    {\n      \"rank\": 5,\n      \"market_name\": \"Port Electrification — Shore Power, Crane, Ferry Charging\",\n      \"naics_code\": \"488310\",\n      \"odi_opportunity_score\": 6.57,\n      \"feature_fit_score\": 5.80,\n      \"constraint_compatibility_score\": 5.50,\n      \"job_coverage_score\": 7.50,\n      \"vn_hierarchy_score\": 6.00,\n      \"incumbent_vulnerability_score\": 5.50,\n      \"composite_score\": 6.16,\n      \"recommendation\": \"investigate\",\n      \"recommendation_rationale\": \"Highest ODI in set (6.57 — 18/25 needs underserved, AFIR 2030 mandate creates schedule pressure) + emerging incumbent profile (5.5). Constraint penalty 5.5 (6 mitigable inc. salt-air IP66, ISPS, EU-content cells). VOB/VgV bid capability gap is binding blocker without joint-bid partner.\",\n      \"entry_strategy_sketch\": \"1. Joint-bid with Tier-1 port integrator (Siemens Mobility, ABB Marine, Cavotec) on next HHLA/NPorts/BLG OPS tender — Mein Solar supplies BESS, partner brings ISPS + port reference. 2. Productize OPS Buffer + EV-Crane Hybrid Storage SKU at 4.5-9 MW. 3. Pre-engineer salt-air hardening (IP66, C5-M, stainless) as standard add-on. 4. Pre-wire EU Battery Passport into EPC contract.\",\n      \"estimated_time_to_entry\": \"18-30 months\",\n      \"estimated_investment\": \"EUR 600K-1.5M\"\n    },\n    {\n      \"rank\": 6,\n      \"market_name\": \"Commercial & Industrial Real-Estate Behind-the-Meter Storage\",\n      \"naics_code\": \"531120\",\n      \"odi_opportunity_score\": 5.61,\n      \"feature_fit_score\": 6.00,\n      \"constraint_compatibility_score\": 5.00,\n      \"job_coverage_score\": 8.75,\n      \"vn_hierarchy_score\": 6.00,\n      \"incumbent_vulnerability_score\": 6.00,\n      \"composite_score\": 6.16,\n      \"recommendation\": \"investigate\",\n      \"recommendation_rationale\": \"Strong job coverage (8.75, 7/8 steps) + fragmented incumbent landscape (6.0 — Voltfang, Tesvolt, Commeo, in-house FM all sub-scale). Heaviest mitigable load in set (5.0; 7 mitigable inc. MV headroom on retail/office + Baugenehmigung discretion). Single-source-EPC pitch resonates with landlords.\",\n      \"entry_strategy_sketch\": \"1. Target 2-3 mid-cap logistics/retail-park lessors (CTP, GARBE, Panattoni DE, Real I.S.) with 5-15 site portfolios. 2. Bundle BESS into PV+BESS+EV-charging tenant-resilience package. 3. Productize portfolio-deal SKU (same container, repeated across sites, single MSA). 4. ESG case study at Expo Real / IFM marketing.\",\n      \"estimated_time_to_entry\": \"9-15 months\",\n      \"estimated_investment\": \"EUR 200K-500K\"\n    },\n    {\n      \"rank\": 7,\n      \"market_name\": \"Semiconductor Fab Power-Quality & Ride-Through\",\n      \"naics_code\": \"334413\",\n      \"odi_opportunity_score\": 6.21,\n      \"feature_fit_score\": 4.69,\n      \"constraint_compatibility_score\": 3.50,\n      \"job_coverage_score\": 7.50,\n      \"vn_hierarchy_score\": 3.00,\n      \"incumbent_vulnerability_score\": 4.50,\n      \"composite_score\": 5.11,\n      \"recommendation\": \"investigate\",\n      \"recommendation_rationale\": \"Lowest-but-passing — high ODI (6.21, cert dossier + ITIC ride-through underserved) but lowest feature fit (4.69 — Mein Solar features designed for energy markets, not millisecond ride-through), worst constraint sheet (3.5; 6 mitigable inc. 1 high CAPEX-narrative + 4 medium FM Global), worst VN position (3.0 deep component). No fab reference = effectively blocked.\",\n      \"entry_strategy_sketch\": \"1. DEFER as standalone vertical. 2. Pursue opportunistically only if approached by fab GC (Wolfspeed, ESMC, Infineon Dresden) for PV+BESS self-consumption add-on, not ride-through. 3. If pursued: invest in SEMI F47 qualification + FM Global DS 5-33 fire study + ITIC test bench. 4. Consider channel partnership with ABB PCS100 / Piller as BESS-supply role only.\",\n      \"estimated_time_to_entry\": \"24-36 months\",\n      \"estimated_investment\": \"EUR 1M-3M\"\n    },\n    {\n      \"rank\": 8,\n      \"market_name\": \"DSO-Owned Netzbooster Storage\",\n      \"naics_code\": \"221122\",\n      \"odi_opportunity_score\": 5.66,\n      \"feature_fit_score\": 5.58,\n      \"constraint_compatibility_score\": 4.50,\n      \"job_coverage_score\": 5.00,\n      \"vn_hierarchy_score\": 6.00,\n      \"incumbent_vulnerability_score\": 4.00,\n      \"composite_score\": 5.08,\n      \"recommendation\": \"investigate\",\n      \"recommendation_rationale\": \"Lowest composite — strong ODI (5.66) and predictable contracts but crushed by low job coverage (5.0, DSO owns dispatch + O&M; EPC role limited to 4/8 steps), high constraint penalty (4.5; 6 mitigable inc. 1 high requiring Section 11 EnWG recognition), and ABB/Siemens/Hitachi/Nidec near-monopoly on DSO procurement (4.0).\",\n      \"entry_strategy_sketch\": \"1. Target 2 mid-size DSOs (Bayernwerk, Stromnetz Hamburg, LEW Verteilnetz) for Netzbooster pilots <10 MWh, below T1 procurement threshold. 2. Lead with Section 14a EnWG flex-procurement use case (avoiding rate-base CAPEX). 3. Subcontract role to T1 incumbent (Hitachi Energy, Nidec ASI) on EU-tender bids as project-EPC subsidiary. 4. DEFER until Section 11 EnWG Netzbooster regulatory clarity (BNetzA decision late 2026).\",\n      \"estimated_time_to_entry\": \"24-36 months\",\n      \"estimated_investment\": \"EUR 500K-1.5M\"\n    }\n  ],\n  \"executive_summary\": \"8 markets cleared Step 08 with zero knockouts. No market clears the 7.5 pursue threshold; all 8 fall in the 5.0-7.5 investigate band. Top cluster led by 221118 IPP (6.66), 221114 PV+BESS (6.62) and 493120 Refrigerated Warehousing (6.41) — a barbell of incumbent-dense utility markets where Mein Solar has native capability and a wide-open emerging market with no real storage incumbents. Biggest cross-market risk is incumbent intensity in the established utility tier (Tesla, Sungrow, Fluence, ABB) — IPP and DSO scores dragged down by 2+ dominant integrators. Recommended next step: parallel customer-discovery sprints in 221118, 221114 and 493120 before committing CAPEX to fab/port verticals that need 18+ month references.\",\n  \"recommendation_distribution\": {\n    \"pursue\": 0,\n    \"investigate\": 8,\n    \"defer\": 0,\n    \"no_go\": 0\n  },\n  \"qa\": {\n    \"all_markets_above_threshold\": true,\n    \"all_markets_have_six_component_scores\": true,\n    \"weights_sum_to_one\": true,\n    \"scoring_deterministic_per_spec\": true,\n    \"knockout_safety_check_passed\": true,\n    \"no_forced_top_n_cutoff\": true\n  }\n}\n```"
-    }
-  ],
-  "tables": [
-    {
-      "headers": [
-        "#",
-        "Market",
-        "NAICS",
-        "ODI",
-        "Fit",
-        "Constr",
-        "Job",
-        "VN",
-        "Incum",
-        "**Comp**",
-        "Rec"
-      ],
-      "rows": [
-        {
-          "#": "1",
-          "Market": "Other Electric Power Generation (Standalone BESS / IPP)",
-          "NAICS": "221118",
-          "ODI": "4.95",
-          "Fit": "6.50",
-          "Constr": "9.00",
-          "Job": "10.00",
-          "VN": "9.00",
-          "Incum": "3.50",
-          "**Comp**": "**6.66**",
-          "Rec": "investigate"
-        },
-        {
-          "#": "2",
-          "Market": "Solar Electric Power Generation (PV+BESS)",
-          "NAICS": "221114",
-          "ODI": "5.70",
-          "Fit": "6.45",
-          "Constr": "7.50",
-          "Job": "10.00",
-          "VN": "6.00",
-          "Incum": "5.00",
-          "**Comp**": "**6.62**",
-          "Rec": "investigate"
-        },
-        {
-          "#": "3",
-          "Market": "Refrigerated Warehousing & Storage",
-          "NAICS": "493120",
-          "ODI": "6.05",
-          "Fit": "5.81",
-          "Constr": "6.00",
-          "Job": "7.50",
-          "VN": "6.00",
-          "Incum": "7.00",
-          "**Comp**": "**6.41**",
-          "Rec": "investigate"
-        },
-        {
-          "#": "4",
-          "Market": "Wind Electric Power Generation (Wind+BESS)",
-          "NAICS": "221115",
-          "ODI": "5.75",
-          "Fit": "6.11",
-          "Constr": "9.50",
-          "Job": "7.50",
-          "VN": "6.00",
-          "Incum": "4.00",
-          "**Comp**": "**6.30**",
-          "Rec": "investigate"
-        },
-        {
-          "#": "5",
-          "Market": "Port and Harbor Operations",
-          "NAICS": "488310",
-          "ODI": "6.57",
-          "Fit": "5.80",
-          "Constr": "5.50",
-          "Job": "7.50",
-          "VN": "6.00",
-          "Incum": "5.50",
-          "**Comp**": "**6.16**",
-          "Rec": "investigate"
-        },
-        {
-          "#": "6",
-          "Market": "Lessors of Nonresidential Buildings (C&I BTM)",
-          "NAICS": "531120",
-          "ODI": "5.61",
-          "Fit": "6.00",
-          "Constr": "5.00",
-          "Job": "8.75",
-          "VN": "6.00",
-          "Incum": "6.00",
-          "**Comp**": "**6.16**",
-          "Rec": "investigate"
-        },
-        {
-          "#": "7",
-          "Market": "Semiconductor & Related Device Mfg (Fab PQ)",
-          "NAICS": "334413",
-          "ODI": "6.21",
-          "Fit": "4.69",
-          "Constr": "3.50",
-          "Job": "7.50",
-          "VN": "3.00",
-          "Incum": "4.50",
-          "**Comp**": "**5.11**",
-          "Rec": "investigate"
-        },
-        {
-          "#": "8",
-          "Market": "Electric Power Distribution (DSO Netzbooster)",
-          "NAICS": "221122",
-          "ODI": "5.66",
-          "Fit": "5.58",
-          "Constr": "4.50",
-          "Job": "5.00",
-          "VN": "6.00",
-          "Incum": "4.00",
-          "**Comp**": "**5.08**",
-          "Rec": "investigate"
-        }
-      ]
-    },
-    {
-      "headers": [
-        "Market",
-        "ODI source",
-        "Fit source",
-        "Constraint deductions",
-        "Job coverage",
-        "VN position",
-        "Incumbent rationale"
-      ],
-      "rows": [
-        {
-          "Market": "221118",
-          "ODI source": "avg opp 9.89/20",
-          "Fit source": "6 features avg 6.50",
-          "Constraint deductions": "1 mitigable medium → −1.0",
-          "Job coverage": "8/8 steps YES",
-          "VN position": "L5 customer_facing (BESS = whole asset) +0 depth",
-          "Incumbent rationale": "very_high switching, 2+ dominant (Tesla/Sungrow/Fluence); est. mkt"
-        },
-        {
-          "Market": "221114",
-          "ODI source": "avg opp 11.39/20",
-          "Fit source": "6 features avg 6.45",
-          "Constraint deductions": "4 mitigable (1m,3l) → −2.5",
-          "Job coverage": "8/8 steps YES",
-          "VN position": "L5 mid_chain (BESS adjacent to PV)",
-          "Incumbent rationale": "est. mkt; PV-EPC heritage = differentiator vs Enerparc/BayWa r.e."
-        },
-        {
-          "Market": "221115",
-          "ODI source": "avg opp 11.50/20",
-          "Fit source": "6 features avg 6.11",
-          "Constraint deductions": "1 mitigable low → −0.5",
-          "Job coverage": "4 YES + 4 partial = 6/8",
-          "VN position": "L5 mid_chain (retrofit/co-loc)",
-          "Incumbent rationale": "est. mkt; Vestas/SGRE OEM dominance"
-        },
-        {
-          "Market": "531120",
-          "ODI source": "avg opp 11.22/20",
-          "Fit source": "6 features avg 6.00",
-          "Constraint deductions": "7 mitigable (3m,4l) → −5.0",
-          "Job coverage": "7/8 steps YES",
-          "VN position": "L5 mid_chain (building infra)",
-          "Incumbent rationale": "growing; fragmented (Voltfang, Tesvolt, Commeo)"
-        },
-        {
-          "Market": "221122",
-          "ODI source": "avg opp 11.31/20",
-          "Fit source": "6 features avg 5.58",
-          "Constraint deductions": "6 mitigable (1h,2m,3l) → −5.5",
-          "Job coverage": "4/8 steps (DEFINE/PREPARE/EXECUTE/MONITOR)",
-          "VN position": "L5 mid_chain under L6f Flex/Congestion",
-          "Incumbent rationale": "growing; ABB/Siemens/Hitachi dominant DSO procurement"
-        },
-        {
-          "Market": "488310",
-          "ODI source": "avg opp 13.14/20",
-          "Fit source": "6 features avg 5.80",
-          "Constraint deductions": "6 mitigable (3m,3l) → −4.5",
-          "Job coverage": "4 YES + 4 partial = 6/8",
-          "VN position": "L5 mid_chain under L6H-ENE",
-          "Incumbent rationale": "emerging (AFIR 2030 mandate); Siemens/ABB present, no BESS specialist"
-        },
-        {
-          "Market": "493120",
-          "ODI source": "avg opp 12.10/20",
-          "Fit source": "6 features avg 5.81",
-          "Constraint deductions": "5 mitigable (3m,2l) → −4.0",
-          "Job coverage": "6 YES + 2 false = 6/8",
-          "VN position": "L5 mid_chain (utility plant addition)",
-          "Incumbent rationale": "emerging; **no incumbent storage** (diesel/tariff/none)"
-        },
-        {
-          "Market": "334413",
-          "ODI source": "avg opp 12.42/20",
-          "Fit source": "6 features avg 4.69",
-          "Constraint deductions": "6 mitigable (1h,4m,1l) → −6.5",
-          "Job coverage": "6 YES + 2 false = 6/8",
-          "VN position": "L5 deep_component under L6H-POWER",
-          "Incumbent rationale": "emerging-for-BESS but ABB PCS100/Piller dominate adjacent PQ"
-        }
-      ]
-    },
-    {
-      "headers": [
-        "Observation",
-        "Detail"
-      ],
-      "rows": [
-        {
-          "Observation": "**No pursue-grade markets**",
-          "Detail": "All 8 in 5.0–7.5 band. Indicates Mein Solar's product is broadly applicable but lacks a dominant breakout vertical. Strategic R&D on grid-forming + PV-hybrid packaging would lift 221118 and 221114 toward 7.5+."
-        },
-        {
-          "Observation": "**Top-3 cluster is barbell**",
-          "Detail": "Established utility (221118, 221114) + greenfield emerging (493120) — different sales motions, low cannibalization. Run as parallel sprints."
-        },
-        {
-          "Observation": "**Incumbent vulnerability is the dragnet**",
-          "Detail": "very_high switching cost (10–20 yr asset life) + 2+ dominant Tier-1 integrators in every utility-tier market = consistent –2 to –3 composite penalty across 4 markets."
-        },
-        {
-          "Observation": "**Grid-Code Certification Delivery (F5)**",
-          "Detail": "Highest-overall-fit feature in 7 of 8 markets (6.33–8.11). Cert-as-the-product is the through-line marketing message."
-        },
-        {
-          "Observation": "**AFIR 2030 + Inertia 2026**",
-          "Detail": "Two time-boxed regulatory catalysts in 488310 (port shore-power 2030) and 221115 (DE inertia-service prequal Jan 2026). Window to act ≤24 months."
-        },
-        {
-          "Observation": "**No knockouts**",
-          "Detail": "All 8 markets cleared Step 08. Per-market constraint deductions concentrate in 334413 (–6.5), 221122 (–5.5), 531120 (–5.0) where mitigation costs compound."
-        }
-      ]
-    }
-  ],
-  "entities": [
-    {
-      "component": "market_prioritization_final_ranking",
-      "step": "14_final_ranking",
-      "product_name": "EPC für Großbatteriespeicher",
-      "vendor_name": "Mein Solar GmbH",
-      "technology_class": "Large-Scale Battery Energy Storage System EPC",
-      "unspsc_code": null,
-      "unspsc_title": null,
-      "custom_product_group": "Battery Energy Storage System EPC Services",
-      "commodity_functional_promise": "Deliver operational grid-connected electrical energy storage assets as turnkey capital projects with single-source engineering, procurement, construction, and grid-code certification",
-      "weights": {
-        "odi_opportunity": 0.25,
-        "feature_fit": 0.15,
-        "constraint_compatibility": 0.15,
-        "job_coverage": 0.15,
-        "vn_hierarchy": 0.1,
-        "incumbent_vulnerability": 0.2
+      "rank": 1,
+      "slug": "bess_power_generation",
+      "marketName": "Standalone BESS / Independent Power Producers",
+      "naicsCode": "221118",
+      "scores": {
+        "odi": 4.95,
+        "featureFit": 6.5,
+        "constraintCompatibility": 9.0,
+        "jobCoverage": 10.0,
+        "vnHierarchy": 9.0,
+        "incumbentVulnerability": 3.5,
+        "composite": 6.66
       },
-      "total_markets_evaluated": 8,
-      "markets_eliminated_by_constraints": 0,
-      "ranked_markets": [
-        {
-          "rank": 1,
-          "market_name": "Standalone BESS / Independent Power Producers",
-          "naics_code": "221118",
-          "odi_opportunity_score": 4.95,
-          "feature_fit_score": 6.5,
-          "constraint_compatibility_score": 9.0,
-          "job_coverage_score": 10.0,
-          "vn_hierarchy_score": 9.0,
-          "incumbent_vulnerability_score": 3.5,
-          "composite_score": 6.66,
-          "recommendation": "investigate",
-          "recommendation_rationale": "Max job coverage (10.0) and customer-facing VN (9.0) anchored by clean constraint sheet (9.0); held back by lowest ODI (4.95 — IPPs well-served by Tesla/Sungrow/Fluence) and weakest incumbent vulnerability (3.5).",
-          "entry_strategy_sketch": "1. Target 2-3 mid-tier IPP developers without in-house EPC (Eco Stor merchant, Encavis BESS, Trianel) at 5-20 MWh. 2. Prove FGW TR8 dossier <8 months as wedge metric. 3. Partner with merchant trader (Entrix, Suena, Next Kraftwerke) for revenue-stack underwriting. 4. Publish reference + cost-of-capital comparison vs. turnkey OEMs.",
-          "estimated_time_to_entry": "9-15 months",
-          "estimated_investment": "EUR 300K-800K"
-        },
-        {
-          "rank": 2,
-          "market_name": "PV+BESS Solar Independent Power Producers",
-          "naics_code": "221114",
-          "odi_opportunity_score": 5.7,
-          "feature_fit_score": 6.45,
-          "constraint_compatibility_score": 7.5,
-          "job_coverage_score": 10.0,
-          "vn_hierarchy_score": 6.0,
-          "incumbent_vulnerability_score": 5.0,
-          "composite_score": 6.62,
-          "recommendation": "investigate",
-          "recommendation_rationale": "Cleanest strategic fit — full job coverage (10.0), Mein Solar PV-EPC incumbency differentiates vs. BESS pure-plays, and F5 Grid-Code Cert Delivery scores 7.78 (highest of any market). ODI 5.70 reflects retrofit-BESS opportunity on operational PV (need #9 FGW TR8 slip, opp 16).",
-          "entry_strategy_sketch": "1. Target Mein Solar's existing PV customer base for retrofit BESS on operational parks. 2. Lead with single-grid-connection / single-cert-dossier vs. split-contract. 3. Productize PV+BESS hybrid uplift SKU (4.5 MW / 9 MWh, fixed TR8 schedule, 12-week install). 4. Co-market with merchant trader for revenue stacking on PV PPA tail.",
-          "estimated_time_to_entry": "3-6 months",
-          "estimated_investment": "EUR 150K-400K"
-        },
-        {
-          "rank": 3,
-          "market_name": "Cold Storage Peak-Shaving & Resilience",
-          "naics_code": "493120",
-          "odi_opportunity_score": 6.05,
-          "feature_fit_score": 5.81,
-          "constraint_compatibility_score": 6.0,
-          "job_coverage_score": 7.5,
-          "vn_hierarchy_score": 6.0,
-          "incumbent_vulnerability_score": 7.0,
-          "composite_score": 6.41,
-          "recommendation": "investigate",
-          "recommendation_rationale": "Best incumbent vulnerability in set (7.0 — no storage incumbent, only diesel/tariff/none) + solid ODI (6.05) + good job coverage (7.5). 24/7 refrigeration is structurally excellent peak-shaving target. Held back by C&I education gap (5 mitigable, 3 medium inc. CAPEX education).",
-          "entry_strategy_sketch": "1. Target 3-5 mid-tier DE cold-chain operators (Nordfrost, NewCold, Frigoscandia DACH). 2. Lead with quantified Section 19 StromNEV peak-shaving + spoilage-resilience case, not arbitrage. 3. Offer BESS-as-a-Service + KfW 295/296 financing to remove CAPEX education barrier. 4. Build first reference site as flagship; publish at Logistikkongress/VDKL.",
-          "estimated_time_to_entry": "12-18 months",
-          "estimated_investment": "EUR 400K-900K"
-        },
-        {
-          "rank": 4,
-          "market_name": "Wind+BESS Hybrid Parks",
-          "naics_code": "221115",
-          "odi_opportunity_score": 5.75,
-          "feature_fit_score": 6.11,
-          "constraint_compatibility_score": 9.5,
-          "job_coverage_score": 7.5,
-          "vn_hierarchy_score": 6.0,
-          "incumbent_vulnerability_score": 4.0,
-          "composite_score": 6.3,
-          "recommendation": "investigate",
-          "recommendation_rationale": "Cleanest constraint sheet in set (9.5, only grid-forming firmware cert as low mitigable) + ODI 5.75 with time-boxed catalyst (DE inertia-service prequal opens Jan 2026). Job coverage 7.5 (4 YES + 4 partial). Vestas/SGRE OEM packages limit incumbent vulnerability (4.0).",
-          "entry_strategy_sketch": "1. Target 2 mid-size onshore wind developers (Energiequelle, WPD, ABO Wind) with 30-80 MW operational parks. 2. Prove FGW TR3 grid-forming + TR8 plant cert delivery <9 months as inertia-service wedge. 3. Partner with PCS firmware vendor (Sungrow Power Stack, SMA) for grid-forming stack. 4. Bid inertia-service Festpreis tender Q2 2026.",
-          "estimated_time_to_entry": "12-18 months",
-          "estimated_investment": "EUR 250K-600K"
-        },
-        {
-          "rank": 5,
-          "market_name": "Port Electrification — Shore Power, Crane, Ferry Charging",
-          "naics_code": "488310",
-          "odi_opportunity_score": 6.57,
-          "feature_fit_score": 5.8,
-          "constraint_compatibility_score": 5.5,
-          "job_coverage_score": 7.5,
-          "vn_hierarchy_score": 6.0,
-          "incumbent_vulnerability_score": 5.5,
-          "composite_score": 6.16,
-          "recommendation": "investigate",
-          "recommendation_rationale": "Highest ODI in set (6.57 — 18/25 needs underserved, AFIR 2030 mandate creates schedule pressure) + emerging incumbent profile (5.5). Constraint penalty 5.5 (6 mitigable inc. salt-air IP66, ISPS, EU-content cells). VOB/VgV bid capability gap is binding blocker without joint-bid partner.",
-          "entry_strategy_sketch": "1. Joint-bid with Tier-1 port integrator (Siemens Mobility, ABB Marine, Cavotec) on next HHLA/NPorts/BLG OPS tender — Mein Solar supplies BESS, partner brings ISPS + port reference. 2. Productize OPS Buffer + EV-Crane Hybrid Storage SKU at 4.5-9 MW. 3. Pre-engineer salt-air hardening (IP66, C5-M, stainless) as standard add-on. 4. Pre-wire EU Battery Passport into EPC contract.",
-          "estimated_time_to_entry": "18-30 months",
-          "estimated_investment": "EUR 600K-1.5M"
-        },
-        {
-          "rank": 6,
-          "market_name": "Commercial & Industrial Real-Estate Behind-the-Meter Storage",
-          "naics_code": "531120",
-          "odi_opportunity_score": 5.61,
-          "feature_fit_score": 6.0,
-          "constraint_compatibility_score": 5.0,
-          "job_coverage_score": 8.75,
-          "vn_hierarchy_score": 6.0,
-          "incumbent_vulnerability_score": 6.0,
-          "composite_score": 6.16,
-          "recommendation": "investigate",
-          "recommendation_rationale": "Strong job coverage (8.75, 7/8 steps) + fragmented incumbent landscape (6.0 — Voltfang, Tesvolt, Commeo, in-house FM all sub-scale). Heaviest mitigable load in set (5.0; 7 mitigable inc. MV headroom on retail/office + Baugenehmigung discretion). Single-source-EPC pitch resonates with landlords.",
-          "entry_strategy_sketch": "1. Target 2-3 mid-cap logistics/retail-park lessors (CTP, GARBE, Panattoni DE, Real I.S.) with 5-15 site portfolios. 2. Bundle BESS into PV+BESS+EV-charging tenant-resilience package. 3. Productize portfolio-deal SKU (same container, repeated across sites, single MSA). 4. ESG case study at Expo Real / IFM marketing.",
-          "estimated_time_to_entry": "9-15 months",
-          "estimated_investment": "EUR 200K-500K"
-        },
-        {
-          "rank": 7,
-          "market_name": "Semiconductor Fab Power-Quality & Ride-Through",
-          "naics_code": "334413",
-          "odi_opportunity_score": 6.21,
-          "feature_fit_score": 4.69,
-          "constraint_compatibility_score": 3.5,
-          "job_coverage_score": 7.5,
-          "vn_hierarchy_score": 3.0,
-          "incumbent_vulnerability_score": 4.5,
-          "composite_score": 5.11,
-          "recommendation": "investigate",
-          "recommendation_rationale": "Lowest-but-passing — high ODI (6.21, cert dossier + ITIC ride-through underserved) but lowest feature fit (4.69 — Mein Solar features designed for energy markets, not millisecond ride-through), worst constraint sheet (3.5; 6 mitigable inc. 1 high CAPEX-narrative + 4 medium FM Global), worst VN position (3.0 deep component). No fab reference = effectively blocked.",
-          "entry_strategy_sketch": "1. DEFER as standalone vertical. 2. Pursue opportunistically only if approached by fab GC (Wolfspeed, ESMC, Infineon Dresden) for PV+BESS self-consumption add-on, not ride-through. 3. If pursued: invest in SEMI F47 qualification + FM Global DS 5-33 fire study + ITIC test bench. 4. Consider channel partnership with ABB PCS100 / Piller as BESS-supply role only.",
-          "estimated_time_to_entry": "24-36 months",
-          "estimated_investment": "EUR 1M-3M"
-        },
-        {
-          "rank": 8,
-          "market_name": "DSO-Owned Netzbooster Storage",
-          "naics_code": "221122",
-          "odi_opportunity_score": 5.66,
-          "feature_fit_score": 5.58,
-          "constraint_compatibility_score": 4.5,
-          "job_coverage_score": 5.0,
-          "vn_hierarchy_score": 6.0,
-          "incumbent_vulnerability_score": 4.0,
-          "composite_score": 5.08,
-          "recommendation": "investigate",
-          "recommendation_rationale": "Lowest composite — strong ODI (5.66) and predictable contracts but crushed by low job coverage (5.0, DSO owns dispatch + O&M; EPC role limited to 4/8 steps), high constraint penalty (4.5; 6 mitigable inc. 1 high requiring Section 11 EnWG recognition), and ABB/Siemens/Hitachi/Nidec near-monopoly on DSO procurement (4.0).",
-          "entry_strategy_sketch": "1. Target 2 mid-size DSOs (Bayernwerk, Stromnetz Hamburg, LEW Verteilnetz) for Netzbooster pilots <10 MWh, below T1 procurement threshold. 2. Lead with Section 14a EnWG flex-procurement use case (avoiding rate-base CAPEX). 3. Subcontract role to T1 incumbent (Hitachi Energy, Nidec ASI) on EU-tender bids as project-EPC subsidiary. 4. DEFER until Section 11 EnWG Netzbooster regulatory clarity (BNetzA decision late 2026).",
-          "estimated_time_to_entry": "24-36 months",
-          "estimated_investment": "EUR 500K-1.5M"
-        }
-      ],
-      "executive_summary": "8 markets cleared Step 08 with zero knockouts. No market clears the 7.5 pursue threshold; all 8 fall in the 5.0-7.5 investigate band. Top cluster led by 221118 IPP (6.66), 221114 PV+BESS (6.62) and 493120 Refrigerated Warehousing (6.41) — a barbell of incumbent-dense utility markets where Mein Solar has native capability and a wide-open emerging market with no real storage incumbents. Biggest cross-market risk is incumbent intensity in the established utility tier (Tesla, Sungrow, Fluence, ABB) — IPP and DSO scores dragged down by 2+ dominant integrators. Recommended next step: parallel customer-discovery sprints in 221118, 221114 and 493120 before committing CAPEX to fab/port verticals that need 18+ month references.",
-      "recommendation_distribution": {
-        "pursue": 0,
-        "investigate": 8,
-        "defer": 0,
-        "no_go": 0
+      "recommendation": "investigate",
+      "rationale": "Max job coverage (10.0) and customer-facing VN (9.0) anchored by clean constraint sheet (9.0); held back by lowest ODI (4.95 — IPPs well-served by Tesla/Sungrow/Fluence) and weakest incumbent vulnerability (3.5).",
+      "entryStrategy": "1. Target 2-3 mid-tier IPP developers without in-house EPC (Eco Stor merchant, Encavis BESS, Trianel) at 5-20 MWh. 2. Prove FGW TR8 dossier <8 months as wedge metric. 3. Partner with merchant trader (Entrix, Suena, Next Kraftwerke) for revenue-stack underwriting. 4. Publish reference + cost-of-capital comparison vs. turnkey OEMs.",
+      "timeToEntry": "9-15 months",
+      "estimatedInvestment": "EUR 300K-800K"
+    },
+    {
+      "rank": 2,
+      "slug": "solar_power_generation",
+      "marketName": "PV+BESS Solar Independent Power Producers",
+      "naicsCode": "221114",
+      "scores": {
+        "odi": 5.7,
+        "featureFit": 6.45,
+        "constraintCompatibility": 7.5,
+        "jobCoverage": 10.0,
+        "vnHierarchy": 6.0,
+        "incumbentVulnerability": 5.0,
+        "composite": 6.62
       },
-      "qa": {
-        "all_markets_above_threshold": true,
-        "all_markets_have_six_component_scores": true,
-        "weights_sum_to_one": true,
-        "scoring_deterministic_per_spec": true,
-        "knockout_safety_check_passed": true,
-        "no_forced_top_n_cutoff": true
-      }
+      "recommendation": "investigate",
+      "rationale": "Cleanest strategic fit — full job coverage (10.0), Mein Solar PV-EPC incumbency differentiates vs. BESS pure-plays, and F5 Grid-Code Cert Delivery scores 7.78 (highest of any market). ODI 5.70 reflects retrofit-BESS opportunity on operational PV (need #9 FGW TR8 slip, opp 16).",
+      "entryStrategy": "1. Target Mein Solar's existing PV customer base for retrofit BESS on operational parks. 2. Lead with single-grid-connection / single-cert-dossier vs. split-contract. 3. Productize PV+BESS hybrid uplift SKU (4.5 MW / 9 MWh, fixed TR8 schedule, 12-week install). 4. Co-market with merchant trader for revenue stacking on PV PPA tail.",
+      "timeToEntry": "3-6 months",
+      "estimatedInvestment": "EUR 150K-400K"
+    },
+    {
+      "rank": 3,
+      "slug": "refrigerated_warehousing",
+      "marketName": "Cold Storage Peak-Shaving & Resilience",
+      "naicsCode": "493120",
+      "scores": {
+        "odi": 6.05,
+        "featureFit": 5.81,
+        "constraintCompatibility": 6.0,
+        "jobCoverage": 7.5,
+        "vnHierarchy": 6.0,
+        "incumbentVulnerability": 7.0,
+        "composite": 6.41
+      },
+      "recommendation": "investigate",
+      "rationale": "Best incumbent vulnerability in set (7.0 — no storage incumbent, only diesel/tariff/none) + solid ODI (6.05) + good job coverage (7.5). 24/7 refrigeration is structurally excellent peak-shaving target. Held back by C&I education gap (5 mitigable, 3 medium inc. CAPEX education).",
+      "entryStrategy": "1. Target 3-5 mid-tier DE cold-chain operators (Nordfrost, NewCold, Frigoscandia DACH). 2. Lead with quantified Section 19 StromNEV peak-shaving + spoilage-resilience case, not arbitrage. 3. Offer BESS-as-a-Service + KfW 295/296 financing to remove CAPEX education barrier. 4. Build first reference site as flagship; publish at Logistikkongress/VDKL.",
+      "timeToEntry": "12-18 months",
+      "estimatedInvestment": "EUR 400K-900K"
+    },
+    {
+      "rank": 4,
+      "slug": "wind_power_generation",
+      "marketName": "Wind+BESS Hybrid Parks",
+      "naicsCode": "221115",
+      "scores": {
+        "odi": 5.75,
+        "featureFit": 6.11,
+        "constraintCompatibility": 9.5,
+        "jobCoverage": 7.5,
+        "vnHierarchy": 6.0,
+        "incumbentVulnerability": 4.0,
+        "composite": 6.3
+      },
+      "recommendation": "investigate",
+      "rationale": "Cleanest constraint sheet in set (9.5, only grid-forming firmware cert as low mitigable) + ODI 5.75 with time-boxed catalyst (DE inertia-service prequal opens Jan 2026). Job coverage 7.5 (4 YES + 4 partial). Vestas/SGRE OEM packages limit incumbent vulnerability (4.0).",
+      "entryStrategy": "1. Target 2 mid-size onshore wind developers (Energiequelle, WPD, ABO Wind) with 30-80 MW operational parks. 2. Prove FGW TR3 grid-forming + TR8 plant cert delivery <9 months as inertia-service wedge. 3. Partner with PCS firmware vendor (Sungrow Power Stack, SMA) for grid-forming stack. 4. Bid inertia-service Festpreis tender Q2 2026.",
+      "timeToEntry": "12-18 months",
+      "estimatedInvestment": "EUR 250K-600K"
+    },
+    {
+      "rank": 5,
+      "slug": "port_harbor_operations",
+      "marketName": "Port Electrification — Shore Power, Crane, Ferry Charging",
+      "naicsCode": "488310",
+      "scores": {
+        "odi": 6.57,
+        "featureFit": 5.8,
+        "constraintCompatibility": 5.5,
+        "jobCoverage": 7.5,
+        "vnHierarchy": 6.0,
+        "incumbentVulnerability": 5.5,
+        "composite": 6.16
+      },
+      "recommendation": "investigate",
+      "rationale": "Highest ODI in set (6.57 — 18/25 needs underserved, AFIR 2030 mandate creates schedule pressure) + emerging incumbent profile (5.5). Constraint penalty 5.5 (6 mitigable inc. salt-air IP66, ISPS, EU-content cells). VOB/VgV bid capability gap is binding blocker without joint-bid partner.",
+      "entryStrategy": "1. Joint-bid with Tier-1 port integrator (Siemens Mobility, ABB Marine, Cavotec) on next HHLA/NPorts/BLG OPS tender — Mein Solar supplies BESS, partner brings ISPS + port reference. 2. Productize OPS Buffer + EV-Crane Hybrid Storage SKU at 4.5-9 MW. 3. Pre-engineer salt-air hardening (IP66, C5-M, stainless) as standard add-on. 4. Pre-wire EU Battery Passport into EPC contract.",
+      "timeToEntry": "18-30 months",
+      "estimatedInvestment": "EUR 600K-1.5M"
+    },
+    {
+      "rank": 6,
+      "slug": "nonresidential_buildings",
+      "marketName": "Commercial & Industrial Real-Estate Behind-the-Meter Storage",
+      "naicsCode": "531120",
+      "scores": {
+        "odi": 5.61,
+        "featureFit": 6.0,
+        "constraintCompatibility": 5.0,
+        "jobCoverage": 8.75,
+        "vnHierarchy": 6.0,
+        "incumbentVulnerability": 6.0,
+        "composite": 6.16
+      },
+      "recommendation": "investigate",
+      "rationale": "Strong job coverage (8.75, 7/8 steps) + fragmented incumbent landscape (6.0 — Voltfang, Tesvolt, Commeo, in-house FM all sub-scale). Heaviest mitigable load in set (5.0; 7 mitigable inc. MV headroom on retail/office + Baugenehmigung discretion). Single-source-EPC pitch resonates with landlords.",
+      "entryStrategy": "1. Target 2-3 mid-cap logistics/retail-park lessors (CTP, GARBE, Panattoni DE, Real I.S.) with 5-15 site portfolios. 2. Bundle BESS into PV+BESS+EV-charging tenant-resilience package. 3. Productize portfolio-deal SKU (same container, repeated across sites, single MSA). 4. ESG case study at Expo Real / IFM marketing.",
+      "timeToEntry": "9-15 months",
+      "estimatedInvestment": "EUR 200K-500K"
+    },
+    {
+      "rank": 7,
+      "slug": "semiconductor_manufacturing",
+      "marketName": "Semiconductor Fab Power-Quality & Ride-Through",
+      "naicsCode": "334413",
+      "scores": {
+        "odi": 6.21,
+        "featureFit": 4.69,
+        "constraintCompatibility": 3.5,
+        "jobCoverage": 7.5,
+        "vnHierarchy": 3.0,
+        "incumbentVulnerability": 4.5,
+        "composite": 5.11
+      },
+      "recommendation": "investigate",
+      "rationale": "Lowest-but-passing — high ODI (6.21, cert dossier + ITIC ride-through underserved) but lowest feature fit (4.69 — Mein Solar features designed for energy markets, not millisecond ride-through), worst constraint sheet (3.5; 6 mitigable inc. 1 high CAPEX-narrative + 4 medium FM Global), worst VN position (3.0 deep component). No fab reference = effectively blocked.",
+      "entryStrategy": "1. DEFER as standalone vertical. 2. Pursue opportunistically only if approached by fab GC (Wolfspeed, ESMC, Infineon Dresden) for PV+BESS self-consumption add-on, not ride-through. 3. If pursued: invest in SEMI F47 qualification + FM Global DS 5-33 fire study + ITIC test bench. 4. Consider channel partnership with ABB PCS100 / Piller as BESS-supply role only.",
+      "timeToEntry": "24-36 months",
+      "estimatedInvestment": "EUR 1M-3M"
+    },
+    {
+      "rank": 8,
+      "slug": "electric_power_distribution",
+      "marketName": "DSO-Owned Netzbooster Storage",
+      "naicsCode": "221122",
+      "scores": {
+        "odi": 5.66,
+        "featureFit": 5.58,
+        "constraintCompatibility": 4.5,
+        "jobCoverage": 5.0,
+        "vnHierarchy": 6.0,
+        "incumbentVulnerability": 4.0,
+        "composite": 5.08
+      },
+      "recommendation": "investigate",
+      "rationale": "Lowest composite — strong ODI (5.66) and predictable contracts but crushed by low job coverage (5.0, DSO owns dispatch + O&M; EPC role limited to 4/8 steps), high constraint penalty (4.5; 6 mitigable inc. 1 high requiring Section 11 EnWG recognition), and ABB/Siemens/Hitachi/Nidec near-monopoly on DSO procurement (4.0).",
+      "entryStrategy": "1. Target 2 mid-size DSOs (Bayernwerk, Stromnetz Hamburg, LEW Verteilnetz) for Netzbooster pilots <10 MWh, below T1 procurement threshold. 2. Lead with Section 14a EnWG flex-procurement use case (avoiding rate-base CAPEX). 3. Subcontract role to T1 incumbent (Hitachi Energy, Nidec ASI) on EU-tender bids as project-EPC subsidiary. 4. DEFER until Section 11 EnWG Netzbooster regulatory clarity (BNetzA decision late 2026).",
+      "timeToEntry": "24-36 months",
+      "estimatedInvestment": "EUR 500K-1.5M"
     }
-  ],
-  "has_bom": false
+  ]
 }

@@ -1,288 +1,104 @@
 {
-  "id": "COMPAT_wind_electric_power_generation_ibisworld",
-  "title": "Constraint–Market Compatibility — NAICS 221115 Wind Electric Power Generation",
-  "type": "constraint_compatibility",
-  "market_slug": "wind_electric_power_generation_ibisworld",
-  "is_per_market": true,
-  "sections": [
+  "naicsCode": "221115",
+  "marketName": "Wind+BESS Hybrid Parks",
+  "slug": "wind_power_generation",
+  "architectureDistance": null,
+  "assessments": [
     {
-      "title": "Scope boundary",
-      "content": "Mein Solar's scope within 221115 = **onshore park co-location + standalone grid-booster** at the 4.5 MW / 9 MWh reference scale. Offshore wind (turbines 10–15 MW, parks 500+ MW, TSO HV regime) and TSO transmission-scale grid-boosters are **out of scope** and evaluated separately under 221121. Assessment below applies to onshore co-located / park-adjacent BESS.\n\n---"
+      "constraintName": "MV Grid Connection Capacity",
+      "constraintType": "operational",
+      "threshold": "",
+      "verdict": "NONE",
+      "rationale": "Wind parks own MV collector + park substation + DSO/TSO interconnection. Co-located BESS taps existing MV infrastructure; curtailment implies headroom for charge/discharge.",
+      "mitigation": "",
+      "mitigationCost": "",
+      "mitigationTime": ""
     },
     {
-      "title": "Verdict summary",
-      "content": "| # | Constraint | Type | Threshold | Verdict | Cost | Time |\n|---|---|---|---|---|---|---|\n| 1 | MV Grid Connection Capacity | operational | — | **none** | — | — |\n| 2 | Land Footprint and Siting | physical | 40–80 m²/MWh | **none** | — | — |\n| 3 | Fire-Protection Clearance | regulatory | per VdS | **none** | — | — |\n| 4 | Li-Ion Thermal Runaway Hazard | physical | — | **none** | — | — |\n| 5 | Grid Code Certification Lead Time | regulatory | 6–12 months | **mitigable** | low | 0 mo (native) — upgrade for grid-forming |\n| 6 | Battery Supply Chain Concentration | economic | — | **none** | — | — |\n| 7 | Ambient Temperature Envelope | environmental | −20 to +50 °C | **none** | — | — |\n| 8 | Round-Trip Energy Losses | physical | 10–15% | **none** | — | — |\n| 9 | CAPEX Viability Threshold | economic | €250–400/kWh | **none** | — | — |\n\n**Knockouts: 0.** Market **survives**. 1 mitigable (grid-forming firmware + FGW TR3 grid-forming cert for inertia-service revenue, not the base TR8 plant cert).\n\n---"
+      "constraintName": "Land Footprint and Siting",
+      "constraintType": "physical",
+      "threshold": "",
+      "verdict": "NONE",
+      "rationale": "9 MWh ≈ 720 m² at the 80 m²/MWh bound — trivial against wind park footprints of 0.5–1.5 ha per turbine. Adjacent-to-substation siting is standard.",
+      "mitigation": "",
+      "mitigationCost": "",
+      "mitigationTime": ""
     },
     {
-      "title": "Per-constraint rationale",
-      "content": "### 1. MV Grid Connection Capacity — none\nWind parks already own or control an MV collector (20/30 kV) and a park substation with dedicated DSO/TSO interconnection. Co-located BESS taps into the existing MV infrastructure — no separate grid-upgrade risk. For retrofit onto operational parks, headroom is usually present because curtailment exists by definition (i.e., the interconnection is undersized for wind peaks, which is exactly why BESS is bought).\n\n### 2. Land Footprint and Siting — none\nWind park sites offer abundant land. 9 MWh × 80 m²/MWh ≈ 720 m² — trivial against park footprints (0.5–1.5 ha per turbine). Container placement adjacent to the substation pad is standard.\n\n### 3. Fire-Protection Clearance — none\nWind parks are rural/remote; distances to buildings and property lines are generous. VdS separation and Feuerwehr access are straightforward. >3 MWh cluster rules apply but are comfortably met.\n\n### 4. Li-Ion Thermal Runaway Hazard — none\nMarket-agnostic hazard, contained at the product level by NOVEC 1230, compartmentalization, and deflagration venting. Rural siting further reduces third-party exposure.\n\n### 5. Grid Code Certification Lead Time — mitigable\nBase VDE-AR-N 4110 + FGW TR8 Type B certification is Mein Solar's native capability (no adaptation effort). **However:** to monetize Wind+BESS's anchor revenue stream (inertia services launching Jan 2026, curtailment-capture via grid-forming dispatch), Mein Solar must add **grid-forming PCS firmware + FGW TR3 grid-forming unit certification** to the stack. This is a targeted capability extension, not a barrier to delivery. Mitigation actions: (1) select PCS with grid-forming firmware option (SMA/Sungrow roadmap), (2) commission TR3 grid-forming unit cert with TÜV/DEKRA, (3) register for inertia-service market prequal. Cost: low (<€10K incremental cert cost per project; PCS firmware is SKU-level choice). Time: parallelizable with standard TR8 dossier — no critical-path impact.\n\n### 6. Battery Supply Chain Concentration — none\nMarket-agnostic. Cell concentration applies equally across all 221115/221118/531120/etc. Not a 221115-specific barrier.\n\n### 7. Ambient Temperature Envelope — none\nGerman onshore wind sites (coastal and inland) sit comfortably within −20 to +50 °C. Container HVAC manages the internal setpoint. No extreme-climate exposure in Mein Solar's in-scope geography.\n\n### 8. Round-Trip Energy Losses — none\nPhysics floor applies identically across all markets; does not differentiate 221115 from any other destination. The Wind+BESS revenue stack (€400k/MW/yr) is calculated assuming this loss budget.\n\n### 9. CAPEX Viability Threshold — none\nWind+BESS co-location carries the **strongest €/MW revenue stack of any assessed market** (~€400k/MW/yr — curtailment capture + arbitrage + ancillary services + future inertia). Payback at €250–400/kWh installed is well within the 3–5 year band. Innovation Tender and EEG §50a/§50b mechanisms further improve economics. Business case closes with margin.\n\n---"
+      "constraintName": "Fire-Protection Clearance",
+      "constraintType": "regulatory",
+      "threshold": "",
+      "verdict": "NONE",
+      "rationale": "Rural park siting provides ample separation to buildings and property lines; VdS clearance and Feuerwehr access easily met even for >3 MWh clusters.",
+      "mitigation": "",
+      "mitigationCost": "",
+      "mitigationTime": ""
     },
     {
-      "title": "Conservative review (08b two-question test)",
-      "content": "Re-testing each potential knockout candidate:\n\n- **No candidate had verdict = knockout**, so no downgrade applied.\n- Grid Code Certification (#5) remains **mitigable** (not knockout): FGW TR3 grid-forming cert is a well-defined engineering add, not a physics barrier.\n- Scale-gap concern (Mein Solar 4.5 MW ref vs. offshore 500+ MW parks): **scoped out** at market-boundary level per the VN's explicit \"fits onshore park-co-location; mismatch with TSO/offshore\" finding, not carried as a knockout inside 221115.\n\n---"
+      "constraintName": "Li-Ion Thermal Runaway Hazard",
+      "constraintType": "physical",
+      "threshold": "",
+      "verdict": "NONE",
+      "rationale": "Hazard is market-agnostic and contained at the product level (NOVEC 1230, compartmentalization, deflagration venting). Rural siting further reduces third-party exposure.",
+      "mitigation": "",
+      "mitigationCost": "",
+      "mitigationTime": ""
     },
     {
-      "title": "Implications for downstream scoring",
-      "content": "- **221115 survives constraint gate** and proceeds to Steps 09–12.\n- Single mitigable (grid-forming cert) carries **low cost penalty** into market prioritization.\n- Strategic reinforcement: 221115 is HIGH priority (distance 3), the mitigation is a capability investment that also unlocks revenue stream (inertia services) rather than a pure cost — **net value-accretive mitigation**.\n- Scale mismatch is handled via scope-limiting (onshore only), not constraint knockout. Offshore/TSO opportunities are redirected to 221121 analysis.\n\n---"
+      "constraintName": "Grid Code Certification Lead Time",
+      "constraintType": "regulatory",
+      "threshold": "",
+      "verdict": "MITIGABLE",
+      "rationale": "Base VDE-AR-N 4110 + FGW TR8 Type B is native capability. Incremental add: grid-forming firmware + FGW TR3 grid-forming cert to monetize inertia-service revenue. Capability extension, not a delivery barrier. Mitigation is value-accretive (unlocks revenue) rather than a pure cost.",
+      "mitigation": "Select PCS SKU with grid-forming firmware option (SMA / Sungrow roadmap), Commission FGW TR3 grid-forming unit certification with TÜV or DEKRA, Register asset for BNetzA inertia-service market prequal (launching Jan 2026)",
+      "mitigationCost": "low",
+      "mitigationTime": "parallel to standard TR8 dossier — no critical-path impact"
     },
     {
-      "title": "Structured Data",
-      "content": "```json\n{\n  \"component\": \"constraint_market_compatibility\",\n  \"step\": \"08\",\n  \"product_name\": \"EPC für Großbatteriespeicher\",\n  \"vendor_name\": \"Mein Solar GmbH\",\n  \"technology_class\": \"Large-Scale Battery Energy Storage System EPC\",\n  \"market\": {\n    \"naics_code\": \"221115\",\n    \"naics_title\": \"Wind Electric Power Generation\",\n    \"market_name\": \"Wind+BESS Hybrid Parks\",\n    \"scope_note\": \"Onshore park co-location + standalone grid-booster at 4.5 MW / 9 MWh reference scale. Offshore and TSO-scale transmission-grid boosters excluded (covered under 221121).\"\n  },\n  \"assessments\": [\n    {\n      \"constraint_name\": \"MV Grid Connection Capacity\",\n      \"constraint_type\": \"operational\",\n      \"market_name\": \"Wind+BESS Hybrid Parks\",\n      \"naics_code\": \"221115\",\n      \"verdict\": \"none\",\n      \"mitigation_actions\": [],\n      \"mitigation_cost_estimate\": null,\n      \"mitigation_time_estimate\": null,\n      \"knockout_reason\": null,\n      \"rationale\": \"Wind parks own MV collector + park substation + DSO/TSO interconnection. Co-located BESS taps existing MV infrastructure; curtailment implies headroom for charge/discharge.\"\n    },\n    {\n      \"constraint_name\": \"Land Footprint and Siting\",\n      \"constraint_type\": \"physical\",\n      \"market_name\": \"Wind+BESS Hybrid Parks\",\n      \"naics_code\": \"221115\",\n      \"verdict\": \"none\",\n      \"mitigation_actions\": [],\n      \"mitigation_cost_estimate\": null,\n      \"mitigation_time_estimate\": null,\n      \"knockout_reason\": null,\n      \"rationale\": \"9 MWh ≈ 720 m² at the 80 m²/MWh bound — trivial against wind park footprints of 0.5–1.5 ha per turbine. Adjacent-to-substation siting is standard.\"\n    },\n    {\n      \"constraint_name\": \"Fire-Protection Clearance\",\n      \"constraint_type\": \"regulatory\",\n      \"market_name\": \"Wind+BESS Hybrid Parks\",\n      \"naics_code\": \"221115\",\n      \"verdict\": \"none\",\n      \"mitigation_actions\": [],\n      \"mitigation_cost_estimate\": null,\n      \"mitigation_time_estimate\": null,\n      \"knockout_reason\": null,\n      \"rationale\": \"Rural park siting provides ample separation to buildings and property lines; VdS clearance and Feuerwehr access easily met even for >3 MWh clusters.\"\n    },\n    {\n      \"constraint_name\": \"Li-Ion Thermal Runaway Hazard\",\n      \"constraint_type\": \"physical\",\n      \"market_name\": \"Wind+BESS Hybrid Parks\",\n      \"naics_code\": \"221115\",\n      \"verdict\": \"none\",\n      \"mitigation_actions\": [],\n      \"mitigation_cost_estimate\": null,\n      \"mitigation_time_estimate\": null,\n      \"knockout_reason\": null,\n      \"rationale\": \"Hazard is market-agnostic and contained at the product level (NOVEC 1230, compartmentalization, deflagration venting). Rural siting further reduces third-party exposure.\"\n    },\n    {\n      \"constraint_name\": \"Grid Code Certification Lead Time\",\n      \"constraint_type\": \"regulatory\",\n      \"market_name\": \"Wind+BESS Hybrid Parks\",\n      \"naics_code\": \"221115\",\n      \"verdict\": \"mitigable\",\n      \"mitigation_actions\": [\n        \"Select PCS SKU with grid-forming firmware option (SMA / Sungrow roadmap)\",\n        \"Commission FGW TR3 grid-forming unit certification with TÜV or DEKRA\",\n        \"Register asset for BNetzA inertia-service market prequal (launching Jan 2026)\"\n      ],\n      \"mitigation_cost_estimate\": \"low\",\n      \"mitigation_time_estimate\": \"parallel to standard TR8 dossier — no critical-path impact\",\n      \"knockout_reason\": null,\n      \"rationale\": \"Base VDE-AR-N 4110 + FGW TR8 Type B is native capability. Incremental add: grid-forming firmware + FGW TR3 grid-forming cert to monetize inertia-service revenue. Capability extension, not a delivery barrier. Mitigation is value-accretive (unlocks revenue) rather than a pure cost.\"\n    },\n    {\n      \"constraint_name\": \"Battery Supply Chain Concentration\",\n      \"constraint_type\": \"economic\",\n      \"market_name\": \"Wind+BESS Hybrid Parks\",\n      \"naics_code\": \"221115\",\n      \"verdict\": \"none\",\n      \"mitigation_actions\": [],\n      \"mitigation_cost_estimate\": null,\n      \"mitigation_time_estimate\": null,\n      \"knockout_reason\": null,\n      \"rationale\": \"Market-agnostic supply-chain exposure; not differentiating for 221115 vs. any other destination.\"\n    },\n    {\n      \"constraint_name\": \"Ambient Temperature Envelope\",\n      \"constraint_type\": \"environmental\",\n      \"market_name\": \"Wind+BESS Hybrid Parks\",\n      \"naics_code\": \"221115\",\n      \"verdict\": \"none\",\n      \"mitigation_actions\": [],\n      \"mitigation_cost_estimate\": null,\n      \"mitigation_time_estimate\": null,\n      \"knockout_reason\": null,\n      \"rationale\": \"German onshore wind sites (coastal and inland) sit within −20 to +50 °C; container HVAC manages internal setpoint. Offshore / extreme-climate exposure is scoped out.\"\n    },\n    {\n      \"constraint_name\": \"Round-Trip Energy Losses\",\n      \"constraint_type\": \"physical\",\n      \"market_name\": \"Wind+BESS Hybrid Parks\",\n      \"naics_code\": \"221115\",\n      \"verdict\": \"none\",\n      \"mitigation_actions\": [],\n      \"mitigation_cost_estimate\": null,\n      \"mitigation_time_estimate\": null,\n      \"knockout_reason\": null,\n      \"rationale\": \"Market-agnostic thermodynamic floor; revenue-stack math at this market already assumes 10–15% loss budget and still yields ~€400k/MW/yr.\"\n    },\n    {\n      \"constraint_name\": \"CAPEX Viability Threshold\",\n      \"constraint_type\": \"economic\",\n      \"market_name\": \"Wind+BESS Hybrid Parks\",\n      \"naics_code\": \"221115\",\n      \"verdict\": \"none\",\n      \"mitigation_actions\": [],\n      \"mitigation_cost_estimate\": null,\n      \"mitigation_time_estimate\": null,\n      \"knockout_reason\": null,\n      \"rationale\": \"Wind+BESS co-location carries the strongest €/MW revenue stack (~€400k/MW/yr: curtailment capture + arbitrage + ancillary + inertia). Payback at €250–400/kWh installed lands in the 3–5 year band with margin. Cost can never be a knockout per component rules.\"\n    }\n  ],\n  \"counts\": {\n    \"knockout\": 0,\n    \"mitigable\": 1,\n    \"none\": 8,\n    \"total\": 9\n  },\n  \"markets_eliminated\": [],\n  \"markets_surviving\": [\"221115\"],\n  \"mitigable_penalty_summary\": {\n    \"total_mitigable\": 1,\n    \"cost_weighted\": \"low\",\n    \"net_value_note\": \"Grid-forming cert mitigation unlocks inertia-service revenue — value-accretive, not pure cost\"\n  },\n  \"conservative_review\": {\n    \"knockouts_reviewed\": 0,\n    \"downgrades_applied\": 0,\n    \"two_question_test_applied\": true,\n    \"notes\": \"No knockout verdicts to review. Scale-mismatch concern (4.5 MW vs. offshore 500+ MW parks) handled by market-scope limitation rather than as an in-scope knockout.\"\n  },\n  \"graph_write_preview\": [\n    \"(Constraint {name:'Grid Code Certification Lead Time'})-[:incompatible_with {compatibility:'mitigable', rationale:'...', mitigation_actions:[...], mitigation_cost_estimate:'low', mitigation_time_estimate:'parallel'}]->(Market {naics_code:'221115'})\"\n  ]\n}\n```\n\n---"
+      "constraintName": "Battery Supply Chain Concentration",
+      "constraintType": "economic",
+      "threshold": "",
+      "verdict": "NONE",
+      "rationale": "Market-agnostic supply-chain exposure; not differentiating for 221115 vs. any other destination.",
+      "mitigation": "",
+      "mitigationCost": "",
+      "mitigationTime": ""
     },
     {
-      "title": "Sources (upstream)",
-      "content": "- `01_product_decomposition.md` — 9 constraints with thresholds\n- `02_functional_promise.md` — FP + required complements (grid connection, site, cert body)\n- `05_market_discovery.md` — 221115 rank #3, distance 3, HIGH priority, architecture rationale\n- `VN_wind_electric_power_generation_ibisworld.md` — L5 position, scale-fit note, inertia-service revenue context, grid-forming capability gap"
+      "constraintName": "Ambient Temperature Envelope",
+      "constraintType": "environmental",
+      "threshold": "",
+      "verdict": "NONE",
+      "rationale": "German onshore wind sites (coastal and inland) sit within −20 to +50 °C; container HVAC manages internal setpoint. Offshore / extreme-climate exposure is scoped out.",
+      "mitigation": "",
+      "mitigationCost": "",
+      "mitigationTime": ""
+    },
+    {
+      "constraintName": "Round-Trip Energy Losses",
+      "constraintType": "physical",
+      "threshold": "",
+      "verdict": "NONE",
+      "rationale": "Market-agnostic thermodynamic floor; revenue-stack math at this market already assumes 10–15% loss budget and still yields ~€400k/MW/yr.",
+      "mitigation": "",
+      "mitigationCost": "",
+      "mitigationTime": ""
+    },
+    {
+      "constraintName": "CAPEX Viability Threshold",
+      "constraintType": "economic",
+      "threshold": "",
+      "verdict": "NONE",
+      "rationale": "Wind+BESS co-location carries the strongest €/MW revenue stack (~€400k/MW/yr: curtailment capture + arbitrage + ancillary + inertia). Payback at €250–400/kWh installed lands in the 3–5 year band with margin. Cost can never be a knockout per component rules.",
+      "mitigation": "",
+      "mitigationCost": "",
+      "mitigationTime": ""
     }
   ],
-  "tables": [
-    {
-      "headers": [
-        "#",
-        "Constraint",
-        "Type",
-        "Threshold",
-        "Verdict",
-        "Cost",
-        "Time"
-      ],
-      "rows": [
-        {
-          "#": "1",
-          "Constraint": "MV Grid Connection Capacity",
-          "Type": "operational",
-          "Threshold": "—",
-          "Verdict": "**none**",
-          "Cost": "—",
-          "Time": "—"
-        },
-        {
-          "#": "2",
-          "Constraint": "Land Footprint and Siting",
-          "Type": "physical",
-          "Threshold": "40–80 m²/MWh",
-          "Verdict": "**none**",
-          "Cost": "—",
-          "Time": "—"
-        },
-        {
-          "#": "3",
-          "Constraint": "Fire-Protection Clearance",
-          "Type": "regulatory",
-          "Threshold": "per VdS",
-          "Verdict": "**none**",
-          "Cost": "—",
-          "Time": "—"
-        },
-        {
-          "#": "4",
-          "Constraint": "Li-Ion Thermal Runaway Hazard",
-          "Type": "physical",
-          "Threshold": "—",
-          "Verdict": "**none**",
-          "Cost": "—",
-          "Time": "—"
-        },
-        {
-          "#": "5",
-          "Constraint": "Grid Code Certification Lead Time",
-          "Type": "regulatory",
-          "Threshold": "6–12 months",
-          "Verdict": "**mitigable**",
-          "Cost": "low",
-          "Time": "0 mo (native) — upgrade for grid-forming"
-        },
-        {
-          "#": "6",
-          "Constraint": "Battery Supply Chain Concentration",
-          "Type": "economic",
-          "Threshold": "—",
-          "Verdict": "**none**",
-          "Cost": "—",
-          "Time": "—"
-        },
-        {
-          "#": "7",
-          "Constraint": "Ambient Temperature Envelope",
-          "Type": "environmental",
-          "Threshold": "−20 to +50 °C",
-          "Verdict": "**none**",
-          "Cost": "—",
-          "Time": "—"
-        },
-        {
-          "#": "8",
-          "Constraint": "Round-Trip Energy Losses",
-          "Type": "physical",
-          "Threshold": "10–15%",
-          "Verdict": "**none**",
-          "Cost": "—",
-          "Time": "—"
-        },
-        {
-          "#": "9",
-          "Constraint": "CAPEX Viability Threshold",
-          "Type": "economic",
-          "Threshold": "€250–400/kWh",
-          "Verdict": "**none**",
-          "Cost": "—",
-          "Time": "—"
-        }
-      ]
-    }
-  ],
-  "entities": [
-    {
-      "component": "constraint_market_compatibility",
-      "step": "08",
-      "product_name": "EPC für Großbatteriespeicher",
-      "vendor_name": "Mein Solar GmbH",
-      "technology_class": "Large-Scale Battery Energy Storage System EPC",
-      "market": {
-        "naics_code": "221115",
-        "naics_title": "Wind Electric Power Generation",
-        "market_name": "Wind+BESS Hybrid Parks",
-        "scope_note": "Onshore park co-location + standalone grid-booster at 4.5 MW / 9 MWh reference scale. Offshore and TSO-scale transmission-grid boosters excluded (covered under 221121)."
-      },
-      "assessments": [
-        {
-          "constraint_name": "MV Grid Connection Capacity",
-          "constraint_type": "operational",
-          "market_name": "Wind+BESS Hybrid Parks",
-          "naics_code": "221115",
-          "verdict": "none",
-          "mitigation_actions": [],
-          "mitigation_cost_estimate": null,
-          "mitigation_time_estimate": null,
-          "knockout_reason": null,
-          "rationale": "Wind parks own MV collector + park substation + DSO/TSO interconnection. Co-located BESS taps existing MV infrastructure; curtailment implies headroom for charge/discharge."
-        },
-        {
-          "constraint_name": "Land Footprint and Siting",
-          "constraint_type": "physical",
-          "market_name": "Wind+BESS Hybrid Parks",
-          "naics_code": "221115",
-          "verdict": "none",
-          "mitigation_actions": [],
-          "mitigation_cost_estimate": null,
-          "mitigation_time_estimate": null,
-          "knockout_reason": null,
-          "rationale": "9 MWh ≈ 720 m² at the 80 m²/MWh bound — trivial against wind park footprints of 0.5–1.5 ha per turbine. Adjacent-to-substation siting is standard."
-        },
-        {
-          "constraint_name": "Fire-Protection Clearance",
-          "constraint_type": "regulatory",
-          "market_name": "Wind+BESS Hybrid Parks",
-          "naics_code": "221115",
-          "verdict": "none",
-          "mitigation_actions": [],
-          "mitigation_cost_estimate": null,
-          "mitigation_time_estimate": null,
-          "knockout_reason": null,
-          "rationale": "Rural park siting provides ample separation to buildings and property lines; VdS clearance and Feuerwehr access easily met even for >3 MWh clusters."
-        },
-        {
-          "constraint_name": "Li-Ion Thermal Runaway Hazard",
-          "constraint_type": "physical",
-          "market_name": "Wind+BESS Hybrid Parks",
-          "naics_code": "221115",
-          "verdict": "none",
-          "mitigation_actions": [],
-          "mitigation_cost_estimate": null,
-          "mitigation_time_estimate": null,
-          "knockout_reason": null,
-          "rationale": "Hazard is market-agnostic and contained at the product level (NOVEC 1230, compartmentalization, deflagration venting). Rural siting further reduces third-party exposure."
-        },
-        {
-          "constraint_name": "Grid Code Certification Lead Time",
-          "constraint_type": "regulatory",
-          "market_name": "Wind+BESS Hybrid Parks",
-          "naics_code": "221115",
-          "verdict": "mitigable",
-          "mitigation_actions": [
-            "Select PCS SKU with grid-forming firmware option (SMA / Sungrow roadmap)",
-            "Commission FGW TR3 grid-forming unit certification with TÜV or DEKRA",
-            "Register asset for BNetzA inertia-service market prequal (launching Jan 2026)"
-          ],
-          "mitigation_cost_estimate": "low",
-          "mitigation_time_estimate": "parallel to standard TR8 dossier — no critical-path impact",
-          "knockout_reason": null,
-          "rationale": "Base VDE-AR-N 4110 + FGW TR8 Type B is native capability. Incremental add: grid-forming firmware + FGW TR3 grid-forming cert to monetize inertia-service revenue. Capability extension, not a delivery barrier. Mitigation is value-accretive (unlocks revenue) rather than a pure cost."
-        },
-        {
-          "constraint_name": "Battery Supply Chain Concentration",
-          "constraint_type": "economic",
-          "market_name": "Wind+BESS Hybrid Parks",
-          "naics_code": "221115",
-          "verdict": "none",
-          "mitigation_actions": [],
-          "mitigation_cost_estimate": null,
-          "mitigation_time_estimate": null,
-          "knockout_reason": null,
-          "rationale": "Market-agnostic supply-chain exposure; not differentiating for 221115 vs. any other destination."
-        },
-        {
-          "constraint_name": "Ambient Temperature Envelope",
-          "constraint_type": "environmental",
-          "market_name": "Wind+BESS Hybrid Parks",
-          "naics_code": "221115",
-          "verdict": "none",
-          "mitigation_actions": [],
-          "mitigation_cost_estimate": null,
-          "mitigation_time_estimate": null,
-          "knockout_reason": null,
-          "rationale": "German onshore wind sites (coastal and inland) sit within −20 to +50 °C; container HVAC manages internal setpoint. Offshore / extreme-climate exposure is scoped out."
-        },
-        {
-          "constraint_name": "Round-Trip Energy Losses",
-          "constraint_type": "physical",
-          "market_name": "Wind+BESS Hybrid Parks",
-          "naics_code": "221115",
-          "verdict": "none",
-          "mitigation_actions": [],
-          "mitigation_cost_estimate": null,
-          "mitigation_time_estimate": null,
-          "knockout_reason": null,
-          "rationale": "Market-agnostic thermodynamic floor; revenue-stack math at this market already assumes 10–15% loss budget and still yields ~€400k/MW/yr."
-        },
-        {
-          "constraint_name": "CAPEX Viability Threshold",
-          "constraint_type": "economic",
-          "market_name": "Wind+BESS Hybrid Parks",
-          "naics_code": "221115",
-          "verdict": "none",
-          "mitigation_actions": [],
-          "mitigation_cost_estimate": null,
-          "mitigation_time_estimate": null,
-          "knockout_reason": null,
-          "rationale": "Wind+BESS co-location carries the strongest €/MW revenue stack (~€400k/MW/yr: curtailment capture + arbitrage + ancillary + inertia). Payback at €250–400/kWh installed lands in the 3–5 year band with margin. Cost can never be a knockout per component rules."
-        }
-      ],
-      "counts": {
-        "knockout": 0,
-        "mitigable": 1,
-        "none": 8,
-        "total": 9
-      },
-      "markets_eliminated": [],
-      "markets_surviving": [
-        "221115"
-      ],
-      "mitigable_penalty_summary": {
-        "total_mitigable": 1,
-        "cost_weighted": "low",
-        "net_value_note": "Grid-forming cert mitigation unlocks inertia-service revenue — value-accretive, not pure cost"
-      },
-      "conservative_review": {
-        "knockouts_reviewed": 0,
-        "downgrades_applied": 0,
-        "two_question_test_applied": true,
-        "notes": "No knockout verdicts to review. Scale-mismatch concern (4.5 MW vs. offshore 500+ MW parks) handled by market-scope limitation rather than as an in-scope knockout."
-      },
-      "graph_write_preview": [
-        "(Constraint {name:'Grid Code Certification Lead Time'})-[:incompatible_with {compatibility:'mitigable', rationale:'...', mitigation_actions:[...], mitigation_cost_estimate:'low', mitigation_time_estimate:'parallel'}]->(Market {naics_code:'221115'})"
-      ]
-    }
-  ],
-  "has_bom": true,
-  "naics_sector_type": "non_manufacturing"
+  "result": {
+    "knockouts": 0,
+    "mitigable": 1,
+    "none": 8
+  },
+  "sources": []
 }

@@ -1,571 +1,176 @@
 {
-  "id": "02_functional_promise",
-  "title": "02 — Functional Promise",
-  "type": "functional_promise",
-  "market_slug": null,
-  "is_per_market": false,
-  "sections": [
-    {
-      "title": "02a — Underlying mechanism",
-      "content": "Turnkey systems integration of (containerized Li-ion BESS + bidirectional PCS + MV grid coupling + EMS dispatch + civil works) delivered under a single EPC contract with VDE-AR-N 4110 / FGW TR8 certification. **Mechanism is the execution methodology (single-source integration), not a physical artifact** — consistent with Project Business offering-type.\n\nPhysical principle of the delivered asset: reversible lithium intercalation in LFP cells, 4-quadrant power electronics, MV transformation. These are components inside the deliverable, not the deliverable itself.\n\n---"
-    },
-    {
-      "title": "02b — Product FP (competitive positioning)",
-      "content": "| Field | Value |\n|---|---|\n| `statement` | Deliver grid-compliant, dispatchable multi-MWh electrical energy storage as a turnkey capital asset with single-source responsibility from site study to commissioning |\n| `verb` | Deliver |\n| `object` | grid-compliant, dispatchable multi-MWh electrical energy storage |\n| `context` | as a turnkey capital asset with single-source responsibility from site study to commissioning |\n| `differentiators` | ① Single-point EPC accountability vs. split-contract; ② Integrated PV+BESS design authority from PV-EPC incumbency; ③ Native VDE-AR-N 4110 / FGW TR8 path; ④ Proven industrial scale (4.5 MW / 9 MWh reference) |\n\n**Mechanism-free test:** PASS. Statement makes no reference to lithium, LFP, inverters, or any physical principle — swap the storage medium (e.g., flow battery, CAES) and the promise still holds for the EPC delivery layer.\n\n---"
-    },
-    {
-      "title": "02c — UNSPSC classification (recap from 01d)",
-      "content": "No 8-digit commodity reaches ≥80% confidence. Custom product group used.\n\n| | Value |\n|---|---|\n| `unspsc_code` | `null` |\n| `custom_product_group` | **Battery Energy Storage System EPC Services** |\n\nTop evaluated: 81101513 Electrical engineering (55%), 72151500 Specialized trade construction (50%), 26111711 Lithium batteries (45%). All cover sub-scopes, none cover the bundled EPC deliverable.\n\n---"
-    },
-    {
-      "title": "02d — Commodity FP (drives market discovery)",
-      "content": "| Field | Value |\n|---|---|\n| `commodity_or_group` | Battery Energy Storage System EPC Services |\n| `functional_promise` | **Deliver operational grid-connected electrical energy storage assets as turnkey capital projects with single-source engineering, procurement, construction, and grid-code certification** |\n| `verb` | Deliver |\n| `object` | operational grid-connected electrical energy storage assets |\n| `context` | as turnkey capital projects with single-source engineering, procurement, construction, and grid-code certification |\n| `reasoning` | All BESS EPC providers (pure-play integrators, utility IPPs, solar EPCs extending into storage, OEM-led turnkey offers) share this function: converting a storage business case into a commissioned, grid-compliant asset. Mechanism varies, function does not. |\n\n**Vendor-agnostic test:** PASS. No brand/product names, no Mein Solar-specific differentiators.\n\n---"
-    },
-    {
-      "title": "02e — FP Extension (broader-than-commodity capability)",
-      "content": "Mein Solar's underlying EPC capability is **broader than BESS**. Two orthogonal extension axes:\n\n### Axis 1 — Storage technology neutrality (same function, different medium)\nThe Commodity FP \"deliver grid-connected electrical energy storage\" applies to any storage medium that presents a grid-facing AC interface under VDE-AR-N 4110.\n\n| Extension domain | Rationale |\n|---|---|\n| Flow-battery storage EPC (vanadium, iron-salt) | Same PCS / MV / EMS / civil / cert path; different cell stack |\n| Mechanical storage EPC (flywheel, CAES small-scale) | Same grid-coupling + cert scope; different prime mover |\n| Thermal-to-power storage EPC (hot-rock, molten-salt-TES with ORC) | Same grid interface, different charge/discharge block |\n| Hybrid H2-BESS EPC | Same single-source-integration promise across electrolyzer + storage + fuel-cell |\n\n### Axis 2 — Grid-connected capital-asset EPC methodology (same vendor execution, different asset)\nThe single-source-EPC + VDE-AR-N 4110 + FGW TR8 capability transfers to any grid-connected power asset, not only storage.\n\n| Extension domain | Rationale |\n|---|---|\n| Large-scale PV EPC | Mein Solar's incumbent business; same grid-code regime |\n| High-power EV charging park EPC (HPC hubs) | Same MV coupling, civil, permit, DSO interface — buffered by BESS |\n| Co-located PV+Wind hybrid parks | Same grid-code certification methodology |\n| Industrial microgrid / Inselnetz EPC | Adds islanding controls but same integration core |\n| Behind-the-meter industrial electrification EPC (heat-pump + BESS + PV) | Same single-source wrapper, broader asset mix |\n\n### FP Extension statement\n\n> The underlying EPC execution capability — single-source integration, VDE-AR-N 4110 / FGW TR8 certification delivery, and MV grid coupling — applies beyond BESS to **any grid-connected electrical capital asset where an owner wants one counterparty to convert a business case into a commissioned, certified, operational asset**.\n\n**Phase A secondary search** will run against this extension to surface NAICS markets that need grid-connected capital-asset EPC but not specifically BESS (e.g., HPC hubs, industrial microgrids).\n\n---"
-    },
-    {
-      "title": "02f — VN / BOM position",
-      "content": "### Value-network position\n\n| Tier | Role | Mein Solar? |\n|---|---|---|\n| L3 | Cell / module makers (CATL, EVE, BYD) | — |\n| L2 | Container / stack integrators (Sungrow PowerTitan, Tesla Megapack, CATL EnerC, SolarEast) | — |\n| L2 | PCS makers (SMA, Sungrow, Power Electronics, Ingeteam) | — |\n| L2 | MV equipment (Siemens, ABB, Schneider, Eaton) | — |\n| **L1** | **BESS EPC / system integrator** | **✓ Mein Solar sits here** |\n| L0 | Asset owner / IPP / C&I offtaker | Customer |\n\n### BOM position\n\nMein Solar delivers the **complete L0 asset** (the commissioned, certified storage plant) by assembling L2 sub-systems. The product IS the L0-level deliverable — not a component inside something larger.\n\n### FP context implication\nA **system-level FP** (broad: \"deliver a storage asset\") is correct here. A component-level FP (\"convert DC to AC\", \"store charge\") would understate what Mein Solar sells. Market discovery must search for markets needing the system-level outcome, not the sub-component function.\n\n---"
-    },
-    {
-      "title": "02g — Required complements",
-      "content": "Needed to deliver on the Product FP. Classified by criticality.\n\n| Complement | Criticality | Type | Note |\n|---|---|---|---|\n| MV grid connection capacity (DSO) | **Essential** | Infrastructure | Hard blocker; grid upgrade cost can invalidate project |\n| Buildable site (owned or leased) with Baugenehmigung | **Essential** | Real estate / regulatory | 40–80 m²/MWh; fire clearances; Feuerwehr access |\n| Cell / container supply (L2 vendor) | **Essential** | Equipment | LFP container from CATL / Sungrow / SolarEast / Tesla |\n| PCS + MV switchgear supply | **Essential** | Equipment | Siemens / ABB / SMA / Sungrow / Power Electronics |\n| DSO grid-code certification body | **Essential** | Regulatory | TÜV / FGW-accredited certifier; 6–12 months lead |\n| Project financing / asset-owner capex | **Essential** | Capital | €250–400/kWh installed; bank or investor |\n| O&M provider (post-COD) | **Essential** | Service | Either Mein Solar or third party; warranty + availability SLA |\n| Insurance (fire, performance, business interruption) | **Essential** | Risk | Specialty lines; drives fire-protection scope |\n| Revenue-stream access: peak-shaving load, arbitrage market (EPEX), ancillary-services prequal (FCR/aFRR), §19 StromNEV | **Essential** | Market access | Without a revenue stream the asset has no business case |\n| EMS / VPP / aggregator integration | Enhancing | Software | Next Kraftwerke, Entrix, Flexpower, Enspired, Tiko |\n| Co-located PV generator | Enhancing | Equipment | Unlocks the \"Integrated PV+BESS\" differentiator |\n| HPC charging dispensers | Enhancing | Equipment | Unlocks the \"EV-charging buffer\" differentiator |\n| Cloud monitoring / asset-performance platform | Enhancing | Software | Visibility + SLA evidence |\n| Cybersecurity / IEC 62443 compliance layer | Enhancing | Regulatory | Required for utility-facing ancillary-service participation |\n| Intraday / balancing market trading desk | Optional | Service | Via aggregator if owner lacks in-house |\n| Second-life / recycling partner (EU Battery Reg.) | Optional | Compliance | End-of-life obligation under CRMA / EU Battery Reg. |\n| Black-start / islanding capability | Optional | Feature | Only needed for microgrid use-cases |\n\n---"
-    },
-    {
-      "title": "02h — QA checklist",
-      "content": "| # | Check | Status |\n|---|---|---|\n| 1 | Product FP present (statement/verb/object/context/diff.) | ✅ |\n| 2 | Product FP passes mechanism-free test | ✅ |\n| 3 | Commodity FP vendor-agnostic | ✅ |\n| 4 | UNSPSC code or custom product group identified | ✅ (custom group; UNSPSC below 80%) |\n| 5 | VN / BOM position mapped | ✅ (L1 EPC integrator; delivers L0 asset) |\n| 6 | Required complements listed with criticality | ✅ |\n| 7 | Source tags on factual claims | ✅ (sources in §01 upstream) |\n| 8 | FP Extension assessed | ✅ (two axes: storage-medium neutrality + grid-asset EPC methodology) |\n\n---"
-    },
-    {
-      "title": "02i — Neo4j write preview",
-      "content": "```\n(NeutralProductGroup {name:\"Battery Energy Storage System EPC Services\"})\n   -[:has_functional_promise]-> (FunctionalPromise {scope:\"commodity\", ...})\n   -[:has_fp_extension]-> (FPExtension {axis:\"storage_medium\"})\n   -[:has_fp_extension]-> (FPExtension {axis:\"grid_asset_epc_methodology\"})\n(Product {name:\"EPC für Großbatteriespeicher\", company_name:\"Mein Solar GmbH\"})\n   -[:has_functional_promise]-> (FunctionalPromise {scope:\"product\", ...})\n   -[:requires_complement]-> (Complement) x N   (9 essential, 5 enhancing, 3 optional)\n   -[:positioned_at]-> (ValueNetworkTier {level:\"L1_EPC_Integrator\"})\n```\n\n---"
-    },
-    {
-      "title": "Structured Data",
-      "content": "```json\n{\n  \"product_name\": \"EPC für Großbatteriespeicher\",\n  \"vendor_name\": \"Mein Solar GmbH\",\n  \"custom_product_group\": \"Battery Energy Storage System EPC Services\",\n  \"unspsc_code\": null,\n  \"unspsc_title\": null,\n\n  \"underlying_mechanism\": \"Turnkey systems integration: containerized Li-ion BESS + bidirectional PCS + MV grid coupling + EMS dispatch + civil works, delivered under single EPC contract with VDE-AR-N 4110 / FGW TR8 certification. Mechanism is the execution methodology, not a physical artifact (Project Business offering type).\",\n\n  \"product_fp\": {\n    \"scope\": \"product\",\n    \"statement\": \"Deliver grid-compliant, dispatchable multi-MWh electrical energy storage as a turnkey capital asset with single-source responsibility from site study to commissioning\",\n    \"verb\": \"Deliver\",\n    \"object\": \"grid-compliant, dispatchable multi-MWh electrical energy storage\",\n    \"context\": \"as a turnkey capital asset with single-source responsibility from site study to commissioning\",\n    \"differentiators\": [\n      \"Single-point EPC accountability vs. split-contract approach\",\n      \"Integrated PV+BESS design authority from incumbent PV-EPC practice\",\n      \"Native VDE-AR-N 4110 / FGW TR8 certification path\",\n      \"Proven industrial scale (4.5 MW / 9 MWh reference)\"\n    ],\n    \"mechanism_free_test\": \"PASS\"\n  },\n\n  \"commodity_fp\": {\n    \"scope\": \"commodity\",\n    \"commodity_or_group\": \"Battery Energy Storage System EPC Services\",\n    \"statement\": \"Deliver operational grid-connected electrical energy storage assets as turnkey capital projects with single-source engineering, procurement, construction, and grid-code certification\",\n    \"verb\": \"Deliver\",\n    \"object\": \"operational grid-connected electrical energy storage assets\",\n    \"context\": \"as turnkey capital projects with single-source engineering, procurement, construction, and grid-code certification\",\n    \"reasoning\": \"All BESS EPC providers share the function of converting a storage business case into a commissioned, grid-compliant asset. Mechanism varies (self-perform vs. subcontract, PV-integrated vs. standalone); function does not.\",\n    \"vendor_agnostic_test\": \"PASS\"\n  },\n\n  \"fp_extension\": {\n    \"present\": true,\n    \"statement\": \"The underlying EPC execution capability — single-source integration, VDE-AR-N 4110 / FGW TR8 certification delivery, and MV grid coupling — applies beyond BESS to any grid-connected electrical capital asset where an owner wants one counterparty to convert a business case into a commissioned, certified, operational asset.\",\n    \"axes\": [\n      {\n        \"axis\": \"storage_medium_neutrality\",\n        \"description\": \"Same grid-facing EPC scope applied to non-lithium storage media\",\n        \"extension_domains\": [\n          \"Flow-battery storage EPC (vanadium, iron-salt)\",\n          \"Mechanical storage EPC (flywheel, small-scale CAES)\",\n          \"Thermal-to-power storage EPC (hot-rock, molten-salt with ORC)\",\n          \"Hybrid H2-BESS EPC (electrolyzer + storage + fuel-cell)\"\n        ]\n      },\n      {\n        \"axis\": \"grid_connected_asset_epc_methodology\",\n        \"description\": \"Same single-source-EPC + VDE-AR-N 4110 + FGW TR8 delivery capability applied to non-storage grid-connected assets\",\n        \"extension_domains\": [\n          \"Large-scale PV EPC\",\n          \"High-power EV charging park EPC (HPC hubs)\",\n          \"Co-located PV+Wind hybrid park EPC\",\n          \"Industrial microgrid / Inselnetz EPC\",\n          \"Behind-the-meter industrial electrification EPC (heat-pump + BESS + PV)\"\n        ]\n      }\n    ],\n    \"phase_a_secondary_search_terms\": [\n      \"industries deploying grid-connected capital-asset EPC\",\n      \"markets needing HPC charging hub EPC\",\n      \"markets needing industrial microgrid EPC\",\n      \"markets needing hybrid PV+wind EPC\",\n      \"markets needing alternative-chemistry stationary storage EPC\"\n    ]\n  },\n\n  \"vn_bom_position\": {\n    \"vn_tier\": \"L1_EPC_Integrator\",\n    \"vn_role\": \"System Integrator / Engineering-Procurement-Construction contractor\",\n    \"delivers_asset_at_level\": \"L0 (commissioned operational asset)\",\n    \"upstream_l2_suppliers\": [\n      \"BESS container integrators (Sungrow, Tesla, CATL EnerC, SolarEast)\",\n      \"PCS makers (SMA, Sungrow, Power Electronics, Ingeteam)\",\n      \"MV equipment (Siemens, ABB, Schneider, Eaton)\",\n      \"Cell makers at L3 (CATL, EVE, BYD)\"\n    ],\n    \"downstream_customer\": \"Asset owner / IPP / C&I offtaker\",\n    \"fp_context_implication\": \"System-level FP is correct; component-level FP would understate the offering.\"\n  },\n\n  \"required_complements\": [\n    {\"name\": \"MV grid connection capacity (DSO)\", \"criticality\": \"essential\", \"type\": \"infrastructure\", \"note\": \"Hard blocker; grid upgrade cost can invalidate the project\"},\n    {\"name\": \"Buildable site with Baugenehmigung\", \"criticality\": \"essential\", \"type\": \"real_estate_regulatory\", \"note\": \"40–80 m²/MWh; fire clearances; Feuerwehr access\"},\n    {\"name\": \"BESS container / cell supply\", \"criticality\": \"essential\", \"type\": \"equipment\", \"note\": \"LFP container from L2 integrator\"},\n    {\"name\": \"PCS and MV switchgear supply\", \"criticality\": \"essential\", \"type\": \"equipment\", \"note\": \"Tier-1 OEMs\"},\n    {\"name\": \"FGW-accredited certification body\", \"criticality\": \"essential\", \"type\": \"regulatory\", \"note\": \"6–12 month lead on critical path\"},\n    {\"name\": \"Project financing / asset-owner capex\", \"criticality\": \"essential\", \"type\": \"capital\", \"note\": \"€250–400/kWh installed\"},\n    {\"name\": \"O&M provider (post-COD)\", \"criticality\": \"essential\", \"type\": \"service\", \"note\": \"Availability / throughput SLA\"},\n    {\"name\": \"Insurance (fire, performance, business interruption)\", \"criticality\": \"essential\", \"type\": \"risk\", \"note\": \"Specialty lines\"},\n    {\"name\": \"Revenue-stream access (peak shaving, EPEX arbitrage, FCR/aFRR, §19 StromNEV)\", \"criticality\": \"essential\", \"type\": \"market_access\", \"note\": \"Without a revenue stream the business case fails\"},\n    {\"name\": \"EMS / VPP / aggregator integration\", \"criticality\": \"enhancing\", \"type\": \"software\", \"note\": \"Next Kraftwerke, Entrix, Flexpower, Enspired, Tiko\"},\n    {\"name\": \"Co-located PV generator\", \"criticality\": \"enhancing\", \"type\": \"equipment\", \"note\": \"Activates PV+BESS differentiator\"},\n    {\"name\": \"HPC charging dispensers\", \"criticality\": \"enhancing\", \"type\": \"equipment\", \"note\": \"Activates EV-charging-buffer differentiator\"},\n    {\"name\": \"Cloud monitoring / asset-performance platform\", \"criticality\": \"enhancing\", \"type\": \"software\", \"note\": \"SLA evidence\"},\n    {\"name\": \"Cybersecurity / IEC 62443 compliance\", \"criticality\": \"enhancing\", \"type\": \"regulatory\", \"note\": \"Utility ancillary-services prerequisite\"},\n    {\"name\": \"Intraday / balancing trading desk\", \"criticality\": \"optional\", \"type\": \"service\", \"note\": \"Via aggregator if owner has none\"},\n    {\"name\": \"Second-life / recycling partner\", \"criticality\": \"optional\", \"type\": \"compliance\", \"note\": \"CRMA / EU Battery Regulation\"},\n    {\"name\": \"Black-start / islanding capability\", \"criticality\": \"optional\", \"type\": \"feature\", \"note\": \"Microgrid use-cases only\"}\n  ],\n\n  \"qa\": {\n    \"product_fp_present\": true,\n    \"product_fp_mechanism_free\": true,\n    \"commodity_fp_vendor_agnostic\": true,\n    \"unspsc_or_custom_group\": \"custom_group\",\n    \"vn_bom_mapped\": true,\n    \"complements_listed\": true,\n    \"fp_extension_assessed\": true\n  }\n}\n```"
-    }
-  ],
-  "tables": [
-    {
-      "headers": [
-        "Field",
-        "Value"
-      ],
-      "rows": [
-        {
-          "Field": "`statement`",
-          "Value": "Deliver grid-compliant, dispatchable multi-MWh electrical energy storage as a turnkey capital asset with single-source responsibility from site study to commissioning"
-        },
-        {
-          "Field": "`verb`",
-          "Value": "Deliver"
-        },
-        {
-          "Field": "`object`",
-          "Value": "grid-compliant, dispatchable multi-MWh electrical energy storage"
-        },
-        {
-          "Field": "`context`",
-          "Value": "as a turnkey capital asset with single-source responsibility from site study to commissioning"
-        },
-        {
-          "Field": "`differentiators`",
-          "Value": "① Single-point EPC accountability vs. split-contract; ② Integrated PV+BESS design authority from PV-EPC incumbency; ③ Native VDE-AR-N 4110 / FGW TR8 path; ④ Proven industrial scale (4.5 MW / 9 MWh reference)"
-        }
-      ]
-    },
-    {
-      "headers": [
-        "Value"
-      ],
-      "rows": [
-        {
-          "Value": "`unspsc_code`"
-        },
-        {
-          "Value": "`custom_product_group`"
-        }
-      ]
-    },
-    {
-      "headers": [
-        "Field",
-        "Value"
-      ],
-      "rows": [
-        {
-          "Field": "`commodity_or_group`",
-          "Value": "Battery Energy Storage System EPC Services"
-        },
-        {
-          "Field": "`functional_promise`",
-          "Value": "**Deliver operational grid-connected electrical energy storage assets as turnkey capital projects with single-source engineering, procurement, construction, and grid-code certification**"
-        },
-        {
-          "Field": "`verb`",
-          "Value": "Deliver"
-        },
-        {
-          "Field": "`object`",
-          "Value": "operational grid-connected electrical energy storage assets"
-        },
-        {
-          "Field": "`context`",
-          "Value": "as turnkey capital projects with single-source engineering, procurement, construction, and grid-code certification"
-        },
-        {
-          "Field": "`reasoning`",
-          "Value": "All BESS EPC providers (pure-play integrators, utility IPPs, solar EPCs extending into storage, OEM-led turnkey offers) share this function: converting a storage business case into a commissioned, grid-compliant asset. Mechanism varies, function does not."
-        }
-      ]
-    },
-    {
-      "headers": [
-        "Extension domain",
-        "Rationale"
-      ],
-      "rows": [
-        {
-          "Extension domain": "Flow-battery storage EPC (vanadium, iron-salt)",
-          "Rationale": "Same PCS / MV / EMS / civil / cert path; different cell stack"
-        },
-        {
-          "Extension domain": "Mechanical storage EPC (flywheel, CAES small-scale)",
-          "Rationale": "Same grid-coupling + cert scope; different prime mover"
-        },
-        {
-          "Extension domain": "Thermal-to-power storage EPC (hot-rock, molten-salt-TES with ORC)",
-          "Rationale": "Same grid interface, different charge/discharge block"
-        },
-        {
-          "Extension domain": "Hybrid H2-BESS EPC",
-          "Rationale": "Same single-source-integration promise across electrolyzer + storage + fuel-cell"
-        }
-      ]
-    },
-    {
-      "headers": [
-        "Extension domain",
-        "Rationale"
-      ],
-      "rows": [
-        {
-          "Extension domain": "Large-scale PV EPC",
-          "Rationale": "Mein Solar's incumbent business; same grid-code regime"
-        },
-        {
-          "Extension domain": "High-power EV charging park EPC (HPC hubs)",
-          "Rationale": "Same MV coupling, civil, permit, DSO interface — buffered by BESS"
-        },
-        {
-          "Extension domain": "Co-located PV+Wind hybrid parks",
-          "Rationale": "Same grid-code certification methodology"
-        },
-        {
-          "Extension domain": "Industrial microgrid / Inselnetz EPC",
-          "Rationale": "Adds islanding controls but same integration core"
-        },
-        {
-          "Extension domain": "Behind-the-meter industrial electrification EPC (heat-pump + BESS + PV)",
-          "Rationale": "Same single-source wrapper, broader asset mix"
-        }
-      ]
-    },
-    {
-      "headers": [
-        "Tier",
-        "Role",
-        "Mein Solar?"
-      ],
-      "rows": [
-        {
-          "Tier": "L3",
-          "Role": "Cell / module makers (CATL, EVE, BYD)",
-          "Mein Solar?": "—"
-        },
-        {
-          "Tier": "L2",
-          "Role": "Container / stack integrators (Sungrow PowerTitan, Tesla Megapack, CATL EnerC, SolarEast)",
-          "Mein Solar?": "—"
-        },
-        {
-          "Tier": "L2",
-          "Role": "PCS makers (SMA, Sungrow, Power Electronics, Ingeteam)",
-          "Mein Solar?": "—"
-        },
-        {
-          "Tier": "L2",
-          "Role": "MV equipment (Siemens, ABB, Schneider, Eaton)",
-          "Mein Solar?": "—"
-        },
-        {
-          "Tier": "**L1**",
-          "Role": "**BESS EPC / system integrator**",
-          "Mein Solar?": "**✓ Mein Solar sits here**"
-        },
-        {
-          "Tier": "L0",
-          "Role": "Asset owner / IPP / C&I offtaker",
-          "Mein Solar?": "Customer"
-        }
-      ]
-    },
-    {
-      "headers": [
-        "Complement",
-        "Criticality",
-        "Type",
-        "Note"
-      ],
-      "rows": [
-        {
-          "Complement": "MV grid connection capacity (DSO)",
-          "Criticality": "**Essential**",
-          "Type": "Infrastructure",
-          "Note": "Hard blocker; grid upgrade cost can invalidate project"
-        },
-        {
-          "Complement": "Buildable site (owned or leased) with Baugenehmigung",
-          "Criticality": "**Essential**",
-          "Type": "Real estate / regulatory",
-          "Note": "40–80 m²/MWh; fire clearances; Feuerwehr access"
-        },
-        {
-          "Complement": "Cell / container supply (L2 vendor)",
-          "Criticality": "**Essential**",
-          "Type": "Equipment",
-          "Note": "LFP container from CATL / Sungrow / SolarEast / Tesla"
-        },
-        {
-          "Complement": "PCS + MV switchgear supply",
-          "Criticality": "**Essential**",
-          "Type": "Equipment",
-          "Note": "Siemens / ABB / SMA / Sungrow / Power Electronics"
-        },
-        {
-          "Complement": "DSO grid-code certification body",
-          "Criticality": "**Essential**",
-          "Type": "Regulatory",
-          "Note": "TÜV / FGW-accredited certifier; 6–12 months lead"
-        },
-        {
-          "Complement": "Project financing / asset-owner capex",
-          "Criticality": "**Essential**",
-          "Type": "Capital",
-          "Note": "€250–400/kWh installed; bank or investor"
-        },
-        {
-          "Complement": "O&M provider (post-COD)",
-          "Criticality": "**Essential**",
-          "Type": "Service",
-          "Note": "Either Mein Solar or third party; warranty + availability SLA"
-        },
-        {
-          "Complement": "Insurance (fire, performance, business interruption)",
-          "Criticality": "**Essential**",
-          "Type": "Risk",
-          "Note": "Specialty lines; drives fire-protection scope"
-        },
-        {
-          "Complement": "Revenue-stream access: peak-shaving load, arbitrage market (EPEX), ancillary-services prequal (FCR/aFRR), §19 StromNEV",
-          "Criticality": "**Essential**",
-          "Type": "Market access",
-          "Note": "Without a revenue stream the asset has no business case"
-        },
-        {
-          "Complement": "EMS / VPP / aggregator integration",
-          "Criticality": "Enhancing",
-          "Type": "Software",
-          "Note": "Next Kraftwerke, Entrix, Flexpower, Enspired, Tiko"
-        },
-        {
-          "Complement": "Co-located PV generator",
-          "Criticality": "Enhancing",
-          "Type": "Equipment",
-          "Note": "Unlocks the \"Integrated PV+BESS\" differentiator"
-        },
-        {
-          "Complement": "HPC charging dispensers",
-          "Criticality": "Enhancing",
-          "Type": "Equipment",
-          "Note": "Unlocks the \"EV-charging buffer\" differentiator"
-        },
-        {
-          "Complement": "Cloud monitoring / asset-performance platform",
-          "Criticality": "Enhancing",
-          "Type": "Software",
-          "Note": "Visibility + SLA evidence"
-        },
-        {
-          "Complement": "Cybersecurity / IEC 62443 compliance layer",
-          "Criticality": "Enhancing",
-          "Type": "Regulatory",
-          "Note": "Required for utility-facing ancillary-service participation"
-        },
-        {
-          "Complement": "Intraday / balancing market trading desk",
-          "Criticality": "Optional",
-          "Type": "Service",
-          "Note": "Via aggregator if owner lacks in-house"
-        },
-        {
-          "Complement": "Second-life / recycling partner (EU Battery Reg.)",
-          "Criticality": "Optional",
-          "Type": "Compliance",
-          "Note": "End-of-life obligation under CRMA / EU Battery Reg."
-        },
-        {
-          "Complement": "Black-start / islanding capability",
-          "Criticality": "Optional",
-          "Type": "Feature",
-          "Note": "Only needed for microgrid use-cases"
-        }
-      ]
-    },
-    {
-      "headers": [
-        "#",
-        "Check",
-        "Status"
-      ],
-      "rows": [
-        {
-          "#": "1",
-          "Check": "Product FP present (statement/verb/object/context/diff.)",
-          "Status": "✅"
-        },
-        {
-          "#": "2",
-          "Check": "Product FP passes mechanism-free test",
-          "Status": "✅"
-        },
-        {
-          "#": "3",
-          "Check": "Commodity FP vendor-agnostic",
-          "Status": "✅"
-        },
-        {
-          "#": "4",
-          "Check": "UNSPSC code or custom product group identified",
-          "Status": "✅ (custom group; UNSPSC below 80%)"
-        },
-        {
-          "#": "5",
-          "Check": "VN / BOM position mapped",
-          "Status": "✅ (L1 EPC integrator; delivers L0 asset)"
-        },
-        {
-          "#": "6",
-          "Check": "Required complements listed with criticality",
-          "Status": "✅"
-        },
-        {
-          "#": "7",
-          "Check": "Source tags on factual claims",
-          "Status": "✅ (sources in §01 upstream)"
-        },
-        {
-          "#": "8",
-          "Check": "FP Extension assessed",
-          "Status": "✅ (two axes: storage-medium neutrality + grid-asset EPC methodology)"
-        }
-      ]
-    }
-  ],
-  "entities": [
-    {
-      "product_name": "EPC für Großbatteriespeicher",
-      "vendor_name": "Mein Solar GmbH",
-      "custom_product_group": "Battery Energy Storage System EPC Services",
-      "unspsc_code": null,
-      "unspsc_title": null,
-      "underlying_mechanism": "Turnkey systems integration: containerized Li-ion BESS + bidirectional PCS + MV grid coupling + EMS dispatch + civil works, delivered under single EPC contract with VDE-AR-N 4110 / FGW TR8 certification. Mechanism is the execution methodology, not a physical artifact (Project Business offering type).",
-      "product_fp": {
-        "scope": "product",
-        "statement": "Deliver grid-compliant, dispatchable multi-MWh electrical energy storage as a turnkey capital asset with single-source responsibility from site study to commissioning",
-        "verb": "Deliver",
-        "object": "grid-compliant, dispatchable multi-MWh electrical energy storage",
-        "context": "as a turnkey capital asset with single-source responsibility from site study to commissioning",
-        "differentiators": [
-          "Single-point EPC accountability vs. split-contract approach",
-          "Integrated PV+BESS design authority from incumbent PV-EPC practice",
-          "Native VDE-AR-N 4110 / FGW TR8 certification path",
-          "Proven industrial scale (4.5 MW / 9 MWh reference)"
-        ],
-        "mechanism_free_test": "PASS"
-      },
-      "commodity_fp": {
-        "scope": "commodity",
-        "commodity_or_group": "Battery Energy Storage System EPC Services",
-        "statement": "Deliver operational grid-connected electrical energy storage assets as turnkey capital projects with single-source engineering, procurement, construction, and grid-code certification",
-        "verb": "Deliver",
-        "object": "operational grid-connected electrical energy storage assets",
-        "context": "as turnkey capital projects with single-source engineering, procurement, construction, and grid-code certification",
-        "reasoning": "All BESS EPC providers share the function of converting a storage business case into a commissioned, grid-compliant asset. Mechanism varies (self-perform vs. subcontract, PV-integrated vs. standalone); function does not.",
-        "vendor_agnostic_test": "PASS"
-      },
-      "fp_extension": {
-        "present": true,
-        "statement": "The underlying EPC execution capability — single-source integration, VDE-AR-N 4110 / FGW TR8 certification delivery, and MV grid coupling — applies beyond BESS to any grid-connected electrical capital asset where an owner wants one counterparty to convert a business case into a commissioned, certified, operational asset.",
-        "axes": [
-          {
-            "axis": "storage_medium_neutrality",
-            "description": "Same grid-facing EPC scope applied to non-lithium storage media",
-            "extension_domains": [
-              "Flow-battery storage EPC (vanadium, iron-salt)",
-              "Mechanical storage EPC (flywheel, small-scale CAES)",
-              "Thermal-to-power storage EPC (hot-rock, molten-salt with ORC)",
-              "Hybrid H2-BESS EPC (electrolyzer + storage + fuel-cell)"
-            ]
-          },
-          {
-            "axis": "grid_connected_asset_epc_methodology",
-            "description": "Same single-source-EPC + VDE-AR-N 4110 + FGW TR8 delivery capability applied to non-storage grid-connected assets",
-            "extension_domains": [
-              "Large-scale PV EPC",
-              "High-power EV charging park EPC (HPC hubs)",
-              "Co-located PV+Wind hybrid park EPC",
-              "Industrial microgrid / Inselnetz EPC",
-              "Behind-the-meter industrial electrification EPC (heat-pump + BESS + PV)"
-            ]
-          }
-        ],
-        "phase_a_secondary_search_terms": [
-          "industries deploying grid-connected capital-asset EPC",
-          "markets needing HPC charging hub EPC",
-          "markets needing industrial microgrid EPC",
-          "markets needing hybrid PV+wind EPC",
-          "markets needing alternative-chemistry stationary storage EPC"
+  "productName": "EPC für Großbatteriespeicher",
+  "vendorName": "Mein Solar GmbH",
+  "customProductGroup": "Battery Energy Storage System EPC Services",
+  "unspscCode": "",
+  "unspscTitle": "",
+  "underlyingMechanism": "Turnkey systems integration: containerized Li-ion BESS + bidirectional PCS + MV grid coupling + EMS dispatch + civil works, delivered under single EPC contract with VDE-AR-N 4110 / FGW TR8 certification. Mechanism is the execution methodology, not a physical artifact (Project Business offering type).",
+  "productFP": {
+    "scope": "product",
+    "statement": "Deliver grid-compliant, dispatchable multi-MWh electrical energy storage as a turnkey capital asset with single-source responsibility from site study to commissioning",
+    "verb": "Deliver",
+    "object": "grid-compliant, dispatchable multi-MWh electrical energy storage",
+    "context": "as a turnkey capital asset with single-source responsibility from site study to commissioning",
+    "differentiators": [
+      "Single-point EPC accountability vs. split-contract approach",
+      "Integrated PV+BESS design authority from incumbent PV-EPC practice",
+      "Native VDE-AR-N 4110 / FGW TR8 certification path",
+      "Proven industrial scale (4.5 MW / 9 MWh reference)"
+    ],
+    "mechanismFreeTest": "PASS"
+  },
+  "commodityFP": {
+    "scope": "commodity",
+    "commodityOrGroup": "Battery Energy Storage System EPC Services",
+    "statement": "Deliver operational grid-connected electrical energy storage assets as turnkey capital projects with single-source engineering, procurement, construction, and grid-code certification",
+    "verb": "Deliver",
+    "object": "operational grid-connected electrical energy storage assets",
+    "context": "as turnkey capital projects with single-source engineering, procurement, construction, and grid-code certification",
+    "reasoning": "All BESS EPC providers share the function of converting a storage business case into a commissioned, grid-compliant asset. Mechanism varies (self-perform vs. subcontract, PV-integrated vs. standalone); function does not.",
+    "vendorAgnosticTest": "PASS"
+  },
+  "fpExtension": {
+    "present": true,
+    "statement": "The underlying EPC execution capability — single-source integration, VDE-AR-N 4110 / FGW TR8 certification delivery, and MV grid coupling — applies beyond BESS to any grid-connected electrical capital asset where an owner wants one counterparty to convert a business case into a commissioned, certified, operational asset.",
+    "axes": [
+      {
+        "axis": "storage_medium_neutrality",
+        "description": "Same grid-facing EPC scope applied to non-lithium storage media",
+        "extension_domains": [
+          "Flow-battery storage EPC (vanadium, iron-salt)",
+          "Mechanical storage EPC (flywheel, small-scale CAES)",
+          "Thermal-to-power storage EPC (hot-rock, molten-salt with ORC)",
+          "Hybrid H2-BESS EPC (electrolyzer + storage + fuel-cell)"
         ]
       },
-      "vn_bom_position": {
-        "vn_tier": "L1_EPC_Integrator",
-        "vn_role": "System Integrator / Engineering-Procurement-Construction contractor",
-        "delivers_asset_at_level": "L0 (commissioned operational asset)",
-        "upstream_l2_suppliers": [
-          "BESS container integrators (Sungrow, Tesla, CATL EnerC, SolarEast)",
-          "PCS makers (SMA, Sungrow, Power Electronics, Ingeteam)",
-          "MV equipment (Siemens, ABB, Schneider, Eaton)",
-          "Cell makers at L3 (CATL, EVE, BYD)"
-        ],
-        "downstream_customer": "Asset owner / IPP / C&I offtaker",
-        "fp_context_implication": "System-level FP is correct; component-level FP would understate the offering."
-      },
-      "required_complements": [
-        {
-          "name": "MV grid connection capacity (DSO)",
-          "criticality": "essential",
-          "type": "infrastructure",
-          "note": "Hard blocker; grid upgrade cost can invalidate the project"
-        },
-        {
-          "name": "Buildable site with Baugenehmigung",
-          "criticality": "essential",
-          "type": "real_estate_regulatory",
-          "note": "40–80 m²/MWh; fire clearances; Feuerwehr access"
-        },
-        {
-          "name": "BESS container / cell supply",
-          "criticality": "essential",
-          "type": "equipment",
-          "note": "LFP container from L2 integrator"
-        },
-        {
-          "name": "PCS and MV switchgear supply",
-          "criticality": "essential",
-          "type": "equipment",
-          "note": "Tier-1 OEMs"
-        },
-        {
-          "name": "FGW-accredited certification body",
-          "criticality": "essential",
-          "type": "regulatory",
-          "note": "6–12 month lead on critical path"
-        },
-        {
-          "name": "Project financing / asset-owner capex",
-          "criticality": "essential",
-          "type": "capital",
-          "note": "€250–400/kWh installed"
-        },
-        {
-          "name": "O&M provider (post-COD)",
-          "criticality": "essential",
-          "type": "service",
-          "note": "Availability / throughput SLA"
-        },
-        {
-          "name": "Insurance (fire, performance, business interruption)",
-          "criticality": "essential",
-          "type": "risk",
-          "note": "Specialty lines"
-        },
-        {
-          "name": "Revenue-stream access (peak shaving, EPEX arbitrage, FCR/aFRR, §19 StromNEV)",
-          "criticality": "essential",
-          "type": "market_access",
-          "note": "Without a revenue stream the business case fails"
-        },
-        {
-          "name": "EMS / VPP / aggregator integration",
-          "criticality": "enhancing",
-          "type": "software",
-          "note": "Next Kraftwerke, Entrix, Flexpower, Enspired, Tiko"
-        },
-        {
-          "name": "Co-located PV generator",
-          "criticality": "enhancing",
-          "type": "equipment",
-          "note": "Activates PV+BESS differentiator"
-        },
-        {
-          "name": "HPC charging dispensers",
-          "criticality": "enhancing",
-          "type": "equipment",
-          "note": "Activates EV-charging-buffer differentiator"
-        },
-        {
-          "name": "Cloud monitoring / asset-performance platform",
-          "criticality": "enhancing",
-          "type": "software",
-          "note": "SLA evidence"
-        },
-        {
-          "name": "Cybersecurity / IEC 62443 compliance",
-          "criticality": "enhancing",
-          "type": "regulatory",
-          "note": "Utility ancillary-services prerequisite"
-        },
-        {
-          "name": "Intraday / balancing trading desk",
-          "criticality": "optional",
-          "type": "service",
-          "note": "Via aggregator if owner has none"
-        },
-        {
-          "name": "Second-life / recycling partner",
-          "criticality": "optional",
-          "type": "compliance",
-          "note": "CRMA / EU Battery Regulation"
-        },
-        {
-          "name": "Black-start / islanding capability",
-          "criticality": "optional",
-          "type": "feature",
-          "note": "Microgrid use-cases only"
-        }
-      ],
-      "qa": {
-        "product_fp_present": true,
-        "product_fp_mechanism_free": true,
-        "commodity_fp_vendor_agnostic": true,
-        "unspsc_or_custom_group": "custom_group",
-        "vn_bom_mapped": true,
-        "complements_listed": true,
-        "fp_extension_assessed": true
+      {
+        "axis": "grid_connected_asset_epc_methodology",
+        "description": "Same single-source-EPC + VDE-AR-N 4110 + FGW TR8 delivery capability applied to non-storage grid-connected assets",
+        "extension_domains": [
+          "Large-scale PV EPC",
+          "High-power EV charging park EPC (HPC hubs)",
+          "Co-located PV+Wind hybrid park EPC",
+          "Industrial microgrid / Inselnetz EPC",
+          "Behind-the-meter industrial electrification EPC (heat-pump + BESS + PV)"
+        ]
       }
+    ]
+  },
+  "bomPosition": {
+    "vnTier": "L1_EPC_Integrator",
+    "vnRole": "System Integrator / Engineering-Procurement-Construction contractor",
+    "deliversAssetAtLevel": "L0 (commissioned operational asset)",
+    "upstreamL2Suppliers": [
+      "BESS container integrators (Sungrow, Tesla, CATL EnerC, SolarEast)",
+      "PCS makers (SMA, Sungrow, Power Electronics, Ingeteam)",
+      "MV equipment (Siemens, ABB, Schneider, Eaton)",
+      "Cell makers at L3 (CATL, EVE, BYD)"
+    ],
+    "downstreamCustomer": "Asset owner / IPP / C&I offtaker"
+  },
+  "complements": [
+    {
+      "name": "MV grid connection capacity (DSO)",
+      "criticality": "essential",
+      "type": "infrastructure",
+      "note": "Hard blocker; grid upgrade cost can invalidate the project"
+    },
+    {
+      "name": "Buildable site with Baugenehmigung",
+      "criticality": "essential",
+      "type": "real_estate_regulatory",
+      "note": "40–80 m²/MWh; fire clearances; Feuerwehr access"
+    },
+    {
+      "name": "BESS container / cell supply",
+      "criticality": "essential",
+      "type": "equipment",
+      "note": "LFP container from L2 integrator"
+    },
+    {
+      "name": "PCS and MV switchgear supply",
+      "criticality": "essential",
+      "type": "equipment",
+      "note": "Tier-1 OEMs"
+    },
+    {
+      "name": "FGW-accredited certification body",
+      "criticality": "essential",
+      "type": "regulatory",
+      "note": "6–12 month lead on critical path"
+    },
+    {
+      "name": "Project financing / asset-owner capex",
+      "criticality": "essential",
+      "type": "capital",
+      "note": "€250–400/kWh installed"
+    },
+    {
+      "name": "O&M provider (post-COD)",
+      "criticality": "essential",
+      "type": "service",
+      "note": "Availability / throughput SLA"
+    },
+    {
+      "name": "Insurance (fire, performance, business interruption)",
+      "criticality": "essential",
+      "type": "risk",
+      "note": "Specialty lines"
+    },
+    {
+      "name": "Revenue-stream access (peak shaving, EPEX arbitrage, FCR/aFRR, §19 StromNEV)",
+      "criticality": "essential",
+      "type": "market_access",
+      "note": "Without a revenue stream the business case fails"
+    },
+    {
+      "name": "EMS / VPP / aggregator integration",
+      "criticality": "enhancing",
+      "type": "software",
+      "note": "Next Kraftwerke, Entrix, Flexpower, Enspired, Tiko"
+    },
+    {
+      "name": "Co-located PV generator",
+      "criticality": "enhancing",
+      "type": "equipment",
+      "note": "Activates PV+BESS differentiator"
+    },
+    {
+      "name": "HPC charging dispensers",
+      "criticality": "enhancing",
+      "type": "equipment",
+      "note": "Activates EV-charging-buffer differentiator"
+    },
+    {
+      "name": "Cloud monitoring / asset-performance platform",
+      "criticality": "enhancing",
+      "type": "software",
+      "note": "SLA evidence"
+    },
+    {
+      "name": "Cybersecurity / IEC 62443 compliance",
+      "criticality": "enhancing",
+      "type": "regulatory",
+      "note": "Utility ancillary-services prerequisite"
+    },
+    {
+      "name": "Intraday / balancing trading desk",
+      "criticality": "optional",
+      "type": "service",
+      "note": "Via aggregator if owner has none"
+    },
+    {
+      "name": "Second-life / recycling partner",
+      "criticality": "optional",
+      "type": "compliance",
+      "note": "CRMA / EU Battery Regulation"
+    },
+    {
+      "name": "Black-start / islanding capability",
+      "criticality": "optional",
+      "type": "feature",
+      "note": "Microgrid use-cases only"
     }
   ],
-  "has_bom": false
+  "sources": []
 }

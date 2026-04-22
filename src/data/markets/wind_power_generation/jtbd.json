@@ -1076,8 +1076,7 @@
             "impact_category": "reliability",
             "product_related": false,
             "confidence": 0.85,
-            "underserved": true,
-            "satisfaction_rationale": "No incumbent offers an integrated sizing tool that combines site-specific wind-yield, congestion-hour data, and BESS capacity optimization in a single study — most IPPs rely on fragmented consultant reports."
+            "underserved": true
           },
           {
             "id": "N2",
@@ -1092,8 +1091,7 @@
             "impact_category": "cost",
             "product_related": false,
             "confidence": 0.85,
-            "underserved": true,
-            "satisfaction_rationale": "Wärtsilä GEMS and Fluence Mosaic ship revenue-stack modeling tools, but a gap remains versus a fully bankable single-study output."
+            "underserved": true
           },
           {
             "id": "N3",
@@ -1108,8 +1106,7 @@
             "impact_category": "cost",
             "product_related": false,
             "confidence": 0.8,
-            "underserved": false,
-            "satisfaction_rationale": "The January 2026 TSO inertia-service product is too new for most EPC or OEM vendors to include systematically in initial business-case templates, leaving the revenue track easily overlooked."
+            "underserved": false
           },
           {
             "id": "N4",
@@ -1124,8 +1121,7 @@
             "impact_category": "time",
             "product_related": false,
             "confidence": 0.9,
-            "underserved": true,
-            "satisfaction_rationale": "DSO MV-capacity bottlenecks are typically discovered only after Netzanfrage filing, and no incumbent EPC offers a pre-contractual grid-capacity screening that eliminates late-stage surprises."
+            "underserved": true
           },
           {
             "id": "N5",
@@ -1140,8 +1136,7 @@
             "impact_category": "time",
             "product_related": true,
             "confidence": 0.75,
-            "underserved": false,
-            "satisfaction_rationale": "Containerized BESS footprints of 40-80 m2/MWh generally fit within wind-park fencing, though site-specific civil constraints still require individual engineering verification."
+            "underserved": false
           },
           {
             "id": "N6",
@@ -1156,8 +1151,7 @@
             "impact_category": "time",
             "product_related": false,
             "confidence": 0.85,
-            "underserved": true,
-            "satisfaction_rationale": "Ready-to-Build timelines of 9-12 months are standard across incumbent EPCs, but DSO acceptance and Baugenehmigung variability make sub-9-month delivery inconsistent."
+            "underserved": true
           },
           {
             "id": "N7",
@@ -1172,8 +1166,7 @@
             "impact_category": "cost",
             "product_related": false,
             "confidence": 0.8,
-            "underserved": false,
-            "satisfaction_rationale": "Balance-of-plant scope variance is a known risk across all EPC models; incumbents mitigate it with standardized container layouts but site-specific civil conditions still cause 3-8% overruns."
+            "underserved": false
           },
           {
             "id": "N8",
@@ -1188,8 +1181,7 @@
             "impact_category": "time",
             "product_related": true,
             "confidence": 0.75,
-            "underserved": true,
-            "satisfaction_rationale": "Feuerwehr and VdS fire-protection clearance for LFP battery systems lacks a standardized fast-track process, and incumbent EPCs frequently encounter redesign loops after initial permit submission."
+            "underserved": true
           },
           {
             "id": "N9",
@@ -1204,8 +1196,7 @@
             "impact_category": "reliability",
             "product_related": true,
             "confidence": 0.85,
-            "underserved": true,
-            "satisfaction_rationale": "TR3 unit-certification handover from cell and PCS vendors remains a manual, document-heavy process that incumbent EPCs manage through checklists rather than integrated certification workflows."
+            "underserved": true
           },
           {
             "id": "N10",
@@ -1220,8 +1211,7 @@
             "impact_category": "time",
             "product_related": true,
             "confidence": 0.88,
-            "underserved": true,
-            "satisfaction_rationale": "Firmware-version compatibility across BMS, PCS, and EMS from different vendors is the most cited commissioning delay in German BESS projects, with no incumbent offering a guaranteed pre-tested integration layer."
+            "underserved": true
           },
           {
             "id": "N11",
@@ -1236,8 +1226,7 @@
             "impact_category": "time",
             "product_related": false,
             "confidence": 0.8,
-            "underserved": false,
-            "satisfaction_rationale": "Incumbent EPCs typically close VDE-AR-N 4110/4120 witness-test non-conformities within 30-60 days, making this need adequately but not excellently served."
+            "underserved": false
           },
           {
             "id": "N12",
@@ -1252,8 +1241,7 @@
             "impact_category": "cost",
             "product_related": true,
             "confidence": 0.82,
-            "underserved": true,
-            "satisfaction_rationale": "Fluence and Siemens Gamesa have public grid-forming reference plants, and the certification field is maturing toward the 2026 inertia deadline."
+            "underserved": true
           },
           {
             "id": "N13",
@@ -1268,8 +1256,7 @@
             "impact_category": "reliability",
             "product_related": false,
             "confidence": 0.8,
-            "underserved": false,
-            "satisfaction_rationale": "Mature aFRR/FCR response capability across incumbents; productized in Wärtsilä GEMS and Fluence Mosaic dispatch platforms."
+            "underserved": false
           },
           {
             "id": "N14",
@@ -1284,8 +1271,7 @@
             "impact_category": "cost",
             "product_related": false,
             "confidence": 0.82,
-            "underserved": false,
-            "satisfaction_rationale": "Curtailment-capture strategies are productized at utility scale by Wärtsilä and Fluence, raising the satisfaction baseline."
+            "underserved": false
           },
           {
             "id": "N15",
@@ -1300,8 +1286,7 @@
             "impact_category": "safety",
             "product_related": false,
             "confidence": 0.82,
-            "underserved": false,
-            "satisfaction_rationale": "Fluence and Siemens Gamesa reference sites pass VDE-AR-N 4110 fault ride-through reliably, anchoring high incumbent satisfaction."
+            "underserved": false
           },
           {
             "id": "N16",
@@ -1316,8 +1301,7 @@
             "impact_category": "reliability",
             "product_related": true,
             "confidence": 0.78,
-            "underserved": false,
-            "satisfaction_rationale": "Capacity-fade monitoring relies on BMS telemetry that most incumbents provide, though early-warning analytics beyond raw SoH readings are still maturing across the industry."
+            "underserved": false
           },
           {
             "id": "N17",
@@ -1332,8 +1316,7 @@
             "impact_category": "reliability",
             "product_related": true,
             "confidence": 0.7,
-            "underserved": false,
-            "satisfaction_rationale": "SoC-reporting drift between BMS, EMS, and aggregator systems is a known integration issue; incumbents achieve roughly 1-2% accuracy over 24 hours through periodic recalibration."
+            "underserved": false
           },
           {
             "id": "N18",
@@ -1348,8 +1331,7 @@
             "impact_category": "skill",
             "product_related": false,
             "confidence": 0.75,
-            "underserved": false,
-            "satisfaction_rationale": "Wärtsilä GEMS and Fluence Mosaic ship adaptive retune engines with rolling-horizon solvers, reducing operator re-tuning effort."
+            "underserved": false
           },
           {
             "id": "N19",
@@ -1364,8 +1346,7 @@
             "impact_category": "cost",
             "product_related": true,
             "confidence": 0.75,
-            "underserved": false,
-            "satisfaction_rationale": "Aging-aware cycling configuration is partially automated in incumbent BMS firmware, but contract-specific throughput guarantee parameters still require manual operator tuning."
+            "underserved": false
           },
           {
             "id": "N20",
@@ -1380,8 +1361,7 @@
             "impact_category": "time",
             "product_related": false,
             "confidence": 0.8,
-            "underserved": false,
-            "satisfaction_rationale": "Annual FGW/DSO re-certification is handled through standard document packages by incumbent EPCs, though the assembly remains manual and project-specific rather than pre-packaged."
+            "underserved": false
           },
           {
             "id": "N21",
@@ -1396,8 +1376,7 @@
             "impact_category": "safety",
             "product_related": true,
             "confidence": 0.75,
-            "underserved": true,
-            "satisfaction_rationale": "EU Battery Regulation reporting obligations (effective 2025-2027 rollout) are new enough that no incumbent EPC has yet productized a fully compliant end-of-life documentation workflow."
+            "underserved": true
           },
           {
             "id": "N22",
@@ -1410,8 +1389,7 @@
             "impact_category": "cost",
             "product_related": false,
             "confidence": 0.7,
-            "underserved": false,
-            "satisfaction_rationale": "Incumbent EPC offers typically provide revenue projections but not a single bankable dispatch-evidence package that investment committees can rely on without supplementary owner-engineer review."
+            "underserved": false
           },
           {
             "id": "N23",
@@ -1424,8 +1402,7 @@
             "impact_category": "reliability",
             "product_related": true,
             "confidence": 0.65,
-            "underserved": false,
-            "satisfaction_rationale": "Certifier audit re-visits are a known pain point but not a frequent one; incumbents with established FGW relationships manage first-pass approval rates of roughly 70-80%."
+            "underserved": false
           },
           {
             "id": "N24",
@@ -1439,8 +1416,7 @@
             "product_related": false,
             "confidence": 0.6,
             "hypothesis": true,
-            "underserved": true,
-            "satisfaction_rationale": "Multi-vendor BESS projects routinely suffer cross-vendor blame-shifting during fault resolution; single-counterparty EPC wraps exist but are not standard across all incumbent offerings."
+            "underserved": true
           }
         ],
         "needs_summary": {

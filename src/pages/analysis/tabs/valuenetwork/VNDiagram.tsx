@@ -2,6 +2,7 @@
  * VNDiagram — Value Network tree visualization.
  *
  * Renders L6 systems as expandable rows with their L5 child units.
+ * Uses `isProductPosition` from JSON data for anchor detection (no hardcoded strings).
  * Matches the dark charcoal + chartreuse design from the HTML reports.
  * Legend is rendered at the TOP per TODO item 10.
  */
@@ -10,12 +11,12 @@ import { useState } from "react";
 import type { ValueNetworkData, VNUnit, L6System } from "@/types";
 import {
   groupUnitsByL6,
-  marquardtPositionLabel,
+  productPositionLabel,
   cleanFunctionalJob,
   deriveDescription,
 } from "./helpers";
 
-/* ── Colour tokens (matches VN HTML CSS variables) ─────────────────────── */
+/* -- Colour tokens (matches VN HTML CSS variables) ----------------------- */
 const C = {
   bg: "#1f2329",
   bgElevated: "#262a31",
@@ -36,13 +37,13 @@ const C = {
   rowHover: "rgba(255,255,255,0.025)",
 };
 
-/* ── Types ──────────────────────────────────────────────────────────────── */
+/* -- Types -------------------------------------------------------------- */
 interface DetailState {
   unit: VNUnit | null;
   system: L6System | null;
 }
 
-/* ── Level badge ─────────────────────────────────────────────────────────── */
+/* -- Level badge -------------------------------------------------------- */
 function LevelBadge({ level, type }: { level: string; type?: string }) {
   const isHoriz = type === "Horizontal";
   const style: React.CSSProperties =
@@ -78,7 +79,7 @@ function LevelBadge({ level, type }: { level: string; type?: string }) {
   );
 }
 
-/* ── Product position badge ─────────────────────────────────────────────── */
+/* -- Product position badge --------------------------------------------- */
 function AnchorBadge({ label }: { label: string }) {
   return (
     <span
@@ -103,7 +104,7 @@ function AnchorBadge({ label }: { label: string }) {
   );
 }
 
-/* ── Legend (TOP of diagram per TODO 10) ────────────────────────────────── */
+/* -- Legend (TOP of diagram per TODO 10) --------------------------------- */
 function Legend() {
   return (
     <div
@@ -194,7 +195,7 @@ function Legend() {
   );
 }
 
-/* ── Detail panel ─────────────────────────────────────────────────────────── */
+/* -- Detail panel ------------------------------------------------------- */
 function DetailPanel({
   detail,
   groupedUnits,
@@ -230,7 +231,7 @@ function DetailPanel({
   if (detail.unit) {
     const unit = detail.unit;
     const sys = detail.system;
-    const mLabel = marquardtPositionLabel(unit);
+    const mLabel = productPositionLabel(unit);
     const desc = deriveDescription(unit, sys?.name ?? "");
 
     return (
@@ -240,7 +241,7 @@ function DetailPanel({
           <LevelBadge level={unit.level} />
           {sys && (
             <>
-              <span style={{ fontSize: 13, color: C.textTertiary }}>›</span>
+              <span style={{ fontSize: 13, color: C.textTertiary }}>&rsaquo;</span>
               <span style={{ fontFamily: "var(--font-mono)", fontSize: 10, color: C.textTertiary }}>{sys.name}</span>
             </>
           )}
@@ -334,7 +335,7 @@ function DetailPanel({
           </p>
           <div style={{ display: "flex", flexDirection: "column", gap: 4 }}>
             {units.map((u) => {
-              const ml = marquardtPositionLabel(u);
+              const ml = productPositionLabel(u);
               return (
                 <div
                   key={u.id}
@@ -367,13 +368,30 @@ function DetailPanel({
   return null;
 }
 
-/* ── Main diagram component ─────────────────────────────────────────────── */
+/* -- Main diagram component --------------------------------------------- */
 export default function VNDiagram({ data }: { data: ValueNetworkData }) {
   const [expanded, setExpanded] = useState<Set<string>>(new Set());
   const [detail, setDetail] = useState<DetailState>({ unit: null, system: null });
   const [selectedId, setSelectedId] = useState<string | null>(null);
 
-  const grouped = groupUnitsByL6(data.vnUnits, data.l6Systems);
+  const rawSystems = data.l6Systems ?? [];
+  const units = data.vnUnits ?? [];
+
+  // Enrich L6 systems with jobFamily from flat vnUnits L6 entries (if not already present)
+  const l6UnitMap = new Map<string, VNUnit>();
+  for (const u of units) {
+    if (u.level === "L6") l6UnitMap.set(u.id, u);
+  }
+  const systems = rawSystems.map((sys) => {
+    if (sys.jobFamily) return sys;
+    const vnEntry = l6UnitMap.get(sys.id);
+    if (vnEntry) {
+      return { ...sys, jobFamily: vnEntry.functionalJob ?? "" };
+    }
+    return sys;
+  });
+
+  const grouped = groupUnitsByL6(units, systems);
 
   function toggleSystem(id: string) {
     setExpanded((prev) => {
@@ -393,8 +411,6 @@ export default function VNDiagram({ data }: { data: ValueNetworkData }) {
     setSelectedId(unit.id);
     setDetail({ unit, system: sys });
   }
-
-  // Product anchor detection handled per-L6 via hasAnchorChild
 
   return (
     <div
@@ -450,12 +466,12 @@ export default function VNDiagram({ data }: { data: ValueNetworkData }) {
 
         {/* Rows */}
         <div>
-          {data.l6Systems.map((sys) => {
+          {systems.map((sys) => {
             const isOpen = expanded.has(sys.id);
             const isSelected = selectedId === sys.id;
             const children = grouped.get(sys.id) ?? [];
             const isHoriz = sys.type === "Horizontal";
-            const hasAnchorChild = children.some((u) => marquardtPositionLabel(u) !== null);
+            const hasAnchorChild = children.some((u) => productPositionLabel(u) !== null);
 
             // Determine L6 row background
             const l6Bg = isSelected
@@ -517,7 +533,7 @@ export default function VNDiagram({ data }: { data: ValueNetworkData }) {
                       transform: isOpen ? "rotate(0deg)" : "rotate(-90deg)",
                     }}
                   >
-                    ▾
+                    &#x25BE;
                   </span>
 
                   {/* Level badge */}
@@ -561,7 +577,7 @@ export default function VNDiagram({ data }: { data: ValueNetworkData }) {
                 {/* L5 child rows */}
                 {isOpen &&
                   children.map((unit) => {
-                    const mLabel = marquardtPositionLabel(unit);
+                    const mLabel = productPositionLabel(unit);
                     const isUnitSelected = selectedId === unit.id;
 
                     return (

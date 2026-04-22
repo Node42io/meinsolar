@@ -2,6 +2,18 @@
   "slug": "electric_power_distribution",
   "name": "Electric Power Distribution",
   "shortName": "Power Distribution",
-  "naics": "221122",
-  "isReference": false
+  "naicsCode": "221122",
+  "isReference": false,
+  "rank": 8,
+  "scores": {
+    "odi": 5.66,
+    "featureFit": 5.58,
+    "constraintCompatibility": 4.5,
+    "jobCoverage": 5.0,
+    "vnHierarchy": 6.0,
+    "incumbentVulnerability": 4.0,
+    "composite": 5.08
+  },
+  "recommendation": "investigate",
+  "rationale": "Lowest composite — strong ODI (5.66) and predictable contracts but crushed by low job coverage (5.0, DSO owns dispatch + O&M; EPC role limited to 4/8 steps), high constraint penalty (4.5; 6 mitigable inc. 1 high requiring Section 11 EnWG recognition), and ABB/Siemens/Hitachi/Nidec near-monopoly on DSO procurement (4.0)."
 }

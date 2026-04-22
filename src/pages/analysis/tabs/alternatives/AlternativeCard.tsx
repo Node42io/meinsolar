@@ -1,14 +1,25 @@
 /**
  * AlternativeCard — renders one entry from alternatives.json.
  *
- * Data shape (from JTBD markdown §2.4 Alternatives):
- *   { name: string, unspsc: string, tradeoffs: string }
+ * Data shape (Mein Solar alternatives):
+ *   { name: string, unspsc: string, tradeoffs: string, category?: string, existential?: boolean }
  *
- * Does NOT try to force this shape into TechCard's richer incumbent shape.
+ * Tradeoffs may be:
+ *   - Semicolon-separated: "trade-off A; trade-off B"
+ *   - Comma-separated: "trade-off A, trade-off B"
+ *   - Python array string: "['trade-off A', 'trade-off B']"
+ *   - Plain string
  */
 
 import ClickableCode from "@/components/ClickableCode";
-import type { Alternative } from "@/types";
+
+interface Alternative {
+  name: string;
+  unspsc: string;
+  tradeoffs: string;
+  category?: string;
+  existential?: boolean;
+}
 
 interface AlternativeCardProps {
   alternative: Alternative;
@@ -36,27 +47,48 @@ function extractSources(tradeoffs: string): {
 }
 
 /**
- * Split tradeoffs text on semicolons to produce bullet points.
- * Filters out empty strings.
+ * Parse tradeoffs text into bullet points.
+ * Handles Python array strings, semicolons, and comma-separated values.
  */
-function splitBullets(text: string): string[] {
-  return text
-    .split(";")
-    .map((s) => s.trim())
-    .filter(Boolean);
+function parseTradeoffs(text: string): string[] {
+  if (!text) return [];
+  const trimmed = text.trim();
+
+  // Python-style array: ['a', 'b', 'c']
+  if (trimmed.startsWith("[") && trimmed.endsWith("]")) {
+    try {
+      const parsed = JSON.parse(trimmed.replace(/'/g, '"'));
+      if (Array.isArray(parsed)) return parsed.map((s: string) => s.trim()).filter(Boolean);
+    } catch { /* fall through to string splitting */ }
+    // Manual parse for Python arrays that JSON.parse can't handle
+    const inner = trimmed.slice(1, -1);
+    const items = inner.split(/'\s*,\s*'/).map(s => s.replace(/^'|'$/g, "").trim()).filter(Boolean);
+    if (items.length > 1) return items;
+  }
+
+  // Semicolon-separated
+  if (trimmed.includes(";")) {
+    return trimmed.split(";").map(s => s.trim()).filter(Boolean);
+  }
+
+  // Comma-separated (only if there are multiple distinct clauses)
+  if (trimmed.includes(",") && trimmed.split(",").length >= 2) {
+    return trimmed.split(",").map(s => s.trim()).filter(Boolean);
+  }
+
+  return trimmed ? [trimmed] : [];
 }
 
 /**
- * Highlight $X–$Y price ranges and X% percentages inside a string,
- * wrapping them in an accent-yellow <mark> equivalent.
+ * Highlight $X-$Y price ranges and X% percentages inside a string.
  */
 function HighlightedText({ text }: { text: string }) {
-  const parts = text.split(/([\$€£][\d,]+(?:[–\-][\$€£]?[\d,]+)?(?:\s*[A-Za-z]+)?|\d+(?:\.\d+)?%)/g);
+  const parts = text.split(/([\$\u20AC\u00A3][\d,]+(?:[\u2013\-][\$\u20AC\u00A3]?[\d,]+)?(?:\s*[A-Za-z/]+)?|\d+(?:\.\d+)?%)/g);
   return (
     <>
       {parts.map((part, i) => {
         const isHighlight =
-          /^[\$€£]/.test(part) || /^\d+(?:\.\d+)?%$/.test(part);
+          /^[\$\u20AC\u00A3]/.test(part) || /^\d+(?:\.\d+)?%$/.test(part);
         return isHighlight ? (
           <span
             key={i}
@@ -76,8 +108,7 @@ function HighlightedText({ text }: { text: string }) {
 }
 
 /**
- * Parse **Bold** markdown name pattern — returns the inner text or falls back
- * to the full name string.
+ * Parse **Bold** markdown name pattern.
  */
 function parseName(name: string): string {
   const m = name.match(/^\*\*(.+?)\*\*/);
@@ -86,8 +117,57 @@ function parseName(name: string): string {
 
 /* ─── Badge helpers ──────────────────────────────────────────────────────── */
 
+function CategoryBadge({ category }: { category?: string }) {
+  if (!category) return null;
+  const label = category.replace(/_/g, " ");
+  return (
+    <span
+      style={{
+        display: "inline-block",
+        fontFamily: "var(--font-mono)",
+        fontSize: 9,
+        letterSpacing: "0.05em",
+        textTransform: "uppercase",
+        background: "rgba(255,255,255,0.06)",
+        color: "var(--text-gray-light)",
+        border: "1px solid rgba(255,255,255,0.10)",
+        borderRadius: 4,
+        padding: "1px 7px",
+        marginLeft: 8,
+        verticalAlign: "middle",
+      }}
+    >
+      {label}
+    </span>
+  );
+}
+
+function ExistentialBadge({ existential }: { existential?: boolean }) {
+  if (!existential) return null;
+  return (
+    <span
+      style={{
+        display: "inline-block",
+        fontFamily: "var(--font-mono)",
+        fontSize: 9,
+        letterSpacing: "0.05em",
+        textTransform: "uppercase",
+        background: "rgba(239,68,68,0.10)",
+        color: "var(--status-low)",
+        border: "1px solid rgba(239,68,68,0.25)",
+        borderRadius: 4,
+        padding: "1px 7px",
+        marginLeft: 8,
+        verticalAlign: "middle",
+      }}
+    >
+      existential
+    </span>
+  );
+}
+
 function StatusBadge({ name }: { name: string }) {
-  if (name.includes("[Status Quo]")) {
+  if (name.toLowerCase().includes("status quo") || name.toLowerCase().includes("do nothing") || name.toLowerCase().includes("defer")) {
     return (
       <span
         style={{
@@ -109,28 +189,6 @@ function StatusBadge({ name }: { name: string }) {
       </span>
     );
   }
-  if (name.includes("ZOLLERN")) {
-    return (
-      <span
-        style={{
-          display: "inline-block",
-          fontFamily: "var(--font-mono)",
-          fontSize: 10,
-          letterSpacing: "0.07em",
-          textTransform: "uppercase",
-          background: "rgba(253,255,152,0.10)",
-          color: "var(--accent-yellow)",
-          border: "1px solid rgba(253,255,152,0.25)",
-          borderRadius: 4,
-          padding: "1px 7px",
-          marginLeft: 8,
-          verticalAlign: "middle",
-        }}
-      >
-        ZOLLERN's approach
-      </span>
-    );
-  }
   return null;
 }
 
@@ -142,18 +200,26 @@ export default function AlternativeCard({
 }: AlternativeCardProps) {
   const displayName = parseName(alternative.name);
 
-  // Strip [Status Quo] / trailing qualifiers from display name for cleanliness
+  // Strip [Status Quo] / trailing qualifiers from display name
   const cleanDisplayName = displayName
     .replace(/\s*\[Status Quo\]\s*/gi, "")
     .trim();
 
   const hasUnspsc =
-    alternative.unspsc && alternative.unspsc !== "—" && alternative.unspsc.trim() !== "";
+    alternative.unspsc &&
+    alternative.unspsc !== "\u2014" &&
+    alternative.unspsc.trim() !== "" &&
+    !alternative.unspsc.startsWith("custom:");
+
+  const customUnspsc =
+    alternative.unspsc && alternative.unspsc.startsWith("custom:")
+      ? alternative.unspsc.replace("custom:", "")
+      : null;
 
   const { clean: tradeoffsClean, sources } = extractSources(
     alternative.tradeoffs ?? ""
   );
-  const bullets = splitBullets(tradeoffsClean);
+  const bullets = parseTradeoffs(tradeoffsClean);
   const hasTradeoffs = bullets.length > 0;
 
   return (
@@ -166,7 +232,7 @@ export default function AlternativeCard({
         marginBottom: 20,
       }}
     >
-      {/* ── Header ───────────────────────────────────────────────────── */}
+      {/* Header */}
       <div
         style={{
           display: "flex",
@@ -203,18 +269,36 @@ export default function AlternativeCard({
           >
             {cleanDisplayName}
             <StatusBadge name={alternative.name} />
+            <ExistentialBadge existential={alternative.existential} />
           </h3>
 
           {/* UNSPSC code */}
-          {hasUnspsc && (
-            <div style={{ marginTop: 6 }}>
+          <div style={{ display: "flex", alignItems: "center", gap: 8, marginTop: 6 }}>
+            {hasUnspsc && (
               <ClickableCode kind="unspsc" code={alternative.unspsc} />
-            </div>
-          )}
+            )}
+            {customUnspsc && (
+              <span
+                style={{
+                  fontFamily: "var(--font-mono)",
+                  fontSize: 10,
+                  color: "var(--text-gray-dark)",
+                  background: "rgba(255,255,255,0.04)",
+                  borderRadius: 3,
+                  padding: "1px 6px",
+                }}
+              >
+                {customUnspsc}
+              </span>
+            )}
+            {alternative.category && (
+              <CategoryBadge category={alternative.category} />
+            )}
+          </div>
         </div>
       </div>
 
-      {/* ── Tradeoffs body ────────────────────────────────────────────── */}
+      {/* Tradeoffs body */}
       {hasTradeoffs && (
         <div style={{ marginLeft: 32 }}>
           <ul
@@ -249,7 +333,6 @@ export default function AlternativeCard({
                 marginTop: 8,
               }}
             >
-              {/* Source icon */}
               <svg
                 width="11"
                 height="11"
@@ -297,7 +380,7 @@ export default function AlternativeCard({
         </div>
       )}
 
-      {/* ── Data pending state (no tradeoffs yet) ────────────────────── */}
+      {/* Data pending state */}
       {!hasTradeoffs && (
         <p
           style={{

@@ -1,17 +1,20 @@
 /**
- * Page 06 — New Market Analysis
+ * New Market Analysis — deep-dive per market.
  *
  * Routes:
- *   /analysis                     → NoMarketSelected picker
- *   /analysis/:marketSlug         → redirect to jtbd tab
- *   /analysis/:marketSlug/:tab    → full analysis view
+ *   /analysis                     -> NoMarketSelected picker
+ *   /analysis/:marketSlug         -> redirect to default tab
+ *   /analysis/:marketSlug/:tab    -> full analysis view
  *
  * Layout (when a market is selected):
  *   PageHeader (title + exec summary)
- *   MarketTabs — all 8 markets
+ *   MarketTabs — all markets from index.json, ordered by ranking
  *   MarketHeader — name, NAICS, composite score, rec badge, rationale
- *   AnalysisTabs — jtbd / value-network / kano / compatibility / alternatives
+ *   AnalysisTabs — jtbd / value-network / kano / compatibility / alternatives / ...
  *   Tab content area
+ *
+ * Market tab row, market header, and analysis tab row are fully dynamic
+ * from markets/index.json + ranking.json. No hardcoded market names.
  */
 
 import { Navigate, useParams } from "react-router-dom";
@@ -101,32 +104,41 @@ function buildAnalysisTabs(marketSlug: string): AnalysisTab[] {
   return tabs;
 }
 
-// Backwards compatibility
-
 const DEFAULT_TAB = "jtbd";
 
 /* =========================================================================
-   Build the market tab list from ranking.json (rank order) merged with
-   the index.json for slug→name, falling back on index order.
+   Build the market tab list dynamically from index.json + ranking.json.
+   Markets are shown in rank order (from ranking.json), with composite
+   scores displayed as tab metadata.
    ========================================================================= */
 function buildMarketTabs(): MarketTab[] {
-  // Create a rank lookup by slug
-  const rankedMarkets = (ranking as any).rankedMarkets ?? [];
-  const rankBySLug = Object.fromEntries(
-    rankedMarkets.map((rm: any) => [
-      rm.slug,
-      { rank: rm.rank, composite: rm.scores?.composite },
-    ])
-  );
+  const rankingData = ranking as any;
+  const rankedMarkets: any[] = rankingData?.rankedMarkets ?? [];
 
-  return marketsIndex.map((m) => {
-    const ranked = rankBySLug[m.slug];
-    return {
-      slug: m.slug,
-      label: m.name,
-      meta: ranked && ranked.composite != null ? ranked.composite.toFixed(2) : undefined,
-    };
-  });
+  // Build a lookup: slug -> { rank, composite }
+  const rankBySlug: Record<string, { rank: number; composite: number }> = {};
+  for (const rm of rankedMarkets) {
+    if (rm.slug) {
+      rankBySlug[rm.slug] = {
+        rank: rm.rank,
+        composite: rm.scores?.composite ?? 0,
+      };
+    }
+  }
+
+  // Only show markets that have data bundles
+  return marketsIndex
+    .filter((m) => !!markets[m.slug])
+    .map((m) => {
+      const ranked = rankBySlug[m.slug];
+      return {
+        slug: m.slug,
+        label: m.name,
+        meta: ranked && ranked.composite != null
+          ? ranked.composite.toFixed(2)
+          : undefined,
+      };
+    });
 }
 
 /* =========================================================================
@@ -190,35 +202,34 @@ export default function NewMarketAnalysis() {
     tab?: string;
   }>();
 
-  // ── Case 1: no slug at all → show market picker
+  // -- Case 1: no slug at all -> show market picker
   if (!marketSlug) {
     return <NoMarketSelected />;
   }
 
-  // ── Case 2: slug given but no tab → redirect to default tab
-  // If market is not in static bundle, default to first extended tab instead of jtbd
+  // -- Case 2: slug given but no tab -> redirect to default tab
+  const isStaticMarket = !!markets[marketSlug];
   if (!tab) {
-    const isStaticMarket = !!markets[marketSlug];
     const defaultTab = isStaticMarket ? DEFAULT_TAB : "application-engineering";
     return <Navigate to={`/analysis/${marketSlug}/${defaultTab}`} replace />;
   }
 
-  // ── Case 3: validate the slug — check static bundle first, then dynamic
+  // -- Case 3: validate the slug -- check static bundle first, then dynamic
   const bundle = markets[marketSlug];
 
   // If market not in static bundle, render dynamic-only view (GenericAnalysisTab)
   if (!bundle) {
     const dynamicTabs = buildAnalysisTabs(marketSlug);
-    const displayName = marketSlug.replace(/_/g, ' ').replace(/\b\w/g, c => c.toUpperCase());
+    const displayName = marketSlug.replace(/_/g, " ").replace(/\b\w/g, c => c.toUpperCase());
     return (
       <div>
         <PageHeader
-          kicker="Page 06 / Deep-dive per market"
+          kicker="Deep-dive per market"
           title={displayName}
           description={`Dynamic analysis for ${displayName}. Data loaded from JSON exports.`}
         />
 
-        {/* ─── Analysis tab row ─────────────────────────────────────── */}
+        {/* --- Analysis tab row --- */}
         <div
           style={{
             borderBottom: "1px solid var(--border-subtle)",
@@ -229,7 +240,7 @@ export default function NewMarketAnalysis() {
           <AnalysisTabs tabs={dynamicTabs} marketSlug={marketSlug} />
         </div>
 
-        {/* ─── Tab content ──────────────────────────────────────────── */}
+        {/* --- Tab content --- */}
         <div style={{ padding: "0 56px" }}>
           <TabContent tabSlug={tab} marketSlug={marketSlug} />
         </div>
@@ -237,27 +248,29 @@ export default function NewMarketAnalysis() {
     );
   }
 
-  // ── Static bundle exists — full rendering with market header
+  // -- Static bundle exists -- full rendering with market header
   const meta = bundle.meta;
-  const ranked = (ranking as any).rankedMarkets?.find((rm: any) => rm.slug === marketSlug) ?? null;
+  const rankingData = ranking as any;
+  const ranked = rankingData.rankedMarkets?.find((rm: any) => rm.slug === marketSlug) ?? null;
   const marketTabs = buildMarketTabs();
+  const executiveSummary = rankingData.executiveSummary ?? "";
 
   return (
     <div>
-      {/* ─── Page header ─────────────────────────────────────────────── */}
+      {/* --- Page header --- */}
       <PageHeader
-        kicker="Page 06 / Deep-dive per market"
+        kicker="Deep-dive per market"
         title="New Market Analysis"
-        description={(ranking as any).executiveSummary ?? ""}
+        description={executiveSummary}
       />
 
-      {/* ─── Market tab row ───────────────────────────────────────────── */}
+      {/* --- Market tab row (dynamic from index.json + ranking.json) --- */}
       <MarketTabs markets={marketTabs} />
 
-      {/* ─── Market overview strip ────────────────────────────────────── */}
+      {/* --- Market overview strip --- */}
       <MarketHeader meta={meta} ranked={ranked} />
 
-      {/* ─── Analysis tab row ─────────────────────────────────────────── */}
+      {/* --- Analysis tab row --- */}
       <div
         style={{
           borderBottom: "1px solid var(--border-subtle)",
@@ -268,7 +281,7 @@ export default function NewMarketAnalysis() {
         <AnalysisTabs tabs={buildAnalysisTabs(marketSlug)} marketSlug={marketSlug} />
       </div>
 
-      {/* ─── Tab content ──────────────────────────────────────────────── */}
+      {/* --- Tab content --- */}
       <div style={{ padding: "0 56px" }}>
         <TabContent tabSlug={tab} marketSlug={marketSlug} />
       </div>

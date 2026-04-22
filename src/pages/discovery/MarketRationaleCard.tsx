@@ -87,7 +87,8 @@ function parseStrategySteps(raw: string): string[] {
 
 export default function MarketRationaleCard({ market }: Props) {
   const steps = parseStrategySteps(market.entryStrategy);
-  const isReference = market.naicsCode === "30102304";
+  const m = market as any;
+  const isReference = m.isReference === true;
 
   return (
     <div
@@ -261,7 +262,7 @@ export default function MarketRationaleCard({ market }: Props) {
               Time to Entry
             </div>
             <div style={{ fontSize: 13, color: "var(--text-white)", fontWeight: 500 }}>
-              {market.estimatedTimeToEntry}
+              {(market as any).timeToEntry ?? market.estimatedTimeToEntry}
             </div>
           </div>
           <div>

@@ -1,1349 +1,1085 @@
 {
-  "id": "VN_refrigerated_warehousing_and_storage_sam",
-  "title": "VN — NAICS 493120 Refrigerated Warehousing and Storage",
-  "type": "value_network",
-  "market_slug": "refrigerated_warehousing_and_storage_sam",
-  "is_per_market": true,
-  "sections": [
+  "naicsCode": "493120",
+  "marketName": "Refrigerated Warehousing and Storage",
+  "slug": "refrigerated_warehousing",
+  "l7Solution": "",
+  "cfjStatement": "Preserve the physical integrity, temperature chain, and legal compliance of perishable goods from inbound receipt through outbound dispatch, with auditable traceability and regulatory conformance",
+  "l6Systems": [
     {
-      "title": "CFJ (L7 Core Functional Job)",
-      "content": "> Preserve the physical integrity, temperature chain, and legal compliance of perishable goods from inbound receipt through outbound dispatch, with auditable traceability and regulatory conformance (HACCP, IFS, BRC, EU FIC).\n\n---"
-    },
-    {
-      "title": "L7 — Ecosystem",
-      "content": "| Level | Name | Standard |\n|---|---|---|\n| L7 | Temperature-Controlled Warehousing & Cold Chain Storage Ecosystem | Moore 1993 |\n\n---"
-    },
-    {
-      "title": "L6 — Process Steps (Core + Horizontal)",
-      "content": "### Core (sequential transformation of goods)\n| Code | L6 Node | Job family (verb + object) | Output types served |\n|---|---|---|---|\n| L6a | Inbound Receiving & Dock Operations | \"Accept, inspect, register temperature-sensitive goods\" | All (chilled, frozen, deep-freeze, pharma) |\n| L6b | Pre-Cool / Tempering / Blast Operations | \"Adjust product core temperature before storage\" | Frozen (blast), chilled (tempering), pharma (stabilize) |\n| L6c | Temperature-Controlled Storage | \"Hold goods at SLA setpoint over dwell time\" | All |\n| L6d | Order Pick & Assembly | \"Select and consolidate customer orders within temp envelope\" | All |\n| L6e | Outbound Dispatch & Dock Loading | \"Load refrigerated transport without temperature excursion\" | All |\n\n### Horizontal (runs continuously across all core steps)\n| Code | L6 Node (H) | Job family |\n|---|---|---|\n| L6H-REF | Refrigeration & Thermal Management | \"Generate and distribute cooling duty to each chamber\" |\n| **L6H-POWER** | **Energy Supply & Electrical Utilities** | **\"Supply reliable electrical energy to all loads; manage cost and resilience\"** |\n| L6H-QA | Quality, Traceability & Food Safety | \"Prove temperature chain integrity and regulatory conformance\" |\n| L6H-MAINT | Maintenance & Engineering | \"Keep equipment available at SLA\" |\n| L6H-HSE | HSE & Refrigerant Safety | \"Protect people and environment from ammonia/CO₂ hazards\" |\n| L6H-IT | IT/OT & Warehouse Control | \"Direct goods, labor, data flows\" |\n\n---"
-    },
-    {
-      "title": "L5 — Equipment / Product Positions (per L6 node)",
-      "content": "### L6a Inbound Receiving\n| L5 | Alternatives | Conf |\n|---|---|---|\n| Dock Leveler & Sealed Airlock | Mechanical / hydraulic / inflatable airlock | MED |\n| Truck Scale & Gate Management | Weighbridge + ANPR + dock scheduling | MED |\n| Receiving Scanner / RFID Portal | Handheld barcode / fixed RFID gate / vision | MED |\n\n### L6b Pre-Cool / Tempering / Blast\n| L5 | Alternatives | Conf |\n|---|---|---|\n| Blast Freezer | Tunnel / batch-cell / spiral / cryogenic | HIGH |\n| Tempering Room | Forced-air / radiant | MED |\n| Vacuum / Hydro Pre-Cooler | Produce-specific | LOW |\n\n### L6c Temperature-Controlled Storage\n| L5 | Alternatives | Conf |\n|---|---|---|\n| Pallet Racking | Selective / drive-in / push-back / mobile | HIGH |\n| ASRS (Automated Storage & Retrieval) | Crane-ASRS / shuttle / AutoStore deep-freeze | MED |\n| Refrigerated Material Handling Equipment | Reach truck (-30 °C pkg) / CB forklift / AGV | HIGH |\n| Cold Chamber Enclosure | Insulated panel / low-temp door | HIGH |\n\n### L6d Order Pick & Assembly\n| L5 | Alternatives |\n|---|---|\n| Voice Picking System | Vocollect / Honeywell / Zetes |\n| Pick-to-Light / Put-to-Light | Kardex / SSI Schäfer / Knapp |\n| Case / Layer Picker (robotic) | Swisslog ACPaQ / Dematic / KNAPP OSR |\n| Conveyor & Sortation | Interroll / Interlake / Vanderlande |\n\n### L6e Outbound Dispatch & Dock Loading\n| L5 | Alternatives |\n|---|---|\n| Refrigerated Dock Loading Bay | Standard dock with thermal curtain / strip / air cushion |\n| Dock Scheduling Platform | Transporeon / project44 / in-house |\n\n### L6H-REF Refrigeration & Thermal Management\n| L5 | Alternatives | Share (DE new-build) | Conf |\n|---|---|---|---|\n| NH₃ Screw Compressor Plant | GEA / Mayekawa / Vilter / Johnson Controls | 45% | HIGH |\n| NH₃/CO₂ Cascade System | GEA / Mayekawa / Star Refrigeration | 35% | HIGH |\n| Transcritical CO₂ System | Advansor / Carnot / Epta | 15% | MED |\n| Synthetic HFC Plant (legacy) | Various | 5% | MED |\n| Evaporators & Air Coolers | Güntner / LU-VE / Kelvion | — | HIGH |\n| Evaporative Condensers / Cooling Towers | BAC / EVAPCO / Güntner | — | HIGH |\n\n### **L6H-POWER Energy Supply & Electrical Utilities ← Mein Solar enters here**\n| L5 | Alternatives | Conf | Marker |\n|---|---|---|---|\n| MV Grid Connection & Switchgear | Siemens / ABB / Schneider / Eaton | HIGH | |\n| **Battery Energy Storage System (BESS)** | **Tesvolt / Voltfang / Commeo / Fluence / Sungrow / in-house EPC** | **HIGH** | **← Mein Solar PRIMARY POSITION (EPC für Großbatteriespeicher)** |\n| On-site PV Generation | Enerparc / BayWa r.e. / Goldbeck / **Mein Solar** | HIGH | ← Mein Solar SECONDARY POSITION (PV-EPC heritage) |\n| Diesel / Gas Standby Genset | Caterpillar / MTU / Cummins | HIGH | |\n| Uninterruptible Power Supply (UPS) | Schneider Galaxy / Vertiv / Eaton / Piller | MED | |\n| HPC EV Charging for Reefer Trucks | ABB Terra / Alpitronic / Kempower | LOW (emerging) | ← Mein Solar SECONDARY (EV-buffer feature) |\n| Energy Management System (EMS) | Entrix / Next Kraftwerke / Enspired / Tiko | MED | |\n\n### L6H-QA Quality, Traceability & Food Safety\n| L5 | Alternatives |\n|---|---|\n| Temperature Monitoring System | Testo Saveris / Elpro / Sensitech / Ellab |\n| Traceability / Lot Software | SAP EWM / Manhattan / Infor WMS module |\n| Pest Control Program | Rentokil / Anticimex |\n\n### L6H-MAINT Maintenance & Engineering\n| L5 | Alternatives |\n|---|---|\n| CMMS Platform | SAP PM / IBM Maximo / UpKeep |\n| Spare Parts Management | Kanban / automated replenishment |\n| Refrigeration Service Contract | GEA / Mayekawa / Axima / Engie |\n\n### L6H-HSE HSE & Refrigerant Safety\n| L5 | Alternatives |\n|---|---|\n| NH₃ / CO₂ Gas Detection | Honeywell / MSA / Dräger |\n| Emergency Ventilation | Jet fans / purge systems |\n| Fire Detection & Suppression | Siemens / Honeywell / Minimax |\n\n### L6H-IT IT/OT & Warehouse Control\n| L5 | Alternatives |\n|---|---|\n| Warehouse Management System (WMS) | SAP EWM / Manhattan / Körber / Infor |\n| Transportation Management System (TMS) | Oracle OTM / BluJay / Transporeon |\n| SCADA / Building Management System | Siemens Desigo / Honeywell / Schneider EcoStruxure |\n\n---"
-    },
-    {
-      "title": "L4 — Subsystems (for Mein Solar's L5 position and adjacent)",
-      "content": "### L4 under \"Battery Energy Storage System\" (Mein Solar PRIMARY)\n| L4 | INCOSE role |\n|---|---|\n| Li-ion Battery Rack (LFP modules + BMS) | Electrochemical energy store |\n| Power Conversion System (PCS) | 4-quadrant bidirectional inverter |\n| Thermal Management (HVAC + chiller) | Cell temperature control |\n| Fire Suppression (NOVEC / aerosol) | Thermal runaway containment |\n| Energy Management Controller | Setpoint dispatch logic |\n| MV Step-up Transformer | Grid coupling |\n| Container Enclosure (20/40ft ISO HC) | IP54 housing |\n\n### L4 under \"On-site PV Generation\"\n| L4 |\n|---|\n| PV Module (mono-Si) · String Inverter · Roof Mounting · DC Combiner · AC Switchboard |\n\n### L4 under \"NH₃ Screw Compressor Plant\" (illustrative adjacent)\n| L4 |\n|---|\n| Screw Compressor · Oil Separator · Economizer · Control Panel · Pressure Relief Valve |\n\n---"
-    },
-    {
-      "title": "Company Position Markers",
-      "content": "```\nL7  Temperature-Controlled Warehousing & Cold Chain Storage Ecosystem\n  L6H-POWER  Energy Supply & Electrical Utilities\n    L5  Battery Energy Storage System (BESS)        ← MEIN SOLAR PRIMARY POSITION\n    L5  On-site PV Generation                       ← MEIN SOLAR SECONDARY POSITION\n    L5  HPC EV Charging for Reefer Trucks           ← MEIN SOLAR SECONDARY POSITION\n```\n\nMein Solar sits at **L5** in the horizontal utility segment. Cold storage operators buy its BESS as one L5 alternative within their energy layer — not in the core refrigeration or material-handling chain.\n\n---"
-    },
-    {
-      "title": "04e — Direct Competence Transfer Scan",
-      "content": "| VN Unit | Level | Competence required | Company has it? | Effort | Rationale |\n|---|---|---|---|---|---|\n| On-site PV Generation | L5 (L6H-POWER) | Module layout, MV coupling, VDE-AR-N 4110 | YES | LOW | Core business; full transfer |\n| MV Grid Connection & Switchgear | L5 (L6H-POWER) | MV transformer + switchgear design, DSO interface | PARTIAL | LOW | Already delivered inside every BESS/PV EPC; can be sold standalone for grid-upgrade projects |\n| HPC EV Charging for Reefer Trucks | L5 (L6H-POWER) | HPC dispenser integration + BESS buffer | PARTIAL | MEDIUM | EV-buffer feature exists; reefer-truck charging scheduling and 24V auxiliary is new |\n| Energy Management System (EMS) | L5 (L6H-POWER) | SoC management, market dispatch, forecast | PARTIAL | MEDIUM | Have EMS for BESS; integrating load-side (compressor dispatch) is gap |\n| UPS (Li-ion based) | L5 (L6H-POWER) | Sub-cycle ride-through, IEC 62040 | PARTIAL | MEDIUM | BESS hardware overlaps; static-switch + <10 ms transfer is gap |\n\nHIGH-effort units (Refrigeration plant, WMS, HSE, material handling) excluded.\n\n---"
-    },
-    {
-      "title": "04f — Strategic Adjacency Expansion (within L6H-POWER)",
-      "content": "| Adjacent L5 | Current incumbents | Competence gap | Investment | Fit (1–10) | Rationale |\n|---|---|---|---|---|---|\n| On-site PV Generation | Enerparc, BayWa r.e., Goldbeck | — (none) | 0 | 10 | Already in core portfolio; 100% overlap |\n| HPC EV Charging (reefer trucks) | Alpitronic, ABB, Kempower | Dispenser integration, fleet scheduling | 6–12 mo, ~€0.5M | 7 | BESS-buffered HPC is Mein Solar's named differentiator; reefer truck logistics is new buyer conversation |\n| UPS (Li-ion) | Schneider, Vertiv, Eaton | <10 ms transfer, IEC 62040-3 cert | 12–18 mo, ~€1.5M | 5 | Hardware overlap high; certification and sub-cycle controls are real gap |\n| Diesel Genset | CAT, MTU, Cummins | Combustion engineering, fuel systems | >24 mo | 1 | Excluded — <15% overlap, declining segment |\n| EMS (cold-store co-optimization) | Entrix, Next Kraftwerke, Tiko | Compressor-load forecasting, HACCP-aware dispatch | 12 mo, ~€0.8M | 6 | Natural add-on to BESS sale; enables combined peak shaving + refrigeration load management value prop |\n\n---"
-    },
-    {
-      "title": "04g — Vertical Move-Up Assessment",
-      "content": "| Current | Target (1 level up) | What to add | Competitor at target | Feasibility | Economic rationale |\n|---|---|---|---|---|---|\n| L5 BESS under L6H-POWER | L6H-POWER: **integrated Energy Supply for cold storage** | EMS covering PV + BESS + HPC + genset interlock + refrigeration-aware dispatch; O&M wrap | Engie Solutions, Getec, RWE Solutions, E.ON Connecting Energies | **MEDIUM** | Mein Solar already delivers PV + BESS + MV + civil as single EPC. Adding EMS + multi-year O&M turns a capex contract into an \"Energy-as-a-Service\" L6 integrator role. Target TAM at L6 is ~3× the standalone BESS line. Gap: genset/UPS portfolio, long-term balance-sheet capability, 15-yr service contracting. |\n\n---"
-    },
-    {
-      "title": "QA Check",
-      "content": "| # | Check | Status |\n|---|---|---|\n| Q1 | CFJ industry-level, mechanism-free | ✅ |\n| Q2 | No orphan nodes | ✅ |\n| Q3 | Valid level transitions (L7→L6→L5→L4) | ✅ |\n| Q4 | ≥2 L4 children on L5 key positions | ✅ (BESS has 7) |\n| Q5 | No solution-specific L7/L6 names | ✅ |\n| Q6 | Naming test (industry-standard terms) | ✅ |\n| Q7 | Unit count 15–60 | ✅ (~45 units) |\n| — | Mein Solar position marked | ✅ (PRIMARY + 2 SECONDARY) |\n| — | Built to full depth of company position | ✅ (L5 + L4 beneath) |\n\n---"
-    },
-    {
-      "title": "Structured Data",
-      "content": "```json\n{\n  \"market_name\": \"Refrigerated Warehousing and Storage\",\n  \"naics_code\": \"493120\",\n  \"naics_title\": \"Refrigerated Warehousing and Storage\",\n  \"cfj_statement\": \"Preserve the physical integrity, temperature chain, and legal compliance of perishable goods from inbound receipt through outbound dispatch, with auditable traceability and regulatory conformance\",\n  \"top_level\": \"L7\",\n  \"company_primary_position\": {\"level\": \"L5\", \"name\": \"Battery Energy Storage System (BESS)\", \"parent\": \"Energy Supply & Electrical Utilities\"},\n  \"company_secondary_positions\": [\n    {\"level\": \"L5\", \"name\": \"On-site PV Generation\", \"parent\": \"Energy Supply & Electrical Utilities\"},\n    {\"level\": \"L5\", \"name\": \"HPC EV Charging for Reefer Trucks\", \"parent\": \"Energy Supply & Electrical Utilities\"}\n  ],\n  \"units\": [\n    {\"name\": \"Temperature-Controlled Warehousing & Cold Chain Storage Ecosystem\", \"level\": \"L7\", \"bom_standard\": \"Moore 1993\", \"parent_name\": \"ROOT\", \"description\": \"Industry ecosystem delivering temperature-controlled storage services\"},\n\n    {\"name\": \"Inbound Receiving & Dock Operations\", \"level\": \"L6\", \"bom_standard\": \"Maier 1998\", \"parent_name\": \"Temperature-Controlled Warehousing & Cold Chain Storage Ecosystem\", \"description\": \"Accept and register temperature-sensitive goods\"},\n    {\"name\": \"Pre-Cool / Tempering / Blast Operations\", \"level\": \"L6\", \"bom_standard\": \"Maier 1998\", \"parent_name\": \"Temperature-Controlled Warehousing & Cold Chain Storage Ecosystem\", \"description\": \"Adjust product core temperature before storage\"},\n    {\"name\": \"Temperature-Controlled Storage\", \"level\": \"L6\", \"bom_standard\": \"Maier 1998\", \"parent_name\": \"Temperature-Controlled Warehousing & Cold Chain Storage Ecosystem\", \"description\": \"Hold goods at SLA setpoint\"},\n    {\"name\": \"Order Pick & Assembly\", \"level\": \"L6\", \"bom_standard\": \"Maier 1998\", \"parent_name\": \"Temperature-Controlled Warehousing & Cold Chain Storage Ecosystem\", \"description\": \"Select and consolidate customer orders in temp envelope\"},\n    {\"name\": \"Outbound Dispatch & Dock Loading\", \"level\": \"L6\", \"bom_standard\": \"Maier 1998\", \"parent_name\": \"Temperature-Controlled Warehousing & Cold Chain Storage Ecosystem\", \"description\": \"Load refrigerated transport\"},\n\n    {\"name\": \"Refrigeration & Thermal Management\", \"level\": \"L6\", \"bom_standard\": \"Maier 1998\", \"parent_name\": \"Temperature-Controlled Warehousing & Cold Chain Storage Ecosystem\", \"description\": \"Horizontal: generate cooling duty for all chambers\"},\n    {\"name\": \"Energy Supply & Electrical Utilities\", \"level\": \"L6\", \"bom_standard\": \"Maier 1998\", \"parent_name\": \"Temperature-Controlled Warehousing & Cold Chain Storage Ecosystem\", \"description\": \"Horizontal: supply reliable electrical energy\"},\n    {\"name\": \"Quality, Traceability & Food Safety\", \"level\": \"L6\", \"bom_standard\": \"Maier 1998\", \"parent_name\": \"Temperature-Controlled Warehousing & Cold Chain Storage Ecosystem\", \"description\": \"Horizontal: prove temperature chain integrity\"},\n    {\"name\": \"Maintenance & Engineering\", \"level\": \"L6\", \"bom_standard\": \"Maier 1998\", \"parent_name\": \"Temperature-Controlled Warehousing & Cold Chain Storage Ecosystem\", \"description\": \"Horizontal: keep equipment at SLA\"},\n    {\"name\": \"HSE & Refrigerant Safety\", \"level\": \"L6\", \"bom_standard\": \"Maier 1998\", \"parent_name\": \"Temperature-Controlled Warehousing & Cold Chain Storage Ecosystem\", \"description\": \"Horizontal: protect people from NH3/CO2 hazards\"},\n    {\"name\": \"IT/OT & Warehouse Control\", \"level\": \"L6\", \"bom_standard\": \"Maier 1998\", \"parent_name\": \"Temperature-Controlled Warehousing & Cold Chain Storage Ecosystem\", \"description\": \"Horizontal: direct goods, labor, data flows\"},\n\n    {\"name\": \"Dock Leveler & Sealed Airlock\", \"level\": \"L5\", \"bom_standard\": \"ISO 15288\", \"parent_name\": \"Inbound Receiving & Dock Operations\", \"description\": \"Mechanical interface between truck and cold warehouse envelope\"},\n    {\"name\": \"Truck Scale & Gate Management\", \"level\": \"L5\", \"bom_standard\": \"ISO 15288\", \"parent_name\": \"Inbound Receiving & Dock Operations\", \"description\": \"Weighbridge and site access\"},\n    {\"name\": \"Receiving Scanner / RFID Portal\", \"level\": \"L5\", \"bom_standard\": \"ISO 15288\", \"parent_name\": \"Inbound Receiving & Dock Operations\", \"description\": \"Automated identification at receipt\"},\n\n    {\"name\": \"Blast Freezer\", \"level\": \"L5\", \"bom_standard\": \"ISO 15288\", \"parent_name\": \"Pre-Cool / Tempering / Blast Operations\", \"description\": \"Rapid core-temperature reduction\"},\n    {\"name\": \"Tempering Room\", \"level\": \"L5\", \"bom_standard\": \"ISO 15288\", \"parent_name\": \"Pre-Cool / Tempering / Blast Operations\", \"description\": \"Controlled thaw or equilibration\"},\n    {\"name\": \"Vacuum / Hydro Pre-Cooler\", \"level\": \"L5\", \"bom_standard\": \"ISO 15288\", \"parent_name\": \"Pre-Cool / Tempering / Blast Operations\", \"description\": \"Produce-specific pre-chill\"},\n\n    {\"name\": \"Pallet Racking\", \"level\": \"L5\", \"bom_standard\": \"ISO 15288\", \"parent_name\": \"Temperature-Controlled Storage\", \"description\": \"Static storage rack (selective/drive-in/mobile)\"},\n    {\"name\": \"ASRS\", \"level\": \"L5\", \"bom_standard\": \"ISO 15288\", \"parent_name\": \"Temperature-Controlled Storage\", \"description\": \"Automated storage and retrieval in cold chamber\"},\n    {\"name\": \"Refrigerated Material Handling Equipment\", \"level\": \"L5\", \"bom_standard\": \"ISO 15288\", \"parent_name\": \"Temperature-Controlled Storage\", \"description\": \"Cold-rated reach trucks, forklifts, AGVs\"},\n    {\"name\": \"Cold Chamber Enclosure\", \"level\": \"L5\", \"bom_standard\": \"ISO 15288\", \"parent_name\": \"Temperature-Controlled Storage\", \"description\": \"Insulated panel envelope and doors\"},\n\n    {\"name\": \"Voice Picking System\", \"level\": \"L5\", \"bom_standard\": \"ISO 15288\", \"parent_name\": \"Order Pick & Assembly\", \"description\": \"Hands-free picking direction\"},\n    {\"name\": \"Pick-to-Light / Put-to-Light\", \"level\": \"L5\", \"bom_standard\": \"ISO 15288\", \"parent_name\": \"Order Pick & Assembly\", \"description\": \"Visual pick guidance\"},\n    {\"name\": \"Case / Layer Picker\", \"level\": \"L5\", \"bom_standard\": \"ISO 15288\", \"parent_name\": \"Order Pick & Assembly\", \"description\": \"Robotic case/layer assembly\"},\n    {\"name\": \"Conveyor & Sortation\", \"level\": \"L5\", \"bom_standard\": \"ISO 15288\", \"parent_name\": \"Order Pick & Assembly\", \"description\": \"Automated material flow\"},\n\n    {\"name\": \"Refrigerated Dock Loading Bay\", \"level\": \"L5\", \"bom_standard\": \"ISO 15288\", \"parent_name\": \"Outbound Dispatch & Dock Loading\", \"description\": \"Thermal-sealed outbound interface\"},\n    {\"name\": \"Dock Scheduling Platform\", \"level\": \"L5\", \"bom_standard\": \"ISO 15288\", \"parent_name\": \"Outbound Dispatch & Dock Loading\", \"description\": \"Carrier appointment management\"},\n\n    {\"name\": \"NH3 Screw Compressor Plant\", \"level\": \"L5\", \"bom_standard\": \"ISO 15288\", \"parent_name\": \"Refrigeration & Thermal Management\", \"description\": \"Ammonia screw refrigeration (dominant in DE)\"},\n    {\"name\": \"NH3/CO2 Cascade System\", \"level\": \"L5\", \"bom_standard\": \"ISO 15288\", \"parent_name\": \"Refrigeration & Thermal Management\", \"description\": \"High-stage NH3 with low-stage CO2 for deep-freeze\"},\n    {\"name\": \"Transcritical CO2 System\", \"level\": \"L5\", \"bom_standard\": \"ISO 15288\", \"parent_name\": \"Refrigeration & Thermal Management\", \"description\": \"F-gas-compliant CO2-only system\"},\n    {\"name\": \"Synthetic HFC Plant\", \"level\": \"L5\", \"bom_standard\": \"ISO 15288\", \"parent_name\": \"Refrigeration & Thermal Management\", \"description\": \"Legacy HFC, declining under F-Gas Reg\"},\n    {\"name\": \"Evaporators & Air Coolers\", \"level\": \"L5\", \"bom_standard\": \"ISO 15288\", \"parent_name\": \"Refrigeration & Thermal Management\", \"description\": \"Chamber-side heat-exchange units\"},\n    {\"name\": \"Evaporative Condensers / Cooling Towers\", \"level\": \"L5\", \"bom_standard\": \"ISO 15288\", \"parent_name\": \"Refrigeration & Thermal Management\", \"description\": \"Heat-rejection plant\"},\n\n    {\"name\": \"MV Grid Connection & Switchgear\", \"level\": \"L5\", \"bom_standard\": \"ISO 15288\", \"parent_name\": \"Energy Supply & Electrical Utilities\", \"description\": \"10/20 kV feeder, MV switchgear, protection\"},\n    {\"name\": \"Battery Energy Storage System (BESS)\", \"level\": \"L5\", \"bom_standard\": \"ISO 15288\", \"parent_name\": \"Energy Supply & Electrical Utilities\", \"description\": \"Multi-MWh containerised Li-ion storage — MEIN SOLAR PRIMARY POSITION\", \"company_position\": \"PRIMARY\"},\n    {\"name\": \"On-site PV Generation\", \"level\": \"L5\", \"bom_standard\": \"ISO 15288\", \"parent_name\": \"Energy Supply & Electrical Utilities\", \"description\": \"Rooftop or ground-mount PV — MEIN SOLAR SECONDARY POSITION (PV-EPC heritage)\", \"company_position\": \"SECONDARY\"},\n    {\"name\": \"Diesel / Gas Standby Genset\", \"level\": \"L5\", \"bom_standard\": \"ISO 15288\", \"parent_name\": \"Energy Supply & Electrical Utilities\", \"description\": \"Backup power for refrigeration continuity\"},\n    {\"name\": \"Uninterruptible Power Supply (UPS)\", \"level\": \"L5\", \"bom_standard\": \"ISO 15288\", \"parent_name\": \"Energy Supply & Electrical Utilities\", \"description\": \"Short-term ride-through for IT and controls\"},\n    {\"name\": \"HPC EV Charging for Reefer Trucks\", \"level\": \"L5\", \"bom_standard\": \"ISO 15288\", \"parent_name\": \"Energy Supply & Electrical Utilities\", \"description\": \"High-power DC charging — MEIN SOLAR SECONDARY POSITION (EV-buffer feature)\", \"company_position\": \"SECONDARY\"},\n    {\"name\": \"Energy Management System (EMS)\", \"level\": \"L5\", \"bom_standard\": \"ISO 15288\", \"parent_name\": \"Energy Supply & Electrical Utilities\", \"description\": \"Dispatch optimisation and market interface\"},\n\n    {\"name\": \"Temperature Monitoring System\", \"level\": \"L5\", \"bom_standard\": \"ISO 15288\", \"parent_name\": \"Quality, Traceability & Food Safety\", \"description\": \"Calibrated wireless T-loggers and dashboards\"},\n    {\"name\": \"Traceability / Lot Software\", \"level\": \"L5\", \"bom_standard\": \"ISO 15288\", \"parent_name\": \"Quality, Traceability & Food Safety\", \"description\": \"Lot-genealogy and recall management\"},\n    {\"name\": \"Pest Control Program\", \"level\": \"L5\", \"bom_standard\": \"ISO 15288\", \"parent_name\": \"Quality, Traceability & Food Safety\", \"description\": \"IFS/BRC-mandated pest management\"},\n\n    {\"name\": \"CMMS Platform\", \"level\": \"L5\", \"bom_standard\": \"ISO 15288\", \"parent_name\": \"Maintenance & Engineering\", \"description\": \"Computerised maintenance management\"},\n    {\"name\": \"Spare Parts Management\", \"level\": \"L5\", \"bom_standard\": \"ISO 15288\", \"parent_name\": \"Maintenance & Engineering\", \"description\": \"Critical-spares inventory\"},\n    {\"name\": \"Refrigeration Service Contract\", \"level\": \"L5\", \"bom_standard\": \"ISO 15288\", \"parent_name\": \"Maintenance & Engineering\", \"description\": \"OEM/third-party ammonia service\"},\n\n    {\"name\": \"NH3 / CO2 Gas Detection\", \"level\": \"L5\", \"bom_standard\": \"ISO 15288\", \"parent_name\": \"HSE & Refrigerant Safety\", \"description\": \"Fixed-point gas detection and alarm\"},\n    {\"name\": \"Emergency Ventilation\", \"level\": \"L5\", \"bom_standard\": \"ISO 15288\", \"parent_name\": \"HSE & Refrigerant Safety\", \"description\": \"Leak-triggered purge\"},\n    {\"name\": \"Fire Detection & Suppression\", \"level\": \"L5\", \"bom_standard\": \"ISO 15288\", \"parent_name\": \"HSE & Refrigerant Safety\", \"description\": \"Aspirating smoke, sprinkler, suppression\"},\n\n    {\"name\": \"Warehouse Management System (WMS)\", \"level\": \"L5\", \"bom_standard\": \"ISO 15288\", \"parent_name\": \"IT/OT & Warehouse Control\", \"description\": \"Inventory, labor, location control\"},\n    {\"name\": \"Transportation Management System (TMS)\", \"level\": \"L5\", \"bom_standard\": \"ISO 15288\", \"parent_name\": \"IT/OT & Warehouse Control\", \"description\": \"Carrier and route management\"},\n    {\"name\": \"SCADA / Building Management System\", \"level\": \"L5\", \"bom_standard\": \"ISO 15288\", \"parent_name\": \"IT/OT & Warehouse Control\", \"description\": \"Refrigeration + building automation\"},\n\n    {\"name\": \"Li-ion Battery Rack\", \"level\": \"L4\", \"bom_standard\": \"INCOSE\", \"parent_name\": \"Battery Energy Storage System (BESS)\", \"description\": \"LFP modules with BMS\"},\n    {\"name\": \"Power Conversion System (PCS)\", \"level\": \"L4\", \"bom_standard\": \"INCOSE\", \"parent_name\": \"Battery Energy Storage System (BESS)\", \"description\": \"Bidirectional 4-quadrant inverter\"},\n    {\"name\": \"Thermal Management Unit\", \"level\": \"L4\", \"bom_standard\": \"INCOSE\", \"parent_name\": \"Battery Energy Storage System (BESS)\", \"description\": \"Liquid-cool chiller and HVAC\"},\n    {\"name\": \"Fire Suppression (NOVEC/aerosol)\", \"level\": \"L4\", \"bom_standard\": \"INCOSE\", \"parent_name\": \"Battery Energy Storage System (BESS)\", \"description\": \"Thermal-runaway containment\"},\n    {\"name\": \"Energy Management Controller\", \"level\": \"L4\", \"bom_standard\": \"INCOSE\", \"parent_name\": \"Battery Energy Storage System (BESS)\", \"description\": \"Setpoint dispatch logic\"},\n    {\"name\": \"MV Step-up Transformer\", \"level\": \"L4\", \"bom_standard\": \"INCOSE\", \"parent_name\": \"Battery Energy Storage System (BESS)\", \"description\": \"LV-to-MV coupling\"},\n    {\"name\": \"Container Enclosure\", \"level\": \"L4\", \"bom_standard\": \"INCOSE\", \"parent_name\": \"Battery Energy Storage System (BESS)\", \"description\": \"ISO HC housing IP54\"},\n\n    {\"name\": \"PV Module\", \"level\": \"L4\", \"bom_standard\": \"INCOSE\", \"parent_name\": \"On-site PV Generation\", \"description\": \"Mono-Si glass-glass or glass-foil panel\"},\n    {\"name\": \"String Inverter\", \"level\": \"L4\", \"bom_standard\": \"INCOSE\", \"parent_name\": \"On-site PV Generation\", \"description\": \"DC-AC conversion\"},\n    {\"name\": \"Roof / Ground Mounting\", \"level\": \"L4\", \"bom_standard\": \"INCOSE\", \"parent_name\": \"On-site PV Generation\", \"description\": \"Structural support\"},\n    {\"name\": \"DC Combiner Box\", \"level\": \"L4\", \"bom_standard\": \"INCOSE\", \"parent_name\": \"On-site PV Generation\", \"description\": \"String aggregation and protection\"},\n    {\"name\": \"AC Switchboard\", \"level\": \"L4\", \"bom_standard\": \"INCOSE\", \"parent_name\": \"On-site PV Generation\", \"description\": \"AC distribution and metering\"},\n\n    {\"name\": \"HPC Dispenser\", \"level\": \"L4\", \"bom_standard\": \"INCOSE\", \"parent_name\": \"HPC EV Charging for Reefer Trucks\", \"description\": \"CCS2 150-400 kW dispenser\"},\n    {\"name\": \"DC Power Cabinet\", \"level\": \"L4\", \"bom_standard\": \"INCOSE\", \"parent_name\": \"HPC EV Charging for Reefer Trucks\", \"description\": \"Rectifier stack\"},\n    {\"name\": \"Cable Management / Liquid-Cooled Cable\", \"level\": \"L4\", \"bom_standard\": \"INCOSE\", \"parent_name\": \"HPC EV Charging for Reefer Trucks\", \"description\": \"High-current cable and coolant\"},\n    {\"name\": \"Payment & Authentication Unit\", \"level\": \"L4\", \"bom_standard\": \"INCOSE\", \"parent_name\": \"HPC EV Charging for Reefer Trucks\", \"description\": \"OCPP + payment terminal\"},\n\n    {\"name\": \"Screw Compressor\", \"level\": \"L4\", \"bom_standard\": \"INCOSE\", \"parent_name\": \"NH3 Screw Compressor Plant\", \"description\": \"Rotary twin-screw with VFD\"},\n    {\"name\": \"Oil Separator\", \"level\": \"L4\", \"bom_standard\": \"INCOSE\", \"parent_name\": \"NH3 Screw Compressor Plant\", \"description\": \"Compressor-oil recovery\"},\n    {\"name\": \"Economizer\", \"level\": \"L4\", \"bom_standard\": \"INCOSE\", \"parent_name\": \"NH3 Screw Compressor Plant\", \"description\": \"Two-stage efficiency improvement\"},\n    {\"name\": \"Refrigeration Control Panel\", \"level\": \"L4\", \"bom_standard\": \"INCOSE\", \"parent_name\": \"NH3 Screw Compressor Plant\", \"description\": \"Capacity and safety control\"},\n    {\"name\": \"Pressure Relief Valve Station\", \"level\": \"L4\", \"bom_standard\": \"INCOSE\", \"parent_name\": \"NH3 Screw Compressor Plant\", \"description\": \"EN 378 over-pressure protection\"}\n  ],\n  \"direct_competence_transfer\": [\n    {\"vn_unit\": \"On-site PV Generation\", \"level\": \"L5\", \"has_it\": \"YES\", \"effort\": \"LOW\", \"rationale\": \"Core incumbent business\"},\n    {\"vn_unit\": \"MV Grid Connection & Switchgear\", \"level\": \"L5\", \"has_it\": \"PARTIAL\", \"effort\": \"LOW\", \"rationale\": \"Already inside every EPC; sellable standalone for grid upgrades\"},\n    {\"vn_unit\": \"HPC EV Charging for Reefer Trucks\", \"level\": \"L5\", \"has_it\": \"PARTIAL\", \"effort\": \"MEDIUM\", \"rationale\": \"EV-buffer feature exists; reefer-truck scheduling is new\"},\n    {\"vn_unit\": \"Energy Management System (EMS)\", \"level\": \"L5\", \"has_it\": \"PARTIAL\", \"effort\": \"MEDIUM\", \"rationale\": \"BESS EMS exists; cold-store compressor load co-optimization is gap\"},\n    {\"vn_unit\": \"UPS (Li-ion)\", \"level\": \"L5\", \"has_it\": \"PARTIAL\", \"effort\": \"MEDIUM\", \"rationale\": \"Hardware overlaps; IEC 62040-3 sub-cycle transfer is gap\"}\n  ],\n  \"strategic_adjacency_expansion\": {\n    \"segment\": \"Energy Supply & Electrical Utilities\",\n    \"current_position\": \"Battery Energy Storage System (BESS)\",\n    \"candidates\": [\n      {\"unit\": \"On-site PV Generation\", \"fit\": 10, \"investment\": \"none\", \"incumbents\": [\"Enerparc\", \"BayWa r.e.\", \"Goldbeck Solar\"]},\n      {\"unit\": \"HPC EV Charging (reefer trucks)\", \"fit\": 7, \"investment\": \"6-12mo, ~EUR 0.5M\", \"incumbents\": [\"Alpitronic\", \"ABB\", \"Kempower\"]},\n      {\"unit\": \"EMS (cold-store co-optimization)\", \"fit\": 6, \"investment\": \"12mo, ~EUR 0.8M\", \"incumbents\": [\"Entrix\", \"Next Kraftwerke\", \"Tiko\"]},\n      {\"unit\": \"UPS (Li-ion)\", \"fit\": 5, \"investment\": \"12-18mo, ~EUR 1.5M\", \"incumbents\": [\"Schneider\", \"Vertiv\", \"Eaton\"]},\n      {\"unit\": \"Diesel Genset\", \"fit\": 1, \"investment\": \">24mo\", \"excluded\": true, \"reason\": \"<15% capability overlap; declining segment\"}\n    ]\n  },\n  \"vertical_move_up\": {\n    \"current\": \"L5 BESS under L6H-POWER\",\n    \"target\": \"L6H-POWER: Integrated Energy Supply for cold storage (Energy-as-a-Service)\",\n    \"feasibility\": \"MEDIUM\",\n    \"additions_required\": [\"Multi-asset EMS (PV+BESS+HPC+genset)\", \"HACCP-aware refrigeration-load dispatch\", \"Long-term O&M + balance-sheet for 15-yr EaaS contracts\", \"Genset/UPS portfolio via partnership\"],\n    \"competitors_at_target\": [\"Engie Solutions\", \"Getec\", \"RWE Solutions\", \"E.ON Connecting Energies\"],\n    \"economic_rationale\": \"L6 TAM ~3x standalone BESS; shifts from capex EPC to EaaS opex model; Mein Solar already delivers 3 of 5 needed L5s inside its current EPC scope\"\n  },\n  \"qa\": {\n    \"cfj_industry_level\": true,\n    \"no_orphans\": true,\n    \"valid_transitions\": true,\n    \"l4_per_l5_minimum_met_on_company_position\": true,\n    \"unit_count\": 61,\n    \"within_range_15_60\": false,\n    \"over_range_note\": \"Slightly over 60 due to full L4 fill on Mein Solar primary + both secondary positions plus illustrative adjacent; acceptable per doc's 'full depth to company position' HARD RULE\"\n  }\n}\n```\n\n---"
-    },
-    {
-      "title": "Sources",
-      "content": "- [NAICS 493120 — Refrigerated Warehousing and Storage (SamSearch)](https://samsearch.co/naics-ai-lookup/493120)\n- [Guide to Effective Warehouse Operations (GCCA)](https://www.gcca.org/legacy-system/FinalWarehouseOpsManual2018.pdf)\n- [Warehouse Receiving Best Practices 2026 (DataDocks)](https://datadocks.com/posts/warehouse-receiving-process)\n- [Food Distribution & Cold Storage Material Handling Guide (LiftOne)](https://www.liftone.net/blog/food-cold-storage-warehouse-guide/)\n- [Cold Storage and Ammonia Refrigeration — IIAR transcritical CO₂ vs NH₃ comparison](https://iiarcondenser.org/operating-cost-comparison-between-transcritical-co2-and-ammonia-recirculation-systems-in-a-cold-storage-warehouse/)\n- [Refrigerant Options for Cold Storage Facilities (Henderson Engineers)](https://www.hendersonengineers.com/insight_article/options-and-recommendations-for-designing-cold-storage-facilities/)\n- [Industrial Refrigeration Compressors — Ammonia & CO₂ (Discovery Designs)](https://www.ddref.com/Manufacturers/IndustrialRefrigerationCompressors)\n- [2025 Germany Energy Storage Market Guide — C&I policies (PVB)](https://www.pvb.com/blog/2025-germany-energy-storage-market-guide-policies-bess-selection-industry-trends-complete-citations/)\n- ['Moment of truth': 2026 regulatory agenda for large battery storage in Germany (Energy-Storage.News)](https://www.energy-storage.news/moment-of-truth-the-2026-regulatory-agenda-for-large-battery-storage-in-germany/)\n- [C&I BESS for German Factory — 1 MWh peak shaving case (SolarEast)](https://www.solareastbess.com/company-news/ci-bess-germany-peak-shaving-energy-storage-solaeast.html)\n- [VDE-AR-N 4110 — MV Grid Connection Rules (VDE)](https://www.vde.com/en/fnn/topics/technical-connection-rules/tcr-for-medium-voltage)"
-    }
-  ],
-  "tables": [
-    {
-      "headers": [
-        "Level",
-        "Name",
-        "Standard"
-      ],
-      "rows": [
-        {
-          "Level": "L7",
-          "Name": "Temperature-Controlled Warehousing & Cold Chain Storage Ecosystem",
-          "Standard": "Moore 1993"
-        }
-      ]
-    },
-    {
-      "headers": [
-        "Code",
-        "L6 Node",
-        "Job family (verb + object)",
-        "Output types served"
-      ],
-      "rows": [
-        {
-          "Code": "L6a",
-          "L6 Node": "Inbound Receiving & Dock Operations",
-          "Job family (verb + object)": "\"Accept, inspect, register temperature-sensitive goods\"",
-          "Output types served": "All (chilled, frozen, deep-freeze, pharma)"
-        },
-        {
-          "Code": "L6b",
-          "L6 Node": "Pre-Cool / Tempering / Blast Operations",
-          "Job family (verb + object)": "\"Adjust product core temperature before storage\"",
-          "Output types served": "Frozen (blast), chilled (tempering), pharma (stabilize)"
-        },
-        {
-          "Code": "L6c",
-          "L6 Node": "Temperature-Controlled Storage",
-          "Job family (verb + object)": "\"Hold goods at SLA setpoint over dwell time\"",
-          "Output types served": "All"
-        },
-        {
-          "Code": "L6d",
-          "L6 Node": "Order Pick & Assembly",
-          "Job family (verb + object)": "\"Select and consolidate customer orders within temp envelope\"",
-          "Output types served": "All"
-        },
-        {
-          "Code": "L6e",
-          "L6 Node": "Outbound Dispatch & Dock Loading",
-          "Job family (verb + object)": "\"Load refrigerated transport without temperature excursion\"",
-          "Output types served": "All"
-        }
-      ]
-    },
-    {
-      "headers": [
-        "Code",
-        "L6 Node (H)",
-        "Job family"
-      ],
-      "rows": [
-        {
-          "Code": "L6H-REF",
-          "L6 Node (H)": "Refrigeration & Thermal Management",
-          "Job family": "\"Generate and distribute cooling duty to each chamber\""
-        },
-        {
-          "Code": "**L6H-POWER**",
-          "L6 Node (H)": "**Energy Supply & Electrical Utilities**",
-          "Job family": "**\"Supply reliable electrical energy to all loads; manage cost and resilience\"**"
-        },
-        {
-          "Code": "L6H-QA",
-          "L6 Node (H)": "Quality, Traceability & Food Safety",
-          "Job family": "\"Prove temperature chain integrity and regulatory conformance\""
-        },
-        {
-          "Code": "L6H-MAINT",
-          "L6 Node (H)": "Maintenance & Engineering",
-          "Job family": "\"Keep equipment available at SLA\""
-        },
-        {
-          "Code": "L6H-HSE",
-          "L6 Node (H)": "HSE & Refrigerant Safety",
-          "Job family": "\"Protect people and environment from ammonia/CO₂ hazards\""
-        },
-        {
-          "Code": "L6H-IT",
-          "L6 Node (H)": "IT/OT & Warehouse Control",
-          "Job family": "\"Direct goods, labor, data flows\""
-        }
-      ]
-    },
-    {
-      "headers": [
-        "L5",
-        "Alternatives",
-        "Conf"
-      ],
-      "rows": [
-        {
-          "L5": "Dock Leveler & Sealed Airlock",
-          "Alternatives": "Mechanical / hydraulic / inflatable airlock",
-          "Conf": "MED"
-        },
-        {
-          "L5": "Truck Scale & Gate Management",
-          "Alternatives": "Weighbridge + ANPR + dock scheduling",
-          "Conf": "MED"
-        },
-        {
-          "L5": "Receiving Scanner / RFID Portal",
-          "Alternatives": "Handheld barcode / fixed RFID gate / vision",
-          "Conf": "MED"
-        }
-      ]
-    },
-    {
-      "headers": [
-        "L5",
-        "Alternatives",
-        "Conf"
-      ],
-      "rows": [
-        {
-          "L5": "Blast Freezer",
-          "Alternatives": "Tunnel / batch-cell / spiral / cryogenic",
-          "Conf": "HIGH"
-        },
-        {
-          "L5": "Tempering Room",
-          "Alternatives": "Forced-air / radiant",
-          "Conf": "MED"
-        },
-        {
-          "L5": "Vacuum / Hydro Pre-Cooler",
-          "Alternatives": "Produce-specific",
-          "Conf": "LOW"
-        }
-      ]
-    },
-    {
-      "headers": [
-        "L5",
-        "Alternatives",
-        "Conf"
-      ],
-      "rows": [
-        {
-          "L5": "Pallet Racking",
-          "Alternatives": "Selective / drive-in / push-back / mobile",
-          "Conf": "HIGH"
-        },
-        {
-          "L5": "ASRS (Automated Storage & Retrieval)",
-          "Alternatives": "Crane-ASRS / shuttle / AutoStore deep-freeze",
-          "Conf": "MED"
-        },
-        {
-          "L5": "Refrigerated Material Handling Equipment",
-          "Alternatives": "Reach truck (-30 °C pkg) / CB forklift / AGV",
-          "Conf": "HIGH"
-        },
-        {
-          "L5": "Cold Chamber Enclosure",
-          "Alternatives": "Insulated panel / low-temp door",
-          "Conf": "HIGH"
-        }
-      ]
-    },
-    {
-      "headers": [
-        "L5",
-        "Alternatives"
-      ],
-      "rows": [
-        {
-          "L5": "Voice Picking System",
-          "Alternatives": "Vocollect / Honeywell / Zetes"
-        },
-        {
-          "L5": "Pick-to-Light / Put-to-Light",
-          "Alternatives": "Kardex / SSI Schäfer / Knapp"
-        },
-        {
-          "L5": "Case / Layer Picker (robotic)",
-          "Alternatives": "Swisslog ACPaQ / Dematic / KNAPP OSR"
-        },
-        {
-          "L5": "Conveyor & Sortation",
-          "Alternatives": "Interroll / Interlake / Vanderlande"
-        }
-      ]
-    },
-    {
-      "headers": [
-        "L5",
-        "Alternatives"
-      ],
-      "rows": [
-        {
-          "L5": "Refrigerated Dock Loading Bay",
-          "Alternatives": "Standard dock with thermal curtain / strip / air cushion"
-        },
-        {
-          "L5": "Dock Scheduling Platform",
-          "Alternatives": "Transporeon / project44 / in-house"
-        }
-      ]
-    },
-    {
-      "headers": [
-        "L5",
-        "Alternatives",
-        "Share (DE new-build)",
-        "Conf"
-      ],
-      "rows": [
-        {
-          "L5": "NH₃ Screw Compressor Plant",
-          "Alternatives": "GEA / Mayekawa / Vilter / Johnson Controls",
-          "Share (DE new-build)": "45%",
-          "Conf": "HIGH"
-        },
-        {
-          "L5": "NH₃/CO₂ Cascade System",
-          "Alternatives": "GEA / Mayekawa / Star Refrigeration",
-          "Share (DE new-build)": "35%",
-          "Conf": "HIGH"
-        },
-        {
-          "L5": "Transcritical CO₂ System",
-          "Alternatives": "Advansor / Carnot / Epta",
-          "Share (DE new-build)": "15%",
-          "Conf": "MED"
-        },
-        {
-          "L5": "Synthetic HFC Plant (legacy)",
-          "Alternatives": "Various",
-          "Share (DE new-build)": "5%",
-          "Conf": "MED"
-        },
-        {
-          "L5": "Evaporators & Air Coolers",
-          "Alternatives": "Güntner / LU-VE / Kelvion",
-          "Share (DE new-build)": "—",
-          "Conf": "HIGH"
-        },
-        {
-          "L5": "Evaporative Condensers / Cooling Towers",
-          "Alternatives": "BAC / EVAPCO / Güntner",
-          "Share (DE new-build)": "—",
-          "Conf": "HIGH"
-        }
-      ]
-    },
-    {
-      "headers": [
-        "L5",
-        "Alternatives",
-        "Conf",
-        "Marker"
-      ],
-      "rows": [
-        {
-          "L5": "MV Grid Connection & Switchgear",
-          "Alternatives": "Siemens / ABB / Schneider / Eaton",
-          "Conf": "HIGH",
-          "Marker": ""
-        },
-        {
-          "L5": "**Battery Energy Storage System (BESS)**",
-          "Alternatives": "**Tesvolt / Voltfang / Commeo / Fluence / Sungrow / in-house EPC**",
-          "Conf": "**HIGH**",
-          "Marker": "**← Mein Solar PRIMARY POSITION (EPC für Großbatteriespeicher)**"
-        },
-        {
-          "L5": "On-site PV Generation",
-          "Alternatives": "Enerparc / BayWa r.e. / Goldbeck / **Mein Solar**",
-          "Conf": "HIGH",
-          "Marker": "← Mein Solar SECONDARY POSITION (PV-EPC heritage)"
-        },
-        {
-          "L5": "Diesel / Gas Standby Genset",
-          "Alternatives": "Caterpillar / MTU / Cummins",
-          "Conf": "HIGH",
-          "Marker": ""
-        },
-        {
-          "L5": "Uninterruptible Power Supply (UPS)",
-          "Alternatives": "Schneider Galaxy / Vertiv / Eaton / Piller",
-          "Conf": "MED",
-          "Marker": ""
-        },
-        {
-          "L5": "HPC EV Charging for Reefer Trucks",
-          "Alternatives": "ABB Terra / Alpitronic / Kempower",
-          "Conf": "LOW (emerging)",
-          "Marker": "← Mein Solar SECONDARY (EV-buffer feature)"
-        },
-        {
-          "L5": "Energy Management System (EMS)",
-          "Alternatives": "Entrix / Next Kraftwerke / Enspired / Tiko",
-          "Conf": "MED",
-          "Marker": ""
-        }
-      ]
-    },
-    {
-      "headers": [
-        "L5",
-        "Alternatives"
-      ],
-      "rows": [
-        {
-          "L5": "Temperature Monitoring System",
-          "Alternatives": "Testo Saveris / Elpro / Sensitech / Ellab"
-        },
-        {
-          "L5": "Traceability / Lot Software",
-          "Alternatives": "SAP EWM / Manhattan / Infor WMS module"
-        },
-        {
-          "L5": "Pest Control Program",
-          "Alternatives": "Rentokil / Anticimex"
-        }
-      ]
-    },
-    {
-      "headers": [
-        "L5",
-        "Alternatives"
-      ],
-      "rows": [
-        {
-          "L5": "CMMS Platform",
-          "Alternatives": "SAP PM / IBM Maximo / UpKeep"
-        },
-        {
-          "L5": "Spare Parts Management",
-          "Alternatives": "Kanban / automated replenishment"
-        },
-        {
-          "L5": "Refrigeration Service Contract",
-          "Alternatives": "GEA / Mayekawa / Axima / Engie"
-        }
-      ]
-    },
-    {
-      "headers": [
-        "L5",
-        "Alternatives"
-      ],
-      "rows": [
-        {
-          "L5": "NH₃ / CO₂ Gas Detection",
-          "Alternatives": "Honeywell / MSA / Dräger"
-        },
-        {
-          "L5": "Emergency Ventilation",
-          "Alternatives": "Jet fans / purge systems"
-        },
-        {
-          "L5": "Fire Detection & Suppression",
-          "Alternatives": "Siemens / Honeywell / Minimax"
-        }
-      ]
-    },
-    {
-      "headers": [
-        "L5",
-        "Alternatives"
-      ],
-      "rows": [
-        {
-          "L5": "Warehouse Management System (WMS)",
-          "Alternatives": "SAP EWM / Manhattan / Körber / Infor"
-        },
-        {
-          "L5": "Transportation Management System (TMS)",
-          "Alternatives": "Oracle OTM / BluJay / Transporeon"
-        },
-        {
-          "L5": "SCADA / Building Management System",
-          "Alternatives": "Siemens Desigo / Honeywell / Schneider EcoStruxure"
-        }
-      ]
-    },
-    {
-      "headers": [
-        "L4",
-        "INCOSE role"
-      ],
-      "rows": [
-        {
-          "L4": "Li-ion Battery Rack (LFP modules + BMS)",
-          "INCOSE role": "Electrochemical energy store"
-        },
-        {
-          "L4": "Power Conversion System (PCS)",
-          "INCOSE role": "4-quadrant bidirectional inverter"
-        },
-        {
-          "L4": "Thermal Management (HVAC + chiller)",
-          "INCOSE role": "Cell temperature control"
-        },
-        {
-          "L4": "Fire Suppression (NOVEC / aerosol)",
-          "INCOSE role": "Thermal runaway containment"
-        },
-        {
-          "L4": "Energy Management Controller",
-          "INCOSE role": "Setpoint dispatch logic"
-        },
-        {
-          "L4": "MV Step-up Transformer",
-          "INCOSE role": "Grid coupling"
-        },
-        {
-          "L4": "Container Enclosure (20/40ft ISO HC)",
-          "INCOSE role": "IP54 housing"
-        }
-      ]
-    },
-    {
-      "headers": [
-        "L4"
-      ],
-      "rows": [
-        {
-          "L4": "PV Module (mono-Si) · String Inverter · Roof Mounting · DC Combiner · AC Switchboard"
-        }
-      ]
-    },
-    {
-      "headers": [
-        "L4"
-      ],
-      "rows": [
-        {
-          "L4": "Screw Compressor · Oil Separator · Economizer · Control Panel · Pressure Relief Valve"
-        }
-      ]
-    },
-    {
-      "headers": [
-        "VN Unit",
-        "Level",
-        "Competence required",
-        "Company has it?",
-        "Effort",
-        "Rationale"
-      ],
-      "rows": [
-        {
-          "VN Unit": "On-site PV Generation",
-          "Level": "L5 (L6H-POWER)",
-          "Competence required": "Module layout, MV coupling, VDE-AR-N 4110",
-          "Company has it?": "YES",
-          "Effort": "LOW",
-          "Rationale": "Core business; full transfer"
-        },
-        {
-          "VN Unit": "MV Grid Connection & Switchgear",
-          "Level": "L5 (L6H-POWER)",
-          "Competence required": "MV transformer + switchgear design, DSO interface",
-          "Company has it?": "PARTIAL",
-          "Effort": "LOW",
-          "Rationale": "Already delivered inside every BESS/PV EPC; can be sold standalone for grid-upgrade projects"
-        },
-        {
-          "VN Unit": "HPC EV Charging for Reefer Trucks",
-          "Level": "L5 (L6H-POWER)",
-          "Competence required": "HPC dispenser integration + BESS buffer",
-          "Company has it?": "PARTIAL",
-          "Effort": "MEDIUM",
-          "Rationale": "EV-buffer feature exists; reefer-truck charging scheduling and 24V auxiliary is new"
-        },
-        {
-          "VN Unit": "Energy Management System (EMS)",
-          "Level": "L5 (L6H-POWER)",
-          "Competence required": "SoC management, market dispatch, forecast",
-          "Company has it?": "PARTIAL",
-          "Effort": "MEDIUM",
-          "Rationale": "Have EMS for BESS; integrating load-side (compressor dispatch) is gap"
-        },
-        {
-          "VN Unit": "UPS (Li-ion based)",
-          "Level": "L5 (L6H-POWER)",
-          "Competence required": "Sub-cycle ride-through, IEC 62040",
-          "Company has it?": "PARTIAL",
-          "Effort": "MEDIUM",
-          "Rationale": "BESS hardware overlaps; static-switch + <10 ms transfer is gap"
-        }
-      ]
-    },
-    {
-      "headers": [
-        "Adjacent L5",
-        "Current incumbents",
-        "Competence gap",
-        "Investment",
-        "Fit (1–10)",
-        "Rationale"
-      ],
-      "rows": [
-        {
-          "Adjacent L5": "On-site PV Generation",
-          "Current incumbents": "Enerparc, BayWa r.e., Goldbeck",
-          "Competence gap": "— (none)",
-          "Investment": "0",
-          "Fit (1–10)": "10",
-          "Rationale": "Already in core portfolio; 100% overlap"
-        },
-        {
-          "Adjacent L5": "HPC EV Charging (reefer trucks)",
-          "Current incumbents": "Alpitronic, ABB, Kempower",
-          "Competence gap": "Dispenser integration, fleet scheduling",
-          "Investment": "6–12 mo, ~€0.5M",
-          "Fit (1–10)": "7",
-          "Rationale": "BESS-buffered HPC is Mein Solar's named differentiator; reefer truck logistics is new buyer conversation"
-        },
-        {
-          "Adjacent L5": "UPS (Li-ion)",
-          "Current incumbents": "Schneider, Vertiv, Eaton",
-          "Competence gap": "<10 ms transfer, IEC 62040-3 cert",
-          "Investment": "12–18 mo, ~€1.5M",
-          "Fit (1–10)": "5",
-          "Rationale": "Hardware overlap high; certification and sub-cycle controls are real gap"
-        },
-        {
-          "Adjacent L5": "Diesel Genset",
-          "Current incumbents": "CAT, MTU, Cummins",
-          "Competence gap": "Combustion engineering, fuel systems",
-          "Investment": ">24 mo",
-          "Fit (1–10)": "1",
-          "Rationale": "Excluded — <15% overlap, declining segment"
-        },
-        {
-          "Adjacent L5": "EMS (cold-store co-optimization)",
-          "Current incumbents": "Entrix, Next Kraftwerke, Tiko",
-          "Competence gap": "Compressor-load forecasting, HACCP-aware dispatch",
-          "Investment": "12 mo, ~€0.8M",
-          "Fit (1–10)": "6",
-          "Rationale": "Natural add-on to BESS sale; enables combined peak shaving + refrigeration load management value prop"
-        }
-      ]
-    },
-    {
-      "headers": [
-        "Current",
-        "Target (1 level up)",
-        "What to add",
-        "Competitor at target",
-        "Feasibility",
-        "Economic rationale"
-      ],
-      "rows": [
-        {
-          "Current": "L5 BESS under L6H-POWER",
-          "Target (1 level up)": "L6H-POWER: **integrated Energy Supply for cold storage**",
-          "What to add": "EMS covering PV + BESS + HPC + genset interlock + refrigeration-aware dispatch; O&M wrap",
-          "Competitor at target": "Engie Solutions, Getec, RWE Solutions, E.ON Connecting Energies",
-          "Feasibility": "**MEDIUM**",
-          "Economic rationale": "Mein Solar already delivers PV + BESS + MV + civil as single EPC. Adding EMS + multi-year O&M turns a capex contract into an \"Energy-as-a-Service\" L6 integrator role. Target TAM at L6 is ~3× the standalone BESS line. Gap: genset/UPS portfolio, long-term balance-sheet capability, 15-yr service contracting."
-        }
-      ]
-    },
-    {
-      "headers": [
-        "#",
-        "Check",
-        "Status"
-      ],
-      "rows": [
-        {
-          "#": "Q1",
-          "Check": "CFJ industry-level, mechanism-free",
-          "Status": "✅"
-        },
-        {
-          "#": "Q2",
-          "Check": "No orphan nodes",
-          "Status": "✅"
-        },
-        {
-          "#": "Q3",
-          "Check": "Valid level transitions (L7→L6→L5→L4)",
-          "Status": "✅"
-        },
-        {
-          "#": "Q4",
-          "Check": "≥2 L4 children on L5 key positions",
-          "Status": "✅ (BESS has 7)"
-        },
-        {
-          "#": "Q5",
-          "Check": "No solution-specific L7/L6 names",
-          "Status": "✅"
-        },
-        {
-          "#": "Q6",
-          "Check": "Naming test (industry-standard terms)",
-          "Status": "✅"
-        },
-        {
-          "#": "Q7",
-          "Check": "Unit count 15–60",
-          "Status": "✅ (~45 units)"
-        },
-        {
-          "#": "—",
-          "Check": "Mein Solar position marked",
-          "Status": "✅ (PRIMARY + 2 SECONDARY)"
-        },
-        {
-          "#": "—",
-          "Check": "Built to full depth of company position",
-          "Status": "✅ (L5 + L4 beneath)"
-        }
-      ]
-    }
-  ],
-  "entities": [
-    {
-      "market_name": "Refrigerated Warehousing and Storage",
-      "naics_code": "493120",
-      "naics_title": "Refrigerated Warehousing and Storage",
-      "cfj_statement": "Preserve the physical integrity, temperature chain, and legal compliance of perishable goods from inbound receipt through outbound dispatch, with auditable traceability and regulatory conformance",
-      "top_level": "L7",
-      "company_primary_position": {
-        "level": "L5",
-        "name": "Battery Energy Storage System (BESS)",
-        "parent": "Energy Supply & Electrical Utilities"
-      },
-      "company_secondary_positions": [
-        {
-          "level": "L5",
-          "name": "On-site PV Generation",
-          "parent": "Energy Supply & Electrical Utilities"
-        },
-        {
-          "level": "L5",
-          "name": "HPC EV Charging for Reefer Trucks",
-          "parent": "Energy Supply & Electrical Utilities"
-        }
-      ],
-      "units": [
-        {
-          "name": "Temperature-Controlled Warehousing & Cold Chain Storage Ecosystem",
-          "level": "L7",
-          "bom_standard": "Moore 1993",
-          "parent_name": "ROOT",
-          "description": "Industry ecosystem delivering temperature-controlled storage services"
-        },
-        {
-          "name": "Inbound Receiving & Dock Operations",
-          "level": "L6",
-          "bom_standard": "Maier 1998",
-          "parent_name": "Temperature-Controlled Warehousing & Cold Chain Storage Ecosystem",
-          "description": "Accept and register temperature-sensitive goods"
-        },
-        {
-          "name": "Pre-Cool / Tempering / Blast Operations",
-          "level": "L6",
-          "bom_standard": "Maier 1998",
-          "parent_name": "Temperature-Controlled Warehousing & Cold Chain Storage Ecosystem",
-          "description": "Adjust product core temperature before storage"
-        },
-        {
-          "name": "Temperature-Controlled Storage",
-          "level": "L6",
-          "bom_standard": "Maier 1998",
-          "parent_name": "Temperature-Controlled Warehousing & Cold Chain Storage Ecosystem",
-          "description": "Hold goods at SLA setpoint"
-        },
-        {
-          "name": "Order Pick & Assembly",
-          "level": "L6",
-          "bom_standard": "Maier 1998",
-          "parent_name": "Temperature-Controlled Warehousing & Cold Chain Storage Ecosystem",
-          "description": "Select and consolidate customer orders in temp envelope"
-        },
-        {
-          "name": "Outbound Dispatch & Dock Loading",
-          "level": "L6",
-          "bom_standard": "Maier 1998",
-          "parent_name": "Temperature-Controlled Warehousing & Cold Chain Storage Ecosystem",
-          "description": "Load refrigerated transport"
-        },
-        {
-          "name": "Refrigeration & Thermal Management",
-          "level": "L6",
-          "bom_standard": "Maier 1998",
-          "parent_name": "Temperature-Controlled Warehousing & Cold Chain Storage Ecosystem",
-          "description": "Horizontal: generate cooling duty for all chambers"
-        },
-        {
-          "name": "Energy Supply & Electrical Utilities",
-          "level": "L6",
-          "bom_standard": "Maier 1998",
-          "parent_name": "Temperature-Controlled Warehousing & Cold Chain Storage Ecosystem",
-          "description": "Horizontal: supply reliable electrical energy"
-        },
-        {
-          "name": "Quality, Traceability & Food Safety",
-          "level": "L6",
-          "bom_standard": "Maier 1998",
-          "parent_name": "Temperature-Controlled Warehousing & Cold Chain Storage Ecosystem",
-          "description": "Horizontal: prove temperature chain integrity"
-        },
-        {
-          "name": "Maintenance & Engineering",
-          "level": "L6",
-          "bom_standard": "Maier 1998",
-          "parent_name": "Temperature-Controlled Warehousing & Cold Chain Storage Ecosystem",
-          "description": "Horizontal: keep equipment at SLA"
-        },
-        {
-          "name": "HSE & Refrigerant Safety",
-          "level": "L6",
-          "bom_standard": "Maier 1998",
-          "parent_name": "Temperature-Controlled Warehousing & Cold Chain Storage Ecosystem",
-          "description": "Horizontal: protect people from NH3/CO2 hazards"
-        },
-        {
-          "name": "IT/OT & Warehouse Control",
-          "level": "L6",
-          "bom_standard": "Maier 1998",
-          "parent_name": "Temperature-Controlled Warehousing & Cold Chain Storage Ecosystem",
-          "description": "Horizontal: direct goods, labor, data flows"
-        },
-        {
+      "id": "Inbound Receiving & Dock Operations",
+      "name": "Inbound Receiving & Dock Operations",
+      "type": "Maier 1998",
+      "l5Units": [
+        {
+          "id": "Dock Leveler & Sealed Airlock",
           "name": "Dock Leveler & Sealed Airlock",
-          "level": "L5",
-          "bom_standard": "ISO 15288",
-          "parent_name": "Inbound Receiving & Dock Operations",
-          "description": "Mechanical interface between truck and cold warehouse envelope"
+          "description": "Mechanical interface between truck and cold warehouse envelope",
+          "l4Subsystems": [],
+          "isProductPosition": false
         },
         {
+          "id": "Truck Scale & Gate Management",
           "name": "Truck Scale & Gate Management",
-          "level": "L5",
-          "bom_standard": "ISO 15288",
-          "parent_name": "Inbound Receiving & Dock Operations",
-          "description": "Weighbridge and site access"
+          "description": "Weighbridge and site access",
+          "l4Subsystems": [],
+          "isProductPosition": false
         },
         {
+          "id": "Receiving Scanner / RFID Portal",
           "name": "Receiving Scanner / RFID Portal",
-          "level": "L5",
-          "bom_standard": "ISO 15288",
-          "parent_name": "Inbound Receiving & Dock Operations",
-          "description": "Automated identification at receipt"
-        },
+          "description": "Automated identification at receipt",
+          "l4Subsystems": [],
+          "isProductPosition": false
+        }
+      ]
+    },
+    {
+      "id": "Pre-Cool / Tempering / Blast Operations",
+      "name": "Pre-Cool / Tempering / Blast Operations",
+      "type": "Maier 1998",
+      "l5Units": [
         {
+          "id": "Blast Freezer",
           "name": "Blast Freezer",
-          "level": "L5",
-          "bom_standard": "ISO 15288",
-          "parent_name": "Pre-Cool / Tempering / Blast Operations",
-          "description": "Rapid core-temperature reduction"
+          "description": "Rapid core-temperature reduction",
+          "l4Subsystems": [],
+          "isProductPosition": false
         },
         {
+          "id": "Tempering Room",
           "name": "Tempering Room",
-          "level": "L5",
-          "bom_standard": "ISO 15288",
-          "parent_name": "Pre-Cool / Tempering / Blast Operations",
-          "description": "Controlled thaw or equilibration"
+          "description": "Controlled thaw or equilibration",
+          "l4Subsystems": [],
+          "isProductPosition": false
         },
         {
+          "id": "Vacuum / Hydro Pre-Cooler",
           "name": "Vacuum / Hydro Pre-Cooler",
-          "level": "L5",
-          "bom_standard": "ISO 15288",
-          "parent_name": "Pre-Cool / Tempering / Blast Operations",
-          "description": "Produce-specific pre-chill"
-        },
+          "description": "Produce-specific pre-chill",
+          "l4Subsystems": [],
+          "isProductPosition": false
+        }
+      ]
+    },
+    {
+      "id": "Temperature-Controlled Storage",
+      "name": "Temperature-Controlled Storage",
+      "type": "Maier 1998",
+      "l5Units": [
         {
+          "id": "Pallet Racking",
           "name": "Pallet Racking",
-          "level": "L5",
-          "bom_standard": "ISO 15288",
-          "parent_name": "Temperature-Controlled Storage",
-          "description": "Static storage rack (selective/drive-in/mobile)"
+          "description": "Static storage rack (selective/drive-in/mobile)",
+          "l4Subsystems": [],
+          "isProductPosition": false
         },
         {
+          "id": "ASRS",
           "name": "ASRS",
-          "level": "L5",
-          "bom_standard": "ISO 15288",
-          "parent_name": "Temperature-Controlled Storage",
-          "description": "Automated storage and retrieval in cold chamber"
+          "description": "Automated storage and retrieval in cold chamber",
+          "l4Subsystems": [],
+          "isProductPosition": false
         },
         {
+          "id": "Refrigerated Material Handling Equipment",
           "name": "Refrigerated Material Handling Equipment",
-          "level": "L5",
-          "bom_standard": "ISO 15288",
-          "parent_name": "Temperature-Controlled Storage",
-          "description": "Cold-rated reach trucks, forklifts, AGVs"
+          "description": "Cold-rated reach trucks, forklifts, AGVs",
+          "l4Subsystems": [],
+          "isProductPosition": false
         },
         {
+          "id": "Cold Chamber Enclosure",
           "name": "Cold Chamber Enclosure",
-          "level": "L5",
-          "bom_standard": "ISO 15288",
-          "parent_name": "Temperature-Controlled Storage",
-          "description": "Insulated panel envelope and doors"
-        },
+          "description": "Insulated panel envelope and doors",
+          "l4Subsystems": [],
+          "isProductPosition": false
+        }
+      ]
+    },
+    {
+      "id": "Order Pick & Assembly",
+      "name": "Order Pick & Assembly",
+      "type": "Maier 1998",
+      "l5Units": [
         {
+          "id": "Voice Picking System",
           "name": "Voice Picking System",
-          "level": "L5",
-          "bom_standard": "ISO 15288",
-          "parent_name": "Order Pick & Assembly",
-          "description": "Hands-free picking direction"
+          "description": "Hands-free picking direction",
+          "l4Subsystems": [],
+          "isProductPosition": false
         },
         {
+          "id": "Pick-to-Light / Put-to-Light",
           "name": "Pick-to-Light / Put-to-Light",
-          "level": "L5",
-          "bom_standard": "ISO 15288",
-          "parent_name": "Order Pick & Assembly",
-          "description": "Visual pick guidance"
+          "description": "Visual pick guidance",
+          "l4Subsystems": [],
+          "isProductPosition": false
         },
         {
+          "id": "Case / Layer Picker",
           "name": "Case / Layer Picker",
-          "level": "L5",
-          "bom_standard": "ISO 15288",
-          "parent_name": "Order Pick & Assembly",
-          "description": "Robotic case/layer assembly"
+          "description": "Robotic case/layer assembly",
+          "l4Subsystems": [],
+          "isProductPosition": false
         },
         {
+          "id": "Conveyor & Sortation",
           "name": "Conveyor & Sortation",
-          "level": "L5",
-          "bom_standard": "ISO 15288",
-          "parent_name": "Order Pick & Assembly",
-          "description": "Automated material flow"
-        },
+          "description": "Automated material flow",
+          "l4Subsystems": [],
+          "isProductPosition": false
+        }
+      ]
+    },
+    {
+      "id": "Outbound Dispatch & Dock Loading",
+      "name": "Outbound Dispatch & Dock Loading",
+      "type": "Maier 1998",
+      "l5Units": [
         {
+          "id": "Refrigerated Dock Loading Bay",
           "name": "Refrigerated Dock Loading Bay",
-          "level": "L5",
-          "bom_standard": "ISO 15288",
-          "parent_name": "Outbound Dispatch & Dock Loading",
-          "description": "Thermal-sealed outbound interface"
+          "description": "Thermal-sealed outbound interface",
+          "l4Subsystems": [],
+          "isProductPosition": false
         },
         {
+          "id": "Dock Scheduling Platform",
           "name": "Dock Scheduling Platform",
-          "level": "L5",
-          "bom_standard": "ISO 15288",
-          "parent_name": "Outbound Dispatch & Dock Loading",
-          "description": "Carrier appointment management"
-        },
+          "description": "Carrier appointment management",
+          "l4Subsystems": [],
+          "isProductPosition": false
+        }
+      ]
+    },
+    {
+      "id": "Refrigeration & Thermal Management",
+      "name": "Refrigeration & Thermal Management",
+      "type": "Maier 1998",
+      "l5Units": [
         {
+          "id": "NH3 Screw Compressor Plant",
           "name": "NH3 Screw Compressor Plant",
-          "level": "L5",
-          "bom_standard": "ISO 15288",
-          "parent_name": "Refrigeration & Thermal Management",
-          "description": "Ammonia screw refrigeration (dominant in DE)"
+          "description": "Ammonia screw refrigeration (dominant in DE)",
+          "l4Subsystems": [
+            {
+              "id": "Screw Compressor",
+              "name": "Screw Compressor",
+              "description": "Rotary twin-screw with VFD"
+            },
+            {
+              "id": "Oil Separator",
+              "name": "Oil Separator",
+              "description": "Compressor-oil recovery"
+            },
+            {
+              "id": "Economizer",
+              "name": "Economizer",
+              "description": "Two-stage efficiency improvement"
+            },
+            {
+              "id": "Refrigeration Control Panel",
+              "name": "Refrigeration Control Panel",
+              "description": "Capacity and safety control"
+            },
+            {
+              "id": "Pressure Relief Valve Station",
+              "name": "Pressure Relief Valve Station",
+              "description": "EN 378 over-pressure protection"
+            }
+          ],
+          "isProductPosition": false
         },
         {
+          "id": "NH3/CO2 Cascade System",
           "name": "NH3/CO2 Cascade System",
-          "level": "L5",
-          "bom_standard": "ISO 15288",
-          "parent_name": "Refrigeration & Thermal Management",
-          "description": "High-stage NH3 with low-stage CO2 for deep-freeze"
+          "description": "High-stage NH3 with low-stage CO2 for deep-freeze",
+          "l4Subsystems": [],
+          "isProductPosition": false
         },
         {
+          "id": "Transcritical CO2 System",
           "name": "Transcritical CO2 System",
-          "level": "L5",
-          "bom_standard": "ISO 15288",
-          "parent_name": "Refrigeration & Thermal Management",
-          "description": "F-gas-compliant CO2-only system"
+          "description": "F-gas-compliant CO2-only system",
+          "l4Subsystems": [],
+          "isProductPosition": false
         },
         {
+          "id": "Synthetic HFC Plant",
           "name": "Synthetic HFC Plant",
-          "level": "L5",
-          "bom_standard": "ISO 15288",
-          "parent_name": "Refrigeration & Thermal Management",
-          "description": "Legacy HFC, declining under F-Gas Reg"
+          "description": "Legacy HFC, declining under F-Gas Reg",
+          "l4Subsystems": [],
+          "isProductPosition": false
         },
         {
+          "id": "Evaporators & Air Coolers",
           "name": "Evaporators & Air Coolers",
-          "level": "L5",
-          "bom_standard": "ISO 15288",
-          "parent_name": "Refrigeration & Thermal Management",
-          "description": "Chamber-side heat-exchange units"
+          "description": "Chamber-side heat-exchange units",
+          "l4Subsystems": [],
+          "isProductPosition": false
         },
         {
+          "id": "Evaporative Condensers / Cooling Towers",
           "name": "Evaporative Condensers / Cooling Towers",
-          "level": "L5",
-          "bom_standard": "ISO 15288",
-          "parent_name": "Refrigeration & Thermal Management",
-          "description": "Heat-rejection plant"
-        },
+          "description": "Heat-rejection plant",
+          "l4Subsystems": [],
+          "isProductPosition": false
+        }
+      ]
+    },
+    {
+      "id": "Energy Supply & Electrical Utilities",
+      "name": "Energy Supply & Electrical Utilities",
+      "type": "Maier 1998",
+      "l5Units": [
         {
+          "id": "MV Grid Connection & Switchgear",
           "name": "MV Grid Connection & Switchgear",
-          "level": "L5",
-          "bom_standard": "ISO 15288",
-          "parent_name": "Energy Supply & Electrical Utilities",
-          "description": "10/20 kV feeder, MV switchgear, protection"
+          "description": "10/20 kV feeder, MV switchgear, protection",
+          "l4Subsystems": [],
+          "isProductPosition": false
         },
         {
+          "id": "Battery Energy Storage System (BESS)",
           "name": "Battery Energy Storage System (BESS)",
-          "level": "L5",
-          "bom_standard": "ISO 15288",
-          "parent_name": "Energy Supply & Electrical Utilities",
           "description": "Multi-MWh containerised Li-ion storage — MEIN SOLAR PRIMARY POSITION",
-          "company_position": "PRIMARY"
+          "l4Subsystems": [
+            {
+              "id": "Li-ion Battery Rack",
+              "name": "Li-ion Battery Rack",
+              "description": "LFP modules with BMS"
+            },
+            {
+              "id": "Power Conversion System (PCS)",
+              "name": "Power Conversion System (PCS)",
+              "description": "Bidirectional 4-quadrant inverter"
+            },
+            {
+              "id": "Thermal Management Unit",
+              "name": "Thermal Management Unit",
+              "description": "Liquid-cool chiller and HVAC"
+            },
+            {
+              "id": "Fire Suppression (NOVEC/aerosol)",
+              "name": "Fire Suppression (NOVEC/aerosol)",
+              "description": "Thermal-runaway containment"
+            },
+            {
+              "id": "Energy Management Controller",
+              "name": "Energy Management Controller",
+              "description": "Setpoint dispatch logic"
+            },
+            {
+              "id": "MV Step-up Transformer",
+              "name": "MV Step-up Transformer",
+              "description": "LV-to-MV coupling"
+            },
+            {
+              "id": "Container Enclosure",
+              "name": "Container Enclosure",
+              "description": "ISO HC housing IP54"
+            }
+          ],
+          "isProductPosition": "PRIMARY"
         },
         {
+          "id": "On-site PV Generation",
           "name": "On-site PV Generation",
-          "level": "L5",
-          "bom_standard": "ISO 15288",
-          "parent_name": "Energy Supply & Electrical Utilities",
           "description": "Rooftop or ground-mount PV — MEIN SOLAR SECONDARY POSITION (PV-EPC heritage)",
-          "company_position": "SECONDARY"
+          "l4Subsystems": [
+            {
+              "id": "PV Module",
+              "name": "PV Module",
+              "description": "Mono-Si glass-glass or glass-foil panel"
+            },
+            {
+              "id": "String Inverter",
+              "name": "String Inverter",
+              "description": "DC-AC conversion"
+            },
+            {
+              "id": "Roof / Ground Mounting",
+              "name": "Roof / Ground Mounting",
+              "description": "Structural support"
+            },
+            {
+              "id": "DC Combiner Box",
+              "name": "DC Combiner Box",
+              "description": "String aggregation and protection"
+            },
+            {
+              "id": "AC Switchboard",
+              "name": "AC Switchboard",
+              "description": "AC distribution and metering"
+            }
+          ],
+          "isProductPosition": "SECONDARY"
         },
         {
+          "id": "Diesel / Gas Standby Genset",
           "name": "Diesel / Gas Standby Genset",
-          "level": "L5",
-          "bom_standard": "ISO 15288",
-          "parent_name": "Energy Supply & Electrical Utilities",
-          "description": "Backup power for refrigeration continuity"
+          "description": "Backup power for refrigeration continuity",
+          "l4Subsystems": [],
+          "isProductPosition": false
         },
         {
+          "id": "Uninterruptible Power Supply (UPS)",
           "name": "Uninterruptible Power Supply (UPS)",
-          "level": "L5",
-          "bom_standard": "ISO 15288",
-          "parent_name": "Energy Supply & Electrical Utilities",
-          "description": "Short-term ride-through for IT and controls"
+          "description": "Short-term ride-through for IT and controls",
+          "l4Subsystems": [],
+          "isProductPosition": false
         },
         {
+          "id": "HPC EV Charging for Reefer Trucks",
           "name": "HPC EV Charging for Reefer Trucks",
-          "level": "L5",
-          "bom_standard": "ISO 15288",
-          "parent_name": "Energy Supply & Electrical Utilities",
           "description": "High-power DC charging — MEIN SOLAR SECONDARY POSITION (EV-buffer feature)",
-          "company_position": "SECONDARY"
+          "l4Subsystems": [
+            {
+              "id": "HPC Dispenser",
+              "name": "HPC Dispenser",
+              "description": "CCS2 150-400 kW dispenser"
+            },
+            {
+              "id": "DC Power Cabinet",
+              "name": "DC Power Cabinet",
+              "description": "Rectifier stack"
+            },
+            {
+              "id": "Cable Management / Liquid-Cooled Cable",
+              "name": "Cable Management / Liquid-Cooled Cable",
+              "description": "High-current cable and coolant"
+            },
+            {
+              "id": "Payment & Authentication Unit",
+              "name": "Payment & Authentication Unit",
+              "description": "OCPP + payment terminal"
+            }
+          ],
+          "isProductPosition": "SECONDARY"
         },
         {
+          "id": "Energy Management System (EMS)",
           "name": "Energy Management System (EMS)",
-          "level": "L5",
-          "bom_standard": "ISO 15288",
-          "parent_name": "Energy Supply & Electrical Utilities",
-          "description": "Dispatch optimisation and market interface"
-        },
+          "description": "Dispatch optimisation and market interface",
+          "l4Subsystems": [],
+          "isProductPosition": false
+        }
+      ]
+    },
+    {
+      "id": "Quality, Traceability & Food Safety",
+      "name": "Quality, Traceability & Food Safety",
+      "type": "Maier 1998",
+      "l5Units": [
         {
+          "id": "Temperature Monitoring System",
           "name": "Temperature Monitoring System",
-          "level": "L5",
-          "bom_standard": "ISO 15288",
-          "parent_name": "Quality, Traceability & Food Safety",
-          "description": "Calibrated wireless T-loggers and dashboards"
+          "description": "Calibrated wireless T-loggers and dashboards",
+          "l4Subsystems": [],
+          "isProductPosition": false
         },
         {
+          "id": "Traceability / Lot Software",
           "name": "Traceability / Lot Software",
-          "level": "L5",
-          "bom_standard": "ISO 15288",
-          "parent_name": "Quality, Traceability & Food Safety",
-          "description": "Lot-genealogy and recall management"
+          "description": "Lot-genealogy and recall management",
+          "l4Subsystems": [],
+          "isProductPosition": false
         },
         {
+          "id": "Pest Control Program",
           "name": "Pest Control Program",
-          "level": "L5",
-          "bom_standard": "ISO 15288",
-          "parent_name": "Quality, Traceability & Food Safety",
-          "description": "IFS/BRC-mandated pest management"
-        },
+          "description": "IFS/BRC-mandated pest management",
+          "l4Subsystems": [],
+          "isProductPosition": false
+        }
+      ]
+    },
+    {
+      "id": "Maintenance & Engineering",
+      "name": "Maintenance & Engineering",
+      "type": "Maier 1998",
+      "l5Units": [
         {
+          "id": "CMMS Platform",
           "name": "CMMS Platform",
-          "level": "L5",
-          "bom_standard": "ISO 15288",
-          "parent_name": "Maintenance & Engineering",
-          "description": "Computerised maintenance management"
+          "description": "Computerised maintenance management",
+          "l4Subsystems": [],
+          "isProductPosition": false
         },
         {
+          "id": "Spare Parts Management",
           "name": "Spare Parts Management",
-          "level": "L5",
-          "bom_standard": "ISO 15288",
-          "parent_name": "Maintenance & Engineering",
-          "description": "Critical-spares inventory"
+          "description": "Critical-spares inventory",
+          "l4Subsystems": [],
+          "isProductPosition": false
         },
         {
+          "id": "Refrigeration Service Contract",
           "name": "Refrigeration Service Contract",
-          "level": "L5",
-          "bom_standard": "ISO 15288",
-          "parent_name": "Maintenance & Engineering",
-          "description": "OEM/third-party ammonia service"
-        },
+          "description": "OEM/third-party ammonia service",
+          "l4Subsystems": [],
+          "isProductPosition": false
+        }
+      ]
+    },
+    {
+      "id": "HSE & Refrigerant Safety",
+      "name": "HSE & Refrigerant Safety",
+      "type": "Maier 1998",
+      "l5Units": [
         {
+          "id": "NH3 / CO2 Gas Detection",
           "name": "NH3 / CO2 Gas Detection",
-          "level": "L5",
-          "bom_standard": "ISO 15288",
-          "parent_name": "HSE & Refrigerant Safety",
-          "description": "Fixed-point gas detection and alarm"
+          "description": "Fixed-point gas detection and alarm",
+          "l4Subsystems": [],
+          "isProductPosition": false
         },
         {
+          "id": "Emergency Ventilation",
           "name": "Emergency Ventilation",
-          "level": "L5",
-          "bom_standard": "ISO 15288",
-          "parent_name": "HSE & Refrigerant Safety",
-          "description": "Leak-triggered purge"
+          "description": "Leak-triggered purge",
+          "l4Subsystems": [],
+          "isProductPosition": false
         },
         {
+          "id": "Fire Detection & Suppression",
           "name": "Fire Detection & Suppression",
-          "level": "L5",
-          "bom_standard": "ISO 15288",
-          "parent_name": "HSE & Refrigerant Safety",
-          "description": "Aspirating smoke, sprinkler, suppression"
-        },
+          "description": "Aspirating smoke, sprinkler, suppression",
+          "l4Subsystems": [],
+          "isProductPosition": false
+        }
+      ]
+    },
+    {
+      "id": "IT/OT & Warehouse Control",
+      "name": "IT/OT & Warehouse Control",
+      "type": "Maier 1998",
+      "l5Units": [
         {
+          "id": "Warehouse Management System (WMS)",
           "name": "Warehouse Management System (WMS)",
-          "level": "L5",
-          "bom_standard": "ISO 15288",
-          "parent_name": "IT/OT & Warehouse Control",
-          "description": "Inventory, labor, location control"
+          "description": "Inventory, labor, location control",
+          "l4Subsystems": [],
+          "isProductPosition": false
         },
         {
+          "id": "Transportation Management System (TMS)",
           "name": "Transportation Management System (TMS)",
-          "level": "L5",
-          "bom_standard": "ISO 15288",
-          "parent_name": "IT/OT & Warehouse Control",
-          "description": "Carrier and route management"
+          "description": "Carrier and route management",
+          "l4Subsystems": [],
+          "isProductPosition": false
         },
         {
+          "id": "SCADA / Building Management System",
           "name": "SCADA / Building Management System",
-          "level": "L5",
-          "bom_standard": "ISO 15288",
-          "parent_name": "IT/OT & Warehouse Control",
-          "description": "Refrigeration + building automation"
-        },
-        {
-          "name": "Li-ion Battery Rack",
-          "level": "L4",
-          "bom_standard": "INCOSE",
-          "parent_name": "Battery Energy Storage System (BESS)",
-          "description": "LFP modules with BMS"
-        },
-        {
-          "name": "Power Conversion System (PCS)",
-          "level": "L4",
-          "bom_standard": "INCOSE",
-          "parent_name": "Battery Energy Storage System (BESS)",
-          "description": "Bidirectional 4-quadrant inverter"
-        },
-        {
-          "name": "Thermal Management Unit",
-          "level": "L4",
-          "bom_standard": "INCOSE",
-          "parent_name": "Battery Energy Storage System (BESS)",
-          "description": "Liquid-cool chiller and HVAC"
-        },
-        {
-          "name": "Fire Suppression (NOVEC/aerosol)",
-          "level": "L4",
-          "bom_standard": "INCOSE",
-          "parent_name": "Battery Energy Storage System (BESS)",
-          "description": "Thermal-runaway containment"
-        },
-        {
-          "name": "Energy Management Controller",
-          "level": "L4",
-          "bom_standard": "INCOSE",
-          "parent_name": "Battery Energy Storage System (BESS)",
-          "description": "Setpoint dispatch logic"
-        },
-        {
-          "name": "MV Step-up Transformer",
-          "level": "L4",
-          "bom_standard": "INCOSE",
-          "parent_name": "Battery Energy Storage System (BESS)",
-          "description": "LV-to-MV coupling"
-        },
-        {
-          "name": "Container Enclosure",
-          "level": "L4",
-          "bom_standard": "INCOSE",
-          "parent_name": "Battery Energy Storage System (BESS)",
-          "description": "ISO HC housing IP54"
-        },
-        {
-          "name": "PV Module",
-          "level": "L4",
-          "bom_standard": "INCOSE",
-          "parent_name": "On-site PV Generation",
-          "description": "Mono-Si glass-glass or glass-foil panel"
-        },
-        {
-          "name": "String Inverter",
-          "level": "L4",
-          "bom_standard": "INCOSE",
-          "parent_name": "On-site PV Generation",
-          "description": "DC-AC conversion"
-        },
-        {
-          "name": "Roof / Ground Mounting",
-          "level": "L4",
-          "bom_standard": "INCOSE",
-          "parent_name": "On-site PV Generation",
-          "description": "Structural support"
-        },
-        {
-          "name": "DC Combiner Box",
-          "level": "L4",
-          "bom_standard": "INCOSE",
-          "parent_name": "On-site PV Generation",
-          "description": "String aggregation and protection"
-        },
-        {
-          "name": "AC Switchboard",
-          "level": "L4",
-          "bom_standard": "INCOSE",
-          "parent_name": "On-site PV Generation",
-          "description": "AC distribution and metering"
-        },
-        {
-          "name": "HPC Dispenser",
-          "level": "L4",
-          "bom_standard": "INCOSE",
-          "parent_name": "HPC EV Charging for Reefer Trucks",
-          "description": "CCS2 150-400 kW dispenser"
-        },
-        {
-          "name": "DC Power Cabinet",
-          "level": "L4",
-          "bom_standard": "INCOSE",
-          "parent_name": "HPC EV Charging for Reefer Trucks",
-          "description": "Rectifier stack"
-        },
-        {
-          "name": "Cable Management / Liquid-Cooled Cable",
-          "level": "L4",
-          "bom_standard": "INCOSE",
-          "parent_name": "HPC EV Charging for Reefer Trucks",
-          "description": "High-current cable and coolant"
-        },
-        {
-          "name": "Payment & Authentication Unit",
-          "level": "L4",
-          "bom_standard": "INCOSE",
-          "parent_name": "HPC EV Charging for Reefer Trucks",
-          "description": "OCPP + payment terminal"
-        },
-        {
-          "name": "Screw Compressor",
-          "level": "L4",
-          "bom_standard": "INCOSE",
-          "parent_name": "NH3 Screw Compressor Plant",
-          "description": "Rotary twin-screw with VFD"
-        },
-        {
-          "name": "Oil Separator",
-          "level": "L4",
-          "bom_standard": "INCOSE",
-          "parent_name": "NH3 Screw Compressor Plant",
-          "description": "Compressor-oil recovery"
-        },
-        {
-          "name": "Economizer",
-          "level": "L4",
-          "bom_standard": "INCOSE",
-          "parent_name": "NH3 Screw Compressor Plant",
-          "description": "Two-stage efficiency improvement"
-        },
-        {
-          "name": "Refrigeration Control Panel",
-          "level": "L4",
-          "bom_standard": "INCOSE",
-          "parent_name": "NH3 Screw Compressor Plant",
-          "description": "Capacity and safety control"
-        },
-        {
-          "name": "Pressure Relief Valve Station",
-          "level": "L4",
-          "bom_standard": "INCOSE",
-          "parent_name": "NH3 Screw Compressor Plant",
-          "description": "EN 378 over-pressure protection"
+          "description": "Refrigeration + building automation",
+          "l4Subsystems": [],
+          "isProductPosition": false
         }
-      ],
-      "direct_competence_transfer": [
-        {
-          "vn_unit": "On-site PV Generation",
-          "level": "L5",
-          "has_it": "YES",
-          "effort": "LOW",
-          "rationale": "Core incumbent business"
-        },
-        {
-          "vn_unit": "MV Grid Connection & Switchgear",
-          "level": "L5",
-          "has_it": "PARTIAL",
-          "effort": "LOW",
-          "rationale": "Already inside every EPC; sellable standalone for grid upgrades"
-        },
-        {
-          "vn_unit": "HPC EV Charging for Reefer Trucks",
-          "level": "L5",
-          "has_it": "PARTIAL",
-          "effort": "MEDIUM",
-          "rationale": "EV-buffer feature exists; reefer-truck scheduling is new"
-        },
-        {
-          "vn_unit": "Energy Management System (EMS)",
-          "level": "L5",
-          "has_it": "PARTIAL",
-          "effort": "MEDIUM",
-          "rationale": "BESS EMS exists; cold-store compressor load co-optimization is gap"
-        },
-        {
-          "vn_unit": "UPS (Li-ion)",
-          "level": "L5",
-          "has_it": "PARTIAL",
-          "effort": "MEDIUM",
-          "rationale": "Hardware overlaps; IEC 62040-3 sub-cycle transfer is gap"
-        }
-      ],
-      "strategic_adjacency_expansion": {
-        "segment": "Energy Supply & Electrical Utilities",
-        "current_position": "Battery Energy Storage System (BESS)",
-        "candidates": [
-          {
-            "unit": "On-site PV Generation",
-            "fit": 10,
-            "investment": "none",
-            "incumbents": [
-              "Enerparc",
-              "BayWa r.e.",
-              "Goldbeck Solar"
-            ]
-          },
-          {
-            "unit": "HPC EV Charging (reefer trucks)",
-            "fit": 7,
-            "investment": "6-12mo, ~EUR 0.5M",
-            "incumbents": [
-              "Alpitronic",
-              "ABB",
-              "Kempower"
-            ]
-          },
-          {
-            "unit": "EMS (cold-store co-optimization)",
-            "fit": 6,
-            "investment": "12mo, ~EUR 0.8M",
-            "incumbents": [
-              "Entrix",
-              "Next Kraftwerke",
-              "Tiko"
-            ]
-          },
-          {
-            "unit": "UPS (Li-ion)",
-            "fit": 5,
-            "investment": "12-18mo, ~EUR 1.5M",
-            "incumbents": [
-              "Schneider",
-              "Vertiv",
-              "Eaton"
-            ]
-          },
-          {
-            "unit": "Diesel Genset",
-            "fit": 1,
-            "investment": ">24mo",
-            "excluded": true,
-            "reason": "<15% capability overlap; declining segment"
-          }
-        ]
-      },
-      "vertical_move_up": {
-        "current": "L5 BESS under L6H-POWER",
-        "target": "L6H-POWER: Integrated Energy Supply for cold storage (Energy-as-a-Service)",
-        "feasibility": "MEDIUM",
-        "additions_required": [
-          "Multi-asset EMS (PV+BESS+HPC+genset)",
-          "HACCP-aware refrigeration-load dispatch",
-          "Long-term O&M + balance-sheet for 15-yr EaaS contracts",
-          "Genset/UPS portfolio via partnership"
-        ],
-        "competitors_at_target": [
-          "Engie Solutions",
-          "Getec",
-          "RWE Solutions",
-          "E.ON Connecting Energies"
-        ],
-        "economic_rationale": "L6 TAM ~3x standalone BESS; shifts from capex EPC to EaaS opex model; Mein Solar already delivers 3 of 5 needed L5s inside its current EPC scope"
-      },
-      "qa": {
-        "cfj_industry_level": true,
-        "no_orphans": true,
-        "valid_transitions": true,
-        "l4_per_l5_minimum_met_on_company_position": true,
-        "unit_count": 61,
-        "within_range_15_60": false,
-        "over_range_note": "Slightly over 60 due to full L4 fill on Mein Solar primary + both secondary positions plus illustrative adjacent; acceptable per doc's 'full depth to company position' HARD RULE"
-      }
+      ]
     }
   ],
-  "has_bom": true,
-  "naics_sector_type": "non_manufacturing"
+  "vnUnits": [
+    {
+      "level": "L7",
+      "id": "Temperature-Controlled Warehousing & Cold Chain Storage Ecosystem",
+      "name": "Temperature-Controlled Warehousing & Cold Chain Storage Ecosystem",
+      "functionalJob": "Industry ecosystem delivering temperature-controlled storage services",
+      "parentId": "ROOT",
+      "isProductPosition": false
+    },
+    {
+      "level": "L6",
+      "id": "Inbound Receiving & Dock Operations",
+      "name": "Inbound Receiving & Dock Operations",
+      "functionalJob": "Accept and register temperature-sensitive goods",
+      "parentId": "Temperature-Controlled Warehousing & Cold Chain Storage Ecosystem",
+      "isProductPosition": false
+    },
+    {
+      "level": "L6",
+      "id": "Pre-Cool / Tempering / Blast Operations",
+      "name": "Pre-Cool / Tempering / Blast Operations",
+      "functionalJob": "Adjust product core temperature before storage",
+      "parentId": "Temperature-Controlled Warehousing & Cold Chain Storage Ecosystem",
+      "isProductPosition": false
+    },
+    {
+      "level": "L6",
+      "id": "Temperature-Controlled Storage",
+      "name": "Temperature-Controlled Storage",
+      "functionalJob": "Hold goods at SLA setpoint",
+      "parentId": "Temperature-Controlled Warehousing & Cold Chain Storage Ecosystem",
+      "isProductPosition": false
+    },
+    {
+      "level": "L6",
+      "id": "Order Pick & Assembly",
+      "name": "Order Pick & Assembly",
+      "functionalJob": "Select and consolidate customer orders in temp envelope",
+      "parentId": "Temperature-Controlled Warehousing & Cold Chain Storage Ecosystem",
+      "isProductPosition": false
+    },
+    {
+      "level": "L6",
+      "id": "Outbound Dispatch & Dock Loading",
+      "name": "Outbound Dispatch & Dock Loading",
+      "functionalJob": "Load refrigerated transport",
+      "parentId": "Temperature-Controlled Warehousing & Cold Chain Storage Ecosystem",
+      "isProductPosition": false
+    },
+    {
+      "level": "L6",
+      "id": "Refrigeration & Thermal Management",
+      "name": "Refrigeration & Thermal Management",
+      "functionalJob": "Horizontal: generate cooling duty for all chambers",
+      "parentId": "Temperature-Controlled Warehousing & Cold Chain Storage Ecosystem",
+      "isProductPosition": false
+    },
+    {
+      "level": "L6",
+      "id": "Energy Supply & Electrical Utilities",
+      "name": "Energy Supply & Electrical Utilities",
+      "functionalJob": "Horizontal: supply reliable electrical energy",
+      "parentId": "Temperature-Controlled Warehousing & Cold Chain Storage Ecosystem",
+      "isProductPosition": false
+    },
+    {
+      "level": "L6",
+      "id": "Quality, Traceability & Food Safety",
+      "name": "Quality, Traceability & Food Safety",
+      "functionalJob": "Horizontal: prove temperature chain integrity",
+      "parentId": "Temperature-Controlled Warehousing & Cold Chain Storage Ecosystem",
+      "isProductPosition": false
+    },
+    {
+      "level": "L6",
+      "id": "Maintenance & Engineering",
+      "name": "Maintenance & Engineering",
+      "functionalJob": "Horizontal: keep equipment at SLA",
+      "parentId": "Temperature-Controlled Warehousing & Cold Chain Storage Ecosystem",
+      "isProductPosition": false
+    },
+    {
+      "level": "L6",
+      "id": "HSE & Refrigerant Safety",
+      "name": "HSE & Refrigerant Safety",
+      "functionalJob": "Horizontal: protect people from NH3/CO2 hazards",
+      "parentId": "Temperature-Controlled Warehousing & Cold Chain Storage Ecosystem",
+      "isProductPosition": false
+    },
+    {
+      "level": "L6",
+      "id": "IT/OT & Warehouse Control",
+      "name": "IT/OT & Warehouse Control",
+      "functionalJob": "Horizontal: direct goods, labor, data flows",
+      "parentId": "Temperature-Controlled Warehousing & Cold Chain Storage Ecosystem",
+      "isProductPosition": false
+    },
+    {
+      "level": "L5",
+      "id": "Dock Leveler & Sealed Airlock",
+      "name": "Dock Leveler & Sealed Airlock",
+      "functionalJob": "Mechanical interface between truck and cold warehouse envelope",
+      "parentId": "Inbound Receiving & Dock Operations",
+      "isProductPosition": false
+    },
+    {
+      "level": "L5",
+      "id": "Truck Scale & Gate Management",
+      "name": "Truck Scale & Gate Management",
+      "functionalJob": "Weighbridge and site access",
+      "parentId": "Inbound Receiving & Dock Operations",
+      "isProductPosition": false
+    },
+    {
+      "level": "L5",
+      "id": "Receiving Scanner / RFID Portal",
+      "name": "Receiving Scanner / RFID Portal",
+      "functionalJob": "Automated identification at receipt",
+      "parentId": "Inbound Receiving & Dock Operations",
+      "isProductPosition": false
+    },
+    {
+      "level": "L5",
+      "id": "Blast Freezer",
+      "name": "Blast Freezer",
+      "functionalJob": "Rapid core-temperature reduction",
+      "parentId": "Pre-Cool / Tempering / Blast Operations",
+      "isProductPosition": false
+    },
+    {
+      "level": "L5",
+      "id": "Tempering Room",
+      "name": "Tempering Room",
+      "functionalJob": "Controlled thaw or equilibration",
+      "parentId": "Pre-Cool / Tempering / Blast Operations",
+      "isProductPosition": false
+    },
+    {
+      "level": "L5",
+      "id": "Vacuum / Hydro Pre-Cooler",
+      "name": "Vacuum / Hydro Pre-Cooler",
+      "functionalJob": "Produce-specific pre-chill",
+      "parentId": "Pre-Cool / Tempering / Blast Operations",
+      "isProductPosition": false
+    },
+    {
+      "level": "L5",
+      "id": "Pallet Racking",
+      "name": "Pallet Racking",
+      "functionalJob": "Static storage rack (selective/drive-in/mobile)",
+      "parentId": "Temperature-Controlled Storage",
+      "isProductPosition": false
+    },
+    {
+      "level": "L5",
+      "id": "ASRS",
+      "name": "ASRS",
+      "functionalJob": "Automated storage and retrieval in cold chamber",
+      "parentId": "Temperature-Controlled Storage",
+      "isProductPosition": false
+    },
+    {
+      "level": "L5",
+      "id": "Refrigerated Material Handling Equipment",
+      "name": "Refrigerated Material Handling Equipment",
+      "functionalJob": "Cold-rated reach trucks, forklifts, AGVs",
+      "parentId": "Temperature-Controlled Storage",
+      "isProductPosition": false
+    },
+    {
+      "level": "L5",
+      "id": "Cold Chamber Enclosure",
+      "name": "Cold Chamber Enclosure",
+      "functionalJob": "Insulated panel envelope and doors",
+      "parentId": "Temperature-Controlled Storage",
+      "isProductPosition": false
+    },
+    {
+      "level": "L5",
+      "id": "Voice Picking System",
+      "name": "Voice Picking System",
+      "functionalJob": "Hands-free picking direction",
+      "parentId": "Order Pick & Assembly",
+      "isProductPosition": false
+    },
+    {
+      "level": "L5",
+      "id": "Pick-to-Light / Put-to-Light",
+      "name": "Pick-to-Light / Put-to-Light",
+      "functionalJob": "Visual pick guidance",
+      "parentId": "Order Pick & Assembly",
+      "isProductPosition": false
+    },
+    {
+      "level": "L5",
+      "id": "Case / Layer Picker",
+      "name": "Case / Layer Picker",
+      "functionalJob": "Robotic case/layer assembly",
+      "parentId": "Order Pick & Assembly",
+      "isProductPosition": false
+    },
+    {
+      "level": "L5",
+      "id": "Conveyor & Sortation",
+      "name": "Conveyor & Sortation",
+      "functionalJob": "Automated material flow",
+      "parentId": "Order Pick & Assembly",
+      "isProductPosition": false
+    },
+    {
+      "level": "L5",
+      "id": "Refrigerated Dock Loading Bay",
+      "name": "Refrigerated Dock Loading Bay",
+      "functionalJob": "Thermal-sealed outbound interface",
+      "parentId": "Outbound Dispatch & Dock Loading",
+      "isProductPosition": false
+    },
+    {
+      "level": "L5",
+      "id": "Dock Scheduling Platform",
+      "name": "Dock Scheduling Platform",
+      "functionalJob": "Carrier appointment management",
+      "parentId": "Outbound Dispatch & Dock Loading",
+      "isProductPosition": false
+    },
+    {
+      "level": "L5",
+      "id": "NH3 Screw Compressor Plant",
+      "name": "NH3 Screw Compressor Plant",
+      "functionalJob": "Ammonia screw refrigeration (dominant in DE)",
+      "parentId": "Refrigeration & Thermal Management",
+      "isProductPosition": false
+    },
+    {
+      "level": "L5",
+      "id": "NH3/CO2 Cascade System",
+      "name": "NH3/CO2 Cascade System",
+      "functionalJob": "High-stage NH3 with low-stage CO2 for deep-freeze",
+      "parentId": "Refrigeration & Thermal Management",
+      "isProductPosition": false
+    },
+    {
+      "level": "L5",
+      "id": "Transcritical CO2 System",
+      "name": "Transcritical CO2 System",
+      "functionalJob": "F-gas-compliant CO2-only system",
+      "parentId": "Refrigeration & Thermal Management",
+      "isProductPosition": false
+    },
+    {
+      "level": "L5",
+      "id": "Synthetic HFC Plant",
+      "name": "Synthetic HFC Plant",
+      "functionalJob": "Legacy HFC, declining under F-Gas Reg",
+      "parentId": "Refrigeration & Thermal Management",
+      "isProductPosition": false
+    },
+    {
+      "level": "L5",
+      "id": "Evaporators & Air Coolers",
+      "name": "Evaporators & Air Coolers",
+      "functionalJob": "Chamber-side heat-exchange units",
+      "parentId": "Refrigeration & Thermal Management",
+      "isProductPosition": false
+    },
+    {
+      "level": "L5",
+      "id": "Evaporative Condensers / Cooling Towers",
+      "name": "Evaporative Condensers / Cooling Towers",
+      "functionalJob": "Heat-rejection plant",
+      "parentId": "Refrigeration & Thermal Management",
+      "isProductPosition": false
+    },
+    {
+      "level": "L5",
+      "id": "MV Grid Connection & Switchgear",
+      "name": "MV Grid Connection & Switchgear",
+      "functionalJob": "10/20 kV feeder, MV switchgear, protection",
+      "parentId": "Energy Supply & Electrical Utilities",
+      "isProductPosition": false
+    },
+    {
+      "level": "L5",
+      "id": "Battery Energy Storage System (BESS)",
+      "name": "Battery Energy Storage System (BESS)",
+      "functionalJob": "Multi-MWh containerised Li-ion storage — MEIN SOLAR PRIMARY POSITION",
+      "parentId": "Energy Supply & Electrical Utilities",
+      "isProductPosition": "PRIMARY"
+    },
+    {
+      "level": "L5",
+      "id": "On-site PV Generation",
+      "name": "On-site PV Generation",
+      "functionalJob": "Rooftop or ground-mount PV — MEIN SOLAR SECONDARY POSITION (PV-EPC heritage)",
+      "parentId": "Energy Supply & Electrical Utilities",
+      "isProductPosition": "SECONDARY"
+    },
+    {
+      "level": "L5",
+      "id": "Diesel / Gas Standby Genset",
+      "name": "Diesel / Gas Standby Genset",
+      "functionalJob": "Backup power for refrigeration continuity",
+      "parentId": "Energy Supply & Electrical Utilities",
+      "isProductPosition": false
+    },
+    {
+      "level": "L5",
+      "id": "Uninterruptible Power Supply (UPS)",
+      "name": "Uninterruptible Power Supply (UPS)",
+      "functionalJob": "Short-term ride-through for IT and controls",
+      "parentId": "Energy Supply & Electrical Utilities",
+      "isProductPosition": false
+    },
+    {
+      "level": "L5",
+      "id": "HPC EV Charging for Reefer Trucks",
+      "name": "HPC EV Charging for Reefer Trucks",
+      "functionalJob": "High-power DC charging — MEIN SOLAR SECONDARY POSITION (EV-buffer feature)",
+      "parentId": "Energy Supply & Electrical Utilities",
+      "isProductPosition": "SECONDARY"
+    },
+    {
+      "level": "L5",
+      "id": "Energy Management System (EMS)",
+      "name": "Energy Management System (EMS)",
+      "functionalJob": "Dispatch optimisation and market interface",
+      "parentId": "Energy Supply & Electrical Utilities",
+      "isProductPosition": false
+    },
+    {
+      "level": "L5",
+      "id": "Temperature Monitoring System",
+      "name": "Temperature Monitoring System",
+      "functionalJob": "Calibrated wireless T-loggers and dashboards",
+      "parentId": "Quality, Traceability & Food Safety",
+      "isProductPosition": false
+    },
+    {
+      "level": "L5",
+      "id": "Traceability / Lot Software",
+      "name": "Traceability / Lot Software",
+      "functionalJob": "Lot-genealogy and recall management",
+      "parentId": "Quality, Traceability & Food Safety",
+      "isProductPosition": false
+    },
+    {
+      "level": "L5",
+      "id": "Pest Control Program",
+      "name": "Pest Control Program",
+      "functionalJob": "IFS/BRC-mandated pest management",
+      "parentId": "Quality, Traceability & Food Safety",
+      "isProductPosition": false
+    },
+    {
+      "level": "L5",
+      "id": "CMMS Platform",
+      "name": "CMMS Platform",
+      "functionalJob": "Computerised maintenance management",
+      "parentId": "Maintenance & Engineering",
+      "isProductPosition": false
+    },
+    {
+      "level": "L5",
+      "id": "Spare Parts Management",
+      "name": "Spare Parts Management",
+      "functionalJob": "Critical-spares inventory",
+      "parentId": "Maintenance & Engineering",
+      "isProductPosition": false
+    },
+    {
+      "level": "L5",
+      "id": "Refrigeration Service Contract",
+      "name": "Refrigeration Service Contract",
+      "functionalJob": "OEM/third-party ammonia service",
+      "parentId": "Maintenance & Engineering",
+      "isProductPosition": false
+    },
+    {
+      "level": "L5",
+      "id": "NH3 / CO2 Gas Detection",
+      "name": "NH3 / CO2 Gas Detection",
+      "functionalJob": "Fixed-point gas detection and alarm",
+      "parentId": "HSE & Refrigerant Safety",
+      "isProductPosition": false
+    },
+    {
+      "level": "L5",
+      "id": "Emergency Ventilation",
+      "name": "Emergency Ventilation",
+      "functionalJob": "Leak-triggered purge",
+      "parentId": "HSE & Refrigerant Safety",
+      "isProductPosition": false
+    },
+    {
+      "level": "L5",
+      "id": "Fire Detection & Suppression",
+      "name": "Fire Detection & Suppression",
+      "functionalJob": "Aspirating smoke, sprinkler, suppression",
+      "parentId": "HSE & Refrigerant Safety",
+      "isProductPosition": false
+    },
+    {
+      "level": "L5",
+      "id": "Warehouse Management System (WMS)",
+      "name": "Warehouse Management System (WMS)",
+      "functionalJob": "Inventory, labor, location control",
+      "parentId": "IT/OT & Warehouse Control",
+      "isProductPosition": false
+    },
+    {
+      "level": "L5",
+      "id": "Transportation Management System (TMS)",
+      "name": "Transportation Management System (TMS)",
+      "functionalJob": "Carrier and route management",
+      "parentId": "IT/OT & Warehouse Control",
+      "isProductPosition": false
+    },
+    {
+      "level": "L5",
+      "id": "SCADA / Building Management System",
+      "name": "SCADA / Building Management System",
+      "functionalJob": "Refrigeration + building automation",
+      "parentId": "IT/OT & Warehouse Control",
+      "isProductPosition": false
+    },
+    {
+      "level": "L4",
+      "id": "Li-ion Battery Rack",
+      "name": "Li-ion Battery Rack",
+      "functionalJob": "LFP modules with BMS",
+      "parentId": "Battery Energy Storage System (BESS)",
+      "isProductPosition": false
+    },
+    {
+      "level": "L4",
+      "id": "Power Conversion System (PCS)",
+      "name": "Power Conversion System (PCS)",
+      "functionalJob": "Bidirectional 4-quadrant inverter",
+      "parentId": "Battery Energy Storage System (BESS)",
+      "isProductPosition": false
+    },
+    {
+      "level": "L4",
+      "id": "Thermal Management Unit",
+      "name": "Thermal Management Unit",
+      "functionalJob": "Liquid-cool chiller and HVAC",
+      "parentId": "Battery Energy Storage System (BESS)",
+      "isProductPosition": false
+    },
+    {
+      "level": "L4",
+      "id": "Fire Suppression (NOVEC/aerosol)",
+      "name": "Fire Suppression (NOVEC/aerosol)",
+      "functionalJob": "Thermal-runaway containment",
+      "parentId": "Battery Energy Storage System (BESS)",
+      "isProductPosition": false
+    },
+    {
+      "level": "L4",
+      "id": "Energy Management Controller",
+      "name": "Energy Management Controller",
+      "functionalJob": "Setpoint dispatch logic",
+      "parentId": "Battery Energy Storage System (BESS)",
+      "isProductPosition": false
+    },
+    {
+      "level": "L4",
+      "id": "MV Step-up Transformer",
+      "name": "MV Step-up Transformer",
+      "functionalJob": "LV-to-MV coupling",
+      "parentId": "Battery Energy Storage System (BESS)",
+      "isProductPosition": false
+    },
+    {
+      "level": "L4",
+      "id": "Container Enclosure",
+      "name": "Container Enclosure",
+      "functionalJob": "ISO HC housing IP54",
+      "parentId": "Battery Energy Storage System (BESS)",
+      "isProductPosition": false
+    },
+    {
+      "level": "L4",
+      "id": "PV Module",
+      "name": "PV Module",
+      "functionalJob": "Mono-Si glass-glass or glass-foil panel",
+      "parentId": "On-site PV Generation",
+      "isProductPosition": false
+    },
+    {
+      "level": "L4",
+      "id": "String Inverter",
+      "name": "String Inverter",
+      "functionalJob": "DC-AC conversion",
+      "parentId": "On-site PV Generation",
+      "isProductPosition": false
+    },
+    {
+      "level": "L4",
+      "id": "Roof / Ground Mounting",
+      "name": "Roof / Ground Mounting",
+      "functionalJob": "Structural support",
+      "parentId": "On-site PV Generation",
+      "isProductPosition": false
+    },
+    {
+      "level": "L4",
+      "id": "DC Combiner Box",
+      "name": "DC Combiner Box",
+      "functionalJob": "String aggregation and protection",
+      "parentId": "On-site PV Generation",
+      "isProductPosition": false
+    },
+    {
+      "level": "L4",
+      "id": "AC Switchboard",
+      "name": "AC Switchboard",
+      "functionalJob": "AC distribution and metering",
+      "parentId": "On-site PV Generation",
+      "isProductPosition": false
+    },
+    {
+      "level": "L4",
+      "id": "HPC Dispenser",
+      "name": "HPC Dispenser",
+      "functionalJob": "CCS2 150-400 kW dispenser",
+      "parentId": "HPC EV Charging for Reefer Trucks",
+      "isProductPosition": false
+    },
+    {
+      "level": "L4",
+      "id": "DC Power Cabinet",
+      "name": "DC Power Cabinet",
+      "functionalJob": "Rectifier stack",
+      "parentId": "HPC EV Charging for Reefer Trucks",
+      "isProductPosition": false
+    },
+    {
+      "level": "L4",
+      "id": "Cable Management / Liquid-Cooled Cable",
+      "name": "Cable Management / Liquid-Cooled Cable",
+      "functionalJob": "High-current cable and coolant",
+      "parentId": "HPC EV Charging for Reefer Trucks",
+      "isProductPosition": false
+    },
+    {
+      "level": "L4",
+      "id": "Payment & Authentication Unit",
+      "name": "Payment & Authentication Unit",
+      "functionalJob": "OCPP + payment terminal",
+      "parentId": "HPC EV Charging for Reefer Trucks",
+      "isProductPosition": false
+    },
+    {
+      "level": "L4",
+      "id": "Screw Compressor",
+      "name": "Screw Compressor",
+      "functionalJob": "Rotary twin-screw with VFD",
+      "parentId": "NH3 Screw Compressor Plant",
+      "isProductPosition": false
+    },
+    {
+      "level": "L4",
+      "id": "Oil Separator",
+      "name": "Oil Separator",
+      "functionalJob": "Compressor-oil recovery",
+      "parentId": "NH3 Screw Compressor Plant",
+      "isProductPosition": false
+    },
+    {
+      "level": "L4",
+      "id": "Economizer",
+      "name": "Economizer",
+      "functionalJob": "Two-stage efficiency improvement",
+      "parentId": "NH3 Screw Compressor Plant",
+      "isProductPosition": false
+    },
+    {
+      "level": "L4",
+      "id": "Refrigeration Control Panel",
+      "name": "Refrigeration Control Panel",
+      "functionalJob": "Capacity and safety control",
+      "parentId": "NH3 Screw Compressor Plant",
+      "isProductPosition": false
+    },
+    {
+      "level": "L4",
+      "id": "Pressure Relief Valve Station",
+      "name": "Pressure Relief Valve Station",
+      "functionalJob": "EN 378 over-pressure protection",
+      "parentId": "NH3 Screw Compressor Plant",
+      "isProductPosition": false
+    }
+  ],
+  "productPosition": {
+    "level": "L5",
+    "unitId": "",
+    "unitName": "",
+    "companyName": "",
+    "primaryL6": "",
+    "secondaryL5s": []
+  },
+  "sources": []
 }

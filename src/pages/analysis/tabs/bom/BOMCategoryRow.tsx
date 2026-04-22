@@ -1,11 +1,13 @@
 /**
- * BOMCategoryRow — one L6.N (L4) row with label, confidence badge, and variant chips.
+ * BOMCategoryRow — one L4 subsystem row with label, confidence badge, and variant chips.
  *
  * Matches Figma design:
- *   - Left: collapse/expand caret, L6.N identifier in mono font, row label, confidence badge
- *   - Right: inline row of variant chips (VariantCard × N)
+ *   - Left: collapse/expand caret, L4.N identifier in mono font, row label, confidence badge
+ *   - Right: inline row of variant chips (VariantCard x N)
  *   - Expandable detail panel showing L3 modules and their variant chips
+ *   - Product anchor highlighting (yellow border + badge)
  *
+ * All anchor detection uses `isProductAnchor` from JSON data or `productAnchorIds[]`.
  * Uses .bom-category-row CSS classes from bom.css.
  */
 
@@ -14,7 +16,7 @@ import type { BOML4Subsystem, BOMModule, BOMConfidence } from "@/types";
 import ConfidenceTierBadge from "./ConfidenceTierBadge";
 import VariantCard from "./VariantCard";
 
-/* ── Chevron icon ────────────────────────────────────────────────────────── */
+/* -- Chevron icon ------------------------------------------------------- */
 function ChevronIcon({ open }: { open: boolean }) {
   return (
     <svg
@@ -36,7 +38,7 @@ function ChevronIcon({ open }: { open: boolean }) {
   );
 }
 
-/* ── Product anchor badge ──────────────────────────────────────────────── */
+/* -- Product anchor badge ----------------------------------------------- */
 function AnchorBadge({ note }: { note?: string }) {
   return (
     <span
@@ -63,8 +65,33 @@ function AnchorBadge({ note }: { note?: string }) {
   );
 }
 
-/* ── Module row (L3 level, inside expanded panel) ─────────────────────────── */
-function ModuleRow({ module, parentConfidence }: { module: BOMModule; parentConfidence: BOMConfidence }) {
+/**
+ * Determine if a subsystem or module is a product anchor.
+ * Checks explicit isProductAnchor field first, falls back to isMarquardtAnchor,
+ * then checks if the item ID is in the productAnchorIds array.
+ */
+function isAnchor(
+  item: { isProductAnchor?: boolean; isMarquardtAnchor?: boolean; id?: string },
+  productAnchorIds: string[]
+): boolean {
+  if (item.isProductAnchor === true) return true;
+  if (item.isMarquardtAnchor === true) return true;
+  if (item.id && productAnchorIds.includes(item.id)) return true;
+  return false;
+}
+
+/* -- Module row (L3 level, inside expanded panel) ----------------------- */
+function ModuleRow({
+  module,
+  parentConfidence,
+  productAnchorIds,
+}: {
+  module: BOMModule;
+  parentConfidence: BOMConfidence;
+  productAnchorIds: string[];
+}) {
+  const moduleIsAnchor = isAnchor(module, productAnchorIds);
+
   return (
     <div
       style={{
@@ -93,7 +120,7 @@ function ModuleRow({ module, parentConfidence }: { module: BOMModule; parentConf
         <span style={{ fontSize: 13, fontWeight: 500, color: "var(--text-white)" }}>
           {module.name}
         </span>
-        {module.isMarquardtAnchor && <AnchorBadge note={module.sensorNote} />}
+        {moduleIsAnchor && <AnchorBadge note={module.sensorNote} />}
       </div>
       {module.alternatives && module.alternatives.length > 0 && (
         <div className="bom-inline-variants">
@@ -104,6 +131,7 @@ function ModuleRow({ module, parentConfidence }: { module: BOMModule; parentConf
               confidence={parentConfidence}
               functionalRole={module.name}
               detail={module.sensorNote}
+              productAnchorIds={productAnchorIds}
             />
           ))}
         </div>
@@ -112,31 +140,40 @@ function ModuleRow({ module, parentConfidence }: { module: BOMModule; parentConf
   );
 }
 
-/* ── Main component ──────────────────────────────────────────────────────── */
+/* -- Main component ----------------------------------------------------- */
 export interface BOMCategoryRowProps {
   subsystem: BOML4Subsystem;
-  /** Display index for the L6.N label (1-based) */
+  /** Display index for the L4.N label (1-based) */
   rowIndex: number;
+  /** Product anchor IDs from bom.json for cross-checking. */
+  productAnchorIds?: string[];
 }
 
-export default function BOMCategoryRow({ subsystem, rowIndex }: BOMCategoryRowProps) {
+export default function BOMCategoryRow({
+  subsystem,
+  rowIndex,
+  productAnchorIds = [],
+}: BOMCategoryRowProps) {
   const [open, setOpen] = useState(false);
 
-  const hasModules = subsystem.modules && subsystem.modules.length > 0;
+  const modules = subsystem.modules ?? (subsystem as any).l3Modules ?? [];
+  const hasModules = modules.length > 0;
   const hasAlternatives = subsystem.alternatives && subsystem.alternatives.length > 0;
-  // Use the real L4 ID from the markdown (e.g. "L4-A"); fall back to index only if missing.
+  const subsystemIsAnchor = isAnchor(subsystem, productAnchorIds);
+  const confidence = subsystem.confidence ?? "medium";
+  // Use the real L4 ID from the data (e.g. "L4-A"); fall back to index only if missing.
   const idLabel = subsystem.id?.startsWith("L4") ? subsystem.id : `L4.${rowIndex}`;
 
   return (
     <div
       className="bom-category-row"
       style={
-        subsystem.isMarquardtAnchor
+        subsystemIsAnchor
           ? { borderLeft: "2px solid rgba(253,255,152,0.4)" }
           : undefined
       }
     >
-      {/* ── Header row ── */}
+      {/* Header row */}
       <div
         className="bom-category-row__header"
         onClick={() => setOpen((v) => !v)}
@@ -158,7 +195,7 @@ export default function BOMCategoryRow({ subsystem, rowIndex }: BOMCategoryRowPr
           <ChevronIcon open={open} />
         </div>
 
-        {/* L6.N identifier cell */}
+        {/* L4.N identifier cell */}
         <div className="bom-category-row__id-cell">
           <span className="bom-category-row__id">{idLabel}</span>
         </div>
@@ -167,8 +204,8 @@ export default function BOMCategoryRow({ subsystem, rowIndex }: BOMCategoryRowPr
         <div className="bom-category-row__text-cell">
           <div className="bom-category-row__label-row">
             <span className="bom-category-row__label">{subsystem.name}</span>
-            <ConfidenceTierBadge confidence={subsystem.confidence} />
-            {subsystem.isMarquardtAnchor && <AnchorBadge />}
+            {confidence && <ConfidenceTierBadge confidence={confidence} />}
+            {subsystemIsAnchor && <AnchorBadge />}
             {subsystem.costSharePct != null && (
               <span
                 style={{
@@ -186,15 +223,30 @@ export default function BOMCategoryRow({ subsystem, rowIndex }: BOMCategoryRowPr
             )}
           </div>
 
+          {/* Description (new format includes description field) */}
+          {subsystem.description && (
+            <p
+              style={{
+                fontSize: 12,
+                color: "var(--text-gray)",
+                margin: "4px 0 0 0",
+                lineHeight: 1.4,
+              }}
+            >
+              {subsystem.description}
+            </p>
+          )}
+
           {/* Top-level alternatives */}
           {hasAlternatives && (
             <div className="bom-inline-variants">
-              {subsystem.alternatives.map((alt) => (
+              {subsystem.alternatives!.map((alt) => (
                 <VariantCard
                   key={alt.name}
                   alternative={alt}
-                  confidence={subsystem.confidence}
+                  confidence={confidence}
                   functionalRole={subsystem.keyDesignChoice}
+                  productAnchorIds={productAnchorIds}
                 />
               ))}
             </div>
@@ -202,17 +254,18 @@ export default function BOMCategoryRow({ subsystem, rowIndex }: BOMCategoryRowPr
         </div>
       </div>
 
-      {/* ── Expanded module detail ── */}
+      {/* Expanded module detail */}
       {open && hasModules && (
         <div className="bom-category-row__detail">
           <div className="bom-category-row__detail-label">
             L3 Modules — {subsystem.name}
           </div>
-          {subsystem.modules.map((mod) => (
+          {modules.map((mod: any) => (
             <ModuleRow
               key={mod.id}
               module={mod}
-              parentConfidence={subsystem.confidence}
+              parentConfidence={confidence}
+              productAnchorIds={productAnchorIds}
             />
           ))}
           {subsystem.keyDesignChoice && (
@@ -226,7 +279,7 @@ export default function BOMCategoryRow({ subsystem, rowIndex }: BOMCategoryRowPr
         </div>
       )}
 
-      {/* ── Expanded no-module fallback ── */}
+      {/* Expanded no-module fallback */}
       {open && !hasModules && (
         <div className="bom-category-row__detail">
           <p className="bom-category-row__detail-text" style={{ color: "var(--text-gray)" }}>

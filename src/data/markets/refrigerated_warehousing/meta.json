@@ -2,6 +2,18 @@
   "slug": "refrigerated_warehousing",
   "name": "Refrigerated Warehousing and Storage",
   "shortName": "Refrigerated Warehousing",
-  "naics": "493120",
-  "isReference": false
+  "naicsCode": "493120",
+  "isReference": false,
+  "rank": 3,
+  "scores": {
+    "odi": 6.05,
+    "featureFit": 5.81,
+    "constraintCompatibility": 6.0,
+    "jobCoverage": 7.5,
+    "vnHierarchy": 6.0,
+    "incumbentVulnerability": 7.0,
+    "composite": 6.41
+  },
+  "recommendation": "investigate",
+  "rationale": "Best incumbent vulnerability in set (7.0 — no storage incumbent, only diesel/tariff/none) + solid ODI (6.05) + good job coverage (7.5). 24/7 refrigeration is structurally excellent peak-shaving target. Held back by C&I education gap (5 mitigable, 3 medium inc. CAPEX education)."
 }

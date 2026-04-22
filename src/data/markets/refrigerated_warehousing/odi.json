@@ -1,1289 +1,483 @@
 {
-  "id": "ODI_refrigerated_warehousing_and_storage_sam",
-  "title": "ODI Matrix — NAICS 493120 Refrigerated Warehousing and Storage",
-  "type": "odi_matrix",
-  "market_slug": "refrigerated_warehousing_and_storage_sam",
-  "is_per_market": true,
-  "sections": [
+  "naicsCode": "493120",
+  "marketName": "Refrigerated Warehousing and Storage",
+  "slug": "refrigerated_warehousing",
+  "incumbentAnchor": "",
+  "summary": {
+    "totalNeeds": 36,
+    "underservedCount": 19,
+    "overservedCount": 0,
+    "avgOpportunityScore": 12.1
+  },
+  "needs": [
     {
-      "title": "Step 1 — Needs gathered",
-      "content": "| Source | Count | `job_step_number` | `job_step_name` | `product_related` |\n|---|---|---|---|---|\n| JTBD Step 06 market-level (N1–N24) | 24 | 1–6 (DEFINE…MONITOR) | per JTBD | 14 false / 10 true |\n| FIT Step 10 product-constraint (PR1–PR12) | 12 | 0 (injected) | `product_constraint` | 12 true |\n| **Total entries** | **36** | — | — | — |\n\n`affected_markets` filter: all 12 PR entries carry `[\"Refrigerated Warehousing and Storage\"]` → all merged in.\n\n---"
+      "id": "",
+      "statement": "Increase the ability to size storage capacity to within +/-10 % of the demand-charge-shave that will actually clear in year-1 operation",
+      "jobStep": "DEFINE",
+      "importance": 9.0,
+      "satisfaction": 4.0,
+      "opportunity": 14.0,
+      "isUnderserved": true,
+      "isOverserved": false,
+      "productRelated": false,
+      "impactCategory": "cost",
+      "recalibrationNote": ""
     },
     {
-      "title": "Step 2 — Satisfaction recalibration (Step 03 incumbent-anchored)",
-      "content": "Importance held stable across all 36 entries (importance-stability rule). Only three satisfaction moves defensible against Step 03 evidence; the rest stand as Step 06/10 LLM estimates.\n\n| # | Orig S | Recal S | Evidence from Step 03 / Step 11 |\n|---|---|---|---|\n| N15 (compressor inrush absorption) | 4 | **5** | Tier-1 PCS (SMA/Sungrow PowerTitan, 4-quadrant <100 ms) demonstrably absorbs 3–7× FLA inrush; incumbent performance better than Step 06 estimate |\n| N20 (HACCP audit-trail gaps during grid events) | 4 | **3** | No surveyed incumbent EMS (Fluence Mosaic, Tesla Autobidder, Wärtsilä GEMS, OEM-bundled EMS) produces time-aligned voltage+temperature trace for HACCP evidence — structurally worse than estimated |\n| PR4 (LFP calendar-age reserved-SoC envelope yr 10) | 4.5 | **5.5** | Tier-1 LFP vendors (Tesla, Sungrow, CATL EnerC) ship 10-yr 85 % capacity performance guarantees; incumbent warranty envelope tighter than estimated |\n\nAll other scores stand: PR1/PR3 thermal-runaway (Moss Landing 2024 + McMicken 2019 confirm S=3 is correct — not optimistic); N13 sub-100 ms ride-through (industry weak across A2/A4/A5, packaged units variable) stays at 3; N19 early-detection (industry still weak) stays at 3.\n\n---"
+      "id": "",
+      "statement": "Minimize the likelihood of underestimating refrigeration peak-load duration by >15 minutes during the daily 17:00-20:00 Leistungspreis window",
+      "jobStep": "DEFINE",
+      "importance": 9.0,
+      "satisfaction": 5.0,
+      "opportunity": 13.0,
+      "isUnderserved": false,
+      "isOverserved": false,
+      "productRelated": false,
+      "impactCategory": "cost",
+      "recalibrationNote": ""
     },
     {
-      "title": "Step 3 — Opportunity scores (deterministic)",
-      "content": "All `opportunity_score`, `is_underserved`, `is_overserved` values below are recomputed from the recalibrated `(I, S)`. Rounded to 2 decimals.\n\n### Market-level needs (24)\n\n| # | Job step | Statement (short) | I | S | Opp | U | O |\n|---|---|---|---|---|---|---|---|\n| N16 | EXECUTE | Dispatch error: chamber >+2 °C vs SLA during grid disturbance | 10 | 3 | **17.00** | ✅ | — |\n| N19 | MONITOR | Early thermal-runaway detection ≥30 min before suppression | 10 | 3 | **17.00** | ✅ | — |\n| N5 | LOCATE | DSO MV-feeder capacity reverses after 6+ mo of work | 10 | 4 | **16.00** | ✅ | — |\n| N13 | CONFIRM | Sub-100 ms ride-through witnessed to NH₃ controllers | 9 | 3 | **15.00** | ✅ | — |\n| N20 | MONITOR | HACCP audit-trail gaps during BESS-mediated grid events | 9 | 3 | **15.00** | ✅ | — |\n| N22 | MONITOR | EMS over-discharges below reserved-resilience-SoC envelope | 9 | 3 | **15.00** | ✅ | — |\n| N1 | DEFINE | Size storage to ±10 % of actual year-1 demand-charge shave | 9 | 4 | **14.00** | ✅ | — |\n| N7 | LOCATE | Fire-clearance exceeds footprint vs refrig plant / IFS | 9 | 4 | **14.00** | ✅ | — |\n| N12 | CONFIRM | Fire-protection inspection fails → COD slip >30 d | 9 | 4 | **14.00** | ✅ | — |\n| N3 | DEFINE | HACCP load survival forecast ≥95 % at <30 % SoC | 8 | 3 | **13.00** | ✅ | — |\n| N4 | DEFINE | Revenue-stack mis-stacking (peak-shave + FCR + §19) >5 % | 8 | 3 | **13.00** | ✅ | — |\n| N10 | PREPARE | Interlock with NH₃/CO₂ refrig PLC, no PLC retrofit | 8 | 3 | **13.00** | ✅ | — |\n| N17 | EXECUTE | EPEX arbitrage >300 d/yr without breaking HACCP reserve | 8 | 3 | **13.00** | ✅ | — |\n| N2 | DEFINE | Underestimate refrig peak duration by >15 min | 9 | 5 | **13.00** | — | — |\n| N15 | EXECUTE | Absorb compressor inrush >3× nominal w/o MV trip (recal) | 9 | 5 | **13.00** | — | — |\n| N9 | PREPARE | Foundation + MV + refrig works collide on critical path | 8 | 4 | **12.00** | ✅ | — |\n| N8 | LOCATE | Insurance uplift >25 % for Li-ion containment design | 7 | 3 | **11.00** | — | — |\n| N21 | MONITOR | Live SoH / reserved-SoC exposed to WMS / SCADA real time | 7 | 3 | **11.00** | — | — |\n| N6 | LOCATE | Certification slot slip >4 weeks | 7 | 4 | **10.00** | — | — |\n| N23 | EXECUTE (P3) | Energy-Manager quarterly €/MWh savings evidence to COO | 7 | 4 | **10.00** | — | — |\n| N24 | CONFIRM (P5) | Duty-manager nighttime spoilage anxiety visible SoC | 6 | 2 | **10.00** | — | — |\n| N11 | PREPARE | Operator training gap → HACCP non-compliance at COD | 7 | 5 | **9.00** | — | — |\n| N18 | EXECUTE | Cell cycle degradation >2 %/yr from C/2 arbitrage | 7 | 5 | **9.00** | — | — |\n| N14 | CONFIRM | IEC 62443 cyber gap flagged by insurance auditor pre-COD | 6 | 4 | **8.00** | — | — |\n\n### Product-related needs (12)\n\n| # | Statement (short) | I | S | Opp | U | O |\n|---|---|---|---|---|---|---|\n| PR1 | Thermal-runaway propagation compromises refrig plant / IFS | 9.5 | 3.0 | **16.00** | ✅ | — |\n| PR3 | ≥30 min early thermal-runaway precursor detection lead | 9.5 | 3.0 | **16.00** | ✅ | — |\n| PR2 | Fire-clearance distance exceeds plant-room / IFS footprint | 8.5 | 3.5 | **13.50** | ✅ | — |\n| PR8 | FGW TR8 lead 6–12 mo blocks pre-Oktober COD window | 8.0 | 4.0 | **12.00** | ✅ | — |\n| PR11 | LFP deep-discharge <5 % SoC permanently erodes resilience | 7.5 | 4.5 | **10.50** | ✅ | — |\n| PR4 | Calendar-age reduces reserved-resilience-SoC before yr 10 (recal) | 7.5 | 5.5 | **9.50** | — | — |\n| PR10 | IEC 62443 cyber controls w/o exposing refrig SCADA | 6.5 | 3.5 | **9.50** | — | — |\n| PR5 | Cycle degradation >2 %/yr from C/2 arbitrage | 7.0 | 5.0 | **9.00** | — | — |\n| PR9 | CN cell-supply CRMA/FX/tariff shock pre-commissioning | 6.5 | 4.0 | **9.00** | — | — |\n| PR12 | Footprint 40–80 m²/MWh encroaches on reefer-staging lane | 7.0 | 5.0 | **9.00** | — | — |\n| PR7 | RTE 10–15 % erases peak-shave margin <120 €/kW/yr spread | 7.0 | 5.5 | **8.50** | — | — |\n| PR6 | Summer >35 °C HVAC suppresses deliverable peak-shave | 6.5 | 5.0 | **8.00** | — | — |\n\n---"
+      "id": "",
+      "statement": "Increase the ability to forecast HACCP-relevant load survival time at <30 % SoC with >=95 % accuracy",
+      "jobStep": "DEFINE",
+      "importance": 8.0,
+      "satisfaction": 3.0,
+      "opportunity": 13.0,
+      "isUnderserved": true,
+      "isOverserved": false,
+      "productRelated": true,
+      "impactCategory": "safety",
+      "recalibrationNote": ""
     },
     {
-      "title": "Step 4 — Market ODI summary",
-      "content": "| Field | Value |\n|---|---|\n| `market_name` | Refrigerated Warehousing and Storage |\n| `naics_code` | 493120 |\n| `total_needs` | **36** |\n| `underserved_count` | **19** |\n| `overserved_count` | **0** |\n| `avg_opportunity_score` | **12.10** |\n\n**Top-5 opportunities** (desc by `opportunity_score`):\n\n1. **N16** — \"Minimize the likelihood of dispatch error letting any chamber exceed +2 °C above SLA setpoint during grid disturbance\" — 17.00\n2. **N19** — \"Increase the ability to detect early thermal-runaway precursors with ≥30 minute lead time before suppression activation\" — 17.00\n3. **N5** — \"Minimize the likelihood that DSO MV-feeder spare-capacity assessment reverses after 6+ months of project work\" — 16.00\n4. **PR1** — \"Minimize the likelihood of thermal-runaway propagation from a single LFP cell compromising the adjacent refrigeration plant or IFS-bonded food-grade storage\" — 16.00\n5. **PR3** — \"Increase the ability to detect early thermal-runaway precursors (off-gas, dT/dt, voltage deviation) with ≥30 minute lead time before NOVEC activation\" — 16.00\n\n---"
+      "id": "",
+      "statement": "Minimize the likelihood of mis-stacking incompatible revenue streams (peak-shave vs FCR vs S19 StromNEV) costing >5 % of business case",
+      "jobStep": "DEFINE",
+      "importance": 8.0,
+      "satisfaction": 3.0,
+      "opportunity": 13.0,
+      "isUnderserved": true,
+      "isOverserved": false,
+      "productRelated": false,
+      "impactCategory": "cost",
+      "recalibrationNote": ""
     },
     {
-      "title": "Step 5 — Cross-check vs Step 09 Feature-Market Fit",
-      "content": "Feature-fit average (6 tech features): `(4.89 + 6.33 + 4.44 + 7.44 + 6.22 + 5.56) / 6 = 5.81`.\nODI avg opportunity: **12.10**.\n\n| Threshold | Test | Flag |\n|---|---|---|\n| ODI > 12 AND Feature-Fit < 4 | 12.10 > 12 ✅, 5.81 < 4 ✗ | **not triggered** |\n| ODI < 8 AND Feature-Fit > 7 | 12.10 < 8 ✗ | **not triggered** |\n\n**Alignment notes:**\n- **F4 EMS** (overall_fit 7.44, `attractive`) is the lead anchor — directly addresses **N16** (opp 17), **N22** (opp 15), **N20** (opp 15 post-recal), **N17** (opp 13). HACCP-reserved-SoC + HACCP audit-trail export are the differentiated EMS scope.\n- **F5 Grid-Code Certification Delivery** (6.22, `must_be`) addresses **N12** fire-protection commissioning (opp 14) and partially **PR8** TR8 lead-time (opp 12).\n- **F2 Bidirectional PCS** (6.33, `one_dimensional`) addresses **N13** sub-100 ms ride-through (opp 15) and **N15** inrush (opp 13).\n- **Gap:** **N19 + PR1 + PR3** thermal-runaway cluster (opp 16–17, all underserved) is NOT addressed by any single Mein Solar feature. Li-ion-inherent risk — mitigation requires BMS vendor selection + NOVEC + compartment design + off-gas/acoustic sensors + Feuerwehr interface, none of which is a differentiated feature in the Step 09 Kano list. **Narrative + containment engineering partnership is required** for this market to proceed.\n- **Gap:** **N5** (DSO capacity reversal, opp 16) is a pre-commitment risk no EPC feature can eliminate — mitigation via DSO pre-contract LoI + cold-store site screening, not via product.\n\n---"
+      "id": "",
+      "statement": "Minimize the likelihood that DSO MV-feeder spare-capacity assessment reverses after 6+ months of project work",
+      "jobStep": "LOCATE",
+      "importance": 10.0,
+      "satisfaction": 4.0,
+      "opportunity": 16.0,
+      "isUnderserved": true,
+      "isOverserved": false,
+      "productRelated": false,
+      "impactCategory": "reliability",
+      "recalibrationNote": ""
     },
     {
-      "title": "QA Checklist",
-      "content": "| # | Check | Result |\n|---|---|---|\n| Q1 | Formula spot-check (5 entries): N16 17.00, N5 16.00, PR1 16.00, N15 13.00 (recal), PR6 8.00 | ✅ PASS |\n| Q2 | `is_underserved` iff `I>7 AND S<5` — 19 flagged, all conform | ✅ PASS |\n| Q3 | `is_overserved` iff `I<3 AND S>7` — zero (no entry has I<3) | ✅ PASS |\n| Q4 | `total_needs` (36) ≥ Step 06 count (24) — Step 10 added 12 | ✅ PASS |\n| Q5 | Top-5 sorted descending by `opportunity_score` | ✅ PASS |\n| Q6 | Cross-check vs Step 09 executed — alignment + gaps logged | ✅ PASS |\n\n---"
+      "id": "",
+      "statement": "Increase the ability to secure FGW-accredited certification slots without >4 weeks of schedule slip",
+      "jobStep": "LOCATE",
+      "importance": 7.0,
+      "satisfaction": 4.0,
+      "opportunity": 10.0,
+      "isUnderserved": false,
+      "isOverserved": false,
+      "productRelated": false,
+      "impactCategory": "time",
+      "recalibrationNote": ""
     },
     {
-      "title": "Structured Data",
-      "content": "```json\n{\n  \"component\": \"odi_matrix\",\n  \"naics_code\": \"493120\",\n  \"naics_title\": \"Refrigerated Warehousing and Storage\",\n  \"market_name\": \"Refrigerated Warehousing and Storage\",\n  \"product_name\": \"EPC für Großbatteriespeicher\",\n  \"vendor_name\": \"Mein Solar GmbH\",\n  \"technology_class\": \"Large-Scale Battery Energy Storage System EPC\",\n  \"formula\": \"opportunity_score = importance + max(importance - satisfaction, 0)\",\n\n  \"entries\": [\n    {\"error_statement\": \"Increase the ability to size storage capacity to within +/-10 % of the demand-charge-shave that will actually clear in year-1 operation\", \"market_name\": \"Refrigerated Warehousing and Storage\", \"naics_code\": \"493120\", \"importance\": 9.0, \"satisfaction_current\": 4.0, \"opportunity_score\": 14.00, \"is_underserved\": true, \"is_overserved\": false, \"product_related\": false, \"job_step_number\": 1, \"job_step_name\": \"DEFINE\", \"impact_category\": \"cost\", \"source_id\": \"N1\"},\n    {\"error_statement\": \"Minimize the likelihood of underestimating refrigeration peak-load duration by >15 minutes during the daily 17:00-20:00 Leistungspreis window\", \"market_name\": \"Refrigerated Warehousing and Storage\", \"naics_code\": \"493120\", \"importance\": 9.0, \"satisfaction_current\": 5.0, \"opportunity_score\": 13.00, \"is_underserved\": false, \"is_overserved\": false, \"product_related\": false, \"job_step_number\": 1, \"job_step_name\": \"DEFINE\", \"impact_category\": \"cost\", \"source_id\": \"N2\"},\n    {\"error_statement\": \"Increase the ability to forecast HACCP-relevant load survival time at <30 % SoC with >=95 % accuracy\", \"market_name\": \"Refrigerated Warehousing and Storage\", \"naics_code\": \"493120\", \"importance\": 8.0, \"satisfaction_current\": 3.0, \"opportunity_score\": 13.00, \"is_underserved\": true, \"is_overserved\": false, \"product_related\": true, \"job_step_number\": 1, \"job_step_name\": \"DEFINE\", \"impact_category\": \"safety\", \"source_id\": \"N3\"},\n    {\"error_statement\": \"Minimize the likelihood of mis-stacking incompatible revenue streams (peak-shave vs FCR vs S19 StromNEV) costing >5 % of business case\", \"market_name\": \"Refrigerated Warehousing and Storage\", \"naics_code\": \"493120\", \"importance\": 8.0, \"satisfaction_current\": 3.0, \"opportunity_score\": 13.00, \"is_underserved\": true, \"is_overserved\": false, \"product_related\": false, \"job_step_number\": 1, \"job_step_name\": \"DEFINE\", \"impact_category\": \"cost\", \"source_id\": \"N4\"},\n    {\"error_statement\": \"Minimize the likelihood that DSO MV-feeder spare-capacity assessment reverses after 6+ months of project work\", \"market_name\": \"Refrigerated Warehousing and Storage\", \"naics_code\": \"493120\", \"importance\": 10.0, \"satisfaction_current\": 4.0, \"opportunity_score\": 16.00, \"is_underserved\": true, \"is_overserved\": false, \"product_related\": false, \"job_step_number\": 2, \"job_step_name\": \"LOCATE\", \"impact_category\": \"reliability\", \"source_id\": \"N5\"},\n    {\"error_statement\": \"Increase the ability to secure FGW-accredited certification slots without >4 weeks of schedule slip\", \"market_name\": \"Refrigerated Warehousing and Storage\", \"naics_code\": \"493120\", \"importance\": 7.0, \"satisfaction_current\": 4.0, \"opportunity_score\": 10.00, \"is_underserved\": false, \"is_overserved\": false, \"product_related\": false, \"job_step_number\": 2, \"job_step_name\": \"LOCATE\", \"impact_category\": \"time\", \"source_id\": \"N6\"},\n    {\"error_statement\": \"Minimize the likelihood that fire-clearance distance to refrigeration plant or IFS-bonded storage exceeds available footprint\", \"market_name\": \"Refrigerated Warehousing and Storage\", \"naics_code\": \"493120\", \"importance\": 9.0, \"satisfaction_current\": 4.0, \"opportunity_score\": 14.00, \"is_underserved\": true, \"is_overserved\": false, \"product_related\": true, \"job_step_number\": 2, \"job_step_name\": \"LOCATE\", \"impact_category\": \"safety\", \"source_id\": \"N7\"},\n    {\"error_statement\": \"Increase the ability to obtain insurance terms that recognize Li-ion containment design without >25 % premium uplift\", \"market_name\": \"Refrigerated Warehousing and Storage\", \"naics_code\": \"493120\", \"importance\": 7.0, \"satisfaction_current\": 3.0, \"opportunity_score\": 11.00, \"is_underserved\": false, \"is_overserved\": false, \"product_related\": true, \"job_step_number\": 2, \"job_step_name\": \"LOCATE\", \"impact_category\": \"cost\", \"source_id\": \"N8\"},\n    {\"error_statement\": \"Minimize the likelihood of foundation, MV-cabinet, and refrigeration-plant works colliding on the construction critical path\", \"market_name\": \"Refrigerated Warehousing and Storage\", \"naics_code\": \"493120\", \"importance\": 8.0, \"satisfaction_current\": 4.0, \"opportunity_score\": 12.00, \"is_underserved\": true, \"is_overserved\": false, \"product_related\": false, \"job_step_number\": 3, \"job_step_name\": \"PREPARE\", \"impact_category\": \"time\", \"source_id\": \"N9\"},\n    {\"error_statement\": \"Increase the ability to interlock storage-system control with NH3/CO2 refrigeration safety logic without retrofitting refrigeration PLC\", \"market_name\": \"Refrigerated Warehousing and Storage\", \"naics_code\": \"493120\", \"importance\": 8.0, \"satisfaction_current\": 3.0, \"opportunity_score\": 13.00, \"is_underserved\": true, \"is_overserved\": false, \"product_related\": false, \"job_step_number\": 3, \"job_step_name\": \"PREPARE\", \"impact_category\": \"safety\", \"source_id\": \"N10\"},\n    {\"error_statement\": \"Minimize the likelihood of operator training gaps causing HACCP-procedure non-compliance during commissioning\", \"market_name\": \"Refrigerated Warehousing and Storage\", \"naics_code\": \"493120\", \"importance\": 7.0, \"satisfaction_current\": 5.0, \"opportunity_score\": 9.00, \"is_underserved\": false, \"is_overserved\": false, \"product_related\": false, \"job_step_number\": 3, \"job_step_name\": \"PREPARE\", \"impact_category\": \"skill\", \"source_id\": \"N11\"},\n    {\"error_statement\": \"Minimize the likelihood that fire-protection commissioning fails on first inspection, delaying COD by >30 days\", \"market_name\": \"Refrigerated Warehousing and Storage\", \"naics_code\": \"493120\", \"importance\": 9.0, \"satisfaction_current\": 4.0, \"opportunity_score\": 14.00, \"is_underserved\": true, \"is_overserved\": false, \"product_related\": true, \"job_step_number\": 4, \"job_step_name\": \"CONFIRM\", \"impact_category\": \"safety\", \"source_id\": \"N12\"},\n    {\"error_statement\": \"Increase the ability to demonstrate sub-100 ms ride-through to NH3 refrigeration controllers with witnessed test evidence\", \"market_name\": \"Refrigerated Warehousing and Storage\", \"naics_code\": \"493120\", \"importance\": 9.0, \"satisfaction_current\": 3.0, \"opportunity_score\": 15.00, \"is_underserved\": true, \"is_overserved\": false, \"product_related\": false, \"job_step_number\": 4, \"job_step_name\": \"CONFIRM\", \"impact_category\": \"safety\", \"source_id\": \"N13\"},\n    {\"error_statement\": \"Minimize the likelihood of insurance auditor flagging missing IEC 62443 cybersecurity controls before COD\", \"market_name\": \"Refrigerated Warehousing and Storage\", \"naics_code\": \"493120\", \"importance\": 6.0, \"satisfaction_current\": 4.0, \"opportunity_score\": 8.00, \"is_underserved\": false, \"is_overserved\": false, \"product_related\": true, \"job_step_number\": 4, \"job_step_name\": \"CONFIRM\", \"impact_category\": \"safety\", \"source_id\": \"N14\"},\n    {\"error_statement\": \"Increase the ability to absorb compressor-start inrush of >3x nominal without tripping MV protection\", \"market_name\": \"Refrigerated Warehousing and Storage\", \"naics_code\": \"493120\", \"importance\": 9.0, \"satisfaction_current\": 5.0, \"opportunity_score\": 13.00, \"is_underserved\": false, \"is_overserved\": false, \"product_related\": false, \"job_step_number\": 5, \"job_step_name\": \"EXECUTE\", \"impact_category\": \"reliability\", \"source_id\": \"N15\", \"satisfaction_recalibrated_from\": 4.0},\n    {\"error_statement\": \"Minimize the likelihood of dispatch error letting any chamber exceed +2 C above SLA setpoint during grid disturbance\", \"market_name\": \"Refrigerated Warehousing and Storage\", \"naics_code\": \"493120\", \"importance\": 10.0, \"satisfaction_current\": 3.0, \"opportunity_score\": 17.00, \"is_underserved\": true, \"is_overserved\": false, \"product_related\": false, \"job_step_number\": 5, \"job_step_name\": \"EXECUTE\", \"impact_category\": \"safety\", \"source_id\": \"N16\"},\n    {\"error_statement\": \"Increase the ability to capture EPEX intraday arbitrage on >300 days/yr without compromising HACCP reserve SoC\", \"market_name\": \"Refrigerated Warehousing and Storage\", \"naics_code\": \"493120\", \"importance\": 8.0, \"satisfaction_current\": 3.0, \"opportunity_score\": 13.00, \"is_underserved\": true, \"is_overserved\": false, \"product_related\": false, \"job_step_number\": 5, \"job_step_name\": \"EXECUTE\", \"impact_category\": \"cost\", \"source_id\": \"N17\"},\n    {\"error_statement\": \"Minimize the likelihood of cell-cycle degradation exceeding 2 %/yr from arbitrage cycling above C/2\", \"market_name\": \"Refrigerated Warehousing and Storage\", \"naics_code\": \"493120\", \"importance\": 7.0, \"satisfaction_current\": 5.0, \"opportunity_score\": 9.00, \"is_underserved\": false, \"is_overserved\": false, \"product_related\": true, \"job_step_number\": 5, \"job_step_name\": \"EXECUTE\", \"impact_category\": \"reliability\", \"source_id\": \"N18\"},\n    {\"error_statement\": \"Increase the ability to detect early thermal-runaway precursors with >=30 minute lead time before suppression activation\", \"market_name\": \"Refrigerated Warehousing and Storage\", \"naics_code\": \"493120\", \"importance\": 10.0, \"satisfaction_current\": 3.0, \"opportunity_score\": 17.00, \"is_underserved\": true, \"is_overserved\": false, \"product_related\": true, \"job_step_number\": 6, \"job_step_name\": \"MONITOR\", \"impact_category\": \"safety\", \"source_id\": \"N19\"},\n    {\"error_statement\": \"Minimize the likelihood of HACCP audit finding gaps in temperature-chain evidence during BESS-mediated grid events\", \"market_name\": \"Refrigerated Warehousing and Storage\", \"naics_code\": \"493120\", \"importance\": 9.0, \"satisfaction_current\": 3.0, \"opportunity_score\": 15.00, \"is_underserved\": true, \"is_overserved\": false, \"product_related\": false, \"job_step_number\": 6, \"job_step_name\": \"MONITOR\", \"impact_category\": \"safety\", \"source_id\": \"N20\", \"satisfaction_recalibrated_from\": 4.0},\n    {\"error_statement\": \"Increase the ability to expose live SoH and reserved-resilience-SoC to the WMS / SCADA layer in real time\", \"market_name\": \"Refrigerated Warehousing and Storage\", \"naics_code\": \"493120\", \"importance\": 7.0, \"satisfaction_current\": 3.0, \"opportunity_score\": 11.00, \"is_underserved\": false, \"is_overserved\": false, \"product_related\": true, \"job_step_number\": 6, \"job_step_name\": \"MONITOR\", \"impact_category\": \"reliability\", \"source_id\": \"N21\"},\n    {\"error_statement\": \"Minimize the likelihood of EMS over-discharging below the contractually-reserved spoilage-protection envelope\", \"market_name\": \"Refrigerated Warehousing and Storage\", \"naics_code\": \"493120\", \"importance\": 9.0, \"satisfaction_current\": 3.0, \"opportunity_score\": 15.00, \"is_underserved\": true, \"is_overserved\": false, \"product_related\": true, \"job_step_number\": 6, \"job_step_name\": \"MONITOR\", \"impact_category\": \"safety\", \"source_id\": \"N22\"},\n    {\"error_statement\": \"Increase the ability of the Energy Manager to demonstrate measurable EUR/MWh savings to the COO every quarter\", \"market_name\": \"Refrigerated Warehousing and Storage\", \"naics_code\": \"493120\", \"importance\": 7.0, \"satisfaction_current\": 4.0, \"opportunity_score\": 10.00, \"is_underserved\": false, \"is_overserved\": false, \"product_related\": false, \"job_step_number\": 5, \"job_step_name\": \"EXECUTE\", \"impact_category\": \"cost\", \"source_id\": \"N23\"},\n    {\"error_statement\": \"Minimize the likelihood of nighttime spoilage anxiety for the duty manager - visible reserved-resilience SoC at all times\", \"market_name\": \"Refrigerated Warehousing and Storage\", \"naics_code\": \"493120\", \"importance\": 6.0, \"satisfaction_current\": 2.0, \"opportunity_score\": 10.00, \"is_underserved\": false, \"is_overserved\": false, \"product_related\": true, \"job_step_number\": 4, \"job_step_name\": \"CONFIRM\", \"impact_category\": \"reliability\", \"source_id\": \"N24\"},\n\n    {\"error_statement\": \"Minimize the likelihood of thermal-runaway propagation from a single LFP cell compromising the adjacent refrigeration plant or IFS-bonded food-grade storage\", \"market_name\": \"Refrigerated Warehousing and Storage\", \"naics_code\": \"493120\", \"importance\": 9.5, \"satisfaction_current\": 3.0, \"opportunity_score\": 16.00, \"is_underserved\": true, \"is_overserved\": false, \"product_related\": true, \"job_step_number\": 0, \"job_step_name\": \"product_constraint\", \"impact_category\": \"reliability\", \"source_id\": \"PR1\", \"source_constraint\": \"Li-Ion Thermal Runaway Hazard\"},\n    {\"error_statement\": \"Minimize the likelihood that fire-clearance distance imposed by Li-ion chemistry exceeds the available footprint between the refrigeration plant room and the IFS buffer zone\", \"market_name\": \"Refrigerated Warehousing and Storage\", \"naics_code\": \"493120\", \"importance\": 8.5, \"satisfaction_current\": 3.5, \"opportunity_score\": 13.50, \"is_underserved\": true, \"is_overserved\": false, \"product_related\": true, \"job_step_number\": 0, \"job_step_name\": \"product_constraint\", \"impact_category\": \"reliability\", \"source_id\": \"PR2\", \"source_constraint\": \"Fire-Protection Clearance\"},\n    {\"error_statement\": \"Increase the ability to detect early thermal-runaway precursors (off-gas, dT/dt, voltage deviation) with >=30 minute lead time before NOVEC activation\", \"market_name\": \"Refrigerated Warehousing and Storage\", \"naics_code\": \"493120\", \"importance\": 9.5, \"satisfaction_current\": 3.0, \"opportunity_score\": 16.00, \"is_underserved\": true, \"is_overserved\": false, \"product_related\": true, \"job_step_number\": 0, \"job_step_name\": \"product_constraint\", \"impact_category\": \"reliability\", \"source_id\": \"PR3\", \"source_constraint\": \"Li-Ion Thermal Runaway Hazard\"},\n    {\"error_statement\": \"Minimize the likelihood of LFP calendar-ageing reducing reserved-resilience-SoC capacity below contracted spoilage-protection envelope before year 10\", \"market_name\": \"Refrigerated Warehousing and Storage\", \"naics_code\": \"493120\", \"importance\": 7.5, \"satisfaction_current\": 5.5, \"opportunity_score\": 9.50, \"is_underserved\": false, \"is_overserved\": false, \"product_related\": true, \"job_step_number\": 0, \"job_step_name\": \"product_constraint\", \"impact_category\": \"reliability\", \"source_id\": \"PR4\", \"source_constraint\": \"Ambient Temperature Envelope\", \"satisfaction_recalibrated_from\": 4.5},\n    {\"error_statement\": \"Minimize the likelihood of cell-cycle degradation exceeding 2 %/yr from EPEX arbitrage cycling above C/2 eroding warranted throughput\", \"market_name\": \"Refrigerated Warehousing and Storage\", \"naics_code\": \"493120\", \"importance\": 7.0, \"satisfaction_current\": 5.0, \"opportunity_score\": 9.00, \"is_underserved\": false, \"is_overserved\": false, \"product_related\": true, \"job_step_number\": 0, \"job_step_name\": \"product_constraint\", \"impact_category\": \"reliability\", \"source_id\": \"PR5\", \"source_constraint\": \"Round-Trip Energy Losses\"},\n    {\"error_statement\": \"Minimize the likelihood that HVAC auxiliary load during summer ambient >35 C suppresses deliverable peak-shave capacity below sizing-case\", \"market_name\": \"Refrigerated Warehousing and Storage\", \"naics_code\": \"493120\", \"importance\": 6.5, \"satisfaction_current\": 5.0, \"opportunity_score\": 8.00, \"is_underserved\": false, \"is_overserved\": false, \"product_related\": true, \"job_step_number\": 0, \"job_step_name\": \"product_constraint\", \"impact_category\": \"reliability\", \"source_id\": \"PR6\", \"source_constraint\": \"Ambient Temperature Envelope\"},\n    {\"error_statement\": \"Minimize the likelihood that Round-Trip efficiency loss of 10-15 % erases peak-shave margin when Leistungspreis spread is <120 EUR/kW/yr\", \"market_name\": \"Refrigerated Warehousing and Storage\", \"naics_code\": \"493120\", \"importance\": 7.0, \"satisfaction_current\": 5.5, \"opportunity_score\": 8.50, \"is_underserved\": false, \"is_overserved\": false, \"product_related\": true, \"job_step_number\": 0, \"job_step_name\": \"product_constraint\", \"impact_category\": \"reliability\", \"source_id\": \"PR7\", \"source_constraint\": \"Round-Trip Energy Losses\"},\n    {\"error_statement\": \"Minimize the likelihood that FGW TR8 plant-certificate lead time of 6-12 months blocks cold-store seasonal COD window (pre-Oktober peak tariff)\", \"market_name\": \"Refrigerated Warehousing and Storage\", \"naics_code\": \"493120\", \"importance\": 8.0, \"satisfaction_current\": 4.0, \"opportunity_score\": 12.00, \"is_underserved\": true, \"is_overserved\": false, \"product_related\": true, \"job_step_number\": 0, \"job_step_name\": \"product_constraint\", \"impact_category\": \"reliability\", \"source_id\": \"PR8\", \"source_constraint\": \"Grid Code Certification Lead Time\"},\n    {\"error_statement\": \"Minimize the likelihood that cell-supply concentration in Chinese suppliers exposes the cold-store owner to CRMA/EU Battery Regulation tariff or FX shock before commissioning\", \"market_name\": \"Refrigerated Warehousing and Storage\", \"naics_code\": \"493120\", \"importance\": 6.5, \"satisfaction_current\": 4.0, \"opportunity_score\": 9.00, \"is_underserved\": false, \"is_overserved\": false, \"product_related\": true, \"job_step_number\": 0, \"job_step_name\": \"product_constraint\", \"impact_category\": \"reliability\", \"source_id\": \"PR9\", \"source_constraint\": \"Battery Supply Chain Concentration\"},\n    {\"error_statement\": \"Increase the ability to maintain reserved-resilience-SoC under insurer-audited IEC 62443 cyber controls without exposing refrigeration SCADA to the BESS EMS as an attack surface\", \"market_name\": \"Refrigerated Warehousing and Storage\", \"naics_code\": \"493120\", \"importance\": 6.5, \"satisfaction_current\": 3.5, \"opportunity_score\": 9.50, \"is_underserved\": false, \"is_overserved\": false, \"product_related\": true, \"job_step_number\": 0, \"job_step_name\": \"product_constraint\", \"impact_category\": \"reliability\", \"source_id\": \"PR10\", \"source_constraint\": \"Li-Ion Thermal Runaway Hazard\"},\n    {\"error_statement\": \"Minimize the likelihood that LFP deep-discharge below 5 % SoC during a sustained outage permanently degrades the resilience envelope before generator cut-in\", \"market_name\": \"Refrigerated Warehousing and Storage\", \"naics_code\": \"493120\", \"importance\": 7.5, \"satisfaction_current\": 4.5, \"opportunity_score\": 10.50, \"is_underserved\": true, \"is_overserved\": false, \"product_related\": true, \"job_step_number\": 0, \"job_step_name\": \"product_constraint\", \"impact_category\": \"reliability\", \"source_id\": \"PR11\", \"source_constraint\": \"Round-Trip Energy Losses\"},\n    {\"error_statement\": \"Minimize the likelihood of land-footprint of 40-80 m2/MWh encroaching on truck-dock apron or refrigerated-trailer staging lane at a logistics cold-store\", \"market_name\": \"Refrigerated Warehousing and Storage\", \"naics_code\": \"493120\", \"importance\": 7.0, \"satisfaction_current\": 5.0, \"opportunity_score\": 9.00, \"is_underserved\": false, \"is_overserved\": false, \"product_related\": true, \"job_step_number\": 0, \"job_step_name\": \"product_constraint\", \"impact_category\": \"reliability\", \"source_id\": \"PR12\", \"source_constraint\": \"Land Footprint and Siting\"}\n  ],\n\n  \"market_summaries\": [\n    {\n      \"market_name\": \"Refrigerated Warehousing and Storage\",\n      \"naics_code\": \"493120\",\n      \"total_needs\": 36,\n      \"underserved_count\": 19,\n      \"overserved_count\": 0,\n      \"avg_opportunity_score\": 12.10,\n      \"top_opportunities\": [\n        \"Minimize the likelihood of dispatch error letting any chamber exceed +2 C above SLA setpoint during grid disturbance\",\n        \"Increase the ability to detect early thermal-runaway precursors with >=30 minute lead time before suppression activation\",\n        \"Minimize the likelihood that DSO MV-feeder spare-capacity assessment reverses after 6+ months of project work\",\n        \"Minimize the likelihood of thermal-runaway propagation from a single LFP cell compromising the adjacent refrigeration plant or IFS-bonded food-grade storage\",\n        \"Increase the ability to detect early thermal-runaway precursors (off-gas, dT/dt, voltage deviation) with >=30 minute lead time before NOVEC activation\"\n      ]\n    }\n  ],\n\n  \"recalibration_log\": [\n    {\"ref\": \"N15\", \"s_original\": 4.0, \"s_recalibrated\": 5.0, \"reason\": \"Tier-1 4-quadrant PCS (SMA/Sungrow PowerTitan, <100 ms) demonstrably absorbs 3-7x FLA compressor inrush — incumbent capability better than Step 06 estimate\"},\n    {\"ref\": \"N20\", \"s_original\": 4.0, \"s_recalibrated\": 3.0, \"reason\": \"No surveyed incumbent EMS (Fluence Mosaic, Tesla Autobidder, Wartsila GEMS) natively produces time-aligned voltage+temperature traces for HACCP audit — structurally worse than estimated\"},\n    {\"ref\": \"PR4\", \"s_original\": 4.5, \"s_recalibrated\": 5.5, \"reason\": \"Tier-1 LFP vendors (Tesla, Sungrow, CATL EnerC) ship 10-yr 85 % capacity performance guarantees — incumbent warranty envelope tighter than estimated\"}\n  ],\n\n  \"incumbent_reference_set\": [\n    {\"name\": \"Diesel/gas standby genset (A2)\", \"role\": \"current_alternative_hired\", \"strengths\": [\"outage cover\", \"familiar\"], \"weaknesses\": [\"60-120 s start delay\", \"no peak-shave revenue\", \"BImSchV limits\"]},\n    {\"name\": \"DSO grid-capacity upgrade (A3)\", \"role\": \"current_alternative_hired\", \"strengths\": [\"no battery capex\"], \"weaknesses\": [\"1-3 yr lead\", \"may be denied\", \"no resilience\"]},\n    {\"name\": \"Behind-the-meter PV + minimal storage (A4)\", \"role\": \"current_alternative_hired\", \"strengths\": [\"lower capex\"], \"weaknesses\": [\"cannot cover 24/7 reefer baseload\", \"intermittent\"]},\n    {\"name\": \"Do-nothing (A5)\", \"role\": \"existential_competitor\", \"strengths\": [\"zero capex\"], \"weaknesses\": [\"60-440 EUR/kW/yr Leistungspreis\", \"uninsured spoilage exposure\"]},\n    {\"name\": \"Voltfang / Tesvolt C&I packaged Li-ion units\", \"role\": \"packaged_incumbent\", \"strengths\": [\"rapid delivery\", \"standardized\"], \"weaknesses\": [\"split-contract for MV/civil/fire/cert\", \"no PV design authority\", \"HACCP-reserved-SoC not standard\"]},\n    {\"name\": \"Alpitronic integrated BESS+HPC (Sc6 only)\", \"role\": \"niche_incumbent\", \"strengths\": [\"HPC heritage\"], \"weaknesses\": [\"HPC-centric, not cold-store-peak-shave\"]},\n    {\"name\": \"Fluence Gridstack / Wartsila / TRICERA (utility tier)\", \"role\": \"upstream_reference\", \"strengths\": [\"bankability\", \"EMS\"], \"weaknesses\": [\"oversized for C&I cold-store\"]}\n  ],\n\n  \"cross_check_vs_step_09\": {\n    \"feature_fit_avg_overall_fit\": 5.81,\n    \"odi_avg_opportunity_score\": 12.10,\n    \"high_opp_low_fit_flag\": false,\n    \"low_opp_high_fit_flag\": false,\n    \"alignment_notes\": [\n      \"F4 EMS (overall_fit=7.44, attractive) directly addresses top ODI opportunities N16 (17), N22 (15), N20 (15), N17 (13) — HACCP-reserved-SoC + HACCP audit-trail export is the differentiated scope\",\n      \"F5 Grid-Code Certification Delivery (overall_fit=6.22) addresses N12 fire-protection commissioning (14) and PR8 TR8 lead-time (12)\",\n      \"F2 Bidirectional PCS (overall_fit=6.33) addresses N13 sub-100 ms ride-through (15) and N15 inrush (13)\"\n    ],\n    \"gap_notes\": [\n      \"N19 + PR1 + PR3 thermal-runaway cluster (opp 16-17, all underserved): no single Mein Solar feature directly addresses — Li-ion-inherent risk requires BMS vendor selection + NOVEC + compartmentation + off-gas sensors + Feuerwehr interface; containment-design partnership required for market entry\",\n      \"N5 DSO capacity reversal (opp 16): pre-commitment risk no EPC feature can eliminate — mitigate via DSO LoI + site-screening process\"\n    ]\n  },\n\n  \"qa_checklist\": {\n    \"Q1_formula_correct\": \"PASS\",\n    \"Q2_underserved_flags_correct\": \"PASS\",\n    \"Q3_overserved_flags_correct\": \"PASS\",\n    \"Q4_need_count_preserved\": \"PASS (36 = 24 Step06 + 12 Step10)\",\n    \"Q5_top5_ordering_correct\": \"PASS\",\n    \"Q6_cross_check_step09_ran\": \"PASS\"\n  },\n\n  \"neo4j_write_preview\": {\n    \"opportunity_score_nodes\": 36,\n    \"market_node_set_props\": {\n      \"odi_total_needs\": 36,\n      \"odi_underserved_count\": 19,\n      \"odi_overserved_count\": 0,\n      \"odi_avg_opportunity_score\": 12.10,\n      \"odi_top_opportunities\": \"[JSON string of top-5]\"\n    },\n    \"relationships\": \"36x (Market {naics_code:'493120'})-[:has_opportunity_score]->(OpportunityScore)\"\n  }\n}\n```"
+      "id": "",
+      "statement": "Minimize the likelihood that fire-clearance distance to refrigeration plant or IFS-bonded storage exceeds available footprint",
+      "jobStep": "LOCATE",
+      "importance": 9.0,
+      "satisfaction": 4.0,
+      "opportunity": 14.0,
+      "isUnderserved": true,
+      "isOverserved": false,
+      "productRelated": true,
+      "impactCategory": "safety",
+      "recalibrationNote": ""
+    },
+    {
+      "id": "",
+      "statement": "Increase the ability to obtain insurance terms that recognize Li-ion containment design without >25 % premium uplift",
+      "jobStep": "LOCATE",
+      "importance": 7.0,
+      "satisfaction": 3.0,
+      "opportunity": 11.0,
+      "isUnderserved": false,
+      "isOverserved": false,
+      "productRelated": true,
+      "impactCategory": "cost",
+      "recalibrationNote": ""
+    },
+    {
+      "id": "",
+      "statement": "Minimize the likelihood of foundation, MV-cabinet, and refrigeration-plant works colliding on the construction critical path",
+      "jobStep": "PREPARE",
+      "importance": 8.0,
+      "satisfaction": 4.0,
+      "opportunity": 12.0,
+      "isUnderserved": true,
+      "isOverserved": false,
+      "productRelated": false,
+      "impactCategory": "time",
+      "recalibrationNote": ""
+    },
+    {
+      "id": "",
+      "statement": "Increase the ability to interlock storage-system control with NH3/CO2 refrigeration safety logic without retrofitting refrigeration PLC",
+      "jobStep": "PREPARE",
+      "importance": 8.0,
+      "satisfaction": 3.0,
+      "opportunity": 13.0,
+      "isUnderserved": true,
+      "isOverserved": false,
+      "productRelated": false,
+      "impactCategory": "safety",
+      "recalibrationNote": ""
+    },
+    {
+      "id": "",
+      "statement": "Minimize the likelihood of operator training gaps causing HACCP-procedure non-compliance during commissioning",
+      "jobStep": "PREPARE",
+      "importance": 7.0,
+      "satisfaction": 5.0,
+      "opportunity": 9.0,
+      "isUnderserved": false,
+      "isOverserved": false,
+      "productRelated": false,
+      "impactCategory": "skill",
+      "recalibrationNote": ""
+    },
+    {
+      "id": "",
+      "statement": "Minimize the likelihood that fire-protection commissioning fails on first inspection, delaying COD by >30 days",
+      "jobStep": "CONFIRM",
+      "importance": 9.0,
+      "satisfaction": 4.0,
+      "opportunity": 14.0,
+      "isUnderserved": true,
+      "isOverserved": false,
+      "productRelated": true,
+      "impactCategory": "safety",
+      "recalibrationNote": ""
+    },
+    {
+      "id": "",
+      "statement": "Increase the ability to demonstrate sub-100 ms ride-through to NH3 refrigeration controllers with witnessed test evidence",
+      "jobStep": "CONFIRM",
+      "importance": 9.0,
+      "satisfaction": 3.0,
+      "opportunity": 15.0,
+      "isUnderserved": true,
+      "isOverserved": false,
+      "productRelated": false,
+      "impactCategory": "safety",
+      "recalibrationNote": ""
+    },
+    {
+      "id": "",
+      "statement": "Minimize the likelihood of insurance auditor flagging missing IEC 62443 cybersecurity controls before COD",
+      "jobStep": "CONFIRM",
+      "importance": 6.0,
+      "satisfaction": 4.0,
+      "opportunity": 8.0,
+      "isUnderserved": false,
+      "isOverserved": false,
+      "productRelated": true,
+      "impactCategory": "safety",
+      "recalibrationNote": ""
+    },
+    {
+      "id": "",
+      "statement": "Increase the ability to absorb compressor-start inrush of >3x nominal without tripping MV protection",
+      "jobStep": "EXECUTE",
+      "importance": 9.0,
+      "satisfaction": 5.0,
+      "opportunity": 13.0,
+      "isUnderserved": false,
+      "isOverserved": false,
+      "productRelated": false,
+      "impactCategory": "reliability",
+      "recalibrationNote": ""
+    },
+    {
+      "id": "",
+      "statement": "Minimize the likelihood of dispatch error letting any chamber exceed +2 C above SLA setpoint during grid disturbance",
+      "jobStep": "EXECUTE",
+      "importance": 10.0,
+      "satisfaction": 3.0,
+      "opportunity": 17.0,
+      "isUnderserved": true,
+      "isOverserved": false,
+      "productRelated": false,
+      "impactCategory": "safety",
+      "recalibrationNote": ""
+    },
+    {
+      "id": "",
+      "statement": "Increase the ability to capture EPEX intraday arbitrage on >300 days/yr without compromising HACCP reserve SoC",
+      "jobStep": "EXECUTE",
+      "importance": 8.0,
+      "satisfaction": 3.0,
+      "opportunity": 13.0,
+      "isUnderserved": true,
+      "isOverserved": false,
+      "productRelated": false,
+      "impactCategory": "cost",
+      "recalibrationNote": ""
+    },
+    {
+      "id": "",
+      "statement": "Minimize the likelihood of cell-cycle degradation exceeding 2 %/yr from arbitrage cycling above C/2",
+      "jobStep": "EXECUTE",
+      "importance": 7.0,
+      "satisfaction": 5.0,
+      "opportunity": 9.0,
+      "isUnderserved": false,
+      "isOverserved": false,
+      "productRelated": true,
+      "impactCategory": "reliability",
+      "recalibrationNote": ""
+    },
+    {
+      "id": "",
+      "statement": "Increase the ability to detect early thermal-runaway precursors with >=30 minute lead time before suppression activation",
+      "jobStep": "MONITOR",
+      "importance": 10.0,
+      "satisfaction": 3.0,
+      "opportunity": 17.0,
+      "isUnderserved": true,
+      "isOverserved": false,
+      "productRelated": true,
+      "impactCategory": "safety",
+      "recalibrationNote": ""
+    },
+    {
+      "id": "",
+      "statement": "Minimize the likelihood of HACCP audit finding gaps in temperature-chain evidence during BESS-mediated grid events",
+      "jobStep": "MONITOR",
+      "importance": 9.0,
+      "satisfaction": 3.0,
+      "opportunity": 15.0,
+      "isUnderserved": true,
+      "isOverserved": false,
+      "productRelated": false,
+      "impactCategory": "safety",
+      "recalibrationNote": ""
+    },
+    {
+      "id": "",
+      "statement": "Increase the ability to expose live SoH and reserved-resilience-SoC to the WMS / SCADA layer in real time",
+      "jobStep": "MONITOR",
+      "importance": 7.0,
+      "satisfaction": 3.0,
+      "opportunity": 11.0,
+      "isUnderserved": false,
+      "isOverserved": false,
+      "productRelated": true,
+      "impactCategory": "reliability",
+      "recalibrationNote": ""
+    },
+    {
+      "id": "",
+      "statement": "Minimize the likelihood of EMS over-discharging below the contractually-reserved spoilage-protection envelope",
+      "jobStep": "MONITOR",
+      "importance": 9.0,
+      "satisfaction": 3.0,
+      "opportunity": 15.0,
+      "isUnderserved": true,
+      "isOverserved": false,
+      "productRelated": true,
+      "impactCategory": "safety",
+      "recalibrationNote": ""
+    },
+    {
+      "id": "",
+      "statement": "Increase the ability of the Energy Manager to demonstrate measurable EUR/MWh savings to the COO every quarter",
+      "jobStep": "EXECUTE",
+      "importance": 7.0,
+      "satisfaction": 4.0,
+      "opportunity": 10.0,
+      "isUnderserved": false,
+      "isOverserved": false,
+      "productRelated": false,
+      "impactCategory": "cost",
+      "recalibrationNote": ""
+    },
+    {
+      "id": "",
+      "statement": "Minimize the likelihood of nighttime spoilage anxiety for the duty manager - visible reserved-resilience SoC at all times",
+      "jobStep": "CONFIRM",
+      "importance": 6.0,
+      "satisfaction": 2.0,
+      "opportunity": 10.0,
+      "isUnderserved": false,
+      "isOverserved": false,
+      "productRelated": true,
+      "impactCategory": "reliability",
+      "recalibrationNote": ""
+    },
+    {
+      "id": "",
+      "statement": "Minimize the likelihood of thermal-runaway propagation from a single LFP cell compromising the adjacent refrigeration plant or IFS-bonded food-grade storage",
+      "jobStep": "product_constraint",
+      "importance": 9.5,
+      "satisfaction": 3.0,
+      "opportunity": 16.0,
+      "isUnderserved": true,
+      "isOverserved": false,
+      "productRelated": true,
+      "impactCategory": "reliability",
+      "recalibrationNote": ""
+    },
+    {
+      "id": "",
+      "statement": "Minimize the likelihood that fire-clearance distance imposed by Li-ion chemistry exceeds the available footprint between the refrigeration plant room and the IFS buffer zone",
+      "jobStep": "product_constraint",
+      "importance": 8.5,
+      "satisfaction": 3.5,
+      "opportunity": 13.5,
+      "isUnderserved": true,
+      "isOverserved": false,
+      "productRelated": true,
+      "impactCategory": "reliability",
+      "recalibrationNote": ""
+    },
+    {
+      "id": "",
+      "statement": "Increase the ability to detect early thermal-runaway precursors (off-gas, dT/dt, voltage deviation) with >=30 minute lead time before NOVEC activation",
+      "jobStep": "product_constraint",
+      "importance": 9.5,
+      "satisfaction": 3.0,
+      "opportunity": 16.0,
+      "isUnderserved": true,
+      "isOverserved": false,
+      "productRelated": true,
+      "impactCategory": "reliability",
+      "recalibrationNote": ""
+    },
+    {
+      "id": "",
+      "statement": "Minimize the likelihood of LFP calendar-ageing reducing reserved-resilience-SoC capacity below contracted spoilage-protection envelope before year 10",
+      "jobStep": "product_constraint",
+      "importance": 7.5,
+      "satisfaction": 5.5,
+      "opportunity": 9.5,
+      "isUnderserved": false,
+      "isOverserved": false,
+      "productRelated": true,
+      "impactCategory": "reliability",
+      "recalibrationNote": ""
+    },
+    {
+      "id": "",
+      "statement": "Minimize the likelihood of cell-cycle degradation exceeding 2 %/yr from EPEX arbitrage cycling above C/2 eroding warranted throughput",
+      "jobStep": "product_constraint",
+      "importance": 7.0,
+      "satisfaction": 5.0,
+      "opportunity": 9.0,
+      "isUnderserved": false,
+      "isOverserved": false,
+      "productRelated": true,
+      "impactCategory": "reliability",
+      "recalibrationNote": ""
+    },
+    {
+      "id": "",
+      "statement": "Minimize the likelihood that HVAC auxiliary load during summer ambient >35 C suppresses deliverable peak-shave capacity below sizing-case",
+      "jobStep": "product_constraint",
+      "importance": 6.5,
+      "satisfaction": 5.0,
+      "opportunity": 8.0,
+      "isUnderserved": false,
+      "isOverserved": false,
+      "productRelated": true,
+      "impactCategory": "reliability",
+      "recalibrationNote": ""
+    },
+    {
+      "id": "",
+      "statement": "Minimize the likelihood that Round-Trip efficiency loss of 10-15 % erases peak-shave margin when Leistungspreis spread is <120 EUR/kW/yr",
+      "jobStep": "product_constraint",
+      "importance": 7.0,
+      "satisfaction": 5.5,
+      "opportunity": 8.5,
+      "isUnderserved": false,
+      "isOverserved": false,
+      "productRelated": true,
+      "impactCategory": "reliability",
+      "recalibrationNote": ""
+    },
+    {
+      "id": "",
+      "statement": "Minimize the likelihood that FGW TR8 plant-certificate lead time of 6-12 months blocks cold-store seasonal COD window (pre-Oktober peak tariff)",
+      "jobStep": "product_constraint",
+      "importance": 8.0,
+      "satisfaction": 4.0,
+      "opportunity": 12.0,
+      "isUnderserved": true,
+      "isOverserved": false,
+      "productRelated": true,
+      "impactCategory": "reliability",
+      "recalibrationNote": ""
+    },
+    {
+      "id": "",
+      "statement": "Minimize the likelihood that cell-supply concentration in Chinese suppliers exposes the cold-store owner to CRMA/EU Battery Regulation tariff or FX shock before commissioning",
+      "jobStep": "product_constraint",
+      "importance": 6.5,
+      "satisfaction": 4.0,
+      "opportunity": 9.0,
+      "isUnderserved": false,
+      "isOverserved": false,
+      "productRelated": true,
+      "impactCategory": "reliability",
+      "recalibrationNote": ""
+    },
+    {
+      "id": "",
+      "statement": "Increase the ability to maintain reserved-resilience-SoC under insurer-audited IEC 62443 cyber controls without exposing refrigeration SCADA to the BESS EMS as an attack surface",
+      "jobStep": "product_constraint",
+      "importance": 6.5,
+      "satisfaction": 3.5,
+      "opportunity": 9.5,
+      "isUnderserved": false,
+      "isOverserved": false,
+      "productRelated": true,
+      "impactCategory": "reliability",
+      "recalibrationNote": ""
+    },
+    {
+      "id": "",
+      "statement": "Minimize the likelihood that LFP deep-discharge below 5 % SoC during a sustained outage permanently degrades the resilience envelope before generator cut-in",
+      "jobStep": "product_constraint",
+      "importance": 7.5,
+      "satisfaction": 4.5,
+      "opportunity": 10.5,
+      "isUnderserved": true,
+      "isOverserved": false,
+      "productRelated": true,
+      "impactCategory": "reliability",
+      "recalibrationNote": ""
+    },
+    {
+      "id": "",
+      "statement": "Minimize the likelihood of land-footprint of 40-80 m2/MWh encroaching on truck-dock apron or refrigerated-trailer staging lane at a logistics cold-store",
+      "jobStep": "product_constraint",
+      "importance": 7.0,
+      "satisfaction": 5.0,
+      "opportunity": 9.0,
+      "isUnderserved": false,
+      "isOverserved": false,
+      "productRelated": true,
+      "impactCategory": "reliability",
+      "recalibrationNote": ""
     }
   ],
-  "tables": [
-    {
-      "headers": [
-        "Source",
-        "Count",
-        "`job_step_number`",
-        "`job_step_name`",
-        "`product_related`"
-      ],
-      "rows": [
-        {
-          "Source": "JTBD Step 06 market-level (N1–N24)",
-          "Count": "24",
-          "`job_step_number`": "1–6 (DEFINE…MONITOR)",
-          "`job_step_name`": "per JTBD",
-          "`product_related`": "14 false / 10 true"
-        },
-        {
-          "Source": "FIT Step 10 product-constraint (PR1–PR12)",
-          "Count": "12",
-          "`job_step_number`": "0 (injected)",
-          "`job_step_name`": "`product_constraint`",
-          "`product_related`": "12 true"
-        },
-        {
-          "Source": "**Total entries**",
-          "Count": "**36**",
-          "`job_step_number`": "—",
-          "`job_step_name`": "—",
-          "`product_related`": "—"
-        }
-      ]
-    },
-    {
-      "headers": [
-        "#",
-        "Orig S",
-        "Recal S",
-        "Evidence from Step 03 / Step 11"
-      ],
-      "rows": [
-        {
-          "#": "N15 (compressor inrush absorption)",
-          "Orig S": "4",
-          "Recal S": "**5**",
-          "Evidence from Step 03 / Step 11": "Tier-1 PCS (SMA/Sungrow PowerTitan, 4-quadrant <100 ms) demonstrably absorbs 3–7× FLA inrush; incumbent performance better than Step 06 estimate"
-        },
-        {
-          "#": "N20 (HACCP audit-trail gaps during grid events)",
-          "Orig S": "4",
-          "Recal S": "**3**",
-          "Evidence from Step 03 / Step 11": "No surveyed incumbent EMS (Fluence Mosaic, Tesla Autobidder, Wärtsilä GEMS, OEM-bundled EMS) produces time-aligned voltage+temperature trace for HACCP evidence — structurally worse than estimated"
-        },
-        {
-          "#": "PR4 (LFP calendar-age reserved-SoC envelope yr 10)",
-          "Orig S": "4.5",
-          "Recal S": "**5.5**",
-          "Evidence from Step 03 / Step 11": "Tier-1 LFP vendors (Tesla, Sungrow, CATL EnerC) ship 10-yr 85 % capacity performance guarantees; incumbent warranty envelope tighter than estimated"
-        }
-      ]
-    },
-    {
-      "headers": [
-        "#",
-        "Job step",
-        "Statement (short)",
-        "I",
-        "S",
-        "Opp",
-        "U",
-        "O"
-      ],
-      "rows": [
-        {
-          "#": "N16",
-          "Job step": "EXECUTE",
-          "Statement (short)": "Dispatch error: chamber >+2 °C vs SLA during grid disturbance",
-          "I": "10",
-          "S": "3",
-          "Opp": "**17.00**",
-          "U": "✅",
-          "O": "—"
-        },
-        {
-          "#": "N19",
-          "Job step": "MONITOR",
-          "Statement (short)": "Early thermal-runaway detection ≥30 min before suppression",
-          "I": "10",
-          "S": "3",
-          "Opp": "**17.00**",
-          "U": "✅",
-          "O": "—"
-        },
-        {
-          "#": "N5",
-          "Job step": "LOCATE",
-          "Statement (short)": "DSO MV-feeder capacity reverses after 6+ mo of work",
-          "I": "10",
-          "S": "4",
-          "Opp": "**16.00**",
-          "U": "✅",
-          "O": "—"
-        },
-        {
-          "#": "N13",
-          "Job step": "CONFIRM",
-          "Statement (short)": "Sub-100 ms ride-through witnessed to NH₃ controllers",
-          "I": "9",
-          "S": "3",
-          "Opp": "**15.00**",
-          "U": "✅",
-          "O": "—"
-        },
-        {
-          "#": "N20",
-          "Job step": "MONITOR",
-          "Statement (short)": "HACCP audit-trail gaps during BESS-mediated grid events",
-          "I": "9",
-          "S": "3",
-          "Opp": "**15.00**",
-          "U": "✅",
-          "O": "—"
-        },
-        {
-          "#": "N22",
-          "Job step": "MONITOR",
-          "Statement (short)": "EMS over-discharges below reserved-resilience-SoC envelope",
-          "I": "9",
-          "S": "3",
-          "Opp": "**15.00**",
-          "U": "✅",
-          "O": "—"
-        },
-        {
-          "#": "N1",
-          "Job step": "DEFINE",
-          "Statement (short)": "Size storage to ±10 % of actual year-1 demand-charge shave",
-          "I": "9",
-          "S": "4",
-          "Opp": "**14.00**",
-          "U": "✅",
-          "O": "—"
-        },
-        {
-          "#": "N7",
-          "Job step": "LOCATE",
-          "Statement (short)": "Fire-clearance exceeds footprint vs refrig plant / IFS",
-          "I": "9",
-          "S": "4",
-          "Opp": "**14.00**",
-          "U": "✅",
-          "O": "—"
-        },
-        {
-          "#": "N12",
-          "Job step": "CONFIRM",
-          "Statement (short)": "Fire-protection inspection fails → COD slip >30 d",
-          "I": "9",
-          "S": "4",
-          "Opp": "**14.00**",
-          "U": "✅",
-          "O": "—"
-        },
-        {
-          "#": "N3",
-          "Job step": "DEFINE",
-          "Statement (short)": "HACCP load survival forecast ≥95 % at <30 % SoC",
-          "I": "8",
-          "S": "3",
-          "Opp": "**13.00**",
-          "U": "✅",
-          "O": "—"
-        },
-        {
-          "#": "N4",
-          "Job step": "DEFINE",
-          "Statement (short)": "Revenue-stack mis-stacking (peak-shave + FCR + §19) >5 %",
-          "I": "8",
-          "S": "3",
-          "Opp": "**13.00**",
-          "U": "✅",
-          "O": "—"
-        },
-        {
-          "#": "N10",
-          "Job step": "PREPARE",
-          "Statement (short)": "Interlock with NH₃/CO₂ refrig PLC, no PLC retrofit",
-          "I": "8",
-          "S": "3",
-          "Opp": "**13.00**",
-          "U": "✅",
-          "O": "—"
-        },
-        {
-          "#": "N17",
-          "Job step": "EXECUTE",
-          "Statement (short)": "EPEX arbitrage >300 d/yr without breaking HACCP reserve",
-          "I": "8",
-          "S": "3",
-          "Opp": "**13.00**",
-          "U": "✅",
-          "O": "—"
-        },
-        {
-          "#": "N2",
-          "Job step": "DEFINE",
-          "Statement (short)": "Underestimate refrig peak duration by >15 min",
-          "I": "9",
-          "S": "5",
-          "Opp": "**13.00**",
-          "U": "—",
-          "O": "—"
-        },
-        {
-          "#": "N15",
-          "Job step": "EXECUTE",
-          "Statement (short)": "Absorb compressor inrush >3× nominal w/o MV trip (recal)",
-          "I": "9",
-          "S": "5",
-          "Opp": "**13.00**",
-          "U": "—",
-          "O": "—"
-        },
-        {
-          "#": "N9",
-          "Job step": "PREPARE",
-          "Statement (short)": "Foundation + MV + refrig works collide on critical path",
-          "I": "8",
-          "S": "4",
-          "Opp": "**12.00**",
-          "U": "✅",
-          "O": "—"
-        },
-        {
-          "#": "N8",
-          "Job step": "LOCATE",
-          "Statement (short)": "Insurance uplift >25 % for Li-ion containment design",
-          "I": "7",
-          "S": "3",
-          "Opp": "**11.00**",
-          "U": "—",
-          "O": "—"
-        },
-        {
-          "#": "N21",
-          "Job step": "MONITOR",
-          "Statement (short)": "Live SoH / reserved-SoC exposed to WMS / SCADA real time",
-          "I": "7",
-          "S": "3",
-          "Opp": "**11.00**",
-          "U": "—",
-          "O": "—"
-        },
-        {
-          "#": "N6",
-          "Job step": "LOCATE",
-          "Statement (short)": "Certification slot slip >4 weeks",
-          "I": "7",
-          "S": "4",
-          "Opp": "**10.00**",
-          "U": "—",
-          "O": "—"
-        },
-        {
-          "#": "N23",
-          "Job step": "EXECUTE (P3)",
-          "Statement (short)": "Energy-Manager quarterly €/MWh savings evidence to COO",
-          "I": "7",
-          "S": "4",
-          "Opp": "**10.00**",
-          "U": "—",
-          "O": "—"
-        },
-        {
-          "#": "N24",
-          "Job step": "CONFIRM (P5)",
-          "Statement (short)": "Duty-manager nighttime spoilage anxiety visible SoC",
-          "I": "6",
-          "S": "2",
-          "Opp": "**10.00**",
-          "U": "—",
-          "O": "—"
-        },
-        {
-          "#": "N11",
-          "Job step": "PREPARE",
-          "Statement (short)": "Operator training gap → HACCP non-compliance at COD",
-          "I": "7",
-          "S": "5",
-          "Opp": "**9.00**",
-          "U": "—",
-          "O": "—"
-        },
-        {
-          "#": "N18",
-          "Job step": "EXECUTE",
-          "Statement (short)": "Cell cycle degradation >2 %/yr from C/2 arbitrage",
-          "I": "7",
-          "S": "5",
-          "Opp": "**9.00**",
-          "U": "—",
-          "O": "—"
-        },
-        {
-          "#": "N14",
-          "Job step": "CONFIRM",
-          "Statement (short)": "IEC 62443 cyber gap flagged by insurance auditor pre-COD",
-          "I": "6",
-          "S": "4",
-          "Opp": "**8.00**",
-          "U": "—",
-          "O": "—"
-        }
-      ]
-    },
-    {
-      "headers": [
-        "#",
-        "Statement (short)",
-        "I",
-        "S",
-        "Opp",
-        "U",
-        "O"
-      ],
-      "rows": [
-        {
-          "#": "PR1",
-          "Statement (short)": "Thermal-runaway propagation compromises refrig plant / IFS",
-          "I": "9.5",
-          "S": "3.0",
-          "Opp": "**16.00**",
-          "U": "✅",
-          "O": "—"
-        },
-        {
-          "#": "PR3",
-          "Statement (short)": "≥30 min early thermal-runaway precursor detection lead",
-          "I": "9.5",
-          "S": "3.0",
-          "Opp": "**16.00**",
-          "U": "✅",
-          "O": "—"
-        },
-        {
-          "#": "PR2",
-          "Statement (short)": "Fire-clearance distance exceeds plant-room / IFS footprint",
-          "I": "8.5",
-          "S": "3.5",
-          "Opp": "**13.50**",
-          "U": "✅",
-          "O": "—"
-        },
-        {
-          "#": "PR8",
-          "Statement (short)": "FGW TR8 lead 6–12 mo blocks pre-Oktober COD window",
-          "I": "8.0",
-          "S": "4.0",
-          "Opp": "**12.00**",
-          "U": "✅",
-          "O": "—"
-        },
-        {
-          "#": "PR11",
-          "Statement (short)": "LFP deep-discharge <5 % SoC permanently erodes resilience",
-          "I": "7.5",
-          "S": "4.5",
-          "Opp": "**10.50**",
-          "U": "✅",
-          "O": "—"
-        },
-        {
-          "#": "PR4",
-          "Statement (short)": "Calendar-age reduces reserved-resilience-SoC before yr 10 (recal)",
-          "I": "7.5",
-          "S": "5.5",
-          "Opp": "**9.50**",
-          "U": "—",
-          "O": "—"
-        },
-        {
-          "#": "PR10",
-          "Statement (short)": "IEC 62443 cyber controls w/o exposing refrig SCADA",
-          "I": "6.5",
-          "S": "3.5",
-          "Opp": "**9.50**",
-          "U": "—",
-          "O": "—"
-        },
-        {
-          "#": "PR5",
-          "Statement (short)": "Cycle degradation >2 %/yr from C/2 arbitrage",
-          "I": "7.0",
-          "S": "5.0",
-          "Opp": "**9.00**",
-          "U": "—",
-          "O": "—"
-        },
-        {
-          "#": "PR9",
-          "Statement (short)": "CN cell-supply CRMA/FX/tariff shock pre-commissioning",
-          "I": "6.5",
-          "S": "4.0",
-          "Opp": "**9.00**",
-          "U": "—",
-          "O": "—"
-        },
-        {
-          "#": "PR12",
-          "Statement (short)": "Footprint 40–80 m²/MWh encroaches on reefer-staging lane",
-          "I": "7.0",
-          "S": "5.0",
-          "Opp": "**9.00**",
-          "U": "—",
-          "O": "—"
-        },
-        {
-          "#": "PR7",
-          "Statement (short)": "RTE 10–15 % erases peak-shave margin <120 €/kW/yr spread",
-          "I": "7.0",
-          "S": "5.5",
-          "Opp": "**8.50**",
-          "U": "—",
-          "O": "—"
-        },
-        {
-          "#": "PR6",
-          "Statement (short)": "Summer >35 °C HVAC suppresses deliverable peak-shave",
-          "I": "6.5",
-          "S": "5.0",
-          "Opp": "**8.00**",
-          "U": "—",
-          "O": "—"
-        }
-      ]
-    },
-    {
-      "headers": [
-        "Field",
-        "Value"
-      ],
-      "rows": [
-        {
-          "Field": "`market_name`",
-          "Value": "Refrigerated Warehousing and Storage"
-        },
-        {
-          "Field": "`naics_code`",
-          "Value": "493120"
-        },
-        {
-          "Field": "`total_needs`",
-          "Value": "**36**"
-        },
-        {
-          "Field": "`underserved_count`",
-          "Value": "**19**"
-        },
-        {
-          "Field": "`overserved_count`",
-          "Value": "**0**"
-        },
-        {
-          "Field": "`avg_opportunity_score`",
-          "Value": "**12.10**"
-        }
-      ]
-    },
-    {
-      "headers": [
-        "Threshold",
-        "Test",
-        "Flag"
-      ],
-      "rows": [
-        {
-          "Threshold": "ODI > 12 AND Feature-Fit < 4",
-          "Test": "12.10 > 12 ✅, 5.81 < 4 ✗",
-          "Flag": "**not triggered**"
-        },
-        {
-          "Threshold": "ODI < 8 AND Feature-Fit > 7",
-          "Test": "12.10 < 8 ✗",
-          "Flag": "**not triggered**"
-        }
-      ]
-    },
-    {
-      "headers": [
-        "#",
-        "Check",
-        "Result"
-      ],
-      "rows": [
-        {
-          "#": "Q1",
-          "Check": "Formula spot-check (5 entries): N16 17.00, N5 16.00, PR1 16.00, N15 13.00 (recal), PR6 8.00",
-          "Result": "✅ PASS"
-        },
-        {
-          "#": "Q2",
-          "Check": "`is_underserved` iff `I>7 AND S<5` — 19 flagged, all conform",
-          "Result": "✅ PASS"
-        },
-        {
-          "#": "Q3",
-          "Check": "`is_overserved` iff `I<3 AND S>7` — zero (no entry has I<3)",
-          "Result": "✅ PASS"
-        },
-        {
-          "#": "Q4",
-          "Check": "`total_needs` (36) ≥ Step 06 count (24) — Step 10 added 12",
-          "Result": "✅ PASS"
-        },
-        {
-          "#": "Q5",
-          "Check": "Top-5 sorted descending by `opportunity_score`",
-          "Result": "✅ PASS"
-        },
-        {
-          "#": "Q6",
-          "Check": "Cross-check vs Step 09 executed — alignment + gaps logged",
-          "Result": "✅ PASS"
-        }
-      ]
-    }
-  ],
-  "entities": [
-    {
-      "component": "odi_matrix",
-      "naics_code": "493120",
-      "naics_title": "Refrigerated Warehousing and Storage",
-      "market_name": "Refrigerated Warehousing and Storage",
-      "product_name": "EPC für Großbatteriespeicher",
-      "vendor_name": "Mein Solar GmbH",
-      "technology_class": "Large-Scale Battery Energy Storage System EPC",
-      "formula": "opportunity_score = importance + max(importance - satisfaction, 0)",
-      "entries": [
-        {
-          "error_statement": "Increase the ability to size storage capacity to within +/-10 % of the demand-charge-shave that will actually clear in year-1 operation",
-          "market_name": "Refrigerated Warehousing and Storage",
-          "naics_code": "493120",
-          "importance": 9.0,
-          "satisfaction_current": 4.0,
-          "opportunity_score": 14.0,
-          "is_underserved": true,
-          "is_overserved": false,
-          "product_related": false,
-          "job_step_number": 1,
-          "job_step_name": "DEFINE",
-          "impact_category": "cost",
-          "source_id": "N1"
-        },
-        {
-          "error_statement": "Minimize the likelihood of underestimating refrigeration peak-load duration by >15 minutes during the daily 17:00-20:00 Leistungspreis window",
-          "market_name": "Refrigerated Warehousing and Storage",
-          "naics_code": "493120",
-          "importance": 9.0,
-          "satisfaction_current": 5.0,
-          "opportunity_score": 13.0,
-          "is_underserved": false,
-          "is_overserved": false,
-          "product_related": false,
-          "job_step_number": 1,
-          "job_step_name": "DEFINE",
-          "impact_category": "cost",
-          "source_id": "N2"
-        },
-        {
-          "error_statement": "Increase the ability to forecast HACCP-relevant load survival time at <30 % SoC with >=95 % accuracy",
-          "market_name": "Refrigerated Warehousing and Storage",
-          "naics_code": "493120",
-          "importance": 8.0,
-          "satisfaction_current": 3.0,
-          "opportunity_score": 13.0,
-          "is_underserved": true,
-          "is_overserved": false,
-          "product_related": true,
-          "job_step_number": 1,
-          "job_step_name": "DEFINE",
-          "impact_category": "safety",
-          "source_id": "N3"
-        },
-        {
-          "error_statement": "Minimize the likelihood of mis-stacking incompatible revenue streams (peak-shave vs FCR vs S19 StromNEV) costing >5 % of business case",
-          "market_name": "Refrigerated Warehousing and Storage",
-          "naics_code": "493120",
-          "importance": 8.0,
-          "satisfaction_current": 3.0,
-          "opportunity_score": 13.0,
-          "is_underserved": true,
-          "is_overserved": false,
-          "product_related": false,
-          "job_step_number": 1,
-          "job_step_name": "DEFINE",
-          "impact_category": "cost",
-          "source_id": "N4"
-        },
-        {
-          "error_statement": "Minimize the likelihood that DSO MV-feeder spare-capacity assessment reverses after 6+ months of project work",
-          "market_name": "Refrigerated Warehousing and Storage",
-          "naics_code": "493120",
-          "importance": 10.0,
-          "satisfaction_current": 4.0,
-          "opportunity_score": 16.0,
-          "is_underserved": true,
-          "is_overserved": false,
-          "product_related": false,
-          "job_step_number": 2,
-          "job_step_name": "LOCATE",
-          "impact_category": "reliability",
-          "source_id": "N5"
-        },
-        {
-          "error_statement": "Increase the ability to secure FGW-accredited certification slots without >4 weeks of schedule slip",
-          "market_name": "Refrigerated Warehousing and Storage",
-          "naics_code": "493120",
-          "importance": 7.0,
-          "satisfaction_current": 4.0,
-          "opportunity_score": 10.0,
-          "is_underserved": false,
-          "is_overserved": false,
-          "product_related": false,
-          "job_step_number": 2,
-          "job_step_name": "LOCATE",
-          "impact_category": "time",
-          "source_id": "N6"
-        },
-        {
-          "error_statement": "Minimize the likelihood that fire-clearance distance to refrigeration plant or IFS-bonded storage exceeds available footprint",
-          "market_name": "Refrigerated Warehousing and Storage",
-          "naics_code": "493120",
-          "importance": 9.0,
-          "satisfaction_current": 4.0,
-          "opportunity_score": 14.0,
-          "is_underserved": true,
-          "is_overserved": false,
-          "product_related": true,
-          "job_step_number": 2,
-          "job_step_name": "LOCATE",
-          "impact_category": "safety",
-          "source_id": "N7"
-        },
-        {
-          "error_statement": "Increase the ability to obtain insurance terms that recognize Li-ion containment design without >25 % premium uplift",
-          "market_name": "Refrigerated Warehousing and Storage",
-          "naics_code": "493120",
-          "importance": 7.0,
-          "satisfaction_current": 3.0,
-          "opportunity_score": 11.0,
-          "is_underserved": false,
-          "is_overserved": false,
-          "product_related": true,
-          "job_step_number": 2,
-          "job_step_name": "LOCATE",
-          "impact_category": "cost",
-          "source_id": "N8"
-        },
-        {
-          "error_statement": "Minimize the likelihood of foundation, MV-cabinet, and refrigeration-plant works colliding on the construction critical path",
-          "market_name": "Refrigerated Warehousing and Storage",
-          "naics_code": "493120",
-          "importance": 8.0,
-          "satisfaction_current": 4.0,
-          "opportunity_score": 12.0,
-          "is_underserved": true,
-          "is_overserved": false,
-          "product_related": false,
-          "job_step_number": 3,
-          "job_step_name": "PREPARE",
-          "impact_category": "time",
-          "source_id": "N9"
-        },
-        {
-          "error_statement": "Increase the ability to interlock storage-system control with NH3/CO2 refrigeration safety logic without retrofitting refrigeration PLC",
-          "market_name": "Refrigerated Warehousing and Storage",
-          "naics_code": "493120",
-          "importance": 8.0,
-          "satisfaction_current": 3.0,
-          "opportunity_score": 13.0,
-          "is_underserved": true,
-          "is_overserved": false,
-          "product_related": false,
-          "job_step_number": 3,
-          "job_step_name": "PREPARE",
-          "impact_category": "safety",
-          "source_id": "N10"
-        },
-        {
-          "error_statement": "Minimize the likelihood of operator training gaps causing HACCP-procedure non-compliance during commissioning",
-          "market_name": "Refrigerated Warehousing and Storage",
-          "naics_code": "493120",
-          "importance": 7.0,
-          "satisfaction_current": 5.0,
-          "opportunity_score": 9.0,
-          "is_underserved": false,
-          "is_overserved": false,
-          "product_related": false,
-          "job_step_number": 3,
-          "job_step_name": "PREPARE",
-          "impact_category": "skill",
-          "source_id": "N11"
-        },
-        {
-          "error_statement": "Minimize the likelihood that fire-protection commissioning fails on first inspection, delaying COD by >30 days",
-          "market_name": "Refrigerated Warehousing and Storage",
-          "naics_code": "493120",
-          "importance": 9.0,
-          "satisfaction_current": 4.0,
-          "opportunity_score": 14.0,
-          "is_underserved": true,
-          "is_overserved": false,
-          "product_related": true,
-          "job_step_number": 4,
-          "job_step_name": "CONFIRM",
-          "impact_category": "safety",
-          "source_id": "N12"
-        },
-        {
-          "error_statement": "Increase the ability to demonstrate sub-100 ms ride-through to NH3 refrigeration controllers with witnessed test evidence",
-          "market_name": "Refrigerated Warehousing and Storage",
-          "naics_code": "493120",
-          "importance": 9.0,
-          "satisfaction_current": 3.0,
-          "opportunity_score": 15.0,
-          "is_underserved": true,
-          "is_overserved": false,
-          "product_related": false,
-          "job_step_number": 4,
-          "job_step_name": "CONFIRM",
-          "impact_category": "safety",
-          "source_id": "N13"
-        },
-        {
-          "error_statement": "Minimize the likelihood of insurance auditor flagging missing IEC 62443 cybersecurity controls before COD",
-          "market_name": "Refrigerated Warehousing and Storage",
-          "naics_code": "493120",
-          "importance": 6.0,
-          "satisfaction_current": 4.0,
-          "opportunity_score": 8.0,
-          "is_underserved": false,
-          "is_overserved": false,
-          "product_related": true,
-          "job_step_number": 4,
-          "job_step_name": "CONFIRM",
-          "impact_category": "safety",
-          "source_id": "N14"
-        },
-        {
-          "error_statement": "Increase the ability to absorb compressor-start inrush of >3x nominal without tripping MV protection",
-          "market_name": "Refrigerated Warehousing and Storage",
-          "naics_code": "493120",
-          "importance": 9.0,
-          "satisfaction_current": 5.0,
-          "opportunity_score": 13.0,
-          "is_underserved": false,
-          "is_overserved": false,
-          "product_related": false,
-          "job_step_number": 5,
-          "job_step_name": "EXECUTE",
-          "impact_category": "reliability",
-          "source_id": "N15",
-          "satisfaction_recalibrated_from": 4.0
-        },
-        {
-          "error_statement": "Minimize the likelihood of dispatch error letting any chamber exceed +2 C above SLA setpoint during grid disturbance",
-          "market_name": "Refrigerated Warehousing and Storage",
-          "naics_code": "493120",
-          "importance": 10.0,
-          "satisfaction_current": 3.0,
-          "opportunity_score": 17.0,
-          "is_underserved": true,
-          "is_overserved": false,
-          "product_related": false,
-          "job_step_number": 5,
-          "job_step_name": "EXECUTE",
-          "impact_category": "safety",
-          "source_id": "N16"
-        },
-        {
-          "error_statement": "Increase the ability to capture EPEX intraday arbitrage on >300 days/yr without compromising HACCP reserve SoC",
-          "market_name": "Refrigerated Warehousing and Storage",
-          "naics_code": "493120",
-          "importance": 8.0,
-          "satisfaction_current": 3.0,
-          "opportunity_score": 13.0,
-          "is_underserved": true,
-          "is_overserved": false,
-          "product_related": false,
-          "job_step_number": 5,
-          "job_step_name": "EXECUTE",
-          "impact_category": "cost",
-          "source_id": "N17"
-        },
-        {
-          "error_statement": "Minimize the likelihood of cell-cycle degradation exceeding 2 %/yr from arbitrage cycling above C/2",
-          "market_name": "Refrigerated Warehousing and Storage",
-          "naics_code": "493120",
-          "importance": 7.0,
-          "satisfaction_current": 5.0,
-          "opportunity_score": 9.0,
-          "is_underserved": false,
-          "is_overserved": false,
-          "product_related": true,
-          "job_step_number": 5,
-          "job_step_name": "EXECUTE",
-          "impact_category": "reliability",
-          "source_id": "N18"
-        },
-        {
-          "error_statement": "Increase the ability to detect early thermal-runaway precursors with >=30 minute lead time before suppression activation",
-          "market_name": "Refrigerated Warehousing and Storage",
-          "naics_code": "493120",
-          "importance": 10.0,
-          "satisfaction_current": 3.0,
-          "opportunity_score": 17.0,
-          "is_underserved": true,
-          "is_overserved": false,
-          "product_related": true,
-          "job_step_number": 6,
-          "job_step_name": "MONITOR",
-          "impact_category": "safety",
-          "source_id": "N19"
-        },
-        {
-          "error_statement": "Minimize the likelihood of HACCP audit finding gaps in temperature-chain evidence during BESS-mediated grid events",
-          "market_name": "Refrigerated Warehousing and Storage",
-          "naics_code": "493120",
-          "importance": 9.0,
-          "satisfaction_current": 3.0,
-          "opportunity_score": 15.0,
-          "is_underserved": true,
-          "is_overserved": false,
-          "product_related": false,
-          "job_step_number": 6,
-          "job_step_name": "MONITOR",
-          "impact_category": "safety",
-          "source_id": "N20",
-          "satisfaction_recalibrated_from": 4.0
-        },
-        {
-          "error_statement": "Increase the ability to expose live SoH and reserved-resilience-SoC to the WMS / SCADA layer in real time",
-          "market_name": "Refrigerated Warehousing and Storage",
-          "naics_code": "493120",
-          "importance": 7.0,
-          "satisfaction_current": 3.0,
-          "opportunity_score": 11.0,
-          "is_underserved": false,
-          "is_overserved": false,
-          "product_related": true,
-          "job_step_number": 6,
-          "job_step_name": "MONITOR",
-          "impact_category": "reliability",
-          "source_id": "N21"
-        },
-        {
-          "error_statement": "Minimize the likelihood of EMS over-discharging below the contractually-reserved spoilage-protection envelope",
-          "market_name": "Refrigerated Warehousing and Storage",
-          "naics_code": "493120",
-          "importance": 9.0,
-          "satisfaction_current": 3.0,
-          "opportunity_score": 15.0,
-          "is_underserved": true,
-          "is_overserved": false,
-          "product_related": true,
-          "job_step_number": 6,
-          "job_step_name": "MONITOR",
-          "impact_category": "safety",
-          "source_id": "N22"
-        },
-        {
-          "error_statement": "Increase the ability of the Energy Manager to demonstrate measurable EUR/MWh savings to the COO every quarter",
-          "market_name": "Refrigerated Warehousing and Storage",
-          "naics_code": "493120",
-          "importance": 7.0,
-          "satisfaction_current": 4.0,
-          "opportunity_score": 10.0,
-          "is_underserved": false,
-          "is_overserved": false,
-          "product_related": false,
-          "job_step_number": 5,
-          "job_step_name": "EXECUTE",
-          "impact_category": "cost",
-          "source_id": "N23"
-        },
-        {
-          "error_statement": "Minimize the likelihood of nighttime spoilage anxiety for the duty manager - visible reserved-resilience SoC at all times",
-          "market_name": "Refrigerated Warehousing and Storage",
-          "naics_code": "493120",
-          "importance": 6.0,
-          "satisfaction_current": 2.0,
-          "opportunity_score": 10.0,
-          "is_underserved": false,
-          "is_overserved": false,
-          "product_related": true,
-          "job_step_number": 4,
-          "job_step_name": "CONFIRM",
-          "impact_category": "reliability",
-          "source_id": "N24"
-        },
-        {
-          "error_statement": "Minimize the likelihood of thermal-runaway propagation from a single LFP cell compromising the adjacent refrigeration plant or IFS-bonded food-grade storage",
-          "market_name": "Refrigerated Warehousing and Storage",
-          "naics_code": "493120",
-          "importance": 9.5,
-          "satisfaction_current": 3.0,
-          "opportunity_score": 16.0,
-          "is_underserved": true,
-          "is_overserved": false,
-          "product_related": true,
-          "job_step_number": 0,
-          "job_step_name": "product_constraint",
-          "impact_category": "reliability",
-          "source_id": "PR1",
-          "source_constraint": "Li-Ion Thermal Runaway Hazard"
-        },
-        {
-          "error_statement": "Minimize the likelihood that fire-clearance distance imposed by Li-ion chemistry exceeds the available footprint between the refrigeration plant room and the IFS buffer zone",
-          "market_name": "Refrigerated Warehousing and Storage",
-          "naics_code": "493120",
-          "importance": 8.5,
-          "satisfaction_current": 3.5,
-          "opportunity_score": 13.5,
-          "is_underserved": true,
-          "is_overserved": false,
-          "product_related": true,
-          "job_step_number": 0,
-          "job_step_name": "product_constraint",
-          "impact_category": "reliability",
-          "source_id": "PR2",
-          "source_constraint": "Fire-Protection Clearance"
-        },
-        {
-          "error_statement": "Increase the ability to detect early thermal-runaway precursors (off-gas, dT/dt, voltage deviation) with >=30 minute lead time before NOVEC activation",
-          "market_name": "Refrigerated Warehousing and Storage",
-          "naics_code": "493120",
-          "importance": 9.5,
-          "satisfaction_current": 3.0,
-          "opportunity_score": 16.0,
-          "is_underserved": true,
-          "is_overserved": false,
-          "product_related": true,
-          "job_step_number": 0,
-          "job_step_name": "product_constraint",
-          "impact_category": "reliability",
-          "source_id": "PR3",
-          "source_constraint": "Li-Ion Thermal Runaway Hazard"
-        },
-        {
-          "error_statement": "Minimize the likelihood of LFP calendar-ageing reducing reserved-resilience-SoC capacity below contracted spoilage-protection envelope before year 10",
-          "market_name": "Refrigerated Warehousing and Storage",
-          "naics_code": "493120",
-          "importance": 7.5,
-          "satisfaction_current": 5.5,
-          "opportunity_score": 9.5,
-          "is_underserved": false,
-          "is_overserved": false,
-          "product_related": true,
-          "job_step_number": 0,
-          "job_step_name": "product_constraint",
-          "impact_category": "reliability",
-          "source_id": "PR4",
-          "source_constraint": "Ambient Temperature Envelope",
-          "satisfaction_recalibrated_from": 4.5
-        },
-        {
-          "error_statement": "Minimize the likelihood of cell-cycle degradation exceeding 2 %/yr from EPEX arbitrage cycling above C/2 eroding warranted throughput",
-          "market_name": "Refrigerated Warehousing and Storage",
-          "naics_code": "493120",
-          "importance": 7.0,
-          "satisfaction_current": 5.0,
-          "opportunity_score": 9.0,
-          "is_underserved": false,
-          "is_overserved": false,
-          "product_related": true,
-          "job_step_number": 0,
-          "job_step_name": "product_constraint",
-          "impact_category": "reliability",
-          "source_id": "PR5",
-          "source_constraint": "Round-Trip Energy Losses"
-        },
-        {
-          "error_statement": "Minimize the likelihood that HVAC auxiliary load during summer ambient >35 C suppresses deliverable peak-shave capacity below sizing-case",
-          "market_name": "Refrigerated Warehousing and Storage",
-          "naics_code": "493120",
-          "importance": 6.5,
-          "satisfaction_current": 5.0,
-          "opportunity_score": 8.0,
-          "is_underserved": false,
-          "is_overserved": false,
-          "product_related": true,
-          "job_step_number": 0,
-          "job_step_name": "product_constraint",
-          "impact_category": "reliability",
-          "source_id": "PR6",
-          "source_constraint": "Ambient Temperature Envelope"
-        },
-        {
-          "error_statement": "Minimize the likelihood that Round-Trip efficiency loss of 10-15 % erases peak-shave margin when Leistungspreis spread is <120 EUR/kW/yr",
-          "market_name": "Refrigerated Warehousing and Storage",
-          "naics_code": "493120",
-          "importance": 7.0,
-          "satisfaction_current": 5.5,
-          "opportunity_score": 8.5,
-          "is_underserved": false,
-          "is_overserved": false,
-          "product_related": true,
-          "job_step_number": 0,
-          "job_step_name": "product_constraint",
-          "impact_category": "reliability",
-          "source_id": "PR7",
-          "source_constraint": "Round-Trip Energy Losses"
-        },
-        {
-          "error_statement": "Minimize the likelihood that FGW TR8 plant-certificate lead time of 6-12 months blocks cold-store seasonal COD window (pre-Oktober peak tariff)",
-          "market_name": "Refrigerated Warehousing and Storage",
-          "naics_code": "493120",
-          "importance": 8.0,
-          "satisfaction_current": 4.0,
-          "opportunity_score": 12.0,
-          "is_underserved": true,
-          "is_overserved": false,
-          "product_related": true,
-          "job_step_number": 0,
-          "job_step_name": "product_constraint",
-          "impact_category": "reliability",
-          "source_id": "PR8",
-          "source_constraint": "Grid Code Certification Lead Time"
-        },
-        {
-          "error_statement": "Minimize the likelihood that cell-supply concentration in Chinese suppliers exposes the cold-store owner to CRMA/EU Battery Regulation tariff or FX shock before commissioning",
-          "market_name": "Refrigerated Warehousing and Storage",
-          "naics_code": "493120",
-          "importance": 6.5,
-          "satisfaction_current": 4.0,
-          "opportunity_score": 9.0,
-          "is_underserved": false,
-          "is_overserved": false,
-          "product_related": true,
-          "job_step_number": 0,
-          "job_step_name": "product_constraint",
-          "impact_category": "reliability",
-          "source_id": "PR9",
-          "source_constraint": "Battery Supply Chain Concentration"
-        },
-        {
-          "error_statement": "Increase the ability to maintain reserved-resilience-SoC under insurer-audited IEC 62443 cyber controls without exposing refrigeration SCADA to the BESS EMS as an attack surface",
-          "market_name": "Refrigerated Warehousing and Storage",
-          "naics_code": "493120",
-          "importance": 6.5,
-          "satisfaction_current": 3.5,
-          "opportunity_score": 9.5,
-          "is_underserved": false,
-          "is_overserved": false,
-          "product_related": true,
-          "job_step_number": 0,
-          "job_step_name": "product_constraint",
-          "impact_category": "reliability",
-          "source_id": "PR10",
-          "source_constraint": "Li-Ion Thermal Runaway Hazard"
-        },
-        {
-          "error_statement": "Minimize the likelihood that LFP deep-discharge below 5 % SoC during a sustained outage permanently degrades the resilience envelope before generator cut-in",
-          "market_name": "Refrigerated Warehousing and Storage",
-          "naics_code": "493120",
-          "importance": 7.5,
-          "satisfaction_current": 4.5,
-          "opportunity_score": 10.5,
-          "is_underserved": true,
-          "is_overserved": false,
-          "product_related": true,
-          "job_step_number": 0,
-          "job_step_name": "product_constraint",
-          "impact_category": "reliability",
-          "source_id": "PR11",
-          "source_constraint": "Round-Trip Energy Losses"
-        },
-        {
-          "error_statement": "Minimize the likelihood of land-footprint of 40-80 m2/MWh encroaching on truck-dock apron or refrigerated-trailer staging lane at a logistics cold-store",
-          "market_name": "Refrigerated Warehousing and Storage",
-          "naics_code": "493120",
-          "importance": 7.0,
-          "satisfaction_current": 5.0,
-          "opportunity_score": 9.0,
-          "is_underserved": false,
-          "is_overserved": false,
-          "product_related": true,
-          "job_step_number": 0,
-          "job_step_name": "product_constraint",
-          "impact_category": "reliability",
-          "source_id": "PR12",
-          "source_constraint": "Land Footprint and Siting"
-        }
-      ],
-      "market_summaries": [
-        {
-          "market_name": "Refrigerated Warehousing and Storage",
-          "naics_code": "493120",
-          "total_needs": 36,
-          "underserved_count": 19,
-          "overserved_count": 0,
-          "avg_opportunity_score": 12.1,
-          "top_opportunities": [
-            "Minimize the likelihood of dispatch error letting any chamber exceed +2 C above SLA setpoint during grid disturbance",
-            "Increase the ability to detect early thermal-runaway precursors with >=30 minute lead time before suppression activation",
-            "Minimize the likelihood that DSO MV-feeder spare-capacity assessment reverses after 6+ months of project work",
-            "Minimize the likelihood of thermal-runaway propagation from a single LFP cell compromising the adjacent refrigeration plant or IFS-bonded food-grade storage",
-            "Increase the ability to detect early thermal-runaway precursors (off-gas, dT/dt, voltage deviation) with >=30 minute lead time before NOVEC activation"
-          ]
-        }
-      ],
-      "recalibration_log": [
-        {
-          "ref": "N15",
-          "s_original": 4.0,
-          "s_recalibrated": 5.0,
-          "reason": "Tier-1 4-quadrant PCS (SMA/Sungrow PowerTitan, <100 ms) demonstrably absorbs 3-7x FLA compressor inrush — incumbent capability better than Step 06 estimate"
-        },
-        {
-          "ref": "N20",
-          "s_original": 4.0,
-          "s_recalibrated": 3.0,
-          "reason": "No surveyed incumbent EMS (Fluence Mosaic, Tesla Autobidder, Wartsila GEMS) natively produces time-aligned voltage+temperature traces for HACCP audit — structurally worse than estimated"
-        },
-        {
-          "ref": "PR4",
-          "s_original": 4.5,
-          "s_recalibrated": 5.5,
-          "reason": "Tier-1 LFP vendors (Tesla, Sungrow, CATL EnerC) ship 10-yr 85 % capacity performance guarantees — incumbent warranty envelope tighter than estimated"
-        }
-      ],
-      "incumbent_reference_set": [
-        {
-          "name": "Diesel/gas standby genset (A2)",
-          "role": "current_alternative_hired",
-          "strengths": [
-            "outage cover",
-            "familiar"
-          ],
-          "weaknesses": [
-            "60-120 s start delay",
-            "no peak-shave revenue",
-            "BImSchV limits"
-          ]
-        },
-        {
-          "name": "DSO grid-capacity upgrade (A3)",
-          "role": "current_alternative_hired",
-          "strengths": [
-            "no battery capex"
-          ],
-          "weaknesses": [
-            "1-3 yr lead",
-            "may be denied",
-            "no resilience"
-          ]
-        },
-        {
-          "name": "Behind-the-meter PV + minimal storage (A4)",
-          "role": "current_alternative_hired",
-          "strengths": [
-            "lower capex"
-          ],
-          "weaknesses": [
-            "cannot cover 24/7 reefer baseload",
-            "intermittent"
-          ]
-        },
-        {
-          "name": "Do-nothing (A5)",
-          "role": "existential_competitor",
-          "strengths": [
-            "zero capex"
-          ],
-          "weaknesses": [
-            "60-440 EUR/kW/yr Leistungspreis",
-            "uninsured spoilage exposure"
-          ]
-        },
-        {
-          "name": "Voltfang / Tesvolt C&I packaged Li-ion units",
-          "role": "packaged_incumbent",
-          "strengths": [
-            "rapid delivery",
-            "standardized"
-          ],
-          "weaknesses": [
-            "split-contract for MV/civil/fire/cert",
-            "no PV design authority",
-            "HACCP-reserved-SoC not standard"
-          ]
-        },
-        {
-          "name": "Alpitronic integrated BESS+HPC (Sc6 only)",
-          "role": "niche_incumbent",
-          "strengths": [
-            "HPC heritage"
-          ],
-          "weaknesses": [
-            "HPC-centric, not cold-store-peak-shave"
-          ]
-        },
-        {
-          "name": "Fluence Gridstack / Wartsila / TRICERA (utility tier)",
-          "role": "upstream_reference",
-          "strengths": [
-            "bankability",
-            "EMS"
-          ],
-          "weaknesses": [
-            "oversized for C&I cold-store"
-          ]
-        }
-      ],
-      "cross_check_vs_step_09": {
-        "feature_fit_avg_overall_fit": 5.81,
-        "odi_avg_opportunity_score": 12.1,
-        "high_opp_low_fit_flag": false,
-        "low_opp_high_fit_flag": false,
-        "alignment_notes": [
-          "F4 EMS (overall_fit=7.44, attractive) directly addresses top ODI opportunities N16 (17), N22 (15), N20 (15), N17 (13) — HACCP-reserved-SoC + HACCP audit-trail export is the differentiated scope",
-          "F5 Grid-Code Certification Delivery (overall_fit=6.22) addresses N12 fire-protection commissioning (14) and PR8 TR8 lead-time (12)",
-          "F2 Bidirectional PCS (overall_fit=6.33) addresses N13 sub-100 ms ride-through (15) and N15 inrush (13)"
-        ],
-        "gap_notes": [
-          "N19 + PR1 + PR3 thermal-runaway cluster (opp 16-17, all underserved): no single Mein Solar feature directly addresses — Li-ion-inherent risk requires BMS vendor selection + NOVEC + compartmentation + off-gas sensors + Feuerwehr interface; containment-design partnership required for market entry",
-          "N5 DSO capacity reversal (opp 16): pre-commitment risk no EPC feature can eliminate — mitigate via DSO LoI + site-screening process"
-        ]
-      },
-      "qa_checklist": {
-        "Q1_formula_correct": "PASS",
-        "Q2_underserved_flags_correct": "PASS",
-        "Q3_overserved_flags_correct": "PASS",
-        "Q4_need_count_preserved": "PASS (36 = 24 Step06 + 12 Step10)",
-        "Q5_top5_ordering_correct": "PASS",
-        "Q6_cross_check_step09_ran": "PASS"
-      },
-      "neo4j_write_preview": {
-        "opportunity_score_nodes": 36,
-        "market_node_set_props": {
-          "odi_total_needs": 36,
-          "odi_underserved_count": 19,
-          "odi_overserved_count": 0,
-          "odi_avg_opportunity_score": 12.1,
-          "odi_top_opportunities": "[JSON string of top-5]"
-        },
-        "relationships": "36x (Market {naics_code:'493120'})-[:has_opportunity_score]->(OpportunityScore)"
-      }
-    }
-  ],
-  "has_bom": true,
-  "naics_sector_type": "non_manufacturing"
+  "sources": []
 }

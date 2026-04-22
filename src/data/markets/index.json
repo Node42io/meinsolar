@@ -2,57 +2,81 @@
   {
     "slug": "bess_power_generation",
     "name": "Battery Energy Storage Systems (Other Electric Power Generation)",
+    "shortName": "BESS / Power Generation",
     "naics": "221118",
     "isReference": true,
-    "sourceFile": "bess_power_generation"
+    "rank": 1,
+    "compositeScore": 6.66,
+    "recommendation": "investigate"
   },
   {
     "slug": "solar_power_generation",
     "name": "Solar Electric Power Generation",
+    "shortName": "Solar Power Generation",
     "naics": "221114",
     "isReference": false,
-    "sourceFile": "solar_power_generation"
-  },
-  {
-    "slug": "wind_power_generation",
-    "name": "Wind Electric Power Generation",
-    "naics": "221115",
-    "isReference": false,
-    "sourceFile": "wind_power_generation"
-  },
-  {
-    "slug": "electric_power_distribution",
-    "name": "Electric Power Distribution",
-    "naics": "221122",
-    "isReference": false,
-    "sourceFile": "electric_power_distribution"
-  },
-  {
-    "slug": "port_harbor_operations",
-    "name": "Port and Harbor Operations",
-    "naics": "488310",
-    "isReference": false,
-    "sourceFile": "port_harbor_operations"
-  },
-  {
-    "slug": "semiconductor_manufacturing",
-    "name": "Semiconductor and Related Device Manufacturing",
-    "naics": "334413",
-    "isReference": false,
-    "sourceFile": "semiconductor_manufacturing"
+    "rank": 2,
+    "compositeScore": 6.62,
+    "recommendation": "investigate"
   },
   {
     "slug": "refrigerated_warehousing",
     "name": "Refrigerated Warehousing and Storage",
+    "shortName": "Refrigerated Warehousing",
     "naics": "493120",
     "isReference": false,
-    "sourceFile": "refrigerated_warehousing"
+    "rank": 3,
+    "compositeScore": 6.41,
+    "recommendation": "investigate"
+  },
+  {
+    "slug": "wind_power_generation",
+    "name": "Wind Electric Power Generation",
+    "shortName": "Wind Power Generation",
+    "naics": "221115",
+    "isReference": false,
+    "rank": 4,
+    "compositeScore": 6.3,
+    "recommendation": "investigate"
+  },
+  {
+    "slug": "port_harbor_operations",
+    "name": "Port and Harbor Operations",
+    "shortName": "Port & Harbor Operations",
+    "naics": "488310",
+    "isReference": false,
+    "rank": 5,
+    "compositeScore": 6.16,
+    "recommendation": "investigate"
   },
   {
     "slug": "nonresidential_buildings",
     "name": "Lessors of Nonresidential Buildings",
+    "shortName": "Nonresidential Buildings",
     "naics": "531120",
     "isReference": false,
-    "sourceFile": "nonresidential_buildings"
+    "rank": 6,
+    "compositeScore": 6.16,
+    "recommendation": "investigate"
+  },
+  {
+    "slug": "semiconductor_manufacturing",
+    "name": "Semiconductor and Related Device Manufacturing",
+    "shortName": "Semiconductor Manufacturing",
+    "naics": "334413",
+    "isReference": false,
+    "rank": 7,
+    "compositeScore": 5.11,
+    "recommendation": "investigate"
+  },
+  {
+    "slug": "electric_power_distribution",
+    "name": "Electric Power Distribution",
+    "shortName": "Power Distribution",
+    "naics": "221122",
+    "isReference": false,
+    "rank": 8,
+    "compositeScore": 5.08,
+    "recommendation": "investigate"
   }
 ]

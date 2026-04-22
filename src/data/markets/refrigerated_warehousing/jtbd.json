@@ -1083,8 +1083,7 @@
           "impact_category": "cost",
           "product_related": false,
           "rationale": "Cold-store load profiles are flat-baseline + spike-driven; sizing tools designed for PV self-consumption mis-predict shave value",
-          "confidence": 0.85,
-          "satisfaction_rationale": "Generic BESS sizing tools (e.g., Homer Energy, PVsyst) target PV self-consumption profiles, not flat-baseline + spike-driven cold-store load shapes, leaving operators with ±20-30 % sizing error and moderate-low satisfaction at 4/10."
+          "confidence": 0.85
         },
         {
           "id": "N2",
@@ -1097,8 +1096,7 @@
           "impact_category": "cost",
           "product_related": false,
           "rationale": "Compressor cycling lengthens true peak duration; ene't 60-440 €/kW Leistungspreis penalises any 15-min interval breach",
-          "confidence": 0.83,
-          "satisfaction_rationale": "Incumbent EMS platforms model 15-min demand windows but rarely account for compressor-cycling extensions that stretch true peak duration, yielding moderate satisfaction at 5/10 for most operators."
+          "confidence": 0.83
         },
         {
           "id": "N3",
@@ -1111,8 +1109,7 @@
           "impact_category": "safety",
           "product_related": true,
           "rationale": "Li-ion reserved-SoC envelope vs refrigeration thermal mass = facility-specific calculation rarely done at design stage",
-          "confidence": 0.8,
-          "satisfaction_rationale": "No incumbent BESS vendor offers integrated HACCP-aware load survival forecasting at low SoC; operators rely on manual spreadsheet calculations, keeping satisfaction low at 3/10."
+          "confidence": 0.8
         },
         {
           "id": "N4",
@@ -1125,8 +1122,7 @@
           "impact_category": "cost",
           "product_related": false,
           "rationale": "§19 StromNEV atypical-grid-usage requires flat 7000h/yr profile — incompatible with FCR cycling",
-          "confidence": 0.82,
-          "satisfaction_rationale": "Revenue-stacking advisors (e.g., Entelios, Next Kraftwerke) handle FCR/arbitrage but rarely model §19 StromNEV 7,000 h/yr profile conflicts, leaving cold-store operators exposed at 3/10 satisfaction."
+          "confidence": 0.82
         },
         {
           "id": "N5",
@@ -1139,8 +1135,7 @@
           "impact_category": "reliability",
           "product_related": false,
           "rationale": "Rural DE feeders saturated by PV/wind; capacity letters non-binding until grid contract signed",
-          "confidence": 0.9,
-          "satisfaction_rationale": "DSO grid-capacity letters in rural Germany are non-binding until formal Netzanschlussvertrag; no incumbent EPC or developer can de-risk feeder reversal, keeping satisfaction at 4/10 despite high importance."
+          "confidence": 0.9
         },
         {
           "id": "N6",
@@ -1153,8 +1148,7 @@
           "impact_category": "time",
           "product_related": false,
           "rationale": "Limited TÜV/FGW capacity vs wave of BESS projects 2025-2027",
-          "confidence": 0.78,
-          "satisfaction_rationale": "TÜV/FGW certification bottlenecks affect all BESS projects equally; incumbent EPCs manage scheduling but cannot expand accredited-inspector capacity, yielding moderate satisfaction at 4/10."
+          "confidence": 0.78
         },
         {
           "id": "N7",
@@ -1167,8 +1161,7 @@
           "impact_category": "safety",
           "product_related": true,
           "rationale": "Li-ion fire clearances clash with NH3 plant rooms and IFS food-grade buffer zones",
-          "confidence": 0.84,
-          "satisfaction_rationale": "Standard BESS container layouts follow VdS/NFPA fire clearances but do not integrate NH3 plant-room and IFS food-grade buffer-zone requirements, forcing custom site engineering and moderate satisfaction at 4/10."
+          "confidence": 0.84
         },
         {
           "id": "N8",
@@ -1181,8 +1174,7 @@
           "impact_category": "cost",
           "product_related": true,
           "rationale": "Specialty fire underwriters lack actuarial data on co-located cold-store BESS",
-          "confidence": 0.75,
-          "satisfaction_rationale": "Specialty fire underwriters (FM Global, VdS) lack actuarial data on co-located cold-store BESS; incumbent integrators cannot influence insurer pricing models, leaving satisfaction low at 3/10."
+          "confidence": 0.75
         },
         {
           "id": "N9",
@@ -1195,8 +1187,7 @@
           "impact_category": "time",
           "product_related": false,
           "rationale": "Live cold-store cannot stop refrigeration during BESS works → night-shift/weekend coordination",
-          "confidence": 0.8,
-          "satisfaction_rationale": "Incumbent EPCs use standard Gantt scheduling but rarely account for live cold-store refrigeration constraints (no shutdown windows), requiring ad-hoc night/weekend coordination at 4/10 satisfaction."
+          "confidence": 0.8
         },
         {
           "id": "N10",
@@ -1209,8 +1200,7 @@
           "impact_category": "safety",
           "product_related": false,
           "rationale": "Refrigeration PLCs are EN 378 safety-rated, change-controlled; OEM resists 3rd-party signal injection",
-          "confidence": 0.82,
-          "satisfaction_rationale": "Refrigeration PLCs are EN 378 safety-rated with OEM change-control; no incumbent BESS integrator offers pre-certified interlock modules for NH3/CO2 systems, keeping satisfaction at 3/10."
+          "confidence": 0.82
         },
         {
           "id": "N11",
@@ -1223,8 +1213,7 @@
           "impact_category": "skill",
           "product_related": false,
           "rationale": "Cold-store operators have no Li-ion training tradition; HACCP requires documented competence",
-          "confidence": 0.72,
-          "satisfaction_rationale": "Incumbent commissioning packages include basic operator training but not HACCP-specific Li-ion procedures; cold-store staff receive generic content, yielding adequate satisfaction at 5/10."
+          "confidence": 0.72
         },
         {
           "id": "N12",
@@ -1237,8 +1226,7 @@
           "impact_category": "safety",
           "product_related": true,
           "rationale": "VdS Li-ion guidance still maturing; local Feuerwehr have inconsistent acceptance criteria",
-          "confidence": 0.85,
-          "satisfaction_rationale": "VdS Li-ion fire-protection guidance is still maturing and local Feuerwehr acceptance criteria vary by municipality; incumbent EPCs cannot guarantee first-pass approval, leaving satisfaction at 4/10."
+          "confidence": 0.85
         },
         {
           "id": "N13",
@@ -1251,8 +1239,7 @@
           "impact_category": "safety",
           "product_related": false,
           "rationale": "NH3 plant trips on 200 ms voltage dip → leak risk; storage solution must prove sub-cycle support",
-          "confidence": 0.83,
-          "satisfaction_rationale": "Tier-1 PCS hardware (SMA, Sungrow) achieves sub-100 ms response but witnessed test evidence specific to NH3 refrigeration ride-through is rarely provided, keeping satisfaction at 3/10."
+          "confidence": 0.83
         },
         {
           "id": "N14",
@@ -1265,8 +1252,7 @@
           "impact_category": "safety",
           "product_related": true,
           "rationale": "Cyber-physical control over refrigeration via storage EMS = new attack surface for insurer",
-          "confidence": 0.7,
-          "satisfaction_rationale": "Most incumbent BESS vendors address basic IT/OT segmentation but do not deliver full IEC 62443 cybersecurity documentation tailored to cold-store EMS integration, yielding moderate satisfaction at 4/10."
+          "confidence": 0.7
         },
         {
           "id": "N15",
@@ -1279,8 +1265,7 @@
           "impact_category": "reliability",
           "product_related": false,
           "rationale": "Refrigeration compressors draw 3-7× FLA at start; MV protection trip = SLA breach risk",
-          "confidence": 0.86,
-          "satisfaction_rationale": "Tier-1 4-quadrant PCS (SMA/Sungrow PowerTitan, <100 ms) demonstrably absorbs 3-7x FLA compressor inrush — incumbent capability better than initially estimated, raising satisfaction from 4 to 5."
+          "confidence": 0.86
         },
         {
           "id": "N16",
@@ -1293,8 +1278,7 @@
           "impact_category": "safety",
           "product_related": false,
           "rationale": "+2 °C breach in pharma/frozen = HACCP non-conformance + product write-off; existential risk",
-          "confidence": 0.92,
-          "satisfaction_rationale": "Incumbent EMS platforms (Tesla Autobidder, Fluence Mosaic) optimize revenue dispatch but do not enforce chamber-level temperature SLA constraints as hard limits during grid events, keeping satisfaction critically low at 3/10."
+          "confidence": 0.92
         },
         {
           "id": "N17",
@@ -1307,8 +1291,7 @@
           "impact_category": "cost",
           "product_related": false,
           "rationale": "Generic EMS optimises €/MWh first; HACCP reserve as hard constraint is rare",
-          "confidence": 0.8,
-          "satisfaction_rationale": "Generic BESS EMS maximizes EPEX arbitrage revenue but treats reserve SoC as a soft guideline rather than a HACCP-mandated hard floor, leaving cold-store operators at 3/10 satisfaction."
+          "confidence": 0.8
         },
         {
           "id": "N18",
@@ -1321,8 +1304,7 @@
           "impact_category": "reliability",
           "product_related": true,
           "rationale": "Aggressive arbitrage cycles erode warranty headroom; LFP at C/2 has documented 2 %/yr threshold",
-          "confidence": 0.78,
-          "satisfaction_rationale": "Tier-1 LFP cell vendors (CATL, BYD, EVE) document cycle-life at standard C-rates, and modern BMS limits C/2 cycling effectively, providing adequate degradation protection at 5/10 satisfaction."
+          "confidence": 0.78
         },
         {
           "id": "N19",
@@ -1335,8 +1317,7 @@
           "impact_category": "safety",
           "product_related": true,
           "rationale": "Cold-store next to flammable insulation/refrigerant; 30 min lead enables Feuerwehr arrival",
-          "confidence": 0.88,
-          "satisfaction_rationale": "Incumbent BMS platforms (Fluence, Tesla) detect thermal anomalies but typically provide 5-10 min warning, not the 30 min lead time needed for Feuerwehr arrival at remote cold-store sites, keeping satisfaction at 3/10."
+          "confidence": 0.88
         },
         {
           "id": "N20",
@@ -1349,8 +1330,7 @@
           "impact_category": "safety",
           "product_related": false,
           "rationale": "Auditors require time-aligned voltage + temperature trace; standard EMS lacks T-chain export",
-          "confidence": 0.83,
-          "satisfaction_rationale": "No surveyed incumbent EMS (Fluence Mosaic, Tesla Autobidder, Wartsila GEMS) natively produces time-aligned voltage+temperature traces for HACCP audit — structurally worse than initially estimated, lowering satisfaction from 4 to 3."
+          "confidence": 0.83
         },
         {
           "id": "N21",
@@ -1363,8 +1343,7 @@
           "impact_category": "reliability",
           "product_related": true,
           "rationale": "WMS/SCADA integration is afterthought in most BESS deployments",
-          "confidence": 0.74,
-          "satisfaction_rationale": "BESS vendors expose SoC/SoH via proprietary dashboards but rarely offer open API integration to WMS/SCADA layers common in cold-store operations, keeping satisfaction at 3/10."
+          "confidence": 0.74
         },
         {
           "id": "N22",
@@ -1377,8 +1356,7 @@
           "impact_category": "safety",
           "product_related": true,
           "rationale": "Hard reserved-SoC floor as contractual SLA is non-standard in current EMS products",
-          "confidence": 0.85,
-          "satisfaction_rationale": "Incumbent EMS products allow configurable SoC floors but do not enforce contractually-reserved spoilage-protection envelopes as binding SLA constraints, leaving satisfaction at 3/10."
+          "confidence": 0.85
         },
         {
           "id": "N23",
@@ -1391,8 +1369,7 @@
           "impact_category": "cost",
           "product_related": false,
           "rationale": "P3 role-identity need: Energy Manager becomes the cost-saver; needs auditable evidence",
-          "confidence": 0.7,
-          "satisfaction_rationale": "Standard BESS monitoring dashboards show kWh throughput but do not generate COO-ready quarterly savings reports benchmarked against grid-tariff baselines, keeping Energy Manager satisfaction at 4/10."
+          "confidence": 0.7
         },
         {
           "id": "N24",
@@ -1405,8 +1382,7 @@
           "impact_category": "reliability",
           "product_related": true,
           "rationale": "P5 emotional bridge: duty manager needs visible 'safety reserve' indicator to sleep at night",
-          "confidence": 0.55,
-          "satisfaction_rationale": "No incumbent BESS vendor offers a dedicated duty-manager-facing reserved-resilience SoC indicator designed for overnight peace-of-mind in cold-store operations, leaving satisfaction very low at 2/10."
+          "confidence": 0.55
         }
       ],
       "top_5_by_opportunity": [

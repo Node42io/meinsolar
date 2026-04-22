@@ -1,11 +1,10 @@
 /**
  * MarketDefinition — explains what NAICS is and why it's used.
- * Item 33 + 34 from TODO list.
+ * Fully data-driven, no hardcoded product or company names.
  */
 
 import SectionAnchor from "@/components/SectionAnchor";
 import ClickableCode from "@/components/ClickableCode";
-import SourceFootnote from "@/components/SourceFootnote";
 
 export default function MarketDefinition() {
   return (
@@ -15,16 +14,14 @@ export default function MarketDefinition() {
         <p>
           Every candidate market in this report is defined by a{" "}
           <strong>NAICS code</strong> — a 6-digit industry classification number
-          issued by the U.S. Census Bureau.{" "}
-          <SourceFootnote sourceIds={["DISC-S08"]} /> NAICS stands for the
+          issued by the U.S. Census Bureau. NAICS stands for the
           North American Industry Classification System. It organizes all
           economic activity into a hierarchy: 2-digit sectors narrow to
           3-digit subsectors, then 4-digit industry groups, then 5-digit
           industries, and finally 6-digit national-level detail. For example,
-          NAICS <ClickableCode kind="naics" code="333414" /> identifies
-          "Heating Equipment (except Warm Air Furnaces) Manufacturing" as a
-          distinct industry with its own workforce, revenue, and establishment
-          count data.
+          NAICS <ClickableCode kind="naics" code="221118" /> identifies
+          "Other Electric Power Generation" as a distinct industry with its own
+          workforce, revenue, and establishment count data.
         </p>
 
         <p>
@@ -36,27 +33,24 @@ export default function MarketDefinition() {
           codes unlock <strong>government-grade data</strong>: the U.S.
           Economic Census, County Business Patterns, and IBISWorld industry
           reports all index to NAICS, giving us comparable size, growth, and
-          concentration metrics across all candidate markets.{" "}
-          <SourceFootnote sourceIds={["DISC-S09"]} /> Third, using a frozen
+          concentration metrics across all candidate markets. Third, using a frozen
           external taxonomy prevents the LLM research layer from silently
           redefining markets across pipeline runs — each code is a
           reproducible anchor.
         </p>
 
         <p>
-          In the discovery phase (Phase 02a), the pipeline cross-classifies
-          the product's UNSPSC commodity code{" "}
-          <ClickableCode kind="unspsc" code="30102304" /> (Steel profiles) against
-          NAICS industry descriptions to find all industries where precision
-          steel profiles are a recognized need. This surfaces candidate markets
-          beyond the product team's immediate frame of reference — including
-          emergent adjacencies like linear motion systems or surface-hardened
-          tooling applications.
+          In the discovery phase, the pipeline cross-classifies
+          the product's commodity functional promise against NAICS industry
+          descriptions to find all industries where the product capability is a
+          recognized need. This surfaces candidate markets beyond the
+          product team's immediate frame of reference — including emergent
+          adjacencies and application domains.
         </p>
 
         <p>
           In this report, every NAICS code appears as a{" "}
-          <ClickableCode kind="naics" code="238220" /> badge. Clicking any
+          <ClickableCode kind="naics" code="221118" /> badge. Clicking any
           badge opens the official NAICS registry entry in a new tab, where
           you can verify the industry definition, see example establishments,
           and cross-reference with Census data.

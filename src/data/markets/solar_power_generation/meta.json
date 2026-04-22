@@ -2,6 +2,18 @@
   "slug": "solar_power_generation",
   "name": "Solar Electric Power Generation",
   "shortName": "Solar Power Generation",
-  "naics": "221114",
-  "isReference": false
+  "naicsCode": "221114",
+  "isReference": false,
+  "rank": 2,
+  "scores": {
+    "odi": 5.7,
+    "featureFit": 6.45,
+    "constraintCompatibility": 7.5,
+    "jobCoverage": 10.0,
+    "vnHierarchy": 6.0,
+    "incumbentVulnerability": 5.0,
+    "composite": 6.62
+  },
+  "recommendation": "investigate",
+  "rationale": "Cleanest strategic fit — full job coverage (10.0), Mein Solar PV-EPC incumbency differentiates vs. BESS pure-plays, and F5 Grid-Code Cert Delivery scores 7.78 (highest of any market). ODI 5.70 reflects retrofit-BESS opportunity on operational PV (need #9 FGW TR8 slip, opp 16)."
 }

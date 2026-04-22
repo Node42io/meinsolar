@@ -1,14 +1,207 @@
 {
-  "companyName": "Mein Solar GmbH",
-  "productName": "EPC für Großbatteriespeicher",
-  "productSubtitle": "Turnkey Battery Energy Storage Systems (BESS) — Engineering, Procurement & Construction",
-  "vendorName": "Mein Solar GmbH",
-  "vendorDescription": "Full-service EPC provider for solar power plants, large-scale battery storage, and EV charging infrastructure. Based in Ravensburg, Germany.",
-  "naicsHome": "238210",
-  "naicsHomeTitle": "Electrical Contractors and Other Wiring Installation Contractors",
-  "marketsAnalyzed": 8,
-  "unspscCode": "261315",
-  "unspscTitle": "Solar energy services",
-  "heroSubhead": "Mein Solar Großbatteriespeicher EPC service scored against 8 NAICS market adjacencies.",
-  "reportTitle": "Node42 Sales Hub — Mein Solar Großbatteriespeicher Report"
+  "company": {
+    "name": "Mein Solar GmbH",
+    "legalForm": "GmbH",
+    "ownership": "Private",
+    "founded": "2016",
+    "hq": "St.-Magdalena-Ring 20, 88213 Ravensburg, Germany",
+    "ceo": {
+      "name": "",
+      "since": "",
+      "note": ""
+    },
+    "revenue": {
+      "value": "",
+      "year": "",
+      "note": "Not publicly disclosed"
+    },
+    "employees": {
+      "value": "20-50",
+      "year": "2026",
+      "note": "Estimated from project portfolio"
+    },
+    "sites": "Ravensburg (HQ), Weingarten/Baienfurt (warehouse & logistics)",
+    "countries": "Germany",
+    "continents": "Europe",
+    "rdIntensity": "",
+    "patentsTotal": "",
+    "patentsGranted": "",
+    "primaryNaics": "238210",
+    "primaryNaicsTitle": "Electrical Contractors and Other Wiring Installation Contractors"
+  },
+  "globalFootprint": {
+    "regions": [
+      {
+        "region": "DACH / Southern Germany",
+        "sites": [
+          "Ravensburg (HQ)",
+          "Weingarten/Baienfurt (warehouse & logistics)"
+        ]
+      }
+    ]
+  },
+  "divisions": [
+    {
+      "name": "Solar EPC",
+      "type": "service",
+      "description": "PV system design, procurement, and installation (residential to utility scale)",
+      "isSubjectDivision": false
+    },
+    {
+      "name": "BESS EPC",
+      "type": "service",
+      "description": "Engineering, procurement, and construction for large-scale battery energy storage systems",
+      "isSubjectDivision": true
+    },
+    {
+      "name": "EV Charging",
+      "type": "service",
+      "description": "EV charging infrastructure (wallbox to DC fast charger), integrated with PV/BESS",
+      "isSubjectDivision": false
+    }
+  ],
+  "productGroup": {
+    "name": "Battery Energy Storage System EPC Services",
+    "scope": "Large-Scale Battery Energy Storage System EPC",
+    "families": [
+      {
+        "name": "Standalone BESS EPC",
+        "technology": "LFP containerized",
+        "status": "active"
+      },
+      {
+        "name": "PV+BESS Hybrid EPC",
+        "technology": "PV + LFP integrated",
+        "status": "active"
+      },
+      {
+        "name": "EV-Charging Buffer",
+        "technology": "BESS + HPC",
+        "status": "emerging"
+      }
+    ]
+  },
+  "product": {
+    "name": "EPC für Großbatteriespeicher",
+    "family": "Battery Energy Storage System EPC Services",
+    "bomLevel": "L5",
+    "homeMarketNaics": "238210",
+    "homeMarketTitle": "Electrical Contractors and Other Wiring Installation Contractors",
+    "variants": [
+      {
+        "id": "standalone_bess",
+        "status": "active",
+        "note": "4.5 MW / 9 MWh reference (Hammerwerk Fridingen, Liebherr)"
+      },
+      {
+        "id": "pv_bess_hybrid",
+        "status": "active",
+        "note": "PV + BESS co-located (Liebherr Kirchdorf: 5.1 MWp + 4.5 MW/9 MWh)"
+      }
+    ]
+  },
+  "studyQuestion": {
+    "q1": {
+      "german": "Welche Anwendungsfelder und Kundensegmente bieten das hochste Potenzial fur unsere EPC-Dienstleistung im Bereich Grobatteriespeicher, wie attraktiv sind diese Segmente und wie konnte ein passendes Geschaftsmodell aussehen?",
+      "english": "Which application fields and customer segments offer the highest potential for our EPC service in large-scale battery energy storage, how attractive are these segments, and what could a fitting business model look like?",
+      "answer": "8 markets cleared Step 08 with zero knockouts. No market clears the 7.5 pursue threshold; all 8 fall in the 5.0-7.5 investigate band. Top cluster led by 221118 IPP (6.66), 221114 PV+BESS (6.62) and 493120 Refrigerated Warehousing (6.41) — a barbell of incumbent-dense utility markets where Mein Solar has native capability and a wide-open emerging market with no real storage incumbents. Biggest cross-market risk is incumbent intensity in the established utility tier (Tesla, Sungrow, Fluence, ABB) — IPP and DSO scores dragged down by 2+ dominant integrators. Recommended next step: parallel customer-discovery sprints in 221118, 221114 and 493120 before committing CAPEX to fab/port verticals that need 18+ month references."
+    },
+    "q2": {
+      "german": "Wo fuhren Netzengpasse, volatile Strompreise, Lastspitzen oder regulatorischer Druck zu den groBten Investitionsanreizen fur Grobatteriespeicher -- und wer kauft?",
+      "english": "Where do grid bottlenecks, volatile electricity prices, peak loads, or regulatory pressure create the greatest investment incentives for large-scale battery storage -- and who buys?",
+      "answer": ""
+    }
+  },
+  "portfolioPriorities": [
+    {
+      "priority": 1,
+      "market": "Standalone BESS / Independent Power Producers",
+      "naicsCode": "221118",
+      "fitScore": 6.66,
+      "fitLabel": "investigate",
+      "compositeScore": 6.66,
+      "timeToFirstRevenue": "9-15 months",
+      "estimatedInvestment": "EUR 300K-800K",
+      "role": "investigate"
+    },
+    {
+      "priority": 2,
+      "market": "PV+BESS Solar Independent Power Producers",
+      "naicsCode": "221114",
+      "fitScore": 6.62,
+      "fitLabel": "investigate",
+      "compositeScore": 6.62,
+      "timeToFirstRevenue": "3-6 months",
+      "estimatedInvestment": "EUR 150K-400K",
+      "role": "investigate"
+    },
+    {
+      "priority": 3,
+      "market": "Cold Storage Peak-Shaving & Resilience",
+      "naicsCode": "493120",
+      "fitScore": 6.41,
+      "fitLabel": "investigate",
+      "compositeScore": 6.41,
+      "timeToFirstRevenue": "12-18 months",
+      "estimatedInvestment": "EUR 400K-900K",
+      "role": "investigate"
+    },
+    {
+      "priority": 4,
+      "market": "Wind+BESS Hybrid Parks",
+      "naicsCode": "221115",
+      "fitScore": 6.3,
+      "fitLabel": "investigate",
+      "compositeScore": 6.3,
+      "timeToFirstRevenue": "12-18 months",
+      "estimatedInvestment": "EUR 250K-600K",
+      "role": "investigate"
+    },
+    {
+      "priority": 5,
+      "market": "Port Electrification — Shore Power, Crane, Ferry Charging",
+      "naicsCode": "488310",
+      "fitScore": 6.16,
+      "fitLabel": "investigate",
+      "compositeScore": 6.16,
+      "timeToFirstRevenue": "18-30 months",
+      "estimatedInvestment": "EUR 600K-1.5M",
+      "role": "investigate"
+    },
+    {
+      "priority": 6,
+      "market": "Commercial & Industrial Real-Estate Behind-the-Meter Storage",
+      "naicsCode": "531120",
+      "fitScore": 6.16,
+      "fitLabel": "investigate",
+      "compositeScore": 6.16,
+      "timeToFirstRevenue": "9-15 months",
+      "estimatedInvestment": "EUR 200K-500K",
+      "role": "investigate"
+    },
+    {
+      "priority": 7,
+      "market": "Semiconductor Fab Power-Quality & Ride-Through",
+      "naicsCode": "334413",
+      "fitScore": 5.11,
+      "fitLabel": "investigate",
+      "compositeScore": 5.11,
+      "timeToFirstRevenue": "24-36 months",
+      "estimatedInvestment": "EUR 1M-3M",
+      "role": "investigate"
+    },
+    {
+      "priority": 8,
+      "market": "DSO-Owned Netzbooster Storage",
+      "naicsCode": "221122",
+      "fitScore": 5.08,
+      "fitLabel": "investigate",
+      "compositeScore": 5.08,
+      "timeToFirstRevenue": "24-36 months",
+      "estimatedInvestment": "EUR 500K-1.5M",
+      "role": "investigate"
+    }
+  ],
+  "financials": {},
+  "sources": []
 }
