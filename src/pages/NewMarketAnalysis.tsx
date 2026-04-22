@@ -93,20 +93,15 @@ function buildAnalysisTabs(marketSlug: string): AnalysisTab[] {
             tabs.push(ext);
           }
         }
-      } else {
-        // No manifest loaded — show all extended tabs (they'll show "no data" gracefully)
-        tabs.push(...EXTENDED_TABS);
       }
-    } else {
-      // No manifest — show all extended tabs
-      tabs.push(...EXTENDED_TABS);
     }
   } catch {
-    // Fallback: show all tabs
-    tabs.push(...EXTENDED_TABS);
+    // Fallback: show all base tabs
   }
   return tabs;
 }
+
+// Backwards compatibility
 
 const DEFAULT_TAB = "jtbd";
 
@@ -116,29 +111,37 @@ const DEFAULT_TAB = "jtbd";
    ========================================================================= */
 function buildMarketTabs(): MarketTab[] {
   // Create a rank lookup by slug
+  const rankedMarkets = (ranking as any).rankedMarkets ?? [];
   const rankBySLug = Object.fromEntries(
-    ranking.rankedMarkets.map((rm) => [
+    rankedMarkets.map((rm: any) => [
       rm.slug,
-      { rank: rm.rank, composite: rm.scores.composite },
+      { rank: rm.rank, composite: rm.scores?.composite },
     ])
   );
 
-  // Only show markets that have static data bundles (the 12 reference markets)
-  return marketsIndex
-    .filter((m) => !!markets[m.slug])
-    .map((m) => {
-      const ranked = rankBySLug[m.slug];
-      return {
-        slug: m.slug,
-        label: m.name,
-        meta: ranked && ranked.composite != null ? ranked.composite.toFixed(2) : undefined,
-      };
-    });
+  return marketsIndex.map((m) => {
+    const ranked = rankBySLug[m.slug];
+    return {
+      slug: m.slug,
+      label: m.name,
+      meta: ranked && ranked.composite != null ? ranked.composite.toFixed(2) : undefined,
+    };
+  });
 }
 
 /* =========================================================================
    Tab switcher — renders the correct tab component for the active slug
    ========================================================================= */
+/** Map base tab slugs to their json_exporter type for GenericAnalysisTab fallback */
+const BASE_TAB_TO_TYPE: Record<string, string> = {
+  "jtbd": "jtbd_analysis",
+  "value-network": "value_network",
+  "bom": "product_bom",
+  "kano": "feature_market_fit",
+  "compatibility": "constraint_compatibility",
+  "alternatives": "feature_market_fit",
+};
+
 function TabContent({
   tabSlug,
   marketSlug,
@@ -146,7 +149,15 @@ function TabContent({
   tabSlug: string;
   marketSlug: string;
 }) {
-  // Custom visualizations for proven types
+  // If market is NOT in the static bundle, use GenericAnalysisTab for ALL tabs
+  const isStaticMarket = !!markets[marketSlug];
+
+  if (!isStaticMarket) {
+    const analysisType = TAB_TO_TYPE[tabSlug] || BASE_TAB_TO_TYPE[tabSlug] || tabSlug;
+    return <GenericAnalysisTab marketSlug={marketSlug} analysisType={analysisType} />;
+  }
+
+  // Static market — use custom visualizations for proven types
   switch (tabSlug) {
     case "jtbd":
       return <JTBDTab marketSlug={marketSlug} />;
@@ -161,12 +172,10 @@ function TabContent({
     case "alternatives":
       return <AlternativesTab marketSlug={marketSlug} />;
     default: {
-      // Generic tables + text renderer for new analysis types
       const analysisType = TAB_TO_TYPE[tabSlug];
       if (analysisType) {
         return <GenericAnalysisTab marketSlug={marketSlug} analysisType={analysisType} />;
       }
-      // Truly unknown — fallback to jtbd
       return <JTBDTab marketSlug={marketSlug} />;
     }
   }
@@ -230,7 +239,7 @@ export default function NewMarketAnalysis() {
 
   // ── Static bundle exists — full rendering with market header
   const meta = bundle.meta;
-  const ranked = ranking.rankedMarkets.find((rm) => rm.slug === marketSlug);
+  const ranked = (ranking as any).rankedMarkets?.find((rm: any) => rm.slug === marketSlug) ?? null;
   const marketTabs = buildMarketTabs();
 
   return (
@@ -239,7 +248,7 @@ export default function NewMarketAnalysis() {
       <PageHeader
         kicker="Page 06 / Deep-dive per market"
         title="New Market Analysis"
-        description={ranking.executiveSummary}
+        description={(ranking as any).executiveSummary ?? ""}
       />
 
       {/* ─── Market tab row ───────────────────────────────────────────── */}

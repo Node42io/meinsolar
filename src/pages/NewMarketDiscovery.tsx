@@ -1,19 +1,16 @@
 /**
- * NewMarketDiscovery — Page 02
+ * NewMarketDiscovery — Page 04 (renumbered; home market removed)
  *
- * Combines HTML reports 05-market-discovery + 10-ranking into a single
- * scrollable React page:
+ * Combines discovery + ranking into a single scrollable React page:
  *   1. Executive Summary
  *   2. Market Definition (NAICS explainer)
  *   3. Discovery Process (Phase 02a search config + candidates table)
  *   4. Architecture Distance (Phase 02b)
  *   5. Scoring Criteria (with exec summary)
- *   6. Confidence Legend
- *   7. Final Ranking Table (all 8 markets)
+ *   6. Pipeline Summary
+ *   7. Final Ranking Table (all 10 markets)
  *   8. Per-market Rationale Cards
  *   9. Sources
- *
- * TODO items applied: 31, 32, 33, 34, 35, 36, 37, 39.
  */
 
 import PageHeader from "@/components/PageHeader";
@@ -21,7 +18,6 @@ import ExecutiveSummary from "@/components/ExecutiveSummary";
 import ClickableCode from "@/components/ClickableCode";
 import ConfidenceBadge from "@/components/ConfidenceBadge";
 import SectionAnchor from "@/components/SectionAnchor";
-import SourceFootnote from "@/components/SourceFootnote";
 import SourceList from "@/components/SourceList";
 
 import marketDiscovery from "@/data/marketDiscovery.json";
@@ -60,21 +56,17 @@ const DISTANCE_BADGE: Record<string, string> = {
   LOW: "badge badge--weak",
 };
 
-// Architecture distance data is now stored in marketDiscovery.json (field: archDistanceData)
-
 /* Collect all source IDs used on this page */
 const PAGE_SOURCE_IDS = [
-  "DISC-S01", "DISC-S02", "DISC-S03", "DISC-S04", "DISC-S05",
-  "DISC-S06", "DISC-S07", "DISC-S08", "DISC-S09", "DISC-S10",
-  "DISC-S11", "DISC-S12", "DISC-S13", "DISC-S14", "DISC-S15", "DISC-S16",
-  "RS007",
+  "MD-S01", "MD-S02", "MD-S03", "MD-S04",
+  "PROD-S03", "PROD-S05", "PROD-S09", "PROD-S10",
 ];
 
 /* ---- component ---- */
 
 export default function NewMarketDiscovery() {
-  const rankedMarkets = (ranking.rankedMarkets ?? []) as RankedMarket[];
-  const candidates = marketDiscovery.candidates ?? [];
+  const rankedMarkets = ((ranking as any).rankedMarkets ?? []) as RankedMarket[];
+  const candidates = (marketDiscovery as any).candidates ?? [];
 
   /* guard against missing data */
   if (!rankedMarkets.length) {
@@ -89,9 +81,9 @@ export default function NewMarketDiscovery() {
     <>
       {/* ── Page Header ─────────────────────────────────────────────── */}
       <PageHeader
-        kicker="Step 02a + 02b / UNSPSC-to-NAICS Cross-Classification & Architecture Distance / New Markets for an Existing Product"
+        kicker="Step 02a + 02b / NAICS Discovery & Architecture Distance / New Markets for an Existing Product"
         title="New Market Discovery"
-        description="Candidate markets discovered, scored by architecture distance, and ranked by 6-factor composite scoring for ZOLLERN Special Steel Profiles."
+        description="Candidate markets discovered, scored by architecture distance, and ranked by 6-factor composite scoring for the GfS Türwächter IoT."
       />
 
       {/* ── 1. Executive Summary ─────────────────────────────────────── */}
@@ -100,13 +92,13 @@ export default function NewMarketDiscovery() {
         <div className="md">
         <ExecutiveSummary title="What You're Looking At">
           <p className="answer">
-            This page covers the full new-market discovery pipeline for
-            ZOLLERN Special Steel Profiles (UNSPSC{" "}
-            <ClickableCode kind="unspsc" code="30102304" /> — Steel profiles). The
-            pipeline discovered <strong>14 new markets</strong> via
-            UNSPSC-to-NAICS cross-classification, ranked them by architecture
-            distance, carried 8 through full constraint and fit analysis, and
-            produced a <strong>6-factor composite score</strong> for each.
+            This page covers the full new-market discovery pipeline for the
+            GfS Türwächter IoT (Exit Control 179/1125) — Emergency Exit Security Devices
+            with Remote Monitoring. The pipeline discovered <strong>{candidates.length} candidate
+            markets</strong> via commodity functional promise search and FP extension
+            cross-classification, ranked them by architecture distance, carried{" "}
+            {rankedMarkets.length} through full constraint and fit analysis, and produced
+            a <strong>6-factor composite score</strong> for each.
           </p>
           <p className="answer">
             What you learn here: which NAICS industry adjacencies scored
@@ -116,18 +108,15 @@ export default function NewMarketDiscovery() {
             go-to-market moves are recommended for each.
           </p>
           <p className="answer">
-            What's next: all 8 surviving markets fall in the{" "}
+            What's next: all {rankedMarkets.length} surviving markets fall in the{" "}
             <strong>investigate</strong> band (5.0–7.5 composite). The top
-            three — <strong>Finfish Farming / RAS</strong> (6.97),{" "}
-            <strong>HVAC Contractors</strong> (6.61), and{" "}
-            <strong>District Energy / Steam &amp; AC Supply</strong> (6.30) —
+            three — <strong>Hotels &amp; Motels</strong> (6.95),{" "}
+            <strong>Continuing Care Retirement</strong> (6.80), and{" "}
+            <strong>Elementary &amp; Secondary Schools</strong> (6.61) —
             are recommended for customer-discovery sprints before resource
             allocation. Deep-dive analysis for each market (JTBD, ODI matrix,
             feature-market fit, value network) lives on the{" "}
-            <strong>Analysis</strong> page.
-          </p>
-          <p className="answer">
-            {ranking.executiveSummary}
+            <strong>Market Analysis</strong> page.
           </p>
         </ExecutiveSummary>
         </div>
@@ -141,7 +130,7 @@ export default function NewMarketDiscovery() {
         <SectionAnchor
           id="discovery-process"
           title="Discovery Process — Phase 02a"
-          kicker="UNSPSC-to-NAICS Cross-Classification"
+          kicker="Commodity FP → NAICS Cross-Classification"
         />
         <div className="md">
           <h3>Search Configuration</h3>
@@ -155,24 +144,18 @@ export default function NewMarketDiscovery() {
             <tbody>
               <tr>
                 <td><strong>Commodity Functional Promise</strong></td>
-                <td>
-                  {marketDiscovery.commodityFP}{" "}
-                  <SourceFootnote sourceIds={["DISC-S15"]} />
-                </td>
+                <td>{marketDiscovery.commodityFP}</td>
               </tr>
               <tr>
-                <td><strong>UNSPSC Context</strong></td>
+                <td><strong>Custom Product Group</strong></td>
                 <td>
-                  <ClickableCode kind="unspsc" code="30102304" /> — Steel profiles{" "}
-                  <SourceFootnote sourceIds={["DISC-S14"]} />
+                  Emergency Exit Door Alarm Guards (no exact UNSPSC 8-digit match;
+                  nearest class: 46171500 Locks and security hardware)
                 </td>
               </tr>
               <tr>
                 <td><strong>Functional Promise Extension</strong></td>
-                <td>
-                  {marketDiscovery.fpExtension}{" "}
-                  <SourceFootnote sourceIds={["DISC-S15"]} />
-                </td>
+                <td>{marketDiscovery.fpExtension}</td>
               </tr>
               <tr>
                 <td><strong>Extension Domains</strong></td>
@@ -181,8 +164,8 @@ export default function NewMarketDiscovery() {
               <tr>
                 <td><strong>Excluded Markets</strong></td>
                 <td>
-                  12 existing application markets — profiles already supplied
-                  to these industries and excluded from new-market discovery
+                  <ClickableCode kind="naics" code="332321" /> — Metal Window and
+                  Door Manufacturing (manufacturer's home NAICS — GfS Rettungswegtechnik)
                 </td>
               </tr>
             </tbody>
@@ -190,29 +173,29 @@ export default function NewMarketDiscovery() {
 
           <h3>Primary Functional Promise Search Query</h3>
           <pre>
-            <code>{`"30102304 Steel profiles applications industries markets NAICS codes.
- Where is this commodity class used across manufacturing, construction,
- automotive, rail, mining, energy, agriculture, material handling,
- defence, tooling, and precision mechanical systems?
- What industries need precision linear motion, tribological interfaces,
- or mechanical retention profiles machined from bar stock?
+            <code>{`"What 6-digit NAICS industries need to prevent unauthorized use of
+ emergency exit doors while maintaining unimpeded escape capability?
+ Broad sector sweep: healthcare, education, hospitality, transportation,
+ government, retail, industrial, logistics, food service, cultural
+ institutions, senior living, data infrastructure, and defense.
  Return specific industry names and 6-digit NAICS codes."`}</code>
           </pre>
 
           <h3>Functional Promise Extension Search Query</h3>
           <pre>
-            <code>{`"What industries need precision linear motion, tribological interfaces,
- or mechanical retention profiles in near-net-shape steel bar stock?
- Precision linear motion, tribological interfaces, mechanical retention profiles.
+            <code>{`"What 6-digit NAICS industries manage distributed passive safety-critical
+ devices requiring wireless monitoring without mains power?
+ Fire suppression, emergency lighting, industrial safety valves,
+ building safety hardware fleets.
  Return specific industry names and 6-digit NAICS codes."`}</code>
           </pre>
 
           <h3>
-            Candidates ({candidates.length} discovered, 12 existing application
-            markets excluded)
+            Candidates ({candidates.length} discovered, 1 excluded as home
+            market)
           </h3>
 
-          {/* Confidence legend — Item 35: shown once near first confidence badge */}
+          {/* Confidence legend */}
           <div
             style={{
               background: "var(--surface-dark)",
@@ -263,7 +246,7 @@ export default function NewMarketDiscovery() {
               </tr>
             </thead>
             <tbody>
-              {candidates.map((c, i) => (
+              {candidates.map((c: any, i: number) => (
                 <tr key={c.naics}>
                   <td style={{ fontFamily: "var(--font-mono)", textAlign: "center" }}>
                     {i + 1}
@@ -308,8 +291,8 @@ export default function NewMarketDiscovery() {
         <SectionAnchor id="candidate-details" title="Candidate Details" kicker="Phase 02a" />
         <div className="md">
           <p>
-            The table below summarises why each NAICS code was selected:
-            the primary job to be done, why precision steel profiles are relevant, what
+            The cards below summarise why each NAICS code was selected:
+            the primary job to be done, why emergency exit security is required, what
             alternatives exist, and our best-available market size estimate.
           </p>
 
@@ -387,27 +370,27 @@ export default function NewMarketDiscovery() {
             <tbody>
               <tr>
                 <td><strong>Product</strong></td>
-                <td>ZOLLERN Special Steel Profiles</td>
+                <td>GfS Türwächter IoT (Exit Control 179/1125)</td>
               </tr>
               <tr>
                 <td><strong>Technology Class</strong></td>
-                <td>Precision Steel Profile Manufacturing</td>
+                <td>Emergency Exit Security Devices with Remote Monitoring</td>
               </tr>
               <tr>
                 <td><strong>Mechanism</strong></td>
-                <td>Sequential plastic deformation through custom die sets producing near-net-shape 2D cross-sections with optional induction surface hardening</td>
+                <td>Spring-loaded mechanical door-handle guard with piezoelectric alarm horn (95 dB) + 868 MHz EasyWave wireless</td>
               </tr>
               <tr>
                 <td><strong>Key Specs</strong></td>
-                <td>Cross-sections 5–7,650 mm², tolerance ±0.02 mm, hardness up to 64 HRC, bar length up to 12 m, carbon/alloy/bearing/spring/tool steels</td>
+                <td>95 dB alarm, 868 MHz EasyWave, 9V battery, surface-mount, ~30m range, EN 179/1125, ~730 EUR (IoT variant)</td>
               </tr>
               <tr>
                 <td><strong>Scoring Type</strong></td>
-                <td>Hardware components (L1–L4, where L4 = major subsystem, L3 = module, L2 = assembly, L1 = part) — criteria U1–U5 + H1–H4</td>
+                <td>Hardware components (L1–L4) — criteria U1–U5 + H1–H4</td>
               </tr>
               <tr>
                 <td><strong>Tiered Discovery</strong></td>
-                <td>Not used (16 candidates &lt; 20 threshold)</td>
+                <td>Not used ({candidates.length} candidates &lt; 20 threshold)</td>
               </tr>
             </tbody>
           </table>
@@ -423,13 +406,13 @@ export default function NewMarketDiscovery() {
           </ul>
           <h4>Hardware-Specific (H1–H4)</h4>
           <ul>
-            <li><strong>H1:</strong> Physical envelope match (size, weight, mounting, interfaces)</li>
+            <li><strong>H1:</strong> Physical envelope match (size, mounting, interfaces)</li>
             <li><strong>H2:</strong> Media / material compatibility</li>
-            <li><strong>H3:</strong> Performance specification match (accuracy, throughput, capacity)</li>
-            <li><strong>H4:</strong> Certification transferability</li>
+            <li><strong>H3:</strong> Performance specification match (alarm volume, range, battery life)</li>
+            <li><strong>H4:</strong> Certification transferability (EN 179/1125, CE)</li>
           </ul>
           <p>
-            <em>Scale: 1 = nearly identical, 10 = completely different.</em>
+            <em>Scale: 1 = nearly identical to current use case, 10 = completely different.</em>
           </p>
 
           <h3>Ranked Results</h3>
@@ -519,22 +502,22 @@ export default function NewMarketDiscovery() {
             </thead>
             <tbody>
               <tr>
-                <td><strong>Markets Discovered (Step 02)</strong></td>
-                <td>16</td>
+                <td><strong>Markets Discovered (Phase 02a)</strong></td>
+                <td>{candidates.length}</td>
               </tr>
               <tr>
-                <td><strong>Existing Markets Excluded</strong></td>
+                <td><strong>Home Market Excluded</strong></td>
                 <td>
-                  12 existing application markets excluded from new-market discovery
+                  1 (<ClickableCode kind="naics" code="332321" /> — Metal Window and Door Manufacturing)
                 </td>
               </tr>
               <tr>
-                <td><strong>Carried Through Downstream Analysis</strong></td>
-                <td>{ranking.totalMarketsEvaluated} candidate markets</td>
+                <td><strong>Carried Through Full Analysis</strong></td>
+                <td>{rankedMarkets.length} candidate markets</td>
               </tr>
               <tr>
                 <td><strong>Eliminated by Constraint Knockout</strong></td>
-                <td>{ranking.marketsEliminatedByConstraints}</td>
+                <td>0 (no absolute constraint violations across any market)</td>
               </tr>
               <tr>
                 <td><strong>Markets Ranked</strong></td>
@@ -543,7 +526,9 @@ export default function NewMarketDiscovery() {
               <tr>
                 <td><strong>Not Analyzed Downstream</strong></td>
                 <td>
-                  14 new markets discovered — remaining outside pipeline scope limit
+                  5 (Airports, Refrigerated Warehousing, Pharma Manufacturing,
+                  Food Manufacturing, Fire Protection — below priority threshold
+                  or insufficient data for full deep-dive)
                 </td>
               </tr>
             </tbody>
@@ -551,7 +536,7 @@ export default function NewMarketDiscovery() {
         </div>
       </section>
 
-      {/* ── 7. Final Ranking Table — all 8 markets ───────────────────── */}
+      {/* ── 7. Final Ranking Table ───────────────────────────────────── */}
       <RankingTable markets={rankedMarkets} />
 
       {/* ── 8. Per-market Rationale Cards ───────────────────────────── */}
@@ -566,8 +551,8 @@ export default function NewMarketDiscovery() {
             Each card below details the recommendation rationale, entry
             strategy, time and investment estimates for one candidate market.
             Click the link at the bottom of any card to open the full
-            market-level deep-dive (Compatibility, Job-to-be-Done, Outcomes, Value Network)
-            on the Analysis page.
+            market-level deep-dive (JTBD, ODI matrix, Kano, Value Network,
+            BOM, Compatibility, Alternatives) on the Analysis page.
           </p>
         </div>
         {rankedMarkets.map((m) => (
@@ -585,7 +570,3 @@ export default function NewMarketDiscovery() {
     </>
   );
 }
-
-// candidateDetails data moved to src/data/marketDiscovery.json
-// archDistanceData moved to src/data/marketDiscovery.json
-// Both types (CandidateDetail, ArchDistanceRow) imported from src/types/index.ts
