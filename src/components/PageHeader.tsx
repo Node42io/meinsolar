@@ -8,7 +8,7 @@
  *   <PageHeader
  *     kicker="Step 01 / Christensen Capability Abstraction"
  *     title="Product Decomposition"
- *     description="Functional abstraction of the GfS Türwächter IoT."
+ *     description="Functional abstraction of ZOLLERN Special Steel Profiles."
  *   />
  */
 

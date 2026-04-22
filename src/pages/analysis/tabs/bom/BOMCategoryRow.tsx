@@ -37,7 +37,7 @@ function ChevronIcon({ open }: { open: boolean }) {
 }
 
 /* ── Product anchor badge ──────────────────────────────────────────────── */
-function MarquardtBadge({ note }: { note?: string }) {
+function AnchorBadge({ note }: { note?: string }) {
   return (
     <span
       style={{
@@ -93,7 +93,7 @@ function ModuleRow({ module, parentConfidence }: { module: BOMModule; parentConf
         <span style={{ fontSize: 13, fontWeight: 500, color: "var(--text-white)" }}>
           {module.name}
         </span>
-        {module.isMarquardtAnchor && <MarquardtBadge note={module.sensorNote} />}
+        {module.isMarquardtAnchor && <AnchorBadge note={module.sensorNote} />}
       </div>
       {module.alternatives && module.alternatives.length > 0 && (
         <div className="bom-inline-variants">
@@ -168,7 +168,7 @@ export default function BOMCategoryRow({ subsystem, rowIndex }: BOMCategoryRowPr
           <div className="bom-category-row__label-row">
             <span className="bom-category-row__label">{subsystem.name}</span>
             <ConfidenceTierBadge confidence={subsystem.confidence} />
-            {subsystem.isMarquardtAnchor && <MarquardtBadge />}
+            {subsystem.isMarquardtAnchor && <AnchorBadge />}
             {subsystem.costSharePct != null && (
               <span
                 style={{

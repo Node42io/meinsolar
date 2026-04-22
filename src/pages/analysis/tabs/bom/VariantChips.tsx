@@ -2,7 +2,7 @@
  * VariantChips — top product-variant chip group (Output Types).
  *
  * Matches Figma design: pill chips for product variants (OT-1, OT-2, …).
- * Shows only output types that have sensor relevance (primary or secondary).
+ * Shows only output types that have product relevance (primary or secondary).
  * Selected chip is highlighted in accent-yellow.
  *
  * Uses .bom-variant-chips / .bom-variant-chip CSS from bom.css.

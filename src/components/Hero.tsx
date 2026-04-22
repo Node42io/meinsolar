@@ -11,7 +11,7 @@
  *   <Hero
  *     eyebrow="Clayton Analysis · 2026-04-14"
  *     headline="Eight applications, three beachheads"
- *     subhead="GfS Türwächter IoT emergency exit door guardian scored against 8 NAICS adjacencies."
+ *     subhead="ZOLLERN steel profiles scored against 26 markets."
  *   />
  *
  *   // With rich children (stat tiles, answer box, etc.):

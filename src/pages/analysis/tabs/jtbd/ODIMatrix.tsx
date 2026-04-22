@@ -1210,7 +1210,7 @@ function TableView({
   );
 }
 
-/** Check if any need has a non-empty id (some markets may not have them). */
+/** Check if any need has a non-empty id (finfish has ids, some markets may not). */
 function need_id_present(needs: ODINeed[]) {
   return needs.some((n) => n.id && n.id.trim().length > 0);
 }

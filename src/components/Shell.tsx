@@ -3,12 +3,13 @@
  *
  * Sidebar structure:
  *   ANALYSIS
- *     00  Overview             > (expandable section links)
- *     01  Product Profile      >
- *     02  Functional Promise   >
- *     03  Constraints          >
- *     04  New Market Discovery
- *     05  New Market Analysis   <- tabbed
+ *     01  Product Profile       ▶ (expandable section links)
+ *     02  Functional Promise    ▶
+ *     03  Constraints           ▶
+ *     04  Market Competition
+ *     05  New Market Discovery
+ *     06  New Market Analysis    ← tabbed
+ *     08  Strategic Synthesis    ← conclusion
  */
 
 import { useState, useEffect, useCallback } from "react";
@@ -35,6 +36,7 @@ const TYPE_LABELS: Record<string, string> = {
   functional_promise: "Functional Promise",
   constraints: "Constraints",
   capability_assessment: "Capability Assessment",
+  home_market_competition: "Home Market",
   market_discovery: "Market Discovery",
   final_ranking: "Final Ranking",
   product_validation: "Product Validation",
@@ -53,6 +55,7 @@ const TYPE_ROUTES: Record<string, string> = {
   functional_promise: "/functional-promise",
   constraints: "/constraints",
   capability_assessment: "/constraints",
+  home_market_competition: "/home-market",
   market_discovery: "/discovery",
   final_ranking: "/overview",
 };
@@ -83,7 +86,11 @@ function buildNavFromManifest(): NavItem[] {
 
   if (manifest.markets?.length > 0) {
     items.push({ to: "/analysis", label: "Market Analysis", kicker: String(idx).padStart(2, "0") });
+    idx++;
   }
+
+  // Always append Strategic Synthesis as the final item
+  items.push({ ...staticNavItems[staticNavItems.length - 1], kicker: String(idx).padStart(2, "0") });
 
   return items;
 }
@@ -96,11 +103,9 @@ const staticNavItems: NavItem[] = [
     kicker: "00",
     sections: [
       { id: "ovw-question",   label: "The Question" },
-      { id: "ovw-company",    label: "About the Company" },
+      { id: "ovw-company",    label: "About ZOLLERN" },
       { id: "ovw-hierarchy",  label: "Division → Product" },
       { id: "ovw-product",    label: "Product Variants" },
-      { id: "ovw-portfolio",  label: "Market Priorities" },
-      { id: "ovw-financials", label: "Investment Context" },
       { id: "ovw-howto",      label: "How to Read" },
     ],
   },
@@ -155,20 +160,23 @@ const staticNavItems: NavItem[] = [
       { id: "con-sources",       label: "Sources" },
     ],
   },
+  { to: "/home-market", label: "Home Market", kicker: "04" },
+  { to: "/capabilities", label: "Capability Register", kicker: "05" },
+  { to: "/adjacency", label: "Adjacency Analysis", kicker: "06" },
+  { to: "/discovery", label: "Market Discovery", kicker: "07" },
+  { to: "/analysis", label: "Market Analysis", kicker: "08" },
   {
-    to: "/discovery",
-    label: "New Market Discovery",
-    kicker: "04",
+    to: "/synthesis",
+    label: "Strategic Synthesis",
+    kicker: "09",
     sections: [
-      { id: "executive-summary",    label: "Executive Summary" },
-      { id: "discovery-process",    label: "Discovery Process" },
-      { id: "candidate-details",    label: "Candidate Details" },
-      { id: "architecture-distance", label: "Architecture Distance" },
-      { id: "pipeline-summary",     label: "Pipeline Summary" },
-      { id: "market-rationale",     label: "Market Rationale Cards" },
+      { id: "syn-executive",      label: "Executive Summary" },
+      { id: "syn-opportunities",  label: "Top 15 Opportunities" },
+      { id: "syn-themes",         label: "Capability Themes" },
+      { id: "syn-classification", label: "Market Classification" },
+      { id: "syn-vertical",       label: "Vertical Integration" },
     ],
   },
-  { to: "/analysis", label: "New Market Analysis", kicker: "05" },
 ];
 
 export default function Shell() {
@@ -211,7 +219,6 @@ export default function Shell() {
   // Execute pending scroll after navigation completes and DOM updates
   useEffect(() => {
     if (!pendingScroll) return;
-    // Wait for the new page to render, then scroll
     const raf = requestAnimationFrame(() => {
       setTimeout(() => {
         const el = document.getElementById(pendingScroll);
@@ -234,11 +241,9 @@ export default function Shell() {
       (parentRoute === "/overview" && location.pathname === "/");
 
     if (isOnPage) {
-      // Already on the right page — just scroll
       const el = document.getElementById(sectionId);
       if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
     } else {
-      // Navigate to the page first, then scroll after it renders
       setPendingScroll(sectionId);
       navigate(parentRoute);
     }
@@ -282,11 +287,6 @@ export default function Shell() {
                         ["app-nav-link", isActive ? "is-active" : ""].filter(Boolean).join(" ")
                       }
                       style={{ flex: 1, minWidth: 0 }}
-                      onClick={() => {
-                        // Scroll main content to top when clicking a chapter link
-                        const main = document.querySelector(".app-main");
-                        if (main) main.scrollTo({ top: 0, behavior: "smooth" });
-                      }}
                     >
                       <span className="app-nav-link__num">{item.kicker}</span>
                       <span>{item.label}</span>

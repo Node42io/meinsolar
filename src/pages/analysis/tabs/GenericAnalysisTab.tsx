@@ -77,6 +77,8 @@ export default function GenericAnalysisTab({
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
+    // Try to load the JSON file dynamically from the data directory
+    // The json_exporter produces files like: APPENG_elevator_guide_rails.json
     const prefixMap: Record<string, string> = {
       value_network: "VN",
       product_bom: "BOM",

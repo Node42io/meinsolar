@@ -1,8 +1,8 @@
 /**
  * JobMap — faithful React port of the HTML job-map visualization.
  *
- * Source: Ported from the Clayton JTBD HTML report template.
- * CSS:    ./jobmap.css (copied from the HTML template's <style> block)
+ * Source: JTBD-finfish_farming_and_fish_.html (lines 839–1414)
+ * CSS:    ./jobmap.css (copied verbatim from the HTML's <style> block)
  *
  * DOM structure mirrors the HTML exactly:
  *   .job-map-container
@@ -471,7 +471,7 @@ export default function JobMap({
                   </div>
                 </div>
 
-                {/* Rationale / sensor dependency as commodity-style tag */}
+                {/* Rationale / product dependency as commodity-style tag */}
                 {isRelevant && step.rationale && (
                   <div className="commodity-tags">
                     <div className="commodity-tag" style={{ maxWidth: "100%", whiteSpace: "normal" }}>

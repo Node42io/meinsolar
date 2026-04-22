@@ -1,5 +1,5 @@
 // ─────────────────────────────────────────────────────────────────────────────
-// GfS Türwächter IoT — Shared TypeScript Interfaces
+// Marquardt US Sensor — Shared TypeScript Interfaces
 // Source of truth: app/src/data/*.json + app/src/data/markets/{slug}/*.json
 // ─────────────────────────────────────────────────────────────────────────────
 
@@ -105,7 +105,7 @@ export interface ProductDecomposition {
   features: Feature[];
   specifications: Specification[];
   constraints: Constraint[];
-  /** Bill of Materials — L4 subsystem components of the product. */
+  /** Bill of Materials — 7 logical sensor components derived from product features. */
   billOfMaterials?: BOMItem[];
   sources: Source[];
 }
@@ -126,8 +126,8 @@ export interface FPCommodity {
 }
 
 export interface BOMPosition {
-  level: string; // e.g. "L2"
-  position: string; // e.g. "Building Safety Sub-system"
+  level: string; // e.g. "L5"
+  position: string; // e.g. "Component"
   parentSubsystem: string;
   grandparentSystem: string;
 }
@@ -180,12 +180,13 @@ export interface IncumbentTechnology {
 export interface PositioningRow {
   technology: string;
   share: string;
-  pressureDrop: string;
-  movingParts: string;
-  accuracy: string;
-  unitCost: string;
-  continuousOutput: string;
-  heatMeterReady: string;
+  customGeometry?: string;
+  toleranceClass?: string;
+  materialWaste?: string;
+  unitCost?: string;
+  nearNetShape?: string;
+  surfaceHardening?: string;
+  [key: string]: string | undefined;
 }
 
 export interface HomeMarketCompetition {
@@ -302,9 +303,9 @@ export interface JobStep {
   stepNumber: number;
   verb: string;
   description: string;
-  /** True when the step is flagged as product-relevant in the job map table. */
+  /** True when the step is flagged as sensor-relevant in the job map table. */
   isSensorRelevant?: boolean;
-  /** Why this step depends on product capability (from the Rationale column). */
+  /** Why this step depends on sensor capability (from the Rationale column). */
   sensorDependencyRationale?: string;
   rawStatement: string;
   jobStep: string;
@@ -322,7 +323,7 @@ export interface Segment {
   /** Sequential number from the table. */
   segmentNumber?: number;
   name: string;
-  /** Parenthetical qualifier after the bolded name. */
+  /** Parenthetical qualifier after the bolded name (e.g. ">500 t/yr, salmon focus"). */
   qualifier?: string;
   circumstance: string;
   alternativesDiffer: string;
@@ -340,7 +341,7 @@ export interface Alternative {
   tradeoffs: string;
 }
 
-/** Raw JTBD need (error statement level). */
+/** Raw JTBD need (error statement level — 25 core + PRN). */
 export interface JTBDNeed {
   id: string;
   statement: string;
@@ -461,7 +462,6 @@ export interface ValueNetworkData {
   marketSize: string;
   l6Systems: L6System[];
   vnUnits: VNUnit[];
-  /** Product position within the VN (kept as marquardtPosition for data compat). */
   marquardtPosition: string;
   strategicPosition: Record<string, unknown> | null;
   sources: Source[];

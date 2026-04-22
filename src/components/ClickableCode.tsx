@@ -6,7 +6,7 @@
  *
  * Usage:
  *   <ClickableCode kind="naics" code="332911" />
- *   <ClickableCode kind="unspsc" code="41112501" />
+ *   <ClickableCode kind="unspsc" code="30102304" />
  */
 
 import Tooltip from "@/components/Tooltip";

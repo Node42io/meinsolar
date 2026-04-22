@@ -55,7 +55,7 @@ function VariantDetailPanel({
               padding: "2px 5px",
             }}
           >
-            Türwächter
+            ZOLLERN
           </span>
         )}
         {alternative.name}

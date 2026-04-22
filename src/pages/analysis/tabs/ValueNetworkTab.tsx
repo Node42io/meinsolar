@@ -110,19 +110,19 @@ export default function ValueNetworkTab({ marketSlug }: { marketSlug: string }) 
         title="Value Network Analysis"
       >
         <p className="answer">
-          This section maps where the GfS Türwächter IoT fits within the{" "}
+          This section maps where ZOLLERN's steel profile offering fits within the{" "}
           <strong>{vnData.marketName}</strong> value network. Value-network positioning
           directly informs sales-channel strategy: it tells the sales team which buyers
           to approach first, which systems integrators control purchasing decisions,
-          and where the product can capture margin rather than ceding it to a channel
+          and where ZOLLERN can capture margin rather than ceding it to a channel
           partner. The analysis is based on NAICS code{" "}
           <strong>{vnData.naicsCode}</strong> and an architecture distance score of{" "}
           <strong>{archDist}</strong> ({archDistanceLabel(archDist)}).
         </p>
         <p className="answer" style={{ marginTop: 12 }}>
           The tab is structured in two parts: (1) position in the general value
-          network, and (2) the detailed process-level map with the product's anchor
-          position. The product's Bill of Materials is available on the separate{" "}
+          network, and (2) the detailed process-level map with ZOLLERN's anchor
+          position. The product Bill of Materials is available on the separate{" "}
           <strong>Bill of Materials</strong> tab.
         </p>
       </ExecutiveSummary>
@@ -139,15 +139,15 @@ export default function ValueNetworkTab({ marketSlug }: { marketSlug: string }) 
         <p className="answer">
           <strong>What is a value network?</strong> A value network is the chain of
           organizations, process steps, and enabling systems that together deliver a
-          finished product or service to an end user. In a building safety context it
-          spans component manufacturers, security equipment vendors, integrators, installers,
-          and facility operators.
+          finished product or service to an end user. In a manufacturing context it
+          spans raw-material suppliers, equipment vendors, integrators, operators, and
+          distributors.
         </p>
         <p className="answer" style={{ marginTop: 12 }}>
           In this section you are seeing the <strong>{vnData.marketName}</strong>{" "}
           production chain decomposed to the L6 (functional sub-system) and L5 (specific process step)
-          levels. The highlighted rows show where the Türwächter fits as a primary,
-          secondary, or tertiary integration point. Click any row to read the functional
+          levels. The highlighted rows show where ZOLLERN's steel profiles fit as a primary,
+          secondary, or tertiary supply point. Click any row to read the functional
           job statement and a plain-language description of that process step.
         </p>
       </ExecutiveSummary>
@@ -285,25 +285,25 @@ export default function ValueNetworkTab({ marketSlug }: { marketSlug: string }) 
         <p className="answer">
           <strong>Why these steps are listed.</strong> The value network is decomposed
           hierarchically: L7 is the full ecosystem, L6 are functional sub-systems
-          (e.g., "Door Hardware Assembly" or "Alarm & Notification" — the major functional blocks),
-          and L5 are the specific process steps within each sub-system (e.g., "Panic Bar Installation" or "Wireless Module Integration").
+          (e.g., "Mechanical Filtration" or "Gas Management" — the major functional blocks),
+          and L5 are the specific process steps within each sub-system (e.g., "Drum Filter" or "UV Sterilizer").
           This decomposition maps all co-innovation dependencies before committing to a market entry
           strategy.
         </p>
         <p className="answer" style={{ marginTop: 12 }}>
           <strong>What the steps mean.</strong> Each L5 unit represents a discrete
-          buying occasion or integration point. The Türwächter must fit into at
-          least one L5 unit as the security device of record. The "PRIMARY" badge
-          marks the L5 unit where the product's functional promise (securing emergency exit
-          doors with alarm notification and remote monitoring) maps most directly. Secondary
-          and tertiary positions are adjacent buying opportunities once the primary
+          buying occasion or integration point. ZOLLERN's steel profiles must fit into at
+          least one L5 unit as the material/blank supply point of record. The "PRIMARY" badge
+          marks the L5 unit where ZOLLERN's functional promise (near-net-shape precision
+          steel profiles with integrated induction hardening) maps most directly. Secondary
+          and tertiary positions are adjacent supply opportunities once the primary
           position is established.
         </p>
         <p className="answer" style={{ marginTop: 12 }}>
           <strong>How the following analysis will be conducted.</strong> The diagram
           below is interactive — click any L6 row to expand its L5 children, and click
           any row to read the functional job statement and a plain-language description.
-          The goal is to identify the shortest path from the product's current positioning
+          The goal is to identify the shortest path from ZOLLERN's current positioning
           to a volume-production relationship with a systems integrator or OEM in this
           market.
         </p>
@@ -337,7 +337,7 @@ export default function ValueNetworkTab({ marketSlug }: { marketSlug: string }) 
       )}
 
       {/* ── Strategic position note ── */}
-      {vnData.marquardtPosition && (
+      {(vnData.marquardtPosition || (vnData as any).zollernPosition) && (
         <div
           style={{
             marginTop: 24,
@@ -361,9 +361,9 @@ export default function ValueNetworkTab({ marketSlug }: { marketSlug: string }) 
               marginBottom: 6,
             }}
           >
-            Product Strategic Position
+            ZOLLERN Strategic Position
           </span>
-          {vnData.marquardtPosition}
+          {vnData.marquardtPosition || (vnData as any).zollernPosition}
         </div>
       )}
 

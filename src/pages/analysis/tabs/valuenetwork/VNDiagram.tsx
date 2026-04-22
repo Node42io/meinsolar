@@ -79,7 +79,7 @@ function LevelBadge({ level, type }: { level: string; type?: string }) {
 }
 
 /* ── Product position badge ─────────────────────────────────────────────── */
-function MarquardtBadge({ label }: { label: string }) {
+function AnchorBadge({ label }: { label: string }) {
   return (
     <span
       style={{
@@ -177,7 +177,7 @@ function Legend() {
 
       <span style={{ width: 1, height: 16, background: C.border, margin: "0 4px" }} />
 
-      {/* Sensor anchor */}
+      {/* Product anchor */}
       <span style={{ display: "flex", alignItems: "center", gap: 6, fontSize: 11, color: C.accent }}>
         <span
           style={{
@@ -249,7 +249,7 @@ function DetailPanel({
         {/* title */}
         <h3 style={{ fontSize: 18, fontWeight: 700, color: C.textPrimary, marginBottom: 8, lineHeight: 1.3, letterSpacing: "-0.01em" }}>
           {unit.name}
-          {mLabel && <MarquardtBadge label={mLabel} />}
+          {mLabel && <AnchorBadge label={mLabel} />}
         </h3>
 
         {/* unit ID mono tag */}
@@ -354,7 +354,7 @@ function DetailPanel({
                     {u.id}
                   </span>
                   <span style={{ flex: 1 }}>{u.name}</span>
-                  {ml && <MarquardtBadge label={ml} />}
+                  {ml && <AnchorBadge label={ml} />}
                 </div>
               );
             })}
@@ -542,7 +542,7 @@ export default function VNDiagram({ data }: { data: ValueNetworkData }) {
                     }}
                   >
                     {sys.name}
-                    {hasAnchorChild && <MarquardtBadge label="PRODUCT ENTRY" />}
+                    {hasAnchorChild && <AnchorBadge label="PRODUCT ENTRY" />}
                   </span>
 
                   {/* Unit count */}
@@ -624,7 +624,7 @@ export default function VNDiagram({ data }: { data: ValueNetworkData }) {
                           }}
                         >
                           {unit.name}
-                          {mLabel && <MarquardtBadge label={mLabel} />}
+                          {mLabel && <AnchorBadge label={mLabel} />}
                         </span>
 
                         {/* Empty count cell */}

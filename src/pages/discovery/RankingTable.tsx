@@ -85,7 +85,7 @@ export default function RankingTable({ markets }: Props) {
                     >
                       {m.marketName}
                     </Link>
-                    {m.naicsCode === "41112501" && (
+                    {m.naicsCode === "30102304" && (
                       <small
                         style={{
                           display: "block",
@@ -136,7 +136,7 @@ export default function RankingTable({ markets }: Props) {
           All {markets.length} markets fall in the{" "}
           <strong>investigate</strong> band (5.0–7.5). None clear the 7.5
           pursue threshold — primarily due to uniformly moderate feature fit
-          (avg ~5.1/10) and the sensor's deep-component value-network position.
+          (avg ~5.1/10) and ZOLLERN's upstream material supplier position in each market's value network.
         </p>
       </div>
     </section>

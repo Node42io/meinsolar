@@ -109,7 +109,7 @@ function StatusBadge({ name }: { name: string }) {
       </span>
     );
   }
-  if (name.includes("Türwächter") || name.includes("GfS") || name.includes("Exit Control")) {
+  if (name.includes("ZOLLERN")) {
     return (
       <span
         style={{
@@ -127,7 +127,7 @@ function StatusBadge({ name }: { name: string }) {
           verticalAlign: "middle",
         }}
       >
-        Our approach
+        ZOLLERN's approach
       </span>
     );
   }

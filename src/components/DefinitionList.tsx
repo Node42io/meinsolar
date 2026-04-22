@@ -7,8 +7,8 @@
  * Usage:
  *   <DefinitionList
  *     items={[
- *       { key: "technology_class", value: "Emergency Exit Security Devices with Remote Monitoring" },
- *       { key: "Product Group", value: "GfS Türwächter IoT" },
+ *       { key: "technology_class", value: "Precision Steel Profile Manufacturing" },
+ *       { key: "UNSPSC Code", value: <ClickableCode kind="unspsc" code="30102304" /> },
  *     ]}
  *   />
  */

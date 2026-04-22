@@ -34,7 +34,7 @@ export function deriveDescription(unit: VNUnit, systemName: string): string {
 }
 
 /**
- * Return true if a VN unit is the product's primary position (Türwächter anchor).
+ * Return true if a VN unit is the product's primary position (anchor).
  */
 export function isPrimaryAnchor(unit: VNUnit): boolean {
   const text = ((unit.functionalJob || "") + " " + (unit.description || "")).toLowerCase();
@@ -44,6 +44,8 @@ export function isPrimaryAnchor(unit: VNUnit): boolean {
     text.includes("turwachter") ||
     text.includes("marquardt primary") ||
     text.includes("marquardt") ||
+    text.includes("zollern primary") ||
+    text.includes("zollern") ||
     (unit as any).isPrimaryPosition === true
   );
 }
@@ -53,10 +55,10 @@ export function isPrimaryAnchor(unit: VNUnit): boolean {
  */
 export function primaryPositionLabel(unit: VNUnit): string | null {
   const text = (unit.functionalJob || "") + " " + (unit.description || "");
-  if (/PRIMARY POSITION/i.test(text) || /MARQUARDT PRIMARY/i.test(text)) return "PRIMARY";
-  if (/SECONDARY POSITION/i.test(text) || /MARQUARDT SECONDARY/i.test(text)) return "SECONDARY";
-  if (/TERTIARY POSITION/i.test(text) || /MARQUARDT TERTIARY/i.test(text)) return "TERTIARY";
-  if (/TÜRWÄCHTER|TURWACHTER|MARQUARDT/i.test(text)) return "PRODUCT";
+  if (/PRIMARY POSITION/i.test(text) || /MARQUARDT PRIMARY/i.test(text) || /ZOLLERN PRIMARY/i.test(text)) return "PRIMARY";
+  if (/SECONDARY POSITION/i.test(text) || /MARQUARDT SECONDARY/i.test(text) || /ZOLLERN SECONDARY/i.test(text)) return "SECONDARY";
+  if (/TERTIARY POSITION/i.test(text) || /MARQUARDT TERTIARY/i.test(text) || /ZOLLERN TERTIARY/i.test(text)) return "TERTIARY";
+  if (/TÜRWÄCHTER|TURWACHTER|MARQUARDT|ZOLLERN/i.test(text)) return "PRODUCT";
   if ((unit as any).isPrimaryPosition === true) return "PRIMARY";
   return null;
 }

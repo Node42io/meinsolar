@@ -1,5 +1,5 @@
 /**
- * Number-formatting helpers for the Türwächter report UI.
+ * Number-formatting helpers for the Marquardt report UI.
  */
 
 /** Format an ODI / Kano score (0–10 range, 1 decimal place). */

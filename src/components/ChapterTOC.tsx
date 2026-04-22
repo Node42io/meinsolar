@@ -3,7 +3,7 @@
  *
  * Usage:
  *   <ChapterTOC entries={[
- *     { id: "prod-mechanism", label: "What the Sensor Does" },
+ *     { id: "prod-mechanism", label: "What the Product Does" },
  *     { id: "prod-features",  label: "Features", level: "h3" },
  *   ]} />
  *

@@ -1,5 +1,5 @@
 /**
- * BOMSection — Bill of Materials for the base product.
+ * BOMSection — Bill of Materials for the base product (ZOLLERN steel profiles).
  *
  * product.json does not have a `billOfMaterials` field. Instead we derive
  * the product's component breakdown from its features + specifications.
@@ -23,57 +23,50 @@ interface BOMItem {
  * Build a logical BOM from the product's feature list.
  * Maps technology-scope features to physical components.
  */
-function buildBOMFromProduct(_product: ProductDecomposition): BOMItem[] {
-  // Core product components derived from the product data
+function buildBOMFromProduct(product: ProductDecomposition): BOMItem[] {
+  // Core production inputs derived from the product data
   const derived: BOMItem[] = [
     {
       id: "BOM-01",
-      component: "Mechanical Guard Housing",
-      function: "Spring-loaded protective cover over door handle that deters unauthorized exit",
-      category: "Mechanical",
-      keyAttribute: "Steel/ABS housing; surface-mount on panic bar; spring-return mechanism",
+      component: "Steel Billet / Coil (raw material)",
+      function: "Input material for hot rolling or cold drawing — carbon, alloy, bearing, spring, or tool steel grades",
+      category: "Materials",
+      keyAttribute: "Grade range: C45, C60, 42CrMo4, 16MnCr5, 34CrNiMo6, 100Cr6, stainless",
     },
     {
       id: "BOM-02",
-      component: "Piezoelectric Alarm Horn",
-      function: "Produces 95 dB audible alarm when guard is activated — no electrical power needed",
-      category: "Alarm",
-      keyAttribute: "Piezo element; 95 dB at 1m; volume-adjustable; LED indication",
+      component: "Custom Roll Set / Die Set",
+      function: "Define the 2D cross-section geometry during hot rolling or cold drawing",
+      category: "Tooling",
+      keyAttribute: `Die cost €5–15K per geometry; lead time 6–12 weeks; 300+ year die library`,
     },
     {
       id: "BOM-03",
-      component: "EasyWave Radio Module",
-      function: "Transmits guard-state and alarm events wirelessly to centralized receivers",
-      category: "Electronics",
-      keyAttribute: "868.3 MHz EasyWave; ~30m range; 9-35mA draw; 9V battery powered",
+      component: "Induction Hardening Coil",
+      function: "Selectively harden profile surfaces via electromagnetic induction heating + quench",
+      category: "Process",
+      keyAttribute: `Up to ${product.specifications.find((s) => s.name === "Surface Hardness (induction-hardened)")?.value ?? "64"} HRC; depth 0.5–5 mm`,
     },
     {
       id: "BOM-04",
-      component: "Battery Compartment",
-      function: "Houses replaceable 9V block battery powering IoT module and optional pre-alarm",
-      category: "Electronics",
-      keyAttribute: "Tool-free battery replacement; battery monitoring variant available",
+      component: "Heat Treatment (normalizing, Q&T, case hardening)",
+      function: "Achieve target mechanical properties across the full cross-section",
+      category: "Process",
+      keyAttribute: "Grade-specific cycles; tensile strength up to 1,200 MPa (34CrNiMo6 Q&T)",
     },
     {
       id: "BOM-05",
-      component: "Mounting Bracket & Adapter",
-      function: "Surface-mount attachment to door handle or panic bar hardware",
+      component: "CNC Machining (cutting, drilling, milling, grinding)",
+      function: "Transform profiles into finished parts (Fertigteile) with holes, chamfers, mating features",
       category: "Mechanical",
-      keyAttribute: "Universal fit EN 179 (lever) / EN 1125 (panic bar); glass-frame plate option",
+      keyAttribute: "Extends offering from semi-finished material to ready-to-install component",
     },
     {
       id: "BOM-06",
-      component: "Key Override Cylinder",
-      function: "Profile half-cylinder allowing authorized bypass without triggering alarm",
-      category: "Security",
-      keyAttribute: "Standard profile half-cylinder; keyed per building/zone",
-    },
-    {
-      id: "BOM-07",
-      component: "Status LED & Reset Interface",
-      function: "Visual indication of guard state (armed/alarmed/battery low) and manual reset",
-      category: "Interface",
-      keyAttribute: "LED indicator; reset button; pre-alarm tone circuit",
+      component: "EN 10204 3.1 Material Certificate",
+      function: "Provide traceable material certification from melt to delivery",
+      category: "Quality",
+      keyAttribute: "IATF 16949 certified supply chain; required for automotive and regulated markets",
     },
   ];
 
@@ -82,11 +75,12 @@ function buildBOMFromProduct(_product: ProductDecomposition): BOMItem[] {
 
 /* ── Category colour map ─────────────────────────────────────────────────── */
 const CATEGORY_COLORS: Record<string, { bg: string; text: string }> = {
+  Measurement: { bg: "rgba(42,157,143,0.18)", text: "#b7fff6" },
+  Sensing: { bg: "rgba(42,157,143,0.18)", text: "#b7fff6" },
   Mechanical: { bg: "rgba(255,255,255,0.07)", text: "#a1a2a1" },
-  Alarm: { bg: "rgba(231,111,81,0.18)", text: "#e76f51" },
   Electronics: { bg: "rgba(253,255,152,0.14)", text: "#fdff98" },
-  Security: { bg: "rgba(42,157,143,0.18)", text: "#b7fff6" },
   Interface: { bg: "rgba(233,196,106,0.18)", text: "#e9c46a" },
+  Materials: { bg: "rgba(255,255,255,0.07)", text: "#a1a2a1" },
 };
 
 function CategoryBadge({ category }: { category: string }) {
@@ -126,7 +120,7 @@ export default function BOMSection({ product }: { product: ProductDecomposition 
 
       <ExecutiveSummary kicker="Bill of Materials Note">
         <p className="answer">
-          Below is the product's bill of materials — useful for understanding the physical cost structure as we evaluate each market. Because the product data file does not yet include a dedicated BOM field, this table is derived from the product's documented features, technology class, and specifications. It reflects the logical component architecture of the GfS Türwächter IoT rather than a formal manufacturing BOM.
+          Below is the product's bill of materials — useful for understanding the physical cost structure as we evaluate each market. Because the product data file does not yet include a dedicated BOM field, this table is derived from the documented features, technology class, and specifications. It reflects the logical component architecture of ZOLLERN's precision steel profile offering rather than a formal manufacturing BOM.
         </p>
       </ExecutiveSummary>
 
@@ -169,7 +163,7 @@ export default function BOMSection({ product }: { product: ProductDecomposition 
         </table>
       </div>
 
-      {/* Product specifications as supplementary reference */}
+      {/* ZOLLERN steel profiles specifications as supplementary reference */}
       <div style={{ marginTop: 32 }}>
         <p
           style={{
